@@ -1,12 +1,12 @@
 import React from 'react'
-import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image, TouchableHighlight} from 'react-native'
+import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-native'
 
 export default class LoginConselheiro extends React.Component {
     render() {
         return (
         <View style={styles.principal}>
             <View style={styles.topo}>
-
+                <Text style={{fontSize: 35}}>Merenda +</Text>
             </View>
 
             <View style={styles.conteudo}>
@@ -14,7 +14,13 @@ export default class LoginConselheiro extends React.Component {
             </View>
 
             <View style={styles.rodape}>
-
+                <TouchableOpacity
+                activeOpacity = {0.6}
+                >
+                    <Text>Ainda não se cadastrou?
+                        <Text style={{color: 'blue'}}> Cadastrar-se</Text>
+                        </Text>
+                    </TouchableOpacity>
             </View>
         </View>
         );
@@ -32,7 +38,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         shadowColor: 'black',
         shadowOpacity: 1,
-        shadowRadius: 6
+        shadowRadius: 6,
+        justifyContent: 'center',
+        alignItems: 'center'
 
     },
     conteudo: {
@@ -44,7 +52,9 @@ const styles = StyleSheet.create({
     rodape: {
         flex: 0.7,
         borderTopColor: '#a9a9a9',
-        borderTopWidth: 1
+        borderTopWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 
 });
