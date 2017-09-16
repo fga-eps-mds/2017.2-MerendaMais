@@ -11,34 +11,48 @@ export default class LoginConselheiro extends React.Component {
 
     render() {
         return (
-        <View style={styles.principal}>
-            <View style={styles.topo}>
-                <Text style={{fontSize: 35}}>Merenda +</Text>
-            </View>
-
-            <View style={styles.conteudo}>
-                <View style={styles.InputCPF}>
-                    <Image source={iconAccount} style={styles.icon}/>
-                    <TextInput
-                    width = {280}
-                    onChangeText={(text) => this.setState({text})}
-                    maxLength = {11}
-                    value = {this.state.text}
-                    placeholder = 'CPF'
-                    />
+            <View style={styles.principal}>
+                <View style={styles.topo}>
+                    <Text style={{fontSize: 35}}>Merenda +</Text>
                 </View>
-            </View>
 
-            <View style={styles.rodape}>
-                <TouchableOpacity
-                activeOpacity = {0.6}
-                >
-                    <Text>Ainda não se cadastrou?
-                        <Text style={{color: 'blue'}}> Cadastrar-se</Text>
+                <View style={styles.conteudo}>
+                    <View style={styles.InputCPF}>
+                        <Image source={iconAccount} style={styles.icon}/>
+                        <TextInput
+                        width = {280}
+                        onChangeText={(text) => this.setState({text})}
+                        maxLength = {11}
+                        value = {this.state.text}
+                        placeholder = 'CPF'
+                        />
+                    </View>
+
+                    <TouchableOpacity
+                    style={styles.buttonLogin}
+                    activeOpacity= {0.7}>
+                        <Text style={{color: 'white', fontSize: 20}}>Entrar</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                    activeOpacity = {0.6}
+                    >
+                        <Text style={{marginTop: 30}}>É um presidente?
+                            <Text style={{color: 'blue'}}> Clique aqui</Text>
                         </Text>
                     </TouchableOpacity>
+                </View>
+
+                <View style={styles.rodape}>
+                    <TouchableOpacity
+                    activeOpacity = {0.6}
+                    >
+                    <Text>Ainda não se cadastrou?
+                        <Text style={{color: 'blue'}}> Cadastrar-se</Text>
+                    </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
         );
     }
 }
@@ -88,6 +102,20 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 7
 
-    }
+    },
+    buttonLogin: {
+        paddingHorizontal: 133,
+        paddingVertical: 18,
+        marginTop: 50,
+        marginBottom: 0,
+        backgroundColor: '#FF9500',
+        borderRadius: 8,
+        borderWidth: 1,
+
+        shadowOffset: {width: 0, height: 4},
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowRadius: 5
+    },
 
 });
