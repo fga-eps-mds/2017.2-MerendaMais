@@ -1,7 +1,14 @@
 import React from 'react'
 import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-native'
 
+const iconAccount = require('../images/account_circle.png');
+
 export default class LoginConselheiro extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {text: ''};
+    }
+
     render() {
         return (
         <View style={styles.principal}>
@@ -10,7 +17,16 @@ export default class LoginConselheiro extends React.Component {
             </View>
 
             <View style={styles.conteudo}>
-
+                <View style={styles.InputCPF}>
+                    <Image source={iconAccount} style={styles.icon}/>
+                    <TextInput
+                    width = {280}
+                    onChangeText={(text) => this.setState({text})}
+                    maxLength = {11}
+                    value = {this.state.text}
+                    placeholder = 'CPF'
+                    />
+                </View>
             </View>
 
             <View style={styles.rodape}>
@@ -46,7 +62,9 @@ const styles = StyleSheet.create({
     conteudo: {
         marginTop: 9,
         flex: 6,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center'
 
     },
     rodape: {
@@ -55,6 +73,21 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    icon: {
+        width: 30,
+        height: 30,
+        margin: 5
+    },
+    InputCPF: {
+        paddingLeft: 2,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: 'gray',
+        borderWidth: 1,
+        borderRadius: 7
+
     }
 
 });
