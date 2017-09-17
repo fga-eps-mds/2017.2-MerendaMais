@@ -7,7 +7,7 @@ import TelaInicial from './src/screens/TelaInicial'
 export default class App extends React.Component {
   render() {
     return (
-      <LoginConselheiro />
+      <TelaInicial />
     );
   }
 }
