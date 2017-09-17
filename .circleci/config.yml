@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json"}}
+      - run:
+          name: Install npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Test
+          command: npm run test
+      - deploy:
+          name: Deploy on Expo
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              sudo npm install -g exp
+              exp login -u ${EXP_EMAIL} -p ${EXP_PASSWORD}
+              exp publish
+            fi
