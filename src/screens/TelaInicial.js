@@ -1,13 +1,15 @@
 import React,{Component} from 'react';
 import { StyleSheet, Text, View,Button,Image,TouchableOpacity} from 'react-native';
 
+const imageCapa = require('../images/capa.jpg');
 
-export default class App extends React.Component {
+
+export default class TelaInicial extends React.Component {
 
   render() {
     return (
       <View style={styles.im}>
-        <Image source = {require('./img/App.png')}>
+        <Image source = {imageCapa}>
           <View style={styles.capa}>
           <Text style={styles.txt}>MERENDA +</Text>
           <TouchableOpacity style={styles.btn}>
@@ -36,7 +38,6 @@ const styles=StyleSheet.create({
       },
       capa:{
         alignItems:'center',
-        flex:1,
         backgroundColor:'transparent',
         shadowOffset:{width:0,height:1},
         shadowOpacity:1
