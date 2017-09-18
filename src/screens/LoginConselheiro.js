@@ -6,14 +6,14 @@ const iconAccount = require('../images/account_circle.png');
 export default class LoginConselheiro extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {text: ''};
+        this.state = {CPF: ''};
     }
 
     render() {
         return (
             <View style={styles.principal}>
                 <View style={styles.topo}>
-                    <Text style={{fontSize: 35}}>Merenda +</Text>
+                    <Text style={styles.textLogo}>Merenda +</Text>
                 </View>
 
                 <View style={styles.conteudo}>
@@ -21,9 +21,11 @@ export default class LoginConselheiro extends React.Component {
                         <Image source={iconAccount} style={styles.icon}/>
                         <TextInput
                         width = {280}
-                        onChangeText={(text) => this.setState({text})}
+                        backgroundColor = '#FAFAFA'
+                        returnKeyType = 'go'
+                        onChangeText={(CPF) => this.setState({CPF})}
                         maxLength = {11}
-                        value = {this.state.text}
+                        value = {this.state.CPF}
                         placeholder = 'CPF'
                         />
                     </View>
@@ -93,12 +95,19 @@ const styles = StyleSheet.create({
         height: 30,
         margin: 5
     },
+    textLogo: {
+        fontSize: 35,
+        color:'white',
+        fontWeight:'bold',
+        marginTop:10
+    },
     InputCPF: {
         paddingLeft: 2,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: 'gray',
+        backgroundColor: '#FAFAFA',
         borderWidth: 1,
         borderRadius: 7
 

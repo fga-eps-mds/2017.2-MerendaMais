@@ -4,17 +4,17 @@ import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-
 const iconAccount = require('../images/account_circle.png');
 const iconLock = require('../images/ic_lock.png');
 
-export default class LoginConselheiro extends React.Component {
+export default class LoginPresidente extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {text: ''};
+        this.state = {CPF: '', senha: ''};
     }
 
     render() {
         return (
             <View style={styles.principal}>
                 <View style={styles.topo}>
-                    <Text style={{fontSize: 35,color:'white',fontWeight:'bold',marginTop:10}}>Merenda +</Text>
+                    <Text style={styles.textLogo}>Merenda +</Text>
                 </View>
 
                 <View style={styles.conteudo}>
@@ -22,21 +22,27 @@ export default class LoginConselheiro extends React.Component {
                         <Image source={iconAccount} style={styles.icon}/>
                         <TextInput
                         width = {280}
-                        onChangeText={(text) => this.setState({text})}
+                        backgroundColor = '#FAFAFA'
+                        returnKeyType = 'next'
+                        onChangeText={(CPF) => this.setState({CPF})}
                         maxLength = {11}
-                        value = {this.state.text}
+                        value = {this.state.CPF}
                         placeholder = 'CPF'
+                        onSubmitEditing = {() => this.passwordInput.focus()}
                         />
                     </View>
 
-                    <View style={styles.InputLock}>
+                    <View style={styles.InputPassword}>
                         <Image source={iconLock} style={styles.icon}/>
                         <TextInput
                         width = {280}
-                        onChangeText={(text) => this.setState({text})}
-                        maxLength = {11}
-                        value = {this.state.text}
+                        backgroundColor = '#FAFAFA'
+                        returnKeyType = 'go'
+                        secureTextEntry
+                        onChangeText={(senha) => this.setState({senha})}
+                        value = {this.state.senha}
                         placeholder = 'Senha'
+                        ref = {(input) => this.passwordInput = input}
                         />
                     </View>
 
@@ -101,6 +107,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    textLogo: {
+        fontSize: 35,
+        color:'white',
+        fontWeight:'bold',
+        marginTop:10
+    },
     icon: {
         width: 30,
         height: 30,
@@ -108,20 +120,24 @@ const styles = StyleSheet.create({
     },
     InputCPF: {
         paddingLeft: 2,
+        paddingRight: 4,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: 'gray',
+        backgroundColor: '#FAFAFA',
         borderWidth: 1,
         borderRadius: 7,
 
     },
-    InputLock: {
+    InputPassword: {
         paddingLeft: 2,
+        paddingRight: 4,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop:30,
         borderColor: 'gray',
+        backgroundColor: '#FAFAFA',
         borderWidth: 1,
         borderRadius: 7
 
