@@ -5,7 +5,7 @@ import RegisterScreen from './src/screens/RegisterScreen'
 export default class App extends React.Component {
   render() {
     return (
-      <RegisterScreen />
+      <UpdateInfoScreen />
     );
   }
 }
