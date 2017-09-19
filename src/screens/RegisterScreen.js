@@ -1,32 +1,41 @@
 import React from 'react'
-import {Text, ScrollView,View, TextInput, TouchableOpacity} from 'react-native'
+import {Text, ScrollView, View, TextInput, TouchableOpacity} from 'react-native'
+var user
+
 
 export default class RegisterScreen extends React.Component {
 
+  constructor(props){
+    super(props)
 
-  _onChange = (item) => {
-          // the full item as defined in the list of items is passed to the onChange handler to give full
-          // flexibility on what to do...
-      }
+    this.state = {
+      CPF: '',
+      name: '',
+      email:'',
+      telefone: '',
+      cargo: '',
+      segment: '',
+      CAE_Type: '',
+      CAE: '',
+    }
+  }
 
-
+  ajuda() {
+     console.log(this.state.CPF);
+     console.log(this.state.name);
+     console.log(this.state.email);
+     console.log(this.state.telefone);
+     console.log(this.state.cargo);
+     console.log(this.state.segment);
+     console.log(this.state.CAE_Type);
+     console.log(this.state.CAE);
+  }
 
 
   render() {
-
-
-    const items = [
-              { key: 0, label: 'Fruits', value:'some value' },
-              { key: 1, label: 'Fruits', value:{this: "could", be:"anything"} },
-          ];
-
-
-
-
-
   return (
 
-    <ScrollView>
+<ScrollView>
     <Text style={styles.Logo}>Merenda+</Text>
 
     <Text style={styles.container}> </Text>
@@ -36,66 +45,70 @@ export default class RegisterScreen extends React.Component {
     placeholder = "Digite o seu CPF"
     placeholderTextColor = '#95a5a6'
     style={styles.InputCPF}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({CPF:text})}
     />
     <Text style={styles.container}>     Nome</Text>
     <TextInput
     placeholder = "Digite o seu nome completo"
     placeholderTextColor = '#95a5a6'
     style={styles.InputCPF}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({name:text})}
     />
     <Text style={styles.container}>     Email</Text>
     <TextInput
     placeholder = "Digite o seu email"
     placeholderTextColor = '#95a5a6'
     style={styles.InputCPF}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({email:text})}
     />
     <Text style={styles.container}>     Telefone</Text>
     <TextInput
     placeholder = "Digite o seu telefone"
     placeholderTextColor = '#95a5a6'
     style={styles.InputCPF}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({telefone:text})}
     />
     <Text style={styles.container}>     Cargo</Text>
     <TextInput
-    placeholder = "Escolha seu cargo"
-    placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
-    />
+     placeholder = "Escolha seu cargo"
+     placeholderTextColor = '#95a5a6'
+     style={styles.InputCPF}
+     returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({cargo:text})}
+     />
     <Text style={styles.container}>     Segmento</Text>
     <TextInput
     placeholder = "Escolha seu segmento"
     placeholderTextColor = '#95a5a6'
     style={styles.InputCPF}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({segment:text})}
     />
     <Text style={styles.container}>     Tipo do CAE</Text>
     <TextInput
     placeholder = "Escolha o tipo do seu CAE"
     placeholderTextColor = '#95a5a6'
     style={styles.InputCPF}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({CAE_Type:text})}
     />
     <Text style={styles.container}>     CAE</Text>
     <TextInput
     placeholder = "Lista com o CAE do seu município/estado"
     placeholderTextColor = '#95a5a6'
     style={styles.InputCPF}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({CAE:text})}
     />
-    <TouchableOpacity style= {styles.buttonContainer}>
-    <Text style={styles.buttonText}>Concluir</Text>
+    <TouchableOpacity  onPress={() => this.ajuda()}
+      style= {styles.buttonContainer}>
+      <Text style={styles.buttonText}>Concluir</Text>
+
     </TouchableOpacity>
-
-
-
-
-    <Selectbox
-                        selectedItem=this.props.selectedItem
-                        onChange={this._onChange}
-                        items=items />
-
-
-
-
-
-
 
     </ScrollView>
   );
@@ -115,16 +128,16 @@ const styles = {
 
 },
 
-
 input: {
-  height: 40,
-  backgroundColor: '#FFF',
-  marginBottom: 20,
-  color: '#e67e22',
-  paddngHorizontal: 10,
+  paddingTop: 10,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
   borderColor: 'gray',
   borderWidth: 1,
-  borderRadius: 7
+  borderRadius: 7,
+  marginHorizontal: 15,
+  marginBottom: 10
 },
 
 InputCPF: {
@@ -144,8 +157,8 @@ buttonContainer: {
     borderWidth: 1,
     borderRadius: 7,
     marginHorizontal: 15,
-    marginTop: 40,
-    marginBottom: 10,
+    marginTop: 30,
+    marginBottom: 20,
     backgroundColor: '#FF9500'
 },
 buttonText:{
