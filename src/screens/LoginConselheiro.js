@@ -68,9 +68,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF9500',
         borderBottomColor: 'black',
         borderBottomWidth: 1,
-        shadowColor: 'black',
-        shadowOpacity: 1,
-        shadowRadius: 6,
         justifyContent: 'center',
         alignItems: 'center'
 
@@ -120,11 +117,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF9500',
         borderRadius: 8,
         borderWidth: 1,
-
-        shadowOffset: {width: 0, height: 4},
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowRadius: 5
     },
 
 });
