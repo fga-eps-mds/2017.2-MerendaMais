@@ -1,8 +1,10 @@
 import React from 'react'
-import {StyleSheet, TouchableOpacity, Button, Text, TextInput, View} from 'react-native'
+import { connect } from 'react-redux'
+import {StyleSheet, TouchableOpacity, Button, Text, TextInput, View, Image} from 'react-native'
+const iconEmail = require('../images/ic_account_circle.png');
+const iconPhone = require('../images/ic_phone.png');
 
-
-export default class UpdateInfoScreen extends React.Component{
+class UpdateInfoScreen extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -14,25 +16,32 @@ export default class UpdateInfoScreen extends React.Component{
     return(
 
         <View style={styles.principal}>
-
           <View style={styles.topo}>
             <Text style={styles.textLogo}>EDITAR INFORMAÇÕES</Text>
           </View>
 
           <View style={styles.conteudo}>
             <View style={styles.inputs}>
-              <TextInput
-                placeholder="   nome@exemplo.com"
-                placeholderTextColor="black"
-                onChangeText={(email) => this.setState({email})}>
-              </TextInput>
+              <Image source={iconEmail} style={styles.icon}/>
+                <TextInput
+                  width = {280}
+                  maxLength = {50}
+                  placeholder="nome@exemplo.com"
+                  placeholderTextColor="black"
+                  underlineColorAndroid="transparent"
+                  onChangeText={(email) => this.setState({email})}>
+                </TextInput>
             </View>
             <View style={styles.inputs}>
-              <TextInput
-                placeholder="   (00)00000-0000"
-                placeholderTextColor="black"
-                onChangeText={(phone) => this.setState({phone})}>
-              </TextInput>
+              <Image source={iconPhone} style={styles.icon}/>
+                <TextInput
+                  width = {280}
+                  maxLength = {11}
+                  placeholder="(00)00000-0000"
+                  placeholderTextColor="black"
+                  underlineColorAndroid="transparent"
+                  onChangeText={(phone) => this.setState({phone})}>
+                </TextInput>
               </View>
             </View>
             <TouchableOpacity
@@ -45,8 +54,8 @@ export default class UpdateInfoScreen extends React.Component{
   }
 }
 
-const styles = StyleSheet.create({
 
+const styles = StyleSheet.create({
   topo: {
       flex: 1.2,
       backgroundColor: '#FF9500',
@@ -95,14 +104,43 @@ const styles = StyleSheet.create({
 
     },
 
+
     inputs: {
       backgroundColor : '#FAFAFA',
       paddingVertical:10,
       borderWidth: 1,
       borderRadius: 7,
-      justifyContent: 'flex-start',
       borderColor: 'gray',
       marginHorizontal: 15,
-      marginBottom: 30
-    }
+      marginBottom: 30,
+      justifyContent: 'flex-start',
+      paddingLeft: 2,
+      paddingRight: 4,
+      flexDirection: 'row',
+      alignItems: 'center',
+
+    },
+
+
+    icon: {
+         width: 30,
+         height: 30,
+         margin: 5
+     }
 });
+
+const mapStateToProps = (state) =>{
+  return{
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+
+  }
+}
+
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(UpdateInfoScreen);
+
+export default AppContainer;
