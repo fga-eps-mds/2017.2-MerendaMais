@@ -21,11 +21,11 @@ export default class LoginConselheiro extends React.Component {
                         <Image source={iconAccount} style={styles.icon}/>
                         <TextInput
                         width = {280}
-                        backgroundColor = '#FAFAFA'
                         returnKeyType = 'go'
                         onChangeText={(CPF) => this.setState({CPF})}
                         maxLength = {11}
                         value = {this.state.CPF}
+                        underlineColorAndroid = 'transparent'
                         placeholder = 'CPF'
                         />
                     </View>
