@@ -13,9 +13,13 @@ import TelaInicialContainer from './src/containers/TelaInicialContainer';
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store = {store}>
-        <TelaInicialContainer />
-      </Provider>
+
+      <TelaInicial />
+
+
+
+
+
     );
   }
 }
