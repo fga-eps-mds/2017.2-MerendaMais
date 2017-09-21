@@ -20,13 +20,13 @@ export default class LoginPresidente extends React.Component {
                 <View style={styles.conteudo}>
                     <View style={styles.InputCPF}>
                         <Image source={iconAccount} style={styles.icon}/>
-                        <TextInput
+                        <TextInput style={styles.styleInput}
                         width = {280}
-                        backgroundColor = '#FAFAFA'
                         returnKeyType = 'next'
                         onChangeText={(CPF) => this.setState({CPF})}
                         maxLength = {11}
                         value = {this.state.CPF}
+                        underlineColorAndroid = 'transparent'
                         placeholder = 'CPF'
                         onSubmitEditing = {() => this.passwordInput.focus()}
                         />
@@ -34,9 +34,9 @@ export default class LoginPresidente extends React.Component {
 
                     <View style={styles.InputPassword}>
                         <Image source={iconLock} style={styles.icon}/>
-                        <TextInput
+                        <TextInput style={styles.styleInput}
                         width = {280}
-                        backgroundColor = '#FAFAFA'
+                        underlineColorAndroid = 'transparent'
                         returnKeyType = 'go'
                         secureTextEntry
                         onChangeText={(senha) => this.setState({senha})}
@@ -85,9 +85,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF9500',
         borderBottomColor: 'black',
         borderBottomWidth: 1,
-        shadowColor: 'black',
-        shadowOpacity: 1,
-        shadowRadius: 6,
         justifyContent: 'center',
         alignItems: 'center'
 
@@ -150,11 +147,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF9500',
         borderRadius: 8,
         borderWidth: 1,
-
-        shadowOffset: {width: 0, height: 4},
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowRadius: 5
-    },
+    }
 
 });

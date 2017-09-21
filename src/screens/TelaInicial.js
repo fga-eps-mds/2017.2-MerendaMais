@@ -34,20 +34,20 @@ export default class TelaInicial extends React.Component {
 
 
 const styles=StyleSheet.create({
-    im:{
+    im: {
         flex:1,
         alignItems:'center',
         justifyContent:'center',
         backgroundColor:'#000000'
     },
-    capa:{
+    capa: {
         alignItems:'center',
         backgroundColor:'transparent',
         shadowOffset:{width:0,height:1},
         shadowOpacity:1
     },
-    btn:{
-        paddingHorizontal:150,
+    btn: {
+        paddingHorizontal:135,
         paddingVertical:20,
         marginBottom:50,
         marginTop:200,
@@ -55,12 +55,12 @@ const styles=StyleSheet.create({
         borderRadius:10
 
     },
-    txt_btn:{
+    txt_btn: {
         fontSize:20,
         color:'white'
     },
-    btn1:{
-        paddingHorizontal:135,
+    btn1: {
+        paddingHorizontal:117,
         paddingVertical:20,
         marginBottom:50,
         marginTop:10,
@@ -68,7 +68,7 @@ const styles=StyleSheet.create({
         borderRadius:10
 
     },
-    txt:{
+    txt: {
         fontSize:60,
         fontWeight:'bold',
         color:'white',
