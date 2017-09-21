@@ -8,7 +8,7 @@ import LoginPresidente from './src/screens/LoginPresidente'
 export default class App extends React.Component {
   render() {
     return (
-      <LoginPresidente />
+      <TelaInicial />
     );
   }
 }
