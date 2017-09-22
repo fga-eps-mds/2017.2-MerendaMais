@@ -64,12 +64,12 @@ export default class RegisterScreen extends React.Component {
         placeholderTextColor = '#95a5a6'
         style={styles.InputInfo}
         returnKeyLabel = {"next"}
+        onChangeText={(text) => this.setState({email:text})}
       />
       <Text style={styles.container}>     Telefone</Text>
       <TextInput
         placeholder = "Digite o seu telefone"
         placeholderTextColor = '#95a5a6'
-        onChangeText={(text) => this.setState({email:text})}
         style={styles.InputInfo}
         returnKeyLabel = {"next"}
         onChangeText={(text) => this.setState({telefone:text})}
