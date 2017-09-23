@@ -83,13 +83,17 @@ export default class RegisterScreen extends React.Component {
     </Picker>
     </View>
     <Text style={styles.container}>     Segmento</Text>
-    <TextInput
-    placeholder = "Escolha seu segmento"
-    placeholderTextColor = '#95a5a6'
-    style={styles.InputStyle}
-    returnKeyLabel = {"next"}
-    onChangeText={(text) => this.setState({segment:text})}
-    />
+    <View
+    style={styles.InputDropdown}>
+    <Picker
+    onValueChange={(value) => this.setState({cargo: value})}
+    selectedValue={this.state.segmento}
+    >
+    <Picker.Item value="" label="" />
+    <Picker.Item value="Presidente" label="Suplente" />
+    <Picker.Item value="Conselheiro" label="Titular" />
+    </Picker>
+    </View>
     <Text style={styles.container}>     Tipo do CAE</Text>
     <TextInput
     placeholder = "Escolha o tipo do seu CAE"
