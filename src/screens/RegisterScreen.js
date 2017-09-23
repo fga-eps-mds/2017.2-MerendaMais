@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, ScrollView, View, TextInput, TouchableOpacity} from 'react-native'
+import {Text, ScrollView, View, TextInput, TouchableOpacity,Picker} from 'react-native'
 var user
 
 
@@ -33,6 +33,7 @@ export default class RegisterScreen extends React.Component {
 
 
   render() {
+    console.log(this.state)
   return (
 
 <ScrollView>
@@ -44,7 +45,7 @@ export default class RegisterScreen extends React.Component {
     <TextInput
     placeholder = "Digite o seu CPF"
     placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
+    style={styles.InputStyle}
     returnKeyLabel = {"next"}
     onChangeText={(text) => this.setState({CPF:text})}
     />
@@ -52,7 +53,7 @@ export default class RegisterScreen extends React.Component {
     <TextInput
     placeholder = "Digite o seu nome completo"
     placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
+    style={styles.InputStyle}
     returnKeyLabel = {"next"}
     onChangeText={(text) => this.setState({name:text})}
     />
@@ -60,7 +61,7 @@ export default class RegisterScreen extends React.Component {
     <TextInput
     placeholder = "Digite o seu email"
     placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
+    style={styles.InputStyle}
     returnKeyLabel = {"next"}
     onChangeText={(text) => this.setState({email:text})}
     />
@@ -68,23 +69,27 @@ export default class RegisterScreen extends React.Component {
     <TextInput
     placeholder = "Digite o seu telefone"
     placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
+    style={styles.InputStyle}
     returnKeyLabel = {"next"}
     onChangeText={(text) => this.setState({telefone:text})}
     />
     <Text style={styles.container}>     Cargo</Text>
-    <TextInput
-     placeholder = "Escolha seu cargo"
-     placeholderTextColor = '#95a5a6'
-     style={styles.InputCPF}
-     returnKeyLabel = {"next"}
-    onChangeText={(text) => this.setState({cargo:text})}
-     />
+    <View
+    style={styles.InputDropdown}>
+    <Picker
+    onValueChange={(value) => this.setState({cargo: value})}
+    selectedValue={this.state.cargo}
+    >
+    <Picker.Item value="" label="" />
+    <Picker.Item value="Presidente" label="Presidente" />
+    <Picker.Item value="Conselheiro" label="Conselheiro" />
+    </Picker>
+    </View>
     <Text style={styles.container}>     Segmento</Text>
     <TextInput
     placeholder = "Escolha seu segmento"
     placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
+    style={styles.InputStyle}
     returnKeyLabel = {"next"}
     onChangeText={(text) => this.setState({segment:text})}
     />
@@ -92,7 +97,7 @@ export default class RegisterScreen extends React.Component {
     <TextInput
     placeholder = "Escolha o tipo do seu CAE"
     placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
+    style={styles.InputStyle}
     returnKeyLabel = {"next"}
     onChangeText={(text) => this.setState({CAE_Type:text})}
     />
@@ -100,7 +105,7 @@ export default class RegisterScreen extends React.Component {
     <TextInput
     placeholder = "Lista com o CAE do seu município/estado"
     placeholderTextColor = '#95a5a6'
-    style={styles.InputCPF}
+    style={styles.InputStyle}
     returnKeyLabel = {"next"}
     onChangeText={(text) => this.setState({CAE:text})}
     />
@@ -140,7 +145,7 @@ input: {
   marginBottom: 10
 },
 
-InputCPF: {
+InputStyle: {
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -152,6 +157,16 @@ InputCPF: {
     marginBottom: 10
 
 },
+
+InputDropdown: {
+  borderColor: 'gray',
+  borderWidth: 1,
+  borderRadius: 7,
+  marginHorizontal: 15,
+  marginBottom: 10
+
+},
+
 buttonContainer: {
     paddingVertical:10,
     borderWidth: 1,
@@ -161,6 +176,8 @@ buttonContainer: {
     marginBottom: 20,
     backgroundColor: '#FF9500'
 },
+
+
 buttonText:{
   textAlign: 'center',
   color: '#FFF'
