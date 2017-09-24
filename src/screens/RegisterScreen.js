@@ -1,6 +1,6 @@
 import React from 'react'
-import {Text, ScrollView, View, TextInput, TouchableOpacity} from 'react-native'
-
+import {Text, ScrollView, View, TextInput, TouchableOpacity,Picker} from 'react-native'
+var user
 export default class RegisterScreen extends React.Component {
 
   constructor(props){
@@ -30,96 +30,91 @@ export default class RegisterScreen extends React.Component {
   }
 
   render() {
+    console.log(this.state)
   return (
 
-    <ScrollView>
+<ScrollView>
+    <Text style={styles.Logo}>Merenda+</Text>
 
-      <View style={styles.principal}>
-        <View style={styles.topo}>
-            <Text style={styles.textLogo}>Merenda +</Text>
-        </View>
-      </View>
+    <Text style={styles.container}> </Text>
 
-      <Text style={styles.container}> </Text>
+    <Text style={styles.container}>     CPF</Text>
+    <TextInput
+    placeholder = "Digite o seu CPF"
+    placeholderTextColor = '#95a5a6'
+    style={styles.InputStyle}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({CPF:text})}
+    />
+    <Text style={styles.container}>     Nome</Text>
+    <TextInput
+    placeholder = "Digite o seu nome completo"
+    placeholderTextColor = '#95a5a6'
+    style={styles.InputStyle}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({name:text})}
+    />
+    <Text style={styles.container}>     Email</Text>
+    <TextInput
+    placeholder = "Digite o seu email"
+    placeholderTextColor = '#95a5a6'
+    style={styles.InputStyle}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({email:text})}
+    />
+    <Text style={styles.container}>     Telefone</Text>
+    <TextInput
+    placeholder = "Digite o seu telefone"
+    placeholderTextColor = '#95a5a6'
+    style={styles.InputStyle}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({telefone:text})}
+    />
+    <Text style={styles.container}>     Cargo</Text>
+    <View
+    style={styles.InputDropdown}>
+    <Picker
+    onValueChange={(value) => this.setState({cargo: value})}
+    selectedValue={this.state.cargo}
+    >
+    <Picker.Item value="" label="" />
+    <Picker.Item value="Presidente" label="Presidente" />
+    <Picker.Item value="Conselheiro" label="Conselheiro" />
+    </Picker>
+    </View>
+    <Text style={styles.container}>     Segmento</Text>
+    <View
+    style={styles.InputDropdown}>
+    <Picker
+    onValueChange={(value) => this.setState({cargo: value})}
+    selectedValue={this.state.segmento}
+    >
+    <Picker.Item value="" label="" />
+    <Picker.Item value="Presidente" label="Suplente" />
+    <Picker.Item value="Conselheiro" label="Titular" />
+    </Picker>
+    </View>
+    <Text style={styles.container}>     Tipo do CAE</Text>
+    <TextInput
+    placeholder = "Escolha o tipo do seu CAE"
+    placeholderTextColor = '#95a5a6'
+    style={styles.InputStyle}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({CAE_Type:text})}
+    />
+    <Text style={styles.container}>     CAE</Text>
+    <TextInput
+    placeholder = "Lista com o CAE do seu município/estado"
+    placeholderTextColor = '#95a5a6'
+    style={styles.InputStyle}
+    returnKeyLabel = {"next"}
+    onChangeText={(text) => this.setState({CAE:text})}
+    />
+    <TouchableOpacity  onPress={() => this.ajuda()}
+      style= {styles.buttonContainer}>
+      <Text style={styles.buttonText}>Concluir</Text>
 
-      <Text style={styles.container}>     CPF</Text>
-      <TextInput
-        placeholder = "Digite o seu CPF"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({CPF:text})}
-      />
-      <Text style={styles.container}>     Nome</Text>
-      <TextInput
-        placeholder = "Digite o seu nome completo"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({name:text})}
-      />
-      <Text style={styles.container}>     Email</Text>
-      <TextInput
-        placeholder = "Digite o seu email"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({email:text})}
-      />
-      <Text style={styles.container}>     Telefone</Text>
-      <TextInput
-        placeholder = "Digite o seu telefone"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({telefone:text})}
-      />
-      <Text style={styles.container}>     Cargo</Text>
-      <TextInput
-        placeholder = "Escolha seu cargo"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({cargo:text})}
-      />
-     <Text style={styles.container}>     Segmento</Text>
-      <TextInput
-        placeholder = "Escolha seu segmento"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({segment:text})}
-      />
-      <Text style={styles.container}>     Tipo do CAE</Text>
-      <TextInput
-        placeholder = "Escolha o tipo do seu CAE"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({CAE_Type:text})}
-      />
-      <Text style={styles.container}>     CAE</Text>
-      <TextInput
-        placeholder = "Lista com o CAE do seu município/estado"
-        placeholderTextColor = '#95a5a6'
-        style={styles.InputInfo}
-        returnKeyLabel = {"next"}
-        onChangeText={(text) => this.setState({CAE:text})}
-      />
-      <TouchableOpacity  onPress={() => this.saveRegister()}
-        style= {styles.buttonContainer}>
-        <Text style={styles.buttonText}>Concluir</Text>
-      </TouchableOpacity>
-
-      <View style={styles.rodape}>
-        <TouchableOpacity
-          activeOpacity = {0.6}
-        >
-        <Text>Já tem um cadastro?
-          <Text style={{color: 'blue'}}> Entrar</Text>
-        </Text>
-        </TouchableOpacity>
-      </View>
+    </TouchableOpacity>
 
     </ScrollView>
   );
@@ -127,42 +122,31 @@ export default class RegisterScreen extends React.Component {
 }
 
 const styles = {
-principal: {
-      flex: 1
-  },
+  Logo:{
+  fontSize:40,
+  backgroundColor: '#FF9500',
+  paddingTop: 50,
+  color: '#fff',
+  fontStyle:'normal',
+  fontWeight: 'bold',
+  justifyContent: 'center',
+  textAlign: 'center'
 
-topo: {
-      flex: 1.2,
-      paddingTop: 10,
-      paddingBottom: 10,
-      backgroundColor: '#FF9500',
-      borderBottomColor: 'black',
-      borderBottomWidth: 1,
-      shadowColor: 'black',
-      shadowOpacity: 1,
-      shadowRadius: 6,
-      justifyContent: 'center',
-      alignItems: 'center'
+},
 
-  },
+input: {
+  paddingTop: 10,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderColor: 'gray',
+  borderWidth: 1,
+  borderRadius: 7,
+  marginHorizontal: 15,
+  marginBottom: 10
+},
 
-textLogo: {
-      fontSize: 35,
-      color:'white',
-      fontWeight:'bold',
-      marginTop:10
-  },
-
-rodape: {
-       flex: 0.7,
-       borderTopColor: '#a9a9a9',
-       borderTopWidth: 1,
-       justifyContent: 'center',
-       alignItems: 'center',
-       padding: 10
-   },
-
-InputInfo: {
+InputStyle: {
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -172,6 +156,15 @@ InputInfo: {
     borderRadius: 7,
     marginHorizontal: 15,
     marginBottom: 10
+},
+
+InputDropdown: {
+  borderColor: 'gray',
+  borderWidth: 1,
+  borderRadius: 7,
+  marginHorizontal: 15,
+  marginBottom: 10
+
 },
 
 buttonContainer: {
