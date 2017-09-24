@@ -7,15 +7,17 @@ export default class RegisterScreen extends React.Component {
     super(props)
 
     this.state = {
-      cpf: '',
-      name: '',
-      email:'',
-      phone: '',
-      post: '',
-      password: '',
-      segment: '',
-      CAE_Type: '',
-      CAE: '',
+      counselor:{
+        cpf: '',
+        name: '',
+        email:'',
+        phone: '',
+        isPresident: false,
+        password: '',
+        segment: '',
+        CAE_Type: '',
+        CAE: ''
+      }
     }
   }
 
@@ -24,7 +26,7 @@ export default class RegisterScreen extends React.Component {
      console.log(this.state.name);
      console.log(this.state.email);
      console.log(this.state.phone);
-     console.log(this.state.post);
+     console.log(this.state.isPresident);
      console.log(this.state.password);
      console.log(this.state.segment);
      console.log(this.state.CAE_Type);
@@ -32,13 +34,14 @@ export default class RegisterScreen extends React.Component {
   }
 
   render() {
-    const password = this.state.cargo === 'Presidente' ? (
+    const password = this.state.isPresident === true ? (
       <View>
       <Text style={styles.container}>     Senha</Text>
       <TextInput
       placeholder = "Digite sua senha"
       placeholderTextColor = '#95a5a6'
       style={styles.InputStyle}
+      underlineColorAndroid = 'transparent'
       returnKeyLabel = {"next"}
       onChangeText={(text) => this.setState({password:text})}
       secureTextEntry
@@ -95,12 +98,12 @@ export default class RegisterScreen extends React.Component {
     <View
       style={styles.InputDropdown}>
       <Picker
-        onValueChange={(value) => this.setState({post: value, password:''})}
-        selectedValue={this.state.cargo}
+        onValueChange={(value) => this.setState({isPresident: value, password:''})}
+        selectedValue={this.state.isPresident}
       >
-        <Picker.Item value="" label=""  />
-        <Picker.Item value="Presidente" label="Presidente" />
-        <Picker.Item value="Conselheiro" label="Conselheiro" />
+        <Picker.Item value="" label="Escolha seu cargo"  />
+        <Picker.Item value= {true} label="Presidente" />
+        <Picker.Item value= {false} label="Conselheiro" />
       </Picker>
     </View>
     {password}
@@ -111,7 +114,7 @@ export default class RegisterScreen extends React.Component {
         onValueChange={(value) => this.setState({segment: value})}
         selectedValue={this.state.segment}
       >
-        <Picker.Item value="" label="" />
+        <Picker.Item value="" label="Escolha seu segmento" />
         <Picker.Item value="Suplente" label="Suplente" />
         <Picker.Item value="Titular" label="Titular" />
       </Picker>
