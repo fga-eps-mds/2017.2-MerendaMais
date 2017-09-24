@@ -23,6 +23,8 @@
     "react": "16.0.0-alpha.12",
     "react-native": "^0.47.0",
     "react-native-chooser": "^1.6.1",
+    "react-native-modal-dropdown": "^0.5.0",
+    "react-native-modal-picker": "0.0.16",
     "react-native-selectbox": "^0.1.2"
   }
 }
