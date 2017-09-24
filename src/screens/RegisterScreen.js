@@ -6,12 +6,14 @@ export default class RegisterScreen extends React.Component {
   constructor(props){
     super(props)
 
+
     this.state = {
       CPF: '',
       name: '',
       email:'',
       telefone: '',
       cargo: '',
+      senha: '',
       segment: '',
       CAE_Type: '',
       CAE: '',
@@ -24,6 +26,7 @@ export default class RegisterScreen extends React.Component {
      console.log(this.state.email);
      console.log(this.state.telefone);
      console.log(this.state.cargo);
+     console.log(this.state.senha);
      console.log(this.state.segment);
      console.log(this.state.CAE_Type);
      console.log(this.state.CAE);
@@ -31,9 +34,24 @@ export default class RegisterScreen extends React.Component {
 
   render() {
     console.log(this.state)
+    const password = this.state.cargo === 'Presidente' ? (
+      <View>
+      <Text style={styles.container}>     Senha</Text>
+      <TextInput
+      placeholder = "Digite sua senha"
+      placeholderTextColor = '#95a5a6'
+      style={styles.InputStyle}
+      returnKeyLabel = {"next"}
+      onChangeText={(text) => this.setState({senha:text})}
+      secureTextEntry
+      />
+      </View>
+    ) : null;
   return (
 
+
 <ScrollView>
+
     <Text style={styles.Logo}>Merenda+</Text>
 
     <Text style={styles.container}> </Text>
@@ -74,24 +92,25 @@ export default class RegisterScreen extends React.Component {
     <View
     style={styles.InputDropdown}>
     <Picker
-    onValueChange={(value) => this.setState({cargo: value})}
-    selectedValue={this.state.cargo}
-    >
-    <Picker.Item value="" label="" />
-    <Picker.Item value="Presidente" label="Presidente" />
-    <Picker.Item value="Conselheiro" label="Conselheiro" />
+      onValueChange={(value) => this.setState({cargo: value, senha:''})}
+      selectedValue={this.state.cargo}
+      >
+        <Picker.Item value="" label=""  />
+        <Picker.Item value="Presidente" label="Presidente" />
+        <Picker.Item value="Conselheiro" label="Conselheiro" />
     </Picker>
     </View>
+    {password}
     <Text style={styles.container}>     Segmento</Text>
     <View
     style={styles.InputDropdown}>
     <Picker
-    onValueChange={(value) => this.setState({cargo: value})}
-    selectedValue={this.state.segmento}
-    >
-    <Picker.Item value="" label="" />
-    <Picker.Item value="Presidente" label="Suplente" />
-    <Picker.Item value="Conselheiro" label="Titular" />
+      onValueChange={(value) => this.setState({segmento: value})}
+      selectedValue={this.state.segmento}
+      >
+        <Picker.Item value="" label="" />
+        <Picker.Item value="Presidente" label="Suplente" />
+        <Picker.Item value="Conselheiro" label="Titular" />
     </Picker>
     </View>
     <Text style={styles.container}>     Tipo do CAE</Text>
