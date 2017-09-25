@@ -9,7 +9,9 @@ const iconAccount = require('../images/account_circle.png');
 class LoginConselheiro extends React.Component {
     render_btn_login() {
         if(this.props.isLoading){
-            return(<ActivityIndicator size = 'large' color = '#FF9500'/>);
+            return(
+                <ActivityIndicator style={{ marginTop: 50 }} size = 'large' color = '#FF9500'/>
+            );
         }
         return(
          <TouchableOpacity
