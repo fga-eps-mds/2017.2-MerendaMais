@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image,ActivityIndicator} from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import {modifyCPF,asyncLoginCounselor} from '../actions/counselorActions.js'
+import { modifyCPF, asyncLoginCounselor } from '../actions/counselorActions.js'
 
 const iconAccount = require('../images/account_circle.png');
 
-export default class LoginConselheiro extends React.Component {
+class LoginConselheiro extends React.Component {
     render_btn_login() {
         if(this.props.isLoading){
             return(<ActivityIndicator size = 'large' color = '#FF9500'/>);
@@ -76,14 +77,15 @@ export default class LoginConselheiro extends React.Component {
 }
 
 const mapStatetoProps = (state) => (
+    console.log(state),
   {
-      cpf: state.counselorReducer.cpf,
-      message_erro: state.counselorReducer.message_erro,
-      isLoading: state.counselorReducer.isLoading
+      cpf: state.counselor.cpf,
+      message_erro: state.counselor.message_erro,
+      isLoading: state.counselor.isLoading
   }
 )
 
-const default connect(mapStatetoProps,{modifyCPF,asyncLoginCounselor})(LoginConselheiro);
+export default connect(mapStatetoProps,{modifyCPF,asyncLoginCounselor})(LoginConselheiro);
 
 const styles = StyleSheet.create({
     principal: {
@@ -99,7 +101,6 @@ const styles = StyleSheet.create({
 
     },
     conteudo: {
-        marginTop: 9,
         flex: 6,
         backgroundColor: 'white',
         justifyContent: 'center',

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {CREATE_COUNSELOR, SET_COUNSELOR,LOGIN_SUCCESS,LOGIN_FAIL,MODIFY_CPF,LOADING_LOGIN} from './types.js';
 import {Actions} from 'react-native-router-flux';
+
 export const modifyCPF = (CPF) => {
       return{
         type: MODIFY_CPF,
@@ -47,7 +48,7 @@ export const setCounselor = (counselor) => {
 export const asyncLoginCounselor = ({cpf,password}) => {
     return(dispatch) => {
       dispatch({
-        type: LOADING_LOGIN;
+        type: LOADING_LOGIN
       })
         fetch('http://merenda-mais.herokuapp.com/counselor/')
         .then((response) => loginSuccess(dispatch))

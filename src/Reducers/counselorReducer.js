@@ -3,6 +3,7 @@ import { SET_COUNSELOR,MODIFY_CPF,LOADING_LOGIN,LOGIN_FAIL } from '../actions/ty
 
 //action = {type: ACTION_TYPE, pyload: someDataHere}
 const counselorReducer = (state = initialState.counselor, action) => {
+    console.log(action)
     if (action === undefined) return state;
 
     switch (action.type) {
@@ -13,11 +14,11 @@ const counselorReducer = (state = initialState.counselor, action) => {
             email: action.counselor.cpf,
             phone: action.counselor.phone,
             cpf: action.counselor.cpf,
-            url: action.counselor.url
-            isPresident: action.counselor.isPresident
-            segment: action.counselor.segment
-            password: action.counselor.password
-            CAE_type: action.counselor.CAE_type
+            url: action.counselor.url,
+            isPresident: action.counselor.isPresident,
+            segment: action.counselor.segment,
+            password: action.counselor.password,
+            CAE_type: action.counselor.CAE_type,
             CAE: action.counselor.CAE
           };
       case MODIFY_CPF:
