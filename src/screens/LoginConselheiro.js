@@ -1,13 +1,31 @@
-import React from 'react'
-import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-native'
+import React from 'react';
+import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image,ActivityIndicator} from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import {modifyCPF,asyncLoginCounselor} from '../actions/counselorActions.js'
 
 const iconAccount = require('../images/account_circle.png');
 
 export default class LoginConselheiro extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {CPF: ''};
+    render_btn_login() {
+        if(this.props.isLoading){
+            return(<ActivityIndicator size = 'large' color = '#FF9500'/>);
+        }
+        return(
+         <TouchableOpacity
+            style={styles.buttonLogin}
+            activeOpacity= {0.7}
+            onPress = {() => this._asyncLoginCounselor()}>
+                <Text style={{color: 'white', fontSize: 20}}>Entrar</Text>
+        </TouchableOpacity>
+      )
     }
+
+
+    _asyncLoginCounselor(){
+      const CPF = this.props;
+      this.props.asyncLoginCounselor(CPF,'');
+    }
+
 
     render() {
         return (
@@ -22,22 +40,19 @@ export default class LoginConselheiro extends React.Component {
                         <TextInput
                         width = {280}
                         returnKeyType = 'go'
-                        onChangeText={(CPF) => this.setState({CPF})}
+                        onChangeText={(CPF) => this.props.modifyCPF(CPF)}
                         maxLength = {11}
-                        value = {this.state.CPF}
+                        value = {this.props.CPF}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'CPF'
                         />
                     </View>
 
-                    <TouchableOpacity
-                    style={styles.buttonLogin}
-                    activeOpacity= {0.7}>
-                        <Text style={{color: 'white', fontSize: 20}}>Entrar</Text>
-                    </TouchableOpacity>
+                    {this.render_btn_login()}
 
                     <TouchableOpacity
                     activeOpacity = {0.6}
+                    onPress = {() => Actions.loginPresidente()}
                     >
                         <Text style={{marginTop: 30}}>É um presidente?
                             <Text style={{color: 'blue'}}> Clique aqui</Text>
@@ -48,6 +63,7 @@ export default class LoginConselheiro extends React.Component {
                 <View style={styles.rodape}>
                     <TouchableOpacity
                     activeOpacity = {0.6}
+                    onPress = {()=> Actions.registerScreen()}
                     >
                     <Text>Ainda não se cadastrou?
                         <Text style={{color: 'blue'}}> Cadastrar-se</Text>
@@ -58,6 +74,16 @@ export default class LoginConselheiro extends React.Component {
         );
     }
 }
+
+const mapStatetoProps = (state) => (
+  {
+      cpf: state.counselorReducer.cpf,
+      message_erro: state.counselorReducer.message_erro,
+      isLoading: state.counselorReducer.isLoading
+  }
+)
+
+const default connect(mapStatetoProps,{modifyCPF,asyncLoginCounselor})(LoginConselheiro);
 
 const styles = StyleSheet.create({
     principal: {

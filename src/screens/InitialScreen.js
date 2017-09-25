@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import { StyleSheet, Text, View,Button,Image,TouchableOpacity} from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const imageCapa = require('../images/capa.jpg');
 
 
-export default class TelaInicial extends React.Component {
+export default class InitialScreen extends React.Component {
 
     render() {
         return (
@@ -14,14 +15,15 @@ export default class TelaInicial extends React.Component {
                         <Text style={styles.txt}>MERENDA +</Text>
                         <TouchableOpacity
                         style={styles.btn}
-                        activeOpacity= {0.7}>
+                        activeOpacity= {0.7}
+                        onPress = {() => Actions.loginConselheiro()}>
                             <Text style={styles.txt_btn}>Login</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                         style={styles.btn1}
                         activeOpacity= {0.7}
-                        >
+                        onPress = {() => Actions.registerScreen()}>
                             <Text style={styles.txt_btn}>Cadastrar</Text>
                         </TouchableOpacity>
 

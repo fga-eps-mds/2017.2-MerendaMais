@@ -5,8 +5,14 @@ const initialState = {
     cpf: '',
     email: '',
     phone: '',
+    isPresident: false,
+    segment: '',
     first_name: '',
-    password: ''
+    password: '',
+    CAE_type: '',
+    CAE: '',
+    isLoading: false,
+    message_erro: ''
   }
 }
 
