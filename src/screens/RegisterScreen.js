@@ -9,31 +9,17 @@ class RegisterScreen extends React.Component {
     super(props)
 
     this.state = {
-      counselor:{
         cpf: '',
         name: '',
         email:'',
         phone: '',
         isPresident: false,
-        password: '',
+        password: "senha",
         segment: '',
         CAE_Type: '',
         CAE: ''
-      }
     }
   }
-
-  /*saveRegister() {
-     console.log(this.state.cpf);
-     console.log(this.state.name);
-     console.log(this.state.email);
-     console.log(this.state.phone);
-     console.log(this.state.isPresident);
-     console.log(this.state.password);
-     console.log(this.state.segment);
-     console.log(this.state.CAE_Type);
-     console.log(this.state.CAE);
-  }*/
 
   render() {
     const password = this.state.isPresident === true ? (
@@ -100,7 +86,7 @@ class RegisterScreen extends React.Component {
     <View
       style={styles.InputDropdown}>
       <Picker
-        onValueChange={(value) => this.setState({isPresident: value, password:''})}
+        onValueChange={(value) => this.setState({isPresident: value, password:"senha"})}
         selectedValue={this.state.isPresident}
       >
         <Picker.Item value="" label="Escolha seu cargo"  />
@@ -161,7 +147,7 @@ class RegisterScreen extends React.Component {
 
 const mapStateToProps = (state) => {
     return{
-        counselor: state.counselor
+        counselor: this.state
 
     }
 }
