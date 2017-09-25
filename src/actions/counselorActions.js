@@ -4,6 +4,7 @@ import {CREATE_COUNSELOR, SET_COUNSELOR} from '../ReduxStuffs/actions';
 export const asyncCreateCounselor = (userData) => {
     return(dispatch) =>{
         console.log(userData);
+        type: SET_COUNSELOR,
         axios.post('http://merenda-mais.herokuapp.com/counselor/', userData)
         .then((response) => {
             console.log(response.data);
@@ -15,8 +16,7 @@ export const asyncCreateCounselor = (userData) => {
     }
 }
 
-
-export const asyncGetCounselor = (id) => {
+/*export const asyncGetCounselor = (id) => {
     return(dispatch) =>{
         console.log(id);
         axios.get(`http://merenda-mais.herokuapp.com/counselor/${id}`)
@@ -35,4 +35,4 @@ export const setCounselor = (counselor) => {
         type: SET_COUNSELOR,
         counselor
     }
-}
+}*/

@@ -13,8 +13,8 @@ class RegisterScreen extends React.Component {
         name: '',
         email:'',
         phone: '',
-        isPresident: false,
-        password: "senha",
+        isPresident:'',
+        password: "",
         segment: '',
         CAE_Type: '',
         CAE: ''
@@ -86,10 +86,10 @@ class RegisterScreen extends React.Component {
     <View
       style={styles.InputDropdown}>
       <Picker
-        onValueChange={(value) => this.setState({isPresident: value, password:"senha"})}
+        onValueChange={(value) => this.setState({isPresident: value, password: "senha"})}
         selectedValue={this.state.isPresident}
       >
-        <Picker.Item value="" label="Escolha seu cargo"  />
+        <Picker.Item value="" label="Escolha seu cargo" color= '#95a5a6' />
         <Picker.Item value= {true} label="Presidente" />
         <Picker.Item value= {false} label="Conselheiro" />
       </Picker>
@@ -102,7 +102,7 @@ class RegisterScreen extends React.Component {
         onValueChange={(value) => this.setState({segment: value})}
         selectedValue={this.state.segment}
       >
-        <Picker.Item value="" label="Escolha seu segmento" />
+        <Picker.Item value="" label="Escolha seu segmento" color= '#95a5a6' />
         <Picker.Item value="Suplente" label="Suplente" />
         <Picker.Item value="Titular" label="Titular" />
       </Picker>
@@ -147,7 +147,7 @@ class RegisterScreen extends React.Component {
 
 const mapStateToProps = (state) => {
     return{
-        counselor: this.state
+      state: state.counselor
 
     }
 }
