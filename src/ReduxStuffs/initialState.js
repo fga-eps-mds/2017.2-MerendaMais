@@ -1,5 +1,5 @@
 const initialState = {
-  counselor: {
+  
     id: 0,
     url: '',
     cpf: '',
@@ -7,24 +7,11 @@ const initialState = {
     email:'',
     phone: '',
     isPresident: false,
-    password: '',
+    password: "senha",
     segment: '',
     CAE_Type: '',
     CAE: ''
-  }
 
-/*
-  cpf: '',
-  name: '',
-  email:'',
-  phone: '',
-  isPresident: false,
-  password: '',
-  segment: '',
-  CAE_Type: '',
-  CAE:''
-
-*/
 }
 
 export default initialState;
