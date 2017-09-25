@@ -1,7 +1,9 @@
 import React from 'react'
 import {Text, ScrollView, View, TextInput, TouchableOpacity,Picker} from 'react-native'
+import { connect } from 'react-redux';
+import { asyncCreateCounselor } from '../actions/counselorActions';
 
-export default class RegisterScreen extends React.Component {
+class RegisterScreen extends React.Component {
 
   constructor(props){
     super(props)
@@ -21,7 +23,7 @@ export default class RegisterScreen extends React.Component {
     }
   }
 
-  saveRegister() {
+  /*saveRegister() {
      console.log(this.state.cpf);
      console.log(this.state.name);
      console.log(this.state.email);
@@ -31,20 +33,20 @@ export default class RegisterScreen extends React.Component {
      console.log(this.state.segment);
      console.log(this.state.CAE_Type);
      console.log(this.state.CAE);
-  }
+  }*/
 
   render() {
     const password = this.state.isPresident === true ? (
       <View>
       <Text style={styles.container}>     Senha</Text>
       <TextInput
-      placeholder = "Digite sua senha"
-      placeholderTextColor = '#95a5a6'
-      style={styles.InputStyle}
-      underlineColorAndroid = 'transparent'
-      returnKeyLabel = {"next"}
-      onChangeText={(text) => this.setState({password:text})}
-      secureTextEntry
+        placeholder = "Digite sua senha"
+        placeholderTextColor = '#95a5a6'
+        style={styles.InputStyle}
+        underlineColorAndroid = 'transparent'
+        returnKeyLabel = {"next"}
+        onChangeText={(text) => this.setState({password:text})}
+        secureTextEntry
       />
       </View>
     ) : null;
@@ -137,7 +139,7 @@ export default class RegisterScreen extends React.Component {
       returnKeyLabel = {"next"}
       onChangeText={(text) => this.setState({CAE:text})}
     />
-    <TouchableOpacity  onPress={() => this.saveRegister()}
+    <TouchableOpacity  onPress={() => this.props.createUser(this.state)}
       style= {styles.buttonContainer}>
       <Text style={styles.buttonText}>Concluir</Text>
     </TouchableOpacity>
@@ -156,6 +158,25 @@ export default class RegisterScreen extends React.Component {
   );
   }
 }
+
+const mapStateToProps = (state) => {
+    return{
+        counselor: state.counselor
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createUser(userData){
+            dispatch(asyncCreateCounselor(userData));
+        }
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
+
 
 const styles = {
 
