@@ -14,6 +14,12 @@ const iconCAE = require('../images/ic_location_city.png');
 const iconCAE_TYPE = require('../images/ic_domain.png');
 
 class ProfileInfoScreen extends React.Component{
+
+    componentWillMount(){
+
+      this.props.getCounselor(this.props.counselor.id);
+    }
+
     render() {
         return (
           <ScrollView style={styles.principal}>
@@ -58,6 +64,26 @@ class ProfileInfoScreen extends React.Component{
         );
     }
 }
+
+const mapStateToProps = (state) => {
+  console.log(state);
+    return{
+        counselor: state.counselor
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getCounselor(id){
+            dispatch(asyncGetCounselor(id));
+        }
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileInfoScreen);
+
+
 const styles = StyleSheet.create({
   topo: {
       flex: 1.2,
@@ -156,20 +182,3 @@ const styles = StyleSheet.create({
          margin: 5
      }
 });
-
-const mapStateToProps = (state) => {
-    return{
-        counselor: state.counselor
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return{
-        getCounselor(id){
-            dispatch(asyncGetCounselor(id));
-        }
-
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileInfoScreen);
