@@ -17,6 +17,9 @@ class ProfileInfoScreen extends React.Component{
     render() {
         return (
           <ScrollView style={styles.principal}>
+            <View style={styles.topo}>
+               <Text style={styles.textLogo}>PERFIL</Text>
+             </View>
             <View style={styles.conteudo}>
                 <View style = {styles.field}>
                   <Image source={iconName} style={styles.icon}/>
