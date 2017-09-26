@@ -1,12 +1,19 @@
 import axios from 'axios';
-import {CREATE_COUNSELOR, SET_COUNSELOR,LOGIN_SUCCESS,LOGIN_FAIL,MODIFY_CPF,LOADING_LOGIN} from './types.js';
-import {Actions} from 'react-native-router-flux';
+import { CREATE_COUNSELOR, SET_COUNSELOR, LOGIN_SUCCESS, LOGIN_FAIL, MODIFY_CPF, LOADING_LOGIN, MODIFY_PASSWORD } from './types.js';
+import { Actions } from 'react-native-router-flux';
 
 export const modifyCPF = (CPF) => {
-      return{
+    return{
         type: MODIFY_CPF,
         payload: CPF
-      }
+    }
+}
+
+export const modifyPassword = (password) => {
+    return{
+        type: MODIFY_PASSWORD,
+        payload: password
+    }
 }
 
 export const asyncCreateCounselor = (userData) => {
@@ -47,9 +54,9 @@ export const setCounselor = (counselor) => {
 
 export const asyncLoginCounselor = ({cpf,password}) => {
     return(dispatch) => {
-      dispatch({
-        type: LOADING_LOGIN
-      })
+        dispatch({
+            type: LOADING_LOGIN
+        })
         fetch('http://merenda-mais.herokuapp.com/counselor/')
         .then((response) => loginSuccess(dispatch))
         .catch(erro => loginFail(erro,dispatch))
@@ -58,18 +65,18 @@ export const asyncLoginCounselor = ({cpf,password}) => {
 
 const loginSuccess = (dispatch) => {
     dispatch(
-      {
-        type: LOGIN_SUCCESS
-      }
+        {
+            type: LOGIN_SUCCESS
+        }
     );
     //Actions.NOME_TELA();
 }
 
 const loginFail = (erro, dispatch) => {
     dispatch(
-      {
-        type: LOGIN_FAIL,
-        payload: erro
-      }
+        {
+            type: LOGIN_FAIL,
+            payload: erro
+        }
     );
 }

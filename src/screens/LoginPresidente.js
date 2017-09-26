@@ -1,13 +1,17 @@
-import React from 'react'
-import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-native'
+import React from 'react';
+import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-native';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import { modifyCPF, modifyPassword, asyncLoginCounselor } from '../actions/counselorActions.js';
 
 const iconAccount = require('../images/account_circle.png');
 const iconLock = require('../images/ic_lock.png');
 
-export default class LoginPresidente extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {CPF: '', senha: ''};
+class LoginPresidente extends React.Component {
+
+    _asyncLoginCounselor(){
+      const { CPF, password } = this.props;
+      this.props.asyncLoginCounselor(CPF, password);
     }
 
     render() {
@@ -23,9 +27,9 @@ export default class LoginPresidente extends React.Component {
                         <TextInput style={styles.styleInput}
                         width = {280}
                         returnKeyType = 'next'
-                        onChangeText={(CPF) => this.setState({CPF})}
+                        onChangeText={(CPF) => this.props.modifyCPF(CPF)}
                         maxLength = {11}
-                        value = {this.state.CPF}
+                        value = {this.props.CPF}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'CPF'
                         onSubmitEditing = {() => this.passwordInput.focus()}
@@ -39,8 +43,8 @@ export default class LoginPresidente extends React.Component {
                         underlineColorAndroid = 'transparent'
                         returnKeyType = 'go'
                         secureTextEntry
-                        onChangeText={(senha) => this.setState({senha})}
-                        value = {this.state.senha}
+                        onChangeText={(password) => this.props.modifyPassword(password)}
+                        value = {this.props.password}
                         placeholder = 'Senha'
                         ref = {(input) => this.passwordInput = input}
                         />
@@ -55,6 +59,7 @@ export default class LoginPresidente extends React.Component {
 
                     <TouchableOpacity
                     activeOpacity = {0.6}
+                    onPress = {() => Actions.loginConselheiro()}
                     >
                         <Text style={{marginTop: 30}}>É um conselheiro?
                             <Text style={{color: 'blue'}}> Clique aqui</Text>
@@ -65,6 +70,7 @@ export default class LoginPresidente extends React.Component {
                 <View style={styles.rodape}>
                     <TouchableOpacity
                     activeOpacity = {0.6}
+                    onPress = {()=> Actions.registerScreen()}
                     >
                     <Text>Ainda não se cadastrou?
                         <Text style={{color: 'blue'}}> Cadastrar-se</Text>
@@ -75,6 +81,18 @@ export default class LoginPresidente extends React.Component {
         );
     }
 }
+
+const mapStatetoProps = (state) => (
+    console.log(state),
+  {
+      cpf: state.counselor.cpf,
+      password: state.counselor.password,
+      message_erro: state.counselor.message_erro,
+      isLoading: state.counselor.isLoading
+  }
+)
+
+export default connect(mapStatetoProps,{ modifyCPF, modifyPassword, asyncLoginCounselor })(LoginPresidente);
 
 const styles = StyleSheet.create({
     principal: {
@@ -90,7 +108,6 @@ const styles = StyleSheet.create({
 
     },
     conteudo: {
-        marginTop: 9,
         flex: 6,
         backgroundColor: 'white',
         justifyContent: 'center',

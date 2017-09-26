@@ -8,4 +8,6 @@ export const  LOGIN_FAIL = 'LOGIN_FAIL'
 
 export const  MODIFY_CPF = 'MODIFY_CPF'
 
+export const  MODIFY_PASSWORD = 'MODIFY_PASSWORD'
+
 export const  LOADING_LOGIN = 'LOADING_LOGIN'
