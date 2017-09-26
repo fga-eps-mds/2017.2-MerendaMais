@@ -9,10 +9,7 @@ import UpdateInfoScreen from './src/screens/UpdateInfoScreen'
 import ProfileInfoScreen from './src/screens/ProfileInfoScreen'
 
 import { Provider } from 'react-redux';
-import store from './src/ReduxStuffs/store';
-
-import TelaInicialContainer from './src/containers/TelaInicialContainer';
-import UpdateInfoContainer from './src/containers/UpdateInfoContainer';
+import store from './src/Reducers/store';
 
 
 export default class App extends React.Component {

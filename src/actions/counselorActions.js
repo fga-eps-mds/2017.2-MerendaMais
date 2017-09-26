@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {CREATE_COUNSELOR, SET_COUNSELOR} from '../ReduxStuffs/actions';
+import {CREATE_COUNSELOR, SET_COUNSELOR} from './types.js';
 
 export const asyncCreateCounselor = (userData) => {
     return(dispatch) =>{

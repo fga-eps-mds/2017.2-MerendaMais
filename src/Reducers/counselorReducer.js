@@ -1,5 +1,5 @@
-import initialState from '../initialState';
-import { SET_COUNSELOR } from '../actions';
+import initialState from './initialState';
+import { SET_COUNSELOR } from '../actions/types.js';
 
 //action = {type: ACTION_TYPE, payload: someDataHere}
 const counselorReducer = (state = initialState, action) => {
