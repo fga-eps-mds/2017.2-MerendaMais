@@ -12,7 +12,8 @@ const initialState = {
     CAE_type: '',
     CAE: '',
     isLoading: false,
-    message_erro: ''
+    message_erro: '',
+    token:''
   }
 }
 

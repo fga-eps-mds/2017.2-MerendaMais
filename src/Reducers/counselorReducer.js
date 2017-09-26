@@ -24,7 +24,7 @@ const counselorReducer = (state = initialState.counselor, action) => {
         case MODIFY_CPF:
         return {
             ...state,
-            CPF: action.payload
+            cpf: action.payload
         }
 
         case MODIFY_PASSWORD:

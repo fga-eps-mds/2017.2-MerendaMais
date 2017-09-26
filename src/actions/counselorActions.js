@@ -52,15 +52,23 @@ export const setCounselor = (counselor) => {
     }
 }
 
-export const asyncLoginCounselor = ({cpf,password}) => {
+export const asyncLoginCounselor = (userData) => {
     return(dispatch) => {
+      console.log("userData: "),
+      console.log(userData),
         dispatch({
             type: LOADING_LOGIN
+        }),
+        axios.post('http://merenda-mais.herokuapp.com/get_auth_token/', userData)
+        .then((response) => {
+          console.log(response.data);
+          loginSuccess(dispatch);
+          //Actions.NOME_TELA_LERMEN;
         })
-        fetch('http://merenda-mais.herokuapp.com/counselor/')
-        .then((response) => loginSuccess(dispatch))
-        .catch(erro => loginFail(erro,dispatch))
-    }
+        .catch(erro =>
+          console.log(erro)
+          //loginFail(erro,dispatch,response))
+    )}
 }
 
 const loginSuccess = (dispatch) => {

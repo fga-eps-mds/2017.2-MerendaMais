@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, TextInput, Image,ActivityIndicator} from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { modifyCPF, modifyPassword, asyncLoginCounselor } from '../actions/counselorActions.js';
@@ -10,8 +10,30 @@ const iconLock = require('../images/ic_lock.png');
 class LoginPresidente extends React.Component {
 
     _asyncLoginCounselor(){
-      const { CPF, password } = this.props;
-      this.props.asyncLoginCounselor(CPF, password);
+
+      const CPF = this.props.cpf;
+      const password = this.props.password;
+      userData={
+        "username": CPF,
+        "password": password
+      }
+      this.props.asyncLoginCounselor(userData);
+    }
+
+    render_btn_login() {
+        if(this.props.isLoading){
+            return(
+                <ActivityIndicator style={{ marginTop: 50 }} size = 'large' color = '#FF9500'/>
+            );
+        }
+        return(
+         <TouchableOpacity
+            style={styles.buttonLogin}
+            activeOpacity= {0.7}
+            onPress = {() => this._asyncLoginCounselor()}>
+                <Text style={{color: 'white', fontSize: 20}}>Entrar</Text>
+        </TouchableOpacity>
+      )
     }
 
     render() {
@@ -51,11 +73,7 @@ class LoginPresidente extends React.Component {
                     </View>
 
 
-                    <TouchableOpacity
-                    style={styles.buttonLogin}
-                    activeOpacity= {0.7}>
-                        <Text style={{color: 'white', fontSize: 20}}>Entrar</Text>
-                    </TouchableOpacity>
+                    {this.render_btn_login()}
 
                     <TouchableOpacity
                     activeOpacity = {0.6}
