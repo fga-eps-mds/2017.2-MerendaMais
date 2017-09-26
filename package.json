@@ -16,13 +16,18 @@
     "test": "node node_modules/jest/bin/jest.js"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/react-native-router-flux/"
+    ]
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "expo": "^20.0.0",
     "react": "^16.0.0-alpha.12",
     "react-native": "^0.47.0",
     "react-native-router-flux": "^4.0.0-beta.21",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   }
 }
