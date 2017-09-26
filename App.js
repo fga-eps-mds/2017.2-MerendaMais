@@ -6,6 +6,7 @@ import RegisterScreen from './src/screens/RegisterScreen'
 import LoginConselheiro from './src/screens/LoginConselheiro'
 import LoginPresidente from './src/screens/LoginPresidente'
 import UpdateInfoScreen from './src/screens/UpdateInfoScreen'
+import ProfileInfoScreen from './src/screens/ProfileInfoScreen'
 
 import { Provider } from 'react-redux';
 import store from './src/ReduxStuffs/store';
@@ -18,7 +19,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <TelaInicialContainer />
+        <ProfileInfoScreen />
       </Provider>
     );
   }
