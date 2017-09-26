@@ -1,5 +1,20 @@
 import axios from 'axios';
-import {CREATE_COUNSELOR, SET_COUNSELOR} from '../ReduxStuffs/actions';
+import { CREATE_COUNSELOR, SET_COUNSELOR, LOGIN_SUCCESS, LOGIN_FAIL, MODIFY_CPF, LOADING_LOGIN, MODIFY_PASSWORD } from './types.js';
+import { Actions } from 'react-native-router-flux';
+
+export const modifyCPF = (CPF) => {
+    return{
+        type: MODIFY_CPF,
+        payload: CPF
+    }
+}
+
+export const modifyPassword = (password) => {
+    return{
+        type: MODIFY_PASSWORD,
+        payload: password
+    }
+}
 
 export const asyncCreateCounselor = (userData) => {
     return(dispatch) =>{
@@ -16,7 +31,8 @@ export const asyncCreateCounselor = (userData) => {
     }
 }
 
-/*export const asyncGetCounselor = (id) => {
+
+export const asyncGetCounselor = (id) => {
     return(dispatch) =>{
         console.log(id);
         axios.get(`http://merenda-mais.herokuapp.com/counselor/${id}`)
@@ -35,4 +51,41 @@ export const setCounselor = (counselor) => {
         type: SET_COUNSELOR,
         counselor
     }
-}*/
+}
+
+export const asyncLoginCounselor = (userData) => {
+    return(dispatch) => {
+      console.log("userData: "),
+      console.log(userData),
+        dispatch({
+            type: LOADING_LOGIN
+        }),
+        axios.post('http://merenda-mais.herokuapp.com/get_auth_token/', userData)
+        .then((response) => {
+          console.log(response.data);
+          loginSuccess(dispatch);
+          //Actions.profileInfo();
+        })
+        .catch(erro =>
+          console.log(erro)
+          //loginFail(erro,dispatch,response))
+    )}
+}
+
+const loginSuccess = (dispatch) => {
+    dispatch(
+        {
+            type: LOGIN_SUCCESS
+        }
+    );
+    //Actions.NOME_TELA();
+}
+
+const loginFail = (erro, dispatch) => {
+    dispatch(
+        {
+            type: LOGIN_FAIL,
+            payload: erro
+        }
+    );
+}
