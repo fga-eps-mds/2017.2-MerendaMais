@@ -4,38 +4,54 @@ import { connect } from 'react-redux';
 //import { asyncCreateCounselor } from '../actions/counselorActions';
 import { asyncGetCounselor } from '../actions/counselorActions';
 
-const iconEmail = require('../images/ic_account_circle.png');
+const iconName = require('../images/ic_face.png');
+const iconCpf = require('../images/ic_account_circle.png');
 const iconPhone = require('../images/ic_phone.png');
+const iconEmail = require('../images/ic_email.png');
+const iconJob = require('../images/ic_work.png');
+const iconSegment = require('../images/ic_supervisor_account.png');
+const iconCAE = require('../images/ic_location_city.png');
+const iconCAE_TYPE = require('../images/ic_domain.png');
 
 class ProfileInfoScreen extends React.Component{
     render() {
         return (
-          
+          <ScrollView style={styles.principal}>
             <View style={styles.conteudo}>
                 <View style = {styles.field}>
+                  <Image source={iconName} style={styles.icon}/>
                   <Text>Nome: {this.props.counselor.name}</Text>
                 </View>
                 <View style = {styles.field}>
+                  <Image source={iconCpf} style={styles.icon}/>
                   <Text>CPF: {this.props.counselor.cpf}</Text>
                 </View>
                 <View style = {styles.field}>
+                  <Image source={iconPhone} style={styles.icon}/>
                   <Text>Telefone: {this.props.counselor.phone}</Text>
                 </View>
                 <View style = {styles.field}>
+                  <Image source={iconEmail} style={styles.icon}/>
                   <Text>Email: {this.props.counselor.email}</Text>
                 </View>
                 <View style = {styles.field}>
+                  <Image source={iconJob} style={styles.icon}/>
+                  <Text>Cargo: {this.props.counselor.isPresident}</Text>
+                </View>
+                <View style = {styles.field}>
+                  <Image source={iconSegment} style={styles.icon}/>
                   <Text>Segmento: {this.props.counselor.segment}</Text>
                 </View>
                 <View style = {styles.field}>
+                  <Image source={iconCAE} style={styles.icon}/>
                   <Text>CAE: {this.props.counselor.CAE}</Text>
                 </View>
                 <View style = {styles.field}>
+                  <Image source={iconCAE_TYPE} style={styles.icon}/>
                   <Text>Tipo do CAE: {this.props.counselor.CAE_Type}</Text>
                 </View>
             </View>
-
-
+          </ScrollView>
         );
     }
 }
