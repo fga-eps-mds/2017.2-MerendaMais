@@ -7,7 +7,7 @@ const initialState = {
     phone: '',
     isPresident: false,
     segment: '',
-    first_name: '',
+    name: '',
     password: '',
     CAE_type: '',
     CAE: '',

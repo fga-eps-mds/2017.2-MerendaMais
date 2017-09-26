@@ -52,7 +52,7 @@ export const setCounselor = (counselor) => {
     }
 }
 
-export const asyncLoginCounselor = ({cpf,password}) => {
+export const asyncLoginCounselor = ({ CPF , password }) => {
     return(dispatch) => {
         dispatch({
             type: LOADING_LOGIN
