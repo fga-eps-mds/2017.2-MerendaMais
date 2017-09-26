@@ -16,7 +16,7 @@ export const asyncCreateCounselor = (userData) => {
     }
 }
 
-/*export const asyncGetCounselor = (id) => {
+export const asyncGetCounselor = (id) => {
     return(dispatch) =>{
         console.log(id);
         axios.get(`http://merenda-mais.herokuapp.com/counselor/${id}`)
@@ -35,4 +35,4 @@ export const setCounselor = (counselor) => {
         type: SET_COUNSELOR,
         counselor
     }
-}*/
+}
