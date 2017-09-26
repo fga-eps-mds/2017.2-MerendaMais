@@ -9,6 +9,22 @@ const iconLock = require('../images/ic_lock.png');
 
 class LoginPresidente extends React.Component {
 
+    render_btn_login() {
+        if(this.props.isLoading){
+            return(
+                <ActivityIndicator style={{ marginTop: 50 }} size = 'large' color = '#FF9500'/>
+            );
+        }
+        return(
+            <TouchableOpacity
+            style={styles.buttonLogin}
+            activeOpacity= {0.7}
+            onPress = {() => this._asyncLoginCounselor()}>
+                <Text style={{color: 'white', fontSize: 20}}>Entrar</Text>
+            </TouchableOpacity>
+      )
+    }
+
     _asyncLoginCounselor(){
 
       const CPF = this.props.cpf;
