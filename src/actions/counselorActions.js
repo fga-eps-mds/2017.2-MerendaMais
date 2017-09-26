@@ -1,5 +1,8 @@
 import axios from 'axios';
-import {CREATE_COUNSELOR, SET_COUNSELOR} from '../ReduxStuffs/actions';
+import {CREATE_COUNSELOR, SET_COUNSELOR} from './types.js';
+//import {profileScreen} from '../screens/profileScreen';
+import {Actions} from 'react-native-router-flux';
+
 
 export const asyncCreateCounselor = (userData) => {
     return(dispatch) =>{
@@ -8,6 +11,7 @@ export const asyncCreateCounselor = (userData) => {
         axios.post('http://merenda-mais.herokuapp.com/counselor/', userData)
         .then((response) => {
             console.log(response.data);
+            //Actions.profileScreen();
 
         })
         .catch(error => {
