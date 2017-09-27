@@ -63,7 +63,7 @@ export const asyncLoginCounselor = (userData) => {
         axios.post('http://merenda-mais.herokuapp.com/get_auth_token/', userData)
         .then((response) => {
           console.log(response.data);
-          loginSuccess(dispatch);
+          loginSuccess(dispatch, response.data.id);
           //Actions.profileInfo();
         })
         .catch(erro =>
@@ -72,13 +72,14 @@ export const asyncLoginCounselor = (userData) => {
     )}
 }
 
-const loginSuccess = (dispatch) => {
+const loginSuccess = (dispatch, id) => {
     dispatch(
         {
-            type: LOGIN_SUCCESS
+            type: LOGIN_SUCCESS,
+            payload: id
         }
     );
-    //Actions.NOME_TELA();
+    Actions.profileInfoScreen();
 }
 
 const loginFail = (erro, dispatch) => {
