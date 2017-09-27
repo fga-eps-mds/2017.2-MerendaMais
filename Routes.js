@@ -18,6 +18,7 @@ export default class Routes extends React.Component {
             <Scene key = 'loginConselheiro' component = {LoginConselheiro} hideNavBar/>
             <Scene key = 'loginPresidente' component = {LoginPresidente} hideNavBar/>
             <Scene key = 'profileInfoScreen' component = {ProfileInfoScreen} hideNavBar/>
+            <Scene key = 'registerScreen' component = {RegisterScreen} hideNavBar/>
           </Scene>
         </Router>
     );

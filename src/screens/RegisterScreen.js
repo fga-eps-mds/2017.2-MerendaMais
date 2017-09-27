@@ -2,6 +2,7 @@ import React from 'react'
 import {Text, ScrollView, View, TextInput, TouchableOpacity,Picker} from 'react-native'
 import { connect } from 'react-redux';
 import { asyncCreateCounselor } from '../actions/counselorActions';
+import { Actions } from 'react-native-router-flux'
 
 class RegisterScreen extends React.Component {
 
@@ -132,6 +133,7 @@ class RegisterScreen extends React.Component {
 
     <View style={styles.rodape}>
         <TouchableOpacity
+          onPress={() => Actions.loginConselheiro() }
             activeOpacity = {0.6}
         >
         <Text>Já tem um cadastro?
