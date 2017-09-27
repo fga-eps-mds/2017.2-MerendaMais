@@ -126,8 +126,11 @@ class RegisterScreen extends React.Component {
       returnKeyLabel = {"next"}
       onChangeText={(text) => this.setState({CAE:text})}
     />
-    <TouchableOpacity  onPress={() => this.props.createUser(this.state)}
-      style= {styles.buttonContainer}>
+
+    <TouchableOpacity onPress={() => this.props.createUser(this.state)}
+        style={styles.buttonContainer}
+        activeOpacity= {0.7}
+    >
       <Text style={styles.buttonText}>Concluir</Text>
     </TouchableOpacity>
 
@@ -169,6 +172,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
 const styles = {
 
 principal: {
+    backgroundColor : 'white',
     flex: 1
 },
 
@@ -201,6 +205,7 @@ rodape: {
 
 InputStyle: {
     padding: 10,
+    backgroundColor : '#FAFAFA',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
