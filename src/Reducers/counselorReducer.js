@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { SET_COUNSELOR, MODIFY_CPF, LOADING_LOGIN, LOGIN_FAIL, MODIFY_PASSWORD, LOGIN_SUCCESS } from '../actions/types.js';
+import { SET_COUNSELOR, MODIFY_CPF, LOADING, LOGIN_FAIL, MODIFY_PASSWORD, LOGIN_SUCCESS } from '../actions/types.js';
 
 //action = {type: ACTION_TYPE, pyload: someDataHere}
 const counselorReducer = (state = initialState.counselor, action) => {
@@ -34,7 +34,7 @@ const counselorReducer = (state = initialState.counselor, action) => {
             password: action.payload
         }
 
-        case LOADING_LOGIN:
+        case LOADING:
         return {
             ...state,
             isLoading: true
@@ -48,8 +48,8 @@ const counselorReducer = (state = initialState.counselor, action) => {
         case LOGIN_FAIL:
         return {
             ...state,
-            isLoading: false,
-            message_erro: action.payload
+            isLoading: false
+
         }
         default:
         return state;
