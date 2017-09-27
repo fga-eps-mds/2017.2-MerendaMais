@@ -23,7 +23,6 @@ class LoginConselheiro extends React.Component {
       )
     }
 
-
     _asyncLoginCounselor(){
       const CPF = this.props.cpf;
       userData = {

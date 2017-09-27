@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_COUNSELOR, SET_COUNSELOR, LOGIN_SUCCESS, LOGIN_FAIL, MODIFY_CPF, LOADING_LOGIN, MODIFY_PASSWORD } from './types.js';
+import { CREATE_COUNSELOR, SET_COUNSELOR, LOGIN_SUCCESS, LOGIN_FAIL, MODIFY_CPF, LOADING, MODIFY_PASSWORD, CREATE_SUCCESS } from './types.js';
 import { Actions } from 'react-native-router-flux';
 
 export const modifyCPF = (CPF) => {
@@ -19,12 +19,11 @@ export const modifyPassword = (password) => {
 export const asyncCreateCounselor = (userData) => {
     return(dispatch) =>{
         console.log(userData);
-        type: SET_COUNSELOR,
+        type: SET_COUNSELOR;
         axios.post('http://merenda-mais.herokuapp.com/counselor/', userData)
         .then((response) => {
             console.log(response.data);
-            Actions.loginPresidente();
-
+            Actions.loginConselheiro();
         })
         .catch(error => {
             console.log(error);
@@ -59,18 +58,19 @@ export const asyncLoginCounselor = (userData) => {
       console.log("userData: "),
       console.log(userData),
         dispatch({
-            type: LOADING_LOGIN
+            type: LOADING
         }),
         axios.post('http://merenda-mais.herokuapp.com/get_auth_token/', userData)
         .then((response) => {
           console.log(response.data);
           loginSuccess(dispatch, response.data.id);
-          //Actions.profileInfo();
+
         })
-        .catch(erro =>
-          console.log(erro)
-          //loginFail(erro,dispatch,response))
-    )}
+        .catch(erro => {
+          console.log(erro);
+          loginFail(dispatch);
+        })
+    }
 }
 
 const loginSuccess = (dispatch, id) => {
@@ -83,11 +83,11 @@ const loginSuccess = (dispatch, id) => {
     Actions.profileInfoScreen();
 }
 
-const loginFail = (erro, dispatch) => {
+const loginFail = (dispatch) => {
     dispatch(
         {
-            type: LOGIN_FAIL,
-            payload: erro
+            type: LOGIN_FAIL
+
         }
     );
 }
