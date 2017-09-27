@@ -54,6 +54,20 @@ class UpdateInfoScreen extends React.Component{
   }
 }
 
+const mapStateToProps = (state) =>{
+  return{
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+
+  }
+}
+
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(UpdateInfoScreen);
+
 
 const styles = StyleSheet.create({
   topo: {
@@ -129,18 +143,5 @@ const styles = StyleSheet.create({
      }
 });
 
-const mapStateToProps = (state) =>{
-  return{
-
-  }
-}
-
-const mapDispatchToProps = (dispatch) =>{
-  return{
-
-  }
-}
-
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(UpdateInfoScreen);
 
 export default AppContainer;
