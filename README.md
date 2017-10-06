@@ -52,7 +52,7 @@
 
 ```git clone https://github.com/fga-gpp-mds/2017.2-MerendaMais.git```
 
-<p align="justify">Após clonar o repositório, configure o ambiente para a execução de projetos que utilizem React Native. Para seguir um pequeno tutorial clique aqui <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais/wiki/Configura%C3%A7%C3%A3o-do-Ambiente">aqui</a>.</p>
+<p align="justify">Após clonar o repositório, configure o ambiente para a execução de projetos que utilizem React Native. Para seguir um pequeno tutorial clique <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais/wiki/Configura%C3%A7%C3%A3o-do-Ambiente">aqui</a>.</p>
 
 <p align="justify">Após configurar o ambiente, entre na pasta do projeto e rode os seguintes comandos:</p>
 
