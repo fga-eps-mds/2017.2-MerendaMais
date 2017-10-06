@@ -83,9 +83,9 @@ class LoginPresidente extends React.Component {
   asyncLoginCounselor() {
     const CPF = this.props.cpf;
     const password = this.props.password;
-    userData={
-      "username": CPF,
-      "password": password
+    const userData = {
+      username: CPF,
+      password: password
     };
     this.props.asyncLoginCounselor(userData);
   }
@@ -100,7 +100,8 @@ class LoginPresidente extends React.Component {
       <TouchableOpacity
         style={styles.buttonLogin}
         activeOpacity={0.7}
-        onPress={() => this.asyncLoginCounselor()}>
+        onPress={() => this.asyncLoginCounselor()}
+      >
         <Text style={{ color: 'white', fontSize: 20 }}>Entrar</Text>
       </TouchableOpacity>
     );
@@ -130,7 +131,8 @@ class LoginPresidente extends React.Component {
 
           <View style={styles.InputPassword}>
             <Image source={iconLock} style={styles.icon} />
-            <TextInput style={styles.styleInput}
+            <TextInput
+              style={styles.styleInput}
               width={280}
               underlineColorAndroid="transparent"
               returnKeyType="go"
@@ -138,10 +140,9 @@ class LoginPresidente extends React.Component {
               onChangeText={password => this.props.modifyPassword(password)}
               value={this.props.password}
               placeholder="Senha"
-              ref={(input) => this.passwordInput = input}
+              ref={input => this.passwordInput === input}
             />
           </View>
-
 
           {this.render_btn_login()}
 
@@ -170,7 +171,7 @@ class LoginPresidente extends React.Component {
   }
 }
 
-const mapStatetoProps = (state) => (
+const mapStatetoProps = state => (
   console.log(state),
   {
     cpf: state.counselor.cpf,

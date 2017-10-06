@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
 class LoginConselheiro extends React.Component {
   asyncLoginCounselor() {
     const CPF = this.props.cpf;
-    userData = {
-      "username": CPF,
-      "password": 'senha'
+    const userData = {
+      username: CPF,
+      password: 'senha'
     };
 
     this.props.asyncLoginCounselor(userData);
@@ -89,7 +89,8 @@ class LoginConselheiro extends React.Component {
       <TouchableOpacity
         style={styles.buttonLogin}
         activeOpacity={0.7}
-        onPress={() => this.asyncLoginCounselor()}>
+        onPress={() => this.asyncLoginCounselor()}
+      >
         <Text style={{ color: 'white', fontSize: 20 }}>Entrar</Text>
       </TouchableOpacity>
     );
