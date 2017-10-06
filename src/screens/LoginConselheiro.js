@@ -82,7 +82,7 @@ class LoginConselheiro extends React.Component {
   renderBtnLogin() {
     if (this.props.isLoading) {
       return (
-        <ActivityIndicator style={{ marginTop: 50 }} size = 'large' color = '#FF9500'/>
+        <ActivityIndicator style={{ marginTop: 50 }} size = "large" color = "#FF9500"/>
       );
     }
     return (
@@ -145,7 +145,7 @@ class LoginConselheiro extends React.Component {
 }
 
 const mapStatetoProps = state => (
-    console.log(state),
+  console.log(state),
   {
     cpf: state.counselor.cpf,
     message_erro: state.counselor.message_erro,
