@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
-import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { modifyCPF, modifyPassword, asyncLoginCounselor } from '../actions/counselorActions';
 
 const iconAccount = require('../images/account_circle.png');
 const iconLock = require('../images/ic_lock.png');
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
 
 });
 
-class LoginPresidente extends React.Component {
+export default class LoginPresidente extends React.Component {
   asyncLoginCounselor() {
     const CPF = this.props.cpf;
     const password = this.props.password;
@@ -171,17 +169,3 @@ class LoginPresidente extends React.Component {
     );
   }
 }
-
-const mapStatetoProps = state => (
-  {
-    cpf: state.counselor.cpf,
-    password: state.counselor.password,
-    message_erro: state.counselor.message_erro,
-    isLoading: state.counselor.isLoading,
-  }
-);
-
-export default connect(
-  mapStatetoProps,
-  { modifyCPF, modifyPassword, asyncLoginCounselor },
-)(LoginPresidente);
