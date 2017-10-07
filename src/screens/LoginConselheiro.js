@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
@@ -142,3 +142,11 @@ export default class LoginConselheiro extends React.Component {
     );
   }
 }
+
+LoginConselheiro.propTypes = {
+  modifyCPF: PropTypes.function.isRequired,
+  asyncLoginCounselor: PropTypes.function.isRequired,
+  cpf: PropTypes.string.isRequired,
+  CPF: PropTypes.string.isRequired,
+  isLoading: PropTypes.boolean.isRequired,
+};
