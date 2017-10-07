@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
-import { PropTypes } from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const iconName = require('../images/ic_face.png');
 const iconCpf = require('../images/ic_account_circle.png');
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     borderColor: 'gray',
     marginHorizontal: 15,
-    marginBottom: 30,
+    marginBottom: 15,
+    marginTop: 15,
     justifyContent: 'flex-start',
     paddingLeft: 2,
     paddingRight: 4,
@@ -136,7 +137,17 @@ export default class ProfileInfoScreen extends React.Component {
   }
 }
 
+const { shape, string } = React.PropTypes;
+
 ProfileInfoScreen.propTypes = {
-  getCounselor: PropTypes.function.isRequired,
-  counselor: PropTypes.string.isRequired,
+  getCounselor: PropTypes.func.isRequired,
+  counselor: shape({
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
+    email: string.isRequired,
+    segment: string.isRequired,
+    CAE: string.isRequired,
+    CAE_Type: string,
+  }).isRequired,
 };

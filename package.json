@@ -31,7 +31,6 @@
   "dependencies": {
     "axios": "^0.16.2",
     "expo": "^20.0.0",
-    "prop-types": "^15.6.0",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.47.2",
     "react-native-chooser": "^1.6.1",
