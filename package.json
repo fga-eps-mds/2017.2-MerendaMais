@@ -19,20 +19,20 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js",
+    "test": "jest",
     "lint": "./node_modules/.bin/eslint src"
   },
   "jest": {
-    "preset": "jest-expo",
+    "preset": "react-native",
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/react-native-router-flux/"
     ]
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "expo": "^20.0.0",
+    "expo": "^21.0.2",
     "react": "16.0.0-alpha.12",
-    "react-native": "^0.47.2",
+    "react-native": "^0.48.4",
     "react-native-chooser": "^1.6.1",
     "react-native-modal-dropdown": "^0.5.0",
     "react-native-modal-picker": "0.0.16",
