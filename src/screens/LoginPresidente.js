@@ -85,7 +85,7 @@ class LoginPresidente extends React.Component {
     const password = this.props.password;
     const userData = {
       username: CPF,
-      password: password
+      password,
     };
     this.props.asyncLoginCounselor(userData);
   }
@@ -93,7 +93,7 @@ class LoginPresidente extends React.Component {
   renderBtnLogin() {
     if (this.props.isLoading) {
       return (
-        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500"/>
+        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
     }
     return (
@@ -117,7 +117,8 @@ class LoginPresidente extends React.Component {
         <View style={styles.conteudo}>
           <View style={styles.InputCPF}>
             <Image source={iconAccount} style={styles.icon} />
-            <TextInput style={styles.styleInput}
+            <TextInput
+              style={styles.styleInput}
               width={280}
               returnKeyType="next"
               onChangeText={CPF => this.props.modifyCPF(CPF)}
@@ -144,7 +145,7 @@ class LoginPresidente extends React.Component {
             />
           </View>
 
-          {this.render_btn_login()}
+          {this.renderBtnLogin()}
 
           <TouchableOpacity
             activeOpacity={0.6}
@@ -172,7 +173,6 @@ class LoginPresidente extends React.Component {
 }
 
 const mapStatetoProps = state => (
-  console.log(state),
   {
     cpf: state.counselor.cpf,
     password: state.counselor.password,
@@ -181,4 +181,7 @@ const mapStatetoProps = state => (
   }
 );
 
-export default connect(mapStatetoProps, { modifyCPF, modifyPassword, asyncLoginCounselor })(LoginPresidente);
+export default connect(
+  mapStatetoProps,
+  { modifyCPF, modifyPassword, asyncLoginCounselor },
+)(LoginPresidente);

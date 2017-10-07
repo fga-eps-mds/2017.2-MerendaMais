@@ -73,7 +73,7 @@ class LoginConselheiro extends React.Component {
     const CPF = this.props.cpf;
     const userData = {
       username: CPF,
-      password: 'senha'
+      password: 'senha',
     };
 
     this.props.asyncLoginCounselor(userData);
@@ -82,7 +82,7 @@ class LoginConselheiro extends React.Component {
   renderBtnLogin() {
     if (this.props.isLoading) {
       return (
-        <ActivityIndicator style={{ marginTop: 50 }} size = "large" color = "#FF9500"/>
+        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
     }
     return (
@@ -118,7 +118,7 @@ class LoginConselheiro extends React.Component {
             />
           </View>
 
-          {this.render_btn_login()}
+          {this.renderBtnLogin()}
 
           <TouchableOpacity
             activeOpacity={0.6}
@@ -146,7 +146,6 @@ class LoginConselheiro extends React.Component {
 }
 
 const mapStatetoProps = state => (
-  console.log(state),
   {
     cpf: state.counselor.cpf,
     message_erro: state.counselor.message_erro,
