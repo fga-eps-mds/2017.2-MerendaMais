@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { StyleSheet,
   TouchableOpacity,
   Text,
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class UpdateInfoScreen extends React.Component {
+export default class UpdateInfoScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,47 +102,32 @@ class UpdateInfoScreen extends React.Component {
 
         <View style={styles.content}>
           <View style={styles.inputs}>
+            <Image source={iconEmail} style={styles.icon} />
             <TextInput
-              width = {280}
-              maxLength = {50}
+              width={280}
+              maxLength={50}
               placeholder="nome@exemplo.com"
               placeholderTextColor="black"
               underlineColorAndroid="transparent"
-              onChangeText={email => this.setState(email)}>
-              <Image source={iconEmail} style={styles.icon} />
-            </TextInput>
-            </View>
+              onChangeText={email => this.setState(email)}
+            />
+          </View>
           <View style={styles.inputs}>
+            <Image source={iconPhone} style={styles.icon} />
             <TextInput
-              width = {280}
-              maxLength = {11}
+              width={280}
+              maxLength={11}
               placeholder="(00)00000-0000"
               placeholderTextColor="black"
               underlineColorAndroid="transparent"
-              onChangeText={(phone) => this.setState({phone})}>
-              <Image source={iconPhone} style={styles.icon}/>
-            </TextInput>
+              onChangeText={phone => this.setState({ phone })}
+            />
           </View>
         </View>
-        <TouchableOpacity
-          style= {styles.buttonContainer}>
+        <TouchableOpacity style={styles.buttonContainer} >
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
-
-const mapStateToProps = () => {
-  console.log(),
-  return {
-  };
-};
-
-const mapDispatchToProps = () => {
-  console.log(),
-  return {
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateInfoScreen);
