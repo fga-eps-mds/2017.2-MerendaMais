@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
-import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { modifyCPF, asyncLoginCounselor } from '../actions/counselorActions';
 
 const iconAccount = require('../images/account_circle.png');
 
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
 });
 
 
-class LoginConselheiro extends React.Component {
+export default class LoginConselheiro extends React.Component {
   asyncLoginCounselor() {
     const CPF = this.props.cpf;
     const userData = {
@@ -144,13 +142,3 @@ class LoginConselheiro extends React.Component {
     );
   }
 }
-
-const mapStatetoProps = state => (
-  {
-    cpf: state.counselor.cpf,
-    message_erro: state.counselor.message_erro,
-    isLoading: state.counselor.isLoading,
-  }
-);
-
-export default connect(mapStatetoProps, { modifyCPF, asyncLoginCounselor })(LoginConselheiro);
