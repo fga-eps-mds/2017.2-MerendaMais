@@ -10,22 +10,10 @@ import LoginConselheiro from '../src/screens/LoginConselheiro';
 const mockStore = configureStore();
 
 const initialState = {
-    preferences: {
-        id: 0,
-        token:'',
-        url: '',
-        cpf: '',
-        email: '',
-        phone: '',
-        isPresident: false,
-        segment: '',
-        name: '',
-        password: '',
-        CAE_type: '',
-        CAE: '',
-        isLoading: false,
+    counselor: {
+        cpf: '11111111111',
         message_erro: '',
-        token:''
+        isLoading: false
     },
 };
 
