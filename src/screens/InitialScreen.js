@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class InitialScreen extends React.Component {
+const InitialScreen = () => ({
   render() {
     return (
       <Image style={styles.initialBackgroundImage} source={initialBackgroundImage}>
@@ -84,5 +84,7 @@ export default class InitialScreen extends React.Component {
       </Image>
 
     );
-  }
-}
+  },
+});
+
+export default InitialScreen;
