@@ -7,6 +7,7 @@ import { StyleSheet,
   Image }
   from 'react-native';
 
+
 const iconEmail = require('../images/ic_account_circle.png');
 const iconPhone = require('../images/ic_phone.png');
 
