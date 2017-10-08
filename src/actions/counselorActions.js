@@ -1,22 +1,27 @@
 import axios from 'axios';
-import { CREATE_COUNSELOR, SET_COUNSELOR, LOGIN_SUCCESS, LOGIN_FAIL, MODIFY_CPF, LOADING, MODIFY_PASSWORD, CREATE_SUCCESS } from './types.js';
 import { Actions } from 'react-native-router-flux';
+import { SET_COUNSELOR,
+  LOGIN_SUCCESS, LOGIN_FAIL,
+  MODIFY_CPF, LOADING,
+  MODIFY_PASSWORD } from './types';
 
-export const modifyCPF = (CPF) => {
-    return{
-        type: MODIFY_CPF,
-        payload: CPF
-    }
-}
 
-export const modifyPassword = (password) => {
-    return{
-        type: MODIFY_PASSWORD,
-        payload: password
-    }
-}
+export const modifyCPF = CPF => ({
+  type: MODIFY_CPF,
+  payload: CPF,
+});
 
-export const asyncCreateCounselor = (userData) => {
+export const modifyPassword = password => ({
+  type: MODIFY_PASSWORD,
+  payload: password,
+});
+
+export const setCounselor = counselor => ({
+  type: SET_COUNSELOR,
+  counselor,
+});
+
+export const asyncCreateCounselor = userData => {
     return(dispatch) =>{
         console.log(userData);
         type: SET_COUNSELOR;
@@ -31,7 +36,6 @@ export const asyncCreateCounselor = (userData) => {
     }
 }
 
-
 export const asyncGetCounselor = (id) => {
     return(dispatch) =>{
         console.log(id);
@@ -43,13 +47,6 @@ export const asyncGetCounselor = (id) => {
         .catch(error => {
             console.log(error);
         })
-    }
-}
-
-export const setCounselor = (counselor) => {
-    return {
-        type: SET_COUNSELOR,
-        counselor
     }
 }
 
@@ -74,20 +71,15 @@ export const asyncLoginCounselor = (userData) => {
 }
 
 const loginSuccess = (dispatch, id) => {
-    dispatch(
-        {
-            type: LOGIN_SUCCESS,
-            payload: id
-        }
-    );
-    Actions.profileInfoScreen();
-}
+  dispatch({
+    type: LOGIN_SUCCESS,
+    payload: id,
+  });
+  Actions.profileInfoScreen();
+};
 
 const loginFail = (dispatch) => {
-    dispatch(
-        {
-            type: LOGIN_FAIL
-
-        }
-    );
-}
+  dispatch({
+    type: LOGIN_FAIL,
+  });
+};
