@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
-import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { asyncCreateCounselor } from '../actions/counselorActions';
 
 const styles = {
 
@@ -76,7 +74,7 @@ const styles = {
 
 };
 
-class RegisterScreen extends React.Component {
+export default class RegisterScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -161,7 +159,7 @@ class RegisterScreen extends React.Component {
             selectedValue={this.state.isPresident}
           >
             <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
-            <Picker.Item value={true} label="Presidente" />
+            <Picker.Item value label="Presidente" />
             <Picker.Item value={false} label="Conselheiro" />
           </Picker>
         </View>
@@ -220,19 +218,3 @@ class RegisterScreen extends React.Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    state: state.counselor,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createUser(userData) {
-      dispatch(asyncCreateCounselor(userData));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
