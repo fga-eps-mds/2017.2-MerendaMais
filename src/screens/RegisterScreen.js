@@ -97,10 +97,10 @@ export default class RegisterScreen extends React.Component {
         <Text style={styles.container}>     Senha</Text>
         <TextInput
           placeholder="Digite sua senha"
-          placeholderTextColor='#95a5a6'
+          placeholderTextColor="#95a5a6"
           style={styles.InputStyle}
-          underlineColorAndroid='transparent'
-          returnKeyLabel={"next"}
+          underlineColorAndroid="transparent"
+          returnKeyLabel={'next'}
           onChangeText={text => this.setState({ password: text })}
           secureTextEntry
         />
