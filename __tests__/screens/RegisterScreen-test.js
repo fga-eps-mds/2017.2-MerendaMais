@@ -5,25 +5,30 @@ import configureStore from 'redux-mock-store';
 Enzyme.configure({ adapter: new Adapter() });
 
 // imported as a connected component!
-import LoginPresidente from '../src/screens/LoginPresidente';
+import RegisterScreen from '../../src/screens/RegisterScreen';
 
 const mockStore = configureStore();
 
 const initialState = {
     counselor: {
-        cpf: '11111111111',
-        password: '01010110',
-        message_erro: '',
-        isLoading: false
+        cpf: '55555555555',
+        name: 'test',
+        email:'test5@test.com',
+        phone: '555555555',
+        isPresident:false,
+        password: "55555",
+        segment: 'test',
+        CAE_Type: 'test',
+        CAE: 'test'
     },
 };
 
 const store = mockStore(initialState);
 
-describe('Testing LoginPresidente', () => {
+describe('Testing RegisterScreen', () => {
     it('renders as expected', () => {
         const wrapper = shallow(
-            <LoginPresidente />,
+            <RegisterScreen />,
             { context: { store } },
         ).dive();
         expect(wrapper).toMatchSnapshot();

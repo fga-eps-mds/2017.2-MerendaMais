@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 Enzyme.configure({ adapter: new Adapter() });
 
 // imported as a connected component!
-import LoginConselheiro from '../src/screens/LoginConselheiro';
+import LoginConselheiro from '../../src/screens/LoginConselheiro';
 
 const mockStore = configureStore();
 
