@@ -9,12 +9,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
-  return {
-    getCounselor(id) { dispatch(asyncGetCounselor(id)); },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  getCounselor(id) { dispatch(asyncGetCounselor(id)); },
+});
 
 const ProfileInfoScreenContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileInfoScreen);
 

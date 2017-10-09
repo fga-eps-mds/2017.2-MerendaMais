@@ -12,7 +12,7 @@ const iconCAE = require('../images/ic_location_city.png');
 const iconCaeType = require('../images/ic_domain.png');
 
 const styles = StyleSheet.create({
-  topo: {
+  headerBox: {
     flex: 1.2,
     paddingTop: 10,
     paddingBottom: 10,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  principal: {
+  profileInfoScreen: {
     flex: 1,
   },
   buttonContainer: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 
-  conteudo: {
+  infoProfileBox: {
     backgroundColor: 'white',
     marginBottom: 9,
     flex: 6,
@@ -97,11 +97,11 @@ export default class ProfileInfoScreen extends React.Component {
   }
   render() {
     return (
-      <ScrollView style={styles.principal}>
-        <View style={styles.topo}>
+      <ScrollView style={styles.profileInfoScreen}>
+        <View style={styles.headerBox}>
           <Text style={styles.textLogo}> PERFIL</Text>
         </View>
-        <View style={styles.conteudo}>
+        <View style={styles.infoProfileBox}>
           <View style={styles.field}>
             <Image source={iconName} style={styles.icon} />
             <Text>Nome: {this.props.counselor.name}</Text>
