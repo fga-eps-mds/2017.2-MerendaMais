@@ -149,9 +149,4 @@ const { shape, string, bool } = React.PropTypes;
 LoginCounselorScreen.propTypes = {
   modifyCPF: PropTypes.func.isRequired,
   asyncLoginCounselor: PropTypes.func.isRequired,
-  counselor: shape({
-    cpf: string.isRequired,
-    CPF: string.isRequired,
-    isLoading: bool.isRequired,
-  }).isRequired,
 };

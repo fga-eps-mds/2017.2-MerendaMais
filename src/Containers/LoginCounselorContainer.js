@@ -10,6 +10,11 @@ const mapStatetoProps = state => (
   }
 );
 
-export default connect(mapStatetoProps,
-  { modifyCPF, asyncLoginCounselor },
-)(LoginCounselorScreen);
+const mapDispachtoProps = dispatch => (
+  {
+    modifyCPF: CPF => dispatch(modifyCPF(CPF)),
+    asyncLoginCounselor: userData => dispatch(asyncLoginCounselor(userData)),
+  }
+);
+
+export default connect(mapStatetoProps, mapDispachtoProps)(LoginCounselorScreen);

@@ -170,16 +170,8 @@ export default class LoginPresidentScreen extends React.Component {
   }
 }
 
-const { shape, string, bool } = React.PropTypes;
-
 LoginPresidentScreen.propTypes = {
   modifyCPF: PropTypes.func.isRequired,
   modifyPassword: PropTypes.func.isRequired,
   asyncLoginCounselor: PropTypes.func.isRequired,
-  counselor: shape({
-    cpf: string.isRequired,
-    CPF: string.isRequired,
-    password: string.isRequired,
-    isLoading: bool.isRequired,
-  }).isRequired,
 };

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { LoginPresidentScreen } from '../screens';
+import LoginPresidentScreen from '../screens/LoginPresidentScreen';
 import { modifyCPF, modifyPassword, asyncLoginCounselor } from '../actions/counselorActions';
 
 const mapStatetoProps = state => (
@@ -11,6 +11,12 @@ const mapStatetoProps = state => (
   }
 );
 
-export default connect(mapStatetoProps,
-  { modifyCPF, modifyPassword, asyncLoginCounselor },
-)(LoginPresidentScreen);
+const mapDispachtoProps = dispatch => (
+  {
+    modifyCPF: CPF => dispatch(modifyCPF(CPF)),
+    modifyPassword: password => dispatch(modifyPassword(password)),
+    asyncLoginCounselor: userData => dispatch(asyncLoginCounselor(userData)),
+  }
+);
+
+export default connect(mapStatetoProps, mapDispachtoProps)(LoginPresidentScreen);
