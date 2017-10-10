@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { LoginConselheiro } from '../screens';
+import { LoginCounselorScreen } from '../screens';
 import { modifyCPF, asyncLoginCounselor } from '../actions/counselorActions';
 
 const mapStatetoProps = state => (
@@ -12,4 +12,4 @@ const mapStatetoProps = state => (
 
 export default connect(mapStatetoProps,
   { modifyCPF, asyncLoginCounselor },
-)(LoginConselheiro);
+)(LoginCounselorScreen);

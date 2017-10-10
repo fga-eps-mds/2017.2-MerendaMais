@@ -19,7 +19,7 @@ export default class InitialScreen extends React.Component {
                         <TouchableOpacity
                         style={styles.btn}
                         activeOpacity= {0.7}
-                        onPress = {() => Actions.loginConselheiro()}>
+                        onPress = {() => Actions.loginCounselorScreen()}>
                             <Text style={styles.txt_btn}>Login</Text>
                         </TouchableOpacity>
 

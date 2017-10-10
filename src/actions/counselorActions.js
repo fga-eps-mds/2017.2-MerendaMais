@@ -23,7 +23,7 @@ export const asyncCreateCounselor = (userData) => {
         axios.post('http://merenda-mais.herokuapp.com/counselor/', userData)
         .then((response) => {
             console.log(response.data);
-            Actions.loginConselheiro();
+            Actions.loginCounselorScreen();
         })
         .catch(error => {
             console.log(error);
