@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
@@ -92,6 +92,7 @@ export default class RegisterScreen extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     const password = this.state.isPresident === true ? (
       <View>
         <Text style={styles.container}>     Senha</Text>
@@ -218,3 +219,8 @@ export default class RegisterScreen extends React.Component {
     );
   }
 }
+
+RegisterScreen.propTypes = {
+  createUser: PropTypes.func.isRequired,
+
+};
