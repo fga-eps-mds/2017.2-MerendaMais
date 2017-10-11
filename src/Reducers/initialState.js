@@ -10,7 +10,7 @@ const initialState = {
     segment: '',
     name: '',
     password: '',
-    CAE_type: '',
+    CAE_Type: '',
     CAE: '',
     isLoading: false,
     message_erro: '',

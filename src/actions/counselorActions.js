@@ -46,6 +46,8 @@ export const asyncGetCounselor = id => (dispatch) => {
     });
 };
 
+// These two functions are wrong. They are not pure actions.
+
 const loginSuccess = (dispatch, id) => {
   dispatch({
     type: LOGIN_SUCCESS,
@@ -60,6 +62,8 @@ const loginFail = (dispatch) => {
   });
 };
 
+// This action bellow must be refactored to dispatch setCounselor. We must update the store.
+
 export const asyncLoginCounselor = userData => (dispatch) => {
   console.log('userData:');
   console.log(userData);
@@ -70,6 +74,8 @@ export const asyncLoginCounselor = userData => (dispatch) => {
     .then((response) => {
       console.log(response.data);
       loginSuccess(dispatch, response.data.id);
+      // This was supposed to be a dispatch. Like this :
+      // dispatch(setCounselor(response.data))
     })
     .catch((erro) => {
       console.log(erro);
