@@ -1,7 +1,7 @@
 const initialState = {
   counselor: {
     id: 0,
-    token:'',
+    token: '',
     url: '',
     cpf: '',
     email: '',
@@ -10,12 +10,11 @@ const initialState = {
     segment: '',
     name: '',
     password: '',
-    CAE_type: '',
+    CAE_Type: '',
     CAE: '',
     isLoading: false,
     message_erro: '',
-    token:''
-  }
-}
+  },
+};
 
 export default initialState;

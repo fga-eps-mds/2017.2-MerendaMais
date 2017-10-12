@@ -1,11 +1,11 @@
 import thunk from 'redux-thunk';
-import {createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import initialState from './initialState';
 
 import counselorReducer from './counselorReducer';
 
 const reducers = combineReducers({
-    counselor: counselorReducer
+  counselor: counselorReducer,
 });
 
 
