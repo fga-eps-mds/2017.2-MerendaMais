@@ -136,7 +136,7 @@ class RegisterScreen extends React.Component {
 
     <View style={styles.rodape}>
         <TouchableOpacity
-          onPress={() => Actions.loginConselheiro() }
+          onPress={() => Actions.loginCounselorScreen() }
             activeOpacity = {0.6}
         >
         <Text>Já tem um cadastro?

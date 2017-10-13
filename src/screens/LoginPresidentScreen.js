@@ -1,15 +1,16 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
 
 const iconAccount = require('../images/account_circle.png');
 const iconLock = require('../images/ic_lock.png');
 
 const styles = StyleSheet.create({
-  main: {
+  principal: {
     flex: 1,
   },
-  top: {
+  topo: {
     flex: 1.2,
     backgroundColor: '#FF9500',
     borderBottomColor: 'black',
@@ -18,14 +19,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
   },
-  content: {
+  conteudo: {
     flex: 6,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
 
   },
-  footer: {
+  rodape: {
     flex: 0.7,
     borderTopColor: '#a9a9a9',
     borderTopWidth: 1,
@@ -107,12 +108,12 @@ export default class LoginPresidentScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.main}>
-        <View style={styles.top}>
+      <View style={styles.principal}>
+        <View style={styles.topo}>
           <Text style={styles.textLogo}>Merenda +</Text>
         </View>
 
-        <View style={styles.content}>
+        <View style={styles.conteudo}>
           <View style={styles.InputCPF}>
             <Image source={iconAccount} style={styles.icon} />
             <TextInput
@@ -121,7 +122,7 @@ export default class LoginPresidentScreen extends React.Component {
               returnKeyType="next"
               onChangeText={CPF => this.props.modifyCPF(CPF)}
               maxLength={11}
-              value={this.props.CPF}
+              value={this.props.cpf}
               underlineColorAndroid="transparent"
               placeholder="CPF"
               onSubmitEditing={() => this.passwordInput.focus()}
@@ -155,7 +156,7 @@ export default class LoginPresidentScreen extends React.Component {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.footer}>
+        <View style={styles.rodape}>
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => Actions.registerScreen()}
@@ -174,4 +175,7 @@ LoginPresidentScreen.propTypes = {
   modifyCPF: PropTypes.func.isRequired,
   modifyPassword: PropTypes.func.isRequired,
   asyncLoginCounselor: PropTypes.func.isRequired,
+  cpf: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
