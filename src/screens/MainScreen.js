@@ -1,16 +1,19 @@
-import React, { PropTypes } from 'react';
-import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { SideMenu } from 'react-native-elements';
+import Menu from '../components/Menu';
+
+const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
 
 const styles = StyleSheet.create({
   headerBox: {
     flex: 1,
-    paddingTop: 10,
-    paddingBottom: 10,
     backgroundColor: '#FF9500',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   bodyBox: {
     flex: 10,
@@ -18,9 +21,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textLogo: {
+    padding: 50,
+    flex: 1,
     fontSize: 30,
     color: 'white',
     fontWeight: 'bold',
+    alignSelf: 'center',
+    textAlign: 'center',
   },
   buttonInspect: {
     paddingHorizontal: 50,
@@ -30,33 +37,62 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9500',
     borderRadius: 8,
     borderWidth: 1,
+  },
+  imageSideBar: {
 
   },
-
 
 });
 
 
-const MainScreen = () => ({
+class MainScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  updateMenuState(isOpen) {
+    this.setState({ isOpen });
+  }
+
   render() {
+    const menu = <Menu />;
+
     return (
-      <View style={{flex: 1}}>
+      <SideMenu
+        menu={menu}
+        menuPosition="right"
+        isOpen={this.state.isOpen}
+        disableGestures
+        onChange={isOpen => this.updateMenuState(isOpen)}
+      >
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
 
-        <View style={styles.headerBox}>
-          <Text style={styles.textLogo}> PERFIL</Text>
-        </View>
+          <View style={styles.headerBox}>
+            <Text style={styles.textLogo}> PERFIL</Text>
 
-        <View style={styles.bodyBox}>
-          <TouchableOpacity
-          style={styles.buttonInspect}
-          activeOpacity= {0.7}
-          >
-          <Text style={{color: 'white', fontSize: 20}}>Fiscalizar</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+            onPress ={ () => this.updateMenuState(true)}
+            >
+              <Image source={sideMenuIcon} />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.bodyBox}>
+            <TouchableOpacity
+            style={styles.buttonInspect}
+            activeOpacity= {0.7}
+            >
+            <Text style={{color: 'white', fontSize: 20}}>Fiscalizar</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </SideMenu>
     );
-  },
-});
+  }
+}
 
 export default MainScreen;
