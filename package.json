@@ -14,6 +14,7 @@
     "eslint-plugin-react": "^7.4.0",
     "jest-expo": "~20.0.0",
     "jest-serializer-enzyme": "^1.0.0",
+    "plato": "^1.7.0",
     "react-dom": "^16.0.0",
     "react-native-scripts": "1.3.1",
     "react-test-renderer": "^16.0.0-alpha.12",
@@ -26,7 +27,8 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint src"
+    "lint": "./node_modules/.bin/eslint src",
+    "analyze": "./node_modules/.bin/plato -r -d report App.js src/"
   },
   "jest": {
     "preset": "react-native",
