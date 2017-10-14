@@ -53,41 +53,38 @@ export const setCounselor = (counselor) => {
     }
 }
 
+export const loading = () => {
+  return {
+    type: LOADING,
+  }
+}
+
+  const loginSuccess = (counselor) => {
+    return {    type: LOGIN_SUCCESS,
+              counselor
+        }
+  }
+
+  const loginFail = (dispatch) => {
+    return{
+          type: LOGIN_FAIL,
+        }
+  }
+
 export const asyncLoginCounselor = (userData) => {
     return(dispatch) => {
       console.log("userData: "),
       console.log(userData),
-        dispatch({
-            type: LOADING
-        }),
+        dispatch (loading())
         axios.post('http://merenda-mais.herokuapp.com/get_auth_token/', userData)
         .then((response) => {
           console.log(response.data);
-          loginSuccess(dispatch, response.data.id);
-
+ dispatch(loginSuccess(response.data));
+Actions.profileInfoScreen();
         })
         .catch(erro => {
           console.log(erro);
-          loginFail(dispatch);
+          dispatch(loginFail());
         })
     }
-}
-
-const loginSuccess = (dispatch, id) => {
-    dispatch(
-        {
-            type: LOGIN_SUCCESS,
-            payload: id
-        }
-    );
-    Actions.profileInfoScreen();
-}
-
-const loginFail = (dispatch) => {
-    dispatch(
-        {
-            type: LOGIN_FAIL
-
-        }
-    );
 }
