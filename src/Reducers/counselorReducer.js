@@ -19,19 +19,18 @@ const counselorReducer = (state = initialState.counselor, action) => {
         segment: action.counselor.segment,
         CAE_Type: action.counselor.CAE_Type,
         CAE: action.counselor.CAE,
+        isLoading: false,
       };
     case MODIFY_CPF:
       return {
         ...state,
         cpf: action.payload,
       };
-
     case MODIFY_PASSWORD:
       return {
         ...state,
         password: action.payload,
       };
-
     case LOADING:
       return {
         ...state,
@@ -40,7 +39,9 @@ const counselorReducer = (state = initialState.counselor, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        id: action.payload,
+        name: action.counselor.name,
+        id: action.counselor.id,
+        cpf: action.counselor.cpf,
         isLoading: false,
       };
     case LOGIN_FAIL:
