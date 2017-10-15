@@ -8,6 +8,7 @@ const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
 const styles = StyleSheet.create({
   headerBox: {
     flex: 1,
+    padding: 10,
     backgroundColor: '#FF9500',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
@@ -21,12 +22,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textLogo: {
-    padding: 50,
     flex: 1,
+    paddingLeft: 48,
     fontSize: 30,
     color: 'white',
     fontWeight: 'bold',
-    alignSelf: 'center',
     textAlign: 'center',
   },
   buttonInspect: {
@@ -38,10 +38,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
-  imageSideBar: {
-
-  },
-
 });
 
 
@@ -72,10 +68,10 @@ class MainScreen extends React.Component {
         <View style={{ flex: 1, backgroundColor: 'white' }}>
 
           <View style={styles.headerBox}>
-            <Text style={styles.textLogo}> PERFIL</Text>
+            <Text style={styles.textLogo}>Merenda +</Text>
 
             <TouchableOpacity
-            onPress ={ () => this.updateMenuState(true)}
+              onPress={() => this.updateMenuState(true)}
             >
               <Image source={sideMenuIcon} />
             </TouchableOpacity>
@@ -83,10 +79,10 @@ class MainScreen extends React.Component {
 
           <View style={styles.bodyBox}>
             <TouchableOpacity
-            style={styles.buttonInspect}
-            activeOpacity= {0.7}
+              style={styles.buttonInspect}
+              activeOpacity={0.7}
             >
-            <Text style={{color: 'white', fontSize: 20}}>Fiscalizar</Text>
+              <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
             </TouchableOpacity>
           </View>
         </View>
