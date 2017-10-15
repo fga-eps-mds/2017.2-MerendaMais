@@ -109,10 +109,6 @@ export default class LoginPresidentScreen extends React.Component {
   render() {
     return (
       <View style={styles.principal}>
-        <View style={styles.topo}>
-          <Text style={styles.textLogo}>Merenda +</Text>
-        </View>
-
         <View style={styles.conteudo}>
           <View style={styles.InputCPF}>
             <Image source={iconAccount} style={styles.icon} />

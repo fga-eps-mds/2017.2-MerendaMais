@@ -3,21 +3,14 @@ import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityInd
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
+
 const iconAccount = require('../images/account_circle.png');
 
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
-  topo: {
-    flex: 1.2,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
 
-  },
   conteudo: {
     flex: 6,
     backgroundColor: 'white',
@@ -37,12 +30,7 @@ const styles = StyleSheet.create({
     height: 30,
     margin: 5,
   },
-  textLogo: {
-    fontSize: 35,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 10,
-  },
+
   InputCPF: {
     paddingLeft: 2,
     flexDirection: 'row',
@@ -98,10 +86,6 @@ export default class LoginCounselorScreen extends React.Component {
   render() {
     return (
       <View style={styles.principal}>
-        <View style={styles.topo}>
-          <Text style={styles.textLogo}>Merenda +</Text>
-        </View>
-
         <View style={styles.conteudo}>
           <View style={styles.InputCPF}>
             <Image source={iconAccount} style={styles.icon} />
