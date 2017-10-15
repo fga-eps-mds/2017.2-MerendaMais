@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 const styles = StyleSheet.create(
   {
     button: {
-      color: 'white',
+      color: 'black',
       fontSize: 30,
-      marginLeft: 5,
+      marginLeft: 25,
     },
     buttonWrapper: {
     },

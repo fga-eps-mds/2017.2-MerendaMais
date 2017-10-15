@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Header from '../components/Header';
 
 const styles = {
 
@@ -9,25 +10,7 @@ const styles = {
     flex: 1,
   },
 
-  topo: {
-    flex: 1.2,
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  textLogo: {
-    fontSize: 35,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 10,
-  },
-
-  rodape: {
+  footer: {
     flex: 0.7,
     borderTopColor: '#a9a9a9',
     borderTopWidth: 1,
@@ -110,11 +93,7 @@ export default class RegisterScreen extends React.Component {
 
     return (
       <ScrollView style={styles.principal}>
-        <View style={styles.topo}>
-          <Text style={styles.textLogo}>Merenda +</Text>
-        </View>
-
-        <Text />
+        <Header />
         <Text>     CPF</Text>
         <TextInput
           placeholder="Digite o seu CPF"
@@ -204,7 +183,7 @@ export default class RegisterScreen extends React.Component {
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>
 
-        <View style={styles.rodape}>
+        <View style={styles.footer}>
           <TouchableOpacity
             onPress={() => Actions.loginCounselorScreen()}
             activeOpacity={0.6}
