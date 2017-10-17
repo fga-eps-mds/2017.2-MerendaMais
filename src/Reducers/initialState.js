@@ -15,9 +15,6 @@ const initialState = {
     isLoading: false,
     message_erro: '',
   },
-  school: {
-    name: '',
-  },
 };
 
 export default initialState;

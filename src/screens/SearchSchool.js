@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { PropTypes } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
-import { SideMenu } from 'react-native-elements';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
+import { SideMenu, List, ListItem } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
 
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
   },
 });
 
-
 class SearchSchool extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -83,6 +83,7 @@ class SearchSchool extends React.Component {
       schoolList: [],
     };
   }
+
 
   searchSchools() {
     const params = {
@@ -181,6 +182,19 @@ class SearchSchool extends React.Component {
                   placeholder="Escola a pesquisar"
                 />
               </View>
+
+              <View>
+                <FlatList
+                  data={this.state.schoolList}
+                  keyExtractor={item => item.id}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity>
+                      <Text>{item.nome}</Text>
+                    </TouchableOpacity>)}
+                />
+
+              </View>
+
             </View>
             <View style={{ flex: 3, justifyContent: 'flex-end', paddingBottom: 30 }}>
               {this.buttonActivation()}
@@ -198,7 +212,6 @@ SearchSchool.propTypes = {
   counselor: shape({
     CAE: string.isRequired,
   }).isRequired,
-  searchSchool: PropTypes.func.isRequired,
 };
 
 export default SearchSchool;
