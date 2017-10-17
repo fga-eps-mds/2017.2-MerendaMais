@@ -1,10 +1,21 @@
 import { connect } from 'react-redux';
 import UpdateInfoScreen from '../screens/UpdateInfoScreen';
+import { asyncEditCounselor } from '../actions/counselorActions';
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
+  console.debug(state.counselor);
+  return {
+    email: state.counselor.email,
+    phone: state.counselor.phone,
+    id: state.counselor.id,
+    name: state.counselor.name,
+  };
 };
 
-const mapDispatchToProps = () => {
-};
+const mapDispatchToProps = dispatch => ({
+  editUser: userData => dispatch(asyncEditCounselor(userData)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateInfoScreen);
+const UpdateInfoScreenContainer = connect(mapStateToProps, mapDispatchToProps)(UpdateInfoScreen);
+
+export default UpdateInfoScreenContainer;
