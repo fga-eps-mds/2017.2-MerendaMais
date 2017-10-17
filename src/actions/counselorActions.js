@@ -46,6 +46,24 @@ export const asyncGetCounselor = id => (dispatch) => {
     });
 };
 
+export const asyncEditCounselor = counselorData => (dispatch) => {
+  console.log(`counselorActions: ${counselorData}`);
+
+  console.log();
+  axios.patch(`http://merenda-mais.herokuapp.com/counselor/${counselorData.id}/`, {
+    email: counselorData.email,
+    phone: counselorData.phone,
+    name: counselorData.name,
+  })
+    .then((response) => {
+      console.log(response.data);
+      dispatch(setCounselor(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 // These two functions are wrong. They are not pure actions.
 
 const loginSuccess = (dispatch, id) => {
