@@ -157,7 +157,7 @@ class SearchSchool extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={styles.bodyBox}>
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 2 }}>
               <View style={styles.Input}>
                 <Image source={CityIcon} style={styles.icon} />
                 <TextInput
@@ -181,19 +181,22 @@ class SearchSchool extends React.Component {
                   placeholder="Escola a pesquisar"
                 />
               </View>
-
-              <View>
-                <FlatList
-                  data={this.state.schoolList}
-                  keyExtractor={item => item.nome}
-                  renderItem={({ item }) => (
-                    <TouchableOpacity>
-                      <Text>{item.nome}</Text>
-                    </TouchableOpacity>)}
-                />
-              </View>
             </View>
-            <View style={{ flex: 3, justifyContent: 'flex-end', paddingBottom: 30 }}>
+
+            <View style={{ flex: 4 }} >
+              <FlatList
+                data={this.state.schoolList}
+                keyExtractor={item => item.nome}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    style={{ padding: 10 }}
+                  >
+                    <Text>{item.nome}</Text>
+                  </TouchableOpacity>)}
+              />
+            </View>
+
+            <View style={{ flex: 1, justifyContent: 'flex-end', paddingBottom: 30 }}>
               {this.buttonActivation()}
             </View>
           </View>
