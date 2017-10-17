@@ -3,7 +3,8 @@ import UpdateInfoScreen from '../screens/UpdateInfoScreen';
 import { asyncEditCounselor } from '../actions/counselorActions';
 
 const mapStateToProps = (state) => {
-  console.log(`UpdateInfoContainer: ${state.counselor}`);
+  console.log('UpdateInfoContainer: ');
+  console.log(state.counselor);
 
   return {
     email: state.counselor.email,

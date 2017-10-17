@@ -47,9 +47,9 @@ export const asyncGetCounselor = id => (dispatch) => {
 };
 
 export const asyncEditCounselor = counselorData => (dispatch) => {
-  console.log(`counselorActions: ${counselorData}`);
+  console.log('counselorActions: ');
+  console.log(counselorData);
 
-  console.log();
   axios.patch(`http://merenda-mais.herokuapp.com/counselor/${counselorData.id}/`, {
     email: counselorData.email,
     phone: counselorData.phone,
@@ -58,6 +58,7 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
     .then((response) => {
       console.log(response.data);
       dispatch(setCounselor(response.data));
+      Actions.profileInfo();
     })
     .catch((error) => {
       console.log(error);
@@ -71,7 +72,7 @@ const loginSuccess = (dispatch, id) => {
     type: LOGIN_SUCCESS,
     payload: id,
   });
-  Actions.profileInfoScreen();
+  Actions.updateInfo();
 };
 
 const loginFail = (dispatch) => {
