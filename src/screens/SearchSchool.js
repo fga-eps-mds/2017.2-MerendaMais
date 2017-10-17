@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, ActivityIndicator } from 'react-native';
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   buttonSearchAnabled: {
     paddingHorizontal: 117,
-    paddingVertical: 18,
+    paddingVertical: 15,
     marginTop: 50,
     marginBottom: 0,
     backgroundColor: '#FF9500',
@@ -77,6 +77,7 @@ class SearchSchool extends React.Component {
 
     this.state = {
       isOpen: false,
+      isLoading: false,
       city: '',
       name: '',
       schoolList: [],
@@ -89,17 +90,19 @@ class SearchSchool extends React.Component {
       name: this.state.name,
       city: this.state.city,
     };
+    this.setState({ isLoading: true });
 
     axios.post('https://merenda-mais.herokuapp.com/get_schools/', params)
       .then((response) => {
         // console.log(response.data);
-        this.setState({ schoolList: response.data });
+        this.setState({ schoolList: response.data, isLoading: false });
 
         console.log('SearchSchool State');
         console.log(this.state);
         // If response is an empty array, no schools could be found.
       })
       .catch((error) => {
+        this.setState({ isLoading: false });
         console.log(error);
       });
   }
@@ -111,6 +114,11 @@ class SearchSchool extends React.Component {
   buttonActivation() {
     console.log(this.state.city);
     if (this.state.city > '' || this.state.name > '') {
+      if (this.state.isLoading) {
+        return (
+          <ActivityIndicator style={{ paddingBottom: 10 }} size="large" color="#FF9500" />
+        );
+      }
       return (
         <TouchableOpacity
           style={styles.buttonSearchAnabled}
