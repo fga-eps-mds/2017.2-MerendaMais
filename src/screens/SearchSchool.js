@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
-import { SideMenu, List, ListItem } from 'react-native-elements';
+import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
 
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
 });
 
 class SearchSchool extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -186,15 +185,13 @@ class SearchSchool extends React.Component {
               <View>
                 <FlatList
                   data={this.state.schoolList}
-                  keyExtractor={item => item.id}
+                  keyExtractor={item => item.nome}
                   renderItem={({ item }) => (
                     <TouchableOpacity>
                       <Text>{item.nome}</Text>
                     </TouchableOpacity>)}
                 />
-
               </View>
-
             </View>
             <View style={{ flex: 3, justifyContent: 'flex-end', paddingBottom: 30 }}>
               {this.buttonActivation()}
