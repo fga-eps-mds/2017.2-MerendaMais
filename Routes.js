@@ -7,7 +7,7 @@ import LoginPresidente from './src/screens/LoginPresidente';
 import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContainer';
 import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
 import MainScreen from './src/screens/MainScreen';
-import SearchSchoolContainer from './src/screens/SearchSchool';
+import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 
 const Routes = () => ({
   render() {

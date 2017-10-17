@@ -74,10 +74,12 @@ class SearchSchool extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(props);
+
     this.state = {
       isOpen: false,
-      CAEState: '',
-      school: '',
+      city: '',
+      name: '',
     };
   }
 
@@ -86,13 +88,13 @@ class SearchSchool extends React.Component {
   }
 
   buttonActivation() {
-    console.log(this.state.CAEState);
-    if (this.state.CAEState > '') {
+    console.log(this.state.city);
+    if (this.state.city > '' || this.state.name > '') {
       return (
         <TouchableOpacity
           style={styles.buttonSearchAnabled}
           activeOpacity={0.7}
-          onPress={() => null}
+          onPress={() => this.props.searchSchool(this.state)}
         >
           <Text style={{ color: 'white', fontSize: 20 }}>Pesquisar</Text>
         </TouchableOpacity>
@@ -140,7 +142,7 @@ class SearchSchool extends React.Component {
                 <TextInput
                   width={280}
                   returnKeyType="go"
-                  onChangeText={text => this.setState({ CAEState: text })}
+                  onChangeText={text => this.setState({ city: text })}
                   value={this.state.CAE}
                   underlineColorAndroid="transparent"
                   placeholder="Estado/Município do seu CAE"
@@ -152,8 +154,8 @@ class SearchSchool extends React.Component {
                 <TextInput
                   width={280}
                   returnKeyType="go"
-                  onChangeText={text => this.setState({ school: text })}
-                  value={this.state.school}
+                  onChangeText={text => this.setState({ name: text })}
+                  value={this.state.name}
                   underlineColorAndroid="transparent"
                   placeholder="Escola a pesquisar"
                 />
@@ -175,6 +177,7 @@ SearchSchool.propTypes = {
   counselor: shape({
     CAE: string.isRequired,
   }).isRequired,
+  searchSchool: PropTypes.func.isRequired,
 };
 
 export default SearchSchool;
