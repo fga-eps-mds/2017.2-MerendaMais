@@ -7,6 +7,7 @@ import LoginPresidente from './src/screens/LoginPresidente';
 import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContainer';
 import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
 import MainScreen from './src/screens/MainScreen';
+import SearchSchoolContainer from './src/screens/SearchSchool';
 
 const Routes = () => ({
   render() {
@@ -14,6 +15,7 @@ const Routes = () => ({
       <Router>
         <Scene key="root">
           <Scene key="mainScreen" component={MainScreen} hideNavBar />
+          <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
           <Scene key="initialScreen" component={InitialScreen} hideNavBar />
           <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
           <Scene key="loginConselheiro" component={LoginConselheiro} hideNavBar />

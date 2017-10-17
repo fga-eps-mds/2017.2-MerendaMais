@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const window = Dimensions.get('window');
 
@@ -38,7 +39,10 @@ export default function Menu() {
   return (
     <View style={styles.menu}>
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.searchSchool()}
+        >
           <Text
             style={styles.item}
           >

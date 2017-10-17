@@ -51,6 +51,7 @@ class MainScreen extends React.Component {
   }
 
   updateMenuState(isOpen) {
+    console.log(isOpen);
     this.setState({ isOpen });
   }
 
@@ -71,7 +72,7 @@ class MainScreen extends React.Component {
             <Text style={styles.textLogo}>Merenda +</Text>
 
             <TouchableOpacity
-              onPress={() => this.updateMenuState(true)}
+              onPress={() => this.updateMenuState(!this.state.isOpen)}
             >
               <Image source={sideMenuIcon} />
             </TouchableOpacity>
