@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { SideMenu } from 'react-native-elements';
@@ -74,13 +75,33 @@ class SearchSchool extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
 
     this.state = {
       isOpen: false,
       city: '',
       name: '',
+      schoolList: [],
     };
+  }
+
+  searchSchools() {
+    const params = {
+      name: this.state.name,
+      city: this.state.city,
+    };
+
+    axios.post('https://merenda-mais.herokuapp.com/get_schools/', params)
+      .then((response) => {
+        // console.log(response.data);
+        this.setState({ schoolList: response.data });
+
+        console.log('SearchSchool State');
+        console.log(this.state);
+        // If response is an empty array, no schools could be found.
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   updateMenuState(isOpen) {
@@ -94,7 +115,7 @@ class SearchSchool extends React.Component {
         <TouchableOpacity
           style={styles.buttonSearchAnabled}
           activeOpacity={0.7}
-          onPress={() => this.props.searchSchool(this.state)}
+          onPress={() => this.searchSchools()}
         >
           <Text style={{ color: 'white', fontSize: 20 }}>Pesquisar</Text>
         </TouchableOpacity>
