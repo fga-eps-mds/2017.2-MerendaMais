@@ -9,6 +9,7 @@ const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
 const CityIcon = require('../images/ic_location_city_48pt.png');
 const SearchIcon = require('../images/ic_search_48pt.png');
 const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
+const GoIcon = require('../images/ic_keyboard_arrow_right_48pt.png');
 
 
 const styles = StyleSheet.create({
@@ -24,7 +25,6 @@ const styles = StyleSheet.create({
   },
   bodyBox: {
     flex: 10,
-    paddingTop: 10,
     alignItems: 'center',
   },
   textLogo: {
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   Input: {
-    marginTop: 25,
+    marginTop: 20,
     paddingLeft: 2,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -61,19 +61,43 @@ const styles = StyleSheet.create({
   },
   buttonSearchDisabled: {
     paddingHorizontal: 117,
-    paddingVertical: 18,
+    paddingVertical: 15,
     marginTop: 50,
     marginBottom: 0,
     backgroundColor: '#DEDEDE',
     borderRadius: 8,
     borderWidth: 1,
   },
+  listSchools: {
+    flex: 5,
+    justifyContent: 'center',
+    width: 320,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 7,
+  },
+  item: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 0.5,
+    borderRadius: 7,
+  },
+  buttonSelectSchool: { padding: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  buttonArea: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingBottom: 20,
+  },
 });
+
+console.disableYellowBox = true;
 
 class SearchSchool extends React.Component {
   constructor(props) {
     super(props);
-
 
     this.state = {
       isOpen: false,
@@ -84,7 +108,6 @@ class SearchSchool extends React.Component {
     };
   }
 
-
   searchSchools() {
     const params = {
       name: this.state.name,
@@ -94,7 +117,7 @@ class SearchSchool extends React.Component {
 
     axios.post('https://merenda-mais.herokuapp.com/get_schools/', params)
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         this.setState({ schoolList: response.data, isLoading: false });
 
         console.log('SearchSchool State');
@@ -116,7 +139,11 @@ class SearchSchool extends React.Component {
     if (this.state.city > '' || this.state.name > '') {
       if (this.state.isLoading) {
         return (
-          <ActivityIndicator style={{ paddingBottom: 10 }} size="large" color="#FF9500" />
+          <ActivityIndicator
+            style={{ paddingBottom: 10 }}
+            size="large"
+            color="#FF9500"
+          />
         );
       }
       return (
@@ -174,7 +201,7 @@ class SearchSchool extends React.Component {
                   onChangeText={text => this.setState({ city: text })}
                   value={this.state.CAE}
                   underlineColorAndroid="transparent"
-                  placeholder="Estado/Município do seu CAE"
+                  placeholder="Estado/Município"
                 />
               </View>
 
@@ -191,20 +218,24 @@ class SearchSchool extends React.Component {
               </View>
             </View>
 
-            <View style={{ flex: 4 }} >
+            <View style={styles.listSchools} >
               <FlatList
                 data={this.state.schoolList}
                 keyExtractor={item => item.nome}
                 renderItem={({ item }) => (
-                  <TouchableOpacity
-                    style={{ padding: 10 }}
-                  >
-                    <Text>{item.nome}</Text>
-                  </TouchableOpacity>)}
+                  <View style={styles.item}>
+                    <TouchableOpacity
+                      style={styles.buttonSelectSchool}
+                    >
+                      <Text style={{ fontSize: 16 }}>{item.nome}</Text>
+                      <Image source={GoIcon} style={{ width: 25, height: 25 }} />
+                    </TouchableOpacity>
+                  </View>
+                )}
               />
             </View>
 
-            <View style={{ flex: 1, justifyContent: 'flex-end', paddingBottom: 30 }}>
+            <View style={styles.buttonArea}>
               {this.buttonActivation()}
             </View>
           </View>
@@ -213,13 +244,5 @@ class SearchSchool extends React.Component {
     );
   }
 }
-
-const { shape, string } = React.PropTypes;
-
-SearchSchool.propTypes = {
-  counselor: shape({
-    CAE: string.isRequired,
-  }).isRequired,
-};
 
 export default SearchSchool;
