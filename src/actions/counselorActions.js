@@ -32,13 +32,13 @@ export const loginSuccess = counselor => ({
 export const loginFail = () => ({
   type: LOGIN_FAIL,
 });
+
 export const asyncCreateCounselor = userData => (dispatch) => {
   console.log(userData);
-  type: SET_COUNSELOR;
   axios.post('http://merenda-mais.herokuapp.com/counselor/', userData)
     .then((response) => {
       console.log(response.data);
-      dispatch(setCounselor(response));
+      dispatch(setCounselor(response.data));
       Actions.loginCounselorScreen();
     })
     .catch((error) => {
@@ -57,7 +57,6 @@ export const asyncGetCounselor = id => (dispatch) => {
       console.log(error);
     });
 };
-
 
 export const asyncLoginCounselor = userData => (dispatch) => {
   console.log('userData: ');
