@@ -39,6 +39,7 @@ export const asyncGetCounselor = id => (dispatch) => {
   axios.get(`http://merenda-mais.herokuapp.com/counselor/${id}`)
     .then((response) => {
       console.log(response.data);
+      response.data = { ...response.data, id };
       dispatch(setCounselor(response.data));
     })
     .catch((error) => {
@@ -57,7 +58,11 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
   })
     .then((response) => {
       console.log(response.data);
-      dispatch(setCounselor(response.data));
+      const responseWithId = {
+        ...response.data,
+        id: counselorData.id,
+      };
+      dispatch(setCounselor(responseWithId));
       Actions.profileInfo();
     })
     .catch((error) => {
