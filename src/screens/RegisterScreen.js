@@ -78,6 +78,8 @@ export default class RegisterScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(props);
+
     this.state = {
       cpf: '',
       name: '',
