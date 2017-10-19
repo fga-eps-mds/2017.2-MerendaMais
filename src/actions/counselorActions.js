@@ -66,7 +66,7 @@ export const asyncLoginCounselor = userData => (dispatch) => {
     .then((response) => {
       console.log(response.data);
       dispatch(loginSuccess(response.data));
-      Actions.profileInfoScreen();
+      Actions.mainScreen();
     })
     .catch((erro) => {
       console.log(erro);
