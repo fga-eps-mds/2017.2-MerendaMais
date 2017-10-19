@@ -1,8 +1,5 @@
-import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-
-import { modifyCPF, modifyPassword } from '../../src/actions/counselorActions';
-import { MODIFY_CPF, MODIFY_PASSWORD } from '../../src/actions/types';
+import { modifyCPF, modifyPassword, setCounselor } from '../../src/actions/counselorActions';
+import { MODIFY_CPF, MODIFY_PASSWORD, SET_COUNSELOR } from '../../src/actions/types';
 
 describe('Testing counselorActions', () => {
   it('Testing modify CPF', () => {
@@ -30,7 +27,20 @@ describe('Testing counselorActions', () => {
   });
 
   it('Testing set Counselor', () => {
+    let actionReturn = setCounselor();
 
+    const counselor = {
+      CPF: 11111111111,
+    };
+
+    expect(actionReturn.counselor).not.toBe(counselor);
+    expect(actionReturn.type).toBe(SET_COUNSELOR);
+
+    actionReturn = setCounselor(counselor);
+
+    expect(actionReturn.counselor).toBe(counselor);
+    expect(actionReturn.counselor.CPF).toBe(counselor.CPF);
+    expect(actionReturn.type).toBe(SET_COUNSELOR);
   });
 
   it('Testing Loading', () => {
