@@ -1,5 +1,5 @@
-import { modifyCPF, modifyPassword, setCounselor } from '../../src/actions/counselorActions';
-import { MODIFY_CPF, MODIFY_PASSWORD, SET_COUNSELOR } from '../../src/actions/types';
+import { modifyCPF, modifyPassword, setCounselor, loading } from '../../src/actions/counselorActions';
+import { MODIFY_CPF, MODIFY_PASSWORD, SET_COUNSELOR, LOADING } from '../../src/actions/types';
 
 describe('Testing counselorActions', () => {
   it('Testing modify CPF', () => {
@@ -44,6 +44,9 @@ describe('Testing counselorActions', () => {
   });
 
   it('Testing Loading', () => {
+    const actionReturn = loading();
+
+    expect(actionReturn.type).toBe(LOADING);
 
   });
 
