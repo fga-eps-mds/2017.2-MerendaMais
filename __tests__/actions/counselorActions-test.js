@@ -1,5 +1,5 @@
-import { modifyCPF, modifyPassword, setCounselor, loading } from '../../src/actions/counselorActions';
-import { MODIFY_CPF, MODIFY_PASSWORD, SET_COUNSELOR, LOADING } from '../../src/actions/types';
+import { modifyCPF, modifyPassword, setCounselor, loading, loginSuccess, loginFail } from '../../src/actions/counselorActions';
+import { MODIFY_CPF, MODIFY_PASSWORD, SET_COUNSELOR, LOADING, LOGIN_SUCCESS, LOGIN_FAIL } from '../../src/actions/types';
 
 describe('Testing counselorActions', () => {
   it('Testing modify CPF', () => {
@@ -39,7 +39,6 @@ describe('Testing counselorActions', () => {
     actionReturn = setCounselor(counselor);
 
     expect(actionReturn.counselor).toBe(counselor);
-    expect(actionReturn.counselor.CPF).toBe(counselor.CPF);
     expect(actionReturn.type).toBe(SET_COUNSELOR);
   });
 
@@ -47,15 +46,27 @@ describe('Testing counselorActions', () => {
     const actionReturn = loading();
 
     expect(actionReturn.type).toBe(LOADING);
-
   });
 
   it('Testing login success', () => {
+    let actionReturn = loginSuccess();
 
+    const counselor = {
+      CPF: 11111111111,
+    };
 
+    expect(actionReturn.counselor).not.toBe(counselor);
+    expect(actionReturn.type).toBe(LOGIN_SUCCESS);
+
+    actionReturn = loginSuccess(counselor);
+
+    expect(actionReturn.counselor).toBe(counselor);
+    expect(actionReturn.type).toBe(LOGIN_SUCCESS);
   });
 
   it('Testing login failure', () => {
+    const actionReturn = loginFail();
 
+    expect(actionReturn.type).toBe(LOGIN_FAIL);
   });
 });
