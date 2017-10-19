@@ -15,6 +15,7 @@ const initialState = {
     isLoading: false,
     message_erro: '',
   },
+
 };
 
 export default initialState;

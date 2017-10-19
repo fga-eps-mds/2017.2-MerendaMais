@@ -8,12 +8,14 @@ import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContai
 import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
 import MainScreen from './src/screens/MainScreen';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
+import StockFoodCheckoutScreen from './src/screens/StockFoodCheckoutScreen';
 
 const Routes = () => ({
   render() {
     return (
       <Router>
         <Scene key="root">
+          <Scene key="stockfoodcheckoutscreen" component={StockFoodCheckoutScreen} hideNavBar />
           <Scene key="initialScreen" component={InitialScreen} hideNavBar />
           <Scene key="mainScreen" component={MainScreen} hideNavBar />
           <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
