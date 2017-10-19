@@ -67,7 +67,7 @@ const InitialScreen = () => ({
             <TouchableOpacity
               style={styles.loginButton}
               activeOpacity={0.7}
-              onPress={() => Actions.loginConselheiro()}
+              onPress={() => Actions.loginCounselorScreen()}
             >
               <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>

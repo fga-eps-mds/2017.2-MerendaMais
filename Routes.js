@@ -1,9 +1,9 @@
 import React from 'react';
 import { Router, Scene } from 'react-native-router-flux';
 
-import LoginConselheiro from './src/screens/LoginConselheiro';
+import LoginCounselorContainer from './src/Containers/LoginCounselorContainer';
 import InitialScreen from './src/screens/InitialScreen';
-import LoginPresidente from './src/screens/LoginPresidente';
+import LoginPresidentContainer from './src/Containers/LoginPresidentContainer';
 import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContainer';
 import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
 
@@ -14,8 +14,8 @@ const Routes = () => ({
         <Scene key="root">
           <Scene key="initialScreen" component={InitialScreen} hideNavBar />
           <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
-          <Scene key="loginConselheiro" component={LoginConselheiro} hideNavBar />
-          <Scene key="loginPresidente" component={LoginPresidente} hideNavBar />
+          <Scene key="loginCounselorScreen" component={LoginCounselorContainer} hideNavBar />
+          <Scene key="loginPresidentScreen" component={LoginPresidentContainer} hideNavBar />
           <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
         </Scene>
       </Router>
