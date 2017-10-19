@@ -45,6 +45,7 @@
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",
     "react-native-chooser": "^1.6.1",
+    "react-native-elements": "^0.17.0",
     "react-native-modal-dropdown": "^0.5.0",
     "react-native-modal-picker": "0.0.16",
     "react-native-router-flux": "^4.0.0-beta.21",
