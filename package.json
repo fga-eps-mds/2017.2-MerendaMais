@@ -29,7 +29,8 @@
     "ios": "react-native-scripts ios",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint src",
-    "analyze": "./node_modules/.bin/plato -r -d report App.js src/"
+    "analyze": "./node_modules/.bin/plato -r -d report App.js src/",
+    "test-with-coverage": "jest --coverage"
   },
   "jest": {
     "preset": "react-native",

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
 // import PropTypes from 'prop-types';
 
@@ -82,14 +83,15 @@ export default class ProfileInfoScreen extends React.Component {
   verifyCharge() {
     if (this.props.counselor.isPresident) {
       return (
-        <View style={styles.field}>
+        <View key="is_president" style={styles.field}>
           <Image source={iconJob} style={styles.icon} />
           <Text>Cargo: Presidente</Text>
         </View>
       );
     }
+
     return (
-      <View style={styles.field}>
+      <View key="is_counselor" style={styles.field}>
         <Image source={iconJob} style={styles.icon} />
         <Text>Cargo: Conselheiro </Text>
       </View>

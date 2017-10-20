@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
