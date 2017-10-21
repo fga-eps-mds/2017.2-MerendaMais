@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { StyleSheet,
   TouchableOpacity,
   Text,
@@ -6,32 +6,13 @@ import { StyleSheet,
   View,
   Image }
   from 'react-native';
+import Header from '../components/Header';
 
-
-const iconEmail = require('../images/ic_account_circle.png');
+const iconEmail = require('../images/ic_email.png');
 const iconPhone = require('../images/ic_phone.png');
+const iconName = require('../images/ic_account_circle.png');
 
 const styles = StyleSheet.create({
-  header: {
-    flex: 1.2,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    shadowColor: 'black',
-    shadowOpacity: 1,
-    shadowRadius: 6,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginBottom: 50,
-  },
-
-  textLogo: {
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 30,
-  },
-
   principal: {
     flex: 1,
   },
@@ -59,7 +40,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
 
   },
-
 
   inputs: {
     backgroundColor: '#FAFAFA',
@@ -91,26 +71,49 @@ export default class UpdateInfoScreen extends React.Component {
     this.state = {
       email: '',
       phone: '',
+      name: '',
+    };
+  }
+  handleFieldOnChange(field, value) {
+    this.setState({
+      [field]: value,
+    });
+  }
+  fetchCounselorData() {
+    return {
+      email: this.state.email,
+      phone: this.state.phone,
+      name: this.state.name,
+      id: this.props.id,
     };
   }
   render() {
     return (
 
       <View style={styles.principal}>
-        <View style={styles.header}>
-          <Text style={styles.textLogo}>EDITAR INFORMAÇÕES</Text>
-        </View>
-
+        <Header
+          title={'Editar Informações'}
+          backButton
+        />
         <View style={styles.content}>
+          <View style={styles.inputs}>
+            <Image source={iconName} style={styles.icon} />
+            <TextInput
+              width={280}
+              maxLength={50}
+              placeholder="Digite seu nome"
+              underlineColorAndroid="transparent"
+              onChangeText={text => this.handleFieldOnChange('name', text)}
+            />
+          </View>
           <View style={styles.inputs}>
             <Image source={iconEmail} style={styles.icon} />
             <TextInput
               width={280}
               maxLength={50}
               placeholder="nome@exemplo.com"
-              placeholderTextColor="black"
               underlineColorAndroid="transparent"
-              onChangeText={email => this.setState(email)}
+              onChangeText={text => this.handleFieldOnChange('email', text)}
             />
           </View>
           <View style={styles.inputs}>
@@ -119,16 +122,23 @@ export default class UpdateInfoScreen extends React.Component {
               width={280}
               maxLength={11}
               placeholder="(00)00000-0000"
-              placeholderTextColor="black"
               underlineColorAndroid="transparent"
-              onChangeText={phone => this.setState({ phone })}
+              onChangeText={text => this.handleFieldOnChange('phone', text)}
             />
           </View>
         </View>
-        <TouchableOpacity style={styles.buttonContainer} >
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => this.props.editUser(this.fetchCounselorData())}
+        >
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+
+UpdateInfoScreen.propTypes = {
+  editUser: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+};

@@ -1,5 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
+import Header from '../components/Header';
 // import PropTypes from 'prop-types';
 
 const iconName = require('../images/ic_face.png');
@@ -12,22 +14,6 @@ const iconCAE = require('../images/ic_location_city.png');
 const iconCaeType = require('../images/ic_domain.png');
 
 const styles = StyleSheet.create({
-  headerBox: {
-    flex: 1.2,
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textLogo: {
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 30,
-  },
   field: {
     backgroundColor: '#FAFAFA',
     paddingVertical: 4,
@@ -82,14 +68,15 @@ export default class ProfileInfoScreen extends React.Component {
   verifyCharge() {
     if (this.props.counselor.isPresident) {
       return (
-        <View style={styles.field}>
+        <View key="is_president" style={styles.field}>
           <Image source={iconJob} style={styles.icon} />
           <Text>Cargo: Presidente</Text>
         </View>
       );
     }
+
     return (
-      <View style={styles.field}>
+      <View key="is_counselor" style={styles.field}>
         <Image source={iconJob} style={styles.icon} />
         <Text>Cargo: Conselheiro </Text>
       </View>
@@ -98,9 +85,10 @@ export default class ProfileInfoScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.profileInfoScreen}>
-        <View style={styles.headerBox}>
-          <Text style={styles.textLogo}> PERFIL</Text>
-        </View>
+        <Header
+          title={'PERFIL'}
+          backButton={'<'}
+        />
         <View style={styles.infoProfileBox}>
           <View style={styles.field}>
             <Image source={iconName} style={styles.icon} />

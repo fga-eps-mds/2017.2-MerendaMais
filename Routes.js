@@ -9,6 +9,8 @@ import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
 import MainScreen from './src/screens/MainScreen';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import StockFoodCheckoutScreen from './src/screens/StockFoodCheckoutScreen';
+import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
+
 
 const Routes = () => ({
   render() {
@@ -23,6 +25,7 @@ const Routes = () => ({
           <Scene key="loginCounselorScreen" component={LoginCounselorContainer} hideNavBar />
           <Scene key="loginPresidentScreen" component={LoginPresidentContainer} hideNavBar />
           <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
+          <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
         </Scene>
       </Router>
     );

@@ -29,7 +29,8 @@
     "ios": "react-native-scripts ios",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint src",
-    "analyze": "./node_modules/.bin/plato -r -d report App.js src/"
+    "analyze": "./node_modules/.bin/plato -r -d report App.js src/",
+    "test-with-coverage": "jest --coverage"
   },
   "jest": {
     "preset": "react-native",
@@ -44,7 +45,7 @@
     "prop-types": "^15.6.0",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",
-    "react-native-checkbox": "^2.0.2",
+    "react-native-checkbox": "^1.2.0",
     "react-native-chooser": "^1.6.1",
     "react-native-elements": "^0.17.0",
     "react-native-modal-dropdown": "^0.5.0",

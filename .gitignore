@@ -3,3 +3,5 @@ node_modules/
 npm-debug.*
 package-lock.json
 report
+coverage
+*.swp
