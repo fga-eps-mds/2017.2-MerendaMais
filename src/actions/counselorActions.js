@@ -51,7 +51,32 @@ export const asyncGetCounselor = id => (dispatch) => {
   axios.get(`http://merenda-mais.herokuapp.com/counselor/${id}`)
     .then((response) => {
       console.log(response.data);
+      response.data = { ...response.data, id };
       dispatch(setCounselor(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const asyncEditCounselor = counselorData => (dispatch) => {
+  console.log('counselorActions: ');
+  console.log(counselorData);
+
+  axios.patch(`http://merenda-mais.herokuapp.com/counselor/${counselorData.id}/`, {
+    email: counselorData.email,
+    phone: counselorData.phone,
+    name: counselorData.name,
+  })
+    .then((response) => {
+      console.log('counselorActions: ');
+      console.log(response.data);
+      const responseWithId = {
+        ...response.data,
+        id: counselorData.id,
+      };
+      dispatch(setCounselor(responseWithId));
+      Actions.profileInfoScreen();
     })
     .catch((error) => {
       console.log(error);
