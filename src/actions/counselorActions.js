@@ -4,6 +4,9 @@ import { SET_COUNSELOR,
   LOGIN_SUCCESS, LOGIN_FAIL,
   MODIFY_CPF, LOADING,
   MODIFY_PASSWORD } from './types';
+import { logTrace } from '../../logConfig/loggers';
+
+const FILE_NAME = 'counselorActions.js';
 
 export const modifyCPF = CPF => ({
   type: MODIFY_CPF,
@@ -84,6 +87,10 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
 };
 
 export const asyncLoginCounselor = userData => (dispatch) => {
+  logTrace(FILE_NAME,
+    'asyncLoginCounselor',
+    `Counselor Data to send for Login: ${JSON.stringify(userData)}`);
+
   console.log('userData: ');
   console.log(userData);
   dispatch(loading());
