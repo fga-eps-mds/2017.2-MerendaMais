@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // imported as a connected component!
 import RegisterScreenContainer from '../../src/Containers/RegisterScreenContainer';
+import RegisterScreen from '../../src/screens/RegisterScreen';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -33,5 +34,15 @@ describe('Testing RegisterScreen', () => {
       { context: { store } },
     ).dive();
     expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('Testing RegisterScreen Input', () => {
+  const wrapper = shallow(<RegisterScreen />);
+
+  it('should change state when the text of cpf input component changes', () => {
+    const cpfInputComponent = wrapper.find('TextInput').first();
+    cpfInputComponent.simulate('ChangeText', '11111111111');
+    expect(wrapper.state('cpf')).toEqual('11111111111');
   });
 });
