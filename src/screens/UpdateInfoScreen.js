@@ -100,7 +100,7 @@ export default class UpdateInfoScreen extends React.Component {
             <Image source={iconName} style={styles.icon} />
             <TextInput
               width={280}
-              maxLength={50}
+              maxLength={60}
               placeholder="Digite seu nome"
               underlineColorAndroid="transparent"
               onChangeText={text => this.handleFieldOnChange('name', text)}

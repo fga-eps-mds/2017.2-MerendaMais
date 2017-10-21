@@ -104,6 +104,7 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
+          maxLength={11}
           onChangeText={text => this.setState({ cpf: text })}
         />
         <Text>     Nome</Text>
@@ -113,6 +114,7 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
+          maxLength={60}
           onChangeText={text => this.setState({ name: text })}
         />
         <Text>     Email</Text>
@@ -122,6 +124,7 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
+          maxLength={50}
           onChangeText={text => this.setState({ email: text })}
         />
         <Text>     Telefone</Text>
@@ -131,6 +134,7 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
+          maxLength={11}
           onChangeText={text => this.setState({ phone: text })}
         />
         <Text>     Cargo</Text>
@@ -176,6 +180,7 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
+          maxLength={40}
           onChangeText={text => this.setState({ CAE: text })}
         />
         <TouchableOpacity
