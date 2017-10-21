@@ -6,32 +6,13 @@ import { StyleSheet,
   View,
   Image }
   from 'react-native';
+import Header from '../components/Header';
 
 const iconEmail = require('../images/ic_email.png');
 const iconPhone = require('../images/ic_phone.png');
 const iconName = require('../images/ic_account_circle.png');
 
 const styles = StyleSheet.create({
-  header: {
-    flex: 1.2,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    shadowColor: 'black',
-    shadowOpacity: 1,
-    shadowRadius: 6,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginBottom: 50,
-  },
-
-  textLogo: {
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 30,
-  },
-
   principal: {
     flex: 1,
   },
@@ -59,7 +40,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
 
   },
-
 
   inputs: {
     backgroundColor: '#FAFAFA',
@@ -111,10 +91,10 @@ export default class UpdateInfoScreen extends React.Component {
     return (
 
       <View style={styles.principal}>
-        <View style={styles.header}>
-          <Text style={styles.textLogo}>EDITAR INFORMAÇÕES</Text>
-        </View>
-
+        <Header
+          title={'Editar Informações'}
+          backButton
+        />
         <View style={styles.content}>
           <View style={styles.inputs}>
             <Image source={iconName} style={styles.icon} />

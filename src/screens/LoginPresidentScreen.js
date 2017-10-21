@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
+import Header from '../components/Header';
 
 const iconAccount = require('../images/account_circle.png');
 const iconLock = require('../images/ic_lock.png');
@@ -10,34 +11,19 @@ const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
-  topo: {
-    flex: 1.2,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-
-  },
-  conteudo: {
+  content: {
     flex: 6,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
 
   },
-  rodape: {
+  footer: {
     flex: 0.7,
     borderTopColor: '#a9a9a9',
     borderTopWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  textLogo: {
-    fontSize: 35,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 10,
   },
   icon: {
     width: 30,
@@ -109,11 +95,8 @@ export default class LoginPresidentScreen extends React.Component {
   render() {
     return (
       <View style={styles.principal}>
-        <View style={styles.topo}>
-          <Text style={styles.textLogo}>Merenda +</Text>
-        </View>
-
-        <View style={styles.conteudo}>
+        <Header />
+        <View style={styles.content}>
           <View style={styles.InputCPF}>
             <Image source={iconAccount} style={styles.icon} />
             <TextInput
@@ -156,7 +139,7 @@ export default class LoginPresidentScreen extends React.Component {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.rodape}>
+        <View style={styles.footer}>
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => Actions.registerScreen()}
