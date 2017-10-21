@@ -29,9 +29,10 @@ const styles = StyleSheet.create({
     top: 20,
   },
   item: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '300',
-    paddingTop: 5,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
 });
 
@@ -47,6 +48,19 @@ export default function Menu() {
             style={styles.item}
           >
             Pesquisar Escola
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.updateInfoScreen()}
+        >
+          <Text
+            style={styles.item}
+          >
+            Editar Dados
           </Text>
         </TouchableOpacity>
       </View>
