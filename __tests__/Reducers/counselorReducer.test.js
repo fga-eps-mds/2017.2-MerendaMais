@@ -9,7 +9,7 @@ import {
 
 describe('Testing counselorReducer', () => {
   it('sets counselor', () => {
-    let counselor = {...initialState.counselor};
+    let counselor = { ...initialState.counselor };
 
     expect(counselor.id).not.toBe(123);
 
@@ -25,13 +25,13 @@ describe('Testing counselorReducer', () => {
   });
 
   it('modify CPF', () => {
-    let counselor = {...initialState.counselor};
+    let counselor = { ...initialState.counselor };
 
     expect(counselor.cpf).not.toBe(456789);
 
     counselor = counselorReducer(counselor, {
       type: MODIFY_CPF,
-      cpf: 456789
+      payload: 456789
     });
 
     expect(counselor.cpf).toBe(456789);
