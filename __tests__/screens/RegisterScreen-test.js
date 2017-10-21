@@ -45,4 +45,21 @@ describe('Testing RegisterScreen Input', () => {
     cpfInputComponent.simulate('ChangeText', '11111111111');
     expect(wrapper.state('cpf')).toEqual('11111111111');
   });
+
+  it('should change state when the text of name input component changes', () => {
+    const nameInputComponent = wrapper.find('TextInput').at(1);
+    nameInputComponent.simulate('ChangeText', 'test');
+    expect(wrapper.state('name')).toEqual('test');
+  });
+  it('should change state when the text of email input component changes', () => {
+    const emailInputComponent = wrapper.find('TextInput').at(2);
+    emailInputComponent.simulate('ChangeText', 'test5@test.com');
+    expect(wrapper.state('email')).toEqual('test5@test.com');
+  });
+
+  it('should change state when the text of phone input component changes', () => {
+    const phoneInputComponent = wrapper.find('TextInput').at(3);
+    phoneInputComponent.simulate('ChangeText', '555555555');
+    expect(wrapper.state('phone')).toEqual('555555555');
+  });
 });
