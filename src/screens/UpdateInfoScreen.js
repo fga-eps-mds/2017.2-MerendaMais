@@ -101,6 +101,7 @@ export default class UpdateInfoScreen extends React.Component {
             <TextInput
               width={280}
               maxLength={60}
+              keyboardType={'default'}
               placeholder="Digite seu nome"
               underlineColorAndroid="transparent"
               onChangeText={text => this.handleFieldOnChange('name', text)}
@@ -111,6 +112,7 @@ export default class UpdateInfoScreen extends React.Component {
             <TextInput
               width={280}
               maxLength={50}
+              keyboardType={'email-address'}
               placeholder="nome@exemplo.com"
               underlineColorAndroid="transparent"
               onChangeText={text => this.handleFieldOnChange('email', text)}
@@ -121,6 +123,7 @@ export default class UpdateInfoScreen extends React.Component {
             <TextInput
               width={280}
               maxLength={11}
+              keyboardType={'phone-pad'}
               placeholder="(00)00000-0000"
               underlineColorAndroid="transparent"
               onChangeText={text => this.handleFieldOnChange('phone', text)}

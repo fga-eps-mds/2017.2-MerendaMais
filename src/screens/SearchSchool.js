@@ -198,6 +198,8 @@ class SearchSchool extends React.Component {
                 <TextInput
                   width={280}
                   returnKeyType="go"
+                  maxLength={50}
+                  keyboardType={'default'}
                   onChangeText={text => this.setState({ city: text })}
                   value={this.state.CAE}
                   underlineColorAndroid="transparent"
@@ -210,6 +212,8 @@ class SearchSchool extends React.Component {
                 <TextInput
                   width={280}
                   returnKeyType="go"
+                  maxLength={50}
+                  keyboardType={'default'}
                   onChangeText={text => this.setState({ name: text })}
                   value={this.state.name}
                   underlineColorAndroid="transparent"

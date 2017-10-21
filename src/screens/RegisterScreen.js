@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
+// import { Form, TextValidator } from 'react-native-validator-form';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 
@@ -88,6 +89,7 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
+          keyboardType={'default'}
           onChangeText={text => this.setState({ password: text })}
           secureTextEntry
         />
@@ -105,6 +107,7 @@ export default class RegisterScreen extends React.Component {
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
           maxLength={11}
+          keyboardType={'numeric'}
           onChangeText={text => this.setState({ cpf: text })}
         />
         <Text>     Nome</Text>
@@ -115,6 +118,7 @@ export default class RegisterScreen extends React.Component {
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
           maxLength={60}
+          keyboardType={'default'}
           onChangeText={text => this.setState({ name: text })}
         />
         <Text>     Email</Text>
@@ -125,6 +129,7 @@ export default class RegisterScreen extends React.Component {
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
           maxLength={50}
+          keyboardType={'email-address'}
           onChangeText={text => this.setState({ email: text })}
         />
         <Text>     Telefone</Text>
@@ -135,6 +140,7 @@ export default class RegisterScreen extends React.Component {
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
           maxLength={11}
+          keyboardType={'phone-pad'}
           onChangeText={text => this.setState({ phone: text })}
         />
         <Text>     Cargo</Text>
@@ -165,14 +171,18 @@ export default class RegisterScreen extends React.Component {
           </Picker>
         </View>
         <Text>     Tipo do CAE</Text>
-        <TextInput
-          placeholder="Escolha o tipo do seu CAE"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          onChangeText={text => this.setState({ CAE_Type: text })}
-        />
+        <View
+          style={styles.InputDropdown}
+        >
+          <Picker
+            onValueChange={value => this.setState({ CAE_Type: value })}
+            selectedValue={this.state.CAE_Type}
+          >
+            <Picker.Item value="" label="Escolha o tipo do seu CAE" color="#95a5a6" />
+            <Picker.Item value="Estadual" label="Estadual" />
+            <Picker.Item value="Municipal" label="Municipal" />
+          </Picker>
+        </View>
         <Text>     CAE</Text>
         <TextInput
           placeholder="Lista com o CAE do seu município/estado"
@@ -181,6 +191,7 @@ export default class RegisterScreen extends React.Component {
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
           maxLength={40}
+          keyboardType={'default'}
           onChangeText={text => this.setState({ CAE: text })}
         />
         <TouchableOpacity
