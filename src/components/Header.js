@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Alert, Dimensions, Image } from 'react-native';
 import PropTypes from 'prop-types';
 
+const { width } = Dimensions.get('window');
+const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
 
 const styles = StyleSheet.create(
   {
     button: {
       color: 'black',
       fontSize: 30,
-      marginLeft: 25,
+      marginLeft: 30,
     },
     buttonWrapper: {
     },
@@ -23,7 +25,9 @@ const styles = StyleSheet.create(
       alignItems: 'center',
     },
     textLogo: {
-      fontSize: 35,
+      // Font size 30 looks nice on 360 width phone.
+      // (x * widthYourPhone = fontSize) where x is the proportion used in fontSize above.
+      fontSize: width * 0.08,
       color: 'white',
       fontWeight: 'bold',
       marginTop: 10,
@@ -48,7 +52,7 @@ const Header = props => (
     {props.backButton && (
       <View style={styles.buttonWrapper}>
         <TouchableOpacity onPress={() => Alert.alert('clicar')} >
-          <Text style={styles.button}>{'<'}</Text>
+          <Image source={BackIcon} />
         </TouchableOpacity>
       </View>
     )}

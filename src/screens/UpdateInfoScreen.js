@@ -92,8 +92,8 @@ export default class UpdateInfoScreen extends React.Component {
 
       <View style={styles.principal}>
         <Header
-          title={'EDITAR INFORMAÇÕES'}
-          backButton={'<'}
+          title={'Editar Informações'}
+          backButton
         />
         <View style={styles.content}>
           <View style={styles.inputs}>
