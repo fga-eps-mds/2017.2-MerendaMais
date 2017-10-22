@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     height: 30,
     margin: 5,
   },
-  InputCPF: {
+  Inputemail: {
     paddingLeft: 2,
     paddingRight: 4,
     flexDirection: 'row',
@@ -65,14 +65,13 @@ const styles = StyleSheet.create({
 });
 
 export default class LoginPresidentScreen extends React.Component {
-  asyncLoginCounselor() {
-    const CPF = this.props.cpf;
-    const password = this.props.password;
-    const userData = {
-      username: CPF,
-      password,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
     };
-    this.props.asyncLoginCounselor(userData);
   }
 
   renderBtnLogin() {
@@ -85,7 +84,7 @@ export default class LoginPresidentScreen extends React.Component {
       <TouchableOpacity
         style={styles.buttonLogin}
         activeOpacity={0.7}
-        onPress={() => this.asyncLoginCounselor()}
+        onPress={() => this.props.asyncLoginCounselor(this.state)}
       >
         <Text style={{ color: 'white', fontSize: 20 }}>Entrar</Text>
       </TouchableOpacity>
@@ -97,17 +96,16 @@ export default class LoginPresidentScreen extends React.Component {
       <View style={styles.principal}>
         <Header />
         <View style={styles.content}>
-          <View style={styles.InputCPF}>
+          <View style={styles.Inputemail}>
             <Image source={iconAccount} style={styles.icon} />
             <TextInput
               style={styles.styleInput}
               width={280}
               returnKeyType="next"
-              onChangeText={CPF => this.props.modifyCPF(CPF)}
-              maxLength={11}
-              value={this.props.cpf}
+              onChangeText={email => this.setState({ email })}
+              value={this.email}
               underlineColorAndroid="transparent"
-              placeholder="CPF"
+              placeholder="email"
               onSubmitEditing={() => this.passwordInput.focus()}
             />
           </View>
@@ -119,9 +117,9 @@ export default class LoginPresidentScreen extends React.Component {
               width={280}
               underlineColorAndroid="transparent"
               returnKeyType="go"
+              value={this.password}
               secureTextEntry
-              onChangeText={password => this.props.modifyPassword(password)}
-              value={this.props.password}
+              onChangeText={password => this.setState({ password })}
               placeholder="Senha"
               ref={input => this.passwordInput === input}
             />
@@ -155,10 +153,6 @@ export default class LoginPresidentScreen extends React.Component {
 }
 
 LoginPresidentScreen.propTypes = {
-  modifyCPF: PropTypes.func.isRequired,
-  modifyPassword: PropTypes.func.isRequired,
   asyncLoginCounselor: PropTypes.func.isRequired,
-  cpf: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };

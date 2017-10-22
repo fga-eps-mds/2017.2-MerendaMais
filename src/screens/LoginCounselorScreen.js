@@ -92,6 +92,7 @@ export default class LoginCounselorScreen extends React.Component {
             <TextInput
               width={280}
               returnKeyType="go"
+              value={this.email}
               onChangeText={email => this.setState({ email })}
               underlineColorAndroid="transparent"
               placeholder="email"
