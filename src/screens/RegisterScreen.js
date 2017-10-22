@@ -84,15 +84,30 @@ export default class RegisterScreen extends React.Component {
     this.setState({ cpf: validCpf });
   }
 
+
   register() {
     const cpfRegex = /[0-9]{11}/g;
+    const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    let error = false;
+    let errorMessage = '';
     if (!cpfRegex.test(this.state.cpf)) {
-      Alert.alert('CPF inválido');
-      return;
+      error = true;
+      errorMessage += 'CPF inválido\n';
     }
-    this.props.createUser(this.state);
+    if (!emailRegex.test(this.state.email)) {
+      error = true;
+      errorMessage += 'Email inválido\n';
+    }
+    if (this.state.isPresident === '') {
+      error = true;
+      errorMessage += 'Cargo não selecionado\n';
+    }
+    if (error === false) {
+      this.props.createUser(this.state);
+    } else {
+      Alert.alert('ERRO', errorMessage);
+    }
   }
-
   render() {
     console.log(this.state);
     const password = this.state.isPresident === true ? (
@@ -147,6 +162,7 @@ export default class RegisterScreen extends React.Component {
           maxLength={50}
           keyboardType={'email-address'}
           onChangeText={text => this.setState({ email: text })}
+          value={this.state.email}
         />
         <Text>     Telefone</Text>
         <TextInput

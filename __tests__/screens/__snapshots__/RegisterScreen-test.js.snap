@@ -68,6 +68,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <Text
           accessible={true}
@@ -130,6 +131,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <Text
           accessible={true}
@@ -440,6 +442,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -528,6 +531,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -1193,6 +1197,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <Text
             accessible={true}
@@ -1255,6 +1260,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <Text
             accessible={true}
@@ -1565,6 +1571,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
@@ -1653,6 +1660,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
