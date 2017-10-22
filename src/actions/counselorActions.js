@@ -3,8 +3,8 @@ import { Actions } from 'react-native-router-flux';
 import { SET_COUNSELOR,
   LOGIN_SUCCESS, LOGIN_FAIL,
   MODIFY_CPF, LOADING,
-  MODIFY_PASSWORD } from './types';
-import { logTrace } from '../../logConfig/loggers';
+  MODIFY_PASSWORD, SET_TOKEN } from './types';
+import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -34,6 +34,11 @@ export const loginSuccess = counselor => ({
 
 export const loginFail = () => ({
   type: LOGIN_FAIL,
+});
+
+export const setToken = token => ({
+  type: SET_TOKEN,
+  payload: token,
 });
 
 export const asyncCreateCounselor = userData => (dispatch) => {
@@ -87,16 +92,23 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
 };
 
 export const asyncLoginCounselor = userData => (dispatch) => {
-  logTrace(FILE_NAME,
+  logInfo(FILE_NAME,
     'asyncLoginCounselor',
-    `Counselor Data to send for Login: ${JSON.stringify(userData)}`);
+    `userData received from LoginCounselorScreen: ${JSON.stringify(userData)}`);
 
-  console.log('userData: ');
-  console.log(userData);
+  const Header = {
+    headers: {
+      email: userData.email,
+      senha: userData.password },
+  };
+
   dispatch(loading());
-  axios.post('http://merenda-mais.herokuapp.com/get_auth_token/', userData)
+  axios.get('http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/autenticar', Header)
     .then((response) => {
-      console.log(response.data);
+      logInfo(FILE_NAME,
+        'asyncLoginCounselor',
+        `Token received from Nuvem Cívica ${response.headers.apptoken}`);
+      dispatch(setToken(response.headers.apptoken));
       dispatch(loginSuccess(response.data));
       Actions.mainScreen();
     })
