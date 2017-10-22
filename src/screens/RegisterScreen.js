@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
-// import { Form, TextValidator } from 'react-native-validator-form';
+import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 
@@ -76,6 +75,22 @@ export default class RegisterScreen extends React.Component {
       CAE_Type: '',
       CAE: '',
     };
+    this.validateCpf = this.validateCpf.bind(this);
+    this.register = this.register.bind(this);
+  }
+
+  validateCpf(cpf) {
+    const validCpf = cpf.replace(/[^0-9]/g, '');
+    this.setState({ cpf: validCpf });
+  }
+
+  register() {
+    const cpfRegex = /[0-9]{11}/g;
+    if (!cpfRegex.test(this.state.cpf)) {
+      Alert.alert('CPF inválido');
+      return;
+    }
+    this.props.createUser(this.state);
   }
 
   render() {
@@ -108,7 +123,8 @@ export default class RegisterScreen extends React.Component {
           returnKeyLabel={'next'}
           maxLength={11}
           keyboardType={'numeric'}
-          onChangeText={text => this.setState({ cpf: text })}
+          onChangeText={text => this.validateCpf(text)}
+          value={this.state.cpf}
         />
         <Text>     Nome</Text>
         <TextInput
@@ -195,7 +211,7 @@ export default class RegisterScreen extends React.Component {
           onChangeText={text => this.setState({ CAE: text })}
         />
         <TouchableOpacity
-          onPress={() => this.props.createUser(this.state)}
+          onPress={() => this.register()}
           style={styles.buttonContainer}
           activeOpacity={0.7}
         >
