@@ -12,6 +12,8 @@ const initialState = {
     password: '',
     CAE_Type: '',
     CAE: '',
+  },
+  application: {
     isLoading: false,
     message_erro: '',
   },

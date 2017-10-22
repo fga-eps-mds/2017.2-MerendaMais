@@ -1,18 +1,16 @@
 import { connect } from 'react-redux';
 import { LoginCounselorScreen } from '../screens';
-import { modifyCPF, asyncLoginCounselor } from '../actions/counselorActions';
+import { asyncLoginCounselor } from '../actions/counselorActions';
 
 const mapStatetoProps = state => (
   {
-    cpf: state.counselor.cpf,
-    message_erro: state.counselor.message_erro,
-    isLoading: state.counselor.isLoading,
+    message_erro: state.application.message_erro,
+    isLoading: state.application.isLoading,
   }
 );
 
 const mapDispachtoProps = dispatch => (
   {
-    modifyCPF: CPF => dispatch(modifyCPF(CPF)),
     asyncLoginCounselor: userData => dispatch(asyncLoginCounselor(userData)),
   }
 );

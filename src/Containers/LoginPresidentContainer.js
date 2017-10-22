@@ -6,8 +6,8 @@ const mapStatetoProps = state => (
   {
     cpf: state.counselor.cpf,
     password: state.counselor.password,
-    message_erro: state.counselor.message_erro,
-    isLoading: state.counselor.isLoading,
+    message_erro: state.application.message_erro,
+    isLoading: state.application.isLoading,
   }
 );
 

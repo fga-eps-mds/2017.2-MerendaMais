@@ -1,30 +1,17 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { SET_COUNSELOR,
-  LOGIN_SUCCESS, LOGIN_FAIL,
-  MODIFY_CPF, LOADING,
-  MODIFY_PASSWORD, SET_TOKEN } from './types';
+  LOGIN_SUCCESS,
+  SET_TOKEN } from './types';
+import { isLoading, isNotLoading } from './applicationActions';
 import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'counselorActions.js';
 
-export const modifyCPF = CPF => ({
-  type: MODIFY_CPF,
-  payload: CPF,
-});
-
-export const modifyPassword = password => ({
-  type: MODIFY_PASSWORD,
-  payload: password,
-});
-
+// Actions
 export const setCounselor = counselor => ({
   type: SET_COUNSELOR,
   counselor,
-});
-
-export const loading = () => ({
-  type: LOADING,
 });
 
 export const loginSuccess = counselor => ({
@@ -32,15 +19,12 @@ export const loginSuccess = counselor => ({
   counselor,
 });
 
-export const loginFail = () => ({
-  type: LOGIN_FAIL,
-});
-
 export const setToken = token => ({
   type: SET_TOKEN,
   payload: token,
 });
 
+// Async Actions
 export const asyncCreateCounselor = userData => (dispatch) => {
   console.log(userData);
   axios.post('http://merenda-mais.herokuapp.com/counselor/', userData)
@@ -96,24 +80,33 @@ export const asyncLoginCounselor = userData => (dispatch) => {
     'asyncLoginCounselor',
     `userData received from LoginCounselorScreen: ${JSON.stringify(userData)}`);
 
-  const Header = {
+  // Header json to send Login data. OBS: The word "headers" must be write like this.
+  const header = {
     headers: {
       email: userData.email,
       senha: userData.password },
   };
 
-  dispatch(loading());
-  axios.get('http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/autenticar', Header)
+  // Setting state loading true, to activate the loading spin.
+  dispatch(isLoading());
+
+  // Request to authenticate the user and get his token.
+  axios.get('http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/autenticar', header)
     .then((response) => {
       logInfo(FILE_NAME,
         'asyncLoginCounselor',
         `Token received from Nuvem Cívica ${response.headers.apptoken}`);
+
+      // To catch response header data you need to use response.headers.<Attribute-Needed>.
       dispatch(setToken(response.headers.apptoken));
       dispatch(loginSuccess(response.data));
+      dispatch(isNotLoading());
       Actions.mainScreen();
     })
     .catch((erro) => {
       console.log(erro);
-      dispatch(loginFail());
+      dispatch(isNotLoading());
     });
 };
+
+// Modularization Functions

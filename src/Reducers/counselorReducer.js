@@ -1,19 +1,29 @@
 import initialState from './initialState';
 import { SET_COUNSELOR,
-  MODIFY_CPF,
-  LOADING,
-  LOGIN_FAIL,
-  MODIFY_PASSWORD,
   LOGIN_SUCCESS,
   SET_TOKEN } from '../actions/types';
+import { logInfo, logError } from '../../logConfig/loggers';
 
-// action = {type: ACTION_TYPE, pyload: someDataHere}
+const FILE_NAME = 'counselorReducer.js';
+
 const counselorReducer = (state = initialState.counselor, action) => {
-  console.log(action);
-  if (action === undefined) return state;
+  logInfo(FILE_NAME, 'counselorReducer',
+    `State received in Counselor Reducer: ${JSON.stringify(state)}`);
+
+  logInfo(FILE_NAME, 'counselorReducer',
+    `Action received in Counselor Reducer: ${JSON.stringify(action)}`);
+
+  if (action === undefined) {
+    logError(FILE_NAME, 'counselorReducer',
+      `ERROR: Action is undefined: ${JSON.stringify(action)}`);
+
+    return state;
+  }
+
   switch (action.type) {
     case SET_COUNSELOR:
       return {
+        ...state,
         id: action.counselor.id,
         url: action.counselor.url,
         cpf: action.counselor.cpf,
@@ -25,22 +35,6 @@ const counselorReducer = (state = initialState.counselor, action) => {
         segment: action.counselor.segment,
         CAE_Type: action.counselor.CAE_Type,
         CAE: action.counselor.CAE,
-        isLoading: false,
-      };
-    case MODIFY_CPF:
-      return {
-        ...state,
-        cpf: action.payload,
-      };
-    case MODIFY_PASSWORD:
-      return {
-        ...state,
-        password: action.payload,
-      };
-    case LOADING:
-      return {
-        ...state,
-        isLoading: true,
       };
     case LOGIN_SUCCESS:
       return {
@@ -48,12 +42,6 @@ const counselorReducer = (state = initialState.counselor, action) => {
         name: action.counselor.name,
         id: action.counselor.id,
         cpf: action.counselor.cpf,
-        isLoading: false,
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        isLoading: false,
       };
     case SET_TOKEN:
       return {
