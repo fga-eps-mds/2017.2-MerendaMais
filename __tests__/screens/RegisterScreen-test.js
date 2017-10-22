@@ -41,7 +41,7 @@ describe('Testing RegisterScreen Input', () => {
   const wrapper = shallow(<RegisterScreen />);
 
   it('should change state when the text of cpf input component changes', () => {
-    const cpfInputComponent = wrapper.find('TextInput').first();
+    const cpfInputComponent = wrapper.find('TextInput').at(0);
     cpfInputComponent.simulate('ChangeText', '11111111111');
     expect(wrapper.state('cpf')).toEqual('11111111111');
   });
@@ -51,6 +51,7 @@ describe('Testing RegisterScreen Input', () => {
     nameInputComponent.simulate('ChangeText', 'test');
     expect(wrapper.state('name')).toEqual('test');
   });
+
   it('should change state when the text of email input component changes', () => {
     const emailInputComponent = wrapper.find('TextInput').at(2);
     emailInputComponent.simulate('ChangeText', 'test5@test.com');
@@ -61,5 +62,17 @@ describe('Testing RegisterScreen Input', () => {
     const phoneInputComponent = wrapper.find('TextInput').at(3);
     phoneInputComponent.simulate('ChangeText', '555555555');
     expect(wrapper.state('phone')).toEqual('555555555');
+  });
+
+  it('should change state when the text of CAE_Type input component changes', () => {
+    const caeTypeInputComponent = wrapper.find('TextInput').at(4);
+    caeTypeInputComponent.simulate('ChangeText', 'Brasilia');
+    expect(wrapper.state('CAE_Type')).toEqual('Brasilia');
+  });
+
+  it('should change state when the text of CAE input component changes', () => {
+    const CAEInputComponent = wrapper.find('TextInput').at(5);
+    CAEInputComponent.simulate('ChangeText', 'DF');
+    expect(wrapper.state('CAE')).toEqual('DF');
   });
 });
