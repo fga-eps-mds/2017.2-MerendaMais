@@ -88,7 +88,7 @@ export default class RegisterScreen extends React.Component {
   }
 
   validateName(name) {
-    const validName = name.replace(/[^a-z A-Z]/g, '');
+    const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
     this.setState({ name: validName });
   }
 
@@ -98,17 +98,17 @@ export default class RegisterScreen extends React.Component {
   }
 
   validateCae(CAE) {
-    const validCae = CAE.replace(/[^a-z A-Z]/g, '');
+    const validCae = CAE.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
     this.setState({ CAE: validCae });
   }
 
   register() {
     const cpfRegex = /[0-9]{11}/g;
-    const nameRegex = /[a-z A-Z]/g;
+    const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
-    const caeRegex = /[a-z A-Z]/g;
+    const caeRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     let error = false;
     let errorMessage = '';
     if (!cpfRegex.test(this.state.cpf)) {

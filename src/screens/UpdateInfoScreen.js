@@ -78,7 +78,7 @@ export default class UpdateInfoScreen extends React.Component {
     this.validatePhone = this.validatePhone.bind(this);
   }
   validateName(name) {
-    const validName = name.replace(/[^a-z A-Z]/g, '');
+    const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
     this.setState({ name: validName });
   }
 
@@ -88,7 +88,7 @@ export default class UpdateInfoScreen extends React.Component {
   }
 
   register() {
-    const nameRegex = /[a-z A-Z]/g;
+    const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
