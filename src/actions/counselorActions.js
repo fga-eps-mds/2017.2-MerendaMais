@@ -114,6 +114,20 @@ export const asyncLoginCounselor = userData => (dispatch) => {
       logWarn(FILE_NAME, 'asyncLoginCounselor',
         `Request result in an ${erro}`);
 
+      if (erro.response.status === 401) {
+        logWarn(FILE_NAME, 'asyncLoginCounselor',
+          `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
+      } else if (erro.response.status === 500) {
+        logWarn(FILE_NAME, 'asyncLoginCounselor',
+          `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
+      } else if (erro.response.status === 400) {
+        logWarn(FILE_NAME, 'asyncLoginCounselor',
+          `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
+      } else {
+        logWarn(FILE_NAME, 'asyncLoginCounselor',
+          `Unknown error - Error code received in request - ${erro.response.status}`);
+      }
+
       dispatch(isNotLoading());
     });
 };
