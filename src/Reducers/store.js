@@ -3,9 +3,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import initialState from './initialState';
 
 import counselorReducer from './counselorReducer';
+import reportReducer from './reportReducer';
 
 const reducers = combineReducers({
   counselor: counselorReducer,
+  report: reportReducer,
 });
 
 

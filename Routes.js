@@ -8,7 +8,7 @@ import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContai
 import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
 import MainScreen from './src/screens/MainScreen';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
-import StockFoodCheckoutScreen from './src/screens/StockFoodCheckoutScreen';
+import StockFoodCheckoutContainer from './src/Containers/StockFoodCheckoutContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 
 
@@ -17,7 +17,7 @@ const Routes = () => ({
     return (
       <Router>
         <Scene key="root">
-          <Scene key="stockfoodcheckoutscreen" component={StockFoodCheckoutScreen} hideNavBar />
+          <Scene key="stockfoodcheckoutscreen" component={StockFoodCheckoutContainer} hideNavBar />
           <Scene key="initialScreen" component={InitialScreen} hideNavBar />
           <Scene key="mainScreen" component={MainScreen} hideNavBar />
           <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />

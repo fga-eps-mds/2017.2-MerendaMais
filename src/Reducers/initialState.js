@@ -1,3 +1,5 @@
+import foodStock from './Reports/foodStock';
+
 const initialState = {
   counselor: {
     id: 0,
@@ -15,7 +17,9 @@ const initialState = {
     isLoading: false,
     message_erro: '',
   },
-
+  report: {
+    foodStock,
+  },
 };
 
 export default initialState;
