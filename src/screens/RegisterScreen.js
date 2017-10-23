@@ -99,7 +99,8 @@ export default class RegisterScreen extends React.Component {
     const cpfRegex = /[0-9]{11}/g;
     const nameRegex = /[a-z A-Z]/g;
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const phoneRegex = /[0-9]{10-11}/g;
+    const phoneRegex1 = /[0-9]{11}/g;
+    const phoneRegex2 = /[0-9]{10}/g;
     let error = false;
     let errorMessage = '';
     if (!cpfRegex.test(this.state.cpf)) {
@@ -114,13 +115,17 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Email inválido\n';
     }
-    if (!phoneRegex.test(this.state.phone)) {
+    if (!phoneRegex1.test(this.state.phone) && !phoneRegex2.test(this.state.phone)) {
       error = true;
       errorMessage += 'Telefone inválido\n';
     }
     if (this.state.isPresident === '') {
       error = true;
       errorMessage += 'Cargo não selecionado\n';
+    }
+    if (this.state.segment === '') {
+      error = true;
+      errorMessage += 'Segmento não selecionado\n';
     }
     if (error === false) {
       this.props.createUser(this.state);
