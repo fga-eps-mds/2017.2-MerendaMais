@@ -1,17 +1,19 @@
 const initialState = {
   counselor: {
-    id: 0,
-    token: '',
-    url: '',
-    cpf: '',
+    nuvemCode: 0,
     email: '',
-    phone: '',
-    isPresident: false,
-    segment: '',
     name: '',
+    userName: '',
     password: '',
-    CAE_Type: '',
-    CAE: '',
+    token: '',
+    profile: {
+      cpf: '',
+      phone: '',
+      isPresident: false,
+      segment: '',
+      CAE_Type: '',
+      CAE: '',
+    },
   },
   application: {
     isLoading: false,

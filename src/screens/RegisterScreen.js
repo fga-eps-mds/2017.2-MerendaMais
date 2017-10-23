@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
+import { TITULAR_COUNSELOR,
+  SURROGATE_COUNSELOR,
+  MUNICIPAL_COUNSELOR_CAE,
+  STATE_COUNSELOR_CAE,
+  PRESIDENT_COUNSELOR,
+  COMMON_COUNSELOR } from '../constants';
 
 const styles = {
 
@@ -142,8 +148,8 @@ export default class RegisterScreen extends React.Component {
             selectedValue={this.state.isPresident}
           >
             <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
-            <Picker.Item value label="Presidente" />
-            <Picker.Item value={false} label="Conselheiro" />
+            <Picker.Item value label={PRESIDENT_COUNSELOR} />
+            <Picker.Item value={false} label={COMMON_COUNSELOR} />
           </Picker>
         </View>
         {password}
@@ -156,19 +162,23 @@ export default class RegisterScreen extends React.Component {
             selectedValue={this.state.segment}
           >
             <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
-            <Picker.Item value="Suplente" label="Suplente" />
-            <Picker.Item value="Titular" label="Titular" />
+            <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
+            <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
           </Picker>
         </View>
         <Text>     Tipo do CAE</Text>
-        <TextInput
-          placeholder="Escolha o tipo do seu CAE"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          onChangeText={text => this.setState({ CAE_Type: text })}
-        />
+        <View
+          style={styles.InputDropdown}
+        >
+          <Picker
+            onValueChange={value => this.setState({ CAE_Type: value })}
+            selectedValue={this.state.CAE_Type}
+          >
+            <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />
+            <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />
+            <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />
+          </Picker>
+        </View>
         <Text>     CAE</Text>
         <TextInput
           placeholder="Lista com o CAE do seu município/estado"
