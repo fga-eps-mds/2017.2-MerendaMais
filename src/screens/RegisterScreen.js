@@ -78,6 +78,7 @@ export default class RegisterScreen extends React.Component {
     this.validateCpf = this.validateCpf.bind(this);
     this.validateName = this.validateName.bind(this);
     this.validatePhone = this.validatePhone.bind(this);
+    this.validateCae = this.validateCae.bind(this);
     this.register = this.register.bind(this);
   }
 
@@ -95,12 +96,19 @@ export default class RegisterScreen extends React.Component {
     const validPhone = phone.replace(/[^0-9]/g, '');
     this.setState({ phone: validPhone });
   }
+
+  validateCae(CAE) {
+    const validCae = CAE.replace(/[^a-z A-Z]/g, '');
+    this.setState({ CAE: validCae });
+  }
+
   register() {
     const cpfRegex = /[0-9]{11}/g;
     const nameRegex = /[a-z A-Z]/g;
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
+    const caeRegex = /[a-z A-Z]/g;
     let error = false;
     let errorMessage = '';
     if (!cpfRegex.test(this.state.cpf)) {
@@ -127,10 +135,18 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Segmento não selecionado\n';
     }
+    if (this.state.CAE_Type === '') {
+      error = true;
+      errorMessage += 'Tipo de CAE não selecionado\n';
+    }
+    if (!caeRegex.test(this.state.CAE)) {
+      error = true;
+      errorMessage += 'CAE inválido\n';
+    }
     if (error === false) {
       this.props.createUser(this.state);
     } else {
-      Alert.alert('ERRO', errorMessage);
+      Alert.alert('FALHA NO CADASTRO', errorMessage);
     }
   }
   render() {
@@ -251,7 +267,8 @@ export default class RegisterScreen extends React.Component {
           returnKeyLabel={'next'}
           maxLength={40}
           keyboardType={'default'}
-          onChangeText={text => this.setState({ CAE: text })}
+          onChangeText={text => this.validateCae(text)}
+          value={this.state.CAE}
         />
         <TouchableOpacity
           onPress={() => this.register()}

@@ -314,6 +314,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <TouchableOpacity
           activeOpacity={0.7}
@@ -973,6 +974,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -1447,6 +1449,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <TouchableOpacity
             activeOpacity={0.7}
@@ -2106,6 +2109,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
