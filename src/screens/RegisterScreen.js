@@ -76,6 +76,8 @@ export default class RegisterScreen extends React.Component {
       CAE: '',
     };
     this.validateCpf = this.validateCpf.bind(this);
+    this.validateName = this.validateName.bind(this);
+    this.validatePhone = this.validatePhone.bind(this);
     this.register = this.register.bind(this);
   }
 
@@ -84,19 +86,37 @@ export default class RegisterScreen extends React.Component {
     this.setState({ cpf: validCpf });
   }
 
+  validateName(name) {
+    const validName = name.replace(/[^a-z A-Z]/g, '');
+    this.setState({ name: validName });
+  }
 
+  validatePhone(phone) {
+    const validPhone = phone.replace(/[^0-9]/g, '');
+    this.setState({ phone: validPhone });
+  }
   register() {
     const cpfRegex = /[0-9]{11}/g;
+    const nameRegex = /[a-z A-Z]/g;
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const phoneRegex = /[0-9]{10-11}/g;
     let error = false;
     let errorMessage = '';
     if (!cpfRegex.test(this.state.cpf)) {
       error = true;
       errorMessage += 'CPF inválido\n';
     }
+    if (!nameRegex.test(this.state.name)) {
+      error = true;
+      errorMessage += 'Nome inválido\n';
+    }
     if (!emailRegex.test(this.state.email)) {
       error = true;
       errorMessage += 'Email inválido\n';
+    }
+    if (!phoneRegex.test(this.state.phone)) {
+      error = true;
+      errorMessage += 'Telefone inválido\n';
     }
     if (this.state.isPresident === '') {
       error = true;
@@ -150,7 +170,8 @@ export default class RegisterScreen extends React.Component {
           returnKeyLabel={'next'}
           maxLength={60}
           keyboardType={'default'}
-          onChangeText={text => this.setState({ name: text })}
+          onChangeText={text => this.validateName(text)}
+          value={this.state.name}
         />
         <Text>     Email</Text>
         <TextInput
@@ -173,7 +194,8 @@ export default class RegisterScreen extends React.Component {
           returnKeyLabel={'next'}
           maxLength={11}
           keyboardType={'phone-pad'}
-          onChangeText={text => this.setState({ phone: text })}
+          onChangeText={text => this.validatePhone(text)}
+          value={this.state.phone}
         />
         <Text>     Cargo</Text>
         <View
