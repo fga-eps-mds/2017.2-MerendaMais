@@ -6,7 +6,8 @@ import { SET_COUNSELOR,
 import { isLoading, isNotLoading } from './applicationActions';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
-  AUTHENTICATE_LINK_NUVEM_CIVICA } from '../constants';
+  AUTHENTICATE_LINK_NUVEM_CIVICA,
+  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -83,31 +84,67 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
 
 const treatingAuthenticationErrorInLogin = (erro) => {
   if (erro.response.status === 401) {
-    logWarn(FILE_NAME, 'asyncLoginCounselor',
+    logWarn(FILE_NAME, 'treatingAuthenticationErrorInLogin',
       `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
   } else if (erro.response.status === 500) {
-    logWarn(FILE_NAME, 'asyncLoginCounselor',
+    logWarn(FILE_NAME, 'treatingAuthenticationErrorInLogin',
       `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
   } else if (erro.response.status === 400) {
-    logWarn(FILE_NAME, 'asyncLoginCounselor',
+    logWarn(FILE_NAME, 'treatingAuthenticationErrorInLogin',
       `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
   } else {
-    logWarn(FILE_NAME, 'asyncLoginCounselor',
+    logWarn(FILE_NAME, 'treatingAuthenticationErrorInLogin',
       `Unknown error - Error code received in request - ${erro.response.status}`);
   }
 };
 
-const authenticatingUserInLogin = (header, dispatch) => {
-  axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, header)
+const treatingGettingUserProfileErrorInLogin = (error) => {
+  if (error.response.status === 404) {
+    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+      `User isn't register in application or Profile didn't find for this user - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 500) {
+    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 400) {
+    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+  } else {
+    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
+
+const gettingUserProfileInLogin = (counselorNuvemCode) => {
+  const getProfileHeader = {
+    headers: {
+      appIdentifier: APP_IDENTIFIER,
+    },
+  };
+  axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorNuvemCode}/perfil`, getProfileHeader)
     .then((response) => {
-      logInfo(FILE_NAME, 'asyncLoginCounselor',
+      logInfo(FILE_NAME, 'gettingUserProfileInLogin',
+        `Profile data of user: ${counselorNuvemCode} -> ${JSON.stringify(response.data)}`);
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'gettingUserProfileInLogin',
+        `Request result in an ${error}`);
+      treatingGettingUserProfileErrorInLogin(error);
+    });
+};
+
+const authenticatingUserInLogin = (authenticationHeader, dispatch) => {
+  axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
+    .then((response) => {
+      logInfo(FILE_NAME, 'authenticatingUserInLogin',
         `User authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
 
       // To catch response header data you need to use response.headers.<Attribute-Needed>.
       dispatch(setToken(response.headers.apptoken));
 
-      logInfo(FILE_NAME, 'asyncLoginCounselor',
+      logInfo(FILE_NAME, 'authenticatingUserInLogin',
         `User response data received from authentication: ${JSON.stringify(response.data)}`);
+
+      gettingUserProfileInLogin(response.data.cod);
 
       dispatch(loginSuccess(response.data));
 
@@ -115,11 +152,11 @@ const authenticatingUserInLogin = (header, dispatch) => {
 
       Actions.mainScreen();
     })
-    .catch((erro) => {
-      logWarn(FILE_NAME, 'asyncLoginCounselor',
-        `Request result in an ${erro}`);
+    .catch((error) => {
+      logWarn(FILE_NAME, 'authenticatingUserInLogin',
+        `Request result in an ${error}`);
 
-      treatingAuthenticationErrorInLogin(erro);
+      treatingAuthenticationErrorInLogin(error);
 
       dispatch(isNotLoading());
     });
@@ -131,7 +168,7 @@ export const asyncLoginCounselor = userData => (dispatch) => {
     `userData received from LoginCounselorScreen: ${JSON.stringify(userData)}`);
 
   // Header json to send Login data. OBS: The word "headers" must be written like this.
-  const header = {
+  const authenticationHeader = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
       email: userData.email,
@@ -142,5 +179,5 @@ export const asyncLoginCounselor = userData => (dispatch) => {
   dispatch(isLoading());
 
   // Request to authenticate the user and get his token.
-  authenticatingUserInLogin(header, dispatch);
+  authenticatingUserInLogin(authenticationHeader, dispatch);
 };
