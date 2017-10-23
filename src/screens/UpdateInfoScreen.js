@@ -94,7 +94,7 @@ export default class UpdateInfoScreen extends React.Component {
     const phoneRegex2 = /[0-9]{10}/g;
     let error = false;
     let errorMessage = '';
-    if (!nameRegex.test(this.state.name)) {
+    if (!nameRegex.test(this.state.name) || this.state.name.trim() === '') {
       error = true;
       errorMessage += 'Nome inválido\n';
     }
@@ -109,7 +109,7 @@ export default class UpdateInfoScreen extends React.Component {
     if (error === false) {
       this.props.editUser(this.fetchCounselorData());
     } else {
-      Alert.alert('FALHA NO CADASTRO', errorMessage);
+      Alert.alert('FALHA AO EDITAR DADOS', errorMessage);
     }
   }
 

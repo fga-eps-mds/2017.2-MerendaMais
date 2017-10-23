@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, ActivityIndicator, Alert } from 'react-native';
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
@@ -106,6 +106,38 @@ class SearchSchool extends React.Component {
       name: '',
       schoolList: [],
     };
+    this.validateName = this.validateName.bind(this);
+    this.validateCity = this.validateCity.bind(this);
+  }
+  validateName(name) {
+    const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g, '');
+    this.setState({ name: validName });
+  }
+
+  validateCity(city) {
+    const validCity = city.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
+    this.setState({ city: validCity });
+  }
+
+  register() {
+    const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g;
+    const cityRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
+    let error = false;
+    let errorMessage = '';
+
+    if (!cityRegex.test(this.state.city) && !nameRegex.test(this.state.name)) {
+      error = true;
+      errorMessage += 'Estado/Município e Escola com dados inválidos.';
+    }
+    if (this.state.city.trim() === '' && this.state.name.trim() === '') {
+      error = true;
+      errorMessage += 'Estado/Município e Escola não preenchidos. Preencha no mínimo um dos campos.\n';
+    }
+    if (error === false) {
+      this.searchSchools();
+    } else {
+      Alert.alert('FALHA NA PESQUISA', errorMessage);
+    }
   }
 
   searchSchools() {
@@ -150,7 +182,7 @@ class SearchSchool extends React.Component {
         <TouchableOpacity
           style={styles.buttonSearchAnabled}
           activeOpacity={0.7}
-          onPress={() => this.searchSchools()}
+          onPress={() => this.register()}
         >
           <Text style={{ color: 'white', fontSize: 20 }}>Pesquisar</Text>
         </TouchableOpacity>
@@ -200,8 +232,8 @@ class SearchSchool extends React.Component {
                   returnKeyType="go"
                   maxLength={50}
                   keyboardType={'default'}
-                  onChangeText={text => this.setState({ city: text })}
-                  value={this.state.CAE}
+                  onChangeText={text => this.validateCity(text)}
+                  value={this.state.city} // CAE OR CITY ?
                   underlineColorAndroid="transparent"
                   placeholder="Estado/Município"
                 />
@@ -214,7 +246,7 @@ class SearchSchool extends React.Component {
                   returnKeyType="go"
                   maxLength={50}
                   keyboardType={'default'}
-                  onChangeText={text => this.setState({ name: text })}
+                  onChangeText={text => this.validateName(text)}
                   value={this.state.name}
                   underlineColorAndroid="transparent"
                   placeholder="Escola a pesquisar"

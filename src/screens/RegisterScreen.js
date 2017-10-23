@@ -115,7 +115,7 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'CPF inválido\n';
     }
-    if (!nameRegex.test(this.state.name)) {
+    if (!nameRegex.test(this.state.name) || this.state.name.trim() === '') {
       error = true;
       errorMessage += 'Nome inválido\n';
     }
@@ -139,7 +139,7 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Tipo de CAE não selecionado\n';
     }
-    if (!caeRegex.test(this.state.CAE)) {
+    if (!caeRegex.test(this.state.CAE) || this.state.CAE.trim() === '') {
       error = true;
       errorMessage += 'CAE inválido\n';
     }
