@@ -1,12 +1,19 @@
 import React from 'react';
 import CheckBox from 'react-native-checkbox';
+import PropTypes from 'prop-types';
 import { StyleSheet,
   TouchableOpacity,
   Text,
   View,
   ScrollView,
+  TextInput,
+  Dimensions,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../components/Header';
+
+const { height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   principal: {
@@ -49,35 +56,82 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     flex: 1,
   },
+
+  textInput: {
+    borderWidth: 1,
+    borderRadius: 12,
+    height: height * 0.25,
+    paddingLeft: 10,
+    fontSize: width * 0.05,
+    textAlignVertical: 'top',
+  },
+
+  textBox: {
+    paddingLeft: 10,
+    paddingTop: 30,
+    paddingRight: 10,
+  },
 });
 
-const StockFoodCheckoutScreen = props => (
-  <ScrollView style={styles.content}>
-    <Header
-      title={'Relatório'}
-      subTitle={'Estoque de alimento'}
-    />
-    <View>
-      {
-        props.report.map((item) => {
-          return (
-            <View style={styles.text}>
-              <CheckBox
-                containerStyle={styles.checkbox}
-                key={item.key}
-                label=" "
-                onChange={() => props.setStockFoodReport(item.key)}
-              />
-              <Text style={styles.text2}>{item.label}</Text>
-            </View>
-          );
-        })
-      }
-    </View>
-    <TouchableOpacity style={styles.buttonContainer} >
-      <Text style={styles.buttonText}>Concluir</Text>
-    </TouchableOpacity>
-  </ScrollView>
-);
+export default class StockFoodCheckoutScreen extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default StockFoodCheckoutScreen;
+    this.state = {
+      observation: '',
+    };
+  }
+  render() {
+    return (
+      <ScrollView style={styles.content}>
+        <Header
+          title={'Relatório'}
+          subTitle={'Estoque de alimento'}
+        />
+        <View>
+          {
+            this.props.report.map(item => (
+              <View style={styles.text}>
+                <CheckBox
+                  containerStyle={styles.checkbox}
+                  key={item.key}
+                  label=" "
+                  onChange={() => this.props.setStockFoodReport(item.key)}
+                />
+                <Text style={styles.text2}>{item.label}</Text>
+              </View>
+            ),
+            )
+          }
+        </View>
+        <KeyboardAvoidingView behavior="padding">
+          <View style={styles.textBox}>
+            <TextInput
+              onChangeText={text => this.setState({ observation: text })}
+              style={styles.textInput}
+              multiline
+              underlineColorAndroid="transparent"
+              placeholder="Observações (opcional)"
+            />
+          </View>
+        </KeyboardAvoidingView>
+
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => this.props.setFoodStockObservation(this.state.observation)}
+        >
+          <Text style={styles.buttonText}>Concluir</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    );
+  }
+}
+
+StockFoodCheckoutScreen.propTypes = {
+  setFoodStockObservation: PropTypes.func.isRequired,
+  setStockFoodReport: PropTypes.func.isRequired,
+  report: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    key: PropTypes.number,
+  })).isRequired,
+};

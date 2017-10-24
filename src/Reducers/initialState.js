@@ -19,6 +19,7 @@ const initialState = {
   },
   report: {
     foodStock,
+    foodStockObservation: '',
   },
 };
 

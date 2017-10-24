@@ -2,7 +2,7 @@ const foodStock = [
   { label: 'Escola não possui Estoque de Alimentos', marked: false, key: 0 },
   { label: 'Alimentos vencidos', marked: false, key: 1 },
   { label: 'Embalagens roídas', marked: false, key: 2 },
-  { label: 'Insentos dentro das embalagens', marked: false, key: 3 },
+  { label: 'Insetos dentro das embalagens', marked: false, key: 3 },
   { label: 'Alimentos em contato com o chão', marked: false, key: 4 },
   { label: 'Alimentos dentro de caixas', marked: false, key: 5 },
   { label: 'Produtos de limpeza junto aos alimentos', marked: false, key: 6 },
@@ -30,7 +30,6 @@ const foodStock = [
   { label: 'Local sujo', marked: false, key: 28 },
   { label: 'Objetos que não sejam alimentos', marked: false, key: 29 },
   { label: 'Lixo não é armazenado em local fechado', marked: false, key: 30 },
-
 ];
 
 export default foodStock;

@@ -1,10 +1,15 @@
-import { SET_STOCKFOODREPORT } from './types';
+import { SET_STOCKFOODREPORT, SET_STOCKFOODOBSERVATION } from './types';
 
-const setStockFoodReport = key => ({
+export const setStockFoodReport = key => ({
   type: SET_STOCKFOODREPORT,
   payload: {
     key,
   },
 });
 
-export default setStockFoodReport;
+export const setFoodStockObservation = observation => ({
+  type: SET_STOCKFOODOBSERVATION,
+  payload: {
+    observation,
+  },
+});

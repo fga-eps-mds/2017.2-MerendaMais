@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { SET_STOCKFOODREPORT } from '../actions/types';
+import { SET_STOCKFOODREPORT, SET_STOCKFOODOBSERVATION } from '../actions/types';
 
 const reportReducer = (state = initialState.report, action) => {
   console.log(action);
@@ -14,6 +14,11 @@ const reportReducer = (state = initialState.report, action) => {
           }
           return item;
         }),
+      };
+    case SET_STOCKFOODOBSERVATION:
+      return {
+        ...state,
+        foodStockObservation: action.payload,
       };
     default:
       return state;
