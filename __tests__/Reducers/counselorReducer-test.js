@@ -1,7 +1,7 @@
 import counselorReducer from '../../src/Reducers/counselorReducer';
 import initialState from '../../src/Reducers/initialState';
 import {
-  SET_COUNSELOR, MODIFY_CPF, MODIFY_PASSWORD,
+  SET_COUNSELOR, MODIFY_CPF, MODIFY_PASSWORD, LOADING, LOGIN_SUCCESS,
 } from '../../src/actions/types';
 
 describe('Testing counselorReducer', () => {
@@ -47,30 +47,40 @@ describe('Testing counselorReducer', () => {
     expect(counselor.password).toBe('senha');
   });
 
-  it('shows loading', () => {
+  it('shows loading status', () => {
     let counselor = { ...initialState.counselor };
 
-    expect(counselor.cpf).not.toBe(456789);
+    expect(counselor.isLoading).not.toBe();
 
     counselor = counselorReducer(counselor, {
-      type: MODIFY_CPF,
-      payload: 456789,
+      type: LOADING,
+      payload: {},
     });
 
-    expect(counselor.cpf).toBe(456789);
+    expect(counselor.cpf).toBe();
   });
 
-  it('verifies Login success', () => {
+  it('verifies Login Success', () => {
     let counselor = { ...initialState.counselor };
 
-    expect(counselor.cpf).not.toBe(456789);
+    expect(counselor.name).not.toBe('name');
+    expect(counselor.id).not.toBe(1);
+    expect(counselor.cpf).not.toBe(11111111111);
+    expect(counselor.isLoading).not.toBe({});
 
     counselor = counselorReducer(counselor, {
-      type: MODIFY_CPF,
-      payload: 456789,
+      type: LOGIN_SUCCESS,
+      payload: counselor,
+      name: 'name',
+      id: '1',
+      cpf: '11111111111',
+      isLoading: true,
     });
 
-    expect(counselor.cpf).toBe(456789);
+    expect(counselor.name).toBe('name');
+    expect(counselor.id).toBe(1);
+    expect(counselor.cpf).toBe(11111111111);
+    expect(counselor.isLoading).toBe({});
   });
 
   it('verifies login fail', () => {
