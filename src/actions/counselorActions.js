@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { SET_COUNSELOR,
-  LOGIN_SUCCESS,
   SET_TOKEN } from './types';
 import { isLoading, isNotLoading } from './applicationActions';
 import { logInfo, logWarn } from '../../logConfig/loggers';
@@ -14,12 +13,6 @@ const FILE_NAME = 'counselorActions.js';
 // Action
 export const setCounselor = counselor => ({
   type: SET_COUNSELOR,
-  counselor,
-});
-
-// Action
-export const loginSuccess = counselor => ({
-  type: LOGIN_SUCCESS,
   payload: counselor,
 });
 
@@ -28,6 +21,22 @@ export const setToken = token => ({
   type: SET_TOKEN,
   payload: token,
 });
+
+const treatingAuthenticatingCounselorInRegisterError = (erro) => {
+  if (erro.response.status === 401) {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
+      `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
+  } else if (erro.response.status === 500) {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
+  } else if (erro.response.status === 400) {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
+  } else {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
+      `Unknown error - Error code received in request - ${erro.response.status}`);
+  }
+};
 
 const treatingRegisterCounselorError = (error) => {
   if (error.response.status === 401) {
@@ -45,9 +54,114 @@ const treatingRegisterCounselorError = (error) => {
   }
 };
 
+const convertingProfileJSONToString = (profileJSON) => {
+  // Converting profile JSON to profile string received from Nuvem Civica.
+  const profileStringDoubleQuote = JSON.stringify(profileJSON);
+
+  // Changing " to '.
+  const profileStringSingleQuote = profileStringDoubleQuote.replace(/"/g, "'");
+
+  return profileStringSingleQuote;
+};
+
+const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) => {
+  const headerWithAppToken = {
+    headers: {
+      appToken,
+    },
+  };
+
+  const stringProfile = convertingProfileJSONToString(userData.profile);
+  logInfo(FILE_NAME, 'associateProfileToCounselor',
+    `String to be send to "camposAdicionais": ${stringProfile}`);
+
+  const associateProfileBody = {
+    camposAdicionais: stringProfile,
+    tipoPerfil: {
+      codTipoPerfil: 239,
+    },
+  };
+
+  axios.post(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${nuvemCode}/perfil`, associateProfileBody, headerWithAppToken)
+    .then((response) => {
+      logInfo(FILE_NAME, 'associateProfileToCounselor',
+        `Profile setted : ${JSON.stringify(response.data, null, 2)}`);
+
+      const counselor = {
+        nuvemCode,
+        email: userData.email,
+        name: userData.name,
+        userName: userData.email,
+        password: userData.password,
+        token: appToken,
+        profile: userData.profile,
+      };
+      logInfo(FILE_NAME, 'associateProfileToCounselor',
+        `counselor dispatched to Store : ${JSON.stringify(counselor, null, 2)}`);
+
+      dispatch(setCounselor(counselor));
+
+      dispatch(isNotLoading());
+
+      Actions.mainScreen();
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'associateProfileToCounselor',
+        `Request result in an ${error}`);
+
+      dispatch(isNotLoading());
+    });
+};
+
+const verifyUserInApplication = (userData) => {
+  const params = {
+    codAplicativo: 463,
+    nome: userData.name,
+  };
+
+  const headers = {
+    headers: {
+      email: userData.email,
+    },
+  };
+  axios.get(DEFAULT_USER_LINK_NUVEM_CIVICA, params, headers)
+    .then((response) => {
+      logInfo(FILE_NAME, 'verifyUserInApplication',
+        'User already in Application');
+
+    })
+    .catch((error) => {
+
+    })
+};
+
 const authenticatingUserInRegister = (userData, dispatch) => {
-  // Delete this and build the function appropriately.
-  dispatch(isNotLoading());
+  const authenticationHeader = {
+    headers: {
+      email: userData.email,
+      senha: userData.password },
+  };
+
+  axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
+    .then((response) => {
+      logInfo(FILE_NAME, 'authenticatingUserInRegister',
+        `User authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
+
+      logInfo(FILE_NAME, 'authenticatingUserInRegister',
+        `User response data received from authentication: ${JSON.stringify(response.data, null, 2)}`);
+
+      associateProfileToCounselor(response.headers.apptoken,
+        response.data.cod, userData, dispatch);
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'authenticatingUserInRegister',
+        `Request result in an ${error}`);
+
+      treatingAuthenticatingCounselorInRegisterError(error);
+
+      // Setting state loading false, to deactivate the loading spin.
+      dispatch(isNotLoading());
+    });
 };
 
 const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
@@ -69,9 +183,13 @@ const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
           `User already registered in Nuvem Civica or deactivated - Error code received in request - ${error.response.status}`);
 
         // Build the function that verify if the user is already register in our application
+        verifyUserInApplication(userData);
+
         // or just in Nuvem Civica.
       } else {
         treatingRegisterCounselorError(error);
+
+        dispatch(isNotLoading());
       }
     });
 };
@@ -195,7 +313,7 @@ const getUserProfileInLogin = (counselor, dispatch) => {
       logInfo(FILE_NAME, 'getUserProfileInLogin',
         `Final Counselor sent to store after login: ${JSON.stringify(counselorWithProfile, null, 2)}`);
 
-      dispatch(loginSuccess(counselorWithProfile));
+      dispatch(setCounselor(counselorWithProfile));
 
       dispatch(isNotLoading());
 

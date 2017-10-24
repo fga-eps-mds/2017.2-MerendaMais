@@ -1,7 +1,5 @@
 import initialState from './initialState';
-import { SET_COUNSELOR,
-  LOGIN_SUCCESS,
-  SET_TOKEN } from '../actions/types';
+import { SET_COUNSELOR, SET_TOKEN } from '../actions/types';
 import { logTrace, logError } from '../../logConfig/loggers';
 
 const FILE_NAME = 'counselorReducer.js';
@@ -19,21 +17,6 @@ const counselorReducer = (state = initialState.counselor, action) => {
 
   switch (action.type) {
     case SET_COUNSELOR:
-      return {
-        ...state,
-        id: action.counselor.id,
-        url: action.counselor.url,
-        cpf: action.counselor.cpf,
-        name: action.counselor.name,
-        email: action.counselor.email,
-        phone: action.counselor.phone,
-        isPresident: action.counselor.isPresident,
-        password: action.counselor.password,
-        segment: action.counselor.segment,
-        CAE_Type: action.counselor.CAE_Type,
-        CAE: action.counselor.CAE,
-      };
-    case LOGIN_SUCCESS:
       return {
         ...state,
         email: action.payload.email,
