@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     marginBottom: 9,
     flex: 6,
     flexDirection: 'column',
-
   },
 
   checkbox: {
@@ -43,7 +42,13 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexWrap: 'wrap',
   },
-
+  text: {
+    flexDirection: 'row',
+  },
+  text2: {
+    paddingTop: 15,
+    flex: 1,
+  },
 });
 
 const StockFoodCheckoutScreen = props => (
@@ -56,12 +61,15 @@ const StockFoodCheckoutScreen = props => (
       {
         props.report.map((item) => {
           return (
-            <CheckBox
-              label={item.label}
-              containerStyle={styles.checkbox}
-              key={item.key}
-              onChange={() => props.setStockFoodReport(item.key)}
-            />
+            <View style={styles.text}>
+              <CheckBox
+                containerStyle={styles.checkbox}
+                key={item.key}
+                label=" "
+                onChange={() => props.setStockFoodReport(item.key)}
+              />
+              <Text style={styles.text2}>{item.label}</Text>
+            </View>
           );
         })
       }
