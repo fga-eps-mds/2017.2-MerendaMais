@@ -1,4 +1,5 @@
 {
+    "env": {     "jest": true   },
     "extends": "airbnb",
     "rules": {
       "no-console": 0,

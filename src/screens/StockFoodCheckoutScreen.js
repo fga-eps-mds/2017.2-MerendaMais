@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   text: {
     flexDirection: 'row',
   },
-  text2: {
+  label: {
     paddingTop: 15,
     flex: 1,
   },
@@ -91,14 +91,13 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <View>
           {
             this.props.report.map(item => (
-              <View style={styles.text}>
+              <View style={styles.text} key={item.key}>
                 <CheckBox
                   containerStyle={styles.checkbox}
-                  key={item.key}
                   label=" "
                   onChange={() => this.props.setStockFoodReport(item.key)}
                 />
-                <Text style={styles.text2}>{item.label}</Text>
+                <Text style={styles.label}>{item.label}</Text>
               </View>
             ),
             )
