@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker } from 'react-native';
+import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 import { TITULAR_COUNSELOR,
@@ -9,7 +9,9 @@ import { TITULAR_COUNSELOR,
   STATE_COUNSELOR_CAE,
   PRESIDENT_COUNSELOR,
   COMMON_COUNSELOR } from '../constants';
+import { logInfo } from '../../logConfig/loggers';
 
+const FILE_NAME = 'RegisterScreen.js';
 const styles = {
 
   principal: {
@@ -68,24 +70,45 @@ export default class RegisterScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.state = {
-      cpf: '',
-      name: '',
       email: '',
-      phone: '',
-      isPresident: '',
-      password: '',
-      segment: '',
-      CAE_Type: '',
-      CAE: '',
+      name: '',
+      password: 'senha',
+      profile: {
+        cpf: '',
+        phone: '',
+        isPresident: '',
+        segment: '',
+        CAE_Type: '',
+        CAE: '',
+      },
     };
   }
 
+  renderBtnLogin() {
+    if (this.props.isLoading) {
+      return (
+        <ActivityIndicator
+          style={{ marginTop: 15, marginBottom: 15 }}
+          size="large"
+          color="#FF9500"
+        />
+      );
+    }
+    return (
+      <TouchableOpacity
+        onPress={() => this.props.asyncRegisterCounselor(this.state)}
+        style={styles.buttonContainer}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.buttonText}>Concluir</Text>
+      </TouchableOpacity>
+    );
+  }
+
   render() {
-    console.log(this.state);
-    const password = this.state.isPresident === true ? (
+    logInfo(FILE_NAME, 'render()', `State of register page: ${JSON.stringify(this.state, null, 2)}`);
+    const password = this.state.profile.isPresident === true ? (
       <View>
         <Text style={styles.container}>     Senha</Text>
         <TextInput
@@ -110,7 +133,7 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
-          onChangeText={text => this.setState({ cpf: text })}
+          onChangeText={text => this.setState({ profile: { ...this.state.profile, cpf: text } })}
         />
         <Text>     Nome</Text>
         <TextInput
@@ -137,15 +160,15 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
-          onChangeText={text => this.setState({ phone: text })}
+          onChangeText={text => this.setState({ profile: { ...this.state.profile, phone: text } })}
         />
         <Text>     Cargo</Text>
         <View
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ isPresident: value, password: 'senha' })}
-            selectedValue={this.state.isPresident}
+            onValueChange={value => this.setState({ profile: { ...this.state.profile, isPresident: value }, password: 'senha' })}
+            selectedValue={this.state.profile.isPresident}
           >
             <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
             <Picker.Item value label={PRESIDENT_COUNSELOR} />
@@ -158,8 +181,9 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ segment: value })}
-            selectedValue={this.state.segment}
+            onValueChange={value => this.setState({ profile: { ...this.state.profile,
+              segment: value } })}
+            selectedValue={this.state.profile.segment}
           >
             <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
             <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
@@ -171,8 +195,9 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ CAE_Type: value })}
-            selectedValue={this.state.CAE_Type}
+            onValueChange={value => this.setState({ profile: { ...this.state.profile,
+              CAE_Type: value } })}
+            selectedValue={this.state.profile.CAE_Type}
           >
             <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />
             <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />
@@ -186,15 +211,10 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputStyle}
           underlineColorAndroid="transparent"
           returnKeyLabel={'next'}
-          onChangeText={text => this.setState({ CAE: text })}
+          onChangeText={text => this.setState({ profile: { ...this.state.profile, CAE: text } })}
         />
-        <TouchableOpacity
-          onPress={() => this.props.createUser(this.state)}
-          style={styles.buttonContainer}
-          activeOpacity={0.7}
-        >
-          <Text style={styles.buttonText}>Concluir</Text>
-        </TouchableOpacity>
+
+        {this.renderBtnLogin()}
 
         <View style={styles.footer}>
           <TouchableOpacity
@@ -213,6 +233,6 @@ export default class RegisterScreen extends React.Component {
 }
 
 RegisterScreen.propTypes = {
-  createUser: PropTypes.func.isRequired,
-
+  asyncRegisterCounselor: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };

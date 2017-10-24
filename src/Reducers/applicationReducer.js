@@ -8,7 +8,7 @@ const FILE_NAME = 'applicationReducer.js';
 
 const applicationReducer = (state = initialState.application, action) => {
   logTrace(FILE_NAME, 'applicationReducer',
-    `state received: ${JSON.stringify(state)}`);
+    `state received: ${JSON.stringify(state, null, 2)}`);
 
   logTrace(FILE_NAME, 'applicationReducer',
     `Action Type received: ${action.type}`);

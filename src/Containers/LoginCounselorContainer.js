@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { LoginCounselorScreen } from '../screens';
 import { asyncLoginCounselor } from '../actions/counselorActions';
 
-const mapStatetoProps = state => (
+const mapStateToProps = state => (
   {
     message_erro: state.application.message_erro,
     isLoading: state.application.isLoading,
@@ -15,4 +15,4 @@ const mapDispachtoProps = dispatch => (
   }
 );
 
-export default connect(mapStatetoProps, mapDispachtoProps)(LoginCounselorScreen);
+export default connect(mapStateToProps, mapDispachtoProps)(LoginCounselorScreen);
