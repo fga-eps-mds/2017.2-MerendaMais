@@ -20,7 +20,7 @@ export const setCounselor = counselor => ({
 // Action
 export const loginSuccess = counselor => ({
   type: LOGIN_SUCCESS,
-  counselor,
+  payload: counselor,
 });
 
 // Action
@@ -98,37 +98,63 @@ const treatingAuthenticationErrorInLogin = (erro) => {
   }
 };
 
-const treatingGettingUserProfileErrorInLogin = (error) => {
+const treatingGetUserProfileErrorInLogin = (error) => {
   if (error.response.status === 404) {
-    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+    logWarn(FILE_NAME, 'treatingGetUserProfileErrorInLogin',
       `User isn't register in application or Profile didn't find for this user - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 500) {
-    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+    logWarn(FILE_NAME, 'treatingGetUserProfileErrorInLogin',
       `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 400) {
-    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+    logWarn(FILE_NAME, 'treatingGetUserProfileErrorInLogin',
       `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
   } else {
-    logWarn(FILE_NAME, 'treatingGettingUserProfileErrorInLogin',
+    logWarn(FILE_NAME, 'treatingGetUserProfileErrorInLogin',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
 };
 
-const gettingUserProfileInLogin = (counselorNuvemCode) => {
+const convertingProfileStringToJSON = (profileStringSingleQuote) => {
+  // Changing ' to " in string received from Nuvem Civica.
+  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
+
+  // Converting profile string to profile JSON.
+  const profileJSON = JSON.parse(profileStringDoubleQuote);
+
+  return profileJSON;
+};
+
+const getUserProfileInLogin = (counselor, dispatch) => {
   const getProfileHeader = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
     },
   };
-  axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorNuvemCode}/perfil`, getProfileHeader)
+  axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`, getProfileHeader)
     .then((response) => {
-      logInfo(FILE_NAME, 'gettingUserProfileInLogin',
-        `Profile data of user: ${counselorNuvemCode} -> ${JSON.stringify(response.data)}`);
+      logInfo(FILE_NAME, 'getUserProfileInLogin',
+        `Profile data of user: ${counselor.nuvemCode} -> ${JSON.stringify(response.data)}`);
+
+      const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
+      const counselorWithProfile = counselor;
+      counselorWithProfile.profile = profile;
+
+      logInfo(FILE_NAME, 'getUserProfileInLogin',
+        `Final Counselor sent to store after login: ${JSON.stringify(counselorWithProfile)}`);
+
+      dispatch(loginSuccess(counselorWithProfile));
+
+      dispatch(isNotLoading());
+
+      Actions.mainScreen();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'gettingUserProfileInLogin',
         `Request result in an ${error}`);
-      treatingGettingUserProfileErrorInLogin(error);
+
+      treatingGetUserProfileErrorInLogin(error);
+
+      dispatch(isNotLoading());
     });
 };
 
@@ -138,19 +164,21 @@ const authenticatingUserInLogin = (authenticationHeader, dispatch) => {
       logInfo(FILE_NAME, 'authenticatingUserInLogin',
         `User authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
 
-      // To catch response header data you need to use response.headers.<Attribute-Needed>.
-      dispatch(setToken(response.headers.apptoken));
-
       logInfo(FILE_NAME, 'authenticatingUserInLogin',
         `User response data received from authentication: ${JSON.stringify(response.data)}`);
 
-      gettingUserProfileInLogin(response.data.cod);
+      // To catch response header data you need to use response.headers.<Attribute-Needed>.
+      const counselor = {
+        nuvemCode: response.data.cod,
+        email: response.data.email,
+        name: response.data.nomeCompleto,
+        userName: response.data.nomeUsuario,
+        password: authenticationHeader.headers.senha,
+        token: response.headers.apptoken,
+        profile: {},
+      };
 
-      dispatch(loginSuccess(response.data));
-
-      dispatch(isNotLoading());
-
-      Actions.mainScreen();
+      getUserProfileInLogin(counselor, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'authenticatingUserInLogin',

@@ -36,9 +36,13 @@ const counselorReducer = (state = initialState.counselor, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        name: action.counselor.name,
-        id: action.counselor.id,
-        cpf: action.counselor.cpf,
+        email: action.payload.email,
+        name: action.payload.name,
+        nuvemCode: action.payload.nuvemCode,
+        password: action.payload.password,
+        profile: action.payload.profile,
+        token: action.payload.token,
+        userName: action.payload.userName,
       };
     case SET_TOKEN:
       return {
