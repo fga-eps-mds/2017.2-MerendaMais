@@ -50,14 +50,14 @@ describe('Testing counselorReducer', () => {
   it('shows loading status', () => {
     let counselor = { ...initialState.counselor };
 
-    expect(counselor.isLoading).not.toBe();
+    expect(counselor.isLoading).not.toBe(true);
 
     counselor = counselorReducer(counselor, {
       type: LOADING,
-      payload: {},
+      payload: true,
     });
 
-    expect(counselor.isLoading).toBe();
+    expect(counselor.isLoading).toBe(true);
   });
 
   it('verifies Login Success', () => {
@@ -84,7 +84,7 @@ describe('Testing counselorReducer', () => {
   });
 
   it('verifies login fail', () => {
-    let counselor = { ...initialState.counselor };
+    let counselor = { ...initialState.counselor, isLoading: true };
 
     expect(counselor.isLoading).not.toBe(false);
 
