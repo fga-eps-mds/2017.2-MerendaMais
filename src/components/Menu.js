@@ -65,6 +65,19 @@ export default function Menu() {
         </TouchableOpacity>
       </View>
 
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.profileInfoScreen()}
+        >
+          <Text
+            style={styles.item}
+          >
+            Perfil
+          </Text>
+        </TouchableOpacity>
+      </View>
+
     </View>
   );
 }

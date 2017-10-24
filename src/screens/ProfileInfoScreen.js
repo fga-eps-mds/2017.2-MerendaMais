@@ -66,21 +66,10 @@ export default class ProfileInfoScreen extends React.Component {
     this.props.getCounselor(this.props.counselor.id);
   }
   verifyCharge() {
-    if (this.props.counselor.isPresident) {
-      return (
-        <View key="is_president" style={styles.field}>
-          <Image source={iconJob} style={styles.icon} />
-          <Text>Cargo: Presidente</Text>
-        </View>
-      );
+    if (this.props.counselor.profile.isPresident) {
+      return 'Cargo: Presidente';
     }
-
-    return (
-      <View key="is_counselor" style={styles.field}>
-        <Image source={iconJob} style={styles.icon} />
-        <Text>Cargo: Conselheiro </Text>
-      </View>
-    );
+    return 'Cargo: Conselheiro';
   }
   render() {
     return (
@@ -96,28 +85,31 @@ export default class ProfileInfoScreen extends React.Component {
           </View>
           <View style={styles.field}>
             <Image source={iconCpf} style={styles.icon} />
-            <Text>CPF: {this.props.counselor.cpf}</Text>
+            <Text>CPF: {this.props.counselor.profile.cpf}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconPhone} style={styles.icon} />
-            <Text>Telefone: {this.props.counselor.phone}</Text>
+            <Text>Telefone: {this.props.counselor.profile.phone}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconEmail} style={styles.icon} />
             <Text>Email: {this.props.counselor.email}</Text>
           </View>
-          {this.verifyCharge()}
+          <View key="is_president" style={styles.field}>
+            <Image source={iconJob} style={styles.icon} />
+            <Text>{this.verifyCharge()}</Text>
+          </View>
           <View style={styles.field}>
             <Image source={iconSegment} style={styles.icon} />
-            <Text>Segmento: {this.props.counselor.segment}</Text>
+            <Text>Segmento: {this.props.counselor.profile.segment}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconCAE} style={styles.icon} />
-            <Text>CAE: {this.props.counselor.CAE}</Text>
+            <Text>CAE: {this.props.counselor.profile.CAE}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconCaeType} style={styles.icon} />
-            <Text>Tipo do CAE: {this.props.counselor.CAE_Type}</Text>
+            <Text>Tipo do CAE: {this.props.counselor.profile.CAE_Type}</Text>
           </View>
         </View>
       </ScrollView>
