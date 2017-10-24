@@ -174,6 +174,7 @@ export default class UpdateInfoScreen extends React.Component {
           </View>
         </View>
         <TouchableOpacity
+          key="infoUpdate"
           style={styles.buttonContainer}
           onPress={() => this.register()}
         >

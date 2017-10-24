@@ -50,3 +50,12 @@ describe('Testing UpdateInfoScreen Input', () => {
     expect(wrapper.state('phone')).toEqual('9999999999');
   });
 });
+
+describe('Testing UpdateInfoScreen on pressed button', () => {
+  it('Test if updateInfo Button is pressed', () => {
+    const wrapper = shallow(<UpdateInfoScreen />);
+    const touch = wrapper.findWhere(c => c.key() === 'infoUpdate');
+    expect(touch.length).toEqual(1);
+    touch.simulate('press');
+  });
+});
