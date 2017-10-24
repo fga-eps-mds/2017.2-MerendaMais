@@ -66,21 +66,24 @@ describe('Testing counselorReducer', () => {
     expect(counselor.name).not.toBe('name');
     expect(counselor.id).not.toBe(1);
     expect(counselor.cpf).not.toBe(11111111111);
-    expect(counselor.isLoading).not.toBe({});
+    expect(counselor.isLoading).not.toBe(true);
 
     counselor = counselorReducer(counselor, {
       type: LOGIN_SUCCESS,
-      payload: counselor,
-      name: 'name',
-      id: '1',
-      cpf: '11111111111',
-      isLoading: true,
+      counselor: {
+        ...counselor,
+        name: 'name',
+        id: 1,
+        cpf: 11111111111,
+        isLoading: false,
+      },
     });
 
     expect(counselor.name).toBe('name');
     expect(counselor.id).toBe(1);
     expect(counselor.cpf).toBe(11111111111);
-    expect(counselor.isLoading).toBe({});
+    // counselor = { ...counselor, isLoading: true };
+    expect(counselor.isLoading).toBe(false);
   });
 
   it('verifies login fail', () => {
