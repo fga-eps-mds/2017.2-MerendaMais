@@ -8,7 +8,8 @@ import { TITULAR_COUNSELOR,
   MUNICIPAL_COUNSELOR_CAE,
   STATE_COUNSELOR_CAE,
   PRESIDENT_COUNSELOR,
-  COMMON_COUNSELOR } from '../constants';
+  COMMON_COUNSELOR,
+  COUNSELOR_DEFAUTL_PASSWORD } from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'RegisterScreen.js';
@@ -73,7 +74,7 @@ export default class RegisterScreen extends React.Component {
     this.state = {
       email: '',
       name: '',
-      password: 'senha',
+      password: COUNSELOR_DEFAUTL_PASSWORD,
       profile: {
         cpf: '',
         phone: '',
@@ -167,7 +168,10 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ profile: { ...this.state.profile, isPresident: value }, password: 'senha' })}
+            onValueChange={value => this.setState({
+              profile: { ...this.state.profile,
+                isPresident: value },
+              password: COUNSELOR_DEFAUTL_PASSWORD })}
             selectedValue={this.state.profile.isPresident}
           >
             <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />

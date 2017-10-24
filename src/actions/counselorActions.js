@@ -22,6 +22,7 @@ export const setToken = token => ({
   payload: token,
 });
 
+// Trating request errors
 const treatingAuthenticatingCounselorInRegisterError = (error) => {
   if (error.response.status === 401) {
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
@@ -38,6 +39,7 @@ const treatingAuthenticatingCounselorInRegisterError = (error) => {
   }
 };
 
+// Trating request errors
 const treatingRegisterCounselorError = (error) => {
   if (error.response.status === 401) {
     logWarn(FILE_NAME, 'treatingRegisterCounselorError',
@@ -54,6 +56,7 @@ const treatingRegisterCounselorError = (error) => {
   }
 };
 
+// Trating request errors
 const treatingAssociateProfileToCounselorError = (error) => {
   if (error.response.status === 401) {
     logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
@@ -70,6 +73,7 @@ const treatingAssociateProfileToCounselorError = (error) => {
   }
 };
 
+// Trating request errors
 const treatingVerifyUserInApplicationError = (error) => {
   if (error.response.status === 400) {
     logWarn(FILE_NAME, 'treatingVerifyUserInApplicationError',
@@ -83,6 +87,43 @@ const treatingVerifyUserInApplicationError = (error) => {
   }
 };
 
+// Trating request errors
+const treatingAuthenticatingCounselorInLoginError = (erro) => {
+  if (erro.response.status === 401) {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
+      `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
+  } else if (erro.response.status === 500) {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
+  } else if (erro.response.status === 400) {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
+  } else {
+    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
+      `Unknown error - Error code received in request - ${erro.response.status}`);
+  }
+};
+
+// Trating request errors
+const treatingGetUserProfileInLoginError = (error) => {
+  if (error.response.status === 404) {
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `User isn't register in application or Profile didn't find for this user - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 500) {
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 400) {
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+  } else {
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
+
+// Functions focused in Counselor Register
+
+// Used in Async Action to Register Counselor
 const convertingProfileJSONToString = (profileJSON) => {
   // Converting profile JSON to profile string received from Nuvem Civica.
   const profileStringDoubleQuote = JSON.stringify(profileJSON);
@@ -93,6 +134,7 @@ const convertingProfileJSONToString = (profileJSON) => {
   return profileStringSingleQuote;
 };
 
+// Used in Async Action to Register Counselor
 const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) => {
   // Creating header to send in POST method.
   const headerWithAppToken = {
@@ -147,6 +189,7 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
     });
 };
 
+// Used in Async Action to Register Counselor
 const authenticatingUserInRegister = (userData, dispatch) => {
   const authenticationHeader = {
     headers: {
@@ -175,6 +218,7 @@ const authenticatingUserInRegister = (userData, dispatch) => {
     });
 };
 
+// Used in Async Action to Register Counselor
 const verifyUserInApplication = (userData, dispatch) => {
   // Creating query params and header to pass through GET method.
   const searchUserParamsAndHeader = {
@@ -226,6 +270,7 @@ const verifyUserInApplication = (userData, dispatch) => {
     });
 };
 
+// Used in Async Action to Register Counselor
 const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
   axios.post(DEFAULT_USER_LINK_NUVEM_CIVICA, registerBody)
     .then((response) => {
@@ -257,7 +302,7 @@ const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
     });
 };
 
-// Async Action
+// Async Action to Register Counselor
 export const asyncRegisterCounselor = userData => (dispatch) => {
   logInfo(FILE_NAME, 'asyncLoginCounselor',
     `userData received from asyncRegisterCounselor: ${JSON.stringify(userData, null, 2)}`);
@@ -277,7 +322,9 @@ export const asyncRegisterCounselor = userData => (dispatch) => {
   registerCounselorAtNuvemCivica(registerBody, dispatch, userData);
 };
 
-// Async Action
+// Functions focused in Get Counselor Data
+
+// Async Action to Get Counselor Data
 export const asyncGetCounselor = id => (dispatch) => {
   console.log(id);
   axios.get(`http://merenda-mais.herokuapp.com/counselor/${id}`)
@@ -291,7 +338,9 @@ export const asyncGetCounselor = id => (dispatch) => {
     });
 };
 
-// Async Action
+// Functions focused in Edit Couselor Data
+
+// Async Action to Edit Couselor Data
 export const asyncEditCounselor = counselorData => (dispatch) => {
   console.log('counselorActions: ');
   console.log(counselorData);
@@ -316,38 +365,9 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
     });
 };
 
-const treatingAuthenticatingCounselorInLoginError = (erro) => {
-  if (erro.response.status === 401) {
-    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
-  } else if (erro.response.status === 500) {
-    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
-  } else if (erro.response.status === 400) {
-    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
-  } else {
-    logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `Unknown error - Error code received in request - ${erro.response.status}`);
-  }
-};
+// Functions focused in Counselor Login
 
-const treatingGetUserProfileInLoginError = (error) => {
-  if (error.response.status === 404) {
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `User isn't register in application or Profile didn't find for this user - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 500) {
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
-  } else {
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
-  }
-};
-
+// Used in Async Action to Login Counselor
 const convertingProfileStringToJSON = (profileStringSingleQuote) => {
   // Changing ' to " in string received from Nuvem Civica.
   const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
@@ -358,6 +378,7 @@ const convertingProfileStringToJSON = (profileStringSingleQuote) => {
   return profileJSON;
 };
 
+// Used in Async Action to Login Counselor
 const getUserProfileInLogin = (counselor, dispatch) => {
   const getProfileHeader = {
     headers: {
@@ -393,6 +414,7 @@ const getUserProfileInLogin = (counselor, dispatch) => {
     });
 };
 
+// Used in Async Action to Login Counselor
 const authenticatingCounselorInLogin = (authenticationHeader, dispatch) => {
   axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
     .then((response) => {
@@ -426,7 +448,7 @@ const authenticatingCounselorInLogin = (authenticationHeader, dispatch) => {
     });
 };
 
-// Async Action
+// Async Action to Login
 export const asyncLoginCounselor = userData => (dispatch) => {
   logInfo(FILE_NAME, 'asyncLoginCounselor',
     `userData received from LoginCounselorScreen: ${JSON.stringify(userData, null, 2)}`);

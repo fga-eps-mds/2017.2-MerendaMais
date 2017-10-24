@@ -18,3 +18,6 @@ export const STATE_COUNSELOR_CAE = 'Estadual';
 // Counselor role options.
 export const PRESIDENT_COUNSELOR = 'Presidente';
 export const COMMON_COUNSELOR = 'Conselheiro';
+
+// Counselor default password
+export const COUNSELOR_DEFAUTL_PASSWORD = 'senha';
