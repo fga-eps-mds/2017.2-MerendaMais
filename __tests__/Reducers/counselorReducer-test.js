@@ -1,7 +1,7 @@
 import counselorReducer from '../../src/Reducers/counselorReducer';
 import initialState from '../../src/Reducers/initialState';
 import {
-  SET_COUNSELOR, MODIFY_CPF, MODIFY_PASSWORD, LOADING, LOGIN_SUCCESS,
+  SET_COUNSELOR, MODIFY_CPF, MODIFY_PASSWORD, LOADING, LOGIN_SUCCESS, LOGIN_FAIL,
 } from '../../src/actions/types';
 
 describe('Testing counselorReducer', () => {
@@ -57,7 +57,7 @@ describe('Testing counselorReducer', () => {
       payload: {},
     });
 
-    expect(counselor.cpf).toBe();
+    expect(counselor.isLoading).toBe();
   });
 
   it('verifies Login Success', () => {
@@ -86,13 +86,13 @@ describe('Testing counselorReducer', () => {
   it('verifies login fail', () => {
     let counselor = { ...initialState.counselor };
 
-    expect(counselor.cpf).not.toBe(456789);
+    expect(counselor.isLoading).not.toBe(false);
 
     counselor = counselorReducer(counselor, {
-      type: MODIFY_CPF,
-      payload: 456789,
+      type: LOGIN_FAIL,
+      payload: false,
     });
 
-    expect(counselor.cpf).toBe(456789);
+    expect(counselor.isLoading).toBe(false);
   });
 });
