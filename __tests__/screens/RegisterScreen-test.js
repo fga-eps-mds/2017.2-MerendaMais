@@ -38,7 +38,10 @@ describe('Testing RegisterScreen', () => {
 });
 
 describe('Testing RegisterScreen Input', () => {
+  // let wrapper;
+  // beforeEach(() => {
   const wrapper = shallow(<RegisterScreen />);
+  // });
 
   it('should change state when the text of cpf input component changes', () => {
     const cpfInputComponent = wrapper.find('TextInput').at(0);
@@ -64,15 +67,61 @@ describe('Testing RegisterScreen Input', () => {
     expect(wrapper.state('phone')).toEqual('555555555');
   });
 
+  it('should change state when the text of isPresident input component changes', () => {
+    const isPresidentInputComponent = wrapper.find('Picker').at(0);
+    isPresidentInputComponent.simulate('valueChange', false);
+    expect(wrapper.state('isPresident')).toEqual(false);
+  });
+
+  it('should change state when the text of segment input component changes', () => {
+    const segmentInputComponent = wrapper.find('Picker').at(1);
+    segmentInputComponent.simulate('valueChange', 'Suplente');
+    expect(wrapper.state('segment')).toEqual('Suplente');
+  });
+
   it('should change state when the text of CAE_Type input component changes', () => {
     const caeTypeInputComponent = wrapper.find('TextInput').at(4);
-    caeTypeInputComponent.simulate('ChangeText', 'Brasilia');
-    expect(wrapper.state('CAE_Type')).toEqual('Brasilia');
+    caeTypeInputComponent.simulate('ChangeText', 'Estadual');
+    expect(wrapper.state('CAE_Type')).toEqual('Estadual');
   });
 
   it('should change state when the text of CAE input component changes', () => {
     const CAEInputComponent = wrapper.find('TextInput').at(5);
     CAEInputComponent.simulate('ChangeText', 'DF');
     expect(wrapper.state('CAE')).toEqual('DF');
+  });
+});
+
+describe('Testing RegisterScreen On pressed buttons', () => {
+  it('Test if createUser button is pressed', () => {
+    const createUser = (state) => {
+      expect(state.cpf).toEqual('33333333333')
+      expect(state.name).toEqual('Conselheiro')
+      expect(state.email).toEqual('Conselheiro@email.com')
+      expect(state.phone).toEqual('987654321')
+      expect(state.isPresident).toEqual(false)
+      expect(state.segment).toEqual('Suplente')
+      expect(state.CAE_Type).toEqual('Estadual')
+      expect(state.CAE).toEqual('DF')
+    }
+
+    const wrapper = shallow(
+      <RegisterScreen
+        createUser={createUser}
+      />,
+    );
+    wrapper.setState({
+      cpf: '33333333333',
+      name: 'Conselheiro',
+      email: 'Conselheiro@email.com',
+      phone: '987654321',
+      isPresident: false,
+      segment: 'Suplente',
+      CAE_Type: 'Estadual',
+      CAE: 'DF',
+    });
+    const touch = wrapper.findWhere(c => c.key() === 'userCreation');
+    expect(touch.length).toEqual(1);
+    touch.simulate('press')
   });
 });
