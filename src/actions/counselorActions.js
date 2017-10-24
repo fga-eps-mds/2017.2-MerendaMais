@@ -22,19 +22,19 @@ export const setToken = token => ({
   payload: token,
 });
 
-const treatingAuthenticatingCounselorInRegisterError = (erro) => {
-  if (erro.response.status === 401) {
+const treatingAuthenticatingCounselorInRegisterError = (error) => {
+  if (error.response.status === 401) {
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
-      `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
-  } else if (erro.response.status === 500) {
+      `User isn't register in application or Password didn't match - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 500) {
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
-  } else if (erro.response.status === 400) {
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 400) {
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
   } else {
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
-      `Unknown error - Error code received in request - ${erro.response.status}`);
+      `Unknown error - Error code received in request - ${error.response.status}`);
   }
 };
 
@@ -54,6 +54,35 @@ const treatingRegisterCounselorError = (error) => {
   }
 };
 
+const treatingAssociateProfileToCounselorError = (error) => {
+  if (error.response.status === 401) {
+    logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
+      `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 403) {
+    logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
+      `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 404) {
+    logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
+      `User isn't register in Nuvem or Profile type doesn't exist - Error code received in request - ${error.response.status}`);
+  } else {
+    logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
+
+const treatingVerifyUserInApplicationError = (error) => {
+  if (error.response.status === 400) {
+    logWarn(FILE_NAME, 'treatingVerifyUserInApplicationError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 500) {
+    logWarn(FILE_NAME, 'treatingVerifyUserInApplicationError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else {
+    logWarn(FILE_NAME, 'treatingVerifyUserInApplicationError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
+
 const convertingProfileJSONToString = (profileJSON) => {
   // Converting profile JSON to profile string received from Nuvem Civica.
   const profileStringDoubleQuote = JSON.stringify(profileJSON);
@@ -65,6 +94,7 @@ const convertingProfileJSONToString = (profileJSON) => {
 };
 
 const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) => {
+  // Creating header to send in POST method.
   const headerWithAppToken = {
     headers: {
       appToken,
@@ -75,6 +105,7 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
   logInfo(FILE_NAME, 'associateProfileToCounselor',
     `String to be send to "camposAdicionais": ${stringProfile}`);
 
+  // Creating body of POST method.
   const associateProfileBody = {
     camposAdicionais: stringProfile,
     tipoPerfil: {
@@ -109,30 +140,11 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
       logWarn(FILE_NAME, 'associateProfileToCounselor',
         `Request result in an ${error}`);
 
+      treatingAssociateProfileToCounselorError(error);
+
+      // Setting state loading false, to deactivate the loading spin.
       dispatch(isNotLoading());
     });
-};
-
-const verifyUserInApplication = (userData) => {
-  const params = {
-    codAplicativo: 463,
-    nome: userData.name,
-  };
-
-  const headers = {
-    headers: {
-      email: userData.email,
-    },
-  };
-  axios.get(DEFAULT_USER_LINK_NUVEM_CIVICA, params, headers)
-    .then((response) => {
-      logInfo(FILE_NAME, 'verifyUserInApplication',
-        'User already in Application');
-
-    })
-    .catch((error) => {
-
-    })
 };
 
 const authenticatingUserInRegister = (userData, dispatch) => {
@@ -150,8 +162,7 @@ const authenticatingUserInRegister = (userData, dispatch) => {
       logInfo(FILE_NAME, 'authenticatingUserInRegister',
         `User response data received from authentication: ${JSON.stringify(response.data, null, 2)}`);
 
-      associateProfileToCounselor(response.headers.apptoken,
-        response.data.cod, userData, dispatch);
+      associateProfileToCounselor(response.headers.apptoken, response.data.cod, userData, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'authenticatingUserInRegister',
@@ -164,12 +175,64 @@ const authenticatingUserInRegister = (userData, dispatch) => {
     });
 };
 
+const verifyUserInApplication = (userData, dispatch) => {
+  // Creating query params and header to pass through GET method.
+  const searchUserParamsAndHeader = {
+    params: {
+      codAplicativo: APP_IDENTIFIER,
+    },
+    headers: {
+      email: userData.email,
+    },
+  };
+
+  // This request search all users by full name or part of the name,
+  // who have registered in an application.
+  axios.get(DEFAULT_USER_LINK_NUVEM_CIVICA, searchUserParamsAndHeader)
+    .then((response) => {
+      logInfo(FILE_NAME, 'verifyUserInApplication',
+        `response content: ${JSON.stringify(response.data, null, 2)}`);
+
+      // User already register.
+      if (response.status === 200) {
+        logInfo(FILE_NAME, 'verifyUserInApplication',
+          `User already register in application - Response status code: ${response.status}`);
+
+        // Setting state loading false, to deactivate the loading spin.
+        dispatch(isNotLoading());
+
+      // User register just in Nuvem Cívica.
+      } else if (response.status === 204) {
+        logInfo(FILE_NAME, 'verifyUserInApplication',
+          `User isn't register in application - Response status code: ${response.status}`);
+
+        // Trying register a user, that has a Nuvem Cívica record, in our application.
+        authenticatingUserInRegister(userData, dispatch);
+      } else {
+        logInfo(FILE_NAME, 'verifyUserInApplication',
+          `Unknown response - Response status code: ${response.status}`);
+
+        dispatch(isNotLoading());
+      }
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'verifyUserInApplication',
+        `Request result in an ${error}`);
+
+      treatingVerifyUserInApplicationError(error);
+
+      // Setting state loading false, to deactivate the loading spin.
+      dispatch(isNotLoading());
+    });
+};
+
 const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
   axios.post(DEFAULT_USER_LINK_NUVEM_CIVICA, registerBody)
     .then((response) => {
       logInfo(FILE_NAME, 'registerCounselorAtNuvemCivica',
         `${JSON.stringify(response.data, null, 2)}`);
 
+      // User registered successfully.
       authenticatingUserInRegister(userData, dispatch);
     })
     .catch((error) => {
@@ -183,12 +246,12 @@ const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
           `User already registered in Nuvem Civica or deactivated - Error code received in request - ${error.response.status}`);
 
         // Build the function that verify if the user is already register in our application
-        verifyUserInApplication(userData);
-
         // or just in Nuvem Civica.
+        verifyUserInApplication(userData, dispatch);
       } else {
         treatingRegisterCounselorError(error);
 
+        // Setting state loading false, to deactivate the loading spin.
         dispatch(isNotLoading());
       }
     });
