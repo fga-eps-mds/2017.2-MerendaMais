@@ -80,7 +80,7 @@ export default class RegisterScreen extends React.Component {
   render() {
     console.log(this.state);
     const password = this.state.isPresident === true ? (
-      <View>
+      <View key="passwordPresident">
         <Text style={styles.container}>     Senha</Text>
         <TextInput
           placeholder="Digite sua senha"
@@ -182,6 +182,7 @@ export default class RegisterScreen extends React.Component {
           onPress={() => this.props.createUser(this.state)}
           style={styles.buttonContainer}
           activeOpacity={0.7}
+          key="userCreation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>
