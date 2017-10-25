@@ -9,7 +9,5 @@ export const setStockFoodReport = key => ({
 
 export const setFoodStockObservation = observation => ({
   type: SET_STOCKFOODOBSERVATION,
-  payload: {
-    observation,
-  },
+  payload: observation,
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing RegisterScreen renders as expected 1`] = `
+exports[`Testing StockFoodCheckoutScreen renders as expected 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -5677,7 +5677,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": "setObservation",
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
@@ -11235,7 +11235,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": "setObservation",
           "nodeType": "class",
           "props": Object {
             "activeOpacity": 0.2,

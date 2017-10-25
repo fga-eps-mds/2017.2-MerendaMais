@@ -3,8 +3,8 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // imported as a connected component!
+// import StockFoodCheckoutScreen from '../../src/screens/StockFoodCheckoutScreen'
 import StockFoodCheckoutContainer from '../../src/Containers/StockFoodCheckoutContainer';
-import StockFoodCheckoutScreen from '../../src/screens/StockFoodCheckoutScreen';
 import foodStock from '../../src/Reducers/Reports/foodStock';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -20,7 +20,7 @@ const initialState = {
 
 const store = mockStore(initialState);
 
-describe('Testing RegisterScreen', () => {
+describe('Testing StockFoodCheckoutScreen', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
       <StockFoodCheckoutContainer />,
