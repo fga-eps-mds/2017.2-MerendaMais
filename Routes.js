@@ -10,6 +10,7 @@ import MainScreen from './src/screens/MainScreen';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 
+
 const Routes = () => ({
   render() {
     return (

@@ -1,3 +1,5 @@
+import foodStock from './Reports/foodStock';
+
 const initialState = {
   counselor: {
     id: 0,
@@ -14,6 +16,10 @@ const initialState = {
     CAE: '',
     isLoading: false,
     message_erro: '',
+  },
+  report: {
+    foodStock,
+    foodStockObservation: '',
   },
 };
 
