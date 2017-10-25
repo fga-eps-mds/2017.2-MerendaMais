@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { SET_COUNSELOR, SET_TOKEN } from '../actions/types';
+import { SET_COUNSELOR, SET_TOKEN, SET_COUNSELOR_EDITED } from '../actions/types';
 import { logTrace, logError } from '../../logConfig/loggers';
 
 const FILE_NAME = 'counselorReducer.js';
@@ -31,6 +31,11 @@ const counselorReducer = (state = initialState.counselor, action) => {
       return {
         ...state,
         token: action.payload,
+      };
+    case SET_COUNSELOR_EDITED:
+      return {
+        ...state,
+        profile: action.payload,
       };
     default:
       return state;

@@ -8,7 +8,6 @@ import { StyleSheet,
   from 'react-native';
 import Header from '../components/Header';
 
-const iconEmail = require('../images/ic_email.png');
 const iconPhone = require('../images/ic_phone.png');
 const iconName = require('../images/ic_account_circle.png');
 
@@ -16,7 +15,6 @@ const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
-
   buttonContainer: {
     paddingVertical: 10,
     borderWidth: 1,
@@ -27,20 +25,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
-
   buttonText: {
     textAlign: 'center',
     color: '#FFF',
   },
-
   content: {
-
     marginBottom: 9,
     flex: 6,
     flexDirection: 'column',
-
   },
-
   inputs: {
     backgroundColor: '#FAFAFA',
     paddingVertical: 10,
@@ -54,10 +47,7 @@ const styles = StyleSheet.create({
     paddingRight: 4,
     flexDirection: 'row',
     alignItems: 'center',
-
   },
-
-
   icon: {
     width: 30,
     height: 30,
@@ -68,32 +58,37 @@ const styles = StyleSheet.create({
 export default class UpdateInfoScreen extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      email: '',
-      phone: '',
-      name: '',
+      name: this.props.counselor.name,
+      phone: this.props.profile.phone,
     };
   }
-  handleFieldOnChange(field, value) {
-    this.setState({
-      [field]: value,
-    });
-  }
+
   fetchCounselorData() {
     return {
-      email: this.state.email,
-      phone: this.state.phone,
+      nuvemCode: this.props.counselor.nuvemCode,
       name: this.state.name,
-      id: this.props.id,
+      token: this.props.counselor.token,
+      userName: this.props.counselor.userName,
+      profile: {
+        cpf: this.props.profile.cpf,
+        phone: this.state.phone,
+        isPresident: this.props.profile.isPresident,
+        segment: this.props.profile.segment,
+        CAE_Type: this.props.profile.CAE_Type,
+        CAE: this.props.profile.CAE,
+      },
     };
   }
+
   render() {
     return (
 
       <View style={styles.principal}>
         <Header
           title={'Editar Informações'}
-          backButton
+          backButton={'<'}
         />
         <View style={styles.content}>
           <View style={styles.inputs}>
@@ -101,19 +96,9 @@ export default class UpdateInfoScreen extends React.Component {
             <TextInput
               width={280}
               maxLength={50}
-              placeholder="Digite seu nome"
+              value={this.state.name}
               underlineColorAndroid="transparent"
-              onChangeText={text => this.handleFieldOnChange('name', text)}
-            />
-          </View>
-          <View style={styles.inputs}>
-            <Image source={iconEmail} style={styles.icon} />
-            <TextInput
-              width={280}
-              maxLength={50}
-              placeholder="nome@exemplo.com"
-              underlineColorAndroid="transparent"
-              onChangeText={text => this.handleFieldOnChange('email', text)}
+              onChangeText={text => this.setState({ name: text })}
             />
           </View>
           <View style={styles.inputs}>
@@ -121,9 +106,9 @@ export default class UpdateInfoScreen extends React.Component {
             <TextInput
               width={280}
               maxLength={11}
-              placeholder="(00)00000-0000"
+              value={this.state.phone}
               underlineColorAndroid="transparent"
-              onChangeText={text => this.handleFieldOnChange('phone', text)}
+              onChangeText={text => this.setState({ phone: text })}
             />
           </View>
         </View>
@@ -138,7 +123,22 @@ export default class UpdateInfoScreen extends React.Component {
   }
 }
 
+const { shape, string, number, bool } = React.PropTypes;
+
 UpdateInfoScreen.propTypes = {
   editUser: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  counselor: shape({
+    name: string.isRequired,
+    nuvemCode: number.isRequired,
+    token: string.isRequired,
+    userName: PropTypes.string.isRequired,
+  }).isRequired,
+  profile: shape({
+    cpf: string.isRequired,
+    phone: string.isRequired,
+    isPresident: bool.isRequired,
+    segment: string.isRequired,
+    CAE: string.isRequired,
+    CAE_Type: string,
+  }).isRequired,
 };

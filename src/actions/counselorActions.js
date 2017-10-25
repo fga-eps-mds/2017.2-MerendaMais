@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { SET_COUNSELOR,
-  SET_TOKEN } from './types';
+  SET_TOKEN,
+  SET_COUNSELOR_EDITED } from './types';
 import { isLoading, isNotLoading } from './applicationActions';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
@@ -21,6 +22,29 @@ export const setToken = token => ({
   type: SET_TOKEN,
   payload: token,
 });
+
+// Action
+export const setCounselorEdited = profile => ({
+  type: SET_COUNSELOR_EDITED,
+  payload: profile,
+});
+
+// Trating request errors
+const treatingEditCounselorError = (error) => {
+  if (error.response.status === 401) {
+    logWarn(FILE_NAME, 'treatingEditCounselorError',
+      `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 403) {
+    logWarn(FILE_NAME, 'treatingEditCounselorError',
+      `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 404) {
+    logWarn(FILE_NAME, 'treatingEditCounselorError',
+      `Not Found according to the Nuvem - Error code received in request - ${error.response.status}`);
+  } else {
+    logWarn(FILE_NAME, 'treatingEditCounselorError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
 
 // Trating request errors
 const treatingAuthenticatingCounselorInRegisterError = (error) => {
@@ -340,29 +364,75 @@ export const asyncGetCounselor = id => (dispatch) => {
 
 // Functions focused in Edit Couselor Data
 
-// Async Action to Edit Couselor Data
-export const asyncEditCounselor = counselorData => (dispatch) => {
-  console.log('counselorActions: ');
-  console.log(counselorData);
+// Edit Counselors Profile
+const editCounselorProfile = (counselorData, dispatch) => {
+  const headerToEditCounselor = {
+    headers: {
+      appToken: counselorData.token,
+    },
+  };
 
-  axios.patch(`http://merenda-mais.herokuapp.com/counselor/${counselorData.id}/`, {
-    email: counselorData.email,
-    phone: counselorData.phone,
-    name: counselorData.name,
-  })
-    .then((response) => {
-      console.log('counselorActions: ');
-      console.log(response.data);
-      const responseWithId = {
-        ...response.data,
-        id: counselorData.id,
-      };
-      dispatch(setCounselor(responseWithId));
-      Actions.profileInfoScreen();
+  const stringProfile = convertingProfileJSONToString(counselorData.profile);
+
+  // Creating body of PUT method.
+  const bodyToEditCounselorProfile = {
+    camposAdicionais: stringProfile,
+    tipoPerfil: {
+      codTipoPerfil: 239,
+    },
+  };
+
+  axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile, headerToEditCounselor)
+    .then(() => {
+      logInfo(FILE_NAME, 'editCounselorProfile',
+        'Counselor Profile edited');
+
+      dispatch(setCounselorEdited(counselorData.profile));
     })
     .catch((error) => {
-      console.log(error);
+      logWarn(FILE_NAME, 'editCounselorProfile',
+        `Request result in an ${error}`);
+
+      treatingEditCounselorError(error);
     });
+};
+
+// Edit Counselor
+const editCounselor = (counselorData, dispatch) => {
+  const headerToEditCounselor = {
+    headers: {
+      appToken: counselorData.token,
+    },
+  };
+
+  const bodyToEditCounselor = {
+    nomeCompleto: counselorData.name,
+    nomeUsuario: counselorData.userName,
+  };
+
+  axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor, headerToEditCounselor)
+    .then((response) => {
+      logInfo(FILE_NAME, 'editCounselor',
+        `User data of Counselor edited: ${JSON.stringify(response.data, null, 2)}`);
+
+      editCounselorProfile(counselorData, dispatch);
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'editCounselor',
+        `Request result in an ${error}`);
+
+      treatingEditCounselorError(error);
+    });
+};
+
+
+// Async Action to Edit Couselor Data
+export const asyncEditCounselor = counselorData => (dispatch) => {
+  logInfo(FILE_NAME, 'asyncEditCounselor',
+    `counselor data to edit: ${JSON.stringify(counselorData, null, 2)}`);
+
+
+  editCounselor(counselorData, dispatch);
 };
 
 // Functions focused in Counselor Login
