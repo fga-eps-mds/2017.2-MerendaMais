@@ -45,19 +45,11 @@ describe('Testing SearchSchool Input', () => {
   });
 });
 
-/* describe('Testing search school', () => {
-  it('displays an ActivityIndicator when requesting data', () => {
-    const myProps = { ...props };
-    myProps.state = {
-      ...props.state,
-      isLoading: true,
-    };
-    const wrapper = shallow(<SearchSchool {...myProps} />);
-
-    const foundActivityIndicator = wrapper.findWhere(c => c.key() === 'Show_ActivityIndicator');
-    const foundTouchableOpacity = wrapper.findWhere(c => c.key() === 'Show_TouchableOpacity');
-
-    expect(foundActivityIndicator.length).toEqual(1);
-    expect(foundTouchableOpacity.length).toEqual(0);
+describe('Testing SearchSchool button', () => {
+  it('Test if SearchSchool Button is rendered', () => {
+    const wrapper = shallow(<SearchSchool />);
+    const button = wrapper.findWhere(c => c.key() === 'renderButton');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
   });
-}); */
+});

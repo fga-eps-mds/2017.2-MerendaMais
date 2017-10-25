@@ -51,11 +51,11 @@ describe('Testing UpdateInfoScreen Input', () => {
   });
 });
 
-describe('Testing UpdateInfoScreen on pressed button', () => {
-  it('Test if updateInfo Button is pressed', () => {
+describe('Testing UpdateInfoScreen button', () => {
+  it('Test if updateInfo Button is rendered', () => {
     const wrapper = shallow(<UpdateInfoScreen />);
-    const touch = wrapper.findWhere(c => c.key() === 'infoUpdate');
-    expect(touch.length).toEqual(1);
-    touch.simulate('press');
+    const button = wrapper.findWhere(c => c.key() === 'infoUpdate');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
   });
 });

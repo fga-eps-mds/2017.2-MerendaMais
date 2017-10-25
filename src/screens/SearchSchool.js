@@ -172,7 +172,6 @@ class SearchSchool extends React.Component {
       if (this.state.isLoading) {
         return (
           <ActivityIndicator
-            key="Show_ActivityIndicator"
             style={{ paddingBottom: 10 }}
             size="large"
             color="#FF9500"
@@ -181,7 +180,6 @@ class SearchSchool extends React.Component {
       }
       return (
         <TouchableOpacity
-          key="Show_TouchableOpacity"
           style={styles.buttonSearchAnabled}
           activeOpacity={0.7}
           onPress={() => this.register()}
@@ -272,8 +270,7 @@ class SearchSchool extends React.Component {
                 )}
               />
             </View>
-
-            <View style={styles.buttonArea}>
+            <View key="renderButton" style={styles.buttonArea} >
               {this.buttonActivation()}
             </View>
           </View>
