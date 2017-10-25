@@ -868,7 +868,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": "userCreation",
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.7,
@@ -1889,7 +1889,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": "userCreation",
           "nodeType": "class",
           "props": Object {
             "activeOpacity": 0.7,
