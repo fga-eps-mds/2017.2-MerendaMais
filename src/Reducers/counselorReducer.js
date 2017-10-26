@@ -35,7 +35,8 @@ const counselorReducer = (state = initialState.counselor, action) => {
     case SET_COUNSELOR_EDITED:
       return {
         ...state,
-        profile: action.payload,
+        name: action.payload.name,
+        profile: action.payload.profile,
       };
     default:
       return state;

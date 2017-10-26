@@ -117,17 +117,20 @@ export default class ProfileInfoScreen extends React.Component {
   }
 }
 
-const { shape, string } = React.PropTypes;
+const { shape, string, bool } = React.PropTypes;
 
 ProfileInfoScreen.propTypes = {
   getCounselor: PropTypes.func.isRequired,
   counselor: shape({
     name: string.isRequired,
-    cpf: string.isRequired,
-    phone: string.isRequired,
     email: string.isRequired,
-    segment: string.isRequired,
-    CAE: string.isRequired,
-    CAE_Type: string,
+    profile: shape({
+      cpf: string.isRequired,
+      phone: string.isRequired,
+      isPresident: bool.isRequired,
+      segment: string.isRequired,
+      CAE: string.isRequired,
+      CAE_Type: string,
+    }).isRequired,
   }).isRequired,
 };

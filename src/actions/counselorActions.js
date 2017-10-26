@@ -24,9 +24,12 @@ export const setToken = token => ({
 });
 
 // Action
-export const setCounselorEdited = profile => ({
+export const setCounselorEdited = counselor => ({
   type: SET_COUNSELOR_EDITED,
-  payload: profile,
+  payload: {
+    name: counselor.name,
+    profile: counselor.profile,
+  },
 });
 
 // Trating request errors
@@ -385,9 +388,9 @@ const editCounselorProfile = (counselorData, dispatch) => {
   axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile, headerToEditCounselor)
     .then(() => {
       logInfo(FILE_NAME, 'editCounselorProfile',
-        'Counselor Profile edited');
+        `Counselor Profile edited. Sending to Store: ${counselorData.name} and ${JSON.stringify(counselorData.profile, null, 2)}`);
 
-      dispatch(setCounselorEdited(counselorData.profile));
+      dispatch(setCounselorEdited(counselorData));
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'editCounselorProfile',

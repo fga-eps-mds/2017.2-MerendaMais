@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   content: {
+    marginTop: 30,
     marginBottom: 9,
     flex: 6,
     flexDirection: 'column',
@@ -61,7 +62,7 @@ export default class UpdateInfoScreen extends React.Component {
 
     this.state = {
       name: this.props.counselor.name,
-      phone: this.props.profile.phone,
+      phone: this.props.counselor.profile.phone,
     };
   }
 
@@ -72,12 +73,12 @@ export default class UpdateInfoScreen extends React.Component {
       token: this.props.counselor.token,
       userName: this.props.counselor.userName,
       profile: {
-        cpf: this.props.profile.cpf,
+        cpf: this.props.counselor.profile.cpf,
         phone: this.state.phone,
-        isPresident: this.props.profile.isPresident,
-        segment: this.props.profile.segment,
-        CAE_Type: this.props.profile.CAE_Type,
-        CAE: this.props.profile.CAE,
+        isPresident: this.props.counselor.profile.isPresident,
+        segment: this.props.counselor.profile.segment,
+        CAE_Type: this.props.counselor.profile.CAE_Type,
+        CAE: this.props.counselor.profile.CAE,
       },
     };
   }
@@ -114,7 +115,7 @@ export default class UpdateInfoScreen extends React.Component {
         </View>
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => this.props.editUser(this.fetchCounselorData())}
+          onPress={() => this.props.asyncEditCounselor(this.fetchCounselorData())}
         >
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>
@@ -126,19 +127,19 @@ export default class UpdateInfoScreen extends React.Component {
 const { shape, string, number, bool } = React.PropTypes;
 
 UpdateInfoScreen.propTypes = {
-  editUser: PropTypes.func.isRequired,
+  asyncEditCounselor: PropTypes.func.isRequired,
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,
     token: string.isRequired,
     userName: PropTypes.string.isRequired,
-  }).isRequired,
-  profile: shape({
-    cpf: string.isRequired,
-    phone: string.isRequired,
-    isPresident: bool.isRequired,
-    segment: string.isRequired,
-    CAE: string.isRequired,
-    CAE_Type: string,
+    profile: shape({
+      cpf: string.isRequired,
+      phone: string.isRequired,
+      isPresident: bool.isRequired,
+      segment: string.isRequired,
+      CAE: string.isRequired,
+      CAE_Type: string,
+    }).isRequired,
   }).isRequired,
 };

@@ -5,13 +5,12 @@ import { asyncEditCounselor } from '../actions/counselorActions';
 const mapStateToProps = state => (
   {
     counselor: state.counselor,
-    profile: state.counselor.profile,
   }
 );
 
 const mapDispatchToProps = dispatch => (
   {
-    editUser: userData => dispatch(asyncEditCounselor(userData)),
+    asyncEditCounselor: userData => dispatch(asyncEditCounselor(userData)),
   }
 );
 
