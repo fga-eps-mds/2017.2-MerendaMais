@@ -98,7 +98,7 @@ export const asyncLoginCounselor = userData => (dispatch) => {
     .then((response) => {
       console.log(response.data);
       dispatch(loginSuccess(response.data));
-      Actions.mainScreen();
+      Actions.stockfoodcheckoutscreen();
     })
     .catch((erro) => {
       console.log(erro);
