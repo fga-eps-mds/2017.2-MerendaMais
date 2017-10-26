@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { SideMenu } from 'react-native-elements';
 import Menu from '../components/Menu';
 
@@ -82,6 +83,7 @@ class MainScreen extends React.Component {
             <TouchableOpacity
               style={styles.buttonInspect}
               activeOpacity={0.7}
+              onPress={() => Actions.stockFoodCheckoutScreen()}
             >
               <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
             </TouchableOpacity>

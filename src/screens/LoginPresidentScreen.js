@@ -105,6 +105,7 @@ export default class LoginPresidentScreen extends React.Component {
               returnKeyType="next"
               onChangeText={CPF => this.props.modifyCPF(CPF)}
               maxLength={11}
+              keyboardType={'numeric'}
               value={this.props.cpf}
               underlineColorAndroid="transparent"
               placeholder="CPF"
