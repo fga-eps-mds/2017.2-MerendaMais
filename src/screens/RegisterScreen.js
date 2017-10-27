@@ -1,8 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, ScrollView, View, TextInput, TouchableOpacity, Picker, Alert } from 'react-native';
+import { Text,
+  ScrollView,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Picker,
+  Alert,
+  ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
+import { TITULAR_COUNSELOR,
+  SURROGATE_COUNSELOR,
+  MUNICIPAL_COUNSELOR_CAE,
+  STATE_COUNSELOR_CAE,
+  PRESIDENT_COUNSELOR,
+  COMMON_COUNSELOR,
+  COUNSELOR_DEFAUTL_PASSWORD } from '../constants';
+import { logInfo } from '../../logConfig/loggers';
+
+const FILE_NAME = 'RegisterScreen.js';
 
 const styles = {
 
@@ -62,18 +79,18 @@ export default class RegisterScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.state = {
-      cpf: '',
-      name: '',
       email: '',
-      phone: '',
-      isPresident: '',
-      password: '',
-      segment: '',
-      CAE_Type: '',
-      CAE: '',
+      name: '',
+      password: COUNSELOR_DEFAUTL_PASSWORD,
+      profile: {
+        cpf: '',
+        phone: '',
+        isPresident: '',
+        segment: '',
+        CAE_Type: '',
+        CAE: '',
+      },
     };
     this.validateCpf = this.validateCpf.bind(this);
     this.validateName = this.validateName.bind(this);
@@ -84,7 +101,7 @@ export default class RegisterScreen extends React.Component {
 
   validateCpf(cpf) {
     const validCpf = cpf.replace(/[^0-9]/g, '');
-    this.setState({ cpf: validCpf });
+    this.setState({ profile: { ...this.state.profile, cpf: validCpf } });
   }
 
   validateName(name) {
@@ -94,12 +111,12 @@ export default class RegisterScreen extends React.Component {
 
   validatePhone(phone) {
     const validPhone = phone.replace(/[^0-9]/g, '');
-    this.setState({ phone: validPhone });
+    this.setState({ profile: { ...this.state.profile, phone: validPhone } });
   }
 
   validateCae(CAE) {
     const validCae = CAE.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ CAE: validCae });
+    this.setState({ profile: { ...this.state.profile, CAE: validCae } });
   }
 
   register() {
@@ -111,7 +128,7 @@ export default class RegisterScreen extends React.Component {
     const caeRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     let error = false;
     let errorMessage = '';
-    if (!cpfRegex.test(this.state.cpf)) {
+    if (!cpfRegex.test(this.state.profile.cpf)) {
       error = true;
       errorMessage += 'CPF inválido\n';
     }
@@ -123,35 +140,61 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Email inválido\n';
     }
-    if (!phoneRegex1.test(this.state.phone) && !phoneRegex2.test(this.state.phone)) {
+    if (!phoneRegex1.test(this.state.profile.phone) &&
+    !phoneRegex2.test(this.state.profile.phone)) {
       error = true;
       errorMessage += 'Telefone inválido\n';
     }
-    if (this.state.isPresident === '') {
+    if (this.state.profile.isPresident === '') {
       error = true;
       errorMessage += 'Cargo não selecionado\n';
     }
-    if (this.state.segment === '') {
+    if (this.state.profile.segment === '') {
       error = true;
       errorMessage += 'Segmento não selecionado\n';
     }
-    if (this.state.CAE_Type === '') {
+    if (this.state.profile.CAE_Type === '') {
       error = true;
       errorMessage += 'Tipo de CAE não selecionado\n';
     }
-    if (!caeRegex.test(this.state.CAE) || this.state.CAE.trim() === '') {
+    if (!caeRegex.test(this.state.profile.CAE) || this.state.profile.CAE.trim() === '') {
       error = true;
       errorMessage += 'CAE inválido\n';
     }
     if (error === false) {
-      this.props.createUser(this.state);
+      this.props.asyncRegisterCounselor(this.state);
     } else {
       Alert.alert('FALHA NO CADASTRO', errorMessage);
     }
   }
+
+  renderBtnLogin() {
+    if (this.props.isLoading) {
+      return (
+        <ActivityIndicator
+          style={{ marginTop: 15, marginBottom: 15 }}
+          size="large"
+          color="#FF9500"
+        />
+      );
+    }
+    return (
+      <TouchableOpacity
+        onPress={() => this.register()}
+        style={styles.buttonContainer}
+        activeOpacity={0.7}
+        key="userCreation"
+      >
+        <Text style={styles.buttonText}>Concluir</Text>
+      </TouchableOpacity>
+    );
+  }
+
   render() {
-    console.log(this.state);
-    const password = this.state.isPresident === true ? (
+    logInfo(FILE_NAME, 'render()',
+      `State of register page: ${JSON.stringify(this.state, null, 2)}`);
+
+    const password = this.state.profile.isPresident === true ? (
       <View key="passwordPresident">
         <Text style={styles.container}>     Senha</Text>
         <TextInput
@@ -170,6 +213,7 @@ export default class RegisterScreen extends React.Component {
     return (
       <ScrollView style={styles.principal}>
         <Header />
+
         <Text>     CPF</Text>
         <TextInput
           placeholder="Digite o seu CPF"
@@ -180,8 +224,9 @@ export default class RegisterScreen extends React.Component {
           maxLength={11}
           keyboardType={'numeric'}
           onChangeText={text => this.validateCpf(text)}
-          value={this.state.cpf}
+          value={this.state.profile.cpf}
         />
+
         <Text>     Nome</Text>
         <TextInput
           placeholder="Digite o seu nome completo"
@@ -194,6 +239,7 @@ export default class RegisterScreen extends React.Component {
           onChangeText={text => this.validateName(text)}
           value={this.state.name}
         />
+
         <Text>     Email</Text>
         <TextInput
           placeholder="Digite o seu email"
@@ -206,6 +252,7 @@ export default class RegisterScreen extends React.Component {
           onChangeText={text => this.setState({ email: text })}
           value={this.state.email}
         />
+
         <Text>     Telefone</Text>
         <TextInput
           placeholder="Digite o seu telefone"
@@ -216,48 +263,57 @@ export default class RegisterScreen extends React.Component {
           maxLength={11}
           keyboardType={'phone-pad'}
           onChangeText={text => this.validatePhone(text)}
-          value={this.state.phone}
+          value={this.state.profile.phone}
         />
+
         <Text>     Cargo</Text>
         <View
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ isPresident: value, password: 'senha' })}
-            selectedValue={this.state.isPresident}
+            onValueChange={value => this.setState({
+              profile: { ...this.state.profile,
+                isPresident: value },
+              password: COUNSELOR_DEFAUTL_PASSWORD })}
+            selectedValue={this.state.profile.isPresident}
           >
             <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
-            <Picker.Item value label="Presidente" />
-            <Picker.Item value={false} label="Conselheiro" />
+            <Picker.Item value label={PRESIDENT_COUNSELOR} />
+            <Picker.Item value={false} label={COMMON_COUNSELOR} />
           </Picker>
         </View>
         {password}
+
         <Text>     Segmento</Text>
         <View
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ segment: value })}
-            selectedValue={this.state.segment}
+            onValueChange={value => this.setState({ profile: { ...this.state.profile,
+              segment: value } })}
+            selectedValue={this.state.profile.segment}
           >
             <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
-            <Picker.Item value="Suplente" label="Suplente" />
-            <Picker.Item value="Titular" label="Titular" />
+            <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
+            <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
           </Picker>
         </View>
+
         <Text>     Tipo do CAE</Text>
         <View
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ CAE_Type: value })}
-            selectedValue={this.state.CAE_Type}
+            onValueChange={value => this.setState({ profile: { ...this.state.profile,
+              CAE_Type: value } })}
+            selectedValue={this.state.profile.CAE_Type}
           >
-            <Picker.Item value="" label="Escolha o tipo do seu CAE" color="#95a5a6" />
-            <Picker.Item value="Estadual" label="Estadual" />
-            <Picker.Item value="Municipal" label="Municipal" />
+            <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />
+            <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />
+            <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />
           </Picker>
         </View>
+
         <Text>     CAE</Text>
         <TextInput
           placeholder="Lista com o CAE do seu município/estado"
@@ -268,16 +324,10 @@ export default class RegisterScreen extends React.Component {
           maxLength={40}
           keyboardType={'default'}
           onChangeText={text => this.validateCae(text)}
-          value={this.state.CAE}
+          value={this.state.profile.CAE}
         />
-        <TouchableOpacity
-          onPress={() => this.register()}
-          style={styles.buttonContainer}
-          activeOpacity={0.7}
-          key="userCreation"
-        >
-          <Text style={styles.buttonText}>Concluir</Text>
-        </TouchableOpacity>
+
+        {this.renderBtnLogin()}
 
         <View style={styles.footer}>
           <TouchableOpacity
@@ -296,6 +346,6 @@ export default class RegisterScreen extends React.Component {
 }
 
 RegisterScreen.propTypes = {
-  createUser: PropTypes.func.isRequired,
-
+  asyncRegisterCounselor: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };

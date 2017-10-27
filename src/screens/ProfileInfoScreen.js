@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
 import Header from '../components/Header';
 // import PropTypes from 'prop-types';
@@ -62,11 +61,8 @@ const styles = StyleSheet.create({
 });
 
 export default class ProfileInfoScreen extends React.Component {
-  componentWillMount() {
-    this.props.getCounselor(this.props.counselor.id);
-  }
   verifyCharge() {
-    if (this.props.counselor.isPresident) {
+    if (this.props.counselor.profile.isPresident) {
       return (
         <View key="is_president" style={styles.field}>
           <Image source={iconJob} style={styles.icon} />
@@ -96,11 +92,11 @@ export default class ProfileInfoScreen extends React.Component {
           </View>
           <View style={styles.field}>
             <Image source={iconCpf} style={styles.icon} />
-            <Text>CPF: {this.props.counselor.cpf}</Text>
+            <Text>CPF: {this.props.counselor.profile.cpf}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconPhone} style={styles.icon} />
-            <Text>Telefone: {this.props.counselor.phone}</Text>
+            <Text>Telefone: {this.props.counselor.profile.phone}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconEmail} style={styles.icon} />
@@ -109,15 +105,15 @@ export default class ProfileInfoScreen extends React.Component {
           {this.verifyCharge()}
           <View style={styles.field}>
             <Image source={iconSegment} style={styles.icon} />
-            <Text>Segmento: {this.props.counselor.segment}</Text>
+            <Text>Segmento: {this.props.counselor.profile.segment}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconCAE} style={styles.icon} />
-            <Text>CAE: {this.props.counselor.CAE}</Text>
+            <Text>CAE: {this.props.counselor.profile.CAE}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconCaeType} style={styles.icon} />
-            <Text>Tipo do CAE: {this.props.counselor.CAE_Type}</Text>
+            <Text>Tipo do CAE: {this.props.counselor.profile.CAE_Type}</Text>
           </View>
         </View>
       </ScrollView>
@@ -125,17 +121,19 @@ export default class ProfileInfoScreen extends React.Component {
   }
 }
 
-const { shape, string } = React.PropTypes;
+const { shape, string, bool } = React.PropTypes;
 
 ProfileInfoScreen.propTypes = {
-  getCounselor: PropTypes.func.isRequired,
   counselor: shape({
     name: string.isRequired,
-    cpf: string.isRequired,
-    phone: string.isRequired,
     email: string.isRequired,
-    segment: string.isRequired,
-    CAE: string.isRequired,
-    CAE_Type: string,
+    profile: shape({
+      cpf: string.isRequired,
+      phone: string.isRequired,
+      isPresident: bool.isRequired,
+      segment: string.isRequired,
+      CAE: string.isRequired,
+      CAE_Type: string,
+    }).isRequired,
   }).isRequired,
 };

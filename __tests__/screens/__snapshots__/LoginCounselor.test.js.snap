@@ -6,10 +6,8 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <LoginCounselorScreen
     asyncLoginCounselor={[Function]}
-    cpf="11111111111"
     isLoading={false}
     message_erro=""
-    modifyCPF={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -64,13 +62,12 @@ ShallowWrapper {
               }
             />
             <TextInput
-              keyboardType="numeric"
-              maxLength={11}
+              keyboardType="email-address"
               onChangeText={[Function]}
-              placeholder="CPF"
+              placeholder="email"
               returnKeyType="go"
               underlineColorAndroid="transparent"
-              value="11111111111"
+              value={undefined}
               width={280}
             />
           </View>
@@ -225,13 +222,12 @@ ShallowWrapper {
                 }
               />
               <TextInput
-                keyboardType="numeric"
-                maxLength={11}
+                keyboardType="email-address"
                 onChangeText={[Function]}
-                placeholder="CPF"
+                placeholder="email"
                 returnKeyType="go"
                 underlineColorAndroid="transparent"
-                value="11111111111"
+                value={undefined}
                 width={280}
               />
             </View>,
@@ -323,13 +319,12 @@ ShallowWrapper {
                   }
                 />,
                 <TextInput
-                  keyboardType="numeric"
-                  maxLength={11}
+                  keyboardType="email-address"
                   onChangeText={[Function]}
-                  placeholder="CPF"
+                  placeholder="email"
                   returnKeyType="go"
                   underlineColorAndroid="transparent"
-                  value="11111111111"
+                  value={undefined}
                   width={280}
                 />,
               ],
@@ -367,13 +362,12 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "keyboardType": "numeric",
-                  "maxLength": 11,
+                  "keyboardType": "email-address",
                   "onChangeText": [Function],
-                  "placeholder": "CPF",
+                  "placeholder": "email",
                   "returnKeyType": "go",
                   "underlineColorAndroid": "transparent",
-                  "value": "11111111111",
+                  "value": undefined,
                   "width": 280,
                 },
                 "ref": null,
@@ -703,13 +697,12 @@ ShallowWrapper {
                 }
               />
               <TextInput
-                keyboardType="numeric"
-                maxLength={11}
+                keyboardType="email-address"
                 onChangeText={[Function]}
-                placeholder="CPF"
+                placeholder="email"
                 returnKeyType="go"
                 underlineColorAndroid="transparent"
-                value="11111111111"
+                value={undefined}
                 width={280}
               />
             </View>
@@ -864,13 +857,12 @@ ShallowWrapper {
                   }
                 />
                 <TextInput
-                  keyboardType="numeric"
-                  maxLength={11}
+                  keyboardType="email-address"
                   onChangeText={[Function]}
-                  placeholder="CPF"
+                  placeholder="email"
                   returnKeyType="go"
                   underlineColorAndroid="transparent"
-                  value="11111111111"
+                  value={undefined}
                   width={280}
                 />
               </View>,
@@ -962,13 +954,12 @@ ShallowWrapper {
                     }
                   />,
                   <TextInput
-                    keyboardType="numeric"
-                    maxLength={11}
+                    keyboardType="email-address"
                     onChangeText={[Function]}
-                    placeholder="CPF"
+                    placeholder="email"
                     returnKeyType="go"
                     underlineColorAndroid="transparent"
-                    value="11111111111"
+                    value={undefined}
                     width={280}
                   />,
                 ],
@@ -1006,13 +997,12 @@ ShallowWrapper {
                   "key": null,
                   "nodeType": "class",
                   "props": Object {
-                    "keyboardType": "numeric",
-                    "maxLength": 11,
+                    "keyboardType": "email-address",
                     "onChangeText": [Function],
-                    "placeholder": "CPF",
+                    "placeholder": "email",
                     "returnKeyType": "go",
                     "underlineColorAndroid": "transparent",
-                    "value": "11111111111",
+                    "value": undefined,
                     "width": 280,
                   },
                   "ref": null,

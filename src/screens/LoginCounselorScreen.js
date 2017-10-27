@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityInd
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-
+import { COUNSELOR_DEFAUTL_PASSWORD } from '../constants';
 
 const iconAccount = require('../images/account_circle.png');
 
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
 
-  InputCPF: {
+  Inputemail: {
     paddingLeft: 2,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -57,14 +57,13 @@ const styles = StyleSheet.create({
 
 
 export default class LoginCounselorScreen extends React.Component {
-  asyncLoginCounselor() {
-    const CPF = this.props.cpf;
-    const userData = {
-      username: CPF,
-      password: 'senha',
-    };
+  constructor(props) {
+    super(props);
 
-    this.props.asyncLoginCounselor(userData);
+    this.state = {
+      email: '',
+      password: COUNSELOR_DEFAUTL_PASSWORD,
+    };
   }
 
   renderBtnLogin() {
@@ -77,7 +76,7 @@ export default class LoginCounselorScreen extends React.Component {
       <TouchableOpacity
         style={styles.buttonLogin}
         activeOpacity={0.7}
-        onPress={() => this.asyncLoginCounselor()}
+        onPress={() => this.props.asyncLoginCounselor(this.state)}
       >
         <Text style={{ color: 'white', fontSize: 20 }}>Entrar</Text>
       </TouchableOpacity>
@@ -89,20 +88,18 @@ export default class LoginCounselorScreen extends React.Component {
       <View style={styles.principal}>
         <Header />
         <View style={styles.content}>
-          <View style={styles.InputCPF}>
+          <View style={styles.Inputemail}>
             <Image source={iconAccount} style={styles.icon} />
             <TextInput
               width={280}
               returnKeyType="go"
-              onChangeText={CPF => this.props.modifyCPF(CPF)}
-              maxLength={11}
-              keyboardType={'numeric'}
-              value={this.props.cpf}
+              value={this.email}
+              onChangeText={email => this.setState({ email })}
+              keyboardType={'email-address'}
               underlineColorAndroid="transparent"
-              placeholder="CPF"
+              placeholder="email"
             />
           </View>
-
 
           {this.renderBtnLogin()}
 
@@ -132,8 +129,6 @@ export default class LoginCounselorScreen extends React.Component {
 }
 
 LoginCounselorScreen.propTypes = {
-  modifyCPF: PropTypes.func.isRequired,
   asyncLoginCounselor: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  cpf: PropTypes.string.isRequired,
 };
