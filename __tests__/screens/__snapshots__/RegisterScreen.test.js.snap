@@ -5,20 +5,9 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <RegisterScreen
-    createUser={[Function]}
-    state={
-      Object {
-        "CAE": "test",
-        "CAE_Type": "test",
-        "cpf": "55555555555",
-        "email": "test5@test.com",
-        "isPresident": false,
-        "name": "test",
-        "password": "55555",
-        "phone": "555555555",
-        "segment": "test",
-      }
-    }
+    asyncRegisterCounselor={[Function]}
+    isLoading={false}
+    message_erro=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -241,27 +230,37 @@ ShallowWrapper {
         >
                Tipo do CAE
         </Text>,
-        <TextInput
-          onChangeText={[Function]}
-          placeholder="Escolha o tipo do seu CAE"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
-              "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-        />,
+        >
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha o Tipo do seu CAE"
+              value=""
+            />
+            <PickerItem
+              label="Municipal"
+              value="Municipal"
+            />
+            <PickerItem
+              label="Estadual"
+              value="Estadual"
+            />
+          </Picker>
+        </View>,
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -802,26 +801,100 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "onChangeText": [Function],
-          "placeholder": "Escolha o tipo do seu CAE",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha o Tipo do seu CAE"
+              value=""
+            />
+            <PickerItem
+              label="Municipal"
+              value="Municipal"
+            />
+            <PickerItem
+              label="Estadual"
+              value="Estadual"
+            />
+          </Picker>,
           "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
-            "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o Tipo do seu CAE"
+                value=""
+              />,
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />,
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />,
+            ],
+            "mode": "dialog",
+            "onValueChange": [Function],
+            "selectedValue": "",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#95a5a6",
+                "label": "Escolha o Tipo do seu CAE",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Municipal",
+                "value": "Municipal",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Estadual",
+                "value": "Estadual",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
         "type": [Function],
       },
       Object {
@@ -1262,27 +1335,37 @@ ShallowWrapper {
           >
                  Tipo do CAE
           </Text>,
-          <TextInput
-            onChangeText={[Function]}
-            placeholder="Escolha o tipo do seu CAE"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
-                "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-          />,
+          >
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o Tipo do seu CAE"
+                value=""
+              />
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />
+            </Picker>
+          </View>,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1823,26 +1906,100 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "onChangeText": [Function],
-            "placeholder": "Escolha o tipo do seu CAE",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o Tipo do seu CAE"
+                value=""
+              />
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />
+            </Picker>,
             "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
-              "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha o Tipo do seu CAE"
+                  value=""
+                />,
+                <PickerItem
+                  label="Municipal"
+                  value="Municipal"
+                />,
+                <PickerItem
+                  label="Estadual"
+                  value="Estadual"
+                />,
+              ],
+              "mode": "dialog",
+              "onValueChange": [Function],
+              "selectedValue": "",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#95a5a6",
+                  "label": "Escolha o Tipo do seu CAE",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Municipal",
+                  "value": "Municipal",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Estadual",
+                  "value": "Estadual",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {

@@ -1,33 +1,40 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-// import configureStore from 'redux-mock-store';
 import ProfileInfoScreen from '../../src/screens/ProfileInfoScreen';
 
 Enzyme.configure({ adapter: new Adapter() });
 // imported as a connected component!
 
 const props = {
-  getCounselor: () => null,
   counselor: {
-    id: '1',
-    name: '',
-    cpf: '',
-    phone: '',
-    email: '',
-    segment: '',
-    isPresident: false,
-    CAE: '',
-    CAE_Type: '',
+    nuvemCode: 1,
+    email: 'rodolfo@gmail.com',
+    name: 'Rodolfo',
+    userName: 'rodolfo@gmail.com',
+    password: 'senha',
+    token: 'tokenGenerico',
+    profile: {
+      cpf: '12312312312',
+      phone: '96661234',
+      isPresident: false,
+      segment: 'Titular',
+      CAE_Type: 'Estadual',
+      CAE: 'Distrito Federal',
+    },
   },
 };
 
 describe('Testing ProfileInfoScreen', () => {
   it('Displays charge president if user is president', () => {
-    const myProps = { ...props };
-    myProps.counselor = {
-      ...props.counselor,
-      isPresident: true,
+    const myProps = {
+      counselor: {
+        ...props.counselor,
+        profile: {
+          ...props.counselor.profile,
+          isPresident: true,
+        },
+      },
     };
     const wrapper = shallow(<ProfileInfoScreen {...myProps} />);
 
@@ -39,7 +46,15 @@ describe('Testing ProfileInfoScreen', () => {
   });
 
   it('Displays charge counselor if the user is counselor', () => {
-    const myProps = { ...props, isPresident: false };
+    const myProps = {
+      counselor: {
+        ...props.counselor,
+        profile: {
+          ...props.counselor.profile,
+          isPresident: false,
+        },
+      },
+    };
     const wrapper = shallow(<ProfileInfoScreen {...myProps} />);
 
     const foundPresident = wrapper.findWhere(c => c.key() === 'is_president');

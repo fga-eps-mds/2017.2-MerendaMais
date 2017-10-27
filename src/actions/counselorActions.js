@@ -349,22 +349,6 @@ export const asyncRegisterCounselor = userData => (dispatch) => {
   registerCounselorAtNuvemCivica(registerBody, dispatch, userData);
 };
 
-// Functions focused in Get Counselor Data
-
-// Async Action to Get Counselor Data
-export const asyncGetCounselor = id => (dispatch) => {
-  console.log(id);
-  axios.get(`http://merenda-mais.herokuapp.com/counselor/${id}`)
-    .then((response) => {
-      console.log(response.data);
-      response.data = { ...response.data, id };
-      dispatch(setCounselor(response.data));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
 // Functions focused in Edit Couselor Data
 
 // Edit Counselors Profile

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { LoginCounselorScreen } from '../screens';
+import LoginCounselorScreen from '../screens/LoginCounselorScreen';
 import { asyncLoginCounselor } from '../actions/counselorActions';
 
 const mapStateToProps = state => (
   {
-    message_erro: state.application.message_erro,
     isLoading: state.application.isLoading,
+    message_erro: state.application.message_erro,
   }
 );
 

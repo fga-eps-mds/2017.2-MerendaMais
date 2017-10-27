@@ -6,10 +6,8 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <LoginCounselorScreen
     asyncLoginCounselor={[Function]}
-    cpf="11111111111"
     isLoading={false}
     message_erro=""
-    modifyCPF={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -68,6 +66,7 @@ ShallowWrapper {
               placeholder="email"
               returnKeyType="go"
               underlineColorAndroid="transparent"
+              value={undefined}
               width={280}
             />
           </View>
@@ -226,6 +225,7 @@ ShallowWrapper {
                 placeholder="email"
                 returnKeyType="go"
                 underlineColorAndroid="transparent"
+                value={undefined}
                 width={280}
               />
             </View>,
@@ -321,6 +321,7 @@ ShallowWrapper {
                   placeholder="email"
                   returnKeyType="go"
                   underlineColorAndroid="transparent"
+                  value={undefined}
                   width={280}
                 />,
               ],
@@ -362,6 +363,7 @@ ShallowWrapper {
                   "placeholder": "email",
                   "returnKeyType": "go",
                   "underlineColorAndroid": "transparent",
+                  "value": undefined,
                   "width": 280,
                 },
                 "ref": null,
@@ -695,6 +697,7 @@ ShallowWrapper {
                 placeholder="email"
                 returnKeyType="go"
                 underlineColorAndroid="transparent"
+                value={undefined}
                 width={280}
               />
             </View>
@@ -853,6 +856,7 @@ ShallowWrapper {
                   placeholder="email"
                   returnKeyType="go"
                   underlineColorAndroid="transparent"
+                  value={undefined}
                   width={280}
                 />
               </View>,
@@ -948,6 +952,7 @@ ShallowWrapper {
                     placeholder="email"
                     returnKeyType="go"
                     underlineColorAndroid="transparent"
+                    value={undefined}
                     width={280}
                   />,
                 ],
@@ -989,6 +994,7 @@ ShallowWrapper {
                     "placeholder": "email",
                     "returnKeyType": "go",
                     "underlineColorAndroid": "transparent",
+                    "value": undefined,
                     "width": 280,
                   },
                   "ref": null,

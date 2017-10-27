@@ -6,12 +6,8 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <LoginPresidentScreen
     asyncLoginCounselor={[Function]}
-    cpf="11111111111"
     isLoading={false}
     message_erro=""
-    modifyCPF={[Function]}
-    modifyPassword={[Function]}
-    password="01010110"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -67,14 +63,13 @@ ShallowWrapper {
               }
             />
             <TextInput
-              maxLength={11}
               onChangeText={[Function]}
               onSubmitEditing={[Function]}
-              placeholder="CPF"
+              placeholder="email"
               returnKeyType="next"
               style={undefined}
               underlineColorAndroid="transparent"
-              value="11111111111"
+              value={undefined}
               width={280}
             />
           </View>
@@ -110,7 +105,7 @@ ShallowWrapper {
               secureTextEntry={true}
               style={undefined}
               underlineColorAndroid="transparent"
-              value="01010110"
+              value={undefined}
               width={280}
             />
           </View>
@@ -266,14 +261,13 @@ ShallowWrapper {
                 }
               />
               <TextInput
-                maxLength={11}
                 onChangeText={[Function]}
                 onSubmitEditing={[Function]}
-                placeholder="CPF"
+                placeholder="email"
                 returnKeyType="next"
                 style={undefined}
                 underlineColorAndroid="transparent"
-                value="11111111111"
+                value={undefined}
                 width={280}
               />
             </View>,
@@ -309,7 +303,7 @@ ShallowWrapper {
                 secureTextEntry={true}
                 style={undefined}
                 underlineColorAndroid="transparent"
-                value="01010110"
+                value={undefined}
                 width={280}
               />
             </View>,
@@ -401,14 +395,13 @@ ShallowWrapper {
                   }
                 />,
                 <TextInput
-                  maxLength={11}
                   onChangeText={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="CPF"
+                  placeholder="email"
                   returnKeyType="next"
                   style={undefined}
                   underlineColorAndroid="transparent"
-                  value="11111111111"
+                  value={undefined}
                   width={280}
                 />,
               ],
@@ -447,14 +440,13 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "maxLength": 11,
                   "onChangeText": [Function],
                   "onSubmitEditing": [Function],
-                  "placeholder": "CPF",
+                  "placeholder": "email",
                   "returnKeyType": "next",
                   "style": undefined,
                   "underlineColorAndroid": "transparent",
-                  "value": "11111111111",
+                  "value": undefined,
                   "width": 280,
                 },
                 "ref": null,
@@ -487,7 +479,7 @@ ShallowWrapper {
                   secureTextEntry={true}
                   style={undefined}
                   underlineColorAndroid="transparent"
-                  value="01010110"
+                  value={undefined}
                   width={280}
                 />,
               ],
@@ -532,7 +524,7 @@ ShallowWrapper {
                   "secureTextEntry": true,
                   "style": undefined,
                   "underlineColorAndroid": "transparent",
-                  "value": "01010110",
+                  "value": undefined,
                   "width": 280,
                 },
                 "ref": [Function],
@@ -863,14 +855,13 @@ ShallowWrapper {
                 }
               />
               <TextInput
-                maxLength={11}
                 onChangeText={[Function]}
                 onSubmitEditing={[Function]}
-                placeholder="CPF"
+                placeholder="email"
                 returnKeyType="next"
                 style={undefined}
                 underlineColorAndroid="transparent"
-                value="11111111111"
+                value={undefined}
                 width={280}
               />
             </View>
@@ -906,7 +897,7 @@ ShallowWrapper {
                 secureTextEntry={true}
                 style={undefined}
                 underlineColorAndroid="transparent"
-                value="01010110"
+                value={undefined}
                 width={280}
               />
             </View>
@@ -1062,14 +1053,13 @@ ShallowWrapper {
                   }
                 />
                 <TextInput
-                  maxLength={11}
                   onChangeText={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="CPF"
+                  placeholder="email"
                   returnKeyType="next"
                   style={undefined}
                   underlineColorAndroid="transparent"
-                  value="11111111111"
+                  value={undefined}
                   width={280}
                 />
               </View>,
@@ -1105,7 +1095,7 @@ ShallowWrapper {
                   secureTextEntry={true}
                   style={undefined}
                   underlineColorAndroid="transparent"
-                  value="01010110"
+                  value={undefined}
                   width={280}
                 />
               </View>,
@@ -1197,14 +1187,13 @@ ShallowWrapper {
                     }
                   />,
                   <TextInput
-                    maxLength={11}
                     onChangeText={[Function]}
                     onSubmitEditing={[Function]}
-                    placeholder="CPF"
+                    placeholder="email"
                     returnKeyType="next"
                     style={undefined}
                     underlineColorAndroid="transparent"
-                    value="11111111111"
+                    value={undefined}
                     width={280}
                   />,
                 ],
@@ -1243,14 +1232,13 @@ ShallowWrapper {
                   "key": null,
                   "nodeType": "class",
                   "props": Object {
-                    "maxLength": 11,
                     "onChangeText": [Function],
                     "onSubmitEditing": [Function],
-                    "placeholder": "CPF",
+                    "placeholder": "email",
                     "returnKeyType": "next",
                     "style": undefined,
                     "underlineColorAndroid": "transparent",
-                    "value": "11111111111",
+                    "value": undefined,
                     "width": 280,
                   },
                   "ref": null,
@@ -1283,7 +1271,7 @@ ShallowWrapper {
                     secureTextEntry={true}
                     style={undefined}
                     underlineColorAndroid="transparent"
-                    value="01010110"
+                    value={undefined}
                     width={280}
                   />,
                 ],
@@ -1328,7 +1316,7 @@ ShallowWrapper {
                     "secureTextEntry": true,
                     "style": undefined,
                     "underlineColorAndroid": "transparent",
-                    "value": "01010110",
+                    "value": undefined,
                     "width": 280,
                   },
                   "ref": [Function],

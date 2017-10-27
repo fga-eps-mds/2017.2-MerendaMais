@@ -5,16 +5,15 @@ import configureStore from 'redux-mock-store';
 // imported as a connected component!
 import LoginCounselorContainer from '../../src/Containers/LoginCounselorContainer';
 
-Enzyme.configure({ adapter: new Adapter() });
 
+Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureStore();
 
 const initialState = {
-  counselor: {
-    cpf: '11111111111',
-    message_erro: '',
+  application: {
     isLoading: false,
+    message_erro: '',
   },
 };
 

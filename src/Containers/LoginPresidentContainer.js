@@ -4,8 +4,8 @@ import { asyncLoginCounselor } from '../actions/counselorActions';
 
 const mapStateToProps = state => (
   {
-    message_erro: state.application.message_erro,
     isLoading: state.application.isLoading,
+    message_erro: state.application.message_erro,
   }
 );
 

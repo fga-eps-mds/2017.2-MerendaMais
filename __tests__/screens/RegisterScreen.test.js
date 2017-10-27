@@ -5,22 +5,31 @@ import configureStore from 'redux-mock-store';
 // imported as a connected component!
 import RegisterScreenContainer from '../../src/Containers/RegisterScreenContainer';
 
-Enzyme.configure({ adapter: new Adapter() });
 
+Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureStore();
 
 const initialState = {
   counselor: {
-    cpf: '55555555555',
-    name: 'test',
-    email: 'test5@test.com',
-    phone: '555555555',
-    isPresident: false,
-    password: '55555',
-    segment: 'test',
-    CAE_Type: 'test',
-    CAE: 'test',
+    nuvemCode: 1,
+    email: 'rodolfo@gmail.com',
+    name: 'Rodolfo',
+    userName: 'rodolfo@gmail.com',
+    password: 'senha',
+    token: 'tokenGenerico',
+    profile: {
+      cpf: '12312312312',
+      phone: '96661234',
+      isPresident: false,
+      segment: 'Titular',
+      CAE_Type: 'Estadual',
+      CAE: 'Distrito Federal',
+    },
+  },
+  application: {
+    isLoading: false,
+    message_erro: '',
   },
 };
 

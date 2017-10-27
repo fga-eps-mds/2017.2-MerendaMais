@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { asyncGetCounselor } from '../actions/counselorActions';
 import ProfileInfoScreen from '../screens/ProfileInfoScreen';
 
 const mapStateToProps = state => (
@@ -8,10 +7,6 @@ const mapStateToProps = state => (
   }
 );
 
-const mapDispatchToProps = dispatch => ({
-  getCounselor: userData => dispatch(asyncGetCounselor(userData)),
-});
-
-const ProfileInfoScreenContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileInfoScreen);
+const ProfileInfoScreenContainer = connect(mapStateToProps)(ProfileInfoScreen);
 
 export default ProfileInfoScreenContainer;

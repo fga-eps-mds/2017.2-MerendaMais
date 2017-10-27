@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
 import Header from '../components/Header';
 // import PropTypes from 'prop-types';
@@ -62,14 +61,22 @@ const styles = StyleSheet.create({
 });
 
 export default class ProfileInfoScreen extends React.Component {
-  componentWillMount() {
-    this.props.getCounselor(this.props.counselor.id);
-  }
   verifyCharge() {
     if (this.props.counselor.profile.isPresident) {
-      return 'Cargo: Presidente';
+      return (
+        <View key="is_president" style={styles.field}>
+          <Image source={iconJob} style={styles.icon} />
+          <Text>Cargo: Presidente</Text>
+        </View>
+      );
     }
-    return 'Cargo: Conselheiro';
+
+    return (
+      <View key="is_counselor" style={styles.field}>
+        <Image source={iconJob} style={styles.icon} />
+        <Text>Cargo: Conselheiro </Text>
+      </View>
+    );
   }
   render() {
     return (
@@ -95,10 +102,7 @@ export default class ProfileInfoScreen extends React.Component {
             <Image source={iconEmail} style={styles.icon} />
             <Text>Email: {this.props.counselor.email}</Text>
           </View>
-          <View key="is_president" style={styles.field}>
-            <Image source={iconJob} style={styles.icon} />
-            <Text>{this.verifyCharge()}</Text>
-          </View>
+          {this.verifyCharge()}
           <View style={styles.field}>
             <Image source={iconSegment} style={styles.icon} />
             <Text>Segmento: {this.props.counselor.profile.segment}</Text>
@@ -120,7 +124,6 @@ export default class ProfileInfoScreen extends React.Component {
 const { shape, string, bool } = React.PropTypes;
 
 ProfileInfoScreen.propTypes = {
-  getCounselor: PropTypes.func.isRequired,
   counselor: shape({
     name: string.isRequired,
     email: string.isRequired,
