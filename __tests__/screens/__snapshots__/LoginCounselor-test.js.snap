@@ -64,6 +64,7 @@ ShallowWrapper {
               }
             />
             <TextInput
+              keyboardType="numeric"
               maxLength={11}
               onChangeText={[Function]}
               placeholder="CPF"
@@ -224,6 +225,7 @@ ShallowWrapper {
                 }
               />
               <TextInput
+                keyboardType="numeric"
                 maxLength={11}
                 onChangeText={[Function]}
                 placeholder="CPF"
@@ -321,6 +323,7 @@ ShallowWrapper {
                   }
                 />,
                 <TextInput
+                  keyboardType="numeric"
                   maxLength={11}
                   onChangeText={[Function]}
                   placeholder="CPF"
@@ -364,6 +367,7 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
+                  "keyboardType": "numeric",
                   "maxLength": 11,
                   "onChangeText": [Function],
                   "placeholder": "CPF",
@@ -699,6 +703,7 @@ ShallowWrapper {
                 }
               />
               <TextInput
+                keyboardType="numeric"
                 maxLength={11}
                 onChangeText={[Function]}
                 placeholder="CPF"
@@ -859,6 +864,7 @@ ShallowWrapper {
                   }
                 />
                 <TextInput
+                  keyboardType="numeric"
                   maxLength={11}
                   onChangeText={[Function]}
                   placeholder="CPF"
@@ -956,6 +962,7 @@ ShallowWrapper {
                     }
                   />,
                   <TextInput
+                    keyboardType="numeric"
                     maxLength={11}
                     onChangeText={[Function]}
                     placeholder="CPF"
@@ -999,6 +1006,7 @@ ShallowWrapper {
                   "key": null,
                   "nodeType": "class",
                   "props": Object {
+                    "keyboardType": "numeric",
                     "maxLength": 11,
                     "onChangeText": [Function],
                     "placeholder": "CPF",

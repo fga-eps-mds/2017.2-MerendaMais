@@ -47,6 +47,8 @@ ShallowWrapper {
                CPF
         </Text>,
         <TextInput
+          keyboardType="numeric"
+          maxLength={11}
           onChangeText={[Function]}
           placeholder="Digite o seu CPF"
           placeholderTextColor="#95a5a6"
@@ -66,6 +68,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <Text
           accessible={true}
@@ -76,6 +79,8 @@ ShallowWrapper {
                Nome
         </Text>,
         <TextInput
+          keyboardType="default"
+          maxLength={60}
           onChangeText={[Function]}
           placeholder="Digite o seu nome completo"
           placeholderTextColor="#95a5a6"
@@ -95,6 +100,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <Text
           accessible={true}
@@ -105,6 +111,8 @@ ShallowWrapper {
                Email
         </Text>,
         <TextInput
+          keyboardType="email-address"
+          maxLength={50}
           onChangeText={[Function]}
           placeholder="Digite o seu email"
           placeholderTextColor="#95a5a6"
@@ -124,6 +132,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <Text
           accessible={true}
@@ -134,6 +143,8 @@ ShallowWrapper {
                Telefone
         </Text>,
         <TextInput
+          keyboardType="phone-pad"
+          maxLength={11}
           onChangeText={[Function]}
           placeholder="Digite o seu telefone"
           placeholderTextColor="#95a5a6"
@@ -153,6 +164,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <Text
           accessible={true}
@@ -241,27 +253,37 @@ ShallowWrapper {
         >
                Tipo do CAE
         </Text>,
-        <TextInput
-          onChangeText={[Function]}
-          placeholder="Escolha o tipo do seu CAE"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
-              "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-        />,
+        >
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha o tipo do seu CAE"
+              value=""
+            />
+            <PickerItem
+              label="Estadual"
+              value="Estadual"
+            />
+            <PickerItem
+              label="Municipal"
+              value="Municipal"
+            />
+          </Picker>
+        </View>,
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -271,6 +293,8 @@ ShallowWrapper {
                CAE
         </Text>,
         <TextInput
+          keyboardType="default"
+          maxLength={40}
           onChangeText={[Function]}
           placeholder="Lista com o CAE do seu município/estado"
           placeholderTextColor="#95a5a6"
@@ -290,6 +314,7 @@ ShallowWrapper {
             }
           }
           underlineColorAndroid="transparent"
+          value=""
         />,
         <TouchableOpacity
           activeOpacity={0.7}
@@ -401,6 +426,8 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
+          "keyboardType": "numeric",
+          "maxLength": 11,
           "onChangeText": [Function],
           "placeholder": "Digite o seu CPF",
           "placeholderTextColor": "#95a5a6",
@@ -418,6 +445,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -443,6 +471,8 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
+          "keyboardType": "default",
+          "maxLength": 60,
           "onChangeText": [Function],
           "placeholder": "Digite o seu nome completo",
           "placeholderTextColor": "#95a5a6",
@@ -460,6 +490,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -485,6 +516,8 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
+          "keyboardType": "email-address",
+          "maxLength": 50,
           "onChangeText": [Function],
           "placeholder": "Digite o seu email",
           "placeholderTextColor": "#95a5a6",
@@ -502,6 +535,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -527,6 +561,8 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
+          "keyboardType": "phone-pad",
+          "maxLength": 11,
           "onChangeText": [Function],
           "placeholder": "Digite o seu telefone",
           "placeholderTextColor": "#95a5a6",
@@ -544,6 +580,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -802,26 +839,100 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "onChangeText": [Function],
-          "placeholder": "Escolha o tipo do seu CAE",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha o tipo do seu CAE"
+              value=""
+            />
+            <PickerItem
+              label="Estadual"
+              value="Estadual"
+            />
+            <PickerItem
+              label="Municipal"
+              value="Municipal"
+            />
+          </Picker>,
           "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
-            "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o tipo do seu CAE"
+                value=""
+              />,
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />,
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />,
+            ],
+            "mode": "dialog",
+            "onValueChange": [Function],
+            "selectedValue": "",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#95a5a6",
+                "label": "Escolha o tipo do seu CAE",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Estadual",
+                "value": "Estadual",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Municipal",
+                "value": "Municipal",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
         "type": [Function],
       },
       Object {
@@ -844,6 +955,8 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
+          "keyboardType": "default",
+          "maxLength": 40,
           "onChangeText": [Function],
           "placeholder": "Lista com o CAE do seu município/estado",
           "placeholderTextColor": "#95a5a6",
@@ -861,6 +974,7 @@ ShallowWrapper {
             "padding": 10,
           },
           "underlineColorAndroid": "transparent",
+          "value": "",
         },
         "ref": null,
         "rendered": null,
@@ -1068,6 +1182,8 @@ ShallowWrapper {
                  CPF
           </Text>,
           <TextInput
+            keyboardType="numeric"
+            maxLength={11}
             onChangeText={[Function]}
             placeholder="Digite o seu CPF"
             placeholderTextColor="#95a5a6"
@@ -1087,6 +1203,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <Text
             accessible={true}
@@ -1097,6 +1214,8 @@ ShallowWrapper {
                  Nome
           </Text>,
           <TextInput
+            keyboardType="default"
+            maxLength={60}
             onChangeText={[Function]}
             placeholder="Digite o seu nome completo"
             placeholderTextColor="#95a5a6"
@@ -1116,6 +1235,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <Text
             accessible={true}
@@ -1126,6 +1246,8 @@ ShallowWrapper {
                  Email
           </Text>,
           <TextInput
+            keyboardType="email-address"
+            maxLength={50}
             onChangeText={[Function]}
             placeholder="Digite o seu email"
             placeholderTextColor="#95a5a6"
@@ -1145,6 +1267,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <Text
             accessible={true}
@@ -1155,6 +1278,8 @@ ShallowWrapper {
                  Telefone
           </Text>,
           <TextInput
+            keyboardType="phone-pad"
+            maxLength={11}
             onChangeText={[Function]}
             placeholder="Digite o seu telefone"
             placeholderTextColor="#95a5a6"
@@ -1174,6 +1299,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <Text
             accessible={true}
@@ -1262,27 +1388,37 @@ ShallowWrapper {
           >
                  Tipo do CAE
           </Text>,
-          <TextInput
-            onChangeText={[Function]}
-            placeholder="Escolha o tipo do seu CAE"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
-                "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-          />,
+          >
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o tipo do seu CAE"
+                value=""
+              />
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />
+            </Picker>
+          </View>,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1292,6 +1428,8 @@ ShallowWrapper {
                  CAE
           </Text>,
           <TextInput
+            keyboardType="default"
+            maxLength={40}
             onChangeText={[Function]}
             placeholder="Lista com o CAE do seu município/estado"
             placeholderTextColor="#95a5a6"
@@ -1311,6 +1449,7 @@ ShallowWrapper {
               }
             }
             underlineColorAndroid="transparent"
+            value=""
           />,
           <TouchableOpacity
             activeOpacity={0.7}
@@ -1422,6 +1561,8 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
+            "keyboardType": "numeric",
+            "maxLength": 11,
             "onChangeText": [Function],
             "placeholder": "Digite o seu CPF",
             "placeholderTextColor": "#95a5a6",
@@ -1439,6 +1580,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
@@ -1464,6 +1606,8 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
+            "keyboardType": "default",
+            "maxLength": 60,
             "onChangeText": [Function],
             "placeholder": "Digite o seu nome completo",
             "placeholderTextColor": "#95a5a6",
@@ -1481,6 +1625,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
@@ -1506,6 +1651,8 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
+            "keyboardType": "email-address",
+            "maxLength": 50,
             "onChangeText": [Function],
             "placeholder": "Digite o seu email",
             "placeholderTextColor": "#95a5a6",
@@ -1523,6 +1670,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
@@ -1548,6 +1696,8 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
+            "keyboardType": "phone-pad",
+            "maxLength": 11,
             "onChangeText": [Function],
             "placeholder": "Digite o seu telefone",
             "placeholderTextColor": "#95a5a6",
@@ -1565,6 +1715,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
@@ -1823,26 +1974,100 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "onChangeText": [Function],
-            "placeholder": "Escolha o tipo do seu CAE",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o tipo do seu CAE"
+                value=""
+              />
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />
+            </Picker>,
             "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
-              "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha o tipo do seu CAE"
+                  value=""
+                />,
+                <PickerItem
+                  label="Estadual"
+                  value="Estadual"
+                />,
+                <PickerItem
+                  label="Municipal"
+                  value="Municipal"
+                />,
+              ],
+              "mode": "dialog",
+              "onValueChange": [Function],
+              "selectedValue": "",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#95a5a6",
+                  "label": "Escolha o tipo do seu CAE",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Estadual",
+                  "value": "Estadual",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Municipal",
+                  "value": "Municipal",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {
@@ -1865,6 +2090,8 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
+            "keyboardType": "default",
+            "maxLength": 40,
             "onChangeText": [Function],
             "placeholder": "Lista com o CAE do seu município/estado",
             "placeholderTextColor": "#95a5a6",
@@ -1882,6 +2109,7 @@ ShallowWrapper {
               "padding": 10,
             },
             "underlineColorAndroid": "transparent",
+            "value": "",
           },
           "ref": null,
           "rendered": null,

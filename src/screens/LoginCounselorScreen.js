@@ -96,6 +96,7 @@ export default class LoginCounselorScreen extends React.Component {
               returnKeyType="go"
               onChangeText={CPF => this.props.modifyCPF(CPF)}
               maxLength={11}
+              keyboardType={'numeric'}
               value={this.props.cpf}
               underlineColorAndroid="transparent"
               placeholder="CPF"
