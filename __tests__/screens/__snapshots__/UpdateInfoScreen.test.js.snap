@@ -5,11 +5,25 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <UpdateInfoScreen
-    editUser={[Function]}
-    email="test5@test.com"
-    id={undefined}
-    name="test"
-    phone="555555555"
+    asyncEditCounselor={[Function]}
+    counselor={
+      Object {
+        "email": "rodolfo@gmail.com",
+        "name": "Rodolfo",
+        "nuvemCode": 1,
+        "password": "senha",
+        "profile": Object {
+          "CAE": "Distrito Federal",
+          "CAE_Type": "Estadual",
+          "cpf": "12312312312",
+          "isPresident": false,
+          "phone": "6196661234",
+          "segment": "Titular",
+        },
+        "token": "tokenGenerico",
+        "userName": "rodolfo@gmail.com",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -35,6 +49,7 @@ ShallowWrapper {
               "flex": 6,
               "flexDirection": "column",
               "marginBottom": 9,
+              "marginTop": 30,
             }
           }
         >
@@ -72,45 +87,7 @@ ShallowWrapper {
               onChangeText={[Function]}
               placeholder="Digite seu nome"
               underlineColorAndroid="transparent"
-              value=""
-              width={280}
-            />
-          </View>
-          <View
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 30,
-                "marginHorizontal": 15,
-                "paddingLeft": 2,
-                "paddingRight": 4,
-                "paddingVertical": 10,
-              }
-            }
-          >
-            <Image
-              source={1}
-              style={
-                Object {
-                  "height": 30,
-                  "margin": 5,
-                  "width": 30,
-                }
-              }
-            />
-            <TextInput
-              keyboardType="email-address"
-              maxLength={50}
-              onChangeText={[Function]}
-              placeholder="nome@exemplo.com"
-              underlineColorAndroid="transparent"
-              value=""
+              value="Rodolfo"
               width={280}
             />
           </View>
@@ -148,7 +125,7 @@ ShallowWrapper {
               onChangeText={[Function]}
               placeholder="(00)00000-0000"
               underlineColorAndroid="transparent"
-              value=""
+              value="6196661234"
               width={280}
             />
           </View>
@@ -244,45 +221,7 @@ ShallowWrapper {
                 onChangeText={[Function]}
                 placeholder="Digite seu nome"
                 underlineColorAndroid="transparent"
-                value=""
-                width={280}
-              />
-            </View>,
-            <View
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "marginBottom": 30,
-                  "marginHorizontal": 15,
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
-                  "paddingVertical": 10,
-                }
-              }
-            >
-              <Image
-                source={1}
-                style={
-                  Object {
-                    "height": 30,
-                    "margin": 5,
-                    "width": 30,
-                  }
-                }
-              />
-              <TextInput
-                keyboardType="email-address"
-                maxLength={50}
-                onChangeText={[Function]}
-                placeholder="nome@exemplo.com"
-                underlineColorAndroid="transparent"
-                value=""
+                value="Rodolfo"
                 width={280}
               />
             </View>,
@@ -320,7 +259,7 @@ ShallowWrapper {
                 onChangeText={[Function]}
                 placeholder="(00)00000-0000"
                 underlineColorAndroid="transparent"
-                value=""
+                value="6196661234"
                 width={280}
               />
             </View>,
@@ -329,6 +268,7 @@ ShallowWrapper {
             "flex": 6,
             "flexDirection": "column",
             "marginBottom": 9,
+            "marginTop": 30,
           },
         },
         "ref": null,
@@ -355,7 +295,7 @@ ShallowWrapper {
                   onChangeText={[Function]}
                   placeholder="Digite seu nome"
                   underlineColorAndroid="transparent"
-                  value=""
+                  value="Rodolfo"
                   width={280}
                 />,
               ],
@@ -402,86 +342,7 @@ ShallowWrapper {
                   "onChangeText": [Function],
                   "placeholder": "Digite seu nome",
                   "underlineColorAndroid": "transparent",
-                  "value": "",
-                  "width": 280,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": Array [
-                <Image
-                  source={1}
-                  style={
-                    Object {
-                      "height": 30,
-                      "margin": 5,
-                      "width": 30,
-                    }
-                  }
-                />,
-                <TextInput
-                  keyboardType="email-address"
-                  maxLength={50}
-                  onChangeText={[Function]}
-                  placeholder="nome@exemplo.com"
-                  underlineColorAndroid="transparent"
-                  value=""
-                  width={280}
-                />,
-              ],
-              "style": Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginBottom": 30,
-                "marginHorizontal": 15,
-                "paddingLeft": 2,
-                "paddingRight": 4,
-                "paddingVertical": 10,
-              },
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "source": 1,
-                  "style": Object {
-                    "height": 30,
-                    "margin": 5,
-                    "width": 30,
-                  },
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "keyboardType": "email-address",
-                  "maxLength": 50,
-                  "onChangeText": [Function],
-                  "placeholder": "nome@exemplo.com",
-                  "underlineColorAndroid": "transparent",
-                  "value": "",
+                  "value": "Rodolfo",
                   "width": 280,
                 },
                 "ref": null,
@@ -513,7 +374,7 @@ ShallowWrapper {
                   onChangeText={[Function]}
                   placeholder="(00)00000-0000"
                   underlineColorAndroid="transparent"
-                  value=""
+                  value="6196661234"
                   width={280}
                 />,
               ],
@@ -560,7 +421,7 @@ ShallowWrapper {
                   "onChangeText": [Function],
                   "placeholder": "(00)00000-0000",
                   "underlineColorAndroid": "transparent",
-                  "value": "",
+                  "value": "6196661234",
                   "width": 280,
                 },
                 "ref": null,
@@ -648,6 +509,7 @@ ShallowWrapper {
                 "flex": 6,
                 "flexDirection": "column",
                 "marginBottom": 9,
+                "marginTop": 30,
               }
             }
           >
@@ -685,45 +547,7 @@ ShallowWrapper {
                 onChangeText={[Function]}
                 placeholder="Digite seu nome"
                 underlineColorAndroid="transparent"
-                value=""
-                width={280}
-              />
-            </View>
-            <View
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "marginBottom": 30,
-                  "marginHorizontal": 15,
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
-                  "paddingVertical": 10,
-                }
-              }
-            >
-              <Image
-                source={1}
-                style={
-                  Object {
-                    "height": 30,
-                    "margin": 5,
-                    "width": 30,
-                  }
-                }
-              />
-              <TextInput
-                keyboardType="email-address"
-                maxLength={50}
-                onChangeText={[Function]}
-                placeholder="nome@exemplo.com"
-                underlineColorAndroid="transparent"
-                value=""
+                value="Rodolfo"
                 width={280}
               />
             </View>
@@ -761,7 +585,7 @@ ShallowWrapper {
                 onChangeText={[Function]}
                 placeholder="(00)00000-0000"
                 underlineColorAndroid="transparent"
-                value=""
+                value="6196661234"
                 width={280}
               />
             </View>
@@ -857,45 +681,7 @@ ShallowWrapper {
                   onChangeText={[Function]}
                   placeholder="Digite seu nome"
                   underlineColorAndroid="transparent"
-                  value=""
-                  width={280}
-                />
-              </View>,
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#FAFAFA",
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 30,
-                    "marginHorizontal": 15,
-                    "paddingLeft": 2,
-                    "paddingRight": 4,
-                    "paddingVertical": 10,
-                  }
-                }
-              >
-                <Image
-                  source={1}
-                  style={
-                    Object {
-                      "height": 30,
-                      "margin": 5,
-                      "width": 30,
-                    }
-                  }
-                />
-                <TextInput
-                  keyboardType="email-address"
-                  maxLength={50}
-                  onChangeText={[Function]}
-                  placeholder="nome@exemplo.com"
-                  underlineColorAndroid="transparent"
-                  value=""
+                  value="Rodolfo"
                   width={280}
                 />
               </View>,
@@ -933,7 +719,7 @@ ShallowWrapper {
                   onChangeText={[Function]}
                   placeholder="(00)00000-0000"
                   underlineColorAndroid="transparent"
-                  value=""
+                  value="6196661234"
                   width={280}
                 />
               </View>,
@@ -942,6 +728,7 @@ ShallowWrapper {
               "flex": 6,
               "flexDirection": "column",
               "marginBottom": 9,
+              "marginTop": 30,
             },
           },
           "ref": null,
@@ -968,7 +755,7 @@ ShallowWrapper {
                     onChangeText={[Function]}
                     placeholder="Digite seu nome"
                     underlineColorAndroid="transparent"
-                    value=""
+                    value="Rodolfo"
                     width={280}
                   />,
                 ],
@@ -1015,86 +802,7 @@ ShallowWrapper {
                     "onChangeText": [Function],
                     "placeholder": "Digite seu nome",
                     "underlineColorAndroid": "transparent",
-                    "value": "",
-                    "width": 280,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": Array [
-                  <Image
-                    source={1}
-                    style={
-                      Object {
-                        "height": 30,
-                        "margin": 5,
-                        "width": 30,
-                      }
-                    }
-                  />,
-                  <TextInput
-                    keyboardType="email-address"
-                    maxLength={50}
-                    onChangeText={[Function]}
-                    placeholder="nome@exemplo.com"
-                    underlineColorAndroid="transparent"
-                    value=""
-                    width={280}
-                  />,
-                ],
-                "style": Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "marginBottom": 30,
-                  "marginHorizontal": 15,
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
-                  "paddingVertical": 10,
-                },
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "class",
-                  "props": Object {
-                    "source": 1,
-                    "style": Object {
-                      "height": 30,
-                      "margin": 5,
-                      "width": 30,
-                    },
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "class",
-                  "props": Object {
-                    "keyboardType": "email-address",
-                    "maxLength": 50,
-                    "onChangeText": [Function],
-                    "placeholder": "nome@exemplo.com",
-                    "underlineColorAndroid": "transparent",
-                    "value": "",
+                    "value": "Rodolfo",
                     "width": 280,
                   },
                   "ref": null,
@@ -1126,7 +834,7 @@ ShallowWrapper {
                     onChangeText={[Function]}
                     placeholder="(00)00000-0000"
                     underlineColorAndroid="transparent"
-                    value=""
+                    value="6196661234"
                     width={280}
                   />,
                 ],
@@ -1173,7 +881,7 @@ ShallowWrapper {
                     "onChangeText": [Function],
                     "placeholder": "(00)00000-0000",
                     "underlineColorAndroid": "transparent",
-                    "value": "",
+                    "value": "6196661234",
                     "width": 280,
                   },
                   "ref": null,

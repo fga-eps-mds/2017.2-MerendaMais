@@ -6,7 +6,7 @@ import InitialScreen from '../../src/screens/InitialScreen';
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <InitialScreen />
+    <InitialScreen />,
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

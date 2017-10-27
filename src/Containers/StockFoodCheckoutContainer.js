@@ -2,15 +2,10 @@ import { connect } from 'react-redux';
 import StockFoodCheckoutScreen from '../screens/StockFoodCheckoutScreen';
 import { setStockFoodReport, setFoodStockObservation } from '../actions/reportActions';
 
-const mapStateToProps = (state) => {
-  console.log('StockFoodCheckoutContainer: ');
-  console.log(state.report);
-
-  return {
-    report: state.report.foodStock,
-    observation: state.report.foodStockObservation,
-  };
-};
+const mapStateToProps = state => ({
+  report: state.report.foodStock,
+  observation: state.report.foodStockObservation,
+});
 
 const mapDispatchToProps = dispatch => ({
   setStockFoodReport: key => dispatch(setStockFoodReport(key)),

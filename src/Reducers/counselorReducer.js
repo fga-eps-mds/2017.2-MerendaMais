@@ -1,53 +1,42 @@
 import initialState from './initialState';
-import { SET_COUNSELOR, MODIFY_CPF, LOADING, LOGIN_FAIL, MODIFY_PASSWORD, LOGIN_SUCCESS } from '../actions/types';
+import { SET_COUNSELOR, SET_TOKEN, SET_COUNSELOR_EDITED } from '../actions/types';
+// import { logTrace, logWarn } from '../../logConfig/loggers';
 
-// action = {type: ACTION_TYPE, pyload: someDataHere}
+// const FILE_NAME = 'counselorReducer.js';
+
 const counselorReducer = (state = initialState.counselor, action) => {
-  console.log(action);
-  if (action === undefined) return state;
+  // logTrace(FILE_NAME, 'counselorReducer',
+  //   `Action Type received: ${action.type}`);
+
+  if (action === undefined) {
+    // logWarn(FILE_NAME, 'counselorReducer',
+    //   `ERROR: Action is undefined: ${JSON.stringify(action, null, 2)}`);
+
+    return state;
+  }
+
   switch (action.type) {
     case SET_COUNSELOR:
       return {
-        id: action.counselor.id,
-        url: action.counselor.url,
-        cpf: action.counselor.cpf,
-        name: action.counselor.name,
-        email: action.counselor.email,
-        phone: action.counselor.phone,
-        isPresident: action.counselor.isPresident,
-        password: action.counselor.password,
-        segment: action.counselor.segment,
-        CAE_Type: action.counselor.CAE_Type,
-        CAE: action.counselor.CAE,
-        isLoading: false,
+        ...state,
+        email: action.payload.email,
+        name: action.payload.name,
+        nuvemCode: action.payload.nuvemCode,
+        password: action.payload.password,
+        profile: action.payload.profile,
+        token: action.payload.token,
+        userName: action.payload.userName,
       };
-    case MODIFY_CPF:
+    case SET_TOKEN:
       return {
         ...state,
-        cpf: action.payload,
+        token: action.payload,
       };
-    case MODIFY_PASSWORD:
+    case SET_COUNSELOR_EDITED:
       return {
         ...state,
-        password: action.payload,
-      };
-    case LOADING:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        name: action.counselor.name,
-        id: action.counselor.id,
-        cpf: action.counselor.cpf,
-        isLoading: false,
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        isLoading: false,
+        name: action.payload.name,
+        profile: action.payload.profile,
       };
     default:
       return state;

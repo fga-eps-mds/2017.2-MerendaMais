@@ -1,15 +1,16 @@
+// Counselor Actions types
 export const SET_COUNSELOR = 'SET_COUNSELOR';
 
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const SET_TOKEN = 'SET_TOKEN';
 
-export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const SET_COUNSELOR_EDITED = 'SET_COUNSELOR_EDITED';
 
-export const MODIFY_CPF = 'MODIFY_CPF';
+// Application Actions types
+export const IS_LOADING = 'IS_LOADING';
 
-export const MODIFY_PASSWORD = 'MODIFY_PASSWORD';
+export const IS_NOT_LOADING = 'IS_NOT_LOADING';
 
-export const LOADING = 'LOADING';
-
+// Report Actions types
 export const SET_STOCKFOODREPORT = 'SET_STOCKFOODREPORT';
 
 export const SET_STOCKFOODOBSERVATION = 'SET_STOCKFOODOBSERVATION';

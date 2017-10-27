@@ -13,6 +13,7 @@ describe('Testing reportActions', () => {
     expect(actionReturn.payload).toBe('Estoque sujo.');
     expect(actionReturn.type).toBe(SET_STOCKFOODOBSERVATION);
   });
+
   it('Testing setFoodStockReport', () => {
     let actionReturn = setStockFoodReport();
 

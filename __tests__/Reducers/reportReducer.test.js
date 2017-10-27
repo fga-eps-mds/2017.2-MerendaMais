@@ -1,6 +1,3 @@
-// import React from 'react';
-// import Enzyme, { shallow } from 'enzyme';
-
 import reportReducer from '../../src/Reducers/reportReducer';
 import initialState from '../../src/Reducers/initialState';
 import {
