@@ -2,20 +2,17 @@ import initialState from './initialState';
 import { IS_LOADING,
   IS_NOT_LOADING,
 } from '../actions/types';
-import { logTrace, logError } from '../../logConfig/loggers';
-
-const FILE_NAME = 'applicationReducer.js';
+// import { logTrace, logError } from '../../logConfig/loggers';
+//
+// const FILE_NAME = 'applicationReducer.js';
 
 const applicationReducer = (state = initialState.application, action) => {
-  logTrace(FILE_NAME, 'applicationReducer',
-    `state received: ${JSON.stringify(state, null, 2)}`);
-
-  logTrace(FILE_NAME, 'applicationReducer',
-    `Action Type received: ${action.type}`);
+  // logTrace(FILE_NAME, 'applicationReducer',
+  //   `Action Type received: ${action.type}`);
 
   if (action === undefined) {
-    logError(FILE_NAME, 'applicationReducer',
-      `Action is undefined: ${JSON.stringify(action)}`);
+    // logWarn(FILE_NAME, 'applicationReducer',
+    //   `Action is undefined: ${JSON.stringify(action)}`);
 
     return state;
   }

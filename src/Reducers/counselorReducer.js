@@ -1,16 +1,16 @@
 import initialState from './initialState';
 import { SET_COUNSELOR, SET_TOKEN, SET_COUNSELOR_EDITED } from '../actions/types';
-import { logTrace, logError } from '../../logConfig/loggers';
+// import { logTrace, logError } from '../../logConfig/loggers';
 
-const FILE_NAME = 'counselorReducer.js';
+// const FILE_NAME = 'counselorReducer.js';
 
 const counselorReducer = (state = initialState.counselor, action) => {
-  logTrace(FILE_NAME, 'counselorReducer',
-    `Action Type received: ${action.type}`);
+  // logTrace(FILE_NAME, 'counselorReducer',
+  //   `Action Type received: ${action.type}`);
 
   if (action === undefined) {
-    logError(FILE_NAME, 'counselorReducer',
-      `ERROR: Action is undefined: ${JSON.stringify(action)}`);
+    // logWarn(FILE_NAME, 'counselorReducer',
+    //   `ERROR: Action is undefined: ${JSON.stringify(action)}`);
 
     return state;
   }
