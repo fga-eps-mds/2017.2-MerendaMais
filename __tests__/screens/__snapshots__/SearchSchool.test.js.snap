@@ -87,7 +87,7 @@ ShallowWrapper {
           <View
             style={
               Object {
-                "flex": 2,
+                "flex": 3,
               }
             }
           >
@@ -163,6 +163,33 @@ ShallowWrapper {
                 width={280}
               />
             </View>
+            <View
+              style={
+                Object {
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "marginTop": 15,
+                  "paddingLeft": 2,
+                }
+              }
+            >
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue=""
+              >
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha sua UF"
+                  value=""
+                />
+                <PickerItem
+                  label="DF"
+                  value="DF"
+                />
+              </Picker>
+            </View>
           </View>
           <View
             style={
@@ -170,7 +197,7 @@ ShallowWrapper {
                 "borderColor": "black",
                 "borderRadius": 7,
                 "borderWidth": 1,
-                "flex": 5,
+                "flex": 4,
                 "justifyContent": "center",
                 "width": 320,
               }
@@ -305,7 +332,7 @@ ShallowWrapper {
             <View
               style={
                 Object {
-                  "flex": 2,
+                  "flex": 3,
                 }
               }
             >
@@ -381,6 +408,33 @@ ShallowWrapper {
                   width={280}
                 />
               </View>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginTop": 15,
+                    "paddingLeft": 2,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha sua UF"
+                    value=""
+                  />
+                  <PickerItem
+                    label="DF"
+                    value="DF"
+                  />
+                </Picker>
+              </View>
             </View>
             <View
               style={
@@ -388,7 +442,7 @@ ShallowWrapper {
                   "borderColor": "black",
                   "borderRadius": 7,
                   "borderWidth": 1,
-                  "flex": 5,
+                  "flex": 4,
                   "justifyContent": "center",
                   "width": 320,
                 }
@@ -595,7 +649,7 @@ ShallowWrapper {
               <View
                 style={
                   Object {
-                    "flex": 2,
+                    "flex": 3,
                   }
                 }
               >
@@ -671,6 +725,33 @@ ShallowWrapper {
                     width={280}
                   />
                 </View>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginTop": 15,
+                      "paddingLeft": 2,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha sua UF"
+                      value=""
+                    />
+                    <PickerItem
+                      label="DF"
+                      value="DF"
+                    />
+                  </Picker>
+                </View>
               </View>,
               <View
                 style={
@@ -678,7 +759,7 @@ ShallowWrapper {
                     "borderColor": "black",
                     "borderRadius": 7,
                     "borderWidth": 1,
-                    "flex": 5,
+                    "flex": 4,
                     "justifyContent": "center",
                     "width": 320,
                   }
@@ -825,9 +906,36 @@ ShallowWrapper {
                       width={280}
                     />
                   </View>,
+                  <View
+                    style={
+                      Object {
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "marginTop": 15,
+                        "paddingLeft": 2,
+                      }
+                    }
+                  >
+                    <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha sua UF"
+                        value=""
+                      />
+                      <PickerItem
+                        label="DF"
+                        value="DF"
+                      />
+                    </Picker>
+                  </View>,
                 ],
                 "style": Object {
-                  "flex": 2,
+                  "flex": 3,
                 },
               },
               "ref": null,
@@ -988,6 +1096,87 @@ ShallowWrapper {
                   ],
                   "type": [Function],
                 },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha sua UF"
+                        value=""
+                      />
+                      <PickerItem
+                        label="DF"
+                        value="DF"
+                      />
+                    </Picker>,
+                    "style": Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginTop": 15,
+                      "paddingLeft": 2,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <PickerItem
+                          color="#95a5a6"
+                          label="Escolha sua UF"
+                          value=""
+                        />,
+                        <PickerItem
+                          label="DF"
+                          value="DF"
+                        />,
+                      ],
+                      "mode": "dialog",
+                      "onValueChange": [Function],
+                      "selectedValue": "",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "color": "#95a5a6",
+                          "label": "Escolha sua UF",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "label": "DF",
+                          "value": "DF",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
               ],
               "type": [Function],
             },
@@ -1014,7 +1203,7 @@ ShallowWrapper {
                   "borderColor": "black",
                   "borderRadius": 7,
                   "borderWidth": 1,
-                  "flex": 5,
+                  "flex": 4,
                   "justifyContent": "center",
                   "width": 320,
                 },
@@ -1222,7 +1411,7 @@ ShallowWrapper {
             <View
               style={
                 Object {
-                  "flex": 2,
+                  "flex": 3,
                 }
               }
             >
@@ -1298,6 +1487,33 @@ ShallowWrapper {
                   width={280}
                 />
               </View>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginTop": 15,
+                    "paddingLeft": 2,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha sua UF"
+                    value=""
+                  />
+                  <PickerItem
+                    label="DF"
+                    value="DF"
+                  />
+                </Picker>
+              </View>
             </View>
             <View
               style={
@@ -1305,7 +1521,7 @@ ShallowWrapper {
                   "borderColor": "black",
                   "borderRadius": 7,
                   "borderWidth": 1,
-                  "flex": 5,
+                  "flex": 4,
                   "justifyContent": "center",
                   "width": 320,
                 }
@@ -1440,7 +1656,7 @@ ShallowWrapper {
               <View
                 style={
                   Object {
-                    "flex": 2,
+                    "flex": 3,
                   }
                 }
               >
@@ -1516,6 +1732,33 @@ ShallowWrapper {
                     width={280}
                   />
                 </View>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginTop": 15,
+                      "paddingLeft": 2,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha sua UF"
+                      value=""
+                    />
+                    <PickerItem
+                      label="DF"
+                      value="DF"
+                    />
+                  </Picker>
+                </View>
               </View>
               <View
                 style={
@@ -1523,7 +1766,7 @@ ShallowWrapper {
                     "borderColor": "black",
                     "borderRadius": 7,
                     "borderWidth": 1,
-                    "flex": 5,
+                    "flex": 4,
                     "justifyContent": "center",
                     "width": 320,
                   }
@@ -1730,7 +1973,7 @@ ShallowWrapper {
                 <View
                   style={
                     Object {
-                      "flex": 2,
+                      "flex": 3,
                     }
                   }
                 >
@@ -1806,6 +2049,33 @@ ShallowWrapper {
                       width={280}
                     />
                   </View>
+                  <View
+                    style={
+                      Object {
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "marginTop": 15,
+                        "paddingLeft": 2,
+                      }
+                    }
+                  >
+                    <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha sua UF"
+                        value=""
+                      />
+                      <PickerItem
+                        label="DF"
+                        value="DF"
+                      />
+                    </Picker>
+                  </View>
                 </View>,
                 <View
                   style={
@@ -1813,7 +2083,7 @@ ShallowWrapper {
                       "borderColor": "black",
                       "borderRadius": 7,
                       "borderWidth": 1,
-                      "flex": 5,
+                      "flex": 4,
                       "justifyContent": "center",
                       "width": 320,
                     }
@@ -1960,9 +2230,36 @@ ShallowWrapper {
                         width={280}
                       />
                     </View>,
+                    <View
+                      style={
+                        Object {
+                          "borderColor": "gray",
+                          "borderRadius": 7,
+                          "borderWidth": 1,
+                          "marginTop": 15,
+                          "paddingLeft": 2,
+                        }
+                      }
+                    >
+                      <Picker
+                        mode="dialog"
+                        onValueChange={[Function]}
+                        selectedValue=""
+                      >
+                        <PickerItem
+                          color="#95a5a6"
+                          label="Escolha sua UF"
+                          value=""
+                        />
+                        <PickerItem
+                          label="DF"
+                          value="DF"
+                        />
+                      </Picker>
+                    </View>,
                   ],
                   "style": Object {
-                    "flex": 2,
+                    "flex": 3,
                   },
                 },
                 "ref": null,
@@ -2123,6 +2420,87 @@ ShallowWrapper {
                     ],
                     "type": [Function],
                   },
+                  Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <Picker
+                        mode="dialog"
+                        onValueChange={[Function]}
+                        selectedValue=""
+                      >
+                        <PickerItem
+                          color="#95a5a6"
+                          label="Escolha sua UF"
+                          value=""
+                        />
+                        <PickerItem
+                          label="DF"
+                          value="DF"
+                        />
+                      </Picker>,
+                      "style": Object {
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "marginTop": 15,
+                        "paddingLeft": 2,
+                      },
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <PickerItem
+                            color="#95a5a6"
+                            label="Escolha sua UF"
+                            value=""
+                          />,
+                          <PickerItem
+                            label="DF"
+                            value="DF"
+                          />,
+                        ],
+                        "mode": "dialog",
+                        "onValueChange": [Function],
+                        "selectedValue": "",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": null,
+                          "nodeType": "class",
+                          "props": Object {
+                            "color": "#95a5a6",
+                            "label": "Escolha sua UF",
+                            "value": "",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        Object {
+                          "instance": null,
+                          "key": null,
+                          "nodeType": "class",
+                          "props": Object {
+                            "label": "DF",
+                            "value": "DF",
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
                 ],
                 "type": [Function],
               },
@@ -2149,7 +2527,7 @@ ShallowWrapper {
                     "borderColor": "black",
                     "borderRadius": 7,
                     "borderWidth": 1,
-                    "flex": 5,
+                    "flex": 4,
                     "justifyContent": "center",
                     "width": 320,
                   },
