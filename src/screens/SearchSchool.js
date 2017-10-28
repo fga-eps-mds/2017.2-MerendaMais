@@ -4,6 +4,10 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, A
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
+import { logInfo, logWarn } from '../../logConfig/loggers';
+
+
+import { SCHOOL_ENDPOINT } from '../constants';
 
 const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
 const CityIcon = require('../images/ic_location_city_48pt.png');
@@ -11,6 +15,7 @@ const SearchIcon = require('../images/ic_search_48pt.png');
 const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
 const GoIcon = require('../images/ic_keyboard_arrow_right_48pt.png');
 
+const FILE_NAME = 'SearchSchool.js';
 
 const styles = StyleSheet.create({
   headerBox: {
@@ -141,24 +146,35 @@ class SearchSchool extends React.Component {
   }
 
   searchSchools() {
-    const params = {
-      name: this.state.name,
-      city: this.state.city,
+    const schoolParamsInNuvem = {
+      nome: this.state.name,
+      municipio: this.state.city,
+      campos: 'nome',
     };
-    this.setState({ isLoading: true });
 
-    axios.post('https://merenda-mais.herokuapp.com/get_schools/', params)
+
+    logInfo(FILE_NAME, 'searchSchools',
+      `Searching school with this params: nome = ${schoolParamsInNuvem.nome}, municipio = ${schoolParamsInNuvem.municipio}, camps = ${schoolParamsInNuvem.campos}`);
+
+    this.setState({ isLoading: true });
+    axios.get(SCHOOL_ENDPOINT, {
+      params: {
+        nome: this.state.name,
+        municipio: this.state.city,
+        campos: 'nome',
+      },
+    })
       .then((response) => {
-        console.log(response.data);
+        logInfo(FILE_NAME, 'searchSchools', 'Successfully searched school lists.');
+        logInfo(FILE_NAME, 'searchSchools', `School List: ${JSON.stringify(response.data, null, 2)}`);
+
         this.setState({ schoolList: response.data, isLoading: false });
 
-        console.log('SearchSchool State');
-        console.log(this.state);
         // If response is an empty array, no schools could be found.
       })
       .catch((error) => {
         this.setState({ isLoading: false });
-        console.log(error);
+        logWarn(FILE_NAME, 'searchSchools', error);
       });
   }
 
@@ -167,7 +183,6 @@ class SearchSchool extends React.Component {
   }
 
   buttonActivation() {
-    console.log(this.state.city);
     if (this.state.city > '' || this.state.name > '') {
       if (this.state.isLoading) {
         return (

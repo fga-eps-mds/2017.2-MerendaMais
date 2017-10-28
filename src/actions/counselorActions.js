@@ -331,7 +331,7 @@ const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
 
 // Async Action to Register Counselor
 export const asyncRegisterCounselor = userData => (dispatch) => {
-  logInfo(FILE_NAME, 'asyncLoginCounselor',
+  logInfo(FILE_NAME, 'asyncRegisterCounselor',
     `userData received from asyncRegisterCounselor: ${JSON.stringify(userData, null, 2)}`);
 
   // Creating body to send in post method.
