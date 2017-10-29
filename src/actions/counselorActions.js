@@ -7,7 +7,8 @@ import { isLoading, isNotLoading } from './applicationActions';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   AUTHENTICATE_LINK_NUVEM_CIVICA,
-  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
+  DEFAULT_USER_LINK_NUVEM_CIVICA,
+  DEFAULT_GROUP_LINK_NUVEM_CIVICA } from '../constants';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -329,6 +330,32 @@ const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
     });
 };
 
+const registerInAGroup = (userData, dispatch) => {
+  const paramsToNuvem = {
+    params: {
+      codAplicativo: APP_IDENTIFIER,
+      descricao: userData.profile.CAE,
+    },
+  };
+  logInfo(FILE_NAME, 'registerInAGroup',
+    `params: ${JSON.stringify(paramsToNuvem, null, 2)}`);
+
+  axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
+    .then((response) => {
+      logInfo(FILE_NAME, 'registerInAGroup',
+        `Description of a Groups of an app: ${JSON.stringify(response.data[0].descricao, null, 2)}`);
+      if (response.data[0].descricao === undefined) {
+        console.log('nao criado');
+      } else {
+        console.log('Ja criado');
+      }
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'registerInAGroup',
+        `Request result in an ${error}`);
+    });
+};
+
 // Async Action to Register Counselor
 export const asyncRegisterCounselor = userData => (dispatch) => {
   logInfo(FILE_NAME, 'asyncLoginCounselor',
@@ -344,6 +371,8 @@ export const asyncRegisterCounselor = userData => (dispatch) => {
 
   // Setting state loading true, to activate the loading spin.
   dispatch(isLoading());
+
+  registerInAGroup(userData);
 
   // Request to register a counselor at Nuvem Cívica, but not in application yet.
   registerCounselorAtNuvemCivica(registerBody, dispatch, userData);
