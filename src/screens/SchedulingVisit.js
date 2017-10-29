@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Alert, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 
-const SearchIcon = require('../images/ic_search_48pt.png');
 
 const styles = StyleSheet.create({
 
@@ -11,39 +10,61 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  buttonContainer: {
-    paddingVertical: 12,
+  schedullingButton: {
+    paddingVertical: 20,
     borderWidth: 1,
     borderRadius: 7,
     marginHorizontal: 20,
-    marginTop: 30,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
 
+  button: {
+    paddingVertical: 15,
+    borderWidth: 1,
+    borderRadius: 7,
+    marginHorizontal: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#FF9500',
+    justifyContent: 'flex-end',
+  },
   buttonText: {
     textAlign: 'center',
     color: '#FFF',
   },
   Input: {
-    marginTop: 5,
+    marginHorizontal: 15,
     paddingLeft: 10,
+    padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     borderColor: 'gray',
     backgroundColor: '#FAFAFA',
     borderWidth: 1,
     borderRadius: 7,
   },
+
+  Container: {
+    flex: 1,
+    marginTop: 20,
+  },
+
+  Picker: {
+    marginHorizontal: 15,
+    width: '95%',
+  },
+
   icon: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
     margin: 5,
   },
-});
 
+});
 
 export default class SchedulingVisit extends React.Component {
   constructor(props) {
@@ -60,73 +81,67 @@ export default class SchedulingVisit extends React.Component {
           title={'AGENDAR'}
           subTitle={'VISITA'}
         />
-        <View style={styles.Input}>
-          <Image source={SearchIcon} style={styles.icon} />
-          <TextInput
-            width={280}
-            returnKeyType="go"
-            maxLength={50}
-            keyboardType={'default'}
-            onChangeText={text => this.validateName(text)}
-            value={this.state.name}
-            underlineColorAndroid="transparent"
-            placeholder="Nome da escola"
-          />
+        <View style={styles.Container}>
+          <View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => Alert.alert('Pesquisando')}
+            >
+              <Text style={styles.buttonText}>Pesquisar escola</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+
+        <View style={styles.Container}>
           <DatePicker
+            style={styles.Picker}
             placeholder="Data"
-            style={{ width: '70%' }}
             mode="date"
             format="DD-MM-YYYY"
             confirmBtnText="Confirmar"
             cancelBtnText="Cancelar"
             onDateChange={date => this.setState({ date })}
           />
-          <Text> Data escolhida: {this.state.date}</Text>
+          <Text>    Data escolhida: {this.state.date}</Text>
+        </View>
 
+
+        <View style={styles.Container}>
           <DatePicker
-            placeholder="Hora"
-            style={{ width: '70%' }}
+            style={styles.Picker}
+            placeholder="Horário"
             mode="time"
             confirmBtnText="Confirmar"
             cancelBtnText="Cancelar"
             onDateChange={time => this.setState({ time })}
           />
-          <Text> Hora escolhida: {this.state.time}</Text>
+          <Text>    Hora escolhida: {this.state.time}</Text>
+        </View>
 
+        <View style={styles.Container}>
+          <View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => Alert.alert('Pesquisando')}
+            >
+              <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <Text>     Convidar Conselheiro</Text>
-        <View style={styles.Input}>
-          <Image source={SearchIcon} style={styles.icon} />
-          <TextInput
-            width={280}
-            returnKeyType="go"
-            maxLength={50}
-            keyboardType={'default'}
-            onChangeText={text => this.validateName(text)}
-            value={this.state.name}
-            underlineColorAndroid="transparent"
-            placeholder="Nome do Conselheiro"
-          />
+
+        <View style={styles.Container}>
+          <View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => Alert.alert('Pesquisando')}
+            >
+              <Text style={styles.buttonText}>Pesquisar Agente Sanitário</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <Text>     Convidar Agente Sanitário</Text>
-        <View style={styles.Input}>
-          <Image source={SearchIcon} style={styles.icon} />
-          <TextInput
-            width={280}
-            returnKeyType="go"
-            maxLength={50}
-            keyboardType={'default'}
-            onChangeText={text => this.validateName(text)}
-            value={this.state.name}
-            underlineColorAndroid="transparent"
-            placeholder="Digite o e-mail do Agente"
-          />
-        </View>
-        <View>
+        <View style={styles.Container}>
           <TouchableOpacity
-            style={styles.buttonContainer}
+            style={styles.schedullingButton}
             onPress={() => Alert.alert('Agendamento realizado com sucesso!')}
           >
             <Text style={styles.buttonText}>Agendar</Text>
