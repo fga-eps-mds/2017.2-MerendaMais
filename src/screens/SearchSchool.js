@@ -10,6 +10,7 @@ import { StyleSheet,
   ActivityIndicator,
   Alert,
   Picker } from 'react-native';
+import PropTypes from 'prop-types';
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
@@ -120,6 +121,8 @@ console.disableYellowBox = true;
 class SearchSchool extends React.Component {
   constructor(props) {
     super(props);
+
+    console.log(this.props);
 
     this.state = {
       isOpen: false,
@@ -300,6 +303,7 @@ class SearchSchool extends React.Component {
                   <View style={styles.item}>
                     <TouchableOpacity
                       style={styles.buttonSelectSchool}
+                      onPress={() => this.props.setSchoolInfo(item.codEscola)}
                     >
                       <Text style={{ fontSize: 16 }}>{item.nome}</Text>
                       <Image source={GoIcon} style={{ width: 25, height: 25 }} />
@@ -317,5 +321,9 @@ class SearchSchool extends React.Component {
     );
   }
 }
+
+SearchSchool.propTypes = {
+  setSchoolInfo: PropTypes.func.isRequired,
+};
 
 export default SearchSchool;
