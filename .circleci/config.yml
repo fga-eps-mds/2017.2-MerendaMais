@@ -24,8 +24,9 @@ jobs:
       - run: ./cc-test-reporter before-build      
       - run:
           name: Test
-          command: npm run test
-      - run: ./cc-test-reporter after-build -t ./coverage/lcov.info --exit-code $?
+          command: npm run test-with-coverage
+      - run: ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
+      - run: ./cc-test-reporter upload-coverage --exit-code ${CODE_CLIMATE_TOKEN}
       - deploy:
           name: Deploy on Expo
           command: |
