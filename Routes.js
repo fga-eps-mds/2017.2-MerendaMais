@@ -10,6 +10,7 @@ import MainScreen from './src/screens/MainScreen';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckoutContainer';
+import ManageRegistersScreen from './src/screens/ManageRegistersScreen';
 
 
 const Routes = () => ({
@@ -17,6 +18,7 @@ const Routes = () => ({
     return (
       <Router>
         <Scene key="root">
+          <Scene key="manageRegisters" component={ManageRegistersScreen} hideNavBar />
           <Scene key="initialScreen" component={InitialScreen} hideNavBar />
           <Scene key="mainScreen" component={MainScreen} hideNavBar />
           <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
