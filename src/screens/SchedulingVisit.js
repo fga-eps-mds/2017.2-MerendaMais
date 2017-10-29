@@ -31,10 +31,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
+
   buttonText: {
     textAlign: 'center',
     color: '#FFF',
   },
+
   Input: {
     marginHorizontal: 15,
     paddingLeft: 10,
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
 
   Picker: {
     marginHorizontal: 15,
+    paddingLeft: 10,
     width: '95%',
   },
 
@@ -96,13 +99,19 @@ export default class SchedulingVisit extends React.Component {
           <DatePicker
             style={styles.Picker}
             placeholder="Data"
+            date={this.state.date}
             mode="date"
             format="DD-MM-YYYY"
             confirmBtnText="Confirmar"
             cancelBtnText="Cancelar"
+            customStyles={{
+              dateInput: {
+                borderRadius: 7,
+              },
+            }}
             onDateChange={date => this.setState({ date })}
           />
-          <Text>    Data escolhida: {this.state.date}</Text>
+          <Text style={styles.Picker}>Data escolhida: {this.state.date}</Text>
         </View>
 
 
@@ -110,12 +119,18 @@ export default class SchedulingVisit extends React.Component {
           <DatePicker
             style={styles.Picker}
             placeholder="Horário"
+            date={this.state.time}
             mode="time"
             confirmBtnText="Confirmar"
             cancelBtnText="Cancelar"
+            customStyles={{
+              dateInput: {
+                borderRadius: 7,
+              },
+            }}
             onDateChange={time => this.setState({ time })}
           />
-          <Text>    Hora escolhida: {this.state.time}</Text>
+          <Text style={styles.Picker}>Hora escolhida: {this.state.time}</Text>
         </View>
 
         <View style={styles.Container}>
