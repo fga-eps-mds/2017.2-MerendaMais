@@ -1,12 +1,10 @@
 import initialState from './initialState';
 import { SET_SCHOOL_INFO } from '../actions/types';
-// import { logTrace, logWarn } from '../../logConfig/loggers';
+// import { logInfo } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'schoolReducer.js';
 
 const schoolReducer = (state = initialState.school, action) => {
-  // logTrace(FILE_NAME, 'schoolReducer',
-  //   `Action Type received: ${action.type}`);
 
   if (action === undefined) {
     // logWarn(FILE_NAME, 'schoolReducer',

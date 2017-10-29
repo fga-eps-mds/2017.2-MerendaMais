@@ -1,8 +1,12 @@
+import { Actions } from 'react-native-router-flux';
 import { SET_SCHOOL_INFO } from './types';
 
-const setSchoolInfo = schoolData => ({
+export const setSchoolInfo = schoolData => ({
   type: SET_SCHOOL_INFO,
   payload: schoolData,
 });
 
-export default setSchoolInfo;
+export const asyncChangeToSchoolInfoScreen = schoolData => (dispatch) => {
+  dispatch(setSchoolInfo(schoolData));
+  Actions.schoolInfoScreen();
+};
