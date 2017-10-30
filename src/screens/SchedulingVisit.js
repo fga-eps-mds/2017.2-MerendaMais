@@ -37,19 +37,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 
-  Input: {
-    marginHorizontal: 15,
-    paddingLeft: 10,
-    padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    borderColor: 'gray',
-    backgroundColor: '#FAFAFA',
-    borderWidth: 1,
-    borderRadius: 7,
-  },
-
   Container: {
     flex: 1,
     marginTop: 20,
@@ -112,7 +99,6 @@ export default class SchedulingVisit extends React.Component {
             onDateChange={date => this.setState({ date })}
           />
         </View>
-
 
         <View style={styles.Container}>
           <DatePicker
