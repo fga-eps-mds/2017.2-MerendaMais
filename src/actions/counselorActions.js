@@ -162,6 +162,77 @@ const convertingProfileJSONToString = (profileJSON) => {
   return profileStringSingleQuote;
 };
 
+const addCounselorToGroup = (userData, appToken, nuvemCode, codGroup, dispatch) => {
+  const headerAddGroup = {
+    headers: {
+      appToken,
+    },
+  };
+
+  axios.post(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros?codUsuario=${nuvemCode}`, { codUsuario: nuvemCode }, headerAddGroup)
+    .then((response) => {
+      logInfo(FILE_NAME, 'addCounselorToGroup',
+        `${response.data}`);
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'addCounselorToGroup',
+        `Request result in an ${error}`);
+      console.log(error.request);
+      console.log(error.message);
+    });
+};
+
+const createCAEGroup = (userData, appToken, nuvemCode, dispatch) => {
+  const headerCreateGroup = {
+    headers: {
+      appToken,
+    },
+  };
+
+  const bodyCreateGroup = {
+    codAplicativo: APP_IDENTIFIER,
+    descricao: userData.profile.CAE,
+  };
+
+  axios.post(DEFAULT_GROUP_LINK_NUVEM_CIVICA, bodyCreateGroup, headerCreateGroup)
+    .then((response) => {
+      logInfo(FILE_NAME, 'createCAEGroup',
+        `${response.headers.location}`);
+      const codGroup = response.headers.location.substr(56);
+      console.log(codGroup);
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'createCAEGroup',
+        `Request result in an ${error}`);
+    });
+};
+
+const searchAGroup = (userData, appToken, nuvemCode, dispatch) => {
+  const paramsToNuvem = {
+    params: {
+      codAplicativo: APP_IDENTIFIER,
+      descricao: userData.profile.CAE,
+    },
+  };
+  logInfo(FILE_NAME, 'searchAGroup',
+    `params: ${JSON.stringify(paramsToNuvem, null, 2)}`);
+
+  axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
+    .then((response) => {
+      if (response.data.length === 0) {
+        createCAEGroup(userData, appToken, nuvemCode, dispatch);
+      } else {
+        logInfo(FILE_NAME, 'searchAGroup',
+          'Group already exist');
+        addCounselorToGroup(userData, appToken, nuvemCode, response.data[0].codGrupo, dispatch);
+      }
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'searchAGroup',
+        `Request result in an ${error}`);
+    });
+};
+
 // Used in Async Action to Register Counselor
 const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) => {
   // Creating header to send in POST method.
@@ -200,11 +271,13 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
       logInfo(FILE_NAME, 'associateProfileToCounselor',
         `counselor dispatched to Store : ${JSON.stringify(counselor, null, 2)}`);
 
-      dispatch(setCounselor(counselor));
+      searchAGroup(userData, appToken, nuvemCode, dispatch);
 
+      // dispatch(setCounselor(counselor));
+      //
       dispatch(isNotLoading());
-
-      Actions.mainScreen();
+      //
+      // Actions.mainScreen();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'associateProfileToCounselor',
@@ -330,32 +403,6 @@ const registerCounselorAtNuvemCivica = (registerBody, dispatch, userData) => {
     });
 };
 
-const registerInAGroup = (userData, dispatch) => {
-  const paramsToNuvem = {
-    params: {
-      codAplicativo: APP_IDENTIFIER,
-      descricao: userData.profile.CAE,
-    },
-  };
-  logInfo(FILE_NAME, 'registerInAGroup',
-    `params: ${JSON.stringify(paramsToNuvem, null, 2)}`);
-
-  axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
-    .then((response) => {
-      logInfo(FILE_NAME, 'registerInAGroup',
-        `Description of a Groups of an app: ${JSON.stringify(response.data[0].descricao, null, 2)}`);
-      if (response.data[0].descricao === undefined) {
-        console.log('nao criado');
-      } else {
-        console.log('Ja criado');
-      }
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'registerInAGroup',
-        `Request result in an ${error}`);
-    });
-};
-
 // Async Action to Register Counselor
 export const asyncRegisterCounselor = userData => (dispatch) => {
   logInfo(FILE_NAME, 'asyncLoginCounselor',
@@ -371,8 +418,6 @@ export const asyncRegisterCounselor = userData => (dispatch) => {
 
   // Setting state loading true, to activate the loading spin.
   dispatch(isLoading());
-
-  registerInAGroup(userData);
 
   // Request to register a counselor at Nuvem Cívica, but not in application yet.
   registerCounselorAtNuvemCivica(registerBody, dispatch, userData);
