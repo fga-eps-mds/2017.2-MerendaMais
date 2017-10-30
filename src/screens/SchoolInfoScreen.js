@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Header from '../components/Header';
 import { SCHOOL_ENDPOINT } from '../constants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
@@ -8,17 +8,13 @@ import { logInfo, logWarn } from '../../logConfig/loggers';
 const FILE_NAME = 'SchoolInfoScreen.js';
 
 const styles = StyleSheet.create({
-  principal: {
-    flex: 1,
-  },
-
   buttonContainer: {
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius: 7,
     marginHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -28,32 +24,27 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 
-  content: {
-
-    marginBottom: 9,
-    flex: 6,
-    flexDirection: 'column',
-  },
-
-  checkbox: {
-    flex: 1,
-    paddingTop: 10,
-    paddingLeft: 10,
-    flexWrap: 'wrap',
+  listInfo: {
+    flex: 4,
+    marginHorizontal: 10,
+    paddingTop: 5,
+    // justifyContent: 'center',
+    width: 340,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 7,
   },
   text: {
     flexDirection: 'row',
-  },
-  label: {
-    paddingTop: 15,
-    flex: 1,
+    color: '#95a5a6',
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 5,
   },
 
 });
 
 class SchoolInfoScreen extends React.Component {
-
-
   constructor(props) {
     super(props);
 
@@ -95,16 +86,37 @@ class SchoolInfoScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.content}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Pesquisar Escola'}
         />
-        <Text />
-        <Text> Infomações </Text>
-        <Text style={{ color: 'black', fontSize: 20 }}>Nome:{this.props.school.schoolName}</Text>
-        <Text style={{ color: 'black', fontSize: 20 }}>Email:{this.props.school.schoolEmail}</Text>
-        <Text style={{ color: 'black', fontSize: 20 }}>Telefone:{this.props.school.schoolPhone}</Text>
-      </ScrollView>
+
+        <Text style={styles.text}>  Infomações</Text>
+        <View style={styles.listInfo}>
+          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Nome: </Text>
+          <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolName}</Text>
+          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Email: </Text>
+          <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolEmail}</Text>
+          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Telefone: </Text>
+          <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolPhone}</Text>
+          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
+        </View>
+
+        <TouchableOpacity
+          // onPress={}
+          style={styles.buttonContainer}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.buttonText}>Agendar Visita</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          // onPress={}
+          style={styles.buttonContainer}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.buttonText}>Acessar Visitas</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
