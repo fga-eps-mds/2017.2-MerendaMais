@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import SchedulingVisit from './src/screens/SchedulingVisit';
 import store from './src/Reducers/store';
+import Routes from './Routes';
 
 /*
 Change loggersLevel value to control loggers visualization.
@@ -19,7 +19,7 @@ const App = () => ({
   render() {
     return (
       <Provider store={store}>
-        <SchedulingVisit />
+        <Routes />
       </Provider>
     );
   },

@@ -73,8 +73,8 @@ export default class SchedulingVisit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: '27-10-2017',
-      time: '01:00',
+      date: '',
+      time: '',
     };
   }
   render() {
@@ -111,7 +111,6 @@ export default class SchedulingVisit extends React.Component {
             }}
             onDateChange={date => this.setState({ date })}
           />
-          <Text style={styles.Picker}>Data escolhida: {this.state.date}</Text>
         </View>
 
 
@@ -130,7 +129,6 @@ export default class SchedulingVisit extends React.Component {
             }}
             onDateChange={time => this.setState({ time })}
           />
-          <Text style={styles.Picker}>Hora escolhida: {this.state.time}</Text>
         </View>
 
         <View style={styles.Container}>
