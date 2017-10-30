@@ -168,7 +168,6 @@ const addCounselorToGroup = (userData, appToken, nuvemCode, codGroup, dispatch) 
       appToken,
     },
   };
-
   axios.post(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros?codUsuario=${nuvemCode}`, { codUsuario: nuvemCode }, headerAddGroup)
     .then((response) => {
       logInfo(FILE_NAME, 'addCounselorToGroup',
@@ -198,8 +197,8 @@ const createCAEGroup = (userData, appToken, nuvemCode, dispatch) => {
     .then((response) => {
       logInfo(FILE_NAME, 'createCAEGroup',
         `${response.headers.location}`);
-      const codGroup = response.headers.location.substr(56);
-      console.log(codGroup);
+      const codGroup = response.headers.location.substr(59);
+      addCounselorToGroup(userData, appToken, nuvemCode, codGroup, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'createCAEGroup',
