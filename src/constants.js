@@ -7,6 +7,9 @@ export const AUTHENTICATE_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:8
 // Default Link to manipulate users at Nuvem Cívica.
 export const DEFAULT_USER_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/';
 
+// Link to access posts at Nuvem Cívica.
+export const POSTS_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/postagens';
+
 // Counselor segment options.
 export const TITULAR_COUNSELOR = 'Titular';
 export const SURROGATE_COUNSELOR = 'Suplente';

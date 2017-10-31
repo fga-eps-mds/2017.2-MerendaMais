@@ -1,4 +1,5 @@
 import React from 'react';
+// import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
@@ -60,8 +61,13 @@ export default class SchedulingVisit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: '',
-      time: '',
+      appToken: this.props.counselor.token,
+      nuvemCode: this.props.counselor.cod,
+      visit: {
+        codSchool: '',
+        date: '',
+        time: '',
+      },
     };
   }
   render() {
@@ -141,7 +147,8 @@ export default class SchedulingVisit extends React.Component {
         <View style={styles.Container}>
           <TouchableOpacity
             style={styles.schedullingButton}
-            onPress={() => Alert.alert('Agendamento realizado com sucesso!')}
+            // this.props.asyncSchedulingVisit(this.state)
+            onPress={() => Alert.alert('Agendando')}
           >
             <Text style={styles.buttonText}>Agendar</Text>
           </TouchableOpacity>
@@ -150,3 +157,13 @@ export default class SchedulingVisit extends React.Component {
     );
   }
 }
+
+const { shape, string, number } = React.PropTypes;
+
+SchedulingVisit.propTypes = {
+  // asyncSchedulingVisit: PropTypes.func.isRequired,
+  counselor: shape({
+    token: string.isRequired,
+    nuvemCode: number.isRequired,
+  }).isRequired,
+};
