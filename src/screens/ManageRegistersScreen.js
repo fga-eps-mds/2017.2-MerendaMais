@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 
@@ -18,21 +18,26 @@ const styles = StyleSheet.create({
 });
 
 export default class ManageRegistersScreen extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      registersList: this.props.listOfCounselorsInAGroup,
-    };
-  }
-
   componentWillMount() {
     this.props.asyncGetCounselorFromGroup(this.props.CAE);
   }
 
+  arrayRegistersList() {
+    if (this.props.listOfCounselorsInAGroup.length === 0) {
+      return (
+        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
+      );
+    }
+    return (
+      this.props.listOfCounselorsInAGroup.map(counselor =>
+        <Text> {counselor.nome} </Text>,
+      )
+    );
+  }
+
   render() {
-    console.log('state:');
-    console.log(this.state.registersList);
+    console.log('Props:');
+    console.log(this.props.listOfCounselorsInAGroup);
     return (
       <View style={{ backgroundColor: 'white', flex: 1 }}>
         <View>
@@ -42,8 +47,8 @@ export default class ManageRegistersScreen extends React.Component {
           />
         </View>
         <ScrollView>
-          <View style={styles.listRegisters} >
-            <Text> Caixa cinza </Text>
+          <View style={styles.listRegisters}>
+            {this.arrayRegistersList()}
           </View>
         </ScrollView>
       </View>
@@ -52,9 +57,6 @@ export default class ManageRegistersScreen extends React.Component {
 }
 
 ManageRegistersScreen.propTypes = {
-  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-  })).isRequired,
   CAE: PropTypes.string.isRequired,
   asyncGetCounselorFromGroup: PropTypes.func.isRequired,
 };
