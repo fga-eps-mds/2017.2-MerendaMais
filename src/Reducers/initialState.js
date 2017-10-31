@@ -30,6 +30,8 @@ const initialState = {
     schoolName: '',
     schoolPhone: '',
     schoolEmail: '',
+    schoolLat: '',
+    schoolLong: '',
   },
 };
 

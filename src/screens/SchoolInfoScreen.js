@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
@@ -11,6 +11,7 @@ const FILE_NAME = 'SchoolInfoScreen.js';
 
 const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
 const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
+// const Location = require('../images/ic_place.png');
 
 const styles = StyleSheet.create({
   headerBox: {
@@ -77,6 +78,8 @@ class SchoolInfoScreen extends React.Component {
       name: '',
       phone: '',
       email: '',
+      latitude: '',
+      longitude: '',
     };
   }
 
@@ -86,7 +89,7 @@ class SchoolInfoScreen extends React.Component {
 
     axios.get(`${SCHOOL_ENDPOINT}/${this.props.school.schoolCode}`, {
       params: {
-        campos: 'nome,email,telefone',
+        campos: 'nome,email,telefone,latitude,longitude',
       },
     })
       .then((response) => {
@@ -101,6 +104,8 @@ class SchoolInfoScreen extends React.Component {
             schoolName: response.data.nome,
             schoolPhone: response.data.telefone,
             schoolEmail: response.data.email,
+            schoolLat: response.data.latitude,
+            schoolLong: response.data.longitude,
           });
       })
       .catch((error) => {
@@ -110,6 +115,11 @@ class SchoolInfoScreen extends React.Component {
 
   updateMenuState(isOpen) {
     this.setState({ isOpen });
+  }
+
+  goToMaps() {
+    const url = `https://www.google.com/maps/?q=${this.props.school.schoolLat},${this.props.school.schoolLong}`;
+    Linking.openURL(url);
   }
 
   render() {
@@ -147,6 +157,16 @@ class SchoolInfoScreen extends React.Component {
             <Text style={{ color: '#95a5a6', fontSize: 20 }}>Telefone: </Text>
             <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolPhone}</Text>
             <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
+            <TouchableOpacity
+              onPress={() => this.goToMaps(
+                this.props.school.schoolLat, this.props.school.schoolLong)}
+              style={styles.buttonContainer}
+              activeOpacity={0.7}
+            // <Image source={Location} />
+            >
+              <Text style={styles.buttonText}>Ver no Mapa</Text>
+            </TouchableOpacity>
+
           </View>
 
           <TouchableOpacity
