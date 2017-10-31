@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { StyleSheet, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import openMap from 'react-native-open-maps';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
@@ -71,6 +72,7 @@ class SchoolInfoScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(this.props);
 
     this.state = {
       isOpen: false,
@@ -78,8 +80,6 @@ class SchoolInfoScreen extends React.Component {
       name: '',
       phone: '',
       email: '',
-      latitude: '',
-      longitude: '',
     };
   }
 
@@ -113,13 +113,36 @@ class SchoolInfoScreen extends React.Component {
       });
   }
 
+  showLocalizationButton() {
+    if (this.props.school.schoolLat !== undefined) {
+      return (
+        <View>
+          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
+          <TouchableOpacity
+            onPress={() => this.goToMaps(
+              this.props.school.schoolLat, this.props.school.schoolLong)}
+            style={styles.buttonContainer}
+            activeOpacity={0.7}
+          // <Image source={Location} />
+          >
+            <Text style={styles.buttonText}>Ver no Mapa</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    // If we can't return the button, return nothing.
+    return (null);
+  }
+
   updateMenuState(isOpen) {
     this.setState({ isOpen });
   }
 
   goToMaps() {
-    const url = `https://www.google.com/maps/?q=${this.props.school.schoolLat},${this.props.school.schoolLong}`;
-    Linking.openURL(url);
+    // const url = `https://www.google.com/maps/?q=${this.props.school.schoolLat},${this.props.school.schoolLong}`;
+    // Linking.openURL(url);
+    openMap({ latitude: this.props.school.schoolLat, longitude: this.props.school.schoolLong });
   }
 
   render() {
@@ -156,17 +179,7 @@ class SchoolInfoScreen extends React.Component {
             <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolEmail}</Text>
             <Text style={{ color: '#95a5a6', fontSize: 20 }}>Telefone: </Text>
             <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolPhone}</Text>
-            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
-            <TouchableOpacity
-              onPress={() => this.goToMaps(
-                this.props.school.schoolLat, this.props.school.schoolLong)}
-              style={styles.buttonContainer}
-              activeOpacity={0.7}
-            // <Image source={Location} />
-            >
-              <Text style={styles.buttonText}>Ver no Mapa</Text>
-            </TouchableOpacity>
-
+            {this.showLocalizationButton()}
           </View>
 
           <TouchableOpacity
