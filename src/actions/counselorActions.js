@@ -162,7 +162,7 @@ const convertingProfileJSONToString = (profileJSON) => {
   return profileStringSingleQuote;
 };
 
-const addCounselorToGroup = (userData, appToken, nuvemCode, codGroup, dispatch) => {
+const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch) => {
   const headerAddGroup = {
     headers: {
       appToken,
@@ -172,16 +172,23 @@ const addCounselorToGroup = (userData, appToken, nuvemCode, codGroup, dispatch) 
     .then((response) => {
       logInfo(FILE_NAME, 'addCounselorToGroup',
         `${response.data}`);
+
+      dispatch(setCounselor(counselor));
+
+      dispatch(isNotLoading());
+
+      Actions.mainScreen();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'addCounselorToGroup',
         `Request result in an ${error}`);
       console.log(error.request);
       console.log(error.message);
+      dispatch(isNotLoading());
     });
 };
 
-const createCAEGroup = (userData, appToken, nuvemCode, dispatch) => {
+const createCAEGroup = (counselor, appToken, nuvemCode, dispatch) => {
   const headerCreateGroup = {
     headers: {
       appToken,
@@ -190,27 +197,36 @@ const createCAEGroup = (userData, appToken, nuvemCode, dispatch) => {
 
   const bodyCreateGroup = {
     codAplicativo: APP_IDENTIFIER,
-    descricao: userData.profile.CAE,
+    descricao: counselor.profile.CAE,
   };
 
   axios.post(DEFAULT_GROUP_LINK_NUVEM_CIVICA, bodyCreateGroup, headerCreateGroup)
     .then((response) => {
       logInfo(FILE_NAME, 'createCAEGroup',
         `${response.headers.location}`);
-      const codGroup = response.headers.location.substr(59);
-      addCounselorToGroup(userData, appToken, nuvemCode, codGroup, dispatch);
+      // This constant gets the link of the response (http://mobile-aceite.tcu.gov.br/appCivicoRS/rest/grupos/codGroup)
+      // and returns 'grupos/codGroup'.
+      const auxCodGroup = response.headers.location.substr(response.headers.location.indexOf('grupos/'));
+      // This constant uses the constant above, but discard 'grupos/' and return codGroup, passed as
+      // parameter in the function below.
+      const codGroup = auxCodGroup.substr(7);
+      console.log(auxCodGroup);
+      console.log(codGroup);
+      addCounselorToGroup(counselor, appToken, nuvemCode, codGroup, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'createCAEGroup',
         `Request result in an ${error}`);
+
+      dispatch(isNotLoading());
     });
 };
 
-const searchAGroup = (userData, appToken, nuvemCode, dispatch) => {
+const searchAGroup = (counselor, appToken, nuvemCode, dispatch) => {
   const paramsToNuvem = {
     params: {
       codAplicativo: APP_IDENTIFIER,
-      descricao: userData.profile.CAE,
+      descricao: counselor.profile.CAE,
     },
   };
   logInfo(FILE_NAME, 'searchAGroup',
@@ -219,16 +235,18 @@ const searchAGroup = (userData, appToken, nuvemCode, dispatch) => {
   axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
     .then((response) => {
       if (response.data.length === 0) {
-        createCAEGroup(userData, appToken, nuvemCode, dispatch);
+        createCAEGroup(counselor, appToken, nuvemCode, dispatch);
       } else {
         logInfo(FILE_NAME, 'searchAGroup',
           'Group already exist');
-        addCounselorToGroup(userData, appToken, nuvemCode, response.data[0].codGrupo, dispatch);
+        addCounselorToGroup(counselor, appToken, nuvemCode, response.data[0].codGrupo, dispatch);
       }
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'searchAGroup',
         `Request result in an ${error}`);
+
+      dispatch(isNotLoading());
     });
 };
 
@@ -270,13 +288,7 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
       logInfo(FILE_NAME, 'associateProfileToCounselor',
         `counselor dispatched to Store : ${JSON.stringify(counselor, null, 2)}`);
 
-      searchAGroup(userData, appToken, nuvemCode, dispatch);
-
-      // dispatch(setCounselor(counselor));
-      //
-      dispatch(isNotLoading());
-      //
-      // Actions.mainScreen();
+      searchAGroup(counselor, appToken, nuvemCode, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'associateProfileToCounselor',
