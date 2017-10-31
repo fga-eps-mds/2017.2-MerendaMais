@@ -543,7 +543,7 @@ const getUserProfileInLogin = (counselor, dispatch) => {
 
       dispatch(isNotLoading());
 
-      Actions.mainScreen();
+      Actions.manageRegisters();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'gettingUserProfileInLogin',

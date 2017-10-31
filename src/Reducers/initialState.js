@@ -25,6 +25,9 @@ const initialState = {
     foodStock,
     foodStockObservation: '',
   },
+  list: {
+    listOfCounselorsInAGroup: [],
+  },
 };
 
 export default initialState;

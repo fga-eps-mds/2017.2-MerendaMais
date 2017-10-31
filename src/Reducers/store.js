@@ -5,11 +5,13 @@ import initialState from './initialState';
 import counselorReducer from './counselorReducer';
 import reportReducer from './reportReducer';
 import applicationReducer from './applicationReducer';
+import listReducer from './listReducer';
 
 const reducers = combineReducers({
   counselor: counselorReducer,
   report: reportReducer,
   application: applicationReducer,
+  list: listReducer,
 });
 
 const store = createStore(reducers, initialState, applyMiddleware(thunk));
