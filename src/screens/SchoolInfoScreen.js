@@ -116,7 +116,7 @@ class SchoolInfoScreen extends React.Component {
   showLocalizationButton() {
     if (this.props.school.schoolLat !== undefined) {
       return (
-        <View>
+        <View key="renderButton">
           <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
           <TouchableOpacity
             onPress={() => this.goToMaps(
