@@ -1,5 +1,4 @@
-import React from 'react';
-// import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
@@ -62,9 +61,9 @@ export default class SchedulingVisit extends React.Component {
     super(props);
     this.state = {
       appToken: this.props.counselor.token,
-      nuvemCode: this.props.counselor.cod,
+      nuvemCode: this.props.counselor.nuvemCode,
       visit: {
-        codSchool: '',
+        codSchool: 32,
         date: '',
         time: '',
       },
@@ -92,7 +91,7 @@ export default class SchedulingVisit extends React.Component {
           <DatePicker
             style={styles.Picker}
             placeholder="Data"
-            date={this.state.date}
+            date={this.state.visit.date}
             mode="date"
             format="DD-MM-YYYY"
             confirmBtnText="Confirmar"
@@ -102,7 +101,7 @@ export default class SchedulingVisit extends React.Component {
                 borderRadius: 7,
               },
             }}
-            onDateChange={date => this.setState({ date })}
+            onDateChange={date => this.setState({ visit: { ...this.state.visit, date } })}
           />
         </View>
 
@@ -110,7 +109,7 @@ export default class SchedulingVisit extends React.Component {
           <DatePicker
             style={styles.Picker}
             placeholder="Horário"
-            date={this.state.time}
+            date={this.state.visit.time}
             mode="time"
             confirmBtnText="Confirmar"
             cancelBtnText="Cancelar"
@@ -119,7 +118,7 @@ export default class SchedulingVisit extends React.Component {
                 borderRadius: 7,
               },
             }}
-            onDateChange={time => this.setState({ time })}
+            onDateChange={time => this.setState({ visit: { ...this.state.visit, time } })}
           />
         </View>
 
@@ -147,8 +146,7 @@ export default class SchedulingVisit extends React.Component {
         <View style={styles.Container}>
           <TouchableOpacity
             style={styles.schedullingButton}
-            // this.props.asyncSchedulingVisit(this.state)
-            onPress={() => Alert.alert('Agendando')}
+            onPress={() => this.props.asyncSchedulingVisit(this.state)}
           >
             <Text style={styles.buttonText}>Agendar</Text>
           </TouchableOpacity>
@@ -161,7 +159,7 @@ export default class SchedulingVisit extends React.Component {
 const { shape, string, number } = React.PropTypes;
 
 SchedulingVisit.propTypes = {
-  // asyncSchedulingVisit: PropTypes.func.isRequired,
+  asyncSchedulingVisit: PropTypes.func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,

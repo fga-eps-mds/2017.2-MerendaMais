@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { Actions } from 'react-native-router-flux';
+import { Alert } from 'react-native';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA } from '../constants';
 
@@ -40,34 +40,33 @@ const convertingVisitJSONToString = (visitJSON) => {
 const schedulingVisit = (visitData) => {
   const headerToSchedulingVisit = {
     headers: {
-      appToken: visitData.token,
       appIdentifier: APP_IDENTIFIER,
-    },
-  };
-
-  const bodyToSchedulingVisitPost = {
-    autor: {
-      codPessoa: visitData.nuvemCode,
-    },
-    tipo: {
-      codTipoPostagem: 381,
+      appToken: visitData.appToken,
     },
   };
 
   const stringVisit = convertingVisitJSONToString(visitData.visit);
 
-  const bodyToSchedulingVisitContent = {
-    JSON: stringVisit,
-    texto: 'Agendamento',
-
+  const bodyToSchedulingVisit = {
+    conteudo: {
+      JSON: stringVisit,
+      texto: 'Agendamento',
+    },
+    postagem: {
+      autor: {
+        codPessoa: visitData.nuvemCode,
+      },
+      tipo: {
+        codTipoPostagem: 381,
+      },
+    },
   };
 
-  axios.post(POSTS_LINK_NUVEM_CIVICA, bodyToSchedulingVisitPost, headerToSchedulingVisit)
+  axios.post(POSTS_LINK_NUVEM_CIVICA, bodyToSchedulingVisit, headerToSchedulingVisit)
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `User data of Counselor edited: ${JSON.stringify(response.data, null, 2)}`);
-
-      axios.post(`${POSTS_LINK_NUVEM_CIVICA}${visitData.nuvemCode}`, bodyToSchedulingVisitContent, headerToSchedulingVisit);
+      Alert.alert('Agendamento realizado com sucesso');
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',
@@ -77,12 +76,11 @@ const schedulingVisit = (visitData) => {
     });
 };
 
-
-const asyncSchedulingVisit = visitData => (dispatch) => {
+const asyncSchedulingVisit = visitData => () => {
   logInfo(FILE_NAME, 'asyncSchedulingVisit',
     `scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
 
-  schedulingVisit(visitData, dispatch);
+  schedulingVisit(visitData);
 };
 
 export default asyncSchedulingVisit;
