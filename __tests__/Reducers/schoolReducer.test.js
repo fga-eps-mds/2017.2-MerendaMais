@@ -36,4 +36,24 @@ describe('Testing schoolReducer', () => {
     expect(school.schoolLat).toBe('-150000');
     expect(school.schoolLong).toBe('+150000');
   });
+  it('Undefined action sended', () => {
+    let school = initialState.school;
+
+    expect(school.schoolCode).toBe('');
+    expect(school.schoolName).toBe('');
+    expect(school.schoolPhone).toBe('');
+    expect(school.schoolEmail).toBe('');
+    expect(school.schoolLat).toBe('');
+    expect(school.schoolLong).toBe('');
+
+    const sendedSchool = school;
+
+    const action = undefined;
+
+    expect(action).toBeUndefined();
+
+    school = schoolReducer(school, action);
+
+    expect(school).toEqual(sendedSchool);
+  });
 });
