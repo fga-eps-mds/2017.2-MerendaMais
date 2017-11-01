@@ -38,7 +38,7 @@ describe('Testing SchoolInfoScreen', () => {
 
 describe('Testing SchoolInfo buttons', () => {
   it('Test if goToMaps Button is rendered', () => {
-    const wrapper = shallow(<SchoolInfoScreen {...initialState.school} />);
+    const wrapper = shallow(<SchoolInfoScreen {...initialState } />);
     const button = wrapper.findWhere(c => c.key() === 'renderButton');
     expect(button.length).toEqual(1);
     button.simulate('press');
