@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { SET_LIST_COUNSELOR_GROUP } from '../actions/types';
+import { SET_LIST_COUNSELOR_GROUP, RESET_LIST } from '../actions/types';
 
 const listReducer = (state = initialState.list, action) => {
   if (action === undefined) {
@@ -8,9 +8,13 @@ const listReducer = (state = initialState.list, action) => {
 
   switch (action.type) {
     case SET_LIST_COUNSELOR_GROUP:
-      console.log(state);
       return {
         listOfCounselorsInAGroup: [...state.listOfCounselorsInAGroup, action.payload],
+      };
+    case RESET_LIST:
+      console.log('entrou');
+      return {
+        listOfCounselorsInAGroup: [],
       };
     default:
       return state;

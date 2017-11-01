@@ -1,9 +1,13 @@
 import axios from 'axios';
-import { SET_LIST_COUNSELOR_GROUP } from './types';
+import { SET_LIST_COUNSELOR_GROUP, RESET_LIST } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER, DEFAULT_GROUP_LINK_NUVEM_CIVICA, DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
 
 const FILE_NAME = 'listActions.js';
+
+export const resetList = () => ({
+  type: RESET_LIST,
+});
 
 export const setList = counselorInformations => ({
   type: SET_LIST_COUNSELOR_GROUP,
@@ -80,6 +84,8 @@ const getCounselorFromGroup = (codGroup, dispatch) => {
 };
 
 export const asyncGetCounselorFromGroup = CAE => (dispatch) => {
+  dispatch(resetList());
+
   const paramsToNuvem = {
     params: {
       codAplicativo: APP_IDENTIFIER,

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
   },
   redBox: {
-    backgroundColor: 'red',
+    backgroundColor: '#FF3B30',
     padding: 8,
     borderRadius: 3,
     marginRight: 10,
@@ -75,8 +75,6 @@ export default class ManageRegistersScreen extends React.Component {
   }
 
   render() {
-    console.log('Props:');
-    console.log(this.props.listOfCounselorsInAGroup);
     return (
       <View style={{ backgroundColor: 'white', flex: 1 }}>
         <View>
