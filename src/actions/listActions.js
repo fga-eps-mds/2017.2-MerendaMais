@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { SET_LIST_COUNSELOR_GROUP } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { APP_IDENTIFIER, DEFAULT_GROUP_LINK_NUVEM_CIVICA } from '../constants';
+import { APP_IDENTIFIER, DEFAULT_GROUP_LINK_NUVEM_CIVICA, DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
 
 const FILE_NAME = 'listActions.js';
 
@@ -10,6 +10,39 @@ export const setList = counselorInformations => ({
   payload: counselorInformations,
 });
 
+// Used in Async Action to Login Counselor
+const convertingProfileStringToJSON = (profileStringSingleQuote) => {
+  // Changing ' to " in string received from Nuvem Civica.
+  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
+
+  // Converting profile string to profile JSON.
+  const profileJSON = JSON.parse(profileStringDoubleQuote);
+
+  return profileJSON;
+};
+
+const getCounselorProfile = (counselorInformations, nuvemCode, dispatch) => {
+  const getProfileHeader = {
+    headers: {
+      appIdentifier: APP_IDENTIFIER,
+    },
+  };
+  axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${nuvemCode}/perfil`, getProfileHeader)
+    .then((response) => {
+      const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
+      const completeCounselorInformations = counselorInformations;
+
+      completeCounselorInformations.cpf = profile.cpf;
+      completeCounselorInformations.phone = profile.phone;
+
+      dispatch(setList(counselorInformations));
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'getCounselorProfile',
+        `Request result in an ${error}`);
+    });
+};
+
 const getCounselor = (counselorLink, dispatch) => {
   axios.get(counselorLink)
     .then((response) => {
@@ -17,9 +50,11 @@ const getCounselor = (counselorLink, dispatch) => {
         `name of counselors: ${JSON.stringify(response.data.nomeCompleto, null, 2)}`);
 
       const counselorInformations = {
-        nome: response.data.nomeCompleto,
+        name: response.data.nomeCompleto,
+        cpf: '',
+        phone: '',
       };
-      dispatch(setList(counselorInformations));
+      getCounselorProfile(counselorInformations, response.data.cod, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'getCounselor',

@@ -30,7 +30,7 @@ export default class ManageRegistersScreen extends React.Component {
     }
     return (
       this.props.listOfCounselorsInAGroup.map(counselor =>
-        <Text> {counselor.nome} </Text>,
+        <Text> {counselor.name}, {counselor.cpf}, {counselor.phone} </Text>,
       )
     );
   }
@@ -58,5 +58,10 @@ export default class ManageRegistersScreen extends React.Component {
 
 ManageRegistersScreen.propTypes = {
   CAE: PropTypes.string.isRequired,
+  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    cpf: PropTypes.string,
+    phone: PropTypes.string,
+  })).isRequired,
   asyncGetCounselorFromGroup: PropTypes.func.isRequired,
 };
