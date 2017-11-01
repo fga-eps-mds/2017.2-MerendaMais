@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
+import store from '../Reducers/store';
 
 const window = Dimensions.get('window');
 
@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
   },
 });
 
-function Menu() {
-  if (this.props.isPresident) {
+export default function Menu() {
+  const newState = store.getState();
+  if (newState.counselor.profile.isPresident) {
     return (
       <View style={styles.menu}>
         <View>
@@ -140,11 +141,3 @@ function Menu() {
     </View>
   );
 }
-
-const mapStateToProps = state => (
-  {
-    isPresident: state.counselor.profile.isPresident,
-  }
-);
-
-export default connect(mapStateToProps)(Menu);

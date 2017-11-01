@@ -49,8 +49,8 @@ export default class ManageRegistersScreen extends React.Component {
       );
     }
     return (
-      this.props.listOfCounselorsInAGroup.map(counselor =>
-        (<View style={styles.listRegisters}>
+      this.props.listOfCounselorsInAGroup.map(counselor => (
+        <View style={styles.listRegisters}>
           <View style={styles.textBox}>
             <Text style={styles.text}> Nome: {counselor.name} </Text>
             <Text style={styles.text}> CPF: {counselor.cpf} </Text>
@@ -69,8 +69,8 @@ export default class ManageRegistersScreen extends React.Component {
               </View>
             </TouchableOpacity>
           </View>
-        </View>),
-      )
+        </View>
+      ))
     );
   }
 
