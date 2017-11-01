@@ -382,7 +382,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": "searchSchoolButton",
             "nodeType": "class",
             "props": Object {
               "activeOpacity": 0.2,
@@ -682,7 +682,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": "searchCounselorButton",
             "nodeType": "class",
             "props": Object {
               "activeOpacity": 0.2,
@@ -822,7 +822,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": "searchAgentButton",
             "nodeType": "class",
             "props": Object {
               "activeOpacity": 0.2,
@@ -922,7 +922,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": "scheduleButton",
           "nodeType": "class",
           "props": Object {
             "activeOpacity": 0.2,
@@ -1342,7 +1342,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": "searchSchoolButton",
               "nodeType": "class",
               "props": Object {
                 "activeOpacity": 0.2,
@@ -1642,7 +1642,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": "searchCounselorButton",
               "nodeType": "class",
               "props": Object {
                 "activeOpacity": 0.2,
@@ -1782,7 +1782,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": "searchAgentButton",
               "nodeType": "class",
               "props": Object {
                 "activeOpacity": 0.2,
@@ -1882,7 +1882,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": "scheduleButton",
             "nodeType": "class",
             "props": Object {
               "activeOpacity": 0.2,

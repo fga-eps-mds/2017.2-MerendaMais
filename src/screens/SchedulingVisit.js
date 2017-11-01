@@ -79,6 +79,7 @@ export default class SchedulingVisit extends React.Component {
         <View style={styles.Container}>
           <View>
             <TouchableOpacity
+              key="searchSchoolButton"
               style={styles.button}
               onPress={() => Alert.alert('Pesquisando')}
             >
@@ -125,6 +126,7 @@ export default class SchedulingVisit extends React.Component {
         <View style={styles.Container}>
           <View>
             <TouchableOpacity
+              key="searchCounselorButton"
               style={styles.button}
               onPress={() => Alert.alert('Pesquisando')}
             >
@@ -136,6 +138,7 @@ export default class SchedulingVisit extends React.Component {
         <View style={styles.Container}>
           <View>
             <TouchableOpacity
+              key="searchAgentButton"
               style={styles.button}
               onPress={() => Alert.alert('Pesquisando')}
             >
@@ -145,6 +148,7 @@ export default class SchedulingVisit extends React.Component {
         </View>
         <View style={styles.Container}>
           <TouchableOpacity
+            key="scheduleButton"
             style={styles.schedullingButton}
             onPress={() => this.props.asyncSchedulingVisit(this.state)}
           >
