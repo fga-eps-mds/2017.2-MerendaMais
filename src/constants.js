@@ -23,4 +23,4 @@ export const PRESIDENT_COUNSELOR = 'Presidente';
 export const COMMON_COUNSELOR = 'Conselheiro';
 
 // Counselor default password
-export const COUNSELOR_DEFAUTL_PASSWORD = 'senha';
+export const COUNSELOR_DEFAULT_PASSWORD = 'senha';
