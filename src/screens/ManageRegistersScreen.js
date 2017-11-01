@@ -1,19 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-
-const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   listRegisters: {
     flex: 1,
-    margin: 25,
-    height: height * 0.755,
+    margin: 15,
     borderColor: 'black',
     borderWidth: 1,
-    borderRadius: 7,
+    borderRadius: 3,
     backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textBox: {
+    paddingLeft: 8,
+  },
+  text: {
+    fontSize: 15,
+    paddingVertical: 5,
+  },
+  greenBox: {
+    backgroundColor: '#4CD964',
+    padding: 8,
+    borderRadius: 3,
+    marginRight: 20,
+
+  },
+  redBox: {
+    backgroundColor: 'red',
+    padding: 8,
+    borderRadius: 3,
+    marginRight: 10,
   },
 });
 
@@ -30,7 +50,26 @@ export default class ManageRegistersScreen extends React.Component {
     }
     return (
       this.props.listOfCounselorsInAGroup.map(counselor =>
-        <Text> {counselor.name}, {counselor.cpf}, {counselor.phone} </Text>,
+        (<View style={styles.listRegisters}>
+          <View style={styles.textBox}>
+            <Text style={styles.text}> Nome: {counselor.name} </Text>
+            <Text style={styles.text}> CPF: {counselor.cpf} </Text>
+            <Text style={styles.text}> Telefone: {counselor.phone} </Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity>
+              <View style={styles.greenBox}>
+                <Text>ACEITAR</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <View style={styles.redBox}>
+                <Text>RECUSAR</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>),
       )
     );
   }
@@ -47,9 +86,7 @@ export default class ManageRegistersScreen extends React.Component {
           />
         </View>
         <ScrollView>
-          <View style={styles.listRegisters}>
-            {this.arrayRegistersList()}
-          </View>
+          {this.arrayRegistersList()}
         </ScrollView>
       </View>
     );
