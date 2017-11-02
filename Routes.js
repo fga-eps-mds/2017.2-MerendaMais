@@ -11,6 +11,7 @@ import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckoutContainer';
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
+import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
 
 
 const Routes = () => ({
@@ -32,6 +33,7 @@ const Routes = () => ({
             component={StockFoodCheckoutScreenContainer}
             hideNavBar
           />
+          <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
         </Scene>
       </Router>
     );

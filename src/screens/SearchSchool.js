@@ -1,9 +1,23 @@
 import axios from 'axios';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, ActivityIndicator, Alert } from 'react-native';
+import { StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  FlatList,
+  ActivityIndicator,
+  Alert,
+  Picker } from 'react-native';
+import PropTypes from 'prop-types';
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import Menu from '../components/Menu';
+import { logInfo, logWarn } from '../../logConfig/loggers';
+
+
+import { SCHOOL_ENDPOINT } from '../constants';
 
 const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
 const CityIcon = require('../images/ic_location_city_48pt.png');
@@ -11,6 +25,7 @@ const SearchIcon = require('../images/ic_search_48pt.png');
 const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
 const GoIcon = require('../images/ic_keyboard_arrow_right_48pt.png');
 
+const FILE_NAME = 'SearchSchool.js';
 
 const styles = StyleSheet.create({
   headerBox: {
@@ -33,17 +48,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-  Input: {
-    marginTop: 20,
-    paddingLeft: 2,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: 'gray',
-    backgroundColor: '#FAFAFA',
-    borderWidth: 1,
-    borderRadius: 7,
   },
   icon: {
     width: 30,
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   listSchools: {
-    flex: 5,
+    flex: 4,
     justifyContent: 'center',
     width: 320,
     borderColor: 'black',
@@ -91,6 +95,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingBottom: 20,
   },
+  InputDropdown: {
+    marginTop: 15,
+    paddingLeft: 2,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 7,
+
+  },
+  Input: {
+    marginTop: 20,
+    paddingLeft: 2,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'gray',
+    backgroundColor: '#FAFAFA',
+    borderWidth: 1,
+    borderRadius: 7,
+  },
 });
 
 console.disableYellowBox = true;
@@ -104,8 +127,10 @@ class SearchSchool extends React.Component {
       isLoading: false,
       city: '',
       name: '',
+      uf: '',
       schoolList: [],
     };
+
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
   }
@@ -125,11 +150,11 @@ class SearchSchool extends React.Component {
     let error = false;
     let errorMessage = '';
 
-    if (!cityRegex.test(this.state.city) && !nameRegex.test(this.state.name)) {
+    if (!cityRegex.test(this.state.city) && !nameRegex.test(this.state.name) && !(this.state.uf > '')) {
       error = true;
       errorMessage += 'Estado/Município e Escola com dados inválidos.';
     }
-    if (this.state.city.trim() === '' && this.state.name.trim() === '') {
+    if (this.state.city.trim() === '' && this.state.name.trim() === '' && this.state.uf.trim() === '') {
       error = true;
       errorMessage += 'Estado/Município e Escola não preenchidos. Preencha no mínimo um dos campos.\n';
     }
@@ -141,24 +166,26 @@ class SearchSchool extends React.Component {
   }
 
   searchSchools() {
-    const params = {
-      name: this.state.name,
-      city: this.state.city,
-    };
     this.setState({ isLoading: true });
-
-    axios.post('https://merenda-mais.herokuapp.com/get_schools/', params)
+    axios.get(SCHOOL_ENDPOINT, {
+      params: {
+        nome: this.state.name,
+        municipio: this.state.city,
+        campos: 'nome',
+        uf: this.state.uf,
+      },
+    })
       .then((response) => {
-        console.log(response.data);
+        logInfo(FILE_NAME, 'searchSchools', 'Successfully searched school lists.');
+        logInfo(FILE_NAME, 'searchSchools', `School List: ${JSON.stringify(response.data, null, 2)}`);
+
         this.setState({ schoolList: response.data, isLoading: false });
 
-        console.log('SearchSchool State');
-        console.log(this.state);
         // If response is an empty array, no schools could be found.
       })
       .catch((error) => {
         this.setState({ isLoading: false });
-        console.log(error);
+        logWarn(FILE_NAME, 'searchSchools', error);
       });
   }
 
@@ -167,8 +194,7 @@ class SearchSchool extends React.Component {
   }
 
   buttonActivation() {
-    console.log(this.state.city);
-    if (this.state.city > '' || this.state.name > '') {
+    if (this.state.city > '' || this.state.name > '' || this.state.uf > '') {
       if (this.state.isLoading) {
         return (
           <ActivityIndicator
@@ -217,14 +243,16 @@ class SearchSchool extends React.Component {
               <Image source={BackIcon} />
             </TouchableOpacity>
             <Text style={styles.textLogo}>Pesquisar Escola</Text>
+
             <TouchableOpacity
               onPress={() => this.updateMenuState(true)}
             >
               <Image source={sideMenuIcon} />
             </TouchableOpacity>
           </View>
+
           <View style={styles.bodyBox}>
-            <View style={{ flex: 2 }}>
+            <View style={{ flex: 3 }}>
               <View style={styles.Input}>
                 <Image source={CityIcon} style={styles.icon} />
                 <TextInput
@@ -252,6 +280,17 @@ class SearchSchool extends React.Component {
                   placeholder="Escola a pesquisar"
                 />
               </View>
+
+              <View style={styles.InputDropdown}>
+                <Picker
+                  onValueChange={uf => this.setState({ uf })}
+                  selectedValue={this.state.uf}
+                >
+                  <Picker.Item value="" label="Escolha sua UF" color="#95a5a6" />
+                  <Picker.Item value="DF" label="DF" />
+                </Picker>
+              </View>
+
             </View>
 
             <View style={styles.listSchools} >
@@ -262,6 +301,7 @@ class SearchSchool extends React.Component {
                   <View style={styles.item}>
                     <TouchableOpacity
                       style={styles.buttonSelectSchool}
+                      onPress={() => this.props.setSchoolInfo(item.codEscola)}
                     >
                       <Text style={{ fontSize: 16 }}>{item.nome}</Text>
                       <Image source={GoIcon} style={{ width: 25, height: 25 }} />
@@ -279,5 +319,9 @@ class SearchSchool extends React.Component {
     );
   }
 }
+
+SearchSchool.propTypes = {
+  setSchoolInfo: PropTypes.func.isRequired,
+};
 
 export default SearchSchool;

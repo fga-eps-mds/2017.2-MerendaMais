@@ -52,7 +52,6 @@ class MainScreen extends React.Component {
   }
 
   updateMenuState(isOpen) {
-    console.log(isOpen);
     this.setState({ isOpen });
   }
 

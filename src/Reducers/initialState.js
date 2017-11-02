@@ -25,6 +25,14 @@ const initialState = {
     foodStock,
     foodStockObservation: '',
   },
+  school: {
+    schoolCode: '',
+    schoolName: '',
+    schoolPhone: '',
+    schoolEmail: '',
+    schoolLat: '',
+    schoolLong: '',
+  },
 };
 
 export default initialState;
