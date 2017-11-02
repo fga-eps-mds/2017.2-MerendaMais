@@ -78,6 +78,19 @@ export default function Menu() {
         </TouchableOpacity>
       </View>
 
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.schedulingVisit()}
+        >
+          <Text
+            style={styles.item}
+          >
+            Agendar visita
+          </Text>
+        </TouchableOpacity>
+      </View>
+
     </View>
   );
 }

@@ -7,7 +7,8 @@ import { isLoading, isNotLoading } from './applicationActions';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   AUTHENTICATE_LINK_NUVEM_CIVICA,
-  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
+  DEFAULT_USER_LINK_NUVEM_CIVICA,
+  PROFILE_TYPE_CODE } from '../constants';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -151,7 +152,7 @@ const treatingGetUserProfileInLoginError = (error) => {
 // Functions focused in Counselor Register
 
 // Used in Async Action to Register Counselor
-const convertingProfileJSONToString = (profileJSON) => {
+export const convertingJSONToString = (profileJSON) => {
   // Converting profile JSON to profile string received from Nuvem Civica.
   const profileStringDoubleQuote = JSON.stringify(profileJSON);
 
@@ -170,7 +171,7 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
     },
   };
 
-  const stringProfile = convertingProfileJSONToString(userData.profile);
+  const stringProfile = convertingJSONToString(userData.profile);
   logInfo(FILE_NAME, 'associateProfileToCounselor',
     `String to be send to "camposAdicionais": ${stringProfile}`);
 
@@ -178,7 +179,7 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
   const associateProfileBody = {
     camposAdicionais: stringProfile,
     tipoPerfil: {
-      codTipoPerfil: 239,
+      codTipoPerfil: PROFILE_TYPE_CODE,
     },
   };
 
@@ -359,7 +360,7 @@ const editCounselorProfile = (counselorData, dispatch) => {
     },
   };
 
-  const stringProfile = convertingProfileJSONToString(counselorData.profile);
+  const stringProfile = convertingJSONToString(counselorData.profile);
 
   // Creating body of PUT method.
   const bodyToEditCounselorProfile = {

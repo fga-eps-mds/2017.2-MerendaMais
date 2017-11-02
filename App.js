@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import Routes from './Routes';
 import store from './src/Reducers/store';
+import Routes from './Routes';
 
 /*
 Change loggersLevel value to control loggers visualization.
