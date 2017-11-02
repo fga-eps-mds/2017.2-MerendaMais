@@ -119,8 +119,7 @@ class SchoolInfoScreen extends React.Component {
         <View key="renderButton">
           <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
           <TouchableOpacity
-            onPress={() => this.goToMaps(
-              this.props.school.schoolLat, this.props.school.schoolLong)}
+            onPress={() => this.goToMaps()}
             style={styles.buttonContainer}
             activeOpacity={0.7}
           // <Image source={Location} />
