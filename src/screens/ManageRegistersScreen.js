@@ -6,21 +6,26 @@ import Header from '../components/Header';
 const styles = StyleSheet.create({
   listRegisters: {
     flex: 1,
-    margin: 15,
+    marginHorizontal: 15,
+    marginVertical: 10,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 3,
     backgroundColor: '#FAFAFA',
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
   },
   textBox: {
-    paddingLeft: 8,
+    paddingLeft: 2,
+    justifyContent: 'flex-start',
   },
   text: {
     fontSize: 15,
     paddingVertical: 5,
+  },
+  buttonBox: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: 10,
   },
   greenBox: {
     backgroundColor: '#4CD964',
@@ -52,20 +57,29 @@ export default class ManageRegistersScreen extends React.Component {
       this.props.listOfCounselorsInAGroup.map(counselor => (
         <View style={styles.listRegisters}>
           <View style={styles.textBox}>
-            <Text style={styles.text}> Nome: {counselor.name} </Text>
-            <Text style={styles.text}> CPF: {counselor.cpf} </Text>
-            <Text style={styles.text}> Telefone: {counselor.phone} </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+              {counselor.name}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+              {counselor.cpf}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+              {counselor.phone}
+            </Text>
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={styles.buttonBox}>
             <TouchableOpacity>
               <View style={styles.greenBox}>
-                <Text>ACEITAR</Text>
+                <Text>VALIDAR</Text>
               </View>
             </TouchableOpacity>
 
             <TouchableOpacity>
               <View style={styles.redBox}>
-                <Text>RECUSAR</Text>
+                <Text>EXCLUIR</Text>
               </View>
             </TouchableOpacity>
           </View>
