@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityInd
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-import { COUNSELOR_DEFAUTL_PASSWORD } from '../constants';
+import { COUNSELOR_DEFAULT_PASSWORD } from '../constants';
 
 const iconAccount = require('../images/account_circle.png');
 
@@ -62,7 +62,7 @@ export default class LoginCounselorScreen extends React.Component {
 
     this.state = {
       email: '',
-      password: COUNSELOR_DEFAUTL_PASSWORD,
+      password: COUNSELOR_DEFAULT_PASSWORD,
     };
   }
 

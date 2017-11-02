@@ -10,6 +10,7 @@ import MainScreen from './src/screens/MainScreen';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckoutContainer';
+import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
 
 
 const Routes = () => ({
@@ -25,6 +26,7 @@ const Routes = () => ({
           <Scene key="loginPresidentScreen" component={LoginPresidentContainer} hideNavBar />
           <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
           <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
+          <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
           <Scene
             key="stockFoodCheckoutScreen"
             component={StockFoodCheckoutScreenContainer}

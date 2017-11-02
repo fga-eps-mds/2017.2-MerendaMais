@@ -1,11 +1,20 @@
 // appIdentifier number to use in Nuvem Cívica.
 export const APP_IDENTIFIER = 463;
 
+// Posting type code to use in Nuvem Cívica.
+export const POSTING_TYPE_CODE = 381;
+
+// Profile type code to use in Nuvem Cívica.
+export const PROFILE_TYPE_CODE = 239;
+
 // Link (GET) to authenticate user at Nuvem Cívica and get his Token.
 export const AUTHENTICATE_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/autenticar';
 
 // Default Link to manipulate users at Nuvem Cívica.
 export const DEFAULT_USER_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/';
+
+// Link to access posts at Nuvem Cívica.
+export const POSTS_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/postagens/conteudos';
 
 // Counselor segment options.
 export const TITULAR_COUNSELOR = 'Titular';
@@ -20,4 +29,4 @@ export const PRESIDENT_COUNSELOR = 'Presidente';
 export const COMMON_COUNSELOR = 'Conselheiro';
 
 // Counselor default password
-export const COUNSELOR_DEFAUTL_PASSWORD = 'senha';
+export const COUNSELOR_DEFAULT_PASSWORD = 'senha';
