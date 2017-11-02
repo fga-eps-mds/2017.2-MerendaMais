@@ -17,3 +17,8 @@ export const SET_STOCKFOODOBSERVATION = 'SET_STOCKFOODOBSERVATION';
 
 // School Action types
 export const SET_SCHOOL_INFO = 'SET_SCHOOL_INFO';
+
+// List Actions types
+export const SET_LIST_COUNSELOR_GROUP = 'SET_LIST_COUNSELOR_GROUP';
+
+export const RESET_LIST = 'RESET_LIST';

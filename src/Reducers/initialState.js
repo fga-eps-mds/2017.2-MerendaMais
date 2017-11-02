@@ -33,6 +33,9 @@ const initialState = {
     schoolLat: '',
     schoolLong: '',
   },
+  list: {
+    listOfCounselorsInAGroup: [],
+  },
 };
 
 export default initialState;

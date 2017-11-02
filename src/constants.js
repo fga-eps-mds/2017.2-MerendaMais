@@ -15,8 +15,12 @@ export const DEFAULT_USER_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:8
 
 // Link to access posts at Nuvem Cívica.
 export const POSTS_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/postagens/conteudos';
+
 // Link to get schools at Nuvem Cívica.
 export const SCHOOL_ENDPOINT = 'http://mobile-aceite.tcu.gov.br:80/nossaEscolaRS/rest/escolas';
+
+// Default Link to manipulate a group at Nuvem Cívica.
+export const DEFAULT_GROUP_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/grupos/';
 
 // Counselor segment options.
 export const TITULAR_COUNSELOR = 'Titular';
