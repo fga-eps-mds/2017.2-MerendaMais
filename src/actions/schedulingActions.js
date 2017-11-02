@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA } from '../constants';
+import { convertingJSONToString } from './counselorActions';
+import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
 
 const FILE_NAME = 'SchedulingActions.js';
 
@@ -22,21 +23,6 @@ const treatingPostsError = (error) => {
   }
 };
 
-// Used in Async Action to Scheduling Visit
-const convertingVisitJSONToString = (visitJSON) => {
-  // Converting visit JSON to visit string received from Nuvem Civica.
-  const visitStringDoubleQuote = JSON.stringify(visitJSON);
-
-  // Changing " to '.
-  const visitStringSingleQuote = visitStringDoubleQuote
-    .replace(/"/g, "'")
-    .replace(/codSchool/g, 'codEscola')
-    .replace(/date/g, 'dataVisita')
-    .replace(/time/g, 'horario');
-
-  return visitStringSingleQuote;
-};
-
 const schedulingVisit = (visitData) => {
   const headerToSchedulingVisit = {
     headers: {
@@ -45,7 +31,7 @@ const schedulingVisit = (visitData) => {
     },
   };
 
-  const stringVisit = convertingVisitJSONToString(visitData.visit);
+  const stringVisit = convertingJSONToString(visitData.visit);
 
   const bodyToSchedulingVisit = {
     conteudo: {
@@ -57,7 +43,7 @@ const schedulingVisit = (visitData) => {
         codPessoa: visitData.nuvemCode,
       },
       tipo: {
-        codTipoPostagem: 381,
+        codTipoPostagem: POSTING_TYPE_CODE,
       },
     },
   };
@@ -65,7 +51,7 @@ const schedulingVisit = (visitData) => {
   axios.post(POSTS_LINK_NUVEM_CIVICA, bodyToSchedulingVisit, headerToSchedulingVisit)
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
-        `User data of Counselor edited: ${JSON.stringify(response.data, null, 2)}`);
+        `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
       Alert.alert('Agendamento realizado com sucesso');
     })
     .catch((error) => {
@@ -78,7 +64,7 @@ const schedulingVisit = (visitData) => {
 
 const asyncSchedulingVisit = visitData => () => {
   logInfo(FILE_NAME, 'asyncSchedulingVisit',
-    `scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
+    `Scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
 
   schedulingVisit(visitData);
 };

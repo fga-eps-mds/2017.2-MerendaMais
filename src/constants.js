@@ -1,6 +1,12 @@
 // appIdentifier number to use in Nuvem Cívica.
 export const APP_IDENTIFIER = 463;
 
+// Posting type code to use in Nuvem Cívica.
+export const POSTING_TYPE_CODE = 381;
+
+// Profile type code to use in Nuvem Cívica.
+export const PROFILE_TYPE_CODE = 239;
+
 // Link (GET) to authenticate user at Nuvem Cívica and get his Token.
 export const AUTHENTICATE_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/autenticar';
 
