@@ -1,0 +1,19 @@
+# version: '3'
+
+merenda_mais:
+    build: .
+    net: host
+    working_dir: /app
+    privileged: true
+    volumes:
+     - "./:/app"
+    command: |
+     bash -c "
+     npm install
+     adb kill-server
+     adb reverse tcp:8081 tcp:8081
+     echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances
+     echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events
+     echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+     npm start
+     "
