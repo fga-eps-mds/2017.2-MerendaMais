@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import openMap from 'react-native-open-maps';
+import PropTypes from 'prop-types';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
@@ -72,8 +73,6 @@ class SchoolInfoScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props);
-
     this.state = {
       isOpen: false,
       isLoading: false,
@@ -111,6 +110,22 @@ class SchoolInfoScreen extends React.Component {
       .catch((error) => {
         logWarn(FILE_NAME, 'componentWillMount', error);
       });
+  }
+
+  selectSchoolForSchedule() {
+    this.props.setSchoolInfo(
+      {
+        schoolSelected: true,
+        schoolCode: this.props.school.schoolCode,
+        schoolName: this.props.school.schoolName,
+        schoolPhone: this.props.school.schoolPhone,
+        schoolEmail: this.props.school.schoolEmail,
+        schoolLat: this.props.school.schoolLat,
+        schoolLong: this.props.school.schoolLong,
+      },
+    );
+
+    Actions.popTo('schedulingVisit');
   }
 
   showLocalizationButton() {
@@ -182,7 +197,7 @@ class SchoolInfoScreen extends React.Component {
           </View>
 
           <TouchableOpacity
-            onPress={() => Actions.popTo('schedulingVisit')}
+            onPress={() => this.selectSchoolForSchedule()}
             style={styles.buttonContainer}
             activeOpacity={0.7}
           >
@@ -201,7 +216,7 @@ class SchoolInfoScreen extends React.Component {
   }
 }
 
-const { shape, func, number } = React.PropTypes;
+const { shape, func, number } = PropTypes;
 
 SchoolInfoScreen.propTypes = {
   setSchoolInfo: func.isRequired,

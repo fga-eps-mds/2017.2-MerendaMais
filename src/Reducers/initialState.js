@@ -26,12 +26,13 @@ const initialState = {
     foodStockObservation: '',
   },
   school: {
-    schoolCode: '',
+    schoolCode: 0,
     schoolName: '',
     schoolPhone: '',
     schoolEmail: '',
     schoolLat: '',
     schoolLong: '',
+    schoolSelected: false,
   },
   list: {
     listOfCounselorsInAGroup: [],

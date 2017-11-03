@@ -164,7 +164,7 @@ export default class UpdateInfoScreen extends React.Component {
   }
 }
 
-const { shape, string, number, bool } = React.PropTypes;
+const { shape, string, number, bool } = PropTypes;
 
 UpdateInfoScreen.propTypes = {
   asyncEditCounselor: PropTypes.func.isRequired,

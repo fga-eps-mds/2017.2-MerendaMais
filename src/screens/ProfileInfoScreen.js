@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
 import Header from '../components/Header';
-// import PropTypes from 'prop-types';
 
 const iconName = require('../images/ic_face.png');
 const iconCpf = require('../images/ic_account_circle.png');
@@ -121,7 +121,7 @@ export default class ProfileInfoScreen extends React.Component {
   }
 }
 
-const { shape, string, bool } = React.PropTypes;
+const { shape, string, bool } = PropTypes;
 
 ProfileInfoScreen.propTypes = {
   counselor: shape({

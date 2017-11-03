@@ -1,8 +1,10 @@
-import React, { PropTypes } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
+import SchoolData from '../components/SchoolData';
 
 
 const styles = StyleSheet.create({
@@ -70,9 +72,11 @@ export default class SchedulingVisit extends React.Component {
       },
     };
   }
+
   render() {
+    console.log(this.props);
     return (
-      <View style={styles.principal}>
+      <ScrollView style={styles.principal}>
         <Header
           title={'AGENDAR'}
           subTitle={'VISITA'}
@@ -88,6 +92,10 @@ export default class SchedulingVisit extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
+
+        {this.props.school.schoolSelected && (
+          <SchoolData {...this.props.school} />
+        )}
 
         <View style={styles.Container}>
           <DatePicker
@@ -156,17 +164,24 @@ export default class SchedulingVisit extends React.Component {
             <Text style={styles.buttonText}>Agendar</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
 
-const { shape, string, number } = React.PropTypes;
+
+const { shape, string, number } = PropTypes;
 
 SchedulingVisit.propTypes = {
   asyncSchedulingVisit: PropTypes.func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
+  }).isRequired,
+  school: shape({
+    schoolCode: number.isRequired,
+    schoolName: string.isRequired,
+    schoolPhone: string.isRequired,
+    schoolEmail: string.isRequired,
   }).isRequired,
 };

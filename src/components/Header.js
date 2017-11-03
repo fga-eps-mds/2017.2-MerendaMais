@@ -62,6 +62,7 @@ const Header = props => (
     </View>
   </View>
 );
+
 Header.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
