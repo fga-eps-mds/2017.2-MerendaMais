@@ -173,6 +173,7 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
     .then((response) => {
       logInfo(FILE_NAME, 'addCounselorToGroup',
         `${response.data}`);
+      logInfo(FILE_NAME, 'addCounselorToGroup', JSON.stringify(response));
 
       dispatch(setCounselor(counselor));
 
@@ -303,7 +304,7 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
 };
 
 // Used in Async Action to Register Counselor
-const authenticatingUserInRegister = userData => (dispatch) => {
+const authenticatingUserInRegister = (userData, dispatch) => {
   const authenticationHeader = {
     headers: {
       email: userData.email,

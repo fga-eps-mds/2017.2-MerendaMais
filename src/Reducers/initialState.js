@@ -36,6 +36,11 @@ const initialState = {
   list: {
     listOfCounselorsInAGroup: [],
   },
+  schedule: {
+    codSchool: 32,
+    date: '',
+    time: '',
+  },
 };
 
 export default initialState;

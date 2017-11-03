@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 
@@ -81,7 +82,7 @@ export default class SchedulingVisit extends React.Component {
             <TouchableOpacity
               key="searchSchoolButton"
               style={styles.button}
-              onPress={() => Alert.alert('Pesquisando')}
+              onPress={() => Actions.searchSchool()}
             >
               <Text style={styles.buttonText}>Pesquisar escola</Text>
             </TouchableOpacity>

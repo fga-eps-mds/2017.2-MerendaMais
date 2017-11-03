@@ -22,3 +22,7 @@ export const SET_SCHOOL_INFO = 'SET_SCHOOL_INFO';
 export const SET_LIST_COUNSELOR_GROUP = 'SET_LIST_COUNSELOR_GROUP';
 
 export const RESET_LIST = 'RESET_LIST';
+
+// Scheduling Action types
+
+export const SET_SCHEDULE_INFO = 'SET_SCHEDULE_INFO';

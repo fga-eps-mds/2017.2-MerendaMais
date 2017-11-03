@@ -182,7 +182,7 @@ class SchoolInfoScreen extends React.Component {
           </View>
 
           <TouchableOpacity
-            // onPress={}
+            onPress={() => Actions.popTo('schedulingVisit')}
             style={styles.buttonContainer}
             activeOpacity={0.7}
           >
