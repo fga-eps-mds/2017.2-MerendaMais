@@ -10,8 +10,8 @@ import { Text,
   ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
-import { // TITULAR_COUNSELOR,
-  // SURROGATE_COUNSELOR,
+import { TITULAR_COUNSELOR,
+  SURROGATE_COUNSELOR,
   MUNICIPAL_COUNSELOR_CAE,
   STATE_COUNSELOR_CAE,
   PRESIDENT_COUNSELOR,
@@ -91,6 +91,7 @@ export default class RegisterScreen extends React.Component {
         cpf: '',
         phone: '',
         isPresident: '',
+        counselorType: '',
         segment: '',
         CAE_Type: '',
         CAE: '',
@@ -287,6 +288,22 @@ export default class RegisterScreen extends React.Component {
           </Picker>
         </View>
         {password}
+
+        <Text>     Tipo de Conselheiro</Text>
+        <View
+          style={styles.InputDropdown}
+        >
+          <Picker
+            onValueChange={value => this.setState({
+              profile: { ...this.state.profile,
+                counselorType: value } })}
+            selectedValue={this.state.profile.counselorType}
+          >
+            <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
+            <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
+            <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
+          </Picker>
+        </View>
 
         <Text>     Segmento</Text>
         <View

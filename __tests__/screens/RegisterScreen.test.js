@@ -80,13 +80,13 @@ describe('Testing RegisterScreen Input', () => {
   });
 
   it('should change state when the text of segment input component changes', () => {
-    const segmentInputComponent = wrapper.find('Picker').at(1);
+    const segmentInputComponent = wrapper.find('Picker').at(2);
     segmentInputComponent.simulate('valueChange', 'Pais de alunos');
     expect(wrapper.state().profile.segment).toEqual('Pais de alunos');
   });
 
   it('should change state when the text of CAE_Type input component changes', () => {
-    const caeTypeInputComponent = wrapper.find('Picker').at(2);
+    const caeTypeInputComponent = wrapper.find('Picker').at(3);
     caeTypeInputComponent.simulate('valueChange', 'Estadual');
     expect(wrapper.state().profile.CAE_Type).toEqual('Estadual');
   });
