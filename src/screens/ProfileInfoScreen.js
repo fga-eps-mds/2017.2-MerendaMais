@@ -106,7 +106,7 @@ export default class ProfileInfoScreen extends React.Component {
           {this.verifyCharge()}
           <View style={styles.field}>
             <Image source={iconTypeCounselor} style={styles.icon} />
-            <Text>Tipo do Conselheiro: {this.props.counselor.counselorType}</Text>
+            <Text>Tipo do Conselheiro: {this.props.counselor.profile.counselorType}</Text>
           </View>
           <View style={styles.field}>
             <Image source={iconSegment} style={styles.icon} />
