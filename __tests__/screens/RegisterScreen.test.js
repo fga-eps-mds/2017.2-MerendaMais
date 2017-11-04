@@ -23,7 +23,7 @@ const initialState = {
       cpf: '12312312312',
       phone: '96661234',
       isPresident: false,
-      segment: 'Titular',
+      segment: 'Poder executivo',
       CAE_Type: 'Estadual',
       CAE: 'Distrito Federal',
     },
@@ -81,8 +81,8 @@ describe('Testing RegisterScreen Input', () => {
 
   it('should change state when the text of segment input component changes', () => {
     const segmentInputComponent = wrapper.find('Picker').at(1);
-    segmentInputComponent.simulate('valueChange', 'Suplente');
-    expect(wrapper.state().profile.segment).toEqual('Suplente');
+    segmentInputComponent.simulate('valueChange', 'Pais de alunos');
+    expect(wrapper.state().profile.segment).toEqual('Pais de alunos');
   });
 
   it('should change state when the text of CAE_Type input component changes', () => {
@@ -110,7 +110,7 @@ describe('Testing RegisterScreen On pressed buttons', () => {
       expect(state.profile.cpf).toEqual('33333333333');
       expect(state.profile.phone).toEqual('987654321');
       expect(state.profile.isPresident).toEqual(false);
-      expect(state.profile.segment).toEqual('Suplente');
+      expect(state.profile.segment).toEqual('Pais de alunos');
       expect(state.profile.CAE_Type).toEqual('Estadual');
       expect(state.profile.CAE).toEqual('DF');
     };
@@ -131,7 +131,7 @@ describe('Testing RegisterScreen On pressed buttons', () => {
         cpf: '33333333333',
         phone: '987654321',
         isPresident: false,
-        segment: 'Suplente',
+        segment: 'Pais de alunos',
         CAE_Type: 'Estadual',
         CAE: 'DF',
       },

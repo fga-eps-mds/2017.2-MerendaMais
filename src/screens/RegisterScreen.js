@@ -10,13 +10,17 @@ import { Text,
   ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
-import { TITULAR_COUNSELOR,
-  SURROGATE_COUNSELOR,
+import { // TITULAR_COUNSELOR,
+  // SURROGATE_COUNSELOR,
   MUNICIPAL_COUNSELOR_CAE,
   STATE_COUNSELOR_CAE,
   PRESIDENT_COUNSELOR,
   COMMON_COUNSELOR,
-  COUNSELOR_DEFAULT_PASSWORD } from '../constants';
+  COUNSELOR_DEFAULT_PASSWORD,
+  EXECUTIVE_POWER,
+  EDUCATION_WORKERS,
+  STUDENT_PARENTS,
+  CIVILIAN_ENTITIES } from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'RegisterScreen.js';
@@ -294,8 +298,10 @@ export default class RegisterScreen extends React.Component {
             selectedValue={this.state.profile.segment}
           >
             <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
-            <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
-            <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
+            <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />
+            <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />
+            <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />
+            <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />
           </Picker>
         </View>
 

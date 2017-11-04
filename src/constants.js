@@ -23,6 +23,12 @@ export const SCHOOL_ENDPOINT = 'http://mobile-aceite.tcu.gov.br:80/nossaEscolaRS
 export const DEFAULT_GROUP_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/grupos/';
 
 // Counselor segment options.
+export const EXECUTIVE_POWER = 'Poder executivo';
+export const EDUCATION_WORKERS = 'Trabalhadores da educação';
+export const STUDENT_PARENTS = 'Pais de alunos';
+export const CIVILIAN_ENTITIES = 'Entidades civis';
+
+// Counselor type options.
 export const TITULAR_COUNSELOR = 'Titular';
 export const SURROGATE_COUNSELOR = 'Suplente';
 

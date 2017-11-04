@@ -225,12 +225,20 @@ ShallowWrapper {
               value=""
             />
             <PickerItem
-              label="Suplente"
-              value="Suplente"
+              label="Poder executivo"
+              value="Poder executivo"
             />
             <PickerItem
-              label="Titular"
-              value="Titular"
+              label="Trabalhadores da educação"
+              value="Trabalhadores da educação"
+            />
+            <PickerItem
+              label="Pais de alunos"
+              value="Pais de alunos"
+            />
+            <PickerItem
+              label="Entidades civis"
+              value="Entidades civis"
             />
           </Picker>
         </View>,
@@ -723,12 +731,20 @@ ShallowWrapper {
               value=""
             />
             <PickerItem
-              label="Suplente"
-              value="Suplente"
+              label="Poder executivo"
+              value="Poder executivo"
             />
             <PickerItem
-              label="Titular"
-              value="Titular"
+              label="Trabalhadores da educação"
+              value="Trabalhadores da educação"
+            />
+            <PickerItem
+              label="Pais de alunos"
+              value="Pais de alunos"
+            />
+            <PickerItem
+              label="Entidades civis"
+              value="Entidades civis"
             />
           </Picker>,
           "style": Object {
@@ -752,12 +768,20 @@ ShallowWrapper {
                 value=""
               />,
               <PickerItem
-                label="Suplente"
-                value="Suplente"
+                label="Poder executivo"
+                value="Poder executivo"
               />,
               <PickerItem
-                label="Titular"
-                value="Titular"
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />,
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />,
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
               />,
             ],
             "mode": "dialog",
@@ -784,8 +808,8 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "label": "Suplente",
-                "value": "Suplente",
+                "label": "Poder executivo",
+                "value": "Poder executivo",
               },
               "ref": null,
               "rendered": null,
@@ -796,8 +820,32 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "label": "Titular",
-                "value": "Titular",
+                "label": "Trabalhadores da educação",
+                "value": "Trabalhadores da educação",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Pais de alunos",
+                "value": "Pais de alunos",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Entidades civis",
+                "value": "Entidades civis",
               },
               "ref": null,
               "rendered": null,
@@ -1360,12 +1408,20 @@ ShallowWrapper {
                 value=""
               />
               <PickerItem
-                label="Suplente"
-                value="Suplente"
+                label="Poder executivo"
+                value="Poder executivo"
               />
               <PickerItem
-                label="Titular"
-                value="Titular"
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
               />
             </Picker>
           </View>,
@@ -1858,12 +1914,20 @@ ShallowWrapper {
                 value=""
               />
               <PickerItem
-                label="Suplente"
-                value="Suplente"
+                label="Poder executivo"
+                value="Poder executivo"
               />
               <PickerItem
-                label="Titular"
-                value="Titular"
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
               />
             </Picker>,
             "style": Object {
@@ -1887,12 +1951,20 @@ ShallowWrapper {
                   value=""
                 />,
                 <PickerItem
-                  label="Suplente"
-                  value="Suplente"
+                  label="Poder executivo"
+                  value="Poder executivo"
                 />,
                 <PickerItem
-                  label="Titular"
-                  value="Titular"
+                  label="Trabalhadores da educação"
+                  value="Trabalhadores da educação"
+                />,
+                <PickerItem
+                  label="Pais de alunos"
+                  value="Pais de alunos"
+                />,
+                <PickerItem
+                  label="Entidades civis"
+                  value="Entidades civis"
                 />,
               ],
               "mode": "dialog",
@@ -1919,8 +1991,8 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "label": "Suplente",
-                  "value": "Suplente",
+                  "label": "Poder executivo",
+                  "value": "Poder executivo",
                 },
                 "ref": null,
                 "rendered": null,
@@ -1931,8 +2003,32 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "label": "Titular",
-                  "value": "Titular",
+                  "label": "Trabalhadores da educação",
+                  "value": "Trabalhadores da educação",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Pais de alunos",
+                  "value": "Pais de alunos",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Entidades civis",
+                  "value": "Entidades civis",
                 },
                 "ref": null,
                 "rendered": null,
