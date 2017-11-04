@@ -23,6 +23,7 @@ const initialState = {
       cpf: '12312312312',
       phone: '96661234',
       isPresident: false,
+      counselorType: 'Titular',
       segment: 'Poder executivo',
       CAE_Type: 'Estadual',
       CAE: 'Distrito Federal',
@@ -77,6 +78,12 @@ describe('Testing RegisterScreen Input', () => {
     const isPresidentInputComponent = wrapper.find('Picker').at(0);
     isPresidentInputComponent.simulate('valueChange', false);
     expect(wrapper.state().profile.isPresident).toEqual(false);
+  });
+
+  it('should change state when the text of counselorType input component changes', () => {
+    const counselorTypeInputComponent = wrapper.find('Picker').at(1);
+    counselorTypeInputComponent.simulate('valueChange', 'Suplente');
+    expect(wrapper.state().profile.counselorType).toEqual('Suplente');
   });
 
   it('should change state when the text of segment input component changes', () => {
