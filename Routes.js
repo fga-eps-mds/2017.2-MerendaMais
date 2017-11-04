@@ -11,6 +11,8 @@ import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckoutContainer';
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
+import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
+import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 
 
 const Routes = () => ({
@@ -19,6 +21,7 @@ const Routes = () => ({
       <Router>
         <Scene key="root">
           <Scene key="initialScreen" component={InitialScreen} hideNavBar />
+          <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
           <Scene key="mainScreen" component={MainScreen} hideNavBar />
           <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
           <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
@@ -32,6 +35,7 @@ const Routes = () => ({
             component={StockFoodCheckoutScreenContainer}
             hideNavBar
           />
+          <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
         </Scene>
       </Router>
     );

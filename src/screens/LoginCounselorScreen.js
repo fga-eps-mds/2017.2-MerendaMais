@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 export default class LoginCounselorScreen extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(this);
     this.state = {
       email: '',
       password: COUNSELOR_DEFAULT_PASSWORD,
