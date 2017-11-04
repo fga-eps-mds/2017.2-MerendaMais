@@ -8,7 +8,8 @@ const iconCpf = require('../images/ic_account_circle.png');
 const iconPhone = require('../images/ic_phone.png');
 const iconEmail = require('../images/ic_email.png');
 const iconJob = require('../images/ic_work.png');
-const iconSegment = require('../images/ic_supervisor_account.png');
+const iconTypeCounselor = require('../images/ic_supervisor_account.png');
+const iconSegment = require('../images/ic_people.png');
 const iconCAE = require('../images/ic_location_city.png');
 const iconCaeType = require('../images/ic_domain.png');
 
@@ -103,6 +104,10 @@ export default class ProfileInfoScreen extends React.Component {
             <Text>Email: {this.props.counselor.email}</Text>
           </View>
           {this.verifyCharge()}
+          <View style={styles.field}>
+            <Image source={iconTypeCounselor} style={styles.icon} />
+            <Text>Tipo do Conselheiro: {this.props.counselor.counselorType}</Text>
+          </View>
           <View style={styles.field}>
             <Image source={iconSegment} style={styles.icon} />
             <Text>Segmento: {this.props.counselor.profile.segment}</Text>
