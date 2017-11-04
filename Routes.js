@@ -1,5 +1,6 @@
 import React from 'react';
-import { Router, Scene } from 'react-native-router-flux';
+import { Router, Scene, Drawer } from 'react-native-router-flux';
+
 
 import LoginCounselorContainer from './src/Containers/LoginCounselorContainer';
 import InitialScreen from './src/screens/InitialScreen';
@@ -13,30 +14,39 @@ import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckout
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
+import Menu from './src/components/Menu';
 
 
 const Routes = () => ({
   render() {
     return (
       <Router>
-        <Scene key="root">
-          <Scene key="initialScreen" component={InitialScreen} hideNavBar />
-          <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
-          <Scene key="mainScreen" component={MainScreen} hideNavBar />
-          <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
-          <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
-          <Scene key="loginCounselorScreen" component={LoginCounselorContainer} hideNavBar />
-          <Scene key="loginPresidentScreen" component={LoginPresidentContainer} hideNavBar />
-          <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
-          <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
-          <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
-          <Scene
-            key="stockFoodCheckoutScreen"
-            component={StockFoodCheckoutScreenContainer}
-            hideNavBar
-          />
-          <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
-        </Scene>
+        <Drawer
+          hideNavBar
+          key="drawer"
+          contentComponent={Menu}
+          drawerWidth={200}
+          drawerPosition="right"
+        >
+          <Scene key="root">
+            <Scene key="initialScreen" component={InitialScreen} hideNavBar />
+            <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
+            <Scene key="mainScreen" component={MainScreen} hideNavBar />
+            <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
+            <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
+            <Scene key="loginCounselorScreen" component={LoginCounselorContainer} hideNavBar />
+            <Scene key="loginPresidentScreen" component={LoginPresidentContainer} hideNavBar />
+            <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
+            <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
+            <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
+            <Scene
+              key="stockFoodCheckoutScreen"
+              component={StockFoodCheckoutScreenContainer}
+              hideNavBar
+            />
+            <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
+          </Scene>
+        </Drawer>
       </Router>
     );
   },

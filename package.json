@@ -39,6 +39,7 @@
     ]
   },
   "dependencies": {
+    "@expo/vector-icons": "^6.1.0",
     "axios": "^0.16.2",
     "expo": "^21.0.2",
     "jest": "^21.2.1",

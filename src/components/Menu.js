@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Menu() {
+const Menu = () => {
   const newState = store.getState();
   if (newState.counselor.profile.isPresident) {
     return (
@@ -153,4 +153,6 @@ export default function Menu() {
 
     </View>
   );
-}
+};
+
+export default Menu;
