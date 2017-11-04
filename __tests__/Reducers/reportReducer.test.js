@@ -22,8 +22,8 @@ describe('Testing reportReducer', () => {
     // let report = { ...initialState.report };
     let report = {
       foodStock: [
-        { label: 'Escola não possui Estoque de Alimentos', marked: false, key: 0 },
-        { label: 'Alimentos vencidos', marked: false, key: 1 },
+        { label: 'Escola não possui Estoque de Alimentos', status: false, key: 0 },
+        { label: 'Alimentos vencidos', status: false, key: 1 },
       ],
     };
 

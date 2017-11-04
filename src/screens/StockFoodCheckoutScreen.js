@@ -95,7 +95,12 @@ export default class StockFoodCheckoutScreen extends React.Component {
                 <CheckBox
                   containerStyle={styles.checkbox}
                   label=" "
-                  onChange={() => this.props.setStockFoodReport(item.key)}
+                  onChange={() => this.props.setStockFoodReportPositive(item.key)}
+                />
+                <CheckBox
+                  containerStyle={styles.checkbox}
+                  label=" "
+                  onChange={() => this.props.setStockFoodReportNegative(item.key)}
                 />
                 <Text style={styles.label}>{item.label}</Text>
               </View>
@@ -129,7 +134,8 @@ export default class StockFoodCheckoutScreen extends React.Component {
 
 StockFoodCheckoutScreen.propTypes = {
   setFoodStockObservation: PropTypes.func.isRequired,
-  setStockFoodReport: PropTypes.func.isRequired,
+  setStockFoodReportPositive: PropTypes.func.isRequired,
+  setStockFoodReportNegative: PropTypes.func.isRequired,
   report: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     key: PropTypes.number,
