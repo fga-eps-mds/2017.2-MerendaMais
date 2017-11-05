@@ -81,6 +81,37 @@ export default class StockFoodCheckoutScreen extends React.Component {
       observation: '',
     };
   }
+
+  showPositiveCheckBox(item) {
+    if (this.props.report.status !== 'nao') {
+      return (
+        <View>
+          <CheckBox
+            containerStyle={styles.checkbox}
+            label="Sim"
+            onChange={() => this.props.setStockFoodReportPositive(item.key)}
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+
+  showNegativeCheckBox(item) {
+    if (this.props.report.status !== 'sim') {
+      return (
+        <View>
+          <CheckBox
+            containerStyle={styles.checkbox}
+            label="Não"
+            onChange={() => this.props.setStockFoodReportNegative(item.key)}
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+
   render() {
     return (
       <ScrollView style={styles.content}>
@@ -88,26 +119,20 @@ export default class StockFoodCheckoutScreen extends React.Component {
           title={'Relatório'}
           subTitle={'Estoque de alimento'}
         />
+
         <View>
           {
             this.props.report.map(item => (
               <View style={styles.text} key={item.key}>
-                <CheckBox
-                  containerStyle={styles.checkbox}
-                  label=" "
-                  onChange={() => this.props.setStockFoodReportPositive(item.key)}
-                />
-                <CheckBox
-                  containerStyle={styles.checkbox}
-                  label=" "
-                  onChange={() => this.props.setStockFoodReportNegative(item.key)}
-                />
+                {this.showPositiveCheckBox(item)}
+                {this.showNegativeCheckBox(item)}
                 <Text style={styles.label}>{item.label}</Text>
               </View>
             ),
             )
           }
         </View>
+
         <KeyboardAvoidingView behavior="padding">
           <View style={styles.textBox}>
             <TextInput
