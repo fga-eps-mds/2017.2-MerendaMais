@@ -1,11 +1,9 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-
-const iconAccount = require('../images/account_circle.png');
-const iconLock = require('../images/ic_lock.png');
 
 const styles = StyleSheet.create({
   principal: {
@@ -97,7 +95,7 @@ export default class LoginPresidentScreen extends React.Component {
         <Header />
         <View style={styles.content}>
           <View style={styles.Inputemail}>
-            <Image source={iconAccount} style={styles.icon} />
+            <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
             <TextInput
               style={styles.styleInput}
               width={280}
@@ -112,7 +110,7 @@ export default class LoginPresidentScreen extends React.Component {
           </View>
 
           <View style={styles.InputPassword}>
-            <Image source={iconLock} style={styles.icon} />
+            <MaterialIcons name="lock" style={styles.icon} size={32} color="black" />
             <TextInput
               style={styles.styleInput}
               width={280}

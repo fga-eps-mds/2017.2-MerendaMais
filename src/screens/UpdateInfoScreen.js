@@ -1,16 +1,13 @@
 import React, { PropTypes } from 'react';
+import { MaterialIcons } from '@expo/vector-icons';
 import { StyleSheet,
   TouchableOpacity,
   Text,
   TextInput,
   View,
-  Image,
   Alert }
   from 'react-native';
 import Header from '../components/Header';
-
-const iconPhone = require('../images/ic_phone.png');
-const iconName = require('../images/ic_account_circle.png');
 
 const styles = StyleSheet.create({
   principal: {
@@ -127,7 +124,7 @@ export default class UpdateInfoScreen extends React.Component {
         <View style={styles.content}>
 
           <View style={styles.inputs}>
-            <Image source={iconName} style={styles.icon} />
+            <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
             <TextInput
               width={280}
               maxLength={60}
@@ -140,7 +137,7 @@ export default class UpdateInfoScreen extends React.Component {
           </View>
 
           <View style={styles.inputs}>
-            <Image source={iconPhone} style={styles.icon} />
+            <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
             <TextInput
               width={280}
               maxLength={11}

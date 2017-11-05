@@ -71,8 +71,10 @@ ShallowWrapper {
               }
             }
           >
-            <Image
-              source={1}
+            <UNDEFINED
+              color="black"
+              name="face"
+              size={32}
               style={
                 Object {
                   "height": 30,
@@ -109,8 +111,10 @@ ShallowWrapper {
               }
             }
           >
-            <Image
-              source={1}
+            <UNDEFINED
+              color="black"
+              name="phone"
+              size={32}
               style={
                 Object {
                   "height": 30,
@@ -205,8 +209,10 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <UNDEFINED
+                color="black"
+                name="face"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -243,8 +249,10 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <UNDEFINED
+                color="black"
+                name="phone"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -279,8 +287,10 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <Image
-                  source={1}
+                <UNDEFINED
+                  color="black"
+                  name="face"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -319,9 +329,11 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": null,
-                "nodeType": "class",
+                "nodeType": "function",
                 "props": Object {
-                  "source": 1,
+                  "color": "black",
+                  "name": "face",
+                  "size": 32,
                   "style": Object {
                     "height": 30,
                     "margin": 5,
@@ -330,7 +342,7 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": null,
-                "type": [Function],
+                "type": undefined,
               },
               Object {
                 "instance": null,
@@ -358,8 +370,10 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <Image
-                  source={1}
+                <UNDEFINED
+                  color="black"
+                  name="phone"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -398,9 +412,11 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": null,
-                "nodeType": "class",
+                "nodeType": "function",
                 "props": Object {
-                  "source": 1,
+                  "color": "black",
+                  "name": "phone",
+                  "size": 32,
                   "style": Object {
                     "height": 30,
                     "margin": 5,
@@ -409,7 +425,7 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": null,
-                "type": [Function],
+                "type": undefined,
               },
               Object {
                 "instance": null,
@@ -531,8 +547,10 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <UNDEFINED
+                color="black"
+                name="face"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -569,8 +587,10 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <UNDEFINED
+                color="black"
+                name="phone"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -665,8 +685,10 @@ ShallowWrapper {
                   }
                 }
               >
-                <Image
-                  source={1}
+                <UNDEFINED
+                  color="black"
+                  name="face"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -703,8 +725,10 @@ ShallowWrapper {
                   }
                 }
               >
-                <Image
-                  source={1}
+                <UNDEFINED
+                  color="black"
+                  name="phone"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -739,8 +763,10 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <Image
-                    source={1}
+                  <UNDEFINED
+                    color="black"
+                    name="face"
+                    size={32}
                     style={
                       Object {
                         "height": 30,
@@ -779,9 +805,11 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": null,
-                  "nodeType": "class",
+                  "nodeType": "function",
                   "props": Object {
-                    "source": 1,
+                    "color": "black",
+                    "name": "face",
+                    "size": 32,
                     "style": Object {
                       "height": 30,
                       "margin": 5,
@@ -790,7 +818,7 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": [Function],
+                  "type": undefined,
                 },
                 Object {
                   "instance": null,
@@ -818,8 +846,10 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <Image
-                    source={1}
+                  <UNDEFINED
+                    color="black"
+                    name="phone"
+                    size={32}
                     style={
                       Object {
                         "height": 30,
@@ -858,9 +888,11 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": null,
-                  "nodeType": "class",
+                  "nodeType": "function",
                   "props": Object {
-                    "source": 1,
+                    "color": "black",
+                    "name": "phone",
+                    "size": 32,
                     "style": Object {
                       "height": 30,
                       "margin": 5,
@@ -869,7 +901,7 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": [Function],
+                  "type": undefined,
                 },
                 Object {
                   "instance": null,

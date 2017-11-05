@@ -76,7 +76,7 @@ export default class ProfileInfoScreen extends React.Component {
       <ScrollView style={styles.profileInfoScreen}>
         <Header
           title={'PERFIL'}
-          backButton={'<'}
+          backButton
         />
         <View style={styles.infoProfileBox}>
           <View style={styles.field}>
