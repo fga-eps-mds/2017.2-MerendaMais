@@ -3,15 +3,14 @@ import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityInd
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-import { COUNSELOR_DEFAULT_PASSWORD } from '../constants';
 
 const iconAccount = require('../images/account_circle.png');
+const iconLock = require('../images/ic_lock.png');
 
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
-
   content: {
     flex: 6,
     backgroundColor: 'white',
@@ -31,9 +30,9 @@ const styles = StyleSheet.create({
     height: 30,
     margin: 5,
   },
-
   Inputemail: {
     paddingLeft: 2,
+    paddingRight: 4,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -41,7 +40,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
     borderWidth: 1,
     borderRadius: 7,
-
+  },
+  InputPassword: {
+    paddingLeft: 2,
+    paddingRight: 4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 30,
+    borderColor: 'gray',
+    backgroundColor: '#FAFAFA',
+    borderWidth: 1,
+    borderRadius: 7,
   },
   buttonLogin: {
     paddingHorizontal: 133,
@@ -55,14 +64,13 @@ const styles = StyleSheet.create({
 
 });
 
-
 export default class LoginCounselorScreen extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this);
+
     this.state = {
       email: '',
-      password: COUNSELOR_DEFAULT_PASSWORD,
+      password: '',
     };
   }
 
@@ -91,26 +99,35 @@ export default class LoginCounselorScreen extends React.Component {
           <View style={styles.Inputemail}>
             <Image source={iconAccount} style={styles.icon} />
             <TextInput
+              style={styles.styleInput}
               width={280}
-              returnKeyType="go"
-              value={this.email}
+              returnKeyType="next"
               onChangeText={email => this.setState({ email })}
-              keyboardType={'email-address'}
+              value={this.email}
               underlineColorAndroid="transparent"
               placeholder="email"
+              keyboardType={'email-address'}
+              onSubmitEditing={() => this.passwordInput.focus()}
+            />
+          </View>
+
+          <View style={styles.InputPassword}>
+            <Image source={iconLock} style={styles.icon} />
+            <TextInput
+              style={styles.styleInput}
+              width={280}
+              underlineColorAndroid="transparent"
+              returnKeyType="go"
+              value={this.password}
+              secureTextEntry
+              onChangeText={password => this.setState({ password })}
+              placeholder="Senha"
+              ref={input => this.passwordInput === input}
             />
           </View>
 
           {this.renderBtnLogin()}
 
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => Actions.loginPresidentScreen()}
-          >
-            <Text style={{ marginTop: 30 }}>É um presidente?
-              <Text style={{ color: 'blue' }}> Clique aqui</Text>
-            </Text>
-          </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
@@ -123,6 +140,7 @@ export default class LoginCounselorScreen extends React.Component {
             </Text>
           </TouchableOpacity>
         </View>
+
       </View>
     );
   }

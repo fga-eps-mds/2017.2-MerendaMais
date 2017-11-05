@@ -27,329 +27,15 @@ ShallowWrapper {
           subTitle=""
           title="Merenda +"
         />,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               CPF
-        </Text>,
-        <TextInput
-          keyboardType="numeric"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="Digite o seu CPF"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            }
-          }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               Nome
-        </Text>,
-        <TextInput
-          keyboardType="default"
-          maxLength={60}
-          onChangeText={[Function]}
-          placeholder="Digite o seu nome completo"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            }
-          }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               Email
-        </Text>,
-        <TextInput
-          keyboardType="email-address"
-          maxLength={50}
-          onChangeText={[Function]}
-          placeholder="Digite o seu email"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            }
-          }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               Telefone
-        </Text>,
-        <TextInput
-          keyboardType="phone-pad"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="Digite o seu telefone"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            }
-          }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               Cargo
-        </Text>,
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-            }
-          }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu cargo"
-              value=""
-            />
-            <PickerItem
-              label="Presidente"
-              value={true}
-            />
-            <PickerItem
-              label="Conselheiro"
-              value={false}
-            />
-          </Picker>
-        </View>,
-        null,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               Segmento
-        </Text>,
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-            }
-          }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu segmento"
-              value=""
-            />
-            <PickerItem
-              label="Suplente"
-              value="Suplente"
-            />
-            <PickerItem
-              label="Titular"
-              value="Titular"
-            />
-          </Picker>
-        </View>,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               Tipo do CAE
-        </Text>,
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-            }
-          }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha o Tipo do seu CAE"
-              value=""
-            />
-            <PickerItem
-              label="Municipal"
-              value="Municipal"
-            />
-            <PickerItem
-              label="Estadual"
-              value="Estadual"
-            />
-          </Picker>
-        </View>,
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-        >
-               CAE
-        </Text>,
-        <TextInput
-          keyboardType="default"
-          maxLength={40}
-          onChangeText={[Function]}
-          placeholder="Lista com o CAE do seu município/estado"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            }
-          }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={[Function]}
-          style={
-            Object {
-              "backgroundColor": "#FF9500",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 20,
-              "marginHorizontal": 15,
-              "marginTop": 20,
-              "paddingVertical": 10,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
+        <ScrollViewMock>
+          <View
             style={
               Object {
-                "color": "#FFF",
-                "textAlign": "center",
+                "backgroundColor": "white",
+                "flex": 1,
+                "paddingTop": 5,
               }
             }
-          >
-            Concluir
-          </Text>
-        </TouchableOpacity>,
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "borderTopColor": "#a9a9a9",
-              "borderTopWidth": 1,
-              "flex": 0.7,
-              "justifyContent": "center",
-              "padding": 10,
-            }
-          }
-        >
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={[Function]}
           >
             <Text
               accessible={true}
@@ -357,1119 +43,308 @@ ShallowWrapper {
               disabled={false}
               ellipsizeMode="tail"
             >
-              Já tem um cadastro?
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "blue",
-                  }
-                }
-              >
-                 Entrar
-              </Text>
+                   CPF
             </Text>
-          </TouchableOpacity>
-        </View>,
-      ],
-      "style": Object {
-        "backgroundColor": "white",
-        "flex": 1,
-      },
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "function",
-        "props": Object {
-          "backButton": null,
-          "subTitle": "",
-          "title": "Merenda +",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     CPF",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     CPF",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "keyboardType": "numeric",
-          "maxLength": 11,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu CPF",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
-          "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-            "padding": 10,
-          },
-          "underlineColorAndroid": "transparent",
-          "value": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     Nome",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     Nome",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "keyboardType": "default",
-          "maxLength": 60,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu nome completo",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
-          "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-            "padding": 10,
-          },
-          "underlineColorAndroid": "transparent",
-          "value": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     Email",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     Email",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "keyboardType": "email-address",
-          "maxLength": 50,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu email",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
-          "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-            "padding": 10,
-          },
-          "underlineColorAndroid": "transparent",
-          "value": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     Telefone",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     Telefone",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "keyboardType": "phone-pad",
-          "maxLength": 11,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu telefone",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
-          "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-            "padding": 10,
-          },
-          "underlineColorAndroid": "transparent",
-          "value": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     Cargo",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     Cargo",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu cargo"
-              value=""
-            />
-            <PickerItem
-              label="Presidente"
-              value={true}
-            />
-            <PickerItem
-              label="Conselheiro"
-              value={false}
-            />
-          </Picker>,
-          "style": Object {
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu cargo"
-                value=""
-              />,
-              <PickerItem
-                label="Presidente"
-                value={true}
-              />,
-              <PickerItem
-                label="Conselheiro"
-                value={false}
-              />,
-            ],
-            "mode": "dialog",
-            "onValueChange": [Function],
-            "selectedValue": "",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "color": "#95a5a6",
-                "label": "Escolha seu cargo",
-                "value": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "label": "Presidente",
-                "value": true,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "label": "Conselheiro",
-                "value": false,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      null,
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     Segmento",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     Segmento",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu segmento"
-              value=""
-            />
-            <PickerItem
-              label="Suplente"
-              value="Suplente"
-            />
-            <PickerItem
-              label="Titular"
-              value="Titular"
-            />
-          </Picker>,
-          "style": Object {
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu segmento"
-                value=""
-              />,
-              <PickerItem
-                label="Suplente"
-                value="Suplente"
-              />,
-              <PickerItem
-                label="Titular"
-                value="Titular"
-              />,
-            ],
-            "mode": "dialog",
-            "onValueChange": [Function],
-            "selectedValue": "",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "color": "#95a5a6",
-                "label": "Escolha seu segmento",
-                "value": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "label": "Suplente",
-                "value": "Suplente",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "label": "Titular",
-                "value": "Titular",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     Tipo do CAE",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     Tipo do CAE",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha o Tipo do seu CAE"
-              value=""
-            />
-            <PickerItem
-              label="Municipal"
-              value="Municipal"
-            />
-            <PickerItem
-              label="Estadual"
-              value="Estadual"
-            />
-          </Picker>,
-          "style": Object {
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha o Tipo do seu CAE"
-                value=""
-              />,
-              <PickerItem
-                label="Municipal"
-                value="Municipal"
-              />,
-              <PickerItem
-                label="Estadual"
-                value="Estadual"
-              />,
-            ],
-            "mode": "dialog",
-            "onValueChange": [Function],
-            "selectedValue": "",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "color": "#95a5a6",
-                "label": "Escolha o Tipo do seu CAE",
-                "value": "",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "label": "Municipal",
-                "value": "Municipal",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "label": "Estadual",
-                "value": "Estadual",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
-          "children": "     CAE",
-          "disabled": false,
-          "ellipsizeMode": "tail",
-        },
-        "ref": null,
-        "rendered": "     CAE",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "keyboardType": "default",
-          "maxLength": 40,
-          "onChangeText": [Function],
-          "placeholder": "Lista com o CAE do seu município/estado",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
-          "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginBottom": 10,
-            "marginHorizontal": 15,
-            "padding": 10,
-          },
-          "underlineColorAndroid": "transparent",
-          "value": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": "userCreation",
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.7,
-          "children": <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#FFF",
-                "textAlign": "center",
-              }
-            }
-          >
-            Concluir
-          </Text>,
-          "onPress": [Function],
-          "style": Object {
-            "backgroundColor": "#FF9500",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "marginBottom": 20,
-            "marginHorizontal": 15,
-            "marginTop": 20,
-            "paddingVertical": 10,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "Concluir",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-            "style": Object {
-              "color": "#FFF",
-              "textAlign": "center",
-            },
-          },
-          "ref": null,
-          "rendered": "Concluir",
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={[Function]}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-              Já tem um cadastro?
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "blue",
-                  }
-                }
-              >
-                 Entrar
-              </Text>
-            </Text>
-          </TouchableOpacity>,
-          "style": Object {
-            "alignItems": "center",
-            "borderTopColor": "#a9a9a9",
-            "borderTopWidth": 1,
-            "flex": 0.7,
-            "justifyContent": "center",
-            "padding": 10,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "activeOpacity": 0.6,
-            "children": <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-              Já tem um cadastro?
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "blue",
-                  }
-                }
-              >
-                 Entrar
-              </Text>
-            </Text>,
-            "onPress": [Function],
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": Array [
-                "Já tem um cadastro?",
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  style={
-                    Object {
-                      "color": "blue",
-                    }
-                  }
-                >
-                   Entrar
-                </Text>,
-              ],
-              "disabled": false,
-              "ellipsizeMode": "tail",
-            },
-            "ref": null,
-            "rendered": Array [
-              "Já tem um cadastro?",
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "accessible": true,
-                  "allowFontScaling": true,
-                  "children": " Entrar",
-                  "disabled": false,
-                  "ellipsizeMode": "tail",
-                  "style": Object {
-                    "color": "blue",
-                  },
-                },
-                "ref": null,
-                "rendered": " Entrar",
-                "type": [Function],
-              },
-            ],
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "class",
-      "props": Object {
-        "children": Array [
-          <Header
-            backButton={null}
-            subTitle=""
-            title="Merenda +"
-          />,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 CPF
-          </Text>,
-          <TextInput
-            keyboardType="numeric"
-            maxLength={11}
-            onChangeText={[Function]}
-            placeholder="Digite o seu CPF"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-                "padding": 10,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 Nome
-          </Text>,
-          <TextInput
-            keyboardType="default"
-            maxLength={60}
-            onChangeText={[Function]}
-            placeholder="Digite o seu nome completo"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-                "padding": 10,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 Email
-          </Text>,
-          <TextInput
-            keyboardType="email-address"
-            maxLength={50}
-            onChangeText={[Function]}
-            placeholder="Digite o seu email"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-                "padding": 10,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 Telefone
-          </Text>,
-          <TextInput
-            keyboardType="phone-pad"
-            maxLength={11}
-            onChangeText={[Function]}
-            placeholder="Digite o seu telefone"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-                "padding": 10,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 Cargo
-          </Text>,
-          <View
-            style={
-              Object {
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-              }
-            }
-          >
-            <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue=""
-            >
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu cargo"
-                value=""
-              />
-              <PickerItem
-                label="Presidente"
-                value={true}
-              />
-              <PickerItem
-                label="Conselheiro"
-                value={false}
-              />
-            </Picker>
-          </View>,
-          null,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 Segmento
-          </Text>,
-          <View
-            style={
-              Object {
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-              }
-            }
-          >
-            <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue=""
-            >
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu segmento"
-                value=""
-              />
-              <PickerItem
-                label="Suplente"
-                value="Suplente"
-              />
-              <PickerItem
-                label="Titular"
-                value="Titular"
-              />
-            </Picker>
-          </View>,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 Tipo do CAE
-          </Text>,
-          <View
-            style={
-              Object {
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-              }
-            }
-          >
-            <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue=""
-            >
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha o Tipo do seu CAE"
-                value=""
-              />
-              <PickerItem
-                label="Municipal"
-                value="Municipal"
-              />
-              <PickerItem
-                label="Estadual"
-                value="Estadual"
-              />
-            </Picker>
-          </View>,
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-          >
-                 CAE
-          </Text>,
-          <TextInput
-            keyboardType="default"
-            maxLength={40}
-            onChangeText={[Function]}
-            placeholder="Lista com o CAE do seu município/estado"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
-                "borderColor": "gray",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-                "padding": 10,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#FF9500",
-                "borderRadius": 7,
-                "borderWidth": 1,
-                "marginBottom": 20,
-                "marginHorizontal": 15,
-                "marginTop": 20,
-                "paddingVertical": 10,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
+            <TextInput
+              keyboardType="numeric"
+              maxLength={11}
+              onChangeText={[Function]}
+              placeholder="Digite o seu CPF"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
               style={
                 Object {
-                  "color": "#FFF",
-                  "textAlign": "center",
+                  "alignItems": "center",
+                  "backgroundColor": "#FAFAFA",
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
+                  "padding": 10,
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+                   Nome
+            </Text>
+            <TextInput
+              keyboardType="default"
+              maxLength={60}
+              onChangeText={[Function]}
+              placeholder="Digite o seu nome completo"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#FAFAFA",
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
+                  "padding": 10,
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+                   Email
+            </Text>
+            <TextInput
+              keyboardType="email-address"
+              maxLength={50}
+              onChangeText={[Function]}
+              placeholder="Digite o seu email"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#FAFAFA",
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
+                  "padding": 10,
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+                   Telefone
+            </Text>
+            <TextInput
+              keyboardType="phone-pad"
+              maxLength={11}
+              onChangeText={[Function]}
+              placeholder="Digite o seu telefone"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#FAFAFA",
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
+                  "padding": 10,
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+                   Cargo
+            </Text>
+            <View
+              style={
+                Object {
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
                 }
               }
             >
-              Concluir
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue=""
+              >
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha seu cargo"
+                  value=""
+                />
+                <PickerItem
+                  label="Presidente"
+                  value={true}
+                />
+                <PickerItem
+                  label="Conselheiro"
+                  value={false}
+                />
+              </Picker>
+            </View>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+                   Segmento
             </Text>
-          </TouchableOpacity>,
+            <View
+              style={
+                Object {
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
+                }
+              }
+            >
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue=""
+              >
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha seu segmento"
+                  value=""
+                />
+                <PickerItem
+                  label="Suplente"
+                  value="Suplente"
+                />
+                <PickerItem
+                  label="Titular"
+                  value="Titular"
+                />
+              </Picker>
+            </View>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+                   Tipo do CAE
+            </Text>
+            <View
+              style={
+                Object {
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
+                }
+              }
+            >
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue=""
+              >
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha o Tipo do seu CAE"
+                  value=""
+                />
+                <PickerItem
+                  label="Municipal"
+                  value="Municipal"
+                />
+                <PickerItem
+                  label="Estadual"
+                  value="Estadual"
+                />
+              </Picker>
+            </View>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+                   CAE
+            </Text>
+            <TextInput
+              keyboardType="default"
+              maxLength={40}
+              onChangeText={[Function]}
+              placeholder="Lista com o CAE do seu município/estado"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#FAFAFA",
+                  "borderColor": "gray",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginBottom": 10,
+                  "marginHorizontal": 15,
+                  "padding": 10,
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#FF9500",
+                  "borderRadius": 7,
+                  "borderWidth": 1,
+                  "marginBottom": 20,
+                  "marginHorizontal": 15,
+                  "marginTop": 20,
+                  "paddingVertical": 10,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#FFF",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Concluir
+              </Text>
+            </TouchableOpacity>
+          </View>
           <View
             style={
               Object {
@@ -1508,10 +383,1850 @@ ShallowWrapper {
                 </Text>
               </Text>
             </TouchableOpacity>
-          </View>,
+          </View>
+        </ScrollViewMock>,
+      ],
+      "style": Object {
+        "flex": 1,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "backButton": null,
+          "subTitle": "",
+          "title": "Merenda +",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <View
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "flex": 1,
+                  "paddingTop": 5,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     CPF
+              </Text>
+              <TextInput
+                keyboardType="numeric"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu CPF"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Nome
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={60}
+                onChangeText={[Function]}
+                placeholder="Digite o seu nome completo"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Email
+              </Text>
+              <TextInput
+                keyboardType="email-address"
+                maxLength={50}
+                onChangeText={[Function]}
+                placeholder="Digite o seu email"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Telefone
+              </Text>
+              <TextInput
+                keyboardType="phone-pad"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu telefone"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Cargo
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu cargo"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Presidente"
+                    value={true}
+                  />
+                  <PickerItem
+                    label="Conselheiro"
+                    value={false}
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Segmento
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu segmento"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Suplente"
+                    value="Suplente"
+                  />
+                  <PickerItem
+                    label="Titular"
+                    value="Titular"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Tipo do CAE
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha o Tipo do seu CAE"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Municipal"
+                    value="Municipal"
+                  />
+                  <PickerItem
+                    label="Estadual"
+                    value="Estadual"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     CAE
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={40}
+                onChangeText={[Function]}
+                placeholder="Lista com o CAE do seu município/estado"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "#FF9500",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 20,
+                    "marginHorizontal": 15,
+                    "marginTop": 20,
+                    "paddingVertical": 10,
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "#FFF",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Concluir
+                </Text>
+              </TouchableOpacity>
+            </View>,
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "borderTopColor": "#a9a9a9",
+                  "borderTopWidth": 1,
+                  "flex": 0.7,
+                  "justifyContent": "center",
+                  "padding": 10,
+                }
+              }
+            >
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={[Function]}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Já tem um cadastro?
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "blue",
+                      }
+                    }
+                  >
+                     Entrar
+                  </Text>
+                </Text>
+              </TouchableOpacity>
+            </View>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       CPF
+                </Text>,
+                <TextInput
+                  keyboardType="numeric"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu CPF"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Nome
+                </Text>,
+                <TextInput
+                  keyboardType="default"
+                  maxLength={60}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu nome completo"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Email
+                </Text>,
+                <TextInput
+                  keyboardType="email-address"
+                  maxLength={50}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu email"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Telefone
+                </Text>,
+                <TextInput
+                  keyboardType="phone-pad"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu telefone"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Cargo
+                </Text>,
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu cargo"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Presidente"
+                      value={true}
+                    />
+                    <PickerItem
+                      label="Conselheiro"
+                      value={false}
+                    />
+                  </Picker>
+                </View>,
+                null,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Segmento
+                </Text>,
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu segmento"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Suplente"
+                      value="Suplente"
+                    />
+                    <PickerItem
+                      label="Titular"
+                      value="Titular"
+                    />
+                  </Picker>
+                </View>,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Tipo do CAE
+                </Text>,
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha o Tipo do seu CAE"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Municipal"
+                      value="Municipal"
+                    />
+                    <PickerItem
+                      label="Estadual"
+                      value="Estadual"
+                    />
+                  </Picker>
+                </View>,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       CAE
+                </Text>,
+                <TextInput
+                  keyboardType="default"
+                  maxLength={40}
+                  onChangeText={[Function]}
+                  placeholder="Lista com o CAE do seu município/estado"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />,
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#FF9500",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 20,
+                      "marginHorizontal": 15,
+                      "marginTop": 20,
+                      "paddingVertical": 10,
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "#FFF",
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Concluir
+                  </Text>
+                </TouchableOpacity>,
+              ],
+              "style": Object {
+                "backgroundColor": "white",
+                "flex": 1,
+                "paddingTop": 5,
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     CPF",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     CPF",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "keyboardType": "numeric",
+                  "maxLength": 11,
+                  "onChangeText": [Function],
+                  "placeholder": "Digite o seu CPF",
+                  "placeholderTextColor": "#95a5a6",
+                  "returnKeyLabel": "next",
+                  "style": Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  },
+                  "underlineColorAndroid": "transparent",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     Nome",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     Nome",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "keyboardType": "default",
+                  "maxLength": 60,
+                  "onChangeText": [Function],
+                  "placeholder": "Digite o seu nome completo",
+                  "placeholderTextColor": "#95a5a6",
+                  "returnKeyLabel": "next",
+                  "style": Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  },
+                  "underlineColorAndroid": "transparent",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     Email",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     Email",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "keyboardType": "email-address",
+                  "maxLength": 50,
+                  "onChangeText": [Function],
+                  "placeholder": "Digite o seu email",
+                  "placeholderTextColor": "#95a5a6",
+                  "returnKeyLabel": "next",
+                  "style": Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  },
+                  "underlineColorAndroid": "transparent",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     Telefone",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     Telefone",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "keyboardType": "phone-pad",
+                  "maxLength": 11,
+                  "onChangeText": [Function],
+                  "placeholder": "Digite o seu telefone",
+                  "placeholderTextColor": "#95a5a6",
+                  "returnKeyLabel": "next",
+                  "style": Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  },
+                  "underlineColorAndroid": "transparent",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     Cargo",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     Cargo",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu cargo"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Presidente"
+                      value={true}
+                    />
+                    <PickerItem
+                      label="Conselheiro"
+                      value={false}
+                    />
+                  </Picker>,
+                  "style": Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  },
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha seu cargo"
+                        value=""
+                      />,
+                      <PickerItem
+                        label="Presidente"
+                        value={true}
+                      />,
+                      <PickerItem
+                        label="Conselheiro"
+                        value={false}
+                      />,
+                    ],
+                    "mode": "dialog",
+                    "onValueChange": [Function],
+                    "selectedValue": "",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "color": "#95a5a6",
+                        "label": "Escolha seu cargo",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "label": "Presidente",
+                        "value": true,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "label": "Conselheiro",
+                        "value": false,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              null,
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     Segmento",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     Segmento",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu segmento"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Suplente"
+                      value="Suplente"
+                    />
+                    <PickerItem
+                      label="Titular"
+                      value="Titular"
+                    />
+                  </Picker>,
+                  "style": Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  },
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha seu segmento"
+                        value=""
+                      />,
+                      <PickerItem
+                        label="Suplente"
+                        value="Suplente"
+                      />,
+                      <PickerItem
+                        label="Titular"
+                        value="Titular"
+                      />,
+                    ],
+                    "mode": "dialog",
+                    "onValueChange": [Function],
+                    "selectedValue": "",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "color": "#95a5a6",
+                        "label": "Escolha seu segmento",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "label": "Suplente",
+                        "value": "Suplente",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "label": "Titular",
+                        "value": "Titular",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     Tipo do CAE",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     Tipo do CAE",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha o Tipo do seu CAE"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Municipal"
+                      value="Municipal"
+                    />
+                    <PickerItem
+                      label="Estadual"
+                      value="Estadual"
+                    />
+                  </Picker>,
+                  "style": Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  },
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha o Tipo do seu CAE"
+                        value=""
+                      />,
+                      <PickerItem
+                        label="Municipal"
+                        value="Municipal"
+                      />,
+                      <PickerItem
+                        label="Estadual"
+                        value="Estadual"
+                      />,
+                    ],
+                    "mode": "dialog",
+                    "onValueChange": [Function],
+                    "selectedValue": "",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "color": "#95a5a6",
+                        "label": "Escolha o Tipo do seu CAE",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "label": "Municipal",
+                        "value": "Municipal",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "label": "Estadual",
+                        "value": "Estadual",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "     CAE",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "     CAE",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "keyboardType": "default",
+                  "maxLength": 40,
+                  "onChangeText": [Function],
+                  "placeholder": "Lista com o CAE do seu município/estado",
+                  "placeholderTextColor": "#95a5a6",
+                  "returnKeyLabel": "next",
+                  "style": Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  },
+                  "underlineColorAndroid": "transparent",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "userCreation",
+                "nodeType": "class",
+                "props": Object {
+                  "activeOpacity": 0.7,
+                  "children": <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "#FFF",
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Concluir
+                  </Text>,
+                  "onPress": [Function],
+                  "style": Object {
+                    "backgroundColor": "#FF9500",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 20,
+                    "marginHorizontal": 15,
+                    "marginTop": 20,
+                    "paddingVertical": 10,
+                  },
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "Concluir",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                    "style": Object {
+                      "color": "#FFF",
+                      "textAlign": "center",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": "Concluir",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={[Function]}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Já tem um cadastro?
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "blue",
+                      }
+                    }
+                  >
+                     Entrar
+                  </Text>
+                </Text>
+              </TouchableOpacity>,
+              "style": Object {
+                "alignItems": "center",
+                "borderTopColor": "#a9a9a9",
+                "borderTopWidth": 1,
+                "flex": 0.7,
+                "justifyContent": "center",
+                "padding": 10,
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "activeOpacity": 0.6,
+                "children": <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Já tem um cadastro?
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "blue",
+                      }
+                    }
+                  >
+                     Entrar
+                  </Text>
+                </Text>,
+                "onPress": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": Array [
+                    "Já tem um cadastro?",
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "blue",
+                        }
+                      }
+                    >
+                       Entrar
+                    </Text>,
+                  ],
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Já tem um cadastro?",
+                  Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "class",
+                    "props": Object {
+                      "accessible": true,
+                      "allowFontScaling": true,
+                      "children": " Entrar",
+                      "disabled": false,
+                      "ellipsizeMode": "tail",
+                      "style": Object {
+                        "color": "blue",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": " Entrar",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Header
+            backButton={null}
+            subTitle=""
+            title="Merenda +"
+          />,
+          <ScrollViewMock>
+            <View
+              style={
+                Object {
+                  "backgroundColor": "white",
+                  "flex": 1,
+                  "paddingTop": 5,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     CPF
+              </Text>
+              <TextInput
+                keyboardType="numeric"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu CPF"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Nome
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={60}
+                onChangeText={[Function]}
+                placeholder="Digite o seu nome completo"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Email
+              </Text>
+              <TextInput
+                keyboardType="email-address"
+                maxLength={50}
+                onChangeText={[Function]}
+                placeholder="Digite o seu email"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Telefone
+              </Text>
+              <TextInput
+                keyboardType="phone-pad"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu telefone"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Cargo
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu cargo"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Presidente"
+                    value={true}
+                  />
+                  <PickerItem
+                    label="Conselheiro"
+                    value={false}
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Segmento
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu segmento"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Suplente"
+                    value="Suplente"
+                  />
+                  <PickerItem
+                    label="Titular"
+                    value="Titular"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     Tipo do CAE
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha o Tipo do seu CAE"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Municipal"
+                    value="Municipal"
+                  />
+                  <PickerItem
+                    label="Estadual"
+                    value="Estadual"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                     CAE
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={40}
+                onChangeText={[Function]}
+                placeholder="Lista com o CAE do seu município/estado"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginHorizontal": 15,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "#FF9500",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 20,
+                    "marginHorizontal": 15,
+                    "marginTop": 20,
+                    "paddingVertical": 10,
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "#FFF",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Concluir
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "borderTopColor": "#a9a9a9",
+                  "borderTopWidth": 1,
+                  "flex": 0.7,
+                  "justifyContent": "center",
+                  "padding": 10,
+                }
+              }
+            >
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={[Function]}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Já tem um cadastro?
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "blue",
+                      }
+                    }
+                  >
+                     Entrar
+                  </Text>
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollViewMock>,
         ],
         "style": Object {
-          "backgroundColor": "white",
           "flex": 1,
         },
       },
@@ -1535,708 +2250,308 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     CPF",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     CPF",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "keyboardType": "numeric",
-            "maxLength": 11,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu CPF",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
-            "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            },
-            "underlineColorAndroid": "transparent",
-            "value": "",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     Nome",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     Nome",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "keyboardType": "default",
-            "maxLength": 60,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu nome completo",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
-            "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            },
-            "underlineColorAndroid": "transparent",
-            "value": "",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     Email",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     Email",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "keyboardType": "email-address",
-            "maxLength": 50,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu email",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
-            "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            },
-            "underlineColorAndroid": "transparent",
-            "value": "",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     Telefone",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     Telefone",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "keyboardType": "phone-pad",
-            "maxLength": 11,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu telefone",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
-            "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            },
-            "underlineColorAndroid": "transparent",
-            "value": "",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     Cargo",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     Cargo",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue=""
-            >
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu cargo"
-                value=""
-              />
-              <PickerItem
-                label="Presidente"
-                value={true}
-              />
-              <PickerItem
-                label="Conselheiro"
-                value={false}
-              />
-            </Picker>,
-            "style": Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": Array [
-                <PickerItem
-                  color="#95a5a6"
-                  label="Escolha seu cargo"
-                  value=""
-                />,
-                <PickerItem
-                  label="Presidente"
-                  value={true}
-                />,
-                <PickerItem
-                  label="Conselheiro"
-                  value={false}
-                />,
-              ],
-              "mode": "dialog",
-              "onValueChange": [Function],
-              "selectedValue": "",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "color": "#95a5a6",
-                  "label": "Escolha seu cargo",
-                  "value": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "label": "Presidente",
-                  "value": true,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "label": "Conselheiro",
-                  "value": false,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        null,
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     Segmento",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     Segmento",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue=""
-            >
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu segmento"
-                value=""
-              />
-              <PickerItem
-                label="Suplente"
-                value="Suplente"
-              />
-              <PickerItem
-                label="Titular"
-                value="Titular"
-              />
-            </Picker>,
-            "style": Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": Array [
-                <PickerItem
-                  color="#95a5a6"
-                  label="Escolha seu segmento"
-                  value=""
-                />,
-                <PickerItem
-                  label="Suplente"
-                  value="Suplente"
-                />,
-                <PickerItem
-                  label="Titular"
-                  value="Titular"
-                />,
-              ],
-              "mode": "dialog",
-              "onValueChange": [Function],
-              "selectedValue": "",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "color": "#95a5a6",
-                  "label": "Escolha seu segmento",
-                  "value": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "label": "Suplente",
-                  "value": "Suplente",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "label": "Titular",
-                  "value": "Titular",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     Tipo do CAE",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     Tipo do CAE",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": <Picker
-              mode="dialog"
-              onValueChange={[Function]}
-              selectedValue=""
-            >
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha o Tipo do seu CAE"
-                value=""
-              />
-              <PickerItem
-                label="Municipal"
-                value="Municipal"
-              />
-              <PickerItem
-                label="Estadual"
-                value="Estadual"
-              />
-            </Picker>,
-            "style": Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": Array [
-                <PickerItem
-                  color="#95a5a6"
-                  label="Escolha o Tipo do seu CAE"
-                  value=""
-                />,
-                <PickerItem
-                  label="Municipal"
-                  value="Municipal"
-                />,
-                <PickerItem
-                  label="Estadual"
-                  value="Estadual"
-                />,
-              ],
-              "mode": "dialog",
-              "onValueChange": [Function],
-              "selectedValue": "",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "color": "#95a5a6",
-                  "label": "Escolha o Tipo do seu CAE",
-                  "value": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "label": "Municipal",
-                  "value": "Municipal",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "label": "Estadual",
-                  "value": "Estadual",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "     CAE",
-            "disabled": false,
-            "ellipsizeMode": "tail",
-          },
-          "ref": null,
-          "rendered": "     CAE",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "keyboardType": "default",
-            "maxLength": 40,
-            "onChangeText": [Function],
-            "placeholder": "Lista com o CAE do seu município/estado",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
-            "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginHorizontal": 15,
-              "padding": 10,
-            },
-            "underlineColorAndroid": "transparent",
-            "value": "",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": "userCreation",
-          "nodeType": "class",
-          "props": Object {
-            "activeOpacity": 0.7,
-            "children": <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#FFF",
-                  "textAlign": "center",
+            "children": Array [
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "white",
+                    "flex": 1,
+                    "paddingTop": 5,
+                  }
                 }
-              }
-            >
-              Concluir
-            </Text>,
-            "onPress": [Function],
-            "style": Object {
-              "backgroundColor": "#FF9500",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 20,
-              "marginHorizontal": 15,
-              "marginTop": 20,
-              "paddingVertical": 10,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Concluir",
-              "disabled": false,
-              "ellipsizeMode": "tail",
-              "style": Object {
-                "color": "#FFF",
-                "textAlign": "center",
-              },
-            },
-            "ref": null,
-            "rendered": "Concluir",
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={[Function]}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
               >
-                Já tem um cadastro?
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
+                >
+                       CPF
+                </Text>
+                <TextInput
+                  keyboardType="numeric"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu CPF"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
                   style={
                     Object {
-                      "color": "blue",
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
                     }
                   }
-                >
-                   Entrar
-                </Text>
-              </Text>
-            </TouchableOpacity>,
-            "style": Object {
-              "alignItems": "center",
-              "borderTopColor": "#a9a9a9",
-              "borderTopWidth": 1,
-              "flex": 0.7,
-              "justifyContent": "center",
-              "padding": 10,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "activeOpacity": 0.6,
-              "children": <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                Já tem um cadastro?
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
+                >
+                       Nome
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={60}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu nome completo"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
                   style={
                     Object {
-                      "color": "blue",
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Email
+                </Text>
+                <TextInput
+                  keyboardType="email-address"
+                  maxLength={50}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu email"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Telefone
+                </Text>
+                <TextInput
+                  keyboardType="phone-pad"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu telefone"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Cargo
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
                     }
                   }
                 >
-                   Entrar
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu cargo"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Presidente"
+                      value={true}
+                    />
+                    <PickerItem
+                      label="Conselheiro"
+                      value={false}
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Segmento
                 </Text>
-              </Text>,
-              "onPress": [Function],
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": Array [
-                  "Já tem um cadastro?",
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu segmento"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Suplente"
+                      value="Suplente"
+                    />
+                    <PickerItem
+                      label="Titular"
+                      value="Titular"
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       Tipo do CAE
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha o Tipo do seu CAE"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Municipal"
+                      value="Municipal"
+                    />
+                    <PickerItem
+                      label="Estadual"
+                      value="Estadual"
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                       CAE
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={40}
+                  onChangeText={[Function]}
+                  placeholder="Lista com o CAE do seu município/estado"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#FF9500",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 20,
+                      "marginHorizontal": 15,
+                      "marginTop": 20,
+                      "paddingVertical": 10,
+                    }
+                  }
+                >
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -2244,19 +2559,381 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "blue",
+                        "color": "#FFF",
+                        "textAlign": "center",
                       }
                     }
                   >
-                     Entrar
+                    Concluir
+                  </Text>
+                </TouchableOpacity>
+              </View>,
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderTopColor": "#a9a9a9",
+                    "borderTopWidth": 1,
+                    "flex": 0.7,
+                    "justifyContent": "center",
+                    "padding": 10,
+                  }
+                }
+              >
+                <TouchableOpacity
+                  activeOpacity={0.6}
+                  onPress={[Function]}
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                    Já tem um cadastro?
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "blue",
+                        }
+                      }
+                    >
+                       Entrar
+                    </Text>
+                  </Text>
+                </TouchableOpacity>
+              </View>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         CPF
                   </Text>,
+                  <TextInput
+                    keyboardType="numeric"
+                    maxLength={11}
+                    onChangeText={[Function]}
+                    placeholder="Digite o seu CPF"
+                    placeholderTextColor="#95a5a6"
+                    returnKeyLabel="next"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FAFAFA",
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                        "padding": 10,
+                      }
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         Nome
+                  </Text>,
+                  <TextInput
+                    keyboardType="default"
+                    maxLength={60}
+                    onChangeText={[Function]}
+                    placeholder="Digite o seu nome completo"
+                    placeholderTextColor="#95a5a6"
+                    returnKeyLabel="next"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FAFAFA",
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                        "padding": 10,
+                      }
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         Email
+                  </Text>,
+                  <TextInput
+                    keyboardType="email-address"
+                    maxLength={50}
+                    onChangeText={[Function]}
+                    placeholder="Digite o seu email"
+                    placeholderTextColor="#95a5a6"
+                    returnKeyLabel="next"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FAFAFA",
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                        "padding": 10,
+                      }
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         Telefone
+                  </Text>,
+                  <TextInput
+                    keyboardType="phone-pad"
+                    maxLength={11}
+                    onChangeText={[Function]}
+                    placeholder="Digite o seu telefone"
+                    placeholderTextColor="#95a5a6"
+                    returnKeyLabel="next"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FAFAFA",
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                        "padding": 10,
+                      }
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         Cargo
+                  </Text>,
+                  <View
+                    style={
+                      Object {
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                      }
+                    }
+                  >
+                    <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha seu cargo"
+                        value=""
+                      />
+                      <PickerItem
+                        label="Presidente"
+                        value={true}
+                      />
+                      <PickerItem
+                        label="Conselheiro"
+                        value={false}
+                      />
+                    </Picker>
+                  </View>,
+                  null,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         Segmento
+                  </Text>,
+                  <View
+                    style={
+                      Object {
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                      }
+                    }
+                  >
+                    <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha seu segmento"
+                        value=""
+                      />
+                      <PickerItem
+                        label="Suplente"
+                        value="Suplente"
+                      />
+                      <PickerItem
+                        label="Titular"
+                        value="Titular"
+                      />
+                    </Picker>
+                  </View>,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         Tipo do CAE
+                  </Text>,
+                  <View
+                    style={
+                      Object {
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                      }
+                    }
+                  >
+                    <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha o Tipo do seu CAE"
+                        value=""
+                      />
+                      <PickerItem
+                        label="Municipal"
+                        value="Municipal"
+                      />
+                      <PickerItem
+                        label="Estadual"
+                        value="Estadual"
+                      />
+                    </Picker>
+                  </View>,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                         CAE
+                  </Text>,
+                  <TextInput
+                    keyboardType="default"
+                    maxLength={40}
+                    onChangeText={[Function]}
+                    placeholder="Lista com o CAE do seu município/estado"
+                    placeholderTextColor="#95a5a6"
+                    returnKeyLabel="next"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FAFAFA",
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": 10,
+                        "marginHorizontal": 15,
+                        "padding": 10,
+                      }
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />,
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "backgroundColor": "#FF9500",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "marginBottom": 20,
+                        "marginHorizontal": 15,
+                        "marginTop": 20,
+                        "paddingVertical": 10,
+                      }
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "#FFF",
+                          "textAlign": "center",
+                        }
+                      }
+                    >
+                      Concluir
+                    </Text>
+                  </TouchableOpacity>,
                 ],
-                "disabled": false,
-                "ellipsizeMode": "tail",
+                "style": Object {
+                  "backgroundColor": "white",
+                  "flex": 1,
+                  "paddingTop": 5,
+                },
               },
               "ref": null,
               "rendered": Array [
-                "Já tem um cadastro?",
                 Object {
                   "instance": null,
                   "key": null,
@@ -2264,22 +2941,755 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": " Entrar",
+                    "children": "     CPF",
                     "disabled": false,
                     "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     CPF",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "keyboardType": "numeric",
+                    "maxLength": 11,
+                    "onChangeText": [Function],
+                    "placeholder": "Digite o seu CPF",
+                    "placeholderTextColor": "#95a5a6",
+                    "returnKeyLabel": "next",
                     "style": Object {
-                      "color": "blue",
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    },
+                    "underlineColorAndroid": "transparent",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "     Nome",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     Nome",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "keyboardType": "default",
+                    "maxLength": 60,
+                    "onChangeText": [Function],
+                    "placeholder": "Digite o seu nome completo",
+                    "placeholderTextColor": "#95a5a6",
+                    "returnKeyLabel": "next",
+                    "style": Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    },
+                    "underlineColorAndroid": "transparent",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "     Email",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     Email",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "keyboardType": "email-address",
+                    "maxLength": 50,
+                    "onChangeText": [Function],
+                    "placeholder": "Digite o seu email",
+                    "placeholderTextColor": "#95a5a6",
+                    "returnKeyLabel": "next",
+                    "style": Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    },
+                    "underlineColorAndroid": "transparent",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "     Telefone",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     Telefone",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "keyboardType": "phone-pad",
+                    "maxLength": 11,
+                    "onChangeText": [Function],
+                    "placeholder": "Digite o seu telefone",
+                    "placeholderTextColor": "#95a5a6",
+                    "returnKeyLabel": "next",
+                    "style": Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    },
+                    "underlineColorAndroid": "transparent",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "     Cargo",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     Cargo",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha seu cargo"
+                        value=""
+                      />
+                      <PickerItem
+                        label="Presidente"
+                        value={true}
+                      />
+                      <PickerItem
+                        label="Conselheiro"
+                        value={false}
+                      />
+                    </Picker>,
+                    "style": Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
                     },
                   },
                   "ref": null,
-                  "rendered": " Entrar",
+                  "rendered": Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <PickerItem
+                          color="#95a5a6"
+                          label="Escolha seu cargo"
+                          value=""
+                        />,
+                        <PickerItem
+                          label="Presidente"
+                          value={true}
+                        />,
+                        <PickerItem
+                          label="Conselheiro"
+                          value={false}
+                        />,
+                      ],
+                      "mode": "dialog",
+                      "onValueChange": [Function],
+                      "selectedValue": "",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "color": "#95a5a6",
+                          "label": "Escolha seu cargo",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "label": "Presidente",
+                          "value": true,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "label": "Conselheiro",
+                          "value": false,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                null,
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "     Segmento",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     Segmento",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha seu segmento"
+                        value=""
+                      />
+                      <PickerItem
+                        label="Suplente"
+                        value="Suplente"
+                      />
+                      <PickerItem
+                        label="Titular"
+                        value="Titular"
+                      />
+                    </Picker>,
+                    "style": Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <PickerItem
+                          color="#95a5a6"
+                          label="Escolha seu segmento"
+                          value=""
+                        />,
+                        <PickerItem
+                          label="Suplente"
+                          value="Suplente"
+                        />,
+                        <PickerItem
+                          label="Titular"
+                          value="Titular"
+                        />,
+                      ],
+                      "mode": "dialog",
+                      "onValueChange": [Function],
+                      "selectedValue": "",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "color": "#95a5a6",
+                          "label": "Escolha seu segmento",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "label": "Suplente",
+                          "value": "Suplente",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "label": "Titular",
+                          "value": "Titular",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "     Tipo do CAE",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     Tipo do CAE",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Picker
+                      mode="dialog"
+                      onValueChange={[Function]}
+                      selectedValue=""
+                    >
+                      <PickerItem
+                        color="#95a5a6"
+                        label="Escolha o Tipo do seu CAE"
+                        value=""
+                      />
+                      <PickerItem
+                        label="Municipal"
+                        value="Municipal"
+                      />
+                      <PickerItem
+                        label="Estadual"
+                        value="Estadual"
+                      />
+                    </Picker>,
+                    "style": Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <PickerItem
+                          color="#95a5a6"
+                          label="Escolha o Tipo do seu CAE"
+                          value=""
+                        />,
+                        <PickerItem
+                          label="Municipal"
+                          value="Municipal"
+                        />,
+                        <PickerItem
+                          label="Estadual"
+                          value="Estadual"
+                        />,
+                      ],
+                      "mode": "dialog",
+                      "onValueChange": [Function],
+                      "selectedValue": "",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "color": "#95a5a6",
+                          "label": "Escolha o Tipo do seu CAE",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "label": "Municipal",
+                          "value": "Municipal",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": null,
+                        "nodeType": "class",
+                        "props": Object {
+                          "label": "Estadual",
+                          "value": "Estadual",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "     CAE",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "     CAE",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "keyboardType": "default",
+                    "maxLength": 40,
+                    "onChangeText": [Function],
+                    "placeholder": "Lista com o CAE do seu município/estado",
+                    "placeholderTextColor": "#95a5a6",
+                    "returnKeyLabel": "next",
+                    "style": Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginHorizontal": 15,
+                      "padding": 10,
+                    },
+                    "underlineColorAndroid": "transparent",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "userCreation",
+                  "nodeType": "class",
+                  "props": Object {
+                    "activeOpacity": 0.7,
+                    "children": <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "#FFF",
+                          "textAlign": "center",
+                        }
+                      }
+                    >
+                      Concluir
+                    </Text>,
+                    "onPress": [Function],
+                    "style": Object {
+                      "backgroundColor": "#FF9500",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 20,
+                      "marginHorizontal": 15,
+                      "marginTop": 20,
+                      "paddingVertical": 10,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": null,
+                    "nodeType": "class",
+                    "props": Object {
+                      "accessible": true,
+                      "allowFontScaling": true,
+                      "children": "Concluir",
+                      "disabled": false,
+                      "ellipsizeMode": "tail",
+                      "style": Object {
+                        "color": "#FFF",
+                        "textAlign": "center",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": "Concluir",
+                    "type": [Function],
+                  },
                   "type": [Function],
                 },
               ],
               "type": [Function],
             },
-            "type": [Function],
-          },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TouchableOpacity
+                  activeOpacity={0.6}
+                  onPress={[Function]}
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                    Já tem um cadastro?
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "blue",
+                        }
+                      }
+                    >
+                       Entrar
+                    </Text>
+                  </Text>
+                </TouchableOpacity>,
+                "style": Object {
+                  "alignItems": "center",
+                  "borderTopColor": "#a9a9a9",
+                  "borderTopWidth": 1,
+                  "flex": 0.7,
+                  "justifyContent": "center",
+                  "padding": 10,
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "activeOpacity": 0.6,
+                  "children": <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                    Já tem um cadastro?
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      disabled={false}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "blue",
+                        }
+                      }
+                    >
+                       Entrar
+                    </Text>
+                  </Text>,
+                  "onPress": [Function],
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": Array [
+                      "Já tem um cadastro?",
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        disabled={false}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "blue",
+                          }
+                        }
+                      >
+                         Entrar
+                      </Text>,
+                    ],
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Já tem um cadastro?",
+                    Object {
+                      "instance": null,
+                      "key": null,
+                      "nodeType": "class",
+                      "props": Object {
+                        "accessible": true,
+                        "allowFontScaling": true,
+                        "children": " Entrar",
+                        "disabled": false,
+                        "ellipsizeMode": "tail",
+                        "style": Object {
+                          "color": "blue",
+                        },
+                      },
+                      "ref": null,
+                      "rendered": " Entrar",
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
       ],

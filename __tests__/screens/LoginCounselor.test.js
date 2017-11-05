@@ -19,7 +19,7 @@ const initialState = {
 
 const store = mockStore(initialState);
 
-describe('Testing LoginCounselorContainer', () => {
+describe('Testing LoginCounselor', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
       <LoginCounselorContainer />,
