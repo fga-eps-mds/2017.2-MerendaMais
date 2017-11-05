@@ -1,16 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import Header from '../components/Header';
-
-const iconName = require('../images/ic_face.png');
-const iconCpf = require('../images/ic_account_circle.png');
-const iconPhone = require('../images/ic_phone.png');
-const iconEmail = require('../images/ic_email.png');
-const iconJob = require('../images/ic_work.png');
-const iconSegment = require('../images/ic_supervisor_account.png');
-const iconCAE = require('../images/ic_location_city.png');
-const iconCaeType = require('../images/ic_domain.png');
 
 const styles = StyleSheet.create({
   field: {
@@ -28,9 +20,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   profileInfoScreen: {
     flex: 1,
   },
+
   buttonContainer: {
     paddingVertical: 10,
     borderWidth: 1,
@@ -53,10 +47,9 @@ const styles = StyleSheet.create({
     flex: 6,
     flexDirection: 'column',
   },
+
   icon: {
-    width: 30,
-    height: 30,
-    margin: 5,
+    margin: 7,
   },
 });
 
@@ -65,7 +58,7 @@ export default class ProfileInfoScreen extends React.Component {
     if (this.props.counselor.profile.isPresident) {
       return (
         <View key="is_president" style={styles.field}>
-          <Image source={iconJob} style={styles.icon} />
+          <FontAwesome name="suitcase" style={styles.icon} size={32} color="black" />
           <Text>Cargo: Presidente</Text>
         </View>
       );
@@ -73,7 +66,7 @@ export default class ProfileInfoScreen extends React.Component {
 
     return (
       <View key="is_counselor" style={styles.field}>
-        <Image source={iconJob} style={styles.icon} />
+        <FontAwesome name="suitcase" style={styles.icon} size={32} color="black" />
         <Text>Cargo: Conselheiro </Text>
       </View>
     );
@@ -87,32 +80,32 @@ export default class ProfileInfoScreen extends React.Component {
         />
         <View style={styles.infoProfileBox}>
           <View style={styles.field}>
-            <Image source={iconName} style={styles.icon} />
+            <FontAwesome name="user-circle" style={styles.icon} size={32} color="black" />
             <Text>Nome: {this.props.counselor.name}</Text>
           </View>
           <View style={styles.field}>
-            <Image source={iconCpf} style={styles.icon} />
+            <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
             <Text>CPF: {this.props.counselor.profile.cpf}</Text>
           </View>
           <View style={styles.field}>
-            <Image source={iconPhone} style={styles.icon} />
+            <FontAwesome name="phone" style={styles.icon} size={32} color="black" />
             <Text>Telefone: {this.props.counselor.profile.phone}</Text>
           </View>
           <View style={styles.field}>
-            <Image source={iconEmail} style={styles.icon} />
+            <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
             <Text>Email: {this.props.counselor.email}</Text>
           </View>
           {this.verifyCharge()}
           <View style={styles.field}>
-            <Image source={iconSegment} style={styles.icon} />
+            <MaterialIcons name="supervisor-account" style={styles.icon} size={32} color="black" />
             <Text>Segmento: {this.props.counselor.profile.segment}</Text>
           </View>
           <View style={styles.field}>
-            <Image source={iconCAE} style={styles.icon} />
+            <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
             <Text>CAE: {this.props.counselor.profile.CAE}</Text>
           </View>
           <View style={styles.field}>
-            <Image source={iconCaeType} style={styles.icon} />
+            <MaterialIcons name="domain" style={styles.icon} size={32} color="black" />
             <Text>Tipo do CAE: {this.props.counselor.profile.CAE_Type}</Text>
           </View>
         </View>

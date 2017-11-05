@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { MaterialIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { COUNSELOR_DEFAULT_PASSWORD } from '../constants';
-
-const iconAccount = require('../images/account_circle.png');
 
 const styles = StyleSheet.create({
   principal: {
@@ -26,9 +25,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   icon: {
-    width: 30,
-    height: 30,
     margin: 5,
   },
 
@@ -88,7 +86,7 @@ export default class LoginCounselorScreen extends React.Component {
         <Header />
         <View style={styles.content}>
           <View style={styles.Inputemail}>
-            <Image source={iconAccount} style={styles.icon} />
+            <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
             <TextInput
               width={280}
               returnKeyType="go"
