@@ -594,7 +594,7 @@ const authenticatingCounselorInLogin = (authenticationHeader, dispatch) => {
 // Async Action to Login
 export const asyncLoginCounselor = userData => (dispatch) => {
   logInfo(FILE_NAME, 'asyncLoginCounselor',
-    `userData received from LoginCounselorScreen: ${JSON.stringify(userData, null, 2)}`);
+    `userData received from LoginScreen: ${JSON.stringify(userData, null, 2)}`);
 
   // Header json to send Login data. OBS: The word "headers" must be written like this.
   const authenticationHeader = {

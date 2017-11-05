@@ -4,7 +4,7 @@ exports[`Testing LoginCounselor renders as expected 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <LoginCounselorScreen
+  Symbol(enzyme.__unrendered__): <LoginScreen
     asyncLoginCounselor={[Function]}
     isLoading={false}
     message_erro=""

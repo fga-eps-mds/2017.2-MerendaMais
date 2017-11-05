@@ -342,7 +342,7 @@ export default class RegisterScreen extends React.Component {
           <View style={styles.footer}>
             <TouchableOpacity
               activeOpacity={0.6}
-              onPress={() => Actions.loginCounselorScreen()}
+              onPress={() => Actions.loginScreen()}
             >
               <Text>Já tem um cadastro?
                 <Text style={{ color: 'blue' }}> Entrar</Text>

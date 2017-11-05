@@ -4,8 +4,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import { TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 // imported as a connected component!
-import LoginCounselorContainer from '../../src/Containers/LoginCounselorContainer';
-import LoginCounselorScreen from '../../src/screens/LoginCounselorScreen';
+import LoginCounselorContainer from '../../src/Containers/LoginContainer';
+import LoginScreen from '../../src/screens/LoginScreen';
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -32,7 +32,7 @@ describe('Testing LoginCounselor', () => {
 });
 
 describe('Testing RegisterScreen Input', () => {
-  const wrapper = shallow(<LoginCounselorScreen />);
+  const wrapper = shallow(<LoginScreen />);
 
   it('should change state when the text of email input component changes', () => {
     const emailInputComponent = wrapper.find(TextInput).at(0);
@@ -49,7 +49,7 @@ describe('Testing RegisterScreen Input', () => {
   });
 });
 
-describe('Testing LoginCounselorScreen On pressed buttons', () => {
+describe('Testing LoginScreen On pressed buttons', () => {
   it('Test if LoginCounselor button is pressed', () => {
     const asyncLoginCounselor = (state) => {
       expect(state.email).toEqual('Conselheiro@email.com');
@@ -57,7 +57,7 @@ describe('Testing LoginCounselorScreen On pressed buttons', () => {
     };
 
     const wrapper = shallow(
-      <LoginCounselorScreen
+      <LoginScreen
         asyncLoginCounselor={asyncLoginCounselor}
       />,
     );
@@ -78,7 +78,7 @@ describe('Testing LoginCounselorScreen On pressed buttons', () => {
       isLoading: true,
     };
 
-    const wrapper = shallow(<LoginCounselorScreen {...myProps} />);
+    const wrapper = shallow(<LoginScreen {...myProps} />);
 
     expect(wrapper.find(ActivityIndicator).length).toEqual(1);
 
@@ -88,7 +88,7 @@ describe('Testing LoginCounselorScreen On pressed buttons', () => {
   });
 
   it('Test if loading spinning does not exist', () => {
-    const wrapper = shallow(<LoginCounselorScreen {...initialState.application} />);
+    const wrapper = shallow(<LoginScreen {...initialState.application} />);
 
     expect(wrapper.find(ActivityIndicator).length).toEqual(0);
 

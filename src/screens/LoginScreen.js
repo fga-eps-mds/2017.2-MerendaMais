@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 
 });
 
-export default class LoginCounselorScreen extends React.Component {
+export default class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -147,7 +147,7 @@ export default class LoginCounselorScreen extends React.Component {
   }
 }
 
-LoginCounselorScreen.propTypes = {
+LoginScreen.propTypes = {
   asyncLoginCounselor: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
