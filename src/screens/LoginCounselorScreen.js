@@ -84,6 +84,7 @@ export default class LoginCounselorScreen extends React.Component {
       <TouchableOpacity
         style={styles.buttonLogin}
         activeOpacity={0.7}
+        key="LoginCounselor"
         onPress={() => this.props.asyncLoginCounselor(this.state)}
       >
         <Text style={{ color: 'white', fontSize: 20 }}>Entrar</Text>
@@ -122,7 +123,7 @@ export default class LoginCounselorScreen extends React.Component {
               secureTextEntry
               onChangeText={password => this.setState({ password })}
               placeholder="Senha"
-              ref={input => this.passwordInput === input}
+              ref={(passwordInput) => { this.passwordInput = passwordInput; }}
             />
           </View>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
+import { TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 // imported as a connected component!
 import RegisterScreenContainer from '../../src/Containers/RegisterScreenContainer';
 import RegisterScreen from '../../src/screens/RegisterScreen';
@@ -50,25 +51,25 @@ describe('Testing RegisterScreen Input', () => {
   const wrapper = shallow(<RegisterScreen />);
 
   it('should change state when the text of cpf input component changes', () => {
-    const cpfInputComponent = wrapper.find('TextInput').at(0);
+    const cpfInputComponent = wrapper.find(TextInput).at(0);
     cpfInputComponent.simulate('ChangeText', '11111111111');
     expect(wrapper.state().profile.cpf).toEqual('11111111111');
   });
 
   it('should change state when the text of name input component changes', () => {
-    const nameInputComponent = wrapper.find('TextInput').at(1);
+    const nameInputComponent = wrapper.find(TextInput).at(1);
     nameInputComponent.simulate('ChangeText', 'test');
     expect(wrapper.state('name')).toEqual('test');
   });
 
   it('should change state when the text of email input component changes', () => {
-    const emailInputComponent = wrapper.find('TextInput').at(2);
+    const emailInputComponent = wrapper.find(TextInput).at(2);
     emailInputComponent.simulate('ChangeText', 'test5@test.com');
     expect(wrapper.state('email')).toEqual('test5@test.com');
   });
 
   it('should change state when the text of phone input component changes', () => {
-    const phoneInputComponent = wrapper.find('TextInput').at(3);
+    const phoneInputComponent = wrapper.find(TextInput).at(3);
     phoneInputComponent.simulate('ChangeText', '555555555');
     expect(wrapper.state().profile.phone).toEqual('555555555');
   });
@@ -92,7 +93,7 @@ describe('Testing RegisterScreen Input', () => {
   });
 
   it('should change state when the text of CAE input component changes', () => {
-    const CAEInputComponent = wrapper.find('TextInput').at(4);
+    const CAEInputComponent = wrapper.find(TextInput).at(4);
     CAEInputComponent.simulate('ChangeText', 'DF');
     expect(wrapper.state().profile.CAE).toEqual('DF');
   });
@@ -120,6 +121,7 @@ describe('Testing RegisterScreen On pressed buttons', () => {
         asyncRegisterCounselor={asyncRegisterCounselor}
       />,
     );
+
     wrapper.setState({
       nuvemCode: 1,
       email: 'Conselheiro@email.com',
@@ -136,8 +138,33 @@ describe('Testing RegisterScreen On pressed buttons', () => {
         CAE: 'DF',
       },
     });
+
     const touch = wrapper.findWhere(c => c.key() === 'userCreation');
     expect(touch.length).toEqual(1);
     touch.simulate('press');
+  });
+
+  it('Test if loading spinning exists', () => {
+    const myProps = {
+      isLoading: true,
+    };
+
+    const wrapper = shallow(<RegisterScreen {...myProps} />);
+
+    expect(wrapper.find(ActivityIndicator).length).toEqual(1);
+
+    // We expect receive just one TouchableOpacity, because we've two and one just appear
+    // if is loading is false.
+    expect(wrapper.find(TouchableOpacity).length).toEqual(1);
+  });
+
+  it('Test if loading spinning does not exist', () => {
+    const wrapper = shallow(<RegisterScreen {...initialState.application} />);
+
+    expect(wrapper.find(ActivityIndicator).length).toEqual(0);
+
+    // We expect receive two TouchableOpacity, because we've two and one just desappear
+    // if is loading is true.
+    expect(wrapper.find(TouchableOpacity).length).toEqual(2);
   });
 });

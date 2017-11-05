@@ -196,6 +196,7 @@ export default class RegisterScreen extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
 
