@@ -303,7 +303,7 @@ const associateProfileToCounselor = (appToken, nuvemCode, userData, dispatch) =>
 };
 
 // Used in Async Action to Register Counselor
-const authenticatingUserInRegister = userData => (dispatch) => {
+const authenticatingUserInRegister = (userData, dispatch) => {
   const authenticationHeader = {
     headers: {
       email: userData.email,

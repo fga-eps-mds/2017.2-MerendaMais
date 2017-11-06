@@ -12,6 +12,7 @@ const initialState = {
       cpf: '',
       phone: '',
       isPresident: false,
+      counselorType: '',
       segment: '',
       CAE_Type: '',
       CAE: '',

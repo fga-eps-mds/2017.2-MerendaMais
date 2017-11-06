@@ -15,6 +15,7 @@ describe('Testing counselorReducer', () => {
     expect(counselor.profile.cpf).toBe('');
     expect(counselor.profile.phone).toBe('');
     expect(counselor.profile.isPresident).toBe(false);
+    expect(counselor.profile.counselorType).toBe('');
     expect(counselor.profile.segment).toBe('');
     expect(counselor.profile.CAE_Type).toBe('');
     expect(counselor.profile.CAE).toBe('');
@@ -30,7 +31,8 @@ describe('Testing counselorReducer', () => {
         cpf: '12312312312',
         phone: '96661234',
         isPresident: false,
-        segment: 'Titular',
+        counselorType: 'Titular',
+        segment: 'Entidades civis',
         CAE_Type: 'Estadual',
         CAE: 'Distrito Federal',
       },
@@ -58,6 +60,7 @@ describe('Testing counselorReducer', () => {
     expect(counselor.profile.cpf).toBe('');
     expect(counselor.profile.phone).toBe('');
     expect(counselor.profile.isPresident).toBe(false);
+    expect(counselor.profile.counselorType).toBe('');
     expect(counselor.profile.segment).toBe('');
     expect(counselor.profile.CAE_Type).toBe('');
     expect(counselor.profile.CAE).toBe('');
@@ -73,6 +76,7 @@ describe('Testing counselorReducer', () => {
         cpf: '',
         phone: '',
         isPresident: false,
+        counselorType: '',
         segment: '',
         CAE_Type: '',
         CAE: '',
@@ -101,6 +105,7 @@ describe('Testing counselorReducer', () => {
     expect(counselor.profile.cpf).toBe('');
     expect(counselor.profile.phone).toBe('');
     expect(counselor.profile.isPresident).toBe(false);
+    expect(counselor.profile.counselorType).toBe('');
     expect(counselor.profile.segment).toBe('');
     expect(counselor.profile.CAE_Type).toBe('');
     expect(counselor.profile.CAE).toBe('');
@@ -116,7 +121,8 @@ describe('Testing counselorReducer', () => {
         cpf: '12312312312',
         phone: '987654321',
         isPresident: true,
-        segment: 'Suplente',
+        counselorType: 'Suplente',
+        segment: 'Entidades civis',
         CAE_Type: 'Municipal',
         CAE: 'Porto Velho',
       },
@@ -147,6 +153,7 @@ describe('Testing counselorReducer', () => {
     expect(counselor.profile.cpf).toBe('');
     expect(counselor.profile.phone).toBe('');
     expect(counselor.profile.isPresident).toBe(false);
+    expect(counselor.profile.counselorType).toBe('');
     expect(counselor.profile.segment).toBe('');
     expect(counselor.profile.CAE_Type).toBe('');
     expect(counselor.profile.CAE).toBe('');
@@ -175,6 +182,7 @@ describe('Testing counselorReducer', () => {
     expect(counselor.profile.cpf).toBe('');
     expect(counselor.profile.phone).toBe('');
     expect(counselor.profile.isPresident).toBe(false);
+    expect(counselor.profile.counselorType).toBe('');
     expect(counselor.profile.segment).toBe('');
     expect(counselor.profile.CAE_Type).toBe('');
     expect(counselor.profile.CAE).toBe('');

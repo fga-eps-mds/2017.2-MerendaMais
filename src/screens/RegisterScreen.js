@@ -16,7 +16,11 @@ import { TITULAR_COUNSELOR,
   STATE_COUNSELOR_CAE,
   PRESIDENT_COUNSELOR,
   COMMON_COUNSELOR,
-  COUNSELOR_DEFAULT_PASSWORD } from '../constants';
+  COUNSELOR_DEFAULT_PASSWORD,
+  EXECUTIVE_POWER,
+  EDUCATION_WORKERS,
+  STUDENT_PARENTS,
+  CIVILIAN_ENTITIES } from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'RegisterScreen.js';
@@ -87,6 +91,7 @@ export default class RegisterScreen extends React.Component {
         cpf: '',
         phone: '',
         isPresident: '',
+        counselorType: '',
         segment: '',
         CAE_Type: '',
         CAE: '',
@@ -284,6 +289,22 @@ export default class RegisterScreen extends React.Component {
         </View>
         {password}
 
+        <Text>     Tipo de Conselheiro</Text>
+        <View
+          style={styles.InputDropdown}
+        >
+          <Picker
+            onValueChange={value => this.setState({
+              profile: { ...this.state.profile,
+                counselorType: value } })}
+            selectedValue={this.state.profile.counselorType}
+          >
+            <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
+            <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
+            <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
+          </Picker>
+        </View>
+
         <Text>     Segmento</Text>
         <View
           style={styles.InputDropdown}
@@ -294,8 +315,10 @@ export default class RegisterScreen extends React.Component {
             selectedValue={this.state.profile.segment}
           >
             <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
-            <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
-            <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
+            <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />
+            <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />
+            <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />
+            <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />
           </Picker>
         </View>
 

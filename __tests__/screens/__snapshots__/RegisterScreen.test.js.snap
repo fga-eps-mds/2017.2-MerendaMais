@@ -201,6 +201,45 @@ ShallowWrapper {
           disabled={false}
           ellipsizeMode="tail"
         >
+               Tipo de Conselheiro
+        </Text>,
+        <View
+          style={
+            Object {
+              "borderColor": "gray",
+              "borderRadius": 7,
+              "borderWidth": 1,
+              "marginBottom": 10,
+              "marginHorizontal": 15,
+            }
+          }
+        >
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha seu cargo"
+              value=""
+            />
+            <PickerItem
+              label="Titular"
+              value="Titular"
+            />
+            <PickerItem
+              label="Suplente"
+              value="Suplente"
+            />
+          </Picker>
+        </View>,
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
                Segmento
         </Text>,
         <View
@@ -225,12 +264,20 @@ ShallowWrapper {
               value=""
             />
             <PickerItem
-              label="Suplente"
-              value="Suplente"
+              label="Poder executivo"
+              value="Poder executivo"
             />
             <PickerItem
-              label="Titular"
-              value="Titular"
+              label="Trabalhadores da educação"
+              value="Trabalhadores da educação"
+            />
+            <PickerItem
+              label="Pais de alunos"
+              value="Pais de alunos"
+            />
+            <PickerItem
+              label="Entidades civis"
+              value="Entidades civis"
             />
           </Picker>
         </View>,
@@ -699,6 +746,122 @@ ShallowWrapper {
         "props": Object {
           "accessible": true,
           "allowFontScaling": true,
+          "children": "     Tipo de Conselheiro",
+          "disabled": false,
+          "ellipsizeMode": "tail",
+        },
+        "ref": null,
+        "rendered": "     Tipo de Conselheiro",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha seu cargo"
+              value=""
+            />
+            <PickerItem
+              label="Titular"
+              value="Titular"
+            />
+            <PickerItem
+              label="Suplente"
+              value="Suplente"
+            />
+          </Picker>,
+          "style": Object {
+            "borderColor": "gray",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "marginBottom": 10,
+            "marginHorizontal": 15,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />,
+              <PickerItem
+                label="Titular"
+                value="Titular"
+              />,
+              <PickerItem
+                label="Suplente"
+                value="Suplente"
+              />,
+            ],
+            "mode": "dialog",
+            "onValueChange": [Function],
+            "selectedValue": "",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#95a5a6",
+                "label": "Escolha seu cargo",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Titular",
+                "value": "Titular",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Suplente",
+                "value": "Suplente",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "     Segmento",
           "disabled": false,
           "ellipsizeMode": "tail",
@@ -723,12 +886,20 @@ ShallowWrapper {
               value=""
             />
             <PickerItem
-              label="Suplente"
-              value="Suplente"
+              label="Poder executivo"
+              value="Poder executivo"
             />
             <PickerItem
-              label="Titular"
-              value="Titular"
+              label="Trabalhadores da educação"
+              value="Trabalhadores da educação"
+            />
+            <PickerItem
+              label="Pais de alunos"
+              value="Pais de alunos"
+            />
+            <PickerItem
+              label="Entidades civis"
+              value="Entidades civis"
             />
           </Picker>,
           "style": Object {
@@ -752,12 +923,20 @@ ShallowWrapper {
                 value=""
               />,
               <PickerItem
-                label="Suplente"
-                value="Suplente"
+                label="Poder executivo"
+                value="Poder executivo"
               />,
               <PickerItem
-                label="Titular"
-                value="Titular"
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />,
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />,
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
               />,
             ],
             "mode": "dialog",
@@ -784,8 +963,8 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "label": "Suplente",
-                "value": "Suplente",
+                "label": "Poder executivo",
+                "value": "Poder executivo",
               },
               "ref": null,
               "rendered": null,
@@ -796,8 +975,32 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "label": "Titular",
-                "value": "Titular",
+                "label": "Trabalhadores da educação",
+                "value": "Trabalhadores da educação",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Pais de alunos",
+                "value": "Pais de alunos",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "label": "Entidades civis",
+                "value": "Entidades civis",
               },
               "ref": null,
               "rendered": null,
@@ -1336,6 +1539,45 @@ ShallowWrapper {
             disabled={false}
             ellipsizeMode="tail"
           >
+                 Tipo de Conselheiro
+          </Text>,
+          <View
+            style={
+              Object {
+                "borderColor": "gray",
+                "borderRadius": 7,
+                "borderWidth": 1,
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+              }
+            }
+          >
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />
+              <PickerItem
+                label="Titular"
+                value="Titular"
+              />
+              <PickerItem
+                label="Suplente"
+                value="Suplente"
+              />
+            </Picker>
+          </View>,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+          >
                  Segmento
           </Text>,
           <View
@@ -1360,12 +1602,20 @@ ShallowWrapper {
                 value=""
               />
               <PickerItem
-                label="Suplente"
-                value="Suplente"
+                label="Poder executivo"
+                value="Poder executivo"
               />
               <PickerItem
-                label="Titular"
-                value="Titular"
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
               />
             </Picker>
           </View>,
@@ -1834,6 +2084,122 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
+            "children": "     Tipo de Conselheiro",
+            "disabled": false,
+            "ellipsizeMode": "tail",
+          },
+          "ref": null,
+          "rendered": "     Tipo de Conselheiro",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />
+              <PickerItem
+                label="Titular"
+                value="Titular"
+              />
+              <PickerItem
+                label="Suplente"
+                value="Suplente"
+              />
+            </Picker>,
+            "style": Object {
+              "borderColor": "gray",
+              "borderRadius": 7,
+              "borderWidth": 1,
+              "marginBottom": 10,
+              "marginHorizontal": 15,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha seu cargo"
+                  value=""
+                />,
+                <PickerItem
+                  label="Titular"
+                  value="Titular"
+                />,
+                <PickerItem
+                  label="Suplente"
+                  value="Suplente"
+                />,
+              ],
+              "mode": "dialog",
+              "onValueChange": [Function],
+              "selectedValue": "",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#95a5a6",
+                  "label": "Escolha seu cargo",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Titular",
+                  "value": "Titular",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Suplente",
+                  "value": "Suplente",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "     Segmento",
             "disabled": false,
             "ellipsizeMode": "tail",
@@ -1858,12 +2224,20 @@ ShallowWrapper {
                 value=""
               />
               <PickerItem
-                label="Suplente"
-                value="Suplente"
+                label="Poder executivo"
+                value="Poder executivo"
               />
               <PickerItem
-                label="Titular"
-                value="Titular"
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
               />
             </Picker>,
             "style": Object {
@@ -1887,12 +2261,20 @@ ShallowWrapper {
                   value=""
                 />,
                 <PickerItem
-                  label="Suplente"
-                  value="Suplente"
+                  label="Poder executivo"
+                  value="Poder executivo"
                 />,
                 <PickerItem
-                  label="Titular"
-                  value="Titular"
+                  label="Trabalhadores da educação"
+                  value="Trabalhadores da educação"
+                />,
+                <PickerItem
+                  label="Pais de alunos"
+                  value="Pais de alunos"
+                />,
+                <PickerItem
+                  label="Entidades civis"
+                  value="Entidades civis"
                 />,
               ],
               "mode": "dialog",
@@ -1919,8 +2301,8 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "label": "Suplente",
-                  "value": "Suplente",
+                  "label": "Poder executivo",
+                  "value": "Poder executivo",
                 },
                 "ref": null,
                 "rendered": null,
@@ -1931,8 +2313,32 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "label": "Titular",
-                  "value": "Titular",
+                  "label": "Trabalhadores da educação",
+                  "value": "Trabalhadores da educação",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Pais de alunos",
+                  "value": "Pais de alunos",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Entidades civis",
+                  "value": "Entidades civis",
                 },
                 "ref": null,
                 "rendered": null,
