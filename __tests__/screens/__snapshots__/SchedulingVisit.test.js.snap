@@ -12,6 +12,11 @@ ShallowWrapper {
         "token": "tokenGenerico",
       }
     }
+    school={
+      Object {
+        "schoolSelected": false,
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -27,7 +32,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Header
-          backButton={null}
+          backButton={false}
           subTitle="VISITA"
           title="AGENDAR"
         />,
@@ -73,6 +78,7 @@ ShallowWrapper {
             </TouchableOpacity>
           </View>
         </View>,
+        false,
         <View
           style={
             Object {
@@ -290,7 +296,7 @@ ShallowWrapper {
         "key": null,
         "nodeType": "function",
         "props": Object {
-          "backButton": null,
+          "backButton": false,
           "subTitle": "VISITA",
           "title": "AGENDAR",
         },
@@ -438,6 +444,7 @@ ShallowWrapper {
         },
         "type": [Function],
       },
+      false,
       Object {
         "instance": null,
         "key": null,
@@ -987,7 +994,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Header
-            backButton={null}
+            backButton={false}
             subTitle="VISITA"
             title="AGENDAR"
           />,
@@ -1033,6 +1040,7 @@ ShallowWrapper {
               </TouchableOpacity>
             </View>
           </View>,
+          false,
           <View
             style={
               Object {
@@ -1250,7 +1258,7 @@ ShallowWrapper {
           "key": null,
           "nodeType": "function",
           "props": Object {
-            "backButton": null,
+            "backButton": false,
             "subTitle": "VISITA",
             "title": "AGENDAR",
           },
@@ -1398,6 +1406,7 @@ ShallowWrapper {
           },
           "type": [Function],
         },
+        false,
         Object {
           "instance": null,
           "key": null,

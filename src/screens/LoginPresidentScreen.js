@@ -103,7 +103,7 @@ export default class LoginPresidentScreen extends React.Component {
               onChangeText={email => this.setState({ email })}
               value={this.email}
               underlineColorAndroid="transparent"
-              placeholder="email"
+              placeholder="Email"
               keyboardType={'email-address'}
               onSubmitEditing={() => this.passwordInput.focus()}
             />

@@ -182,7 +182,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Header
-          backButton={null}
+          backButton={false}
           subTitle="Estoque de alimento"
           title="Relatório"
         />,
@@ -1504,7 +1504,7 @@ ShallowWrapper {
         "key": null,
         "nodeType": "function",
         "props": Object {
-          "backButton": null,
+          "backButton": false,
           "subTitle": "Estoque de alimento",
           "title": "Relatório",
         },
@@ -5740,7 +5740,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Header
-            backButton={null}
+            backButton={false}
             subTitle="Estoque de alimento"
             title="Relatório"
           />,
@@ -7062,7 +7062,7 @@ ShallowWrapper {
           "key": null,
           "nodeType": "function",
           "props": Object {
-            "backButton": null,
+            "backButton": false,
             "subTitle": "Estoque de alimento",
             "title": "Relatório",
           },

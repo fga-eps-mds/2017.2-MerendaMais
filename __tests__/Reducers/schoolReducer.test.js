@@ -39,7 +39,7 @@ describe('Testing schoolReducer', () => {
   it('Undefined action sended', () => {
     let school = initialState.school;
 
-    expect(school.schoolCode).toBe('');
+    expect(school.schoolCode).toBe(0);
     expect(school.schoolName).toBe('');
     expect(school.schoolPhone).toBe('');
     expect(school.schoolEmail).toBe('');

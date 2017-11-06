@@ -29,10 +29,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   bodyBox: {
     flex: 10,
     alignItems: 'center',
   },
+
   textLogo: {
     flex: 1,
     fontSize: 30,
@@ -40,6 +42,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+
   icon: {
     width: 30,
     height: 45,

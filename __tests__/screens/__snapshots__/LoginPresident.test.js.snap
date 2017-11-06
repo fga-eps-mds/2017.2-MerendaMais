@@ -23,7 +23,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Header
-          backButton={null}
+          backButton={false}
           subTitle=""
           title="Merenda +"
         />,
@@ -52,8 +52,11 @@ ShallowWrapper {
               }
             }
           >
-            <Image
-              source={1}
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="email"
+              size={32}
               style={
                 Object {
                   "height": 30,
@@ -66,7 +69,7 @@ ShallowWrapper {
               keyboardType="email-address"
               onChangeText={[Function]}
               onSubmitEditing={[Function]}
-              placeholder="email"
+              placeholder="Email"
               returnKeyType="next"
               style={undefined}
               underlineColorAndroid="transparent"
@@ -89,8 +92,11 @@ ShallowWrapper {
               }
             }
           >
-            <Image
-              source={1}
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="lock"
+              size={32}
               style={
                 Object {
                   "height": 30,
@@ -222,7 +228,7 @@ ShallowWrapper {
         "key": null,
         "nodeType": "function",
         "props": Object {
-          "backButton": null,
+          "backButton": false,
           "subTitle": "",
           "title": "Merenda +",
         },
@@ -251,8 +257,11 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="email"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -265,7 +274,7 @@ ShallowWrapper {
                 keyboardType="email-address"
                 onChangeText={[Function]}
                 onSubmitEditing={[Function]}
-                placeholder="email"
+                placeholder="Email"
                 returnKeyType="next"
                 style={undefined}
                 underlineColorAndroid="transparent"
@@ -288,8 +297,11 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="lock"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -386,8 +398,11 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <Image
-                  source={1}
+                <Icon
+                  allowFontScaling={false}
+                  color="black"
+                  name="email"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -400,7 +415,7 @@ ShallowWrapper {
                   keyboardType="email-address"
                   onChangeText={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="email"
+                  placeholder="Email"
                   returnKeyType="next"
                   style={undefined}
                   underlineColorAndroid="transparent"
@@ -427,7 +442,10 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "source": 1,
+                  "allowFontScaling": false,
+                  "color": "black",
+                  "name": "email",
+                  "size": 32,
                   "style": Object {
                     "height": 30,
                     "margin": 5,
@@ -446,7 +464,7 @@ ShallowWrapper {
                   "keyboardType": "email-address",
                   "onChangeText": [Function],
                   "onSubmitEditing": [Function],
-                  "placeholder": "email",
+                  "placeholder": "Email",
                   "returnKeyType": "next",
                   "style": undefined,
                   "underlineColorAndroid": "transparent",
@@ -466,8 +484,11 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <Image
-                  source={1}
+                <Icon
+                  allowFontScaling={false}
+                  color="black"
+                  name="lock"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -506,7 +527,10 @@ ShallowWrapper {
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
-                  "source": 1,
+                  "allowFontScaling": false,
+                  "color": "black",
+                  "name": "lock",
+                  "size": 32,
                   "style": Object {
                     "height": 30,
                     "margin": 5,
@@ -819,7 +843,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Header
-            backButton={null}
+            backButton={false}
             subTitle=""
             title="Merenda +"
           />,
@@ -848,8 +872,11 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="email"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -862,7 +889,7 @@ ShallowWrapper {
                 keyboardType="email-address"
                 onChangeText={[Function]}
                 onSubmitEditing={[Function]}
-                placeholder="email"
+                placeholder="Email"
                 returnKeyType="next"
                 style={undefined}
                 underlineColorAndroid="transparent"
@@ -885,8 +912,11 @@ ShallowWrapper {
                 }
               }
             >
-              <Image
-                source={1}
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="lock"
+                size={32}
                 style={
                   Object {
                     "height": 30,
@@ -1018,7 +1048,7 @@ ShallowWrapper {
           "key": null,
           "nodeType": "function",
           "props": Object {
-            "backButton": null,
+            "backButton": false,
             "subTitle": "",
             "title": "Merenda +",
           },
@@ -1047,8 +1077,11 @@ ShallowWrapper {
                   }
                 }
               >
-                <Image
-                  source={1}
+                <Icon
+                  allowFontScaling={false}
+                  color="black"
+                  name="email"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -1061,7 +1094,7 @@ ShallowWrapper {
                   keyboardType="email-address"
                   onChangeText={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="email"
+                  placeholder="Email"
                   returnKeyType="next"
                   style={undefined}
                   underlineColorAndroid="transparent"
@@ -1084,8 +1117,11 @@ ShallowWrapper {
                   }
                 }
               >
-                <Image
-                  source={1}
+                <Icon
+                  allowFontScaling={false}
+                  color="black"
+                  name="lock"
+                  size={32}
                   style={
                     Object {
                       "height": 30,
@@ -1182,8 +1218,11 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <Image
-                    source={1}
+                  <Icon
+                    allowFontScaling={false}
+                    color="black"
+                    name="email"
+                    size={32}
                     style={
                       Object {
                         "height": 30,
@@ -1196,7 +1235,7 @@ ShallowWrapper {
                     keyboardType="email-address"
                     onChangeText={[Function]}
                     onSubmitEditing={[Function]}
-                    placeholder="email"
+                    placeholder="Email"
                     returnKeyType="next"
                     style={undefined}
                     underlineColorAndroid="transparent"
@@ -1223,7 +1262,10 @@ ShallowWrapper {
                   "key": null,
                   "nodeType": "class",
                   "props": Object {
-                    "source": 1,
+                    "allowFontScaling": false,
+                    "color": "black",
+                    "name": "email",
+                    "size": 32,
                     "style": Object {
                       "height": 30,
                       "margin": 5,
@@ -1242,7 +1284,7 @@ ShallowWrapper {
                     "keyboardType": "email-address",
                     "onChangeText": [Function],
                     "onSubmitEditing": [Function],
-                    "placeholder": "email",
+                    "placeholder": "Email",
                     "returnKeyType": "next",
                     "style": undefined,
                     "underlineColorAndroid": "transparent",
@@ -1262,8 +1304,11 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <Image
-                    source={1}
+                  <Icon
+                    allowFontScaling={false}
+                    color="black"
+                    name="lock"
+                    size={32}
                     style={
                       Object {
                         "height": 30,
@@ -1302,7 +1347,10 @@ ShallowWrapper {
                   "key": null,
                   "nodeType": "class",
                   "props": Object {
-                    "source": 1,
+                    "allowFontScaling": false,
+                    "color": "black",
+                    "name": "lock",
+                    "size": 32,
                     "style": Object {
                       "height": 30,
                       "margin": 5,

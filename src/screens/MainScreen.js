@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 const styles = StyleSheet.create({
   headerBox: {
     flex: 1,
-    padding: 10,
+    padding: 20,
     backgroundColor: '#FF9500',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
@@ -14,11 +14,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   bodyBox: {
     flex: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   textLogo: {
     flex: 1,
     paddingLeft: 48,
@@ -27,6 +29,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+
   buttonInspect: {
     paddingHorizontal: 50,
     paddingVertical: 20,

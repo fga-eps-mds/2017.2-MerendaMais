@@ -71,7 +71,8 @@ ShallowWrapper {
               }
             }
           >
-            <UNDEFINED
+            <Icon
+              allowFontScaling={false}
               color="black"
               name="face"
               size={32}
@@ -111,7 +112,8 @@ ShallowWrapper {
               }
             }
           >
-            <UNDEFINED
+            <Icon
+              allowFontScaling={false}
               color="black"
               name="phone"
               size={32}
@@ -209,7 +211,8 @@ ShallowWrapper {
                 }
               }
             >
-              <UNDEFINED
+              <Icon
+                allowFontScaling={false}
                 color="black"
                 name="face"
                 size={32}
@@ -249,7 +252,8 @@ ShallowWrapper {
                 }
               }
             >
-              <UNDEFINED
+              <Icon
+                allowFontScaling={false}
                 color="black"
                 name="phone"
                 size={32}
@@ -287,7 +291,8 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <UNDEFINED
+                <Icon
+                  allowFontScaling={false}
                   color="black"
                   name="face"
                   size={32}
@@ -329,8 +334,9 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": null,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "allowFontScaling": false,
                   "color": "black",
                   "name": "face",
                   "size": 32,
@@ -342,7 +348,7 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": null,
-                "type": undefined,
+                "type": [Function],
               },
               Object {
                 "instance": null,
@@ -370,7 +376,8 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <UNDEFINED
+                <Icon
+                  allowFontScaling={false}
                   color="black"
                   name="phone"
                   size={32}
@@ -412,8 +419,9 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": null,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
+                  "allowFontScaling": false,
                   "color": "black",
                   "name": "phone",
                   "size": 32,
@@ -425,7 +433,7 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": null,
-                "type": undefined,
+                "type": [Function],
               },
               Object {
                 "instance": null,
@@ -547,7 +555,8 @@ ShallowWrapper {
                 }
               }
             >
-              <UNDEFINED
+              <Icon
+                allowFontScaling={false}
                 color="black"
                 name="face"
                 size={32}
@@ -587,7 +596,8 @@ ShallowWrapper {
                 }
               }
             >
-              <UNDEFINED
+              <Icon
+                allowFontScaling={false}
                 color="black"
                 name="phone"
                 size={32}
@@ -685,7 +695,8 @@ ShallowWrapper {
                   }
                 }
               >
-                <UNDEFINED
+                <Icon
+                  allowFontScaling={false}
                   color="black"
                   name="face"
                   size={32}
@@ -725,7 +736,8 @@ ShallowWrapper {
                   }
                 }
               >
-                <UNDEFINED
+                <Icon
+                  allowFontScaling={false}
                   color="black"
                   name="phone"
                   size={32}
@@ -763,7 +775,8 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <UNDEFINED
+                  <Icon
+                    allowFontScaling={false}
                     color="black"
                     name="face"
                     size={32}
@@ -805,8 +818,9 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": null,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
+                    "allowFontScaling": false,
                     "color": "black",
                     "name": "face",
                     "size": 32,
@@ -818,7 +832,7 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": undefined,
+                  "type": [Function],
                 },
                 Object {
                   "instance": null,
@@ -846,7 +860,8 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <UNDEFINED
+                  <Icon
+                    allowFontScaling={false}
                     color="black"
                     name="phone"
                     size={32}
@@ -888,8 +903,9 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": null,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
+                    "allowFontScaling": false,
                     "color": "black",
                     "name": "phone",
                     "size": 32,
@@ -901,7 +917,7 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": undefined,
+                  "type": [Function],
                 },
                 Object {
                   "instance": null,

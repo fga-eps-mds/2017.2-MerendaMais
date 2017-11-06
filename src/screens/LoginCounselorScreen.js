@@ -94,7 +94,7 @@ export default class LoginCounselorScreen extends React.Component {
               onChangeText={email => this.setState({ email })}
               keyboardType={'email-address'}
               underlineColorAndroid="transparent"
-              placeholder="email"
+              placeholder="Email"
             />
           </View>
 

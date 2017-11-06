@@ -23,7 +23,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Header
-          backButton={null}
+          backButton={false}
           subTitle=""
           title="Merenda +"
         />,
@@ -32,33 +32,51 @@ ShallowWrapper {
           allowFontScaling={true}
           disabled={false}
           ellipsizeMode="tail"
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
         >
                CPF
         </Text>,
-        <TextInput
-          keyboardType="numeric"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="Digite o seu CPF"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="face"
+            size={32}
+            style={
+              Object {
+                "marginRight": 10,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="numeric"
+            maxLength={11}
+            onChangeText={[Function]}
+            placeholder="Digite o seu CPF"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            underlineColorAndroid="transparent"
+            value=""
+            width={280}
+          />
+        </View>,
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -67,30 +85,43 @@ ShallowWrapper {
         >
                Nome
         </Text>,
-        <TextInput
-          keyboardType="default"
-          maxLength={60}
-          onChangeText={[Function]}
-          placeholder="Digite o seu nome completo"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="user-circle"
+            size={32}
+            style={
+              Object {
+                "marginRight": 10,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="default"
+            maxLength={60}
+            onChangeText={[Function]}
+            placeholder="Digite o seu nome completo"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            underlineColorAndroid="transparent"
+            value=""
+            width={280}
+          />
+        </View>,
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -99,30 +130,43 @@ ShallowWrapper {
         >
                Email
         </Text>,
-        <TextInput
-          keyboardType="email-address"
-          maxLength={50}
-          onChangeText={[Function]}
-          placeholder="Digite o seu email"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="email"
+            size={32}
+            style={
+              Object {
+                "marginRight": 10,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="email-address"
+            maxLength={50}
+            onChangeText={[Function]}
+            placeholder="Digite o seu email"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            underlineColorAndroid="transparent"
+            value=""
+            width={280}
+          />
+        </View>,
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -131,30 +175,43 @@ ShallowWrapper {
         >
                Telefone
         </Text>,
-        <TextInput
-          keyboardType="phone-pad"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="Digite o seu telefone"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="phone"
+            size={32}
+            style={
+              Object {
+                "marginRight": 10,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="phone-pad"
+            maxLength={11}
+            onChangeText={[Function]}
+            placeholder="Digite o seu telefone"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            underlineColorAndroid="transparent"
+            value=""
+            width={280}
+          />
+        </View>,
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -281,30 +338,43 @@ ShallowWrapper {
         >
                CAE
         </Text>,
-        <TextInput
-          keyboardType="default"
-          maxLength={40}
-          onChangeText={[Function]}
-          placeholder="Lista com o CAE do seu município/estado"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="location-city"
+            size={32}
+            style={
+              Object {
+                "marginRight": 10,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="default"
+            maxLength={40}
+            onChangeText={[Function]}
+            placeholder="Lista com o CAE do seu município/estado"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            underlineColorAndroid="transparent"
+            value=""
+            width={280}
+          />
+        </View>,
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={[Function]}
@@ -387,7 +457,7 @@ ShallowWrapper {
         "key": null,
         "nodeType": "function",
         "props": Object {
-          "backButton": null,
+          "backButton": false,
           "subTitle": "",
           "title": "Merenda +",
         },
@@ -405,6 +475,9 @@ ShallowWrapper {
           "children": "     CPF",
           "disabled": false,
           "ellipsizeMode": "tail",
+          "style": Object {
+            "marginTop": 10,
+          },
         },
         "ref": null,
         "rendered": "     CPF",
@@ -415,29 +488,80 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "keyboardType": "numeric",
-          "maxLength": 11,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu CPF",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": Array [
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="face"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />,
+            <TextInput
+              keyboardType="numeric"
+              maxLength={11}
+              onChangeText={[Function]}
+              placeholder="Digite o seu CPF"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />,
+          ],
           "style": Object {
-            "alignItems": "center",
             "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
             "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
-          "value": "",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "allowFontScaling": false,
+              "color": "black",
+              "name": "face",
+              "size": 32,
+              "style": Object {
+                "marginRight": 10,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "keyboardType": "numeric",
+              "maxLength": 11,
+              "onChangeText": [Function],
+              "placeholder": "Digite o seu CPF",
+              "placeholderTextColor": "#95a5a6",
+              "returnKeyLabel": "next",
+              "underlineColorAndroid": "transparent",
+              "value": "",
+              "width": 280,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       Object {
@@ -460,29 +584,80 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "keyboardType": "default",
-          "maxLength": 60,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu nome completo",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": Array [
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="user-circle"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />,
+            <TextInput
+              keyboardType="default"
+              maxLength={60}
+              onChangeText={[Function]}
+              placeholder="Digite o seu nome completo"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />,
+          ],
           "style": Object {
-            "alignItems": "center",
             "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
             "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
-          "value": "",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "allowFontScaling": false,
+              "color": "black",
+              "name": "user-circle",
+              "size": 32,
+              "style": Object {
+                "marginRight": 10,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "keyboardType": "default",
+              "maxLength": 60,
+              "onChangeText": [Function],
+              "placeholder": "Digite o seu nome completo",
+              "placeholderTextColor": "#95a5a6",
+              "returnKeyLabel": "next",
+              "underlineColorAndroid": "transparent",
+              "value": "",
+              "width": 280,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       Object {
@@ -505,29 +680,80 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "keyboardType": "email-address",
-          "maxLength": 50,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu email",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": Array [
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="email"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />,
+            <TextInput
+              keyboardType="email-address"
+              maxLength={50}
+              onChangeText={[Function]}
+              placeholder="Digite o seu email"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />,
+          ],
           "style": Object {
-            "alignItems": "center",
             "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
             "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
-          "value": "",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "allowFontScaling": false,
+              "color": "black",
+              "name": "email",
+              "size": 32,
+              "style": Object {
+                "marginRight": 10,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "keyboardType": "email-address",
+              "maxLength": 50,
+              "onChangeText": [Function],
+              "placeholder": "Digite o seu email",
+              "placeholderTextColor": "#95a5a6",
+              "returnKeyLabel": "next",
+              "underlineColorAndroid": "transparent",
+              "value": "",
+              "width": 280,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       Object {
@@ -550,29 +776,80 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "keyboardType": "phone-pad",
-          "maxLength": 11,
-          "onChangeText": [Function],
-          "placeholder": "Digite o seu telefone",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": Array [
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="phone"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />,
+            <TextInput
+              keyboardType="phone-pad"
+              maxLength={11}
+              onChangeText={[Function]}
+              placeholder="Digite o seu telefone"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />,
+          ],
           "style": Object {
-            "alignItems": "center",
             "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
             "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
-          "value": "",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "allowFontScaling": false,
+              "color": "black",
+              "name": "phone",
+              "size": 32,
+              "style": Object {
+                "marginRight": 10,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "keyboardType": "phone-pad",
+              "maxLength": 11,
+              "onChangeText": [Function],
+              "placeholder": "Digite o seu telefone",
+              "placeholderTextColor": "#95a5a6",
+              "returnKeyLabel": "next",
+              "underlineColorAndroid": "transparent",
+              "value": "",
+              "width": 280,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       Object {
@@ -944,29 +1221,80 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "keyboardType": "default",
-          "maxLength": 40,
-          "onChangeText": [Function],
-          "placeholder": "Lista com o CAE do seu município/estado",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": Array [
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="location-city"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />,
+            <TextInput
+              keyboardType="default"
+              maxLength={40}
+              onChangeText={[Function]}
+              placeholder="Lista com o CAE do seu município/estado"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />,
+          ],
           "style": Object {
-            "alignItems": "center",
             "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
             "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
             "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
-          "value": "",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "allowFontScaling": false,
+              "color": "black",
+              "name": "location-city",
+              "size": 32,
+              "style": Object {
+                "marginRight": 10,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "keyboardType": "default",
+              "maxLength": 40,
+              "onChangeText": [Function],
+              "placeholder": "Lista com o CAE do seu município/estado",
+              "placeholderTextColor": "#95a5a6",
+              "returnKeyLabel": "next",
+              "underlineColorAndroid": "transparent",
+              "value": "",
+              "width": 280,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       Object {
@@ -1158,7 +1486,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Header
-            backButton={null}
+            backButton={false}
             subTitle=""
             title="Merenda +"
           />,
@@ -1167,33 +1495,51 @@ ShallowWrapper {
             allowFontScaling={true}
             disabled={false}
             ellipsizeMode="tail"
+            style={
+              Object {
+                "marginTop": 10,
+              }
+            }
           >
                  CPF
           </Text>,
-          <TextInput
-            keyboardType="numeric"
-            maxLength={11}
-            onChangeText={[Function]}
-            placeholder="Digite o seu CPF"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
                 "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
                 "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
+          >
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="face"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <TextInput
+              keyboardType="numeric"
+              maxLength={11}
+              onChangeText={[Function]}
+              placeholder="Digite o seu CPF"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />
+          </View>,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1202,30 +1548,43 @@ ShallowWrapper {
           >
                  Nome
           </Text>,
-          <TextInput
-            keyboardType="default"
-            maxLength={60}
-            onChangeText={[Function]}
-            placeholder="Digite o seu nome completo"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
                 "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
                 "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
+          >
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="user-circle"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <TextInput
+              keyboardType="default"
+              maxLength={60}
+              onChangeText={[Function]}
+              placeholder="Digite o seu nome completo"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />
+          </View>,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1234,30 +1593,43 @@ ShallowWrapper {
           >
                  Email
           </Text>,
-          <TextInput
-            keyboardType="email-address"
-            maxLength={50}
-            onChangeText={[Function]}
-            placeholder="Digite o seu email"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
                 "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
                 "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
+          >
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="email"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <TextInput
+              keyboardType="email-address"
+              maxLength={50}
+              onChangeText={[Function]}
+              placeholder="Digite o seu email"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />
+          </View>,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1266,30 +1638,43 @@ ShallowWrapper {
           >
                  Telefone
           </Text>,
-          <TextInput
-            keyboardType="phone-pad"
-            maxLength={11}
-            onChangeText={[Function]}
-            placeholder="Digite o seu telefone"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
                 "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
                 "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
+          >
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="phone"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <TextInput
+              keyboardType="phone-pad"
+              maxLength={11}
+              onChangeText={[Function]}
+              placeholder="Digite o seu telefone"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />
+          </View>,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1416,30 +1801,43 @@ ShallowWrapper {
           >
                  CAE
           </Text>,
-          <TextInput
-            keyboardType="default"
-            maxLength={40}
-            onChangeText={[Function]}
-            placeholder="Lista com o CAE do seu município/estado"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
                 "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
                 "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
+          >
+            <Icon
+              allowFontScaling={false}
+              color="black"
+              name="location-city"
+              size={32}
+              style={
+                Object {
+                  "marginRight": 10,
+                }
+              }
+            />
+            <TextInput
+              keyboardType="default"
+              maxLength={40}
+              onChangeText={[Function]}
+              placeholder="Lista com o CAE do seu município/estado"
+              placeholderTextColor="#95a5a6"
+              returnKeyLabel="next"
+              underlineColorAndroid="transparent"
+              value=""
+              width={280}
+            />
+          </View>,
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={[Function]}
@@ -1522,7 +1920,7 @@ ShallowWrapper {
           "key": null,
           "nodeType": "function",
           "props": Object {
-            "backButton": null,
+            "backButton": false,
             "subTitle": "",
             "title": "Merenda +",
           },
@@ -1540,6 +1938,9 @@ ShallowWrapper {
             "children": "     CPF",
             "disabled": false,
             "ellipsizeMode": "tail",
+            "style": Object {
+              "marginTop": 10,
+            },
           },
           "ref": null,
           "rendered": "     CPF",
@@ -1550,29 +1951,80 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "keyboardType": "numeric",
-            "maxLength": 11,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu CPF",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": Array [
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="face"
+                size={32}
+                style={
+                  Object {
+                    "marginRight": 10,
+                  }
+                }
+              />,
+              <TextInput
+                keyboardType="numeric"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu CPF"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                underlineColorAndroid="transparent"
+                value=""
+                width={280}
+              />,
+            ],
             "style": Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
-            "value": "",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "allowFontScaling": false,
+                "color": "black",
+                "name": "face",
+                "size": 32,
+                "style": Object {
+                  "marginRight": 10,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "keyboardType": "numeric",
+                "maxLength": 11,
+                "onChangeText": [Function],
+                "placeholder": "Digite o seu CPF",
+                "placeholderTextColor": "#95a5a6",
+                "returnKeyLabel": "next",
+                "underlineColorAndroid": "transparent",
+                "value": "",
+                "width": 280,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {
@@ -1595,29 +2047,80 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "keyboardType": "default",
-            "maxLength": 60,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu nome completo",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": Array [
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="user-circle"
+                size={32}
+                style={
+                  Object {
+                    "marginRight": 10,
+                  }
+                }
+              />,
+              <TextInput
+                keyboardType="default"
+                maxLength={60}
+                onChangeText={[Function]}
+                placeholder="Digite o seu nome completo"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                underlineColorAndroid="transparent"
+                value=""
+                width={280}
+              />,
+            ],
             "style": Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
-            "value": "",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "allowFontScaling": false,
+                "color": "black",
+                "name": "user-circle",
+                "size": 32,
+                "style": Object {
+                  "marginRight": 10,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "keyboardType": "default",
+                "maxLength": 60,
+                "onChangeText": [Function],
+                "placeholder": "Digite o seu nome completo",
+                "placeholderTextColor": "#95a5a6",
+                "returnKeyLabel": "next",
+                "underlineColorAndroid": "transparent",
+                "value": "",
+                "width": 280,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {
@@ -1640,29 +2143,80 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "keyboardType": "email-address",
-            "maxLength": 50,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu email",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": Array [
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="email"
+                size={32}
+                style={
+                  Object {
+                    "marginRight": 10,
+                  }
+                }
+              />,
+              <TextInput
+                keyboardType="email-address"
+                maxLength={50}
+                onChangeText={[Function]}
+                placeholder="Digite o seu email"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                underlineColorAndroid="transparent"
+                value=""
+                width={280}
+              />,
+            ],
             "style": Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
-            "value": "",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "allowFontScaling": false,
+                "color": "black",
+                "name": "email",
+                "size": 32,
+                "style": Object {
+                  "marginRight": 10,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "keyboardType": "email-address",
+                "maxLength": 50,
+                "onChangeText": [Function],
+                "placeholder": "Digite o seu email",
+                "placeholderTextColor": "#95a5a6",
+                "returnKeyLabel": "next",
+                "underlineColorAndroid": "transparent",
+                "value": "",
+                "width": 280,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {
@@ -1685,29 +2239,80 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "keyboardType": "phone-pad",
-            "maxLength": 11,
-            "onChangeText": [Function],
-            "placeholder": "Digite o seu telefone",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": Array [
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="phone"
+                size={32}
+                style={
+                  Object {
+                    "marginRight": 10,
+                  }
+                }
+              />,
+              <TextInput
+                keyboardType="phone-pad"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu telefone"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                underlineColorAndroid="transparent"
+                value=""
+                width={280}
+              />,
+            ],
             "style": Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
-            "value": "",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "allowFontScaling": false,
+                "color": "black",
+                "name": "phone",
+                "size": 32,
+                "style": Object {
+                  "marginRight": 10,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "keyboardType": "phone-pad",
+                "maxLength": 11,
+                "onChangeText": [Function],
+                "placeholder": "Digite o seu telefone",
+                "placeholderTextColor": "#95a5a6",
+                "returnKeyLabel": "next",
+                "underlineColorAndroid": "transparent",
+                "value": "",
+                "width": 280,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {
@@ -2079,29 +2684,80 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "keyboardType": "default",
-            "maxLength": 40,
-            "onChangeText": [Function],
-            "placeholder": "Lista com o CAE do seu município/estado",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": Array [
+              <Icon
+                allowFontScaling={false}
+                color="black"
+                name="location-city"
+                size={32}
+                style={
+                  Object {
+                    "marginRight": 10,
+                  }
+                }
+              />,
+              <TextInput
+                keyboardType="default"
+                maxLength={40}
+                onChangeText={[Function]}
+                placeholder="Lista com o CAE do seu município/estado"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                underlineColorAndroid="transparent"
+                value=""
+                width={280}
+              />,
+            ],
             "style": Object {
-              "alignItems": "center",
               "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
               "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
-            "value": "",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "allowFontScaling": false,
+                "color": "black",
+                "name": "location-city",
+                "size": 32,
+                "style": Object {
+                  "marginRight": 10,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "keyboardType": "default",
+                "maxLength": 40,
+                "onChangeText": [Function],
+                "placeholder": "Lista com o CAE do seu município/estado",
+                "placeholderTextColor": "#95a5a6",
+                "returnKeyLabel": "next",
+                "underlineColorAndroid": "transparent",
+                "value": "",
+                "width": 280,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {
