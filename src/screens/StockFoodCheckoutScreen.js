@@ -86,8 +86,14 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <CheckBox
           containerStyle={styles.checkbox}
           label=" "
-          disabled={this.props.report.markedNo ? 'disabled' : false}
-          onChange={() => this.props.setStockFoodReportPositive(item.key)}
+          checked={item.markedYes}
+          disable={this.props.report.markedNo ? 'disable' : false}
+          onChange={() => {
+            if (!item.markedNo) {
+              this.props.setStockFoodReportPositive(item.key);
+            }
+            return (null);
+          }}
         />
       </View>
     );
@@ -99,8 +105,14 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <CheckBox
           containerStyle={styles.checkbox}
           label=" "
-          checked={this.props.report.markedYes ? 'checked' : true}
-          onChange={() => this.props.setStockFoodReportNegative(item.key)}
+          checked={item.markedNo}
+          disable={this.props.report.markedYes ? 'disable' : false}
+          onChange={() => {
+            if (!item.markedYes) {
+              this.props.setStockFoodReportNegative(item.key);
+            }
+            return (null);
+          }}
         />
       </View>
     );
