@@ -25,25 +25,25 @@ const styles = {
 
   principal: {
     flex: 1,
-  },
-
-  scroll: {
-    flex: 1,
-    paddingTop: 5,
     backgroundColor: 'white',
   },
 
+  content: {
+    flex: 6,
+    marginTop: 8,
+  },
+
   footer: {
-    flex: 0.7,
+    flex: 0.5,
     borderTopColor: '#a9a9a9',
     borderTopWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
   },
 
   InputStyle: {
     padding: 10,
+    marginTop: 1,
     backgroundColor: '#FAFAFA',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -51,31 +51,29 @@ const styles = {
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 7,
-    marginHorizontal: 15,
     marginBottom: 10,
   },
 
   InputDropdown: {
+    marginTop: 1,
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 7,
-    marginHorizontal: 15,
     marginBottom: 10,
   },
 
   buttonContainer: {
-    paddingVertical: 10,
+    paddingVertical: 14,
+    marginVertical: 20,
+    borderRadius: 8,
     borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 15,
-    marginTop: 20,
-    marginBottom: 20,
+    alignItems: 'center',
     backgroundColor: '#FF9500',
   },
 
   buttonText: {
-    textAlign: 'center',
-    color: '#FFF',
+    color: 'white',
+    fontSize: 18,
   },
 
 };
@@ -196,161 +194,157 @@ export default class RegisterScreen extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
-
-    const password = this.state.profile.isPresident === true ? (
-      <View key="passwordPresident">
-        <Text style={styles.container}>     Senha</Text>
-        <TextInput
-          placeholder="Digite sua senha"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          keyboardType={'default'}
-          onChangeText={text => this.setState({ password: text })}
-          secureTextEntry
-        />
-      </View>
-    ) : null;
 
     return (
       <View style={styles.principal}>
         <Header />
-        <ScrollView>
-          <View style={styles.scroll}>
+        <View style={styles.content}>
+          <ScrollView>
+            <View style={{ paddingHorizontal: 15 }}>
 
-            <Text>     CPF</Text>
-            <TextInput
-              placeholder="Digite o seu CPF"
-              placeholderTextColor="#95a5a6"
-              style={styles.InputStyle}
-              underlineColorAndroid="transparent"
-              returnKeyLabel={'next'}
-              maxLength={11}
-              keyboardType={'numeric'}
-              onChangeText={text => this.validateCpf(text)}
-              value={this.state.profile.cpf}
-            />
+              <Text>CPF</Text>
+              <TextInput
+                placeholder="Digite o seu CPF"
+                placeholderTextColor="#95a5a6"
+                style={styles.InputStyle}
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
+                maxLength={11}
+                keyboardType={'numeric'}
+                onChangeText={text => this.validateCpf(text)}
+                value={this.state.profile.cpf}
+              />
 
-            <Text>     Nome</Text>
-            <TextInput
-              placeholder="Digite o seu nome completo"
-              placeholderTextColor="#95a5a6"
-              style={styles.InputStyle}
-              underlineColorAndroid="transparent"
-              returnKeyLabel={'next'}
-              maxLength={60}
-              keyboardType={'default'}
-              onChangeText={text => this.validateName(text)}
-              value={this.state.name}
-            />
+              <Text>Nome</Text>
+              <TextInput
+                placeholder="Digite o seu nome completo"
+                placeholderTextColor="#95a5a6"
+                style={styles.InputStyle}
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
+                maxLength={60}
+                keyboardType={'default'}
+                onChangeText={text => this.validateName(text)}
+                value={this.state.name}
+              />
 
-            <Text>     Email</Text>
-            <TextInput
-              placeholder="Digite o seu email"
-              placeholderTextColor="#95a5a6"
-              style={styles.InputStyle}
-              underlineColorAndroid="transparent"
-              returnKeyLabel={'next'}
-              maxLength={50}
-              keyboardType={'email-address'}
-              onChangeText={text => this.setState({ email: text })}
-              value={this.state.email}
-            />
+              <Text>Email</Text>
+              <TextInput
+                placeholder="Digite o seu email"
+                placeholderTextColor="#95a5a6"
+                style={styles.InputStyle}
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
+                maxLength={50}
+                keyboardType={'email-address'}
+                onChangeText={text => this.setState({ email: text })}
+                value={this.state.email}
+              />
 
-            <Text>     Telefone</Text>
-            <TextInput
-              placeholder="Digite o seu telefone"
-              placeholderTextColor="#95a5a6"
-              style={styles.InputStyle}
-              underlineColorAndroid="transparent"
-              returnKeyLabel={'next'}
-              maxLength={11}
-              keyboardType={'phone-pad'}
-              onChangeText={text => this.validatePhone(text)}
-              value={this.state.profile.phone}
-            />
+              <Text>Senha</Text>
+              <TextInput
+                placeholder="Digite sua senha"
+                placeholderTextColor="#95a5a6"
+                style={styles.InputStyle}
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
+                keyboardType={'default'}
+                onChangeText={text => this.setState({ password: text })}
+                secureTextEntry
+              />
 
-            <Text>     Cargo</Text>
-            <View
-              style={styles.InputDropdown}
-            >
-              <Picker
-                onValueChange={value => this.setState({
-                  profile: { ...this.state.profile,
-                    isPresident: value },
-                  password: COUNSELOR_DEFAULT_PASSWORD })}
-                selectedValue={this.state.profile.isPresident}
+              <Text>Telefone</Text>
+              <TextInput
+                placeholder="Digite o seu telefone"
+                placeholderTextColor="#95a5a6"
+                style={styles.InputStyle}
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
+                maxLength={11}
+                keyboardType={'phone-pad'}
+                onChangeText={text => this.validatePhone(text)}
+                value={this.state.profile.phone}
+              />
+
+              <Text>Cargo</Text>
+              <View
+                style={styles.InputDropdown}
               >
-                <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
-                <Picker.Item value label={PRESIDENT_COUNSELOR} />
-                <Picker.Item value={false} label={COMMON_COUNSELOR} />
-              </Picker>
-            </View>
-            {password}
+                <Picker
+                  onValueChange={value => this.setState({
+                    profile: { ...this.state.profile,
+                      isPresident: value },
+                    password: COUNSELOR_DEFAULT_PASSWORD })}
+                  selectedValue={this.state.profile.isPresident}
+                >
+                  <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
+                  <Picker.Item value label={PRESIDENT_COUNSELOR} />
+                  <Picker.Item value={false} label={COMMON_COUNSELOR} />
+                </Picker>
+              </View>
 
-            <Text>     Segmento</Text>
-            <View
-              style={styles.InputDropdown}
-            >
-              <Picker
-                onValueChange={value => this.setState({ profile: { ...this.state.profile,
-                  segment: value } })}
-                selectedValue={this.state.profile.segment}
+              <Text>Segmento</Text>
+              <View
+                style={styles.InputDropdown}
               >
-                <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
-                <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
-                <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
-              </Picker>
-            </View>
+                <Picker
+                  onValueChange={value => this.setState({ profile: { ...this.state.profile,
+                    segment: value } })}
+                  selectedValue={this.state.profile.segment}
+                >
+                  <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
+                  <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
+                  <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
+                </Picker>
+              </View>
 
-            <Text>     Tipo do CAE</Text>
-            <View
-              style={styles.InputDropdown}
-            >
-              <Picker
-                onValueChange={value => this.setState({ profile: { ...this.state.profile,
-                  CAE_Type: value } })}
-                selectedValue={this.state.profile.CAE_Type}
+              <Text>Tipo do CAE</Text>
+              <View
+                style={styles.InputDropdown}
               >
-                <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />
-                <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />
-                <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />
-              </Picker>
+                <Picker
+                  onValueChange={value => this.setState({ profile: { ...this.state.profile,
+                    CAE_Type: value } })}
+                  selectedValue={this.state.profile.CAE_Type}
+                >
+                  <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />
+                  <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />
+                  <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />
+                </Picker>
+              </View>
+
+              <Text>CAE</Text>
+              <TextInput
+                placeholder="Lista com o CAE do seu município/estado"
+                placeholderTextColor="#95a5a6"
+                style={styles.InputStyle}
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
+                maxLength={40}
+                keyboardType={'default'}
+                onChangeText={text => this.validateCae(text)}
+                value={this.state.profile.CAE}
+              />
+
+              {this.renderBtnLogin()}
+
             </View>
+          </ScrollView>
+        </View>
 
-            <Text>     CAE</Text>
-            <TextInput
-              placeholder="Lista com o CAE do seu município/estado"
-              placeholderTextColor="#95a5a6"
-              style={styles.InputStyle}
-              underlineColorAndroid="transparent"
-              returnKeyLabel={'next'}
-              maxLength={40}
-              keyboardType={'default'}
-              onChangeText={text => this.validateCae(text)}
-              value={this.state.profile.CAE}
-            />
+        <View style={styles.footer}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => Actions.loginScreen()}
+          >
+            <Text>Já tem um cadastro?
+              <Text style={{ color: 'blue' }}> Entrar</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
 
-            {this.renderBtnLogin()}
-
-          </View>
-
-          <View style={styles.footer}>
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={() => Actions.loginScreen()}
-            >
-              <Text>Já tem um cadastro?
-                <Text style={{ color: 'blue' }}> Entrar</Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-        </ScrollView>
       </View>
     );
   }
