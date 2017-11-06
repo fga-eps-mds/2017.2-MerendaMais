@@ -21,7 +21,7 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         foodStock: state.foodStock.map((item) => {
           if (item.key === action.payload.key) {
-            return { ...item, status: 'sim' };
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
           console.log(item);
           return item;
@@ -32,7 +32,7 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         foodStock: state.foodStock.map((item) => {
           if (item.key === action.payload.key) {
-            return { ...item, status: 'nao' };
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
           console.log(item);
           return item;

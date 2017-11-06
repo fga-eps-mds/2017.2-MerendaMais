@@ -8,7 +8,6 @@ import { StyleSheet,
   ScrollView,
   TextInput,
   Dimensions,
-  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../components/Header';
 
@@ -81,35 +80,30 @@ export default class StockFoodCheckoutScreen extends React.Component {
       observation: '',
     };
   }
-
   showPositiveCheckBox(item) {
-    if (this.props.report.status !== 'nao') {
-      return (
-        <View>
-          <CheckBox
-            containerStyle={styles.checkbox}
-            label="Sim"
-            onChange={() => this.props.setStockFoodReportPositive(item.key)}
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <CheckBox
+          containerStyle={styles.checkbox}
+          label=" "
+          disabled={this.props.report.markedNo ? 'disabled' : false}
+          onChange={() => this.props.setStockFoodReportPositive(item.key)}
+        />
+      </View>
+    );
   }
 
   showNegativeCheckBox(item) {
-    if (this.props.report.status !== 'sim') {
-      return (
-        <View>
-          <CheckBox
-            containerStyle={styles.checkbox}
-            label="Não"
-            onChange={() => this.props.setStockFoodReportNegative(item.key)}
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <CheckBox
+          containerStyle={styles.checkbox}
+          label=" "
+          checked={this.props.report.markedYes ? 'checked' : true}
+          onChange={() => this.props.setStockFoodReportNegative(item.key)}
+        />
+      </View>
+    );
   }
 
   render() {
@@ -133,7 +127,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
           }
         </View>
 
-        <KeyboardAvoidingView behavior="padding">
+        <View behavior="padding">
           <View style={styles.textBox}>
             <TextInput
               onChangeText={text => this.setState({ observation: text })}
@@ -143,7 +137,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
               placeholder="Observações (opcional)"
             />
           </View>
-        </KeyboardAvoidingView>
+        </View>
 
         <TouchableOpacity
           style={styles.buttonContainer}
