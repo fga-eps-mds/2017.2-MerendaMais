@@ -54,6 +54,31 @@ const styles = {
     marginBottom: 10,
   },
 
+  InputStyleCorrect: {
+    padding: 10,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#80FF80',
+    borderWidth: 3,
+    borderRadius: 7,
+    marginBottom: 10,
+  },
+
+  InputStyleWrong: {
+    padding: 10,
+    marginTop: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 3,
+    borderRadius: 7,
+    borderColor: '#FF9999',
+    marginBottom: 10,
+  },
+
   InputDropdown: {
     marginTop: 1,
     borderColor: 'gray',
@@ -85,7 +110,8 @@ export default class RegisterScreen extends React.Component {
     this.state = {
       email: '',
       name: '',
-      password: COUNSELOR_DEFAULT_PASSWORD,
+      password: '',
+      passwordCompared: '',
       profile: {
         cpf: '',
         phone: '',
@@ -139,6 +165,10 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Nome inválido\n';
     }
+    if (this.state.password.length <= 6) {
+      error = true;
+      errorMessage += 'Senha deve possuir no mínimo seis caracteres\n';
+    }
     if (!emailRegex.test(this.state.email)) {
       error = true;
       errorMessage += 'Email inválido\n';
@@ -169,6 +199,24 @@ export default class RegisterScreen extends React.Component {
     } else {
       Alert.alert('FALHA NO CADASTRO', errorMessage);
     }
+  }
+
+  validatePassword() {
+    if (this.state.password.length === 0) {
+      return styles.InputStyle;
+    } else if (this.state.password.length >= 6) {
+      return styles.InputStyleCorrect;
+    }
+    return styles.InputStyleWrong;
+  }
+
+  comparePassword(passwordCompared) {
+    if (passwordCompared === '') {
+      return styles.InputStyle;
+    } else if (this.state.password === passwordCompared && passwordCompared.length >= 6) {
+      return styles.InputStyleCorrect;
+    }
+    return styles.InputStyleWrong;
   }
 
   renderBtnLogin() {
@@ -247,11 +295,23 @@ export default class RegisterScreen extends React.Component {
               <TextInput
                 placeholder="Digite sua senha"
                 placeholderTextColor="#95a5a6"
-                style={styles.InputStyle}
+                style={this.validatePassword()}
                 underlineColorAndroid="transparent"
                 returnKeyLabel={'next'}
                 keyboardType={'default'}
                 onChangeText={text => this.setState({ password: text })}
+                secureTextEntry
+              />
+
+              <Text>Confirmar Senha</Text>
+              <TextInput
+                placeholder="Digite sua senha novamente"
+                placeholderTextColor="#95a5a6"
+                style={this.comparePassword(this.state.passwordCompared)}
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
+                keyboardType={'default'}
+                onChangeText={text => this.setState({ passwordCompared: text })}
                 secureTextEntry
               />
 
