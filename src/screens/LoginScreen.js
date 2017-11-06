@@ -13,15 +13,15 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 6,
+    paddingHorizontal: 18,
     backgroundColor: 'white',
     justifyContent: 'center',
-    alignItems: 'center',
-
   },
   footer: {
-    flex: 0.7,
+    flex: 0.5,
     borderTopColor: '#a9a9a9',
     borderTopWidth: 1,
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -31,10 +31,8 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   Inputemail: {
-    paddingLeft: 2,
-    paddingRight: 4,
+    paddingHorizontal: 2,
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
     borderColor: 'gray',
     backgroundColor: '#FAFAFA',
@@ -42,24 +40,32 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   InputPassword: {
-    paddingLeft: 2,
-    paddingRight: 4,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    paddingHorizontal: 2,
     marginTop: 30,
+    flexDirection: 'row',
+    justifyContent: 'center',
     borderColor: 'gray',
     backgroundColor: '#FAFAFA',
     borderWidth: 1,
     borderRadius: 7,
   },
   buttonLogin: {
-    paddingHorizontal: 133,
     paddingVertical: 18,
     marginTop: 50,
-    marginBottom: 0,
-    backgroundColor: '#FF9500',
     borderRadius: 8,
     borderWidth: 1,
+    alignItems: 'center',
+    backgroundColor: '#FF9500',
+  },
+
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+  },
+
+  loading: {
+    marginTop: 50,
+    paddingVertical: 13,
   },
 
 });
@@ -77,7 +83,7 @@ export default class LoginScreen extends React.Component {
   renderBtnLogin() {
     if (this.props.isLoading) {
       return (
-        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
+        <ActivityIndicator style={styles.loading} size="large" color="#FF9500" />
       );
     }
     return (
@@ -87,7 +93,7 @@ export default class LoginScreen extends React.Component {
         key="LoginCounselor"
         onPress={() => this.props.asyncLoginCounselor(this.state)}
       >
-        <Text style={{ color: 'white', fontSize: 20 }}>Entrar</Text>
+        <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
     );
   }
@@ -100,13 +106,12 @@ export default class LoginScreen extends React.Component {
           <View style={styles.Inputemail}>
             <Image source={iconAccount} style={styles.icon} />
             <TextInput
-              style={styles.styleInput}
               width={280}
               returnKeyType="next"
               onChangeText={email => this.setState({ email })}
               value={this.email}
               underlineColorAndroid="transparent"
-              placeholder="email"
+              placeholder="Email"
               keyboardType={'email-address'}
               onSubmitEditing={() => this.passwordInput.focus()}
             />
@@ -115,7 +120,6 @@ export default class LoginScreen extends React.Component {
           <View style={styles.InputPassword}>
             <Image source={iconLock} style={styles.icon} />
             <TextInput
-              style={styles.styleInput}
               width={280}
               underlineColorAndroid="transparent"
               returnKeyType="go"
