@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text,
+import {
+  Text,
   ScrollView,
   View,
   TextInput,
@@ -10,13 +11,14 @@ import { Text,
   ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
-import { TITULAR_COUNSELOR,
+import {
+  REGISTER_FAIL_TITLE,
+  TITULAR_COUNSELOR,
   SURROGATE_COUNSELOR,
   MUNICIPAL_COUNSELOR_CAE,
   STATE_COUNSELOR_CAE,
   PRESIDENT_COUNSELOR,
-  COMMON_COUNSELOR,
-  COUNSELOR_DEFAULT_PASSWORD } from '../constants';
+  COMMON_COUNSELOR } from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'RegisterScreen.js';
@@ -139,7 +141,7 @@ export default class RegisterScreen extends React.Component {
 
   validateName(name) {
     const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ name: validName.trim() });
+    this.setState({ name: validName });
   }
 
   validatePhone(phone) {
@@ -230,7 +232,7 @@ export default class RegisterScreen extends React.Component {
     if (error === false) {
       this.props.asyncRegisterCounselor(this.state);
     } else {
-      Alert.alert('FALHA NO CADASTRO', errorMessage);
+      Alert.alert(REGISTER_FAIL_TITLE, errorMessage);
     }
   }
 
@@ -369,10 +371,9 @@ export default class RegisterScreen extends React.Component {
                 style={styles.InputDropdown}
               >
                 <Picker
-                  onValueChange={value => this.setState({
-                    profile: { ...this.state.profile,
-                      isPresident: value },
-                    password: COUNSELOR_DEFAULT_PASSWORD })}
+                  onValueChange={value => this.setState(
+                    { profile: { ...this.state.profile, isPresident: value } },
+                  )}
                   selectedValue={this.state.profile.isPresident}
                 >
                   <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />

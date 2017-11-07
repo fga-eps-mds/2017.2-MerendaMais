@@ -1,11 +1,16 @@
 import axios from 'axios';
+import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { SET_COUNSELOR,
   SET_TOKEN,
   SET_COUNSELOR_EDITED } from './types';
 import { isLoading, isNotLoading } from './applicationActions';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { APP_IDENTIFIER,
+import {
+  USER_JUST_ALREADY_REGISTER_IN_NUVEM,
+  USER_ALREADY_REGISTER_IN_APPLICATION,
+  REGISTER_FAIL_TITLE,
+  APP_IDENTIFIER,
   AUTHENTICATE_LINK_NUVEM_CIVICA,
   DEFAULT_USER_LINK_NUVEM_CIVICA,
   PROFILE_TYPE_CODE,
@@ -56,6 +61,8 @@ const treatingAuthenticatingCounselorInRegisterError = (error) => {
   if (error.response.status === 401) {
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
       `User isn't register in application or Password didn't match - Error code received in request - ${error.response.status}`);
+
+    Alert.alert(REGISTER_FAIL_TITLE, USER_JUST_ALREADY_REGISTER_IN_NUVEM);
   } else if (error.response.status === 500) {
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
       `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
@@ -354,6 +361,8 @@ const verifyUserInApplication = (userData, dispatch) => {
       if (response.status === 200) {
         logInfo(FILE_NAME, 'verifyUserInApplication',
           `User already register in application - Response status code: ${response.status}`);
+
+        Alert.alert(REGISTER_FAIL_TITLE, USER_ALREADY_REGISTER_IN_APPLICATION);
 
         // Setting state loading false, to deactivate the loading spin.
         dispatch(isNotLoading());

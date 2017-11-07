@@ -34,5 +34,7 @@ export const STATE_COUNSELOR_CAE = 'Estadual';
 export const PRESIDENT_COUNSELOR = 'Presidente';
 export const COMMON_COUNSELOR = 'Conselheiro';
 
-// Counselor default password
-export const COUNSELOR_DEFAULT_PASSWORD = 'senha';
+// Alert messages and titles
+export const REGISTER_FAIL_TITLE = 'FALHA NO CADASTRO';
+export const USER_ALREADY_REGISTER_IN_APPLICATION = '\nUsuário já cadastrado na Aplicação.';
+export const USER_JUST_ALREADY_REGISTER_IN_NUVEM = '\nUsuário já possui um cadastro na Nuvem Cívica ou em alguma aplicação que a utiliza.\n\nCaso queira utilizar esse e-mail, insira a senha utilizada para realizar o Login na Nuvem Cívica com o e-mail informado.\n\nCaso contrário cadastre-se com o outro e-mail não vinculado a Nuvem Cívica ainda.';

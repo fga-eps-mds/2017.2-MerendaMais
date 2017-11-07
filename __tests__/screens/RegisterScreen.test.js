@@ -52,48 +52,70 @@ describe('Testing RegisterScreen Input', () => {
 
   it('should change state when the text of cpf input component changes', () => {
     const cpfInputComponent = wrapper.find(TextInput).at(0);
+    expect(wrapper.state().profile.cpf).toEqual('');
     cpfInputComponent.simulate('ChangeText', '11111111111');
     expect(wrapper.state().profile.cpf).toEqual('11111111111');
   });
 
   it('should change state when the text of name input component changes', () => {
     const nameInputComponent = wrapper.find(TextInput).at(1);
+    expect(wrapper.state('name')).toEqual('');
     nameInputComponent.simulate('ChangeText', 'test');
     expect(wrapper.state('name')).toEqual('test');
   });
 
   it('should change state when the text of email input component changes', () => {
     const emailInputComponent = wrapper.find(TextInput).at(2);
+    expect(wrapper.state('email')).toEqual('');
     emailInputComponent.simulate('ChangeText', 'test5@test.com');
     expect(wrapper.state('email')).toEqual('test5@test.com');
   });
 
+  it('should change state when the text of password input component changes', () => {
+    const passwordInputComponent = wrapper.find(TextInput).at(3);
+    expect(wrapper.state('password')).toEqual('');
+    passwordInputComponent.simulate('ChangeText', 'senhas');
+    expect(wrapper.state('password')).toEqual('senhas');
+  });
+
+  it('should change state when the text of confirm password input component changes', () => {
+    const confirmPasswordInputComponent = wrapper.find(TextInput).at(4);
+    expect(wrapper.state('passwordCompared')).toEqual('');
+    confirmPasswordInputComponent.simulate('ChangeText', 'senhas');
+    expect(wrapper.state('passwordCompared')).toEqual('senhas');
+  });
+
   it('should change state when the text of phone input component changes', () => {
-    const phoneInputComponent = wrapper.find(TextInput).at(3);
+    const phoneInputComponent = wrapper.find(TextInput).at(5);
+    expect(wrapper.state().profile.phone).toEqual('');
     phoneInputComponent.simulate('ChangeText', '555555555');
     expect(wrapper.state().profile.phone).toEqual('555555555');
   });
 
   it('should change state when the text of isPresident input component changes', () => {
     const isPresidentInputComponent = wrapper.find('Picker').at(0);
+    expect(wrapper.state().profile.isPresident).toEqual('');
     isPresidentInputComponent.simulate('valueChange', false);
     expect(wrapper.state().profile.isPresident).toEqual(false);
   });
 
   it('should change state when the text of segment input component changes', () => {
     const segmentInputComponent = wrapper.find('Picker').at(1);
+    expect(wrapper.state().profile.segment).toEqual('');
     segmentInputComponent.simulate('valueChange', 'Suplente');
     expect(wrapper.state().profile.segment).toEqual('Suplente');
   });
 
   it('should change state when the text of CAE_Type input component changes', () => {
     const caeTypeInputComponent = wrapper.find('Picker').at(2);
+    expect(wrapper.state().profile.CAE_Type).toEqual('');
     caeTypeInputComponent.simulate('valueChange', 'Estadual');
     expect(wrapper.state().profile.CAE_Type).toEqual('Estadual');
   });
 
   it('should change state when the text of CAE input component changes', () => {
-    const CAEInputComponent = wrapper.find(TextInput).at(4);
+    const CAEInputComponent = wrapper.find(TextInput).at(6);
+    expect(wrapper.state().profile.CAE).toEqual('');
     CAEInputComponent.simulate('ChangeText', 'DF');
     expect(wrapper.state().profile.CAE).toEqual('DF');
   });

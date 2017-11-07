@@ -27,396 +27,19 @@ ShallowWrapper {
           subTitle=""
           title="Merenda +"
         />,
-        <ScrollViewMock>
-          <View
-            style={
-              Object {
-                "backgroundColor": "white",
-                "flex": 1,
-                "paddingTop": 5,
-              }
+        <View
+          style={
+            Object {
+              "flex": 6,
+              "marginTop": 8,
             }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   CPF
-            </Text>
-            <TextInput
-              keyboardType="numeric"
-              maxLength={11}
-              onChangeText={[Function]}
-              placeholder="Digite o seu CPF"
-              placeholderTextColor="#95a5a6"
-              returnKeyLabel="next"
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                  "padding": 10,
-                }
-              }
-              underlineColorAndroid="transparent"
-              value=""
-            />
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   Nome
-            </Text>
-            <TextInput
-              keyboardType="default"
-              maxLength={60}
-              onChangeText={[Function]}
-              placeholder="Digite o seu nome completo"
-              placeholderTextColor="#95a5a6"
-              returnKeyLabel="next"
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                  "padding": 10,
-                }
-              }
-              underlineColorAndroid="transparent"
-              value=""
-            />
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   Email
-            </Text>
-            <TextInput
-              keyboardType="email-address"
-              maxLength={50}
-              onChangeText={[Function]}
-              placeholder="Digite o seu email"
-              placeholderTextColor="#95a5a6"
-              returnKeyLabel="next"
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                  "padding": 10,
-                }
-              }
-              underlineColorAndroid="transparent"
-              value=""
-            />
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   Telefone
-            </Text>
-            <TextInput
-              keyboardType="phone-pad"
-              maxLength={11}
-              onChangeText={[Function]}
-              placeholder="Digite o seu telefone"
-              placeholderTextColor="#95a5a6"
-              returnKeyLabel="next"
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                  "padding": 10,
-                }
-              }
-              underlineColorAndroid="transparent"
-              value=""
-            />
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   Cargo
-            </Text>
+          }
+        >
+          <ScrollViewMock>
             <View
               style={
                 Object {
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                }
-              }
-            >
-              <Picker
-                mode="dialog"
-                onValueChange={[Function]}
-                selectedValue=""
-              >
-                <PickerItem
-                  color="#95a5a6"
-                  label="Escolha seu cargo"
-                  value=""
-                />
-                <PickerItem
-                  label="Presidente"
-                  value={true}
-                />
-                <PickerItem
-                  label="Conselheiro"
-                  value={false}
-                />
-              </Picker>
-            </View>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   Segmento
-            </Text>
-            <View
-              style={
-                Object {
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                }
-              }
-            >
-              <Picker
-                mode="dialog"
-                onValueChange={[Function]}
-                selectedValue=""
-              >
-                <PickerItem
-                  color="#95a5a6"
-                  label="Escolha seu segmento"
-                  value=""
-                />
-                <PickerItem
-                  label="Suplente"
-                  value="Suplente"
-                />
-                <PickerItem
-                  label="Titular"
-                  value="Titular"
-                />
-              </Picker>
-            </View>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   Tipo do CAE
-            </Text>
-            <View
-              style={
-                Object {
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                }
-              }
-            >
-              <Picker
-                mode="dialog"
-                onValueChange={[Function]}
-                selectedValue=""
-              >
-                <PickerItem
-                  color="#95a5a6"
-                  label="Escolha o Tipo do seu CAE"
-                  value=""
-                />
-                <PickerItem
-                  label="Municipal"
-                  value="Municipal"
-                />
-                <PickerItem
-                  label="Estadual"
-                  value="Estadual"
-                />
-              </Picker>
-            </View>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            >
-                   CAE
-            </Text>
-            <TextInput
-              keyboardType="default"
-              maxLength={40}
-              onChangeText={[Function]}
-              placeholder="Lista com o CAE do seu município/estado"
-              placeholderTextColor="#95a5a6"
-              returnKeyLabel="next"
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#FAFAFA",
-                  "borderColor": "gray",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginBottom": 10,
-                  "marginHorizontal": 15,
-                  "padding": 10,
-                }
-              }
-              underlineColorAndroid="transparent"
-              value=""
-            />
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#FF9500",
-                  "borderRadius": 7,
-                  "borderWidth": 1,
-                  "marginBottom": 20,
-                  "marginHorizontal": 15,
-                  "marginTop": 20,
-                  "paddingVertical": 10,
-                }
-              }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "#FFF",
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Concluir
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={
-              Object {
-                "alignItems": "center",
-                "borderTopColor": "#a9a9a9",
-                "borderTopWidth": 1,
-                "flex": 0.7,
-                "justifyContent": "center",
-                "padding": 10,
-              }
-            }
-          >
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={[Function]}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                Já tem um cadastro?
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  style={
-                    Object {
-                      "color": "blue",
-                    }
-                  }
-                >
-                   Entrar
-                </Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollViewMock>,
-      ],
-      "style": Object {
-        "flex": 1,
-      },
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "function",
-        "props": Object {
-          "backButton": null,
-          "subTitle": "",
-          "title": "Merenda +",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": Array [
-            <View
-              style={
-                Object {
-                  "backgroundColor": "white",
-                  "flex": 1,
-                  "paddingTop": 5,
+                  "paddingHorizontal": 15,
                 }
               }
             >
@@ -426,7 +49,7 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     CPF
+                CPF
               </Text>
               <TextInput
                 keyboardType="numeric"
@@ -445,7 +68,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   }
                 }
@@ -458,7 +81,7 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     Nome
+                Nome
               </Text>
               <TextInput
                 keyboardType="default"
@@ -477,7 +100,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   }
                 }
@@ -490,7 +113,7 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     Email
+                Email
               </Text>
               <TextInput
                 keyboardType="email-address"
@@ -509,7 +132,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   }
                 }
@@ -522,7 +145,70 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     Telefone
+                Senha
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={30}
+                onChangeText={[Function]}
+                placeholder="Digite sua senha"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                secureTextEntry={true}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Confirmar Senha
+              </Text>
+              <TextInput
+                keyboardType="default"
+                onChangeText={[Function]}
+                placeholder="Digite sua senha novamente"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                secureTextEntry={true}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Telefone
               </Text>
               <TextInput
                 keyboardType="phone-pad"
@@ -541,7 +227,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   }
                 }
@@ -554,7 +240,7 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     Cargo
+                Cargo
               </Text>
               <View
                 style={
@@ -563,7 +249,7 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                   }
                 }
               >
@@ -593,7 +279,7 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     Segmento
+                Segmento
               </Text>
               <View
                 style={
@@ -602,7 +288,7 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                   }
                 }
               >
@@ -632,7 +318,7 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     Tipo do CAE
+                Tipo do CAE
               </Text>
               <View
                 style={
@@ -641,7 +327,7 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                   }
                 }
               >
@@ -671,7 +357,7 @@ ShallowWrapper {
                 disabled={false}
                 ellipsizeMode="tail"
               >
-                     CAE
+                CAE
               </Text>
               <TextInput
                 keyboardType="default"
@@ -690,7 +376,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   }
                 }
@@ -702,13 +388,12 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
                     "backgroundColor": "#FF9500",
-                    "borderRadius": 7,
+                    "borderRadius": 8,
                     "borderWidth": 1,
-                    "marginBottom": 20,
-                    "marginHorizontal": 15,
-                    "marginTop": 20,
-                    "paddingVertical": 10,
+                    "marginVertical": 20,
+                    "paddingVertical": 14,
                   }
                 }
               >
@@ -719,8 +404,841 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFF",
-                      "textAlign": "center",
+                      "color": "white",
+                      "fontSize": 18,
+                    }
+                  }
+                >
+                  Concluir
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollViewMock>
+        </View>,
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "borderTopColor": "#a9a9a9",
+              "borderTopWidth": 1,
+              "flex": 0.5,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={[Function]}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+              Já tem um cadastro?
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "blue",
+                  }
+                }
+              >
+                 Entrar
+              </Text>
+            </Text>
+          </TouchableOpacity>
+        </View>,
+      ],
+      "style": Object {
+        "backgroundColor": "white",
+        "flex": 1,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "backButton": null,
+          "subTitle": "",
+          "title": "Merenda +",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": <ScrollViewMock>
+            <View
+              style={
+                Object {
+                  "paddingHorizontal": 15,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                CPF
+              </Text>
+              <TextInput
+                keyboardType="numeric"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu CPF"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Nome
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={60}
+                onChangeText={[Function]}
+                placeholder="Digite o seu nome completo"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Email
+              </Text>
+              <TextInput
+                keyboardType="email-address"
+                maxLength={50}
+                onChangeText={[Function]}
+                placeholder="Digite o seu email"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Senha
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={30}
+                onChangeText={[Function]}
+                placeholder="Digite sua senha"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                secureTextEntry={true}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Confirmar Senha
+              </Text>
+              <TextInput
+                keyboardType="default"
+                onChangeText={[Function]}
+                placeholder="Digite sua senha novamente"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                secureTextEntry={true}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Telefone
+              </Text>
+              <TextInput
+                keyboardType="phone-pad"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu telefone"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Cargo
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu cargo"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Presidente"
+                    value={true}
+                  />
+                  <PickerItem
+                    label="Conselheiro"
+                    value={false}
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Segmento
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu segmento"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Suplente"
+                    value="Suplente"
+                  />
+                  <PickerItem
+                    label="Titular"
+                    value="Titular"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Tipo do CAE
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha o Tipo do seu CAE"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Municipal"
+                    value="Municipal"
+                  />
+                  <PickerItem
+                    label="Estadual"
+                    value="Estadual"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                CAE
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={40}
+                onChangeText={[Function]}
+                placeholder="Lista com o CAE do seu município/estado"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FF9500",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "marginVertical": 20,
+                    "paddingVertical": 14,
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "white",
+                      "fontSize": 18,
+                    }
+                  }
+                >
+                  Concluir
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollViewMock>,
+          "style": Object {
+            "flex": 6,
+            "marginTop": 8,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": <View
+              style={
+                Object {
+                  "paddingHorizontal": 15,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                CPF
+              </Text>
+              <TextInput
+                keyboardType="numeric"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu CPF"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Nome
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={60}
+                onChangeText={[Function]}
+                placeholder="Digite o seu nome completo"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Email
+              </Text>
+              <TextInput
+                keyboardType="email-address"
+                maxLength={50}
+                onChangeText={[Function]}
+                placeholder="Digite o seu email"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Senha
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={30}
+                onChangeText={[Function]}
+                placeholder="Digite sua senha"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                secureTextEntry={true}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Confirmar Senha
+              </Text>
+              <TextInput
+                keyboardType="default"
+                onChangeText={[Function]}
+                placeholder="Digite sua senha novamente"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                secureTextEntry={true}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Telefone
+              </Text>
+              <TextInput
+                keyboardType="phone-pad"
+                maxLength={11}
+                onChangeText={[Function]}
+                placeholder="Digite o seu telefone"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Cargo
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu cargo"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Presidente"
+                    value={true}
+                  />
+                  <PickerItem
+                    label="Conselheiro"
+                    value={false}
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Segmento
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha seu segmento"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Suplente"
+                    value="Suplente"
+                  />
+                  <PickerItem
+                    label="Titular"
+                    value="Titular"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Tipo do CAE
+              </Text>
+              <View
+                style={
+                  Object {
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                  }
+                }
+              >
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue=""
+                >
+                  <PickerItem
+                    color="#95a5a6"
+                    label="Escolha o Tipo do seu CAE"
+                    value=""
+                  />
+                  <PickerItem
+                    label="Municipal"
+                    value="Municipal"
+                  />
+                  <PickerItem
+                    label="Estadual"
+                    value="Estadual"
+                  />
+                </Picker>
+              </View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                CAE
+              </Text>
+              <TextInput
+                keyboardType="default"
+                maxLength={40}
+                onChangeText={[Function]}
+                placeholder="Lista com o CAE do seu município/estado"
+                placeholderTextColor="#95a5a6"
+                returnKeyLabel="next"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FF9500",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "marginVertical": 20,
+                    "paddingVertical": 14,
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "white",
+                      "fontSize": 18,
                     }
                   }
                 >
@@ -728,50 +1246,9 @@ ShallowWrapper {
                 </Text>
               </TouchableOpacity>
             </View>,
-            <View
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderTopColor": "#a9a9a9",
-                  "borderTopWidth": 1,
-                  "flex": 0.7,
-                  "justifyContent": "center",
-                  "padding": 10,
-                }
-              }
-            >
-              <TouchableOpacity
-                activeOpacity={0.6}
-                onPress={[Function]}
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                >
-                  Já tem um cadastro?
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "blue",
-                      }
-                    }
-                  >
-                     Entrar
-                  </Text>
-                </Text>
-              </TouchableOpacity>
-            </View>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
+          },
+          "ref": null,
+          "rendered": Object {
             "instance": null,
             "key": null,
             "nodeType": "class",
@@ -783,7 +1260,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       CPF
+                  CPF
                 </Text>,
                 <TextInput
                   keyboardType="numeric"
@@ -802,7 +1279,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -815,7 +1292,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Nome
+                  Nome
                 </Text>,
                 <TextInput
                   keyboardType="default"
@@ -834,7 +1311,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -847,7 +1324,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Email
+                  Email
                 </Text>,
                 <TextInput
                   keyboardType="email-address"
@@ -866,7 +1343,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -879,7 +1356,70 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Telefone
+                  Senha
+                </Text>,
+                <TextInput
+                  keyboardType="default"
+                  maxLength={30}
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Confirmar Senha
+                </Text>,
+                <TextInput
+                  keyboardType="default"
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha novamente"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Telefone
                 </Text>,
                 <TextInput
                   keyboardType="phone-pad"
@@ -898,7 +1438,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -911,7 +1451,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Cargo
+                  Cargo
                 </Text>,
                 <View
                   style={
@@ -920,7 +1460,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     }
                   }
                 >
@@ -944,14 +1484,13 @@ ShallowWrapper {
                     />
                   </Picker>
                 </View>,
-                null,
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Segmento
+                  Segmento
                 </Text>,
                 <View
                   style={
@@ -960,7 +1499,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     }
                   }
                 >
@@ -990,7 +1529,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Tipo do CAE
+                  Tipo do CAE
                 </Text>,
                 <View
                   style={
@@ -999,7 +1538,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     }
                   }
                 >
@@ -1029,7 +1568,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       CAE
+                  CAE
                 </Text>,
                 <TextInput
                   keyboardType="default"
@@ -1048,7 +1587,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -1060,13 +1599,12 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
+                      "alignItems": "center",
                       "backgroundColor": "#FF9500",
-                      "borderRadius": 7,
+                      "borderRadius": 8,
                       "borderWidth": 1,
-                      "marginBottom": 20,
-                      "marginHorizontal": 15,
-                      "marginTop": 20,
-                      "paddingVertical": 10,
+                      "marginVertical": 20,
+                      "paddingVertical": 14,
                     }
                   }
                 >
@@ -1077,8 +1615,8 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFF",
-                        "textAlign": "center",
+                        "color": "white",
+                        "fontSize": 18,
                       }
                     }
                   >
@@ -1087,9 +1625,7 @@ ShallowWrapper {
                 </TouchableOpacity>,
               ],
               "style": Object {
-                "backgroundColor": "white",
-                "flex": 1,
-                "paddingTop": 5,
+                "paddingHorizontal": 15,
               },
             },
             "ref": null,
@@ -1101,12 +1637,12 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     CPF",
+                  "children": "CPF",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     CPF",
+                "rendered": "CPF",
                 "type": [Function],
               },
               Object {
@@ -1129,7 +1665,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   },
                   "underlineColorAndroid": "transparent",
@@ -1146,12 +1682,12 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     Nome",
+                  "children": "Nome",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     Nome",
+                "rendered": "Nome",
                 "type": [Function],
               },
               Object {
@@ -1174,7 +1710,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   },
                   "underlineColorAndroid": "transparent",
@@ -1191,12 +1727,12 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     Email",
+                  "children": "Email",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     Email",
+                "rendered": "Email",
                 "type": [Function],
               },
               Object {
@@ -1219,7 +1755,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   },
                   "underlineColorAndroid": "transparent",
@@ -1236,12 +1772,101 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     Telefone",
+                  "children": "Senha",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     Telefone",
+                "rendered": "Senha",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "keyboardType": "default",
+                  "maxLength": 30,
+                  "onChangeText": [Function],
+                  "placeholder": "Digite sua senha",
+                  "placeholderTextColor": "#95a5a6",
+                  "returnKeyLabel": "next",
+                  "secureTextEntry": true,
+                  "style": Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  },
+                  "underlineColorAndroid": "transparent",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Confirmar Senha",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "Confirmar Senha",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "keyboardType": "default",
+                  "onChangeText": [Function],
+                  "placeholder": "Digite sua senha novamente",
+                  "placeholderTextColor": "#95a5a6",
+                  "returnKeyLabel": "next",
+                  "secureTextEntry": true,
+                  "style": Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FAFAFA",
+                    "borderColor": "gray",
+                    "borderRadius": 7,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginBottom": 10,
+                    "marginTop": 1,
+                    "padding": 10,
+                  },
+                  "underlineColorAndroid": "transparent",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Telefone",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                },
+                "ref": null,
+                "rendered": "Telefone",
                 "type": [Function],
               },
               Object {
@@ -1264,7 +1889,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   },
                   "underlineColorAndroid": "transparent",
@@ -1281,12 +1906,12 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     Cargo",
+                  "children": "Cargo",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     Cargo",
+                "rendered": "Cargo",
                 "type": [Function],
               },
               Object {
@@ -1318,7 +1943,7 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                   },
                 },
                 "ref": null,
@@ -1390,7 +2015,6 @@ ShallowWrapper {
                 },
                 "type": [Function],
               },
-              null,
               Object {
                 "instance": null,
                 "key": null,
@@ -1398,12 +2022,12 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     Segmento",
+                  "children": "Segmento",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     Segmento",
+                "rendered": "Segmento",
                 "type": [Function],
               },
               Object {
@@ -1435,7 +2059,7 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                   },
                 },
                 "ref": null,
@@ -1514,12 +2138,12 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     Tipo do CAE",
+                  "children": "Tipo do CAE",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     Tipo do CAE",
+                "rendered": "Tipo do CAE",
                 "type": [Function],
               },
               Object {
@@ -1551,7 +2175,7 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                   },
                 },
                 "ref": null,
@@ -1630,12 +2254,12 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "     CAE",
+                  "children": "CAE",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                 },
                 "ref": null,
-                "rendered": "     CAE",
+                "rendered": "CAE",
                 "type": [Function],
               },
               Object {
@@ -1658,7 +2282,7 @@ ShallowWrapper {
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "marginBottom": 10,
-                    "marginHorizontal": 15,
+                    "marginTop": 1,
                     "padding": 10,
                   },
                   "underlineColorAndroid": "transparent",
@@ -1681,8 +2305,8 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFF",
-                        "textAlign": "center",
+                        "color": "white",
+                        "fontSize": 18,
                       }
                     }
                   >
@@ -1690,13 +2314,12 @@ ShallowWrapper {
                   </Text>,
                   "onPress": [Function],
                   "style": Object {
+                    "alignItems": "center",
                     "backgroundColor": "#FF9500",
-                    "borderRadius": 7,
+                    "borderRadius": 8,
                     "borderWidth": 1,
-                    "marginBottom": 20,
-                    "marginHorizontal": 15,
-                    "marginTop": 20,
-                    "paddingVertical": 10,
+                    "marginVertical": 20,
+                    "paddingVertical": 14,
                   },
                 },
                 "ref": null,
@@ -1711,8 +2334,8 @@ ShallowWrapper {
                     "disabled": false,
                     "ellipsizeMode": "tail",
                     "style": Object {
-                      "color": "#FFF",
-                      "textAlign": "center",
+                      "color": "white",
+                      "fontSize": 18,
                     },
                   },
                   "ref": null,
@@ -1724,132 +2347,132 @@ ShallowWrapper {
             ],
             "type": [Function],
           },
-          Object {
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={[Function]}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+              Já tem um cadastro?
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "blue",
+                  }
+                }
+              >
+                 Entrar
+              </Text>
+            </Text>
+          </TouchableOpacity>,
+          "style": Object {
+            "alignItems": "center",
+            "borderTopColor": "#a9a9a9",
+            "borderTopWidth": 1,
+            "flex": 0.5,
+            "justifyContent": "center",
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "activeOpacity": 0.6,
+            "children": <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            >
+              Já tem um cadastro?
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "blue",
+                  }
+                }
+              >
+                 Entrar
+              </Text>
+            </Text>,
+            "onPress": [Function],
+          },
+          "ref": null,
+          "rendered": Object {
             "instance": null,
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <TouchableOpacity
-                activeOpacity={0.6}
-                onPress={[Function]}
-              >
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": Array [
+                "Já tem um cadastro?",
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                >
-                  Já tem um cadastro?
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "blue",
-                      }
+                  style={
+                    Object {
+                      "color": "blue",
                     }
-                  >
-                     Entrar
-                  </Text>
-                </Text>
-              </TouchableOpacity>,
-              "style": Object {
-                "alignItems": "center",
-                "borderTopColor": "#a9a9a9",
-                "borderTopWidth": 1,
-                "flex": 0.7,
-                "justifyContent": "center",
-                "padding": 10,
-              },
+                  }
+                >
+                   Entrar
+                </Text>,
+              ],
+              "disabled": false,
+              "ellipsizeMode": "tail",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "activeOpacity": 0.6,
-                "children": <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                >
-                  Já tem um cadastro?
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "blue",
-                      }
-                    }
-                  >
-                     Entrar
-                  </Text>
-                </Text>,
-                "onPress": [Function],
-              },
-              "ref": null,
-              "rendered": Object {
+            "rendered": Array [
+              "Já tem um cadastro?",
+              Object {
                 "instance": null,
                 "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": Array [
-                    "Já tem um cadastro?",
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      disabled={false}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "color": "blue",
-                        }
-                      }
-                    >
-                       Entrar
-                    </Text>,
-                  ],
+                  "children": " Entrar",
                   "disabled": false,
                   "ellipsizeMode": "tail",
+                  "style": Object {
+                    "color": "blue",
+                  },
                 },
                 "ref": null,
-                "rendered": Array [
-                  "Já tem um cadastro?",
-                  Object {
-                    "instance": null,
-                    "key": null,
-                    "nodeType": "class",
-                    "props": Object {
-                      "accessible": true,
-                      "allowFontScaling": true,
-                      "children": " Entrar",
-                      "disabled": false,
-                      "ellipsizeMode": "tail",
-                      "style": Object {
-                        "color": "blue",
-                      },
-                    },
-                    "ref": null,
-                    "rendered": " Entrar",
-                    "type": [Function],
-                  },
-                ],
+                "rendered": " Entrar",
                 "type": [Function],
               },
-              "type": [Function],
-            },
+            ],
             "type": [Function],
           },
-        ],
+          "type": [Function],
+        },
         "type": [Function],
       },
     ],
@@ -1867,396 +2490,19 @@ ShallowWrapper {
             subTitle=""
             title="Merenda +"
           />,
-          <ScrollViewMock>
-            <View
-              style={
-                Object {
-                  "backgroundColor": "white",
-                  "flex": 1,
-                  "paddingTop": 5,
-                }
+          <View
+            style={
+              Object {
+                "flex": 6,
+                "marginTop": 8,
               }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     CPF
-              </Text>
-              <TextInput
-                keyboardType="numeric"
-                maxLength={11}
-                onChangeText={[Function]}
-                placeholder="Digite o seu CPF"
-                placeholderTextColor="#95a5a6"
-                returnKeyLabel="next"
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#FAFAFA",
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                    "padding": 10,
-                  }
-                }
-                underlineColorAndroid="transparent"
-                value=""
-              />
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     Nome
-              </Text>
-              <TextInput
-                keyboardType="default"
-                maxLength={60}
-                onChangeText={[Function]}
-                placeholder="Digite o seu nome completo"
-                placeholderTextColor="#95a5a6"
-                returnKeyLabel="next"
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#FAFAFA",
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                    "padding": 10,
-                  }
-                }
-                underlineColorAndroid="transparent"
-                value=""
-              />
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     Email
-              </Text>
-              <TextInput
-                keyboardType="email-address"
-                maxLength={50}
-                onChangeText={[Function]}
-                placeholder="Digite o seu email"
-                placeholderTextColor="#95a5a6"
-                returnKeyLabel="next"
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#FAFAFA",
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                    "padding": 10,
-                  }
-                }
-                underlineColorAndroid="transparent"
-                value=""
-              />
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     Telefone
-              </Text>
-              <TextInput
-                keyboardType="phone-pad"
-                maxLength={11}
-                onChangeText={[Function]}
-                placeholder="Digite o seu telefone"
-                placeholderTextColor="#95a5a6"
-                returnKeyLabel="next"
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#FAFAFA",
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                    "padding": 10,
-                  }
-                }
-                underlineColorAndroid="transparent"
-                value=""
-              />
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     Cargo
-              </Text>
+            }
+          >
+            <ScrollViewMock>
               <View
                 style={
                   Object {
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                  }
-                }
-              >
-                <Picker
-                  mode="dialog"
-                  onValueChange={[Function]}
-                  selectedValue=""
-                >
-                  <PickerItem
-                    color="#95a5a6"
-                    label="Escolha seu cargo"
-                    value=""
-                  />
-                  <PickerItem
-                    label="Presidente"
-                    value={true}
-                  />
-                  <PickerItem
-                    label="Conselheiro"
-                    value={false}
-                  />
-                </Picker>
-              </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     Segmento
-              </Text>
-              <View
-                style={
-                  Object {
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                  }
-                }
-              >
-                <Picker
-                  mode="dialog"
-                  onValueChange={[Function]}
-                  selectedValue=""
-                >
-                  <PickerItem
-                    color="#95a5a6"
-                    label="Escolha seu segmento"
-                    value=""
-                  />
-                  <PickerItem
-                    label="Suplente"
-                    value="Suplente"
-                  />
-                  <PickerItem
-                    label="Titular"
-                    value="Titular"
-                  />
-                </Picker>
-              </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     Tipo do CAE
-              </Text>
-              <View
-                style={
-                  Object {
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                  }
-                }
-              >
-                <Picker
-                  mode="dialog"
-                  onValueChange={[Function]}
-                  selectedValue=""
-                >
-                  <PickerItem
-                    color="#95a5a6"
-                    label="Escolha o Tipo do seu CAE"
-                    value=""
-                  />
-                  <PickerItem
-                    label="Municipal"
-                    value="Municipal"
-                  />
-                  <PickerItem
-                    label="Estadual"
-                    value="Estadual"
-                  />
-                </Picker>
-              </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-              >
-                     CAE
-              </Text>
-              <TextInput
-                keyboardType="default"
-                maxLength={40}
-                onChangeText={[Function]}
-                placeholder="Lista com o CAE do seu município/estado"
-                placeholderTextColor="#95a5a6"
-                returnKeyLabel="next"
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#FAFAFA",
-                    "borderColor": "gray",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "marginBottom": 10,
-                    "marginHorizontal": 15,
-                    "padding": 10,
-                  }
-                }
-                underlineColorAndroid="transparent"
-                value=""
-              />
-              <TouchableOpacity
-                activeOpacity={0.7}
-                onPress={[Function]}
-                style={
-                  Object {
-                    "backgroundColor": "#FF9500",
-                    "borderRadius": 7,
-                    "borderWidth": 1,
-                    "marginBottom": 20,
-                    "marginHorizontal": 15,
-                    "marginTop": 20,
-                    "paddingVertical": 10,
-                  }
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  style={
-                    Object {
-                      "color": "#FFF",
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  Concluir
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderTopColor": "#a9a9a9",
-                  "borderTopWidth": 1,
-                  "flex": 0.7,
-                  "justifyContent": "center",
-                  "padding": 10,
-                }
-              }
-            >
-              <TouchableOpacity
-                activeOpacity={0.6}
-                onPress={[Function]}
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                >
-                  Já tem um cadastro?
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "blue",
-                      }
-                    }
-                  >
-                     Entrar
-                  </Text>
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </ScrollViewMock>,
-        ],
-        "style": Object {
-          "flex": 1,
-        },
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "function",
-          "props": Object {
-            "backButton": null,
-            "subTitle": "",
-            "title": "Merenda +",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              <View
-                style={
-                  Object {
-                    "backgroundColor": "white",
-                    "flex": 1,
-                    "paddingTop": 5,
+                    "paddingHorizontal": 15,
                   }
                 }
               >
@@ -2266,7 +2512,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       CPF
+                  CPF
                 </Text>
                 <TextInput
                   keyboardType="numeric"
@@ -2285,7 +2531,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -2298,7 +2544,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Nome
+                  Nome
                 </Text>
                 <TextInput
                   keyboardType="default"
@@ -2317,7 +2563,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -2330,7 +2576,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Email
+                  Email
                 </Text>
                 <TextInput
                   keyboardType="email-address"
@@ -2349,7 +2595,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -2362,7 +2608,70 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Telefone
+                  Senha
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={30}
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Confirmar Senha
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha novamente"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Telefone
                 </Text>
                 <TextInput
                   keyboardType="phone-pad"
@@ -2381,7 +2690,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -2394,7 +2703,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Cargo
+                  Cargo
                 </Text>
                 <View
                   style={
@@ -2403,7 +2712,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     }
                   }
                 >
@@ -2433,7 +2742,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Segmento
+                  Segmento
                 </Text>
                 <View
                   style={
@@ -2442,7 +2751,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     }
                   }
                 >
@@ -2472,7 +2781,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       Tipo do CAE
+                  Tipo do CAE
                 </Text>
                 <View
                   style={
@@ -2481,7 +2790,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     }
                   }
                 >
@@ -2511,7 +2820,7 @@ ShallowWrapper {
                   disabled={false}
                   ellipsizeMode="tail"
                 >
-                       CAE
+                  CAE
                 </Text>
                 <TextInput
                   keyboardType="default"
@@ -2530,7 +2839,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     }
                   }
@@ -2542,13 +2851,12 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
+                      "alignItems": "center",
                       "backgroundColor": "#FF9500",
-                      "borderRadius": 7,
+                      "borderRadius": 8,
                       "borderWidth": 1,
-                      "marginBottom": 20,
-                      "marginHorizontal": 15,
-                      "marginTop": 20,
-                      "paddingVertical": 10,
+                      "marginVertical": 20,
+                      "paddingVertical": 14,
                     }
                   }
                 >
@@ -2559,8 +2867,841 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFF",
-                        "textAlign": "center",
+                        "color": "white",
+                        "fontSize": 18,
+                      }
+                    }
+                  >
+                    Concluir
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollViewMock>
+          </View>,
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "borderTopColor": "#a9a9a9",
+                "borderTopWidth": 1,
+                "flex": 0.5,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={[Function]}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Já tem um cadastro?
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "blue",
+                    }
+                  }
+                >
+                   Entrar
+                </Text>
+              </Text>
+            </TouchableOpacity>
+          </View>,
+        ],
+        "style": Object {
+          "backgroundColor": "white",
+          "flex": 1,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "backButton": null,
+            "subTitle": "",
+            "title": "Merenda +",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": <ScrollViewMock>
+              <View
+                style={
+                  Object {
+                    "paddingHorizontal": 15,
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  CPF
+                </Text>
+                <TextInput
+                  keyboardType="numeric"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu CPF"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Nome
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={60}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu nome completo"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Email
+                </Text>
+                <TextInput
+                  keyboardType="email-address"
+                  maxLength={50}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu email"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Senha
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={30}
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Confirmar Senha
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha novamente"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Telefone
+                </Text>
+                <TextInput
+                  keyboardType="phone-pad"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu telefone"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Cargo
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu cargo"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Presidente"
+                      value={true}
+                    />
+                    <PickerItem
+                      label="Conselheiro"
+                      value={false}
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Segmento
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu segmento"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Suplente"
+                      value="Suplente"
+                    />
+                    <PickerItem
+                      label="Titular"
+                      value="Titular"
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Tipo do CAE
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha o Tipo do seu CAE"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Municipal"
+                      value="Municipal"
+                    />
+                    <PickerItem
+                      label="Estadual"
+                      value="Estadual"
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  CAE
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={40}
+                  onChangeText={[Function]}
+                  placeholder="Lista com o CAE do seu município/estado"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FF9500",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "marginVertical": 20,
+                      "paddingVertical": 14,
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "white",
+                        "fontSize": 18,
+                      }
+                    }
+                  >
+                    Concluir
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollViewMock>,
+            "style": Object {
+              "flex": 6,
+              "marginTop": 8,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <View
+                style={
+                  Object {
+                    "paddingHorizontal": 15,
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  CPF
+                </Text>
+                <TextInput
+                  keyboardType="numeric"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu CPF"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Nome
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={60}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu nome completo"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Email
+                </Text>
+                <TextInput
+                  keyboardType="email-address"
+                  maxLength={50}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu email"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Senha
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={30}
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Confirmar Senha
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  onChangeText={[Function]}
+                  placeholder="Digite sua senha novamente"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Telefone
+                </Text>
+                <TextInput
+                  keyboardType="phone-pad"
+                  maxLength={11}
+                  onChangeText={[Function]}
+                  placeholder="Digite o seu telefone"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Cargo
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu cargo"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Presidente"
+                      value={true}
+                    />
+                    <PickerItem
+                      label="Conselheiro"
+                      value={false}
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Segmento
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha seu segmento"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Suplente"
+                      value="Suplente"
+                    />
+                    <PickerItem
+                      label="Titular"
+                      value="Titular"
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  Tipo do CAE
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                    }
+                  }
+                >
+                  <Picker
+                    mode="dialog"
+                    onValueChange={[Function]}
+                    selectedValue=""
+                  >
+                    <PickerItem
+                      color="#95a5a6"
+                      label="Escolha o Tipo do seu CAE"
+                      value=""
+                    />
+                    <PickerItem
+                      label="Municipal"
+                      value="Municipal"
+                    />
+                    <PickerItem
+                      label="Estadual"
+                      value="Estadual"
+                    />
+                  </Picker>
+                </View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                >
+                  CAE
+                </Text>
+                <TextInput
+                  keyboardType="default"
+                  maxLength={40}
+                  onChangeText={[Function]}
+                  placeholder="Lista com o CAE do seu município/estado"
+                  placeholderTextColor="#95a5a6"
+                  returnKeyLabel="next"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    }
+                  }
+                  underlineColorAndroid="transparent"
+                  value=""
+                />
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FF9500",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "marginVertical": 20,
+                      "paddingVertical": 14,
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "white",
+                        "fontSize": 18,
                       }
                     }
                   >
@@ -2568,50 +3709,9 @@ ShallowWrapper {
                   </Text>
                 </TouchableOpacity>
               </View>,
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderTopColor": "#a9a9a9",
-                    "borderTopWidth": 1,
-                    "flex": 0.7,
-                    "justifyContent": "center",
-                    "padding": 10,
-                  }
-                }
-              >
-                <TouchableOpacity
-                  activeOpacity={0.6}
-                  onPress={[Function]}
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                  >
-                    Já tem um cadastro?
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      disabled={false}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "color": "blue",
-                        }
-                      }
-                    >
-                       Entrar
-                    </Text>
-                  </Text>
-                </TouchableOpacity>
-              </View>,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
+            },
+            "ref": null,
+            "rendered": Object {
               "instance": null,
               "key": null,
               "nodeType": "class",
@@ -2623,7 +3723,7 @@ ShallowWrapper {
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         CPF
+                    CPF
                   </Text>,
                   <TextInput
                     keyboardType="numeric"
@@ -2642,7 +3742,7 @@ ShallowWrapper {
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                         "padding": 10,
                       }
                     }
@@ -2655,7 +3755,7 @@ ShallowWrapper {
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         Nome
+                    Nome
                   </Text>,
                   <TextInput
                     keyboardType="default"
@@ -2674,7 +3774,7 @@ ShallowWrapper {
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                         "padding": 10,
                       }
                     }
@@ -2687,7 +3787,7 @@ ShallowWrapper {
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         Email
+                    Email
                   </Text>,
                   <TextInput
                     keyboardType="email-address"
@@ -2706,7 +3806,7 @@ ShallowWrapper {
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                         "padding": 10,
                       }
                     }
@@ -2719,7 +3819,70 @@ ShallowWrapper {
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         Telefone
+                    Senha
+                  </Text>,
+                  <TextInput
+                    keyboardType="default"
+                    maxLength={30}
+                    onChangeText={[Function]}
+                    placeholder="Digite sua senha"
+                    placeholderTextColor="#95a5a6"
+                    returnKeyLabel="next"
+                    secureTextEntry={true}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FAFAFA",
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": 10,
+                        "marginTop": 1,
+                        "padding": 10,
+                      }
+                    }
+                    underlineColorAndroid="transparent"
+                  />,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                    Confirmar Senha
+                  </Text>,
+                  <TextInput
+                    keyboardType="default"
+                    onChangeText={[Function]}
+                    placeholder="Digite sua senha novamente"
+                    placeholderTextColor="#95a5a6"
+                    returnKeyLabel="next"
+                    secureTextEntry={true}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#FAFAFA",
+                        "borderColor": "gray",
+                        "borderRadius": 7,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginBottom": 10,
+                        "marginTop": 1,
+                        "padding": 10,
+                      }
+                    }
+                    underlineColorAndroid="transparent"
+                  />,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                  >
+                    Telefone
                   </Text>,
                   <TextInput
                     keyboardType="phone-pad"
@@ -2738,7 +3901,7 @@ ShallowWrapper {
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                         "padding": 10,
                       }
                     }
@@ -2751,7 +3914,7 @@ ShallowWrapper {
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         Cargo
+                    Cargo
                   </Text>,
                   <View
                     style={
@@ -2760,7 +3923,7 @@ ShallowWrapper {
                         "borderRadius": 7,
                         "borderWidth": 1,
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                       }
                     }
                   >
@@ -2784,14 +3947,13 @@ ShallowWrapper {
                       />
                     </Picker>
                   </View>,
-                  null,
                   <Text
                     accessible={true}
                     allowFontScaling={true}
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         Segmento
+                    Segmento
                   </Text>,
                   <View
                     style={
@@ -2800,7 +3962,7 @@ ShallowWrapper {
                         "borderRadius": 7,
                         "borderWidth": 1,
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                       }
                     }
                   >
@@ -2830,7 +3992,7 @@ ShallowWrapper {
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         Tipo do CAE
+                    Tipo do CAE
                   </Text>,
                   <View
                     style={
@@ -2839,7 +4001,7 @@ ShallowWrapper {
                         "borderRadius": 7,
                         "borderWidth": 1,
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                       }
                     }
                   >
@@ -2869,7 +4031,7 @@ ShallowWrapper {
                     disabled={false}
                     ellipsizeMode="tail"
                   >
-                         CAE
+                    CAE
                   </Text>,
                   <TextInput
                     keyboardType="default"
@@ -2888,7 +4050,7 @@ ShallowWrapper {
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "marginBottom": 10,
-                        "marginHorizontal": 15,
+                        "marginTop": 1,
                         "padding": 10,
                       }
                     }
@@ -2900,13 +4062,12 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
+                        "alignItems": "center",
                         "backgroundColor": "#FF9500",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderWidth": 1,
-                        "marginBottom": 20,
-                        "marginHorizontal": 15,
-                        "marginTop": 20,
-                        "paddingVertical": 10,
+                        "marginVertical": 20,
+                        "paddingVertical": 14,
                       }
                     }
                   >
@@ -2917,8 +4078,8 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFF",
-                          "textAlign": "center",
+                          "color": "white",
+                          "fontSize": 18,
                         }
                       }
                     >
@@ -2927,9 +4088,7 @@ ShallowWrapper {
                   </TouchableOpacity>,
                 ],
                 "style": Object {
-                  "backgroundColor": "white",
-                  "flex": 1,
-                  "paddingTop": 5,
+                  "paddingHorizontal": 15,
                 },
               },
               "ref": null,
@@ -2941,12 +4100,12 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     CPF",
+                    "children": "CPF",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     CPF",
+                  "rendered": "CPF",
                   "type": [Function],
                 },
                 Object {
@@ -2969,7 +4128,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     },
                     "underlineColorAndroid": "transparent",
@@ -2986,12 +4145,12 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     Nome",
+                    "children": "Nome",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     Nome",
+                  "rendered": "Nome",
                   "type": [Function],
                 },
                 Object {
@@ -3014,7 +4173,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     },
                     "underlineColorAndroid": "transparent",
@@ -3031,12 +4190,12 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     Email",
+                    "children": "Email",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     Email",
+                  "rendered": "Email",
                   "type": [Function],
                 },
                 Object {
@@ -3059,7 +4218,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     },
                     "underlineColorAndroid": "transparent",
@@ -3076,12 +4235,101 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     Telefone",
+                    "children": "Senha",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     Telefone",
+                  "rendered": "Senha",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "keyboardType": "default",
+                    "maxLength": 30,
+                    "onChangeText": [Function],
+                    "placeholder": "Digite sua senha",
+                    "placeholderTextColor": "#95a5a6",
+                    "returnKeyLabel": "next",
+                    "secureTextEntry": true,
+                    "style": Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    },
+                    "underlineColorAndroid": "transparent",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "Confirmar Senha",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "Confirmar Senha",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "keyboardType": "default",
+                    "onChangeText": [Function],
+                    "placeholder": "Digite sua senha novamente",
+                    "placeholderTextColor": "#95a5a6",
+                    "returnKeyLabel": "next",
+                    "secureTextEntry": true,
+                    "style": Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#FAFAFA",
+                      "borderColor": "gray",
+                      "borderRadius": 7,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginBottom": 10,
+                      "marginTop": 1,
+                      "padding": 10,
+                    },
+                    "underlineColorAndroid": "transparent",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "Telefone",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                  },
+                  "ref": null,
+                  "rendered": "Telefone",
                   "type": [Function],
                 },
                 Object {
@@ -3104,7 +4352,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     },
                     "underlineColorAndroid": "transparent",
@@ -3121,12 +4369,12 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     Cargo",
+                    "children": "Cargo",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     Cargo",
+                  "rendered": "Cargo",
                   "type": [Function],
                 },
                 Object {
@@ -3158,7 +4406,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     },
                   },
                   "ref": null,
@@ -3230,7 +4478,6 @@ ShallowWrapper {
                   },
                   "type": [Function],
                 },
-                null,
                 Object {
                   "instance": null,
                   "key": null,
@@ -3238,12 +4485,12 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     Segmento",
+                    "children": "Segmento",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     Segmento",
+                  "rendered": "Segmento",
                   "type": [Function],
                 },
                 Object {
@@ -3275,7 +4522,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     },
                   },
                   "ref": null,
@@ -3354,12 +4601,12 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     Tipo do CAE",
+                    "children": "Tipo do CAE",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     Tipo do CAE",
+                  "rendered": "Tipo do CAE",
                   "type": [Function],
                 },
                 Object {
@@ -3391,7 +4638,7 @@ ShallowWrapper {
                       "borderRadius": 7,
                       "borderWidth": 1,
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                     },
                   },
                   "ref": null,
@@ -3470,12 +4717,12 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "     CAE",
+                    "children": "CAE",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                   },
                   "ref": null,
-                  "rendered": "     CAE",
+                  "rendered": "CAE",
                   "type": [Function],
                 },
                 Object {
@@ -3498,7 +4745,7 @@ ShallowWrapper {
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "marginBottom": 10,
-                      "marginHorizontal": 15,
+                      "marginTop": 1,
                       "padding": 10,
                     },
                     "underlineColorAndroid": "transparent",
@@ -3521,8 +4768,8 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFF",
-                          "textAlign": "center",
+                          "color": "white",
+                          "fontSize": 18,
                         }
                       }
                     >
@@ -3530,13 +4777,12 @@ ShallowWrapper {
                     </Text>,
                     "onPress": [Function],
                     "style": Object {
+                      "alignItems": "center",
                       "backgroundColor": "#FF9500",
-                      "borderRadius": 7,
+                      "borderRadius": 8,
                       "borderWidth": 1,
-                      "marginBottom": 20,
-                      "marginHorizontal": 15,
-                      "marginTop": 20,
-                      "paddingVertical": 10,
+                      "marginVertical": 20,
+                      "paddingVertical": 14,
                     },
                   },
                   "ref": null,
@@ -3551,8 +4797,8 @@ ShallowWrapper {
                       "disabled": false,
                       "ellipsizeMode": "tail",
                       "style": Object {
-                        "color": "#FFF",
-                        "textAlign": "center",
+                        "color": "white",
+                        "fontSize": 18,
                       },
                     },
                     "ref": null,
@@ -3564,132 +4810,132 @@ ShallowWrapper {
               ],
               "type": [Function],
             },
-            Object {
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={[Function]}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Já tem um cadastro?
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "blue",
+                    }
+                  }
+                >
+                   Entrar
+                </Text>
+              </Text>
+            </TouchableOpacity>,
+            "style": Object {
+              "alignItems": "center",
+              "borderTopColor": "#a9a9a9",
+              "borderTopWidth": 1,
+              "flex": 0.5,
+              "justifyContent": "center",
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "activeOpacity": 0.6,
+              "children": <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+              >
+                Já tem um cadastro?
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "blue",
+                    }
+                  }
+                >
+                   Entrar
+                </Text>
+              </Text>,
+              "onPress": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
               "instance": null,
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <TouchableOpacity
-                  activeOpacity={0.6}
-                  onPress={[Function]}
-                >
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": Array [
+                  "Já tem um cadastro?",
                   <Text
                     accessible={true}
                     allowFontScaling={true}
                     disabled={false}
                     ellipsizeMode="tail"
-                  >
-                    Já tem um cadastro?
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      disabled={false}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "color": "blue",
-                        }
+                    style={
+                      Object {
+                        "color": "blue",
                       }
-                    >
-                       Entrar
-                    </Text>
-                  </Text>
-                </TouchableOpacity>,
-                "style": Object {
-                  "alignItems": "center",
-                  "borderTopColor": "#a9a9a9",
-                  "borderTopWidth": 1,
-                  "flex": 0.7,
-                  "justifyContent": "center",
-                  "padding": 10,
-                },
+                    }
+                  >
+                     Entrar
+                  </Text>,
+                ],
+                "disabled": false,
+                "ellipsizeMode": "tail",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "activeOpacity": 0.6,
-                  "children": <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                  >
-                    Já tem um cadastro?
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      disabled={false}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "color": "blue",
-                        }
-                      }
-                    >
-                       Entrar
-                    </Text>
-                  </Text>,
-                  "onPress": [Function],
-                },
-                "ref": null,
-                "rendered": Object {
+              "rendered": Array [
+                "Já tem um cadastro?",
+                Object {
                   "instance": null,
                   "key": null,
                   "nodeType": "class",
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": Array [
-                      "Já tem um cadastro?",
-                      <Text
-                        accessible={true}
-                        allowFontScaling={true}
-                        disabled={false}
-                        ellipsizeMode="tail"
-                        style={
-                          Object {
-                            "color": "blue",
-                          }
-                        }
-                      >
-                         Entrar
-                      </Text>,
-                    ],
+                    "children": " Entrar",
                     "disabled": false,
                     "ellipsizeMode": "tail",
+                    "style": Object {
+                      "color": "blue",
+                    },
                   },
                   "ref": null,
-                  "rendered": Array [
-                    "Já tem um cadastro?",
-                    Object {
-                      "instance": null,
-                      "key": null,
-                      "nodeType": "class",
-                      "props": Object {
-                        "accessible": true,
-                        "allowFontScaling": true,
-                        "children": " Entrar",
-                        "disabled": false,
-                        "ellipsizeMode": "tail",
-                        "style": Object {
-                          "color": "blue",
-                        },
-                      },
-                      "ref": null,
-                      "rendered": " Entrar",
-                      "type": [Function],
-                    },
-                  ],
+                  "rendered": " Entrar",
                   "type": [Function],
                 },
-                "type": [Function],
-              },
+              ],
               "type": [Function],
             },
-          ],
+            "type": [Function],
+          },
           "type": [Function],
         },
       ],

@@ -30,10 +30,10 @@ ShallowWrapper {
         <View
           style={
             Object {
-              "alignItems": "center",
               "backgroundColor": "white",
               "flex": 6,
               "justifyContent": "center",
+              "paddingHorizontal": 18,
             }
           }
         >
@@ -46,9 +46,7 @@ ShallowWrapper {
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "center",
-                "paddingLeft": 2,
-                "paddingRight": 4,
+                "paddingHorizontal": 2,
               }
             }
           >
@@ -66,9 +64,8 @@ ShallowWrapper {
               keyboardType="email-address"
               onChangeText={[Function]}
               onSubmitEditing={[Function]}
-              placeholder="email"
+              placeholder="Email"
               returnKeyType="next"
-              style={undefined}
               underlineColorAndroid="transparent"
               value={undefined}
               width={280}
@@ -82,10 +79,9 @@ ShallowWrapper {
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
+                "justifyContent": "center",
                 "marginTop": 30,
-                "paddingLeft": 2,
-                "paddingRight": 4,
+                "paddingHorizontal": 2,
               }
             }
           >
@@ -104,7 +100,6 @@ ShallowWrapper {
               placeholder="Senha"
               returnKeyType="go"
               secureTextEntry={true}
-              style={undefined}
               underlineColorAndroid="transparent"
               value={undefined}
               width={280}
@@ -115,12 +110,11 @@ ShallowWrapper {
             onPress={[Function]}
             style={
               Object {
+                "alignItems": "center",
                 "backgroundColor": "#FF9500",
                 "borderRadius": 8,
                 "borderWidth": 1,
-                "marginBottom": 0,
                 "marginTop": 50,
-                "paddingHorizontal": 133,
                 "paddingVertical": 18,
               }
             }
@@ -145,9 +139,10 @@ ShallowWrapper {
           style={
             Object {
               "alignItems": "center",
+              "backgroundColor": "white",
               "borderTopColor": "#a9a9a9",
               "borderTopWidth": 1,
-              "flex": 0.7,
+              "flex": 0.5,
               "justifyContent": "center",
             }
           }
@@ -214,9 +209,7 @@ ShallowWrapper {
                   "borderRadius": 7,
                   "borderWidth": 1,
                   "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
+                  "paddingHorizontal": 2,
                 }
               }
             >
@@ -234,9 +227,8 @@ ShallowWrapper {
                 keyboardType="email-address"
                 onChangeText={[Function]}
                 onSubmitEditing={[Function]}
-                placeholder="email"
+                placeholder="Email"
                 returnKeyType="next"
-                style={undefined}
                 underlineColorAndroid="transparent"
                 value={undefined}
                 width={280}
@@ -250,10 +242,9 @@ ShallowWrapper {
                   "borderRadius": 7,
                   "borderWidth": 1,
                   "flexDirection": "row",
-                  "justifyContent": "space-between",
+                  "justifyContent": "center",
                   "marginTop": 30,
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
+                  "paddingHorizontal": 2,
                 }
               }
             >
@@ -272,7 +263,6 @@ ShallowWrapper {
                 placeholder="Senha"
                 returnKeyType="go"
                 secureTextEntry={true}
-                style={undefined}
                 underlineColorAndroid="transparent"
                 value={undefined}
                 width={280}
@@ -283,12 +273,11 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
+                  "alignItems": "center",
                   "backgroundColor": "#FF9500",
                   "borderRadius": 8,
                   "borderWidth": 1,
-                  "marginBottom": 0,
                   "marginTop": 50,
-                  "paddingHorizontal": 133,
                   "paddingVertical": 18,
                 }
               }
@@ -310,10 +299,10 @@ ShallowWrapper {
             </TouchableOpacity>,
           ],
           "style": Object {
-            "alignItems": "center",
             "backgroundColor": "white",
             "flex": 6,
             "justifyContent": "center",
+            "paddingHorizontal": 18,
           },
         },
         "ref": null,
@@ -338,9 +327,8 @@ ShallowWrapper {
                   keyboardType="email-address"
                   onChangeText={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="email"
+                  placeholder="Email"
                   returnKeyType="next"
-                  style={undefined}
                   underlineColorAndroid="transparent"
                   value={undefined}
                   width={280}
@@ -353,9 +341,7 @@ ShallowWrapper {
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "center",
-                "paddingLeft": 2,
-                "paddingRight": 4,
+                "paddingHorizontal": 2,
               },
             },
             "ref": null,
@@ -384,9 +370,8 @@ ShallowWrapper {
                   "keyboardType": "email-address",
                   "onChangeText": [Function],
                   "onSubmitEditing": [Function],
-                  "placeholder": "email",
+                  "placeholder": "Email",
                   "returnKeyType": "next",
-                  "style": undefined,
                   "underlineColorAndroid": "transparent",
                   "value": undefined,
                   "width": 280,
@@ -419,7 +404,6 @@ ShallowWrapper {
                   placeholder="Senha"
                   returnKeyType="go"
                   secureTextEntry={true}
-                  style={undefined}
                   underlineColorAndroid="transparent"
                   value={undefined}
                   width={280}
@@ -431,10 +415,9 @@ ShallowWrapper {
                 "borderRadius": 7,
                 "borderWidth": 1,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
+                "justifyContent": "center",
                 "marginTop": 30,
-                "paddingLeft": 2,
-                "paddingRight": 4,
+                "paddingHorizontal": 2,
               },
             },
             "ref": null,
@@ -464,7 +447,6 @@ ShallowWrapper {
                   "placeholder": "Senha",
                   "returnKeyType": "go",
                   "secureTextEntry": true,
-                  "style": undefined,
                   "underlineColorAndroid": "transparent",
                   "value": undefined,
                   "width": 280,
@@ -498,12 +480,11 @@ ShallowWrapper {
               </Text>,
               "onPress": [Function],
               "style": Object {
+                "alignItems": "center",
                 "backgroundColor": "#FF9500",
                 "borderRadius": 8,
                 "borderWidth": 1,
-                "marginBottom": 0,
                 "marginTop": 50,
-                "paddingHorizontal": 133,
                 "paddingVertical": 18,
               },
             },
@@ -565,9 +546,10 @@ ShallowWrapper {
           </TouchableOpacity>,
           "style": Object {
             "alignItems": "center",
+            "backgroundColor": "white",
             "borderTopColor": "#a9a9a9",
             "borderTopWidth": 1,
-            "flex": 0.7,
+            "flex": 0.5,
             "justifyContent": "center",
           },
         },
@@ -674,10 +656,10 @@ ShallowWrapper {
           <View
             style={
               Object {
-                "alignItems": "center",
                 "backgroundColor": "white",
                 "flex": 6,
                 "justifyContent": "center",
+                "paddingHorizontal": 18,
               }
             }
           >
@@ -690,9 +672,7 @@ ShallowWrapper {
                   "borderRadius": 7,
                   "borderWidth": 1,
                   "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
+                  "paddingHorizontal": 2,
                 }
               }
             >
@@ -710,9 +690,8 @@ ShallowWrapper {
                 keyboardType="email-address"
                 onChangeText={[Function]}
                 onSubmitEditing={[Function]}
-                placeholder="email"
+                placeholder="Email"
                 returnKeyType="next"
-                style={undefined}
                 underlineColorAndroid="transparent"
                 value={undefined}
                 width={280}
@@ -726,10 +705,9 @@ ShallowWrapper {
                   "borderRadius": 7,
                   "borderWidth": 1,
                   "flexDirection": "row",
-                  "justifyContent": "space-between",
+                  "justifyContent": "center",
                   "marginTop": 30,
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
+                  "paddingHorizontal": 2,
                 }
               }
             >
@@ -748,7 +726,6 @@ ShallowWrapper {
                 placeholder="Senha"
                 returnKeyType="go"
                 secureTextEntry={true}
-                style={undefined}
                 underlineColorAndroid="transparent"
                 value={undefined}
                 width={280}
@@ -759,12 +736,11 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
+                  "alignItems": "center",
                   "backgroundColor": "#FF9500",
                   "borderRadius": 8,
                   "borderWidth": 1,
-                  "marginBottom": 0,
                   "marginTop": 50,
-                  "paddingHorizontal": 133,
                   "paddingVertical": 18,
                 }
               }
@@ -789,9 +765,10 @@ ShallowWrapper {
             style={
               Object {
                 "alignItems": "center",
+                "backgroundColor": "white",
                 "borderTopColor": "#a9a9a9",
                 "borderTopWidth": 1,
-                "flex": 0.7,
+                "flex": 0.5,
                 "justifyContent": "center",
               }
             }
@@ -858,9 +835,7 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "flexDirection": "row",
-                    "justifyContent": "center",
-                    "paddingLeft": 2,
-                    "paddingRight": 4,
+                    "paddingHorizontal": 2,
                   }
                 }
               >
@@ -878,9 +853,8 @@ ShallowWrapper {
                   keyboardType="email-address"
                   onChangeText={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="email"
+                  placeholder="Email"
                   returnKeyType="next"
-                  style={undefined}
                   underlineColorAndroid="transparent"
                   value={undefined}
                   width={280}
@@ -894,10 +868,9 @@ ShallowWrapper {
                     "borderRadius": 7,
                     "borderWidth": 1,
                     "flexDirection": "row",
-                    "justifyContent": "space-between",
+                    "justifyContent": "center",
                     "marginTop": 30,
-                    "paddingLeft": 2,
-                    "paddingRight": 4,
+                    "paddingHorizontal": 2,
                   }
                 }
               >
@@ -916,7 +889,6 @@ ShallowWrapper {
                   placeholder="Senha"
                   returnKeyType="go"
                   secureTextEntry={true}
-                  style={undefined}
                   underlineColorAndroid="transparent"
                   value={undefined}
                   width={280}
@@ -927,12 +899,11 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
                     "backgroundColor": "#FF9500",
                     "borderRadius": 8,
                     "borderWidth": 1,
-                    "marginBottom": 0,
                     "marginTop": 50,
-                    "paddingHorizontal": 133,
                     "paddingVertical": 18,
                   }
                 }
@@ -954,10 +925,10 @@ ShallowWrapper {
               </TouchableOpacity>,
             ],
             "style": Object {
-              "alignItems": "center",
               "backgroundColor": "white",
               "flex": 6,
               "justifyContent": "center",
+              "paddingHorizontal": 18,
             },
           },
           "ref": null,
@@ -982,9 +953,8 @@ ShallowWrapper {
                     keyboardType="email-address"
                     onChangeText={[Function]}
                     onSubmitEditing={[Function]}
-                    placeholder="email"
+                    placeholder="Email"
                     returnKeyType="next"
-                    style={undefined}
                     underlineColorAndroid="transparent"
                     value={undefined}
                     width={280}
@@ -997,9 +967,7 @@ ShallowWrapper {
                   "borderRadius": 7,
                   "borderWidth": 1,
                   "flexDirection": "row",
-                  "justifyContent": "center",
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
+                  "paddingHorizontal": 2,
                 },
               },
               "ref": null,
@@ -1028,9 +996,8 @@ ShallowWrapper {
                     "keyboardType": "email-address",
                     "onChangeText": [Function],
                     "onSubmitEditing": [Function],
-                    "placeholder": "email",
+                    "placeholder": "Email",
                     "returnKeyType": "next",
-                    "style": undefined,
                     "underlineColorAndroid": "transparent",
                     "value": undefined,
                     "width": 280,
@@ -1063,7 +1030,6 @@ ShallowWrapper {
                     placeholder="Senha"
                     returnKeyType="go"
                     secureTextEntry={true}
-                    style={undefined}
                     underlineColorAndroid="transparent"
                     value={undefined}
                     width={280}
@@ -1075,10 +1041,9 @@ ShallowWrapper {
                   "borderRadius": 7,
                   "borderWidth": 1,
                   "flexDirection": "row",
-                  "justifyContent": "space-between",
+                  "justifyContent": "center",
                   "marginTop": 30,
-                  "paddingLeft": 2,
-                  "paddingRight": 4,
+                  "paddingHorizontal": 2,
                 },
               },
               "ref": null,
@@ -1108,7 +1073,6 @@ ShallowWrapper {
                     "placeholder": "Senha",
                     "returnKeyType": "go",
                     "secureTextEntry": true,
-                    "style": undefined,
                     "underlineColorAndroid": "transparent",
                     "value": undefined,
                     "width": 280,
@@ -1142,12 +1106,11 @@ ShallowWrapper {
                 </Text>,
                 "onPress": [Function],
                 "style": Object {
+                  "alignItems": "center",
                   "backgroundColor": "#FF9500",
                   "borderRadius": 8,
                   "borderWidth": 1,
-                  "marginBottom": 0,
                   "marginTop": 50,
-                  "paddingHorizontal": 133,
                   "paddingVertical": 18,
                 },
               },
@@ -1209,9 +1172,10 @@ ShallowWrapper {
             </TouchableOpacity>,
             "style": Object {
               "alignItems": "center",
+              "backgroundColor": "white",
               "borderTopColor": "#a9a9a9",
               "borderTopWidth": 1,
-              "flex": 0.7,
+              "flex": 0.5,
               "justifyContent": "center",
             },
           },
