@@ -12,6 +12,7 @@ import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContaine
 import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckoutContainer';
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
+import MainReportsScreen from './src/screens/MainReportsScreen';
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 
 
@@ -30,6 +31,7 @@ const Routes = () => ({
           <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
           <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
           <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
+          <Scene key="mainReportsScreen" component={MainReportsScreen} hideNavBar />
           <Scene
             key="stockFoodCheckoutScreen"
             component={StockFoodCheckoutScreenContainer}
