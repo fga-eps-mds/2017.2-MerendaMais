@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
   setRefectoryObservation: observation => dispatch(setRefectoryObservation(observation)),
 });
 
-const RefectoryCheckoutScreenContainer =
+const RefectoryCheckoutContainer =
 connect(mapStateToProps, mapDispatchToProps)(RefectoryCheckoutScreen);
 
-export default RefectoryCheckoutScreenContainer;
+export default RefectoryCheckoutContainer;

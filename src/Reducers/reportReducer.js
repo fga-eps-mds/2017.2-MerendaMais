@@ -8,6 +8,9 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_KITCHENREPORT_POSITIVE,
   SET_KITCHENREPORT_NEGATIVE,
   SET_KITCHENOBSERVATION,
+  SET_FOODQUALITYOBSERVATION,
+  SET_FOODQUALITYREPORT_NEGATIVE,
+  SET_FOODQUALITYREPORT_POSITIVE,
 } from '../actions/types';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
 
@@ -50,10 +53,11 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         foodStockObservation: action.payload,
       };
-    case SET_REFECTORYREPORT_POSITIVE:
+
+    case SET_KITCHENREPORT_POSITIVE:
       return {
         ...state,
-        refectory: state.refectory.map((item) => {
+        kitchen: state.kitchen.map((item) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
@@ -61,11 +65,26 @@ const reportReducer = (state = initialState.report, action) => {
           return item;
         }),
       };
-
-    case SET_KITCHENREPORT_POSITIVE:
+    case SET_KITCHENREPORT_NEGATIVE:
       return {
         ...state,
         kitchen: state.kitchen.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+    case SET_KITCHENOBSERVATION:
+      return {
+        ...state,
+        kitchenObservation: action.payload,
+      };
+    case SET_REFECTORYREPORT_POSITIVE:
+      return {
+        ...state,
+        refectory: state.refectory.map((item) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
@@ -84,10 +103,27 @@ const reportReducer = (state = initialState.report, action) => {
           return item;
         }),
       };
-    case SET_KITCHENREPORT_NEGATIVE:
+    case SET_REFECTORYOBSERVATION:
+      console.log(action.payload);
       return {
         ...state,
-        kitchen: state.kitchen.map((item) => {
+        refectoryObservation: action.payload,
+      };
+    case SET_FOODQUALITYREPORT_POSITIVE:
+      return {
+        ...state,
+        foodQuality: state.foodQuality.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+    case SET_FOODQUALITYREPORT_NEGATIVE:
+      return {
+        ...state,
+        foodQuality: state.foodQuality.map((item) => {
           if (item.key === action.payload.key) {
             return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
@@ -95,16 +131,11 @@ const reportReducer = (state = initialState.report, action) => {
           return item;
         }),
       };
-    case SET_REFECTORYOBSERVATION:
+    case SET_FOODQUALITYOBSERVATION:
       console.log(action.payload);
       return {
         ...state,
-        refectoryObservation: action.payload,
-      };
-    case SET_KITCHENOBSERVATION:
-      return {
-        ...state,
-        kitchenObservation: action.payload,
+        foodQualityObservation: action.payload,
       };
     default:
       return state;

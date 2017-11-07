@@ -13,9 +13,10 @@ import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckout
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
 import MainReportsScreen from './src/screens/MainReportsScreen';
-import RefectoryCheckoutScreenContainer from './src/Containers/RefectoryCheckoutScreenContainer';
+import RefectoryCheckoutContainer from './src/Containers/RefectoryCheckoutContainer';
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
+import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
 
 const Routes = () => ({
   render() {
@@ -41,7 +42,12 @@ const Routes = () => ({
           />
           <Scene
             key="refectoryCheckoutScreen"
-            component={RefectoryCheckoutScreenContainer}
+            component={RefectoryCheckoutContainer}
+            hideNavBar
+          />
+          <Scene
+            key="foodQualityCheckoutScreen"
+            component={FoodQualityCheckoutContainer}
             hideNavBar
           />
           <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />

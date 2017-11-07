@@ -7,6 +7,9 @@ import { SET_STOCKFOODREPORT_NEGATIVE,
   SET_KITCHENREPORT_POSITIVE,
   SET_KITCHENREPORT_NEGATIVE,
   SET_KITCHENOBSERVATION,
+  SET_FOODQUALITYOBSERVATION,
+  SET_FOODQUALITYREPORT_NEGATIVE,
+  SET_FOODQUALITYREPORT_POSITIVE,
 } from './types';
 
 export const setStockFoodReportPositive = key => ({
@@ -28,17 +31,27 @@ export const setFoodStockObservation = observation => ({
   payload: observation,
 });
 
-
-export const setRefectoryReportPositive = key => ({
-  type: SET_REFECTORYREPORT_POSITIVE,
-
+export const setKitchenReportPositive = key => ({
+  type: SET_KITCHENREPORT_POSITIVE,
   payload: {
     key,
   },
 });
 
-export const setKitchenReportPositive = key => ({
-  type: SET_KITCHENREPORT_POSITIVE,
+export const setKitchenReportNegative = key => ({
+  type: SET_KITCHENREPORT_NEGATIVE,
+  payload: {
+    key,
+  },
+});
+
+export const setKitchenObservation = observation => ({
+  type: SET_KITCHENOBSERVATION,
+  payload: observation,
+});
+
+export const setRefectoryReportPositive = key => ({
+  type: SET_REFECTORYREPORT_POSITIVE,
   payload: {
     key,
   },
@@ -49,17 +62,24 @@ export const setRefectoryReportNegative = key => ({
     key,
   },
 });
-export const setKitchenReportNegative = key => ({
-  type: SET_KITCHENREPORT_NEGATIVE,
-  payload: {
-    key,
-  },
-});
 export const setRefectoryObservation = observation => ({
   type: SET_REFECTORYOBSERVATION,
   payload: observation,
 });
-export const setKitchenObservation = observation => ({
-  type: SET_KITCHENOBSERVATION,
+
+export const setFoodQualityReportPositive = key => ({
+  type: SET_FOODQUALITYREPORT_POSITIVE,
+  payload: {
+    key,
+  },
+});
+export const setFoodQualityReportNegative = key => ({
+  type: SET_FOODQUALITYREPORT_NEGATIVE,
+  payload: {
+    key,
+  },
+});
+export const setFoodQualityObservation = observation => ({
+  type: SET_FOODQUALITYOBSERVATION,
   payload: observation,
 });

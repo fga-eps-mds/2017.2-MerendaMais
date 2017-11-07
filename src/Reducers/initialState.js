@@ -1,6 +1,7 @@
 import foodStock from './Reports/foodStock';
 import refectory from './Reports/refectory';
 import kitchen from './Reports/kitchen';
+import foodQuality from './Reports/foodQuality';
 
 const initialState = {
   counselor: {
@@ -30,6 +31,8 @@ const initialState = {
     refectoryObservation: '',
     kitchen,
     kitchenObservation: '',
+    foodQuality,
+    foodQualityObservation: '',
   },
   school: {
     schoolCode: '',
