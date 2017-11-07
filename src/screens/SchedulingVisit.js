@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
+import Button from '../components/Button';
 
 
 const styles = StyleSheet.create({
@@ -91,35 +92,7 @@ export default class SchedulingVisit extends React.Component {
       time: this.state.visit.time,
     };
 
-    console.log(newVisit);
-    console.log(newProps);
-
     this.setState({ visit: newVisit });
-  }
-
-  buttonActivation() {
-    if (this.props.school.schoolSelected) {
-      console.log('SchoolSelected is true');
-      return (
-        <TouchableOpacity
-          key="scheduleButton"
-          style={styles.schedullingButton}
-          onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
-        >
-          <Text style={styles.buttonText}>Agendar</Text>
-        </TouchableOpacity>
-      );
-    }
-
-    return (
-      <TouchableOpacity
-        key="scheduleButton"
-        style={styles.disabledSchedullingButton}
-        disabled
-      >
-        <Text style={styles.buttonText}>Agendar</Text>
-      </TouchableOpacity>
-    );
   }
 
   render() {
@@ -204,7 +177,19 @@ export default class SchedulingVisit extends React.Component {
           </View>
         </View>
         <View style={styles.Container}>
-          {this.buttonActivation()}
+          {this.props.school.schoolSelected && (
+            <Button
+              enabled
+              key="scheduleButton"
+              onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
+            />
+          )}
+
+          <Button
+            enabled={false}
+            key="scheduleButton"
+            disabled
+          />
         </View>
       </ScrollView>
     );

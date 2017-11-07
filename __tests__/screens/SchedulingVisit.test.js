@@ -19,9 +19,14 @@ const initialState = {
     date: '31-12-2017',
     time: '18:30',
   },
+  school: {
+    schoolSelected: true,
+  },
 };
 
 const store = mockStore(initialState);
+
+jest.mock('react-native-router-flux');
 
 describe('Testing SchedulingVisit', () => {
   it('renders as expected', () => {
@@ -64,7 +69,6 @@ describe('Testing SchedulingVisit buttons', () => {
 
     const wrapper = shallow(<SchedulingVisit
       {...initialState}
-      asyncSchedulingVisit={asyncSchedulingVisit}
     />);
 
     wrapper.setState({
