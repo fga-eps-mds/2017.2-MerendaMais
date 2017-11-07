@@ -267,7 +267,7 @@ export default class RegisterScreen extends React.Component {
 
         <Text>     Telefone</Text>
         <View style={styles.InputStyle}>
-          <FontAwesome name="phone" style={styles.icon} size={32} color="black" />
+          <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
           <TextInput
             placeholder="Digite o seu telefone"
             placeholderTextColor="#95a5a6"

@@ -34,9 +34,7 @@ exports[`Testing SearchSchool renders as expected 1`] = `
         size={45}
         style={
           Object {
-            "height": 45,
-            "margin": 5,
-            "width": 30,
+            "margin": 8,
           }
         }
       />
@@ -64,16 +62,8 @@ exports[`Testing SearchSchool renders as expected 1`] = `
     >
       <Icon
         allowFontScaling={false}
-        color="black"
-        name="menu"
-        size={45}
-        style={
-          Object {
-            "height": 45,
-            "margin": 5,
-            "width": 30,
-          }
-        }
+        name="navicon"
+        size={32}
       />
     </TouchableOpacity>
   </View>
@@ -111,12 +101,10 @@ exports[`Testing SearchSchool renders as expected 1`] = `
           allowFontScaling={false}
           color="black"
           name="location-city"
-          size={30}
+          size={32}
           style={
             Object {
-              "height": 45,
-              "margin": 5,
-              "width": 30,
+              "margin": 8,
             }
           }
         />
@@ -153,9 +141,7 @@ exports[`Testing SearchSchool renders as expected 1`] = `
           size={30}
           style={
             Object {
-              "height": 45,
-              "margin": 5,
-              "width": 30,
+              "margin": 8,
             }
           }
         />

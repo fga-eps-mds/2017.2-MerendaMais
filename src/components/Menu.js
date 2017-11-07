@@ -15,10 +15,12 @@ const styles = StyleSheet.create({
     borderLeftColor: 'black',
     borderLeftWidth: 1,
   },
+
   avatarContainer: {
     marginBottom: 20,
     marginTop: 20,
   },
+
   avatar: {
     width: 48,
     height: 48,
@@ -56,122 +58,122 @@ const Menu = () => {
   if (newState.counselor.profile.isPresident) {
     return (
       <View style={styles.menu}>
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="search" style={styles.icon} size={32} color="black" />
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => Actions.searchSchool()}
-          >
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.searchSchool()}
+        >
+          <View style={styles.fieldStyle}>
+            <MaterialIcons name="search" style={styles.icon} size={32} color="black" />
             <Text
               style={styles.item}
             >
               Pesquisar Escola
             </Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
 
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="settings" style={styles.icon} size={32} color="black" />
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => Actions.updateInfoScreen()}
-          >
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.updateInfoScreen()}
+        >
+          <View style={styles.fieldStyle}>
+            <MaterialIcons name="settings" style={styles.icon} size={32} color="black" />
             <Text
               style={styles.item}
             >
               Editar Dados
             </Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
 
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="account-box" style={styles.icon} size={32} color="black" />
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => Actions.profileInfoScreen()}
-          >
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.profileInfoScreen()}
+        >
+          <View style={styles.fieldStyle}>
+            <MaterialIcons name="account-box" style={styles.icon} size={32} color="black" />
             <Text
               style={styles.item}
             >
               Perfil
             </Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
 
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="group-work" style={styles.icon} size={32} color="black" />
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => Actions.manageRegisters()}
-          >
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.manageRegisters()}
+        >
+          <View style={styles.fieldStyle}>
+            <MaterialIcons name="group-work" style={styles.icon} size={32} color="black" />
             <Text
               style={styles.item}
             >
               Gerenciar Conselheiros
             </Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
 
       </View>
     );
   }
   return (
     <View style={styles.menu}>
-      <View style={styles.fieldStyle}>
-        <MaterialIcons name="search" style={styles.icon} size={32} color="black" />
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.searchSchool()}
-        >
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => Actions.searchSchool()}
+      >
+        <View style={styles.fieldStyle}>
+          <MaterialIcons name="search" style={styles.icon} size={32} color="black" />
           <Text
             style={styles.item}
           >
             Pesquisar Escola
           </Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
 
-      <View style={styles.fieldStyle}>
-        <MaterialIcons name="settings" style={styles.icon} size={32} color="black" />
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.updateInfoScreen()}
-        >
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => Actions.updateInfoScreen()}
+      >
+        <View style={styles.fieldStyle}>
+          <MaterialIcons name="settings" style={styles.icon} size={32} color="black" />
           <Text
             style={styles.item}
           >
             Editar Dados
           </Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
 
-      <View style={styles.fieldStyle}>
-        <MaterialIcons name="account-box" style={styles.icon} size={32} color="black" />
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.profileInfoScreen()}
-        >
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => Actions.profileInfoScreen()}
+      >
+        <View style={styles.fieldStyle}>
+          <MaterialIcons name="account-box" style={styles.icon} size={32} color="black" />
           <Text
             style={styles.item}
           >
             Perfil
           </Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
 
-      <View style={styles.fieldStyle}>
-        <MaterialIcons name="access-time" style={styles.icon} size={32} color="black" />
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.schedulingVisit()}
-        >
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => Actions.schedulingVisit()}
+      >
+        <View style={styles.fieldStyle}>
+          <MaterialIcons name="access-time" style={styles.icon} size={32} color="black" />
           <Text
             style={styles.item}
           >
             Agendar visita
           </Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
 
     </View>
   );

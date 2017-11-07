@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
+
   buttonContainer: {
     paddingVertical: 10,
     borderWidth: 1,
@@ -23,16 +24,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
+
   buttonText: {
     textAlign: 'center',
     color: '#FFF',
   },
+
   content: {
     marginTop: 30,
     marginBottom: 9,
     flex: 6,
     flexDirection: 'column',
   },
+
   inputs: {
     backgroundColor: '#FAFAFA',
     paddingVertical: 10,
@@ -47,9 +51,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   icon: {
-    width: 30,
-    height: 30,
     margin: 5,
   },
 });

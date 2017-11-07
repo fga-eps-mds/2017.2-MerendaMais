@@ -88,7 +88,7 @@ export default class ProfileInfoScreen extends React.Component {
             <Text>CPF: {this.props.counselor.profile.cpf}</Text>
           </View>
           <View style={styles.field}>
-            <FontAwesome name="phone" style={styles.icon} size={32} color="black" />
+            <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
             <Text>Telefone: {this.props.counselor.profile.phone}</Text>
           </View>
           <View style={styles.field}>

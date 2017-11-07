@@ -9,13 +9,14 @@ const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
+
   content: {
     flex: 6,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-
   },
+
   footer: {
     flex: 0.7,
     borderTopColor: '#a9a9a9',
@@ -23,11 +24,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   icon: {
-    width: 30,
-    height: 30,
     margin: 5,
   },
+
   Inputemail: {
     paddingLeft: 2,
     paddingRight: 4,
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
   },
+
   InputPassword: {
     paddingLeft: 2,
     paddingRight: 4,
@@ -50,6 +52,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
   },
+
   buttonLogin: {
     paddingHorizontal: 133,
     paddingVertical: 18,
@@ -59,7 +62,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
-
 });
 
 export default class LoginPresidentScreen extends React.Component {

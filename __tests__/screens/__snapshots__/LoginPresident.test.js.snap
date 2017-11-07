@@ -45,9 +45,7 @@ exports[`Testing LoginPresidente renders as expected 1`] = `
         size={32}
         style={
           Object {
-            "height": 30,
             "margin": 5,
-            "width": 30,
           }
         }
       />
@@ -83,9 +81,7 @@ exports[`Testing LoginPresidente renders as expected 1`] = `
         size={32}
         style={
           Object {
-            "height": 30,
             "margin": 5,
-            "width": 30,
           }
         }
       />

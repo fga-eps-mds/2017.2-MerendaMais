@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MaterialIcons, Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet,
   Text,
@@ -44,10 +44,9 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    width: 30,
-    height: 45,
-    margin: 5,
+    margin: 8,
   },
+
   buttonSearchAnabled: {
     paddingHorizontal: 117,
     paddingVertical: 15,
@@ -57,6 +56,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
+
   buttonSearchDisabled: {
     paddingHorizontal: 117,
     paddingVertical: 15,
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
+
   listSchools: {
     flex: 2.5,
     justifyContent: 'center',
@@ -74,21 +75,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
   },
+
   item: {
     borderBottomColor: 'black',
     borderBottomWidth: 0.5,
     borderRadius: 7,
   },
+
   buttonSelectSchool: { padding: 10,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+
   buttonArea: {
     flex: 1,
     justifyContent: 'flex-end',
     paddingBottom: 20,
   },
+
   InputDropdown: {
     marginTop: 15,
     paddingLeft: 2,
@@ -97,6 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
 
   },
+
   Input: {
     marginTop: 20,
     paddingLeft: 2,
@@ -128,6 +134,7 @@ class SearchSchool extends React.Component {
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
   }
+
   validateName(name) {
     const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g, '');
     this.setState({ name: validName });
@@ -232,14 +239,14 @@ class SearchSchool extends React.Component {
           <TouchableOpacity
             onPress={() => Actions.drawerOpen()}
           >
-            <Entypo name="menu" style={styles.icon} size={45} color="black" />
+            <FontAwesome name="navicon" size={32} />
           </TouchableOpacity>
         </View>
 
         <View style={styles.bodyBox}>
           <View style={{ flex: 3 }}>
             <View style={styles.Input}>
-              <MaterialIcons name="location-city" style={styles.icon} size={30} color="black" />
+              <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
               <TextInput
                 width={280}
                 returnKeyType="go"
