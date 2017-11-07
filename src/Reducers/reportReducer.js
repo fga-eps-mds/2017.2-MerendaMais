@@ -11,6 +11,7 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_DOCREPORT_POSITIVE,
   SET_DOCREPORT_NEGATIVE,
   SET_DOCOBSERVATION,
+  SET_REPORTOBSERVATION,
 } from '../actions/types';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
 
@@ -142,6 +143,12 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         docObservation: action.payload,
+      };
+
+    case SET_REPORTOBSERVATION:
+      return {
+        ...state,
+        otherObservation: action.payload,
       };
 
     default:

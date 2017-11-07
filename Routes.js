@@ -17,6 +17,7 @@ import RefectoryCheckoutScreenContainer from './src/Containers/RefectoryCheckout
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
+import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 
 
 const Routes = () => ({
@@ -37,6 +38,7 @@ const Routes = () => ({
           <Scene key="mainReportsScreen" component={MainReportsScreen} hideNavBar />
           <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
           <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
+          <Scene key="ReportObservationScreen" component={ReportObservationContainer} hideNavBar />
           <Scene
             key="stockFoodCheckoutScreen"
             component={StockFoodCheckoutScreenContainer}

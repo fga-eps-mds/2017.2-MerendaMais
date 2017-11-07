@@ -33,6 +33,7 @@ const initialState = {
     kitchenObservation: '',
     doc,
     documentationObservation: '',
+    otherObservation: '',
   },
   school: {
     schoolCode: '',

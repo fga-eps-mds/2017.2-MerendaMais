@@ -10,6 +10,7 @@ import { SET_STOCKFOODREPORT_NEGATIVE,
   SET_DOCREPORT_POSITIVE,
   SET_DOCREPORT_NEGATIVE,
   SET_DOCOBSERVATION,
+  SET_REPORTOBSERVATION,
 } from './types';
 
 export const setStockFoodReportPositive = key => ({
@@ -87,5 +88,10 @@ export const setDocReportNegative = key => ({
 
 export const setDocObservation = observation => ({
   type: SET_DOCOBSERVATION,
+  payload: observation,
+});
+
+export const setReportObservation = observation => ({
+  type: SET_REPORTOBSERVATION,
   payload: observation,
 });
