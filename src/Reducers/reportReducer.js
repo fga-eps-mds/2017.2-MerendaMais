@@ -8,6 +8,9 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_KITCHENREPORT_POSITIVE,
   SET_KITCHENREPORT_NEGATIVE,
   SET_KITCHENOBSERVATION,
+  SET_DOCREPORT_POSITIVE,
+  SET_DOCREPORT_NEGATIVE,
+  SET_DOCOBSERVATION,
 } from '../actions/types';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
 
@@ -73,6 +76,7 @@ const reportReducer = (state = initialState.report, action) => {
           return item;
         }),
       };
+
     case SET_REFECTORYREPORT_NEGATIVE:
       return {
         ...state,
@@ -84,6 +88,7 @@ const reportReducer = (state = initialState.report, action) => {
           return item;
         }),
       };
+
     case SET_KITCHENREPORT_NEGATIVE:
       return {
         ...state,
@@ -95,17 +100,50 @@ const reportReducer = (state = initialState.report, action) => {
           return item;
         }),
       };
+
     case SET_REFECTORYOBSERVATION:
       console.log(action.payload);
       return {
         ...state,
         refectoryObservation: action.payload,
       };
+
     case SET_KITCHENOBSERVATION:
       return {
         ...state,
         kitchenObservation: action.payload,
       };
+
+    case SET_DOCREPORT_POSITIVE:
+      return {
+        ...state,
+        doc: state.doc.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+
+    case SET_DOCREPORT_NEGATIVE:
+      return {
+        ...state,
+        doc: state.doc.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+
+    case SET_DOCOBSERVATION:
+      return {
+        ...state,
+        docObservation: action.payload,
+      };
+
     default:
       return state;
   }
