@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class reportObservationScreen extends React.Component {
+export default class ReportObservationScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -127,7 +127,7 @@ export default class reportObservationScreen extends React.Component {
   }
 }
 
-reportObservationScreen.propTypes = {
+ReportObservationScreen.propTypes = {
   setReportObservation: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
 };
