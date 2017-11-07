@@ -48,10 +48,10 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: 'gray',
-    borderWidth: 1,
     borderRadius: 7,
     marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
 
   InputStyleCorrect: {
@@ -61,10 +61,10 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#80FF80',
-    borderWidth: 3,
     borderRadius: 7,
     marginBottom: 10,
+    borderWidth: 3,
+    borderColor: '#80FF80',
   },
 
   InputStyleWrong: {
@@ -73,10 +73,10 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 3,
     borderRadius: 7,
-    borderColor: '#FF9999',
     marginBottom: 10,
+    borderWidth: 3,
+    borderColor: '#FF9999',
   },
 
   InputDropdown: {
@@ -111,7 +111,6 @@ export default class RegisterScreen extends React.Component {
       email: '',
       name: '',
       password: '',
-      passwordCompared: '',
       profile: {
         cpf: '',
         phone: '',
@@ -120,7 +119,11 @@ export default class RegisterScreen extends React.Component {
         CAE_Type: '',
         CAE: '',
       },
+      passwordCompared: '',
     };
+
+    /* Bind is used in this functions, because they
+    use inside them React functions like: this.setState. */
     this.validateCpf = this.validateCpf.bind(this);
     this.validateName = this.validateName.bind(this);
     this.validatePhone = this.validatePhone.bind(this);
@@ -128,6 +131,7 @@ export default class RegisterScreen extends React.Component {
     this.register = this.register.bind(this);
   }
 
+  // Functions that erase invalid caracteres.
   validateCpf(cpf) {
     const validCpf = cpf.replace(/[^0-9]/g, '');
     this.setState({ profile: { ...this.state.profile, cpf: validCpf } });
@@ -135,7 +139,7 @@ export default class RegisterScreen extends React.Component {
 
   validateName(name) {
     const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ name: validName });
+    this.setState({ name: validName.trim() });
   }
 
   validatePhone(phone) {
@@ -148,52 +152,81 @@ export default class RegisterScreen extends React.Component {
     this.setState({ profile: { ...this.state.profile, CAE: validCae } });
   }
 
+  // Verify if there's a error in some field form.
   register() {
     const cpfRegex = /[0-9]{11}/g;
     const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const passwordRegex = /^(?=.{6,})(?!.*\s).*$/g;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
     const caeRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
+
     let error = false;
     let errorMessage = '';
+
+    // Validating CPF.
     if (!cpfRegex.test(this.state.profile.cpf)) {
       error = true;
-      errorMessage += 'CPF inválido\n';
+      errorMessage += 'CPF inválido.\n';
     }
+
+    // Validating Name.
     if (!nameRegex.test(this.state.name) || this.state.name.trim() === '') {
       error = true;
-      errorMessage += 'Nome inválido\n';
+      errorMessage += 'Nome inválido.\n';
     }
-    if (this.state.password.length <= 6) {
+
+    // Validating Password.
+    if (!passwordRegex.test(this.state.password)) {
       error = true;
-      errorMessage += 'Senha deve possuir no mínimo seis caracteres\n';
+      errorMessage += 'Senha Inválida (*Não deve ter espaços *Tamanho mínimo 6 caracteres).\n';
     }
+
+    // Validating Match Password
+    if (this.state.password !== this.state.passwordCompared) {
+      error = true;
+      errorMessage += 'Senhas digitadas devem ser iguais.\n';
+    }
+
+    // Validating Email.
     if (!emailRegex.test(this.state.email)) {
       error = true;
-      errorMessage += 'Email inválido\n';
+      errorMessage += 'Email inválido.\n';
     }
+
+    // Validating Phone.
     if (!phoneRegex1.test(this.state.profile.phone) &&
     !phoneRegex2.test(this.state.profile.phone)) {
       error = true;
-      errorMessage += 'Telefone inválido\n';
+      errorMessage += 'Telefone inválido.\n';
     }
+
+    // Validating is President.
     if (this.state.profile.isPresident === '') {
       error = true;
-      errorMessage += 'Cargo não selecionado\n';
+      errorMessage += 'Cargo não selecionado.\n';
     }
+
+    // Validating Segment.
     if (this.state.profile.segment === '') {
       error = true;
-      errorMessage += 'Segmento não selecionado\n';
+      errorMessage += 'Segmento não selecionado.\n';
     }
+
+    // Validating CAE type.
     if (this.state.profile.CAE_Type === '') {
       error = true;
-      errorMessage += 'Tipo de CAE não selecionado\n';
+      errorMessage += 'Tipo de CAE não selecionado.\n';
     }
+
+    // Validating CAE.
     if (!caeRegex.test(this.state.profile.CAE) || this.state.profile.CAE.trim() === '') {
       error = true;
-      errorMessage += 'CAE inválido\n';
+      errorMessage += 'CAE inválido.\n';
     }
+
+    // Checking if was found a irregularity in register fields.
     if (error === false) {
       this.props.asyncRegisterCounselor(this.state);
     } else {
@@ -201,19 +234,21 @@ export default class RegisterScreen extends React.Component {
     }
   }
 
-  validatePassword() {
-    if (this.state.password.length === 0) {
+  changePasswordStyleAccordingToInput() {
+    const passwordRegex = /^(?=.{6,})(?!.*\s).*$/g;
+
+    if (this.state.password === '') {
       return styles.InputStyle;
-    } else if (this.state.password.length >= 6) {
+    } else if (passwordRegex.test(this.state.password)) {
       return styles.InputStyleCorrect;
     }
     return styles.InputStyleWrong;
   }
 
-  comparePassword(passwordCompared) {
+  changeStyleIfPasswordsMatch(passwordCompared) {
     if (passwordCompared === '') {
       return styles.InputStyle;
-    } else if (this.state.password === passwordCompared && passwordCompared.length >= 6) {
+    } else if (this.state.password === passwordCompared) {
       return styles.InputStyleCorrect;
     }
     return styles.InputStyleWrong;
@@ -295,9 +330,10 @@ export default class RegisterScreen extends React.Component {
               <TextInput
                 placeholder="Digite sua senha"
                 placeholderTextColor="#95a5a6"
-                style={this.validatePassword()}
+                style={this.changePasswordStyleAccordingToInput()}
                 underlineColorAndroid="transparent"
                 returnKeyLabel={'next'}
+                maxLength={30}
                 keyboardType={'default'}
                 onChangeText={text => this.setState({ password: text })}
                 secureTextEntry
@@ -307,7 +343,7 @@ export default class RegisterScreen extends React.Component {
               <TextInput
                 placeholder="Digite sua senha novamente"
                 placeholderTextColor="#95a5a6"
-                style={this.comparePassword(this.state.passwordCompared)}
+                style={this.changeStyleIfPasswordsMatch(this.state.passwordCompared)}
                 underlineColorAndroid="transparent"
                 returnKeyLabel={'next'}
                 keyboardType={'default'}
