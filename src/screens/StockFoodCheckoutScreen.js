@@ -1,6 +1,7 @@
 import React from 'react';
-import CheckBox from 'react-native-checkbox';
+import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 import { StyleSheet,
   TouchableOpacity,
   Text,
@@ -36,16 +37,21 @@ const styles = StyleSheet.create({
   },
 
   content: {
-
+    backgroundColor: 'white',
     marginBottom: 9,
     flex: 6,
     flexDirection: 'column',
   },
 
   checkbox: {
-    flex: 1,
-    paddingTop: 10,
-    paddingLeft: 10,
+    height: 25,
+    borderWidth: 2,
+    width: 25,
+    marginLeft: 10,
+    marginTop: 10,
+    marginRight: 10,
+    borderColor: 'black',
+    borderRadius: 2,
     flexWrap: 'wrap',
   },
   text: {
@@ -53,6 +59,7 @@ const styles = StyleSheet.create({
   },
   label: {
     paddingTop: 15,
+    fontSize: 15,
     flex: 1,
   },
 
@@ -73,27 +80,16 @@ const styles = StyleSheet.create({
 });
 
 export default class StockFoodCheckoutScreen extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      observation: '',
-    };
-  }
   showPositiveCheckBox(item) {
     return (
       <View>
-        <CheckBox
-          containerStyle={styles.checkbox}
-          label=" "
-          checked={item.markedYes}
-          disable={this.props.report.markedNo ? 'disable' : false}
-          onChange={() => {
-            if (!item.markedNo) {
-              this.props.setStockFoodReportPositive(item.key);
-            }
-            return (null);
-          }}
+        <Checkbox
+          checkboxStyle={styles.checkbox}
+          selected={item.markedYes}
+          selectedColor={'#4caf50'}
+          onSelect={() => this.props.setStockFoodReportPositive(item.key)}
+          disabled={item.markedNo}
+          disabledColor={null}
         />
       </View>
     );
@@ -102,17 +98,13 @@ export default class StockFoodCheckoutScreen extends React.Component {
   showNegativeCheckBox(item) {
     return (
       <View>
-        <CheckBox
-          containerStyle={styles.checkbox}
-          label=" "
-          checked={item.markedNo}
-          disable={this.props.report.markedYes ? 'disable' : false}
-          onChange={() => {
-            if (!item.markedYes) {
-              this.props.setStockFoodReportNegative(item.key);
-            }
-            return (null);
-          }}
+        <Checkbox
+          checkboxStyle={styles.checkbox}
+          selected={item.markedNo}
+          selectedColor={'red'}
+          onSelect={() => this.props.setStockFoodReportNegative(item.key)}
+          disabled={item.markedYes}
+          disabledColor={null}
         />
       </View>
     );
@@ -123,10 +115,11 @@ export default class StockFoodCheckoutScreen extends React.Component {
       <ScrollView style={styles.content}>
         <Header
           title={'Relatório'}
-          subTitle={'Estoque de alimento'}
+          subTitle={'Estoque de Alimentos'}
+          backButton
         />
-
         <View>
+          <Text style={{ fontWeight: 'bold', paddingTop: 5 }}>   Sim       Não</Text>
           {
             this.props.report.map(item => (
               <View style={styles.text} key={item.key}>
@@ -142,7 +135,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <View behavior="padding">
           <View style={styles.textBox}>
             <TextInput
-              onChangeText={text => this.setState({ observation: text })}
+              onChangeText={text => this.props.setFoodStockObservation(text)}
               style={styles.textInput}
               multiline
               underlineColorAndroid="transparent"
@@ -153,7 +146,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => this.props.setFoodStockObservation(this.state.observation)}
+          onPress={() => Actions.pop()}
           key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
