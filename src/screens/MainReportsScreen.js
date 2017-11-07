@@ -69,7 +69,9 @@ export default class MainReportsScreen extends React.Component {
             <Text style={styles.text}>Estoque de Alimentos</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Actions.kitchenCheckoutScreen()}
+          >
             <Text style={styles.text}>Cozinha</Text>
           </TouchableOpacity>
 
