@@ -38,7 +38,7 @@ const initialState = {
     listOfCounselorsInAGroup: [],
   },
   schedule: {
-    codSchool: 32,
+    codSchool: 0,
     date: '',
     time: '',
   },

@@ -24,6 +24,17 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
 
+  disabledSchedullingButton: {
+    paddingVertical: 20,
+    borderWidth: 1,
+    borderRadius: 7,
+    marginHorizontal: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#DEDEDE',
+    justifyContent: 'flex-end',
+  },
+
   button: {
     paddingVertical: 15,
     borderWidth: 1,
@@ -66,15 +77,52 @@ export default class SchedulingVisit extends React.Component {
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
       visit: {
-        codSchool: 32,
+        codSchool: 0,
         date: '',
         time: '',
       },
     };
   }
 
+  componentWillReceiveProps(newProps) {
+    const newVisit = {
+      codSchool: newProps.school.schoolCode,
+      date: this.state.visit.date,
+      time: this.state.visit.time,
+    };
+
+    console.log(newVisit);
+    console.log(newProps);
+
+    this.setState({ visit: newVisit });
+  }
+
+  buttonActivation() {
+    if (this.props.school.schoolSelected) {
+      console.log('SchoolSelected is true');
+      return (
+        <TouchableOpacity
+          key="scheduleButton"
+          style={styles.schedullingButton}
+          onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
+        >
+          <Text style={styles.buttonText}>Agendar</Text>
+        </TouchableOpacity>
+      );
+    }
+
+    return (
+      <TouchableOpacity
+        key="scheduleButton"
+        style={styles.disabledSchedullingButton}
+        disabled
+      >
+        <Text style={styles.buttonText}>Agendar</Text>
+      </TouchableOpacity>
+    );
+  }
+
   render() {
-    console.log(this.props);
     return (
       <ScrollView style={styles.principal}>
         <Header
@@ -156,13 +204,7 @@ export default class SchedulingVisit extends React.Component {
           </View>
         </View>
         <View style={styles.Container}>
-          <TouchableOpacity
-            key="scheduleButton"
-            style={styles.schedullingButton}
-            onPress={() => this.props.asyncSchedulingVisit(this.state)}
-          >
-            <Text style={styles.buttonText}>Agendar</Text>
-          </TouchableOpacity>
+          {this.buttonActivation()}
         </View>
       </ScrollView>
     );

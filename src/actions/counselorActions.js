@@ -212,8 +212,7 @@ const createCAEGroup = (counselor, appToken, nuvemCode, dispatch) => {
       // This constant uses the constant above, but discard 'grupos/' and return codGroup, passed as
       // parameter in the function below.
       const codGroup = auxCodGroup.substr(7);
-      console.log(auxCodGroup);
-      console.log(codGroup);
+
       addCounselorToGroup(counselor, appToken, nuvemCode, codGroup, dispatch);
     })
     .catch((error) => {
