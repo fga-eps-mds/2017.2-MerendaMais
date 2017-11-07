@@ -17,7 +17,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": undefined,
+    "key": null,
     "nodeType": "class",
     "props": Object {
       "children": Array [
@@ -288,7 +288,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": undefined,
+        "key": null,
         "nodeType": "class",
         "props": Object {
           "children": Array [
@@ -361,7 +361,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": undefined,
+            "key": null,
             "nodeType": "class",
             "props": Object {
               "activeOpacity": 0.2,
@@ -383,7 +383,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "allowFontScaling": false,
@@ -404,7 +404,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": undefined,
+            "key": null,
             "nodeType": "class",
             "props": Object {
               "accessible": true,
@@ -426,7 +426,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": undefined,
+            "key": null,
             "nodeType": "class",
             "props": Object {
               "activeOpacity": 0.2,
@@ -448,7 +448,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "allowFontScaling": false,
@@ -472,7 +472,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": undefined,
+        "key": null,
         "nodeType": "class",
         "props": Object {
           "children": Array [
@@ -666,7 +666,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": undefined,
+            "key": null,
             "nodeType": "class",
             "props": Object {
               "children": Array [
@@ -784,7 +784,7 @@ ShallowWrapper {
             "rendered": Array [
               Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "children": Array [
@@ -828,7 +828,7 @@ ShallowWrapper {
                 "rendered": Array [
                   Object {
                     "instance": null,
-                    "key": undefined,
+                    "key": null,
                     "nodeType": "class",
                     "props": Object {
                       "allowFontScaling": false,
@@ -847,7 +847,7 @@ ShallowWrapper {
                   },
                   Object {
                     "instance": null,
-                    "key": undefined,
+                    "key": null,
                     "nodeType": "class",
                     "props": Object {
                       "keyboardType": "default",
@@ -868,7 +868,7 @@ ShallowWrapper {
               },
               Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "children": Array [
@@ -912,7 +912,7 @@ ShallowWrapper {
                 "rendered": Array [
                   Object {
                     "instance": null,
-                    "key": undefined,
+                    "key": null,
                     "nodeType": "class",
                     "props": Object {
                       "allowFontScaling": false,
@@ -931,7 +931,7 @@ ShallowWrapper {
                   },
                   Object {
                     "instance": null,
-                    "key": undefined,
+                    "key": null,
                     "nodeType": "class",
                     "props": Object {
                       "keyboardType": "default",
@@ -952,7 +952,7 @@ ShallowWrapper {
               },
               Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "children": <Picker
@@ -981,7 +981,7 @@ ShallowWrapper {
                 "ref": null,
                 "rendered": Object {
                   "instance": null,
-                  "key": undefined,
+                  "key": null,
                   "nodeType": "class",
                   "props": Object {
                     "children": Array [
@@ -1003,7 +1003,7 @@ ShallowWrapper {
                   "rendered": Array [
                     Object {
                       "instance": null,
-                      "key": undefined,
+                      "key": null,
                       "nodeType": "class",
                       "props": Object {
                         "color": "#95a5a6",
@@ -1016,7 +1016,7 @@ ShallowWrapper {
                     },
                     Object {
                       "instance": null,
-                      "key": undefined,
+                      "key": null,
                       "nodeType": "class",
                       "props": Object {
                         "label": "DF",
@@ -1036,7 +1036,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": undefined,
+            "key": null,
             "nodeType": "class",
             "props": Object {
               "children": <FlatList
@@ -1065,7 +1065,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "data": Array [],
@@ -1131,7 +1131,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "activeOpacity": 0.2,
@@ -1163,7 +1163,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "accessible": true,
@@ -1193,7 +1193,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": undefined,
+      "key": null,
       "nodeType": "class",
       "props": Object {
         "children": Array [
@@ -1464,7 +1464,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": undefined,
+          "key": null,
           "nodeType": "class",
           "props": Object {
             "children": Array [
@@ -1537,7 +1537,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "activeOpacity": 0.2,
@@ -1559,7 +1559,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "allowFontScaling": false,
@@ -1580,7 +1580,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "accessible": true,
@@ -1602,7 +1602,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "activeOpacity": 0.2,
@@ -1624,7 +1624,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "allowFontScaling": false,
@@ -1648,7 +1648,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": undefined,
+          "key": null,
           "nodeType": "class",
           "props": Object {
             "children": Array [
@@ -1842,7 +1842,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "children": Array [
@@ -1960,7 +1960,7 @@ ShallowWrapper {
               "rendered": Array [
                 Object {
                   "instance": null,
-                  "key": undefined,
+                  "key": null,
                   "nodeType": "class",
                   "props": Object {
                     "children": Array [
@@ -2004,7 +2004,7 @@ ShallowWrapper {
                   "rendered": Array [
                     Object {
                       "instance": null,
-                      "key": undefined,
+                      "key": null,
                       "nodeType": "class",
                       "props": Object {
                         "allowFontScaling": false,
@@ -2023,7 +2023,7 @@ ShallowWrapper {
                     },
                     Object {
                       "instance": null,
-                      "key": undefined,
+                      "key": null,
                       "nodeType": "class",
                       "props": Object {
                         "keyboardType": "default",
@@ -2044,7 +2044,7 @@ ShallowWrapper {
                 },
                 Object {
                   "instance": null,
-                  "key": undefined,
+                  "key": null,
                   "nodeType": "class",
                   "props": Object {
                     "children": Array [
@@ -2088,7 +2088,7 @@ ShallowWrapper {
                   "rendered": Array [
                     Object {
                       "instance": null,
-                      "key": undefined,
+                      "key": null,
                       "nodeType": "class",
                       "props": Object {
                         "allowFontScaling": false,
@@ -2107,7 +2107,7 @@ ShallowWrapper {
                     },
                     Object {
                       "instance": null,
-                      "key": undefined,
+                      "key": null,
                       "nodeType": "class",
                       "props": Object {
                         "keyboardType": "default",
@@ -2128,7 +2128,7 @@ ShallowWrapper {
                 },
                 Object {
                   "instance": null,
-                  "key": undefined,
+                  "key": null,
                   "nodeType": "class",
                   "props": Object {
                     "children": <Picker
@@ -2157,7 +2157,7 @@ ShallowWrapper {
                   "ref": null,
                   "rendered": Object {
                     "instance": null,
-                    "key": undefined,
+                    "key": null,
                     "nodeType": "class",
                     "props": Object {
                       "children": Array [
@@ -2179,7 +2179,7 @@ ShallowWrapper {
                     "rendered": Array [
                       Object {
                         "instance": null,
-                        "key": undefined,
+                        "key": null,
                         "nodeType": "class",
                         "props": Object {
                           "color": "#95a5a6",
@@ -2192,7 +2192,7 @@ ShallowWrapper {
                       },
                       Object {
                         "instance": null,
-                        "key": undefined,
+                        "key": null,
                         "nodeType": "class",
                         "props": Object {
                           "label": "DF",
@@ -2212,7 +2212,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": undefined,
+              "key": null,
               "nodeType": "class",
               "props": Object {
                 "children": <FlatList
@@ -2241,7 +2241,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "data": Array [],
@@ -2307,7 +2307,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": undefined,
+                "key": null,
                 "nodeType": "class",
                 "props": Object {
                   "activeOpacity": 0.2,
@@ -2339,7 +2339,7 @@ ShallowWrapper {
                 "ref": null,
                 "rendered": Object {
                   "instance": null,
-                  "key": undefined,
+                  "key": null,
                   "nodeType": "class",
                   "props": Object {
                     "accessible": true,
