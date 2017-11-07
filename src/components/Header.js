@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Alert, Dimensions, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Dimensions, Image } from 'react-native';
 import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 
 const { width } = Dimensions.get('window');
 const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
@@ -51,7 +52,7 @@ const Header = props => (
   <View style={styles.wrapper}>
     {props.backButton && (
       <View style={styles.buttonWrapper}>
-        <TouchableOpacity onPress={() => Alert.alert('clicar')} >
+        <TouchableOpacity onPress={() => Actions.pop()} >
           <Image source={BackIcon} />
         </TouchableOpacity>
       </View>
