@@ -27,6 +27,7 @@ const initialState = {
       segment: 'Poder executivo',
       CAE_Type: 'Estadual',
       CAE: 'Distrito Federal',
+      UF: 'AC - Acre',
     },
   },
   application: {
@@ -98,11 +99,18 @@ describe('Testing RegisterScreen Input', () => {
     expect(wrapper.state().profile.CAE_Type).toEqual('Estadual');
   });
 
+  it('should change state when the text of UF input component changes', () => {
+    const UFInputComponent = wrapper.find('Picker').at(4);
+    UFInputComponent.simulate('valueChange', 'DF - Distrito Federal');
+    expect(wrapper.state().profile.UF).toEqual('DF - Distrito Federal');
+  });
+  /*
   it('should change state when the text of CAE input component changes', () => {
     const CAEInputComponent = wrapper.find('TextInput').at(4);
     CAEInputComponent.simulate('ChangeText', 'DF');
     expect(wrapper.state().profile.CAE).toEqual('DF');
   });
+  */
 });
 
 describe('Testing RegisterScreen On pressed buttons', () => {

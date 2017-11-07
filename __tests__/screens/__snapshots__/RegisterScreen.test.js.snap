@@ -326,32 +326,166 @@ ShallowWrapper {
           disabled={false}
           ellipsizeMode="tail"
         >
-               CAE
+              UF
         </Text>,
-        <TextInput
-          keyboardType="default"
-          maxLength={40}
-          onChangeText={[Function]}
-          placeholder="Lista com o CAE do seu município/estado"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
-              "padding": 10,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />,
+        >
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha a UF do seu CAE"
+              value=""
+            />
+            <PickerItem
+              color="#000000"
+              label="AC - Acre"
+              value="AC - Acre"
+            />
+            <PickerItem
+              color="#000000"
+              label="AL - Alagoas"
+              value="AL - Alagoas"
+            />
+            <PickerItem
+              color="#000000"
+              label="AP - Amapá"
+              value="AP - Amapá"
+            />
+            <PickerItem
+              color="#000000"
+              label="AM - Amazonas"
+              value="AM - Amazonas"
+            />
+            <PickerItem
+              color="#000000"
+              label="BA - Bahia"
+              value="BA - Bahia"
+            />
+            <PickerItem
+              color="#000000"
+              label="CE - Ceará"
+              value="CE - Ceará"
+            />
+            <PickerItem
+              color="#000000"
+              label="DF - Distrito Federal"
+              value="DF - Distrito Federal"
+            />
+            <PickerItem
+              color="#000000"
+              label="ES - Espírito Santo"
+              value="ES - Espírito Santo"
+            />
+            <PickerItem
+              color="#000000"
+              label="GO - Goiás"
+              value="GO - Goiás"
+            />
+            <PickerItem
+              color="#000000"
+              label="MA - Maranhão"
+              value="MA - Maranhão"
+            />
+            <PickerItem
+              color="#000000"
+              label="MT - Mato Grosso"
+              value="MT - Mato Grosso"
+            />
+            <PickerItem
+              color="#000000"
+              label="MS - Mato Grosso do Sul"
+              value="MS - Mato Grosso do Sul"
+            />
+            <PickerItem
+              color="#000000"
+              label="MG - Minas Gerais"
+              value="MG - Minas Gerais"
+            />
+            <PickerItem
+              color="#000000"
+              label="PA - Pará"
+              value="PA - Pará"
+            />
+            <PickerItem
+              color="#000000"
+              label="PB - Paraíba"
+              value="PB - Paraíba"
+            />
+            <PickerItem
+              color="#000000"
+              label="PR - Paraná"
+              value="PR - Paraná"
+            />
+            <PickerItem
+              color="#000000"
+              label="PE - Pernambuco"
+              value="PE - Pernambuco"
+            />
+            <PickerItem
+              color="#000000"
+              label="PI - Piauí"
+              value="PI - Piauí"
+            />
+            <PickerItem
+              color="#000000"
+              label="RJ - Rio de Janeiro"
+              value="RJ - Rio de Janeiro"
+            />
+            <PickerItem
+              color="#000000"
+              label="RN - Rio Grande do Norte"
+              value="RN - Rio Grande do Norte"
+            />
+            <PickerItem
+              color="#000000"
+              label="RS - Rio Grande do Sul"
+              value="RS - Rio Grande do Sul"
+            />
+            <PickerItem
+              color="#000000"
+              label="RO - Rondônia"
+              value="RO - Rondônia"
+            />
+            <PickerItem
+              color="#000000"
+              label="RR - Roraima"
+              value="RR - Roraima"
+            />
+            <PickerItem
+              color="#000000"
+              label="SC - Santa Catarina"
+              value="SC - Santa Catarina"
+            />
+            <PickerItem
+              color="#000000"
+              label="SP - São Paulo"
+              value="SP - São Paulo"
+            />
+            <PickerItem
+              color="#000000"
+              label="SE - Sergipe"
+              value="SE - Sergipe"
+            />
+            <PickerItem
+              color="#000000"
+              label="TO - Tocantins"
+              value="TO - Tocantins"
+            />
+          </Picker>
+        </View>,
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={[Function]}
@@ -1134,12 +1268,12 @@ ShallowWrapper {
         "props": Object {
           "accessible": true,
           "allowFontScaling": true,
-          "children": "     CAE",
+          "children": "    UF",
           "disabled": false,
           "ellipsizeMode": "tail",
         },
         "ref": null,
-        "rendered": "     CAE",
+        "rendered": "    UF",
         "type": [Function],
       },
       Object {
@@ -1147,29 +1281,683 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "keyboardType": "default",
-          "maxLength": 40,
-          "onChangeText": [Function],
-          "placeholder": "Lista com o CAE do seu município/estado",
-          "placeholderTextColor": "#95a5a6",
-          "returnKeyLabel": "next",
+          "children": <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue=""
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha a UF do seu CAE"
+              value=""
+            />
+            <PickerItem
+              color="#000000"
+              label="AC - Acre"
+              value="AC - Acre"
+            />
+            <PickerItem
+              color="#000000"
+              label="AL - Alagoas"
+              value="AL - Alagoas"
+            />
+            <PickerItem
+              color="#000000"
+              label="AP - Amapá"
+              value="AP - Amapá"
+            />
+            <PickerItem
+              color="#000000"
+              label="AM - Amazonas"
+              value="AM - Amazonas"
+            />
+            <PickerItem
+              color="#000000"
+              label="BA - Bahia"
+              value="BA - Bahia"
+            />
+            <PickerItem
+              color="#000000"
+              label="CE - Ceará"
+              value="CE - Ceará"
+            />
+            <PickerItem
+              color="#000000"
+              label="DF - Distrito Federal"
+              value="DF - Distrito Federal"
+            />
+            <PickerItem
+              color="#000000"
+              label="ES - Espírito Santo"
+              value="ES - Espírito Santo"
+            />
+            <PickerItem
+              color="#000000"
+              label="GO - Goiás"
+              value="GO - Goiás"
+            />
+            <PickerItem
+              color="#000000"
+              label="MA - Maranhão"
+              value="MA - Maranhão"
+            />
+            <PickerItem
+              color="#000000"
+              label="MT - Mato Grosso"
+              value="MT - Mato Grosso"
+            />
+            <PickerItem
+              color="#000000"
+              label="MS - Mato Grosso do Sul"
+              value="MS - Mato Grosso do Sul"
+            />
+            <PickerItem
+              color="#000000"
+              label="MG - Minas Gerais"
+              value="MG - Minas Gerais"
+            />
+            <PickerItem
+              color="#000000"
+              label="PA - Pará"
+              value="PA - Pará"
+            />
+            <PickerItem
+              color="#000000"
+              label="PB - Paraíba"
+              value="PB - Paraíba"
+            />
+            <PickerItem
+              color="#000000"
+              label="PR - Paraná"
+              value="PR - Paraná"
+            />
+            <PickerItem
+              color="#000000"
+              label="PE - Pernambuco"
+              value="PE - Pernambuco"
+            />
+            <PickerItem
+              color="#000000"
+              label="PI - Piauí"
+              value="PI - Piauí"
+            />
+            <PickerItem
+              color="#000000"
+              label="RJ - Rio de Janeiro"
+              value="RJ - Rio de Janeiro"
+            />
+            <PickerItem
+              color="#000000"
+              label="RN - Rio Grande do Norte"
+              value="RN - Rio Grande do Norte"
+            />
+            <PickerItem
+              color="#000000"
+              label="RS - Rio Grande do Sul"
+              value="RS - Rio Grande do Sul"
+            />
+            <PickerItem
+              color="#000000"
+              label="RO - Rondônia"
+              value="RO - Rondônia"
+            />
+            <PickerItem
+              color="#000000"
+              label="RR - Roraima"
+              value="RR - Roraima"
+            />
+            <PickerItem
+              color="#000000"
+              label="SC - Santa Catarina"
+              value="SC - Santa Catarina"
+            />
+            <PickerItem
+              color="#000000"
+              label="SP - São Paulo"
+              value="SP - São Paulo"
+            />
+            <PickerItem
+              color="#000000"
+              label="SE - Sergipe"
+              value="SE - Sergipe"
+            />
+            <PickerItem
+              color="#000000"
+              label="TO - Tocantins"
+              value="TO - Tocantins"
+            />
+          </Picker>,
           "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
             "marginBottom": 10,
             "marginHorizontal": 15,
-            "padding": 10,
           },
-          "underlineColorAndroid": "transparent",
-          "value": "",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha a UF do seu CAE"
+                value=""
+              />,
+              Array [
+                <PickerItem
+                  color="#000000"
+                  label="AC - Acre"
+                  value="AC - Acre"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="AL - Alagoas"
+                  value="AL - Alagoas"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="AP - Amapá"
+                  value="AP - Amapá"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="AM - Amazonas"
+                  value="AM - Amazonas"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="BA - Bahia"
+                  value="BA - Bahia"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="CE - Ceará"
+                  value="CE - Ceará"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="DF - Distrito Federal"
+                  value="DF - Distrito Federal"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="ES - Espírito Santo"
+                  value="ES - Espírito Santo"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="GO - Goiás"
+                  value="GO - Goiás"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="MA - Maranhão"
+                  value="MA - Maranhão"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="MT - Mato Grosso"
+                  value="MT - Mato Grosso"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="MS - Mato Grosso do Sul"
+                  value="MS - Mato Grosso do Sul"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="MG - Minas Gerais"
+                  value="MG - Minas Gerais"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="PA - Pará"
+                  value="PA - Pará"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="PB - Paraíba"
+                  value="PB - Paraíba"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="PR - Paraná"
+                  value="PR - Paraná"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="PE - Pernambuco"
+                  value="PE - Pernambuco"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="PI - Piauí"
+                  value="PI - Piauí"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="RJ - Rio de Janeiro"
+                  value="RJ - Rio de Janeiro"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="RN - Rio Grande do Norte"
+                  value="RN - Rio Grande do Norte"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="RS - Rio Grande do Sul"
+                  value="RS - Rio Grande do Sul"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="RO - Rondônia"
+                  value="RO - Rondônia"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="RR - Roraima"
+                  value="RR - Roraima"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="SC - Santa Catarina"
+                  value="SC - Santa Catarina"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="SP - São Paulo"
+                  value="SP - São Paulo"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="SE - Sergipe"
+                  value="SE - Sergipe"
+                />,
+                <PickerItem
+                  color="#000000"
+                  label="TO - Tocantins"
+                  value="TO - Tocantins"
+                />,
+              ],
+            ],
+            "mode": "dialog",
+            "onValueChange": [Function],
+            "selectedValue": "",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#95a5a6",
+                "label": "Escolha a UF do seu CAE",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "AC - Acre",
+                "value": "AC - Acre",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "AL - Alagoas",
+                "value": "AL - Alagoas",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "AP - Amapá",
+                "value": "AP - Amapá",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "AM - Amazonas",
+                "value": "AM - Amazonas",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "BA - Bahia",
+                "value": "BA - Bahia",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "CE - Ceará",
+                "value": "CE - Ceará",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "DF - Distrito Federal",
+                "value": "DF - Distrito Federal",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "ES - Espírito Santo",
+                "value": "ES - Espírito Santo",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "GO - Goiás",
+                "value": "GO - Goiás",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "MA - Maranhão",
+                "value": "MA - Maranhão",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "MT - Mato Grosso",
+                "value": "MT - Mato Grosso",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "MS - Mato Grosso do Sul",
+                "value": "MS - Mato Grosso do Sul",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "MG - Minas Gerais",
+                "value": "MG - Minas Gerais",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "PA - Pará",
+                "value": "PA - Pará",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "PB - Paraíba",
+                "value": "PB - Paraíba",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "PR - Paraná",
+                "value": "PR - Paraná",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "PE - Pernambuco",
+                "value": "PE - Pernambuco",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "PI - Piauí",
+                "value": "PI - Piauí",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "RJ - Rio de Janeiro",
+                "value": "RJ - Rio de Janeiro",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "RN - Rio Grande do Norte",
+                "value": "RN - Rio Grande do Norte",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "RS - Rio Grande do Sul",
+                "value": "RS - Rio Grande do Sul",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "RO - Rondônia",
+                "value": "RO - Rondônia",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "RR - Roraima",
+                "value": "RR - Roraima",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "SC - Santa Catarina",
+                "value": "SC - Santa Catarina",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "SP - São Paulo",
+                "value": "SP - São Paulo",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "SE - Sergipe",
+                "value": "SE - Sergipe",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "color": "#000000",
+                "label": "TO - Tocantins",
+                "value": "TO - Tocantins",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
         "type": [Function],
       },
       Object {
@@ -1664,32 +2452,166 @@ ShallowWrapper {
             disabled={false}
             ellipsizeMode="tail"
           >
-                 CAE
+                UF
           </Text>,
-          <TextInput
-            keyboardType="default"
-            maxLength={40}
-            onChangeText={[Function]}
-            placeholder="Lista com o CAE do seu município/estado"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
+          <View
             style={
               Object {
-                "alignItems": "center",
-                "backgroundColor": "#FAFAFA",
                 "borderColor": "gray",
                 "borderRadius": 7,
                 "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "center",
                 "marginBottom": 10,
                 "marginHorizontal": 15,
-                "padding": 10,
               }
             }
-            underlineColorAndroid="transparent"
-            value=""
-          />,
+          >
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha a UF do seu CAE"
+                value=""
+              />
+              <PickerItem
+                color="#000000"
+                label="AC - Acre"
+                value="AC - Acre"
+              />
+              <PickerItem
+                color="#000000"
+                label="AL - Alagoas"
+                value="AL - Alagoas"
+              />
+              <PickerItem
+                color="#000000"
+                label="AP - Amapá"
+                value="AP - Amapá"
+              />
+              <PickerItem
+                color="#000000"
+                label="AM - Amazonas"
+                value="AM - Amazonas"
+              />
+              <PickerItem
+                color="#000000"
+                label="BA - Bahia"
+                value="BA - Bahia"
+              />
+              <PickerItem
+                color="#000000"
+                label="CE - Ceará"
+                value="CE - Ceará"
+              />
+              <PickerItem
+                color="#000000"
+                label="DF - Distrito Federal"
+                value="DF - Distrito Federal"
+              />
+              <PickerItem
+                color="#000000"
+                label="ES - Espírito Santo"
+                value="ES - Espírito Santo"
+              />
+              <PickerItem
+                color="#000000"
+                label="GO - Goiás"
+                value="GO - Goiás"
+              />
+              <PickerItem
+                color="#000000"
+                label="MA - Maranhão"
+                value="MA - Maranhão"
+              />
+              <PickerItem
+                color="#000000"
+                label="MT - Mato Grosso"
+                value="MT - Mato Grosso"
+              />
+              <PickerItem
+                color="#000000"
+                label="MS - Mato Grosso do Sul"
+                value="MS - Mato Grosso do Sul"
+              />
+              <PickerItem
+                color="#000000"
+                label="MG - Minas Gerais"
+                value="MG - Minas Gerais"
+              />
+              <PickerItem
+                color="#000000"
+                label="PA - Pará"
+                value="PA - Pará"
+              />
+              <PickerItem
+                color="#000000"
+                label="PB - Paraíba"
+                value="PB - Paraíba"
+              />
+              <PickerItem
+                color="#000000"
+                label="PR - Paraná"
+                value="PR - Paraná"
+              />
+              <PickerItem
+                color="#000000"
+                label="PE - Pernambuco"
+                value="PE - Pernambuco"
+              />
+              <PickerItem
+                color="#000000"
+                label="PI - Piauí"
+                value="PI - Piauí"
+              />
+              <PickerItem
+                color="#000000"
+                label="RJ - Rio de Janeiro"
+                value="RJ - Rio de Janeiro"
+              />
+              <PickerItem
+                color="#000000"
+                label="RN - Rio Grande do Norte"
+                value="RN - Rio Grande do Norte"
+              />
+              <PickerItem
+                color="#000000"
+                label="RS - Rio Grande do Sul"
+                value="RS - Rio Grande do Sul"
+              />
+              <PickerItem
+                color="#000000"
+                label="RO - Rondônia"
+                value="RO - Rondônia"
+              />
+              <PickerItem
+                color="#000000"
+                label="RR - Roraima"
+                value="RR - Roraima"
+              />
+              <PickerItem
+                color="#000000"
+                label="SC - Santa Catarina"
+                value="SC - Santa Catarina"
+              />
+              <PickerItem
+                color="#000000"
+                label="SP - São Paulo"
+                value="SP - São Paulo"
+              />
+              <PickerItem
+                color="#000000"
+                label="SE - Sergipe"
+                value="SE - Sergipe"
+              />
+              <PickerItem
+                color="#000000"
+                label="TO - Tocantins"
+                value="TO - Tocantins"
+              />
+            </Picker>
+          </View>,
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={[Function]}
@@ -2472,12 +3394,12 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": "     CAE",
+            "children": "    UF",
             "disabled": false,
             "ellipsizeMode": "tail",
           },
           "ref": null,
-          "rendered": "     CAE",
+          "rendered": "    UF",
           "type": [Function],
         },
         Object {
@@ -2485,29 +3407,683 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "keyboardType": "default",
-            "maxLength": 40,
-            "onChangeText": [Function],
-            "placeholder": "Lista com o CAE do seu município/estado",
-            "placeholderTextColor": "#95a5a6",
-            "returnKeyLabel": "next",
+            "children": <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue=""
+            >
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha a UF do seu CAE"
+                value=""
+              />
+              <PickerItem
+                color="#000000"
+                label="AC - Acre"
+                value="AC - Acre"
+              />
+              <PickerItem
+                color="#000000"
+                label="AL - Alagoas"
+                value="AL - Alagoas"
+              />
+              <PickerItem
+                color="#000000"
+                label="AP - Amapá"
+                value="AP - Amapá"
+              />
+              <PickerItem
+                color="#000000"
+                label="AM - Amazonas"
+                value="AM - Amazonas"
+              />
+              <PickerItem
+                color="#000000"
+                label="BA - Bahia"
+                value="BA - Bahia"
+              />
+              <PickerItem
+                color="#000000"
+                label="CE - Ceará"
+                value="CE - Ceará"
+              />
+              <PickerItem
+                color="#000000"
+                label="DF - Distrito Federal"
+                value="DF - Distrito Federal"
+              />
+              <PickerItem
+                color="#000000"
+                label="ES - Espírito Santo"
+                value="ES - Espírito Santo"
+              />
+              <PickerItem
+                color="#000000"
+                label="GO - Goiás"
+                value="GO - Goiás"
+              />
+              <PickerItem
+                color="#000000"
+                label="MA - Maranhão"
+                value="MA - Maranhão"
+              />
+              <PickerItem
+                color="#000000"
+                label="MT - Mato Grosso"
+                value="MT - Mato Grosso"
+              />
+              <PickerItem
+                color="#000000"
+                label="MS - Mato Grosso do Sul"
+                value="MS - Mato Grosso do Sul"
+              />
+              <PickerItem
+                color="#000000"
+                label="MG - Minas Gerais"
+                value="MG - Minas Gerais"
+              />
+              <PickerItem
+                color="#000000"
+                label="PA - Pará"
+                value="PA - Pará"
+              />
+              <PickerItem
+                color="#000000"
+                label="PB - Paraíba"
+                value="PB - Paraíba"
+              />
+              <PickerItem
+                color="#000000"
+                label="PR - Paraná"
+                value="PR - Paraná"
+              />
+              <PickerItem
+                color="#000000"
+                label="PE - Pernambuco"
+                value="PE - Pernambuco"
+              />
+              <PickerItem
+                color="#000000"
+                label="PI - Piauí"
+                value="PI - Piauí"
+              />
+              <PickerItem
+                color="#000000"
+                label="RJ - Rio de Janeiro"
+                value="RJ - Rio de Janeiro"
+              />
+              <PickerItem
+                color="#000000"
+                label="RN - Rio Grande do Norte"
+                value="RN - Rio Grande do Norte"
+              />
+              <PickerItem
+                color="#000000"
+                label="RS - Rio Grande do Sul"
+                value="RS - Rio Grande do Sul"
+              />
+              <PickerItem
+                color="#000000"
+                label="RO - Rondônia"
+                value="RO - Rondônia"
+              />
+              <PickerItem
+                color="#000000"
+                label="RR - Roraima"
+                value="RR - Roraima"
+              />
+              <PickerItem
+                color="#000000"
+                label="SC - Santa Catarina"
+                value="SC - Santa Catarina"
+              />
+              <PickerItem
+                color="#000000"
+                label="SP - São Paulo"
+                value="SP - São Paulo"
+              />
+              <PickerItem
+                color="#000000"
+                label="SE - Sergipe"
+                value="SE - Sergipe"
+              />
+              <PickerItem
+                color="#000000"
+                label="TO - Tocantins"
+                value="TO - Tocantins"
+              />
+            </Picker>,
             "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
               "borderColor": "gray",
               "borderRadius": 7,
               "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
               "marginBottom": 10,
               "marginHorizontal": 15,
-              "padding": 10,
             },
-            "underlineColorAndroid": "transparent",
-            "value": "",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <PickerItem
+                  color="#95a5a6"
+                  label="Escolha a UF do seu CAE"
+                  value=""
+                />,
+                Array [
+                  <PickerItem
+                    color="#000000"
+                    label="AC - Acre"
+                    value="AC - Acre"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="AL - Alagoas"
+                    value="AL - Alagoas"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="AP - Amapá"
+                    value="AP - Amapá"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="AM - Amazonas"
+                    value="AM - Amazonas"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="BA - Bahia"
+                    value="BA - Bahia"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="CE - Ceará"
+                    value="CE - Ceará"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="DF - Distrito Federal"
+                    value="DF - Distrito Federal"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="ES - Espírito Santo"
+                    value="ES - Espírito Santo"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="GO - Goiás"
+                    value="GO - Goiás"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="MA - Maranhão"
+                    value="MA - Maranhão"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="MT - Mato Grosso"
+                    value="MT - Mato Grosso"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="MS - Mato Grosso do Sul"
+                    value="MS - Mato Grosso do Sul"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="MG - Minas Gerais"
+                    value="MG - Minas Gerais"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="PA - Pará"
+                    value="PA - Pará"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="PB - Paraíba"
+                    value="PB - Paraíba"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="PR - Paraná"
+                    value="PR - Paraná"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="PE - Pernambuco"
+                    value="PE - Pernambuco"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="PI - Piauí"
+                    value="PI - Piauí"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="RJ - Rio de Janeiro"
+                    value="RJ - Rio de Janeiro"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="RN - Rio Grande do Norte"
+                    value="RN - Rio Grande do Norte"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="RS - Rio Grande do Sul"
+                    value="RS - Rio Grande do Sul"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="RO - Rondônia"
+                    value="RO - Rondônia"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="RR - Roraima"
+                    value="RR - Roraima"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="SC - Santa Catarina"
+                    value="SC - Santa Catarina"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="SP - São Paulo"
+                    value="SP - São Paulo"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="SE - Sergipe"
+                    value="SE - Sergipe"
+                  />,
+                  <PickerItem
+                    color="#000000"
+                    label="TO - Tocantins"
+                    value="TO - Tocantins"
+                  />,
+                ],
+              ],
+              "mode": "dialog",
+              "onValueChange": [Function],
+              "selectedValue": "",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#95a5a6",
+                  "label": "Escolha a UF do seu CAE",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "AC - Acre",
+                  "value": "AC - Acre",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "AL - Alagoas",
+                  "value": "AL - Alagoas",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "AP - Amapá",
+                  "value": "AP - Amapá",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "AM - Amazonas",
+                  "value": "AM - Amazonas",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "BA - Bahia",
+                  "value": "BA - Bahia",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "CE - Ceará",
+                  "value": "CE - Ceará",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "DF - Distrito Federal",
+                  "value": "DF - Distrito Federal",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "ES - Espírito Santo",
+                  "value": "ES - Espírito Santo",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "GO - Goiás",
+                  "value": "GO - Goiás",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "MA - Maranhão",
+                  "value": "MA - Maranhão",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "MT - Mato Grosso",
+                  "value": "MT - Mato Grosso",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "MS - Mato Grosso do Sul",
+                  "value": "MS - Mato Grosso do Sul",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "MG - Minas Gerais",
+                  "value": "MG - Minas Gerais",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "PA - Pará",
+                  "value": "PA - Pará",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "PB - Paraíba",
+                  "value": "PB - Paraíba",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "PR - Paraná",
+                  "value": "PR - Paraná",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "PE - Pernambuco",
+                  "value": "PE - Pernambuco",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "PI - Piauí",
+                  "value": "PI - Piauí",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "RJ - Rio de Janeiro",
+                  "value": "RJ - Rio de Janeiro",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "RN - Rio Grande do Norte",
+                  "value": "RN - Rio Grande do Norte",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "RS - Rio Grande do Sul",
+                  "value": "RS - Rio Grande do Sul",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "RO - Rondônia",
+                  "value": "RO - Rondônia",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "RR - Roraima",
+                  "value": "RR - Roraima",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "SC - Santa Catarina",
+                  "value": "SC - Santa Catarina",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "SP - São Paulo",
+                  "value": "SP - São Paulo",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "SE - Sergipe",
+                  "value": "SE - Sergipe",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "color": "#000000",
+                  "label": "TO - Tocantins",
+                  "value": "TO - Tocantins",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {
