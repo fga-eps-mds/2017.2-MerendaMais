@@ -1,5 +1,11 @@
 import initialState from './initialState';
-import { SET_STOCKFOODREPORT_POSITIVE, SET_STOCKFOODREPORT_NEGATIVE, SET_STOCKFOODOBSERVATION } from '../actions/types';
+import { SET_STOCKFOODREPORT_POSITIVE,
+  SET_STOCKFOODREPORT_NEGATIVE,
+  SET_STOCKFOODOBSERVATION,
+  SET_REFECTORYREPORT_POSITIVE,
+  SET_REFECTORYREPORT_NEGATIVE,
+  SET_REFECTORYOBSERVATION,
+} from '../actions/types';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'reportReducer.js';
@@ -23,7 +29,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -34,7 +39,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -42,6 +46,34 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         foodStockObservation: action.payload,
+      };
+    case SET_REFECTORYREPORT_POSITIVE:
+      return {
+        ...state,
+        refectory: state.refectory.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+    case SET_REFECTORYREPORT_NEGATIVE:
+      return {
+        ...state,
+        refectory: state.refectory.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+    case SET_REFECTORYOBSERVATION:
+      console.log(action.payload);
+      return {
+        ...state,
+        refectoryObservation: action.payload,
       };
     default:
       return state;

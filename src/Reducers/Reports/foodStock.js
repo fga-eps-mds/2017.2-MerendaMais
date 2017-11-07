@@ -1,5 +1,5 @@
 const foodStock = [
-  { label: 'Escola não possui Estoque de Alimentos', markedYes: false, markedNo: false, status: false, key: 0 },
+  { label: 'Escola possui Estoque de Alimentos', markedYes: false, markedNo: false, status: false, key: 0 },
   { label: 'Alimentos vencidos', markedYes: false, markedNo: false, status: false, key: 1 },
   { label: 'Embalagens roídas', markedYes: false, markedNo: false, status: false, key: 2 },
   { label: 'Insetos dentro das embalagens', markedYes: false, markedNo: false, status: false, key: 3 },
