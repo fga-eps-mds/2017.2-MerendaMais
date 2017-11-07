@@ -20,9 +20,9 @@ const Routes = () => ({
     return (
       <Router>
         <Scene key="root">
-          <Scene key="initialScreen" component={InitialScreen} hideNavBar />
+          <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
           <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
-          <Scene key="mainScreen" component={MainScreen} hideNavBar />
+          <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
           <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
           <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
           <Scene key="loginCounselorScreen" component={LoginCounselorContainer} hideNavBar />

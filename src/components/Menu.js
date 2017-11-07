@@ -94,6 +94,19 @@ export default function Menu() {
           </TouchableOpacity>
         </View>
 
+        <View>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => Actions.initialScreen()}
+          >
+            <Text
+              style={styles.item}
+            >
+              Sair
+            </Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
     );
   }
@@ -147,6 +160,19 @@ export default function Menu() {
             style={styles.item}
           >
             Agendar visita
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => Actions.initialScreen()}
+        >
+          <Text
+            style={styles.item}
+          >
+            Sair
           </Text>
         </TouchableOpacity>
       </View>
