@@ -17,6 +17,8 @@ import RefectoryCheckoutContainer from './src/Containers/RefectoryCheckoutContai
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
 import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
+import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
+import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 
 const Routes = () => ({
   render() {
@@ -35,6 +37,8 @@ const Routes = () => ({
           <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
           <Scene key="mainReportsScreen" component={MainReportsScreen} hideNavBar />
           <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
+          <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
+          <Scene key="ReportObservationScreen" component={ReportObservationContainer} hideNavBar />
           <Scene
             key="stockFoodCheckoutScreen"
             component={StockFoodCheckoutScreenContainer}

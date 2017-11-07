@@ -1,4 +1,3 @@
-import initialState from './initialState';
 import { SET_STOCKFOODREPORT_POSITIVE,
   SET_STOCKFOODREPORT_NEGATIVE,
   SET_STOCKFOODOBSERVATION,
@@ -8,10 +7,15 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_KITCHENREPORT_POSITIVE,
   SET_KITCHENREPORT_NEGATIVE,
   SET_KITCHENOBSERVATION,
+  SET_DOCREPORT_POSITIVE,
+  SET_DOCREPORT_NEGATIVE,
+  SET_DOCOBSERVATION,
+  SET_REPORTOBSERVATION,
   SET_FOODQUALITYOBSERVATION,
   SET_FOODQUALITYREPORT_NEGATIVE,
   SET_FOODQUALITYREPORT_POSITIVE,
 } from '../actions/types';
+import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'reportReducer.js';
@@ -103,6 +107,7 @@ const reportReducer = (state = initialState.report, action) => {
           return item;
         }),
       };
+
     case SET_REFECTORYOBSERVATION:
       console.log(action.payload);
       return {
@@ -137,6 +142,43 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         foodQualityObservation: action.payload,
       };
+
+    case SET_DOCREPORT_POSITIVE:
+      return {
+        ...state,
+        doc: state.doc.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+
+    case SET_DOCREPORT_NEGATIVE:
+      return {
+        ...state,
+        doc: state.doc.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+
+    case SET_DOCOBSERVATION:
+      return {
+        ...state,
+        docObservation: action.payload,
+      };
+
+    case SET_REPORTOBSERVATION:
+      return {
+        ...state,
+        otherObservation: action.payload,
+      };
+
     default:
       return state;
   }

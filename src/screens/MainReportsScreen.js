@@ -81,7 +81,9 @@ export default class MainReportsScreen extends React.Component {
             <Text style={styles.text}>Refeitório</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Actions.DocCheckoutScreen()}
+          >
             <Text style={styles.text}>Documentação</Text>
           </TouchableOpacity>
 
@@ -91,7 +93,9 @@ export default class MainReportsScreen extends React.Component {
             <Text style={styles.text}>Qualidade da Alimentação</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Actions.ReportObservationScreen()}
+          >
             <Text style={styles.text}>+ Outras informações</Text>
           </TouchableOpacity>
 
