@@ -1,4 +1,5 @@
 import foodStock from './Reports/foodStock';
+import kitchen from './Reports/kitchen';
 
 const initialState = {
   counselor: {
@@ -24,6 +25,8 @@ const initialState = {
   report: {
     foodStock,
     foodStockObservation: '',
+    kitchen,
+    kitchenObservation: '',
   },
   school: {
     schoolCode: '',

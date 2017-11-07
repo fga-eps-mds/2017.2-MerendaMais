@@ -14,7 +14,7 @@ import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer'
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
 import MainReportsScreen from './src/screens/MainReportsScreen';
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
-
+import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
 
 const Routes = () => ({
   render() {
@@ -32,6 +32,7 @@ const Routes = () => ({
           <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
           <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
           <Scene key="mainReportsScreen" component={MainReportsScreen} hideNavBar />
+          <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
           <Scene
             key="stockFoodCheckoutScreen"
             component={StockFoodCheckoutScreenContainer}

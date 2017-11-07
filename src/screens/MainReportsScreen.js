@@ -1,11 +1,11 @@
 import React from 'react';
-import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
-import { Actions } from 'react-native-router-flux';
 import { StyleSheet,
   TouchableOpacity,
   Text,
   View,
 } from 'react-native';
+import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
+import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 
 const styles = StyleSheet.create({
@@ -64,11 +64,15 @@ export default class MainReportsScreen extends React.Component {
           backButton
         />
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Actions.stockFoodCheckoutScreen()}
+          >
             <Text style={styles.text}>Estoque de Alimentos</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Actions.kitchenCheckoutScreen()}
+          >
             <Text style={styles.text}>Cozinha</Text>
           </TouchableOpacity>
 
