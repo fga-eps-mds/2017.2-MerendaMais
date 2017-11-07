@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckBox from 'react-native-checkbox';
+import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
 import { StyleSheet,
   TouchableOpacity,
@@ -83,11 +83,14 @@ export default class StockFoodCheckoutScreen extends React.Component {
   showPositiveCheckBox(item) {
     return (
       <View>
-        <CheckBox
+        <Checkbox
           containerStyle={styles.checkbox}
-          label=" "
-          disabled={this.props.report.markedNo ? 'disabled' : false}
-          onChange={() => this.props.setStockFoodReportPositive(item.key)}
+          label="Sim"
+          selected={item.markedYes}
+          selectedColor={'#4caf50'}
+          onSelect={() => this.props.setStockFoodReportPositive(item.key)}
+          disabled={item.markedNo}
+          disabledColor={null}
         />
       </View>
     );
@@ -96,11 +99,14 @@ export default class StockFoodCheckoutScreen extends React.Component {
   showNegativeCheckBox(item) {
     return (
       <View>
-        <CheckBox
+        <Checkbox
           containerStyle={styles.checkbox}
-          label=" "
-          checked={this.props.report.markedYes ? 'checked' : true}
-          onChange={() => this.props.setStockFoodReportNegative(item.key)}
+          label="Não"
+          selected={item.markedNo}
+          selectedColor={'red'}
+          onSelect={() => this.props.setStockFoodReportNegative(item.key)}
+          disabled={item.markedYes}
+          disabledColor={null}
         />
       </View>
     );

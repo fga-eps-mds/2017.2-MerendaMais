@@ -47,6 +47,7 @@
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",
     "react-native-checkbox": "^1.2.0",
+    "react-native-checkbox-field": "^2.0.2",
     "react-native-chooser": "^1.6.1",
     "react-native-datepicker": "^1.6.0",
     "react-native-elements": "^0.17.0",
