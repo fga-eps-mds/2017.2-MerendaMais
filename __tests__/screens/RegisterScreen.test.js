@@ -105,13 +105,6 @@ describe('Testing RegisterScreen Input', () => {
     UFInputComponent.simulate('valueChange', 'DF - Distrito Federal');
     expect(wrapper.state().profile.UF).toEqual('DF - Distrito Federal');
   });
-  /*
-  it('should change state when the text of CAE input component changes', () => {
-    const CAEInputComponent = wrapper.find('TextInput').at(4);
-    CAEInputComponent.simulate('ChangeText', 'DF');
-    expect(wrapper.state().profile.CAE).toEqual('DF');
-  });
-  */
 });
 
 describe('Testing RegisterScreen On pressed buttons', () => {

@@ -240,7 +240,7 @@ export default class RegisterScreen extends React.Component {
       </View>
     ) : null;
 
-    const municipalDistrict = this.state.profile.CAE_Type === 'Municipal' && this.state.profile.UF !== '' ? (
+    const municipalDistrict = this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.UF !== '' ? (
       <View >
         <Text>     Municipio</Text>
         <View
@@ -375,7 +375,7 @@ export default class RegisterScreen extends React.Component {
           <Picker
             onValueChange={
               value => (
-                value === 'Estadual' ?
+                value === STATE_COUNSELOR_CAE ?
                   this.setState({ profile: { ...this.state.profile,
                     CAE_Type: value,
                     municipalDistrict: '',
