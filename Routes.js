@@ -25,7 +25,7 @@ const Routes = () => ({
           hideNavBar
           key="drawer"
           contentComponent={Menu}
-          drawerWidth={200}
+          drawerWidth={270}
           drawerPosition="right"
         >
           <Scene key="root">

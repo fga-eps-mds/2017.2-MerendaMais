@@ -12,8 +12,6 @@ const schoolReducer = (state = initialState.school, action) => {
     return state;
   }
 
-  console.log(action.payload);
-
   switch (action.type) {
     case SET_SCHOOL_INFO:
       return {

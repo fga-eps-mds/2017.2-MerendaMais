@@ -74,12 +74,12 @@ export default class SchedulingVisit extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <ScrollView style={styles.principal}>
         <Header
           title={'AGENDAR'}
           subTitle={'VISITA'}
+          backButton
         />
         <View style={styles.Container}>
           <View>

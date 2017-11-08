@@ -11,8 +11,8 @@ import { StyleSheet,
   Alert,
   Picker } from 'react-native';
 import PropTypes from 'prop-types';
-import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
+import Header from '../components/Header';
 
 import { SCHOOL_ENDPOINT } from '../constants';
 
@@ -228,20 +228,10 @@ class SearchSchool extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <View style={styles.headerBox}>
-          <TouchableOpacity
-            onPress={() => Actions.pop()}
-          >
-            <Ionicons name="ios-arrow-back-outline" style={styles.icon} size={45} color="black" />
-          </TouchableOpacity>
-          <Text style={styles.textLogo}>Pesquisar Escola</Text>
-
-          <TouchableOpacity
-            onPress={() => Actions.drawerOpen()}
-          >
-            <FontAwesome name="navicon" size={32} />
-          </TouchableOpacity>
-        </View>
+        <Header
+          title={'Pesquisar Escola'}
+          backButton
+        />
 
         <View style={styles.bodyBox}>
           <View style={{ flex: 3 }}>

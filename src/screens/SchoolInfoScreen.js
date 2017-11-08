@@ -3,10 +3,10 @@ import axios from 'axios';
 import openMap from 'react-native-open-maps';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import { SCHOOL_ENDPOINT } from '../constants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
+import Header from '../components/Header';
 
 const FILE_NAME = 'SchoolInfoScreen.js';
 
@@ -168,20 +168,10 @@ class SchoolInfoScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <View style={styles.headerBox}>
-          <TouchableOpacity
-            onPress={() => Actions.pop()}
-          >
-            <Ionicons name="ios-arrow-back-outline" style={styles.icon} size={45} color="black" />
-          </TouchableOpacity>
-          <Text style={styles.textLogo}>Pesquisar Escola</Text>
-
-          <TouchableOpacity
-            onPress={() => Actions.drawerOpen()}
-          >
-            <FontAwesome name="navicon" size={32} />
-          </TouchableOpacity>
-        </View>
+        <Header
+          title={'Informações da Escola'}
+          backButton
+        />
 
         <Text style={styles.text}>  Infomações</Text>
         <View style={styles.listInfo}>
@@ -195,7 +185,7 @@ class SchoolInfoScreen extends React.Component {
         </View>
 
         <TouchableOpacity
-          onPress={() => this.selectSchoolForSchedule()}
+          // onPress={() => this.selectSchoolForSchedule()}
           style={styles.buttonContainer}
           activeOpacity={0.7}
         >

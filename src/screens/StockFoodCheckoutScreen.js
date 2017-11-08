@@ -87,6 +87,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <Header
           title={'Relatório'}
           subTitle={'Estoque de alimento'}
+          backButton
         />
         <View>
           {
