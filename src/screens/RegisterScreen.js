@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
+  StyleSheet,
   ScrollView,
   View,
   TextInput,
@@ -23,7 +24,7 @@ import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'RegisterScreen.js';
 
-const styles = {
+const styles = StyleSheet.create({
 
   principal: {
     flex: 1,
@@ -56,31 +57,6 @@ const styles = {
     borderColor: 'gray',
   },
 
-  InputStyleCorrect: {
-    padding: 10,
-    marginTop: 1,
-    backgroundColor: '#FAFAFA',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 7,
-    marginBottom: 10,
-    borderWidth: 3,
-    borderColor: '#80FF80',
-  },
-
-  InputStyleWrong: {
-    padding: 10,
-    marginTop: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 7,
-    marginBottom: 10,
-    borderWidth: 3,
-    borderColor: '#FF9999',
-  },
-
   InputDropdown: {
     marginTop: 1,
     borderColor: 'gray',
@@ -103,7 +79,7 @@ const styles = {
     fontSize: 18,
   },
 
-};
+});
 
 export default class RegisterScreen extends React.Component {
   constructor(props) {
@@ -242,18 +218,18 @@ export default class RegisterScreen extends React.Component {
     if (this.state.password === '') {
       return styles.InputStyle;
     } else if (passwordRegex.test(this.state.password)) {
-      return styles.InputStyleCorrect;
+      return [styles.InputStyle, { borderColor: '#80FF80', borderWidth: 2 }];
     }
-    return styles.InputStyleWrong;
+    return [styles.InputStyle, { borderColor: '#FF9999', borderWidth: 2 }];
   }
 
   changeStyleIfPasswordsMatch(passwordCompared) {
     if (passwordCompared === '') {
       return styles.InputStyle;
     } else if (this.state.password === passwordCompared) {
-      return styles.InputStyleCorrect;
+      return [styles.InputStyle, { borderColor: '#80FF80', borderWidth: 2 }];
     }
-    return styles.InputStyleWrong;
+    return [styles.InputStyle, { borderColor: '#FF9999', borderWidth: 2 }];
   }
 
   renderBtnLogin() {
