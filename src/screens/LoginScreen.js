@@ -1,5 +1,12 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
@@ -31,7 +38,6 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   Inputemail: {
-    paddingHorizontal: 2,
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: 'gray',
@@ -40,7 +46,6 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   InputPassword: {
-    paddingHorizontal: 2,
     marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -106,7 +111,7 @@ export default class LoginScreen extends React.Component {
           <View style={styles.Inputemail}>
             <Image source={iconAccount} style={styles.icon} />
             <TextInput
-              width={280}
+              width={300}
               returnKeyType="next"
               onChangeText={email => this.setState({ email })}
               value={this.email}
@@ -120,7 +125,7 @@ export default class LoginScreen extends React.Component {
           <View style={styles.InputPassword}>
             <Image source={iconLock} style={styles.icon} />
             <TextInput
-              width={280}
+              width={300}
               underlineColorAndroid="transparent"
               returnKeyType="go"
               value={this.password}
@@ -141,7 +146,7 @@ export default class LoginScreen extends React.Component {
             onPress={() => Actions.registerScreen()}
           >
             <Text>Ainda não se cadastrou?
-              <Text style={{ color: 'blue' }}> Cadastrar-se</Text>
+              <Text style={{ color: '#0000FF' }}> Cadastrar-se</Text>
             </Text>
           </TouchableOpacity>
         </View>
