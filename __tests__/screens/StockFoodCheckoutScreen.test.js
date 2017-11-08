@@ -6,6 +6,7 @@ import configureStore from 'redux-mock-store';
 // import StockFoodCheckoutScreen from '../../src/screens/StockFoodCheckoutScreen'
 import StockFoodCheckoutContainer from '../../src/Containers/StockFoodCheckoutContainer';
 import foodStock from '../../src/Reducers/Reports/foodStock';
+import StockFoodCheckoutScreen from '../../src/screens/StockFoodCheckoutScreen';
 
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -147,7 +147,6 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => Actions.pop()}
-          key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>
