@@ -18,12 +18,14 @@ class Button extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <View>
         <TouchableOpacity
           key={this.props.key}
           style={this.defineStyle()}
-          onPress={this.props.onPress()}
+          disabled={!this.props.enabled}
+          onPress={() => this.props.onPress()}
         >
           <Text style={styles.buttonText}>{this.props.text}</Text>
         </TouchableOpacity>

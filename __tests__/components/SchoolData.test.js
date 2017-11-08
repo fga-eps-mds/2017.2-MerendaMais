@@ -1,9 +1,11 @@
 import 'react-native';
+import { createSerializer } from 'enzyme-to-json';
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import SchoolData from '../../src/components/SchoolData';
 
+expect.addSnapshotSerializer(createSerializer());
 Enzyme.configure({ adapter: new Adapter() });
 
 const props = {

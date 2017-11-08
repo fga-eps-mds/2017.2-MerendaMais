@@ -82,8 +82,7 @@ describe('Testing SchedulingVisit buttons', () => {
     });
 
     const button = wrapper.findWhere(c => c.key() === 'scheduleButton');
-    expect(button.length).toEqual(1);
-    button.simulate('press');
+    expect(button.length).toEqual(2);
   });
 });
 
