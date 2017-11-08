@@ -69,7 +69,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -80,7 +79,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -96,7 +94,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -107,13 +104,11 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
 
     case SET_REFECTORYOBSERVATION:
-      console.log(action.payload);
       return {
         ...state,
         refectoryObservation: action.payload,
@@ -125,7 +120,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -136,12 +130,10 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
     case SET_FOODQUALITYOBSERVATION:
-      console.log(action.payload);
       return {
         ...state,
         foodQualityObservation: action.payload,
@@ -154,7 +146,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -166,7 +157,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -184,7 +174,6 @@ const reportReducer = (state = initialState.report, action) => {
       };
 
     case SET_STATUSFOODQUALITY:
-      console.log(action.payload);
       return {
         ...state,
         statusFoodQuality: action.payload,
@@ -196,7 +185,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedYes: !item.markedYes, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };
@@ -208,7 +196,6 @@ const reportReducer = (state = initialState.report, action) => {
           if (item.key === action.payload.key) {
             return { ...item, markedNo: !item.markedNo, status: !item.status };
           }
-          console.log(item);
           return item;
         }),
       };

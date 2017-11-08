@@ -4,10 +4,10 @@ import { StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { Checkbox } from 'react-native-checkbox';
-import PropTypes from 'prop-types';
+import Checkbox from 'react-native-checkbox';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
+import store from '../Reducers/store';
 
 const styles = StyleSheet.create({
 
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    paddingLeft: 30,
-    paddingTop: 30,
+    paddingLeft: 20,
+    paddingTop: 20,
     color: 'blue',
     fontSize: 20,
     paddingRight: 10,
@@ -55,16 +55,26 @@ export default class MainReportsScreen extends React.Component {
 
     this.state = {
       anyReport: false,
+      whatever: '',
     };
   }
-  statusFoodQuality() {
-    if (this.props.statusFoodQuality) {
+
+  checkingReport() {
+    const newState = store.getState();
+    if (newState.report.statusFoodQuality) {
+      this.state.anyReport = true;
       return (
-        <Checkbox checked={this.props.statusFoodQuality} />
+        <View>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+          />
+        </View>
       );
     }
     return (null);
   }
+
   render() {
     return (
       <View style={styles.content}>
@@ -97,13 +107,14 @@ export default class MainReportsScreen extends React.Component {
             <Text style={styles.text}>Documentação</Text>
           </TouchableOpacity>
 
-          {this.statusFoodQuality()}
-
-          <TouchableOpacity
-            onPress={() => Actions.foodQualityCheckoutScreen()}
-          >
-            <Text style={styles.text}>Qualidade da Alimentação</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row' }}>
+            {this.checkingReport()}
+            <TouchableOpacity
+              onPress={() => Actions.foodQualityCheckoutScreen()}
+            >
+              <Text style={styles.text}>Qualidade da Alimentação</Text>
+            </TouchableOpacity>
+          </View>
 
           <TouchableOpacity
             onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
@@ -133,7 +144,3 @@ export default class MainReportsScreen extends React.Component {
     );
   }
 }
-
-MainReportsScreen.propTypes = {
-  statusFoodQuality: PropTypes.bool.isRequired,
-};
