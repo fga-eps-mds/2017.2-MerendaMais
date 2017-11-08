@@ -110,6 +110,11 @@ export default class RefectoryCheckoutScreen extends React.Component {
     );
   }
 
+  concludeReport() {
+    this.props.setStatusRefectory(true);
+    Actions.pop();
+  }
+
   render() {
     return (
       <ScrollView style={styles.content}>
@@ -147,7 +152,7 @@ export default class RefectoryCheckoutScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => Actions.pop()}
+          onPress={() => this.concludeReport()}
           key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
@@ -158,6 +163,7 @@ export default class RefectoryCheckoutScreen extends React.Component {
 }
 
 RefectoryCheckoutScreen.propTypes = {
+  setStatusRefectory: PropTypes.func.isRequired,
   setRefectoryObservation: PropTypes.func.isRequired,
   setRefectoryReportPositive: PropTypes.func.isRequired,
   setRefectoryReportNegative: PropTypes.func.isRequired,

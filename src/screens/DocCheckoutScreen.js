@@ -101,6 +101,7 @@ export default class DocCheckoutScreen extends React.Component {
   }
 
   concludeReport() {
+    this.props.setStatusDoc(true);
     this.props.setDocObservation(this.state.observation);
     Actions.pop();
   }
@@ -157,10 +158,7 @@ export default class DocCheckoutScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() =>
-            // Actions.pop()
-            this.concludeReport()
-          }
+          onPress={() => this.concludeReport()}
           key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
@@ -171,6 +169,7 @@ export default class DocCheckoutScreen extends React.Component {
 }
 
 DocCheckoutScreen.propTypes = {
+  setStatusDoc: PropTypes.func.isRequired,
   setDocObservation: PropTypes.func.isRequired,
   setDocReportPositive: PropTypes.func.isRequired,
   setDocReportNegative: PropTypes.func.isRequired,

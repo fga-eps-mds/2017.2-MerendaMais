@@ -110,6 +110,11 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
     );
   }
 
+  concludeReport() {
+    this.props.setStatusSchoolSurroundings(true);
+    Actions.pop();
+  }
+
   render() {
     return (
       <ScrollView style={styles.content}>
@@ -147,7 +152,7 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => Actions.pop()}
+          onPress={() => this.concludeReport()}
           key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
@@ -158,6 +163,7 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
 }
 
 SchoolSurroundingsCheckoutScreen.propTypes = {
+  setStatusSchoolSurroundings: PropTypes.func.isRequired,
   setSchoolSurroundingsObservation: PropTypes.func.isRequired,
   setSchoolSurroundingsReportPositive: PropTypes.func.isRequired,
   setSchoolSurroundingsReportNegative: PropTypes.func.isRequired,

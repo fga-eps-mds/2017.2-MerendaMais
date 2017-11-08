@@ -109,6 +109,11 @@ export default class StockFoodCheckoutScreen extends React.Component {
     );
   }
 
+  concludeReport() {
+    this.props.setStatusFoodStock(true);
+    Actions.pop();
+  }
+
   render() {
     return (
       <ScrollView style={styles.content}>
@@ -146,7 +151,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => Actions.pop()}
+          onPress={() => this.concludeReport()}
           key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
@@ -157,6 +162,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
 }
 
 StockFoodCheckoutScreen.propTypes = {
+  setStatusFoodStock: PropTypes.func.isRequired,
   setFoodStockObservation: PropTypes.func.isRequired,
   setStockFoodReportPositive: PropTypes.func.isRequired,
   setStockFoodReportNegative: PropTypes.func.isRequired,

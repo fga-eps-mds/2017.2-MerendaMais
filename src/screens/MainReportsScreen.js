@@ -3,6 +3,7 @@ import { StyleSheet,
   TouchableOpacity,
   Text,
   View,
+  ScrollView,
 } from 'react-native';
 import Checkbox from 'react-native-checkbox';
 import { Actions } from 'react-native-router-flux';
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   },
   text: {
     paddingLeft: 20,
-    paddingTop: 20,
+    paddingTop: 5,
     color: 'blue',
     fontSize: 20,
     paddingRight: 10,
@@ -59,15 +60,113 @@ export default class MainReportsScreen extends React.Component {
     };
   }
 
-  checkingReport() {
-    const newState = store.getState();
-    if (newState.report.statusFoodQuality) {
+  checkingFoodQualityReport() {
+    const newStateFoodQuality = store.getState();
+    if (newStateFoodQuality.report.statusFoodQuality) {
       this.state.anyReport = true;
       return (
-        <View>
+        <View style={{ marginLeft: 10 }}>
           <Checkbox
             checked={this.state.anyReport}
             label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+  checkingDocReport() {
+    const newStateDoc = store.getState();
+    if (newStateDoc.report.statusDoc) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+  checkingRefectoryReport() {
+    const newStateRefectory = store.getState();
+    if (newStateRefectory.report.statusRefectory) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+  checkingKitchenReport() {
+    const newStateKitchen = store.getState();
+    if (newStateKitchen.report.statusKitchen) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+  checkingStockFoodReport() {
+    const newStateStockFood = store.getState();
+    if (newStateStockFood.report.statusFoodStock) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+
+  checkingSchoolSurroundingsReport() {
+    const newStateSchoolSurroudingings = store.getState();
+    if (newStateSchoolSurroudingings.report.statusSchoolSurroundings) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+  checkingReportObservation() {
+    const newStateReportObservation = store.getState();
+    if (newStateReportObservation.report.statusReportObservation) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
           />
         </View>
       );
@@ -77,56 +176,74 @@ export default class MainReportsScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.content}>
+      <ScrollView style={styles.content}>
         <Header
           title={'Relatórios'}
           backButton
         />
         <View>
-          <TouchableOpacity
-            onPress={() => Actions.stockFoodCheckoutScreen()}
-          >
-            <Text style={styles.text}>Estoque de Alimentos</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <TouchableOpacity
+              onPress={() => Actions.stockFoodCheckoutScreen()}
+            >
+              <Text style={styles.text}>Estoque de Alimentos</Text>
+            </TouchableOpacity>
+            {this.checkingStockFoodReport()}
+          </View>
 
-          <TouchableOpacity
-            onPress={() => Actions.kitchenCheckoutScreen()}
-          >
-            <Text style={styles.text}>Cozinha</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <TouchableOpacity
+              onPress={() => Actions.kitchenCheckoutScreen()}
+            >
+              <Text style={styles.text}>Cozinha</Text>
+            </TouchableOpacity>
+            {this.checkingKitchenReport()}
+          </View>
 
-          <TouchableOpacity
-            onPress={() => Actions.refectoryCheckoutScreen()}
-          >
-            <Text style={styles.text}>Refeitório</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <TouchableOpacity
+              onPress={() => Actions.refectoryCheckoutScreen()}
+            >
+              <Text style={styles.text}>Refeitório</Text>
+            </TouchableOpacity>
+            {this.checkingRefectoryReport()}
+          </View>
 
-          <TouchableOpacity
-            onPress={() => Actions.DocCheckoutScreen()}
-          >
-            <Text style={styles.text}>Documentação</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <TouchableOpacity
+              onPress={() => Actions.DocCheckoutScreen()}
+            >
+              <Text style={styles.text}>Documentação</Text>
+            </TouchableOpacity>
+            {this.checkingDocReport()}
+          </View>
 
-          <View style={{ flexDirection: 'row' }}>
-            {this.checkingReport()}
+          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
             <TouchableOpacity
               onPress={() => Actions.foodQualityCheckoutScreen()}
             >
               <Text style={styles.text}>Qualidade da Alimentação</Text>
             </TouchableOpacity>
+            {this.checkingFoodQualityReport()}
           </View>
 
-          <TouchableOpacity
-            onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
-          >
-            <Text style={styles.text}>Arredores da Escola</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <TouchableOpacity
+              onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
+            >
+              <Text style={styles.text}>Arredores da Escola</Text>
+            </TouchableOpacity>
+            {this.checkingSchoolSurroundingsReport()}
+          </View>
 
-          <TouchableOpacity
-            onPress={() => Actions.ReportObservationScreen()}
-          >
-            <Text style={styles.text}>+ Outras informações</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <TouchableOpacity
+              onPress={() => Actions.ReportObservationScreen()}
+            >
+              <Text style={styles.text}>+ Outras informações</Text>
+            </TouchableOpacity>
+            {this.checkingReportObservation()}
+          </View>
 
           <TouchableOpacity
             style={styles.buttonPhoto}
@@ -140,7 +257,7 @@ export default class MainReportsScreen extends React.Component {
             <Text style={styles.buttonText}>Gerar Relatório Final</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

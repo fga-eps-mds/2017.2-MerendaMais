@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import DocCheckoutScreen from '../screens/DocCheckoutScreen';
 import { setDocReportPositive,
   setDocReportNegative,
-  setDocObservation } from '../actions/reportActions';
+  setDocObservation,
+  setStatusDoc,
+} from '../actions/reportActions';
 
 const mapStateToProps = state => ({
   report: state.report.doc,
@@ -13,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
   setDocReportPositive: key => dispatch(setDocReportPositive(key)),
   setDocReportNegative: key => dispatch(setDocReportNegative(key)),
   setDocObservation: observation => dispatch(setDocObservation(observation)),
+  setStatusDoc: statusDoc => dispatch(setStatusDoc(statusDoc)),
 });
 
 const DocCheckoutContainer =

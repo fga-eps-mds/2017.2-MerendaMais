@@ -18,6 +18,12 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_SCHOOLSURROUNDINGSOBSERVATION,
   SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE,
   SET_SCHOOLSURROUNDINGSREPORT_POSITIVE,
+  SET_STATUSDOC,
+  SET_STATUSKITCHEN,
+  SET_STATUSREFECTORY,
+  SET_STATUSREPORTOBSERVATION,
+  SET_STATUSSCHOOLSURROUNDINGS,
+  SET_STATUSSTOCKFOOD,
 } from '../actions/types';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
@@ -177,6 +183,37 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         statusFoodQuality: action.payload,
+      };
+    case SET_STATUSDOC:
+      console.log(action.payload);
+      return {
+        ...state,
+        statusDoc: action.payload,
+      };
+    case SET_STATUSKITCHEN:
+      return {
+        ...state,
+        statusKitchen: action.payload,
+      };
+    case SET_STATUSREFECTORY:
+      return {
+        ...state,
+        statusRefectory: action.payload,
+      };
+    case SET_STATUSREPORTOBSERVATION:
+      return {
+        ...state,
+        statusReportObservation: action.payload,
+      };
+    case SET_STATUSSCHOOLSURROUNDINGS:
+      return {
+        ...state,
+        statusSchoolSurroundings: action.payload,
+      };
+    case SET_STATUSSTOCKFOOD:
+      return {
+        ...state,
+        statusFoodStock: action.payload,
       };
     case SET_SCHOOLSURROUNDINGSREPORT_POSITIVE:
       return {

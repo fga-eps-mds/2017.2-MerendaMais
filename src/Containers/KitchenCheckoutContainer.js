@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import KitchenCheckoutScreen from '../screens/KitchenCheckoutScreen';
-import { setKitchenReportPositive, setKitchenReportNegative, setKitchenObservation } from '../actions/reportActions';
+import { setKitchenReportPositive, setKitchenReportNegative, setKitchenObservation, setStatusKitchen } from '../actions/reportActions';
 
 const mapStateToProps = state => ({
   report: state.report.kitchen,
@@ -11,6 +11,7 @@ const mapDispatchToProps = dispatch => ({
   setKitchenReportPositive: key => dispatch(setKitchenReportPositive(key)),
   setKitchenReportNegative: key => dispatch(setKitchenReportNegative(key)),
   setKitchenObservation: observation => dispatch(setKitchenObservation(observation)),
+  setStatusKitchen: statusKitchen => dispatch(setStatusKitchen(statusKitchen)),
 });
 
 const kitchenCheckoutContainer =

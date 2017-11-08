@@ -101,6 +101,7 @@ export default class KitchenCheckoutScreen extends React.Component {
   }
 
   concludeReport() {
+    this.props.setStatusKitchen(true);
     this.props.setKitchenObservation(this.state.observation);
     Actions.pop();
   }
@@ -157,10 +158,7 @@ export default class KitchenCheckoutScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() =>
-            // Actions.pop()
-            this.concludeReport()
-          }
+          onPress={() => this.concludeReport()}
           key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
@@ -171,6 +169,7 @@ export default class KitchenCheckoutScreen extends React.Component {
 }
 
 KitchenCheckoutScreen.propTypes = {
+  setStatusKitchen: PropTypes.func.isRequired,
   setKitchenObservation: PropTypes.func.isRequired,
   setKitchenReportPositive: PropTypes.func.isRequired,
   setKitchenReportNegative: PropTypes.func.isRequired,

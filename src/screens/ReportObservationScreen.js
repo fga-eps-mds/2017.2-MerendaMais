@@ -87,6 +87,7 @@ export default class ReportObservationScreen extends React.Component {
 
 
   concludeReport() {
+    this.props.setStatusReportObservation(true);
     this.props.setReportObservation(this.state.observation);
     Actions.pop();
   }
@@ -128,6 +129,7 @@ export default class ReportObservationScreen extends React.Component {
 }
 
 ReportObservationScreen.propTypes = {
+  setStatusReportObservation: PropTypes.func.isRequired,
   setReportObservation: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
 };
