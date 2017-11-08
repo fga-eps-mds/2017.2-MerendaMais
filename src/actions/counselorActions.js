@@ -173,6 +173,7 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
     .then((response) => {
       logInfo(FILE_NAME, 'addCounselorToGroup',
         `${response.data}`);
+      logInfo(FILE_NAME, 'addCounselorToGroup', JSON.stringify(response));
 
       dispatch(setCounselor(counselor));
 

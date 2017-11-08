@@ -4,6 +4,7 @@ import asyncSchedulingVisit from '../actions/schedulingActions';
 
 const mapStateToProps = state => ({
   counselor: state.counselor,
+  school: state.school,
 });
 
 const mapDispatchToProps = dispatch => ({

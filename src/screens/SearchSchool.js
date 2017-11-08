@@ -1,36 +1,27 @@
 import axios from 'axios';
+import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  Image,
   TextInput,
   FlatList,
   ActivityIndicator,
   Alert,
   Picker } from 'react-native';
 import PropTypes from 'prop-types';
-import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import Menu from '../components/Menu';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 
-
 import { SCHOOL_ENDPOINT } from '../constants';
-
-const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
-const CityIcon = require('../images/ic_location_city_48pt.png');
-const SearchIcon = require('../images/ic_search_48pt.png');
-const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
-const GoIcon = require('../images/ic_keyboard_arrow_right_48pt.png');
 
 const FILE_NAME = 'SearchSchool.js';
 
 const styles = StyleSheet.create({
   headerBox: {
     flex: 1,
-    padding: 10,
+    padding: 20,
     backgroundColor: '#FF9500',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
@@ -38,10 +29,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   bodyBox: {
     flex: 10,
     alignItems: 'center',
   },
+
   textLogo: {
     flex: 1,
     fontSize: 30,
@@ -49,11 +42,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+
   icon: {
-    width: 30,
-    height: 30,
-    margin: 5,
+    margin: 8,
   },
+
   buttonSearchAnabled: {
     paddingHorizontal: 117,
     paddingVertical: 15,
@@ -63,6 +56,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
+
   buttonSearchDisabled: {
     paddingHorizontal: 117,
     paddingVertical: 15,
@@ -72,29 +66,34 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
+
   listSchools: {
-    flex: 4,
+    flex: 2.5,
     justifyContent: 'center',
     width: 320,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 7,
   },
+
   item: {
     borderBottomColor: 'black',
     borderBottomWidth: 0.5,
     borderRadius: 7,
   },
+
   buttonSelectSchool: { padding: 10,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+
   buttonArea: {
     flex: 1,
     justifyContent: 'flex-end',
     paddingBottom: 20,
   },
+
   InputDropdown: {
     marginTop: 15,
     paddingLeft: 2,
@@ -103,6 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
 
   },
+
   Input: {
     marginTop: 20,
     paddingLeft: 2,
@@ -134,6 +134,7 @@ class SearchSchool extends React.Component {
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
   }
+
   validateName(name) {
     const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g, '');
     this.setState({ name: validName });
@@ -225,97 +226,92 @@ class SearchSchool extends React.Component {
   }
 
   render() {
-    const menu = <Menu />;
-
     return (
-      <SideMenu
-        menu={menu}
-        menuPosition="right"
-        isOpen={this.state.isOpen}
-        disableGestures
-        onChange={isOpen => this.updateMenuState(isOpen)}
-      >
-        <View style={{ flex: 1, backgroundColor: 'white' }}>
-          <View style={styles.headerBox}>
-            <TouchableOpacity
-              onPress={() => Actions.pop()}
-            >
-              <Image source={BackIcon} />
-            </TouchableOpacity>
-            <Text style={styles.textLogo}>Pesquisar Escola</Text>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <View style={styles.headerBox}>
+          <TouchableOpacity
+            onPress={() => Actions.pop()}
+          >
+            <Ionicons name="ios-arrow-back-outline" style={styles.icon} size={45} color="black" />
+          </TouchableOpacity>
+          <Text style={styles.textLogo}>Pesquisar Escola</Text>
 
-            <TouchableOpacity
-              onPress={() => this.updateMenuState(true)}
-            >
-              <Image source={sideMenuIcon} />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={() => Actions.drawerOpen()}
+          >
+            <FontAwesome name="navicon" size={32} />
+          </TouchableOpacity>
+        </View>
 
-          <View style={styles.bodyBox}>
-            <View style={{ flex: 3 }}>
-              <View style={styles.Input}>
-                <Image source={CityIcon} style={styles.icon} />
-                <TextInput
-                  width={280}
-                  returnKeyType="go"
-                  maxLength={50}
-                  keyboardType={'default'}
-                  onChangeText={text => this.validateCity(text)}
-                  value={this.state.city} // CAE OR CITY ?
-                  underlineColorAndroid="transparent"
-                  placeholder="Estado/Município"
-                />
-              </View>
-
-              <View style={styles.Input}>
-                <Image source={SearchIcon} style={styles.icon} />
-                <TextInput
-                  width={280}
-                  returnKeyType="go"
-                  maxLength={50}
-                  keyboardType={'default'}
-                  onChangeText={text => this.validateName(text)}
-                  value={this.state.name}
-                  underlineColorAndroid="transparent"
-                  placeholder="Escola a pesquisar"
-                />
-              </View>
-
-              <View style={styles.InputDropdown}>
-                <Picker
-                  onValueChange={uf => this.setState({ uf })}
-                  selectedValue={this.state.uf}
-                >
-                  <Picker.Item value="" label="Escolha sua UF" color="#95a5a6" />
-                  <Picker.Item value="DF" label="DF" />
-                </Picker>
-              </View>
-
-            </View>
-
-            <View style={styles.listSchools} >
-              <FlatList
-                data={this.state.schoolList}
-                keyExtractor={item => item.nome}
-                renderItem={({ item }) => (
-                  <View style={styles.item}>
-                    <TouchableOpacity
-                      style={styles.buttonSelectSchool}
-                      onPress={() => this.props.setSchoolInfo(item.codEscola)}
-                    >
-                      <Text style={{ fontSize: 16 }}>{item.nome}</Text>
-                      <Image source={GoIcon} style={{ width: 25, height: 25 }} />
-                    </TouchableOpacity>
-                  </View>
-                )}
+        <View style={styles.bodyBox}>
+          <View style={{ flex: 3 }}>
+            <View style={styles.Input}>
+              <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
+              <TextInput
+                width={280}
+                returnKeyType="go"
+                maxLength={50}
+                keyboardType={'default'}
+                onChangeText={text => this.validateCity(text)}
+                value={this.state.city} // CAE OR CITY ?
+                underlineColorAndroid="transparent"
+                placeholder="Estado/Município"
               />
             </View>
-            <View key="renderButton" style={styles.buttonArea} >
-              {this.buttonActivation()}
+
+            <View style={styles.Input}>
+              <FontAwesome name="search" style={styles.icon} size={30} color="black" />
+              <TextInput
+                width={280}
+                returnKeyType="go"
+                maxLength={50}
+                keyboardType={'default'}
+                onChangeText={text => this.validateName(text)}
+                value={this.state.name}
+                underlineColorAndroid="transparent"
+                placeholder="Escola a pesquisar"
+              />
             </View>
+
+            <View style={styles.InputDropdown}>
+              <Picker
+                onValueChange={uf => this.setState({ uf })}
+                selectedValue={this.state.uf}
+              >
+                <Picker.Item value="" label="Escolha sua UF" color="#95a5a6" />
+                <Picker.Item value="DF" label="DF" />
+              </Picker>
+            </View>
+
+          </View>
+
+          <View style={styles.listSchools} >
+            <FlatList
+              data={this.state.schoolList}
+              keyExtractor={item => item.nome}
+              renderItem={({ item }) => (
+                <View style={styles.item}>
+                  <TouchableOpacity
+                    style={styles.buttonSelectSchool}
+                    onPress={() => this.props.setSchoolInfo(item.codEscola)}
+                  >
+                    <Text style={{ fontSize: 16 }}>{item.nome}</Text>
+                    <Ionicons
+                      name="ios-arrow-forward-outline"
+                      style={styles.icon}
+                      size={35}
+                      color="black"
+                    />
+                  </TouchableOpacity>
+                </View>
+              )}
+            />
+          </View>
+          <View key="renderButton" style={styles.buttonArea} >
+            {this.buttonActivation()}
           </View>
         </View>
-      </SideMenu>
+      </View>
     );
   }
 }

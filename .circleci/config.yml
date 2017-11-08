@@ -4,7 +4,7 @@ jobs:
     environment:
         CC_TEST_REPORTER_ID: ${CODE_CLIMATE_TOKEN}
     docker:
-      - image: circleci/node:6
+      - image: circleci/node:6.11.3
     steps:
       - checkout
       - restore_cache:
