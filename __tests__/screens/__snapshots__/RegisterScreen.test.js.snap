@@ -517,11 +517,9 @@ ShallowWrapper {
             disabled={false}
             ellipsizeMode="tail"
           >
-             
-            
-              
             
              
+            
           </Text>
         </View>,
         <TouchableOpacity
@@ -2025,11 +2023,9 @@ ShallowWrapper {
             disabled={false}
             ellipsizeMode="tail"
           >
-             
-            
-              
             
              
+            
           </Text>,
           "style": Object {
             "alignItems": "center",
@@ -2053,22 +2049,18 @@ ShallowWrapper {
             "accessible": true,
             "allowFontScaling": true,
             "children": Array [
-              " ",
-              "",
-              "  ",
               "",
               " ",
+              "",
             ],
             "disabled": false,
             "ellipsizeMode": "tail",
           },
           "ref": null,
           "rendered": Array [
-            " ",
-            "",
-            "  ",
             "",
             " ",
+            "",
           ],
           "type": [Function],
         },
@@ -2757,11 +2749,9 @@ ShallowWrapper {
               disabled={false}
               ellipsizeMode="tail"
             >
-               
-              
-                
               
                
+              
             </Text>
           </View>,
           <TouchableOpacity
@@ -4265,11 +4255,9 @@ ShallowWrapper {
               disabled={false}
               ellipsizeMode="tail"
             >
-               
-              
-                
               
                
+              
             </Text>,
             "style": Object {
               "alignItems": "center",
@@ -4293,22 +4281,18 @@ ShallowWrapper {
               "accessible": true,
               "allowFontScaling": true,
               "children": Array [
-                " ",
-                "",
-                "  ",
                 "",
                 " ",
+                "",
               ],
               "disabled": false,
               "ellipsizeMode": "tail",
             },
             "ref": null,
             "rendered": Array [
-              " ",
-              "",
-              "  ",
               "",
               " ",
+              "",
             ],
             "type": [Function],
           },

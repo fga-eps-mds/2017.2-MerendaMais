@@ -117,6 +117,7 @@ export default class RegisterScreen extends React.Component {
         CAE: '',
       },
     };
+
     this.validateCpf = this.validateCpf.bind(this);
     this.validateName = this.validateName.bind(this);
     this.validatePhone = this.validatePhone.bind(this);
@@ -236,6 +237,7 @@ export default class RegisterScreen extends React.Component {
         />
       </View>
     ) : null;
+
     const municipalDistrict = this.state.profile.CAE_Type === 'Municipal' && this.state.profile.UF !== '' ? (
       <View >
         <Text>     Municipio</Text>
@@ -246,11 +248,12 @@ export default class RegisterScreen extends React.Component {
           <Picker
             selectedValue={this.state.profile.municipalDistrict}
             onValueChange={value => this.setState({ profile: { ...this.state.profile,
-              municipalDistrict: value } })}
+              municipalDistrict: value,
+              CAE: `${value} ${UfInitials}`.trim() } })}
           >
             <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />
             {municipalDistricts[UfInitials].cidades.map(item =>
-              (<Picker.Item label={item} value={item} color="#000000" />))}
+              (<Picker.Item label={item} value={`${item} -`} color="#000000" />))}
           </Picker>
         </View>
       </View>
@@ -368,15 +371,30 @@ export default class RegisterScreen extends React.Component {
           style={styles.InputDropdown}
         >
           <Picker
-            onValueChange={value => this.setState({ profile: { ...this.state.profile,
-              CAE_Type: value } })}
+            onValueChange={
+              value => (
+                value === 'Estadual' ?
+                  this.setState({ profile: { ...this.state.profile,
+                    CAE_Type: value,
+                    municipalDistrict: '',
+                    CAE: `${UfInitials}`.trim() },
+                  })
+                  :
+                  this.setState({ profile: { ...this.state.profile,
+                    CAE_Type: value,
+                    CAE: `${this.state.profile.municipalDistrict} ${UfInitials}`.trim() },
+                  })
+              )
+            }
             selectedValue={this.state.profile.CAE_Type}
           >
+
             <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />
             <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />
             <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />
           </Picker>
         </View>
+
         <Text>    UF</Text>
         <View
           style={styles.InputDropdown}
@@ -384,7 +402,8 @@ export default class RegisterScreen extends React.Component {
           <Picker
             selectedValue={this.state.profile.UF}
             onValueChange={value => this.setState({ profile: { ...this.state.profile,
-              UF: value } })}
+              UF: value,
+              CAE: `${this.state.profile.municipalDistrict} ${value.substr(0, 2)}`.trim() } })}
           >
             <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />
             {brazilianStates.estados.map(item =>
@@ -394,11 +413,12 @@ export default class RegisterScreen extends React.Component {
 
         {municipalDistrict}
 
+
         <Text>    CAE</Text>
         <View
           style={styles.InputStyle}
         >
-          <Text> {UfInitials}  {this.state.profile.municipalDistrict} </Text>
+          <Text>{this.state.profile.municipalDistrict} {UfInitials}</Text>
         </View>
 
         {this.renderBtnLogin()}
