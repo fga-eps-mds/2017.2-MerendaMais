@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import reportObservationScreen from '../screens/ReportObservationScreen';
+import ReportObservationScreen from '../screens/ReportObservationScreen';
 import { setReportObservation } from '../actions/reportActions';
 
 const mapStateToProps = state => ({
@@ -11,6 +11,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ReportObservationContainer =
-connect(mapStateToProps, mapDispatchToProps)(reportObservationScreen);
+connect(mapStateToProps, mapDispatchToProps)(ReportObservationScreen);
 
 export default ReportObservationContainer;
