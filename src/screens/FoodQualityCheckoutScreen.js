@@ -110,12 +110,17 @@ export default class FoodQualityCheckoutScreen extends React.Component {
     );
   }
 
+  concludeReport() {
+    this.props.setStatusFoodQuality(true);
+    Actions.pop();
+  }
+
   render() {
     return (
       <ScrollView style={styles.content}>
         <Header
           title={'Relatório'}
-          subTitle={'Refeitório'}
+          subTitle={'Qualidade de Alimento'}
           backButton
         />
         <View>
@@ -147,7 +152,7 @@ export default class FoodQualityCheckoutScreen extends React.Component {
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => Actions.pop()}
+          onPress={() => this.concludeReport()}
           key="setObservation"
         >
           <Text style={styles.buttonText}>Concluir</Text>
@@ -158,6 +163,7 @@ export default class FoodQualityCheckoutScreen extends React.Component {
 }
 
 FoodQualityCheckoutScreen.propTypes = {
+  setStatusFoodQuality: PropTypes.func.isRequired,
   setFoodQualityObservation: PropTypes.func.isRequired,
   setFoodQualityReportPositive: PropTypes.func.isRequired,
   setFoodQualityReportNegative: PropTypes.func.isRequired,

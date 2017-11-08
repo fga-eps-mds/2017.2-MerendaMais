@@ -37,6 +37,7 @@ const initialState = {
     documentationObservation: '',
     foodQuality,
     foodQualityObservation: '',
+    statusFoodQuality: false,
   },
   school: {
     schoolCode: '',

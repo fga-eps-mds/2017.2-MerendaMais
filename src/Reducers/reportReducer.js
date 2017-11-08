@@ -14,6 +14,7 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_FOODQUALITYOBSERVATION,
   SET_FOODQUALITYREPORT_NEGATIVE,
   SET_FOODQUALITYREPORT_POSITIVE,
+  SET_STATUSFOODQUALITY,
 } from '../actions/types';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
@@ -177,6 +178,13 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         otherObservation: action.payload,
+      };
+
+    case SET_STATUSFOODQUALITY:
+      console.log(action.payload);
+      return {
+        ...state,
+        statusFoodQuality: action.payload,
       };
 
     default:

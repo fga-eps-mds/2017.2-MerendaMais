@@ -125,7 +125,7 @@ export default class DocCheckoutScreen extends React.Component {
       <ScrollView style={styles.content}>
         <Header
           title={'Relatório'}
-          subTitle={'Estoque de Alimentos'}
+          subTitle={'Documentação'}
           backButton
         />
         <View>

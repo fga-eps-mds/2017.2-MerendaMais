@@ -4,6 +4,8 @@ import { StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { Checkbox } from 'react-native-checkbox';
+import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 
@@ -55,6 +57,14 @@ export default class MainReportsScreen extends React.Component {
       anyReport: false,
     };
   }
+  statusFoodQuality() {
+    if (this.props.statusFoodQuality) {
+      return (
+        <Checkbox checked={this.props.statusFoodQuality} />
+      );
+    }
+    return (null);
+  }
   render() {
     return (
       <View style={styles.content}>
@@ -87,6 +97,8 @@ export default class MainReportsScreen extends React.Component {
             <Text style={styles.text}>Documentação</Text>
           </TouchableOpacity>
 
+          {this.statusFoodQuality()}
+
           <TouchableOpacity
             onPress={() => Actions.foodQualityCheckoutScreen()}
           >
@@ -115,3 +127,7 @@ export default class MainReportsScreen extends React.Component {
     );
   }
 }
+
+MainReportsScreen.propTypes = {
+  statusFoodQuality: PropTypes.bool.isRequired,
+};
