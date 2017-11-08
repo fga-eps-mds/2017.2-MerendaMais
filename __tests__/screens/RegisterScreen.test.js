@@ -28,6 +28,7 @@ const initialState = {
       CAE_Type: 'Estadual',
       CAE: 'Distrito Federal',
       UF: 'AC - Acre',
+      municipalDistrict: 'Brazlândia',
     },
   },
   application: {
@@ -127,6 +128,8 @@ describe('Testing RegisterScreen On pressed buttons', () => {
       expect(state.profile.isPresident).toEqual(false);
       expect(state.profile.segment).toEqual('Pais de alunos');
       expect(state.profile.CAE_Type).toEqual('Estadual');
+      expect(state.profile.UF).toEqual('DF - Distrito Federal');
+      expect(state.profile.municipalDistrict).toEqual('Brasília');
       expect(state.profile.CAE).toEqual('DF');
     };
 
@@ -148,6 +151,8 @@ describe('Testing RegisterScreen On pressed buttons', () => {
         isPresident: false,
         segment: 'Pais de alunos',
         CAE_Type: 'Estadual',
+        UF: 'DF - Distrito Federal',
+        municipalDistrict: 'Brasília',
         CAE: 'DF',
       },
     });

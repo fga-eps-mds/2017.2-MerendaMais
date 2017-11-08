@@ -23,7 +23,7 @@ import { TITULAR_COUNSELOR,
   CIVILIAN_ENTITIES } from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 import brazilianStates from '../brazilianStates';
-// import municipalDistricts from '../municipalDistricts';
+import municipalDistricts from '../municipalDistricts';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -79,6 +79,22 @@ const styles = {
     color: '#FFF',
   },
 
+  field: {
+    backgroundColor: '#FAFAFA',
+    paddingVertical: 4,
+    borderWidth: 1,
+    borderRadius: 7,
+    borderColor: 'gray',
+    marginHorizontal: 15,
+    marginBottom: 15,
+    marginTop: 15,
+    justifyContent: 'flex-start',
+    paddingLeft: 2,
+    paddingRight: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
 };
 
 export default class RegisterScreen extends React.Component {
@@ -96,8 +112,9 @@ export default class RegisterScreen extends React.Component {
         counselorType: '',
         segment: '',
         CAE_Type: '',
-        CAE: '',
         UF: '',
+        municipalDistrict: '',
+        CAE: '',
       },
     };
     this.validateCpf = this.validateCpf.bind(this);
@@ -202,6 +219,8 @@ export default class RegisterScreen extends React.Component {
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
 
+    const UfInitials = this.state.profile.UF.substr(0, 2);
+
     const password = this.state.profile.isPresident === true ? (
       <View key="passwordPresident">
         <Text style={styles.container}>     Senha</Text>
@@ -217,6 +236,26 @@ export default class RegisterScreen extends React.Component {
         />
       </View>
     ) : null;
+    const municipalDistrict = this.state.profile.CAE_Type === 'Municipal' && this.state.profile.UF !== '' ? (
+      <View >
+        <Text>     Municipio</Text>
+        <View
+          key="municipalDistrict"
+          style={styles.InputDropdown}
+        >
+          <Picker
+            selectedValue={this.state.profile.municipalDistrict}
+            onValueChange={value => this.setState({ profile: { ...this.state.profile,
+              municipalDistrict: value } })}
+          >
+            <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />
+            {municipalDistricts[UfInitials].cidades.map(item =>
+              (<Picker.Item label={item} value={item} color="#000000" />))}
+          </Picker>
+        </View>
+      </View>
+    ) : null;
+
     return (
       <ScrollView style={styles.principal}>
         <Header />
@@ -338,7 +377,6 @@ export default class RegisterScreen extends React.Component {
             <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />
           </Picker>
         </View>
-
         <Text>    UF</Text>
         <View
           style={styles.InputDropdown}
@@ -353,22 +391,16 @@ export default class RegisterScreen extends React.Component {
               (<Picker.Item label={item} value={item} color="#000000" />))}
           </Picker>
         </View>
-        {/*
-        <Text>    Município</Text>
+
+        {municipalDistrict}
+
+        <Text>    CAE</Text>
         <View
-          style={styles.InputDropdown}
+          style={styles.InputStyle}
         >
-          <Picker
-            selectedValue={this.state.profile.CAE}
-            onValueChange={value => this.setState({ profile: { ...this.state.profile,
-              CAE: value } })}
-          >
-            <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />
-            {municipalDistricts.this.state.UF.substring(0, 1).cidades.map(item =>
-              (<Picker.Item label={item} value={item} />))}
-          </Picker>
+          <Text> {UfInitials}  {this.state.profile.municipalDistrict} </Text>
         </View>
-        */}
+
         {this.renderBtnLogin()}
 
         <View style={styles.footer}>
