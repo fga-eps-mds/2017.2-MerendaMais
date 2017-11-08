@@ -228,6 +228,7 @@ ShallowWrapper {
       ]
     }
     setFoodStockObservation={[Function]}
+    setStatusFoodStock={[Function]}
     setStockFoodReportNegative={[Function]}
     setStockFoodReportPositive={[Function]}
   />,
@@ -11310,7 +11311,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": "setObservation",
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
@@ -22438,7 +22439,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": "setObservation",
           "nodeType": "class",
           "props": Object {
             "activeOpacity": 0.2,

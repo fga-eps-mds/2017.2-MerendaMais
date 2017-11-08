@@ -139,6 +139,7 @@ ShallowWrapper {
     setRefectoryObservation={[Function]}
     setRefectoryReportNegative={[Function]}
     setRefectoryReportPositive={[Function]}
+    setStatusRefectory={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

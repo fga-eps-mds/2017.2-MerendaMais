@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <ReportObservationScreen
     observation={undefined}
     setReportObservation={[Function]}
+    setStatusReportObservation={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
