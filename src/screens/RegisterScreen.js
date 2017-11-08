@@ -121,7 +121,6 @@ export default class RegisterScreen extends React.Component {
     this.validateCpf = this.validateCpf.bind(this);
     this.validateName = this.validateName.bind(this);
     this.validatePhone = this.validatePhone.bind(this);
-    this.validateCae = this.validateCae.bind(this);
     this.register = this.register.bind(this);
   }
 
@@ -140,10 +139,6 @@ export default class RegisterScreen extends React.Component {
     this.setState({ profile: { ...this.state.profile, phone: validPhone } });
   }
 
-  validateCae(CAE) {
-    const validCae = CAE.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ profile: { ...this.state.profile, CAE: validCae } });
-  }
 
   register() {
     const cpfRegex = /[0-9]{11}/g;
@@ -151,7 +146,6 @@ export default class RegisterScreen extends React.Component {
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
-    const caeRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     let error = false;
     let errorMessage = '';
     if (!cpfRegex.test(this.state.profile.cpf)) {
@@ -175,6 +169,10 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Cargo não selecionado\n';
     }
+    if (this.state.profile.counselorType === '') {
+      error = true;
+      errorMessage += 'Tipo de Conselheiro não selecionado\n';
+    }
     if (this.state.profile.segment === '') {
       error = true;
       errorMessage += 'Segmento não selecionado\n';
@@ -183,9 +181,13 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Tipo de CAE não selecionado\n';
     }
-    if (!caeRegex.test(this.state.profile.CAE) || this.state.profile.CAE.trim() === '') {
+    if (this.state.profile.UF === '') {
       error = true;
-      errorMessage += 'CAE inválido\n';
+      errorMessage += 'UF não selecionada\n';
+    }
+    if (this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.municipalDistrict === '') {
+      error = true;
+      errorMessage += 'Município não selecionado\n';
     }
     if (error === false) {
       this.props.asyncRegisterCounselor(this.state);
