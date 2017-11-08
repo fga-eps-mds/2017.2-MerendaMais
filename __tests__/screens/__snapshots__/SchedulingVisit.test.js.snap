@@ -9,7 +9,7 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
   }
 >
   <Header
-    backButton={false}
+    backButton={true}
     subTitle="VISITA"
     title="AGENDAR"
   />

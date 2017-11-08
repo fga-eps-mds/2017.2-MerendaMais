@@ -11,7 +11,7 @@ exports[`Testing StockFoodCheckoutScreen renders as expected 1`] = `
   }
 >
   <Header
-    backButton={false}
+    backButton={true}
     subTitle="Estoque de alimento"
     title="Relatório"
   />

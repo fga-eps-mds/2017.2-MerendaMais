@@ -9,64 +9,11 @@ exports[`Testing SearchSchool renders as expected 1`] = `
     }
   }
 >
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#FF9500",
-        "borderBottomColor": "black",
-        "borderBottomWidth": 1,
-        "flex": 1,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "padding": 20,
-      }
-    }
-  >
-    <TouchableOpacity
-      activeOpacity={0.2}
-      onPress={[Function]}
-    >
-      <Icon
-        allowFontScaling={false}
-        color="black"
-        name="ios-arrow-back-outline"
-        size={45}
-        style={
-          Object {
-            "margin": 8,
-          }
-        }
-      />
-    </TouchableOpacity>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "white",
-          "flex": 1,
-          "fontSize": 30,
-          "fontWeight": "bold",
-          "textAlign": "center",
-        }
-      }
-    >
-      Pesquisar Escola
-    </Text>
-    <TouchableOpacity
-      activeOpacity={0.2}
-      onPress={[Function]}
-    >
-      <Icon
-        allowFontScaling={false}
-        name="navicon"
-        size={32}
-      />
-    </TouchableOpacity>
-  </View>
+  <Header
+    backButton={true}
+    subTitle=""
+    title="Pesquisar Escola"
+  />
   <View
     style={
       Object {
