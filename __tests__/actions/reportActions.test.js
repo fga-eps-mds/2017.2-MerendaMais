@@ -8,6 +8,12 @@ import { setDocReportPositive,
   setKitchenReportPositive, setKitchenReportNegative, setKitchenObservation,
   setRefectoryReportPositive, setRefectoryReportNegative, setRefectoryObservation,
   setReportObservation,
+  setStatusDoc,
+  setStatusKitchen,
+  setStatusRefectory,
+  setStatusReportObservation,
+  setStatusSchoolSurroundings,
+  setStatusFoodStock,
   setSchoolSurroundingsReportPositive, setSchoolSurroundingsReportNegative,
   setSchoolSurroundingsObservation,
   setStockFoodReportPositive, setStockFoodReportNegative, setFoodStockObservation,
@@ -30,6 +36,12 @@ import { SET_STOCKFOODREPORT_NEGATIVE,
   SET_DOCOBSERVATION,
   SET_REPORTOBSERVATION,
   SET_STATUSFOODQUALITY,
+  SET_STATUSDOC,
+  SET_STATUSKITCHEN,
+  SET_STATUSREFECTORY,
+  SET_STATUSREPORTOBSERVATION,
+  SET_STATUSSCHOOLSURROUNDINGS,
+  SET_STATUSSTOCKFOOD,
   SET_SCHOOLSURROUNDINGSOBSERVATION,
   SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE,
   SET_SCHOOLSURROUNDINGSREPORT_POSITIVE,
@@ -155,6 +167,78 @@ describe('Testing reportActions', () => {
 
     expect(actionReturn.payload).toEqual({ });
     expect(actionReturn.type).toBe(SET_STATUSFOODQUALITY);
+  });
+
+  it('Testing setStatusDoc', () => {
+    let actionReturn = setStatusDoc();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSDOC);
+
+    actionReturn = setStatusDoc({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSDOC);
+  });
+
+  it('Testing setStatusKitchen', () => {
+    let actionReturn = setStatusKitchen();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSKITCHEN);
+
+    actionReturn = setStatusKitchen({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSKITCHEN);
+  });
+
+  it('Testing setStatusRefectory', () => {
+    let actionReturn = setStatusRefectory();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSREFECTORY);
+
+    actionReturn = setStatusRefectory({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSREFECTORY);
+  });
+
+  it('Testing setStatusReportObservation', () => {
+    let actionReturn = setStatusReportObservation();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSREPORTOBSERVATION);
+
+    actionReturn = setStatusReportObservation({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSREPORTOBSERVATION);
+  });
+
+  it('Testing setStatusSchoolSurroundings', () => {
+    let actionReturn = setStatusSchoolSurroundings();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSSCHOOLSURROUNDINGS);
+
+    actionReturn = setStatusSchoolSurroundings({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSSCHOOLSURROUNDINGS);
+  });
+
+  it('Testing setStatusFoodStock', () => {
+    let actionReturn = setStatusFoodStock();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSSTOCKFOOD);
+
+    actionReturn = setStatusFoodStock({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSSTOCKFOOD);
   });
 
 
