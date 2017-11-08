@@ -19,7 +19,7 @@ const initialState = {
 
 const store = mockStore(initialState);
 
-describe('Testing StockFoodCheckoutScreen', () => {
+describe('Testing DocCheckoutScreen', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
       <DocCheckoutContainer />,
