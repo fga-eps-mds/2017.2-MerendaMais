@@ -15,6 +15,9 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_FOODQUALITYREPORT_NEGATIVE,
   SET_FOODQUALITYREPORT_POSITIVE,
   SET_STATUSFOODQUALITY,
+  SET_SCHOOLSURROUNDINGSOBSERVATION,
+  SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE,
+  SET_SCHOOLSURROUNDINGSREPORT_POSITIVE,
 } from '../actions/types';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
@@ -186,7 +189,35 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         statusFoodQuality: action.payload,
       };
+    case SET_SCHOOLSURROUNDINGSREPORT_POSITIVE:
+      return {
+        ...state,
+        schoolSurroundings: state.schoolSurroundings.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
 
+    case SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE:
+      return {
+        ...state,
+        schoolSurroundings: state.schoolSurroundings.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          console.log(item);
+          return item;
+        }),
+      };
+
+    case SET_SCHOOLSURROUNDINGSOBSERVATION:
+      return {
+        ...state,
+        schoolSurroundingsObservation: action.payload,
+      };
     default:
       return state;
   }

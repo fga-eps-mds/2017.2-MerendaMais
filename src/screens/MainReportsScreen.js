@@ -106,6 +106,12 @@ export default class MainReportsScreen extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
+          >
+            <Text style={styles.text}>Arredores da Escola</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
             onPress={() => Actions.ReportObservationScreen()}
           >
             <Text style={styles.text}>+ Outras informações</Text>

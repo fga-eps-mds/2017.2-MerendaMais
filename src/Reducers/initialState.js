@@ -3,6 +3,7 @@ import refectory from './Reports/refectory';
 import kitchen from './Reports/kitchen';
 import foodQuality from './Reports/foodQuality';
 import doc from './Reports/doc';
+import schoolSurroundings from './Reports/schoolSurroundings';
 
 const initialState = {
   counselor: {
@@ -38,6 +39,8 @@ const initialState = {
     foodQuality,
     foodQualityObservation: '',
     statusFoodQuality: false,
+    schoolSurroundings,
+    schoolSurroundingsObservation: '',
   },
   school: {
     schoolCode: '',

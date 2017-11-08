@@ -19,6 +19,7 @@ import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer'
 import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
+import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
 
 const Routes = () => ({
   render() {
@@ -52,6 +53,11 @@ const Routes = () => ({
           <Scene
             key="foodQualityCheckoutScreen"
             component={FoodQualityCheckoutContainer}
+            hideNavBar
+          />
+          <Scene
+            key="schoolSurroundingsCheckoutScreen"
+            component={SchoolSurroundingsCheckoutContainer}
             hideNavBar
           />
           <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />

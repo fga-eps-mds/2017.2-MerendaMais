@@ -15,6 +15,9 @@ import { SET_STOCKFOODREPORT_NEGATIVE,
   SET_DOCOBSERVATION,
   SET_REPORTOBSERVATION,
   SET_STATUSFOODQUALITY,
+  SET_SCHOOLSURROUNDINGSOBSERVATION,
+  SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE,
+  SET_SCHOOLSURROUNDINGSREPORT_POSITIVE,
 } from './types';
 
 export const setStockFoodReportPositive = key => ({
@@ -117,4 +120,23 @@ export const setReportObservation = observation => ({
 export const setStatusFoodQuality = statusFoodQuality => ({
   type: SET_STATUSFOODQUALITY,
   payload: statusFoodQuality,
+});
+
+export const setSchoolSurroundingsReportPositive = key => ({
+  type: SET_SCHOOLSURROUNDINGSREPORT_POSITIVE,
+  payload: {
+    key,
+  },
+});
+
+export const setSchoolSurroundingsReportNegative = key => ({
+  type: SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE,
+  payload: {
+    key,
+  },
+});
+
+export const setSchoolSurroundingsObservation = observation => ({
+  type: SET_SCHOOLSURROUNDINGSOBSERVATION,
+  payload: observation,
 });
