@@ -19,7 +19,7 @@ const initialState = {
 
 const store = mockStore(initialState);
 
-describe('Testing ReportObservation Screen', () => {
+describe('Testing RefectoryCheckout Screen', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
       <RefectoryCheckoutContainer />,
