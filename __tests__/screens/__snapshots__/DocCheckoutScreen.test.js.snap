@@ -69,20 +69,44 @@ ShallowWrapper {
           title="Relatório"
         />,
         <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
+          <View
             style={
               Object {
-                "fontWeight": "bold",
-                "paddingTop": 5,
+                "flexDirection": "row",
               }
             }
           >
-               Sim       Não
-          </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "paddingLeft": 10,
+                  "paddingTop": 5,
+                }
+              }
+            >
+              Sim
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "paddingLeft": 20,
+                  "paddingTop": 5,
+                }
+              }
+            >
+              Nao
+            </Text>
+          </View>
           <View
             style={
               Object {
@@ -520,20 +544,44 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
+            <View
               style={
                 Object {
-                  "fontWeight": "bold",
-                  "paddingTop": 5,
+                  "flexDirection": "row",
                 }
               }
             >
-                 Sim       Não
-            </Text>,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "paddingLeft": 10,
+                    "paddingTop": 5,
+                  }
+                }
+              >
+                Sim
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "paddingLeft": 20,
+                    "paddingTop": 5,
+                  }
+                }
+              >
+                Nao
+              </Text>
+            </View>,
             Array [
               <View
                 style={
@@ -890,18 +938,85 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "   Sim       Não",
-              "disabled": false,
-              "ellipsizeMode": "tail",
+              "children": Array [
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "paddingLeft": 10,
+                      "paddingTop": 5,
+                    }
+                  }
+                >
+                  Sim
+                </Text>,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "paddingLeft": 20,
+                      "paddingTop": 5,
+                    }
+                  }
+                >
+                  Nao
+                </Text>,
+              ],
               "style": Object {
-                "fontWeight": "bold",
-                "paddingTop": 5,
+                "flexDirection": "row",
               },
             },
             "ref": null,
-            "rendered": "   Sim       Não",
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Sim",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "fontWeight": "bold",
+                    "paddingLeft": 10,
+                    "paddingTop": 5,
+                  },
+                },
+                "ref": null,
+                "rendered": "Sim",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Nao",
+                  "disabled": false,
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "fontWeight": "bold",
+                    "paddingLeft": 20,
+                    "paddingTop": 5,
+                  },
+                },
+                "ref": null,
+                "rendered": "Nao",
+                "type": [Function],
+              },
+            ],
             "type": [Function],
           },
           Object {
@@ -2123,20 +2238,44 @@ ShallowWrapper {
             title="Relatório"
           />,
           <View>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
+            <View
               style={
                 Object {
-                  "fontWeight": "bold",
-                  "paddingTop": 5,
+                  "flexDirection": "row",
                 }
               }
             >
-                 Sim       Não
-            </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "paddingLeft": 10,
+                    "paddingTop": 5,
+                  }
+                }
+              >
+                Sim
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                disabled={false}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "paddingLeft": 20,
+                    "paddingTop": 5,
+                  }
+                }
+              >
+                Nao
+              </Text>
+            </View>
             <View
               style={
                 Object {
@@ -2574,20 +2713,44 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
+              <View
                 style={
                   Object {
-                    "fontWeight": "bold",
-                    "paddingTop": 5,
+                    "flexDirection": "row",
                   }
                 }
               >
-                   Sim       Não
-              </Text>,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "paddingLeft": 10,
+                      "paddingTop": 5,
+                    }
+                  }
+                >
+                  Sim
+                </Text>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  disabled={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "paddingLeft": 20,
+                      "paddingTop": 5,
+                    }
+                  }
+                >
+                  Nao
+                </Text>
+              </View>,
               Array [
                 <View
                   style={
@@ -2944,18 +3107,85 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": "   Sim       Não",
-                "disabled": false,
-                "ellipsizeMode": "tail",
+                "children": Array [
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "paddingLeft": 10,
+                        "paddingTop": 5,
+                      }
+                    }
+                  >
+                    Sim
+                  </Text>,
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "paddingLeft": 20,
+                        "paddingTop": 5,
+                      }
+                    }
+                  >
+                    Nao
+                  </Text>,
+                ],
                 "style": Object {
-                  "fontWeight": "bold",
-                  "paddingTop": 5,
+                  "flexDirection": "row",
                 },
               },
               "ref": null,
-              "rendered": "   Sim       Não",
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "Sim",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                    "style": Object {
+                      "fontWeight": "bold",
+                      "paddingLeft": 10,
+                      "paddingTop": 5,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": "Sim",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "class",
+                  "props": Object {
+                    "accessible": true,
+                    "allowFontScaling": true,
+                    "children": "Nao",
+                    "disabled": false,
+                    "ellipsizeMode": "tail",
+                    "style": Object {
+                      "fontWeight": "bold",
+                      "paddingLeft": 20,
+                      "paddingTop": 5,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": "Nao",
+                  "type": [Function],
+                },
+              ],
               "type": [Function],
             },
             Object {
