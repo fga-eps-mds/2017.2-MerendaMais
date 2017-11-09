@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing LoginCounselorContainer renders as expected 1`] = `
+exports[`Testing LoginCounselor renders as expected 1`] = `
 <View
   style={
     Object {
@@ -16,10 +16,10 @@ exports[`Testing LoginCounselorContainer renders as expected 1`] = `
   <View
     style={
       Object {
-        "alignItems": "center",
         "backgroundColor": "white",
         "flex": 6,
         "justifyContent": "center",
+        "paddingHorizontal": 18,
       }
     }
   >
@@ -32,8 +32,6 @@ exports[`Testing LoginCounselorContainer renders as expected 1`] = `
           "borderRadius": 7,
           "borderWidth": 1,
           "flexDirection": "row",
-          "justifyContent": "center",
-          "paddingLeft": 2,
         }
       }
     >
@@ -41,7 +39,7 @@ exports[`Testing LoginCounselorContainer renders as expected 1`] = `
         allowFontScaling={false}
         color="black"
         name="email"
-        size={32}
+        size={28}
         style={
           Object {
             "margin": 5,
@@ -49,25 +47,60 @@ exports[`Testing LoginCounselorContainer renders as expected 1`] = `
         }
       />
       <TextInput
+        autoCapitalize="none"
         keyboardType="email-address"
         onChangeText={[Function]}
+        onSubmitEditing={[Function]}
         placeholder="Email"
-        returnKeyType="go"
+        returnKeyType="next"
         underlineColorAndroid="transparent"
-        width={280}
+        width={300}
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#FAFAFA",
+          "borderColor": "gray",
+          "borderRadius": 7,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginTop": 30,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="black"
+        name="lock"
+        size={28}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+      />
+      <TextInput
+        onChangeText={[Function]}
+        placeholder="Senha"
+        returnKeyType="go"
+        secureTextEntry={true}
+        underlineColorAndroid="transparent"
+        width={300}
       />
     </View>
     <TouchableOpacity
       activeOpacity={0.7}
+      key="LoginCounselor"
       onPress={[Function]}
       style={
         Object {
+          "alignItems": "center",
           "backgroundColor": "#FF9500",
           "borderRadius": 8,
           "borderWidth": 1,
-          "marginBottom": 0,
           "marginTop": 50,
-          "paddingHorizontal": 133,
           "paddingVertical": 18,
         }
       }
@@ -87,45 +120,15 @@ exports[`Testing LoginCounselorContainer renders as expected 1`] = `
         Entrar
       </Text>
     </TouchableOpacity>
-    <TouchableOpacity
-      activeOpacity={0.6}
-      onPress={[Function]}
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "marginTop": 30,
-          }
-        }
-      >
-        É um presidente?
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "blue",
-            }
-          }
-        >
-           Clique aqui
-        </Text>
-      </Text>
-    </TouchableOpacity>
   </View>
   <View
     style={
       Object {
         "alignItems": "center",
+        "backgroundColor": "white",
         "borderTopColor": "#a9a9a9",
         "borderTopWidth": 1,
-        "flex": 0.7,
+        "flex": 0.5,
         "justifyContent": "center",
       }
     }
@@ -148,7 +151,7 @@ exports[`Testing LoginCounselorContainer renders as expected 1`] = `
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "blue",
+              "color": "#0000FF",
             }
           }
         >
