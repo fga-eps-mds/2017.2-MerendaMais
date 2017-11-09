@@ -27,6 +27,8 @@ const initialState = {
       segment: 'Poder executivo',
       CAE_Type: 'Estadual',
       CAE: 'Distrito Federal',
+      CAE_UF: 'AC - Acre',
+      CAE_municipalDistrict: 'Brazlândia',
     },
   },
   application: {
@@ -98,10 +100,10 @@ describe('Testing RegisterScreen Input', () => {
     expect(wrapper.state().profile.CAE_Type).toEqual('Estadual');
   });
 
-  it('should change state when the text of CAE input component changes', () => {
-    const CAEInputComponent = wrapper.find('TextInput').at(4);
-    CAEInputComponent.simulate('ChangeText', 'DF');
-    expect(wrapper.state().profile.CAE).toEqual('DF');
+  it('should change state when the text of UF input component changes', () => {
+    const UFInputComponent = wrapper.find('Picker').at(4);
+    UFInputComponent.simulate('valueChange', 'DF - Distrito Federal');
+    expect(wrapper.state().profile.CAE_UF).toEqual('DF - Distrito Federal');
   });
 });
 
@@ -119,6 +121,8 @@ describe('Testing RegisterScreen On pressed buttons', () => {
       expect(state.profile.isPresident).toEqual(false);
       expect(state.profile.segment).toEqual('Pais de alunos');
       expect(state.profile.CAE_Type).toEqual('Estadual');
+      expect(state.profile.CAE_UF).toEqual('DF - Distrito Federal');
+      expect(state.profile.CAE_municipalDistrict).toEqual('Brasília');
       expect(state.profile.CAE).toEqual('DF');
     };
 
@@ -140,6 +144,8 @@ describe('Testing RegisterScreen On pressed buttons', () => {
         isPresident: false,
         segment: 'Pais de alunos',
         CAE_Type: 'Estadual',
+        CAE_UF: 'DF - Distrito Federal',
+        CAE_municipalDistrict: 'Brasília',
         CAE: 'DF',
       },
     });
