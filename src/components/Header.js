@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { View, StyleSheet, Text, TouchableOpacity, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 
 const { width } = Dimensions.get('window');
-const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
 
 const styles = StyleSheet.create(
   {
@@ -45,6 +45,10 @@ const styles = StyleSheet.create(
       alignItems: 'center',
       flex: 1,
     },
+
+    icon: {
+      marginLeft: 20,
+    },
   },
 );
 
@@ -53,7 +57,7 @@ const Header = props => (
     {props.backButton && (
       <View style={styles.buttonWrapper}>
         <TouchableOpacity onPress={() => Actions.pop()} >
-          <Image source={BackIcon} />
+          <Ionicons name="ios-arrow-back-outline" style={styles.icon} size={45} color="black" />
         </TouchableOpacity>
       </View>
     )}
@@ -63,14 +67,15 @@ const Header = props => (
     </View>
   </View>
 );
+
 Header.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
-  backButton: PropTypes.string,
+  backButton: PropTypes.boolean,
 };
 Header.defaultProps = {
   title: 'Merenda +',
   subTitle: '',
-  backButton: null,
+  backButton: false,
 };
 export default Header;

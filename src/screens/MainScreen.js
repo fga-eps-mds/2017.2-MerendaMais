@@ -1,15 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { SideMenu } from 'react-native-elements';
-import Menu from '../components/Menu';
-
-const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
+import { FontAwesome } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   headerBox: {
     flex: 1,
-    padding: 10,
+    padding: 20,
     backgroundColor: '#FF9500',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
@@ -17,11 +14,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   bodyBox: {
     flex: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   textLogo: {
     flex: 1,
     paddingLeft: 48,
@@ -30,6 +29,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+
   buttonInspect: {
     paddingHorizontal: 50,
     paddingVertical: 20,
@@ -56,39 +56,30 @@ class MainScreen extends React.Component {
   }
 
   render() {
-    const menu = <Menu />;
-
     return (
-      <SideMenu
-        menu={menu}
-        menuPosition="right"
-        isOpen={this.state.isOpen}
-        disableGestures
-        onChange={isOpen => this.updateMenuState(isOpen)}
-      >
-        <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
 
-          <View style={styles.headerBox}>
-            <Text style={styles.textLogo}>Merenda +</Text>
+        <View style={styles.headerBox}>
+          <Text style={styles.textLogo}>Merenda +</Text>
 
-            <TouchableOpacity
-              onPress={() => this.updateMenuState(!this.state.isOpen)}
-            >
-              <Image source={sideMenuIcon} />
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.bodyBox}>
-            <TouchableOpacity
-              style={styles.buttonInspect}
-              activeOpacity={0.7}
-              onPress={() => Actions.stockFoodCheckoutScreen()}
-            >
-              <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={() => Actions.drawerOpen()}
+          >
+            <FontAwesome name="navicon" size={32} />
+          </TouchableOpacity>
         </View>
-      </SideMenu>
+
+        <View style={styles.bodyBox}>
+          <TouchableOpacity
+            style={styles.buttonInspect}
+            activeOpacity={0.7}
+            onPress={() => Actions.stockFoodCheckoutScreen()}
+          >
+            <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
     );
   }
 }

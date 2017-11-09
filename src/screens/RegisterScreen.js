@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { Text,
   ScrollView,
   View,
@@ -41,12 +42,14 @@ const styles = {
     padding: 10,
   },
 
+  icon: {
+    marginRight: 10,
+  },
+
   InputStyle: {
     padding: 10,
     backgroundColor: '#FAFAFA',
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 7,
@@ -219,57 +222,69 @@ export default class RegisterScreen extends React.Component {
       <ScrollView style={styles.principal}>
         <Header />
 
-        <Text>     CPF</Text>
-        <TextInput
-          placeholder="Digite o seu CPF"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          maxLength={11}
-          keyboardType={'numeric'}
-          onChangeText={text => this.validateCpf(text)}
-          value={this.state.profile.cpf}
-        />
+        <Text style={{ marginTop: 10 }}>     CPF</Text>
+        <View style={styles.InputStyle}>
+          <FontAwesome name="user-circle" style={styles.icon} size={32} color="black" />
+          <TextInput
+            placeholder="Digite o seu CPF"
+            placeholderTextColor="#95a5a6"
+            width={280}
+            underlineColorAndroid="transparent"
+            returnKeyLabel={'next'}
+            maxLength={11}
+            keyboardType={'numeric'}
+            onChangeText={text => this.validateCpf(text)}
+            value={this.state.profile.cpf}
+          />
+        </View>
 
         <Text>     Nome</Text>
-        <TextInput
-          placeholder="Digite o seu nome completo"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          maxLength={60}
-          keyboardType={'default'}
-          onChangeText={text => this.validateName(text)}
-          value={this.state.name}
-        />
+        <View style={styles.InputStyle}>
+          <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
+          <TextInput
+            placeholder="Digite o seu nome completo"
+            placeholderTextColor="#95a5a6"
+            width={280}
+            underlineColorAndroid="transparent"
+            returnKeyLabel={'next'}
+            maxLength={60}
+            keyboardType={'default'}
+            onChangeText={text => this.validateName(text)}
+            value={this.state.name}
+          />
+        </View>
 
         <Text>     Email</Text>
-        <TextInput
-          placeholder="Digite o seu email"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          maxLength={50}
-          keyboardType={'email-address'}
-          onChangeText={text => this.setState({ email: text })}
-          value={this.state.email}
-        />
+        <View style={styles.InputStyle}>
+          <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
+          <TextInput
+            placeholder="Digite o seu email"
+            placeholderTextColor="#95a5a6"
+            width={280}
+            underlineColorAndroid="transparent"
+            returnKeyLabel={'next'}
+            maxLength={50}
+            keyboardType={'email-address'}
+            onChangeText={text => this.setState({ email: text })}
+            value={this.state.email}
+          />
+        </View>
 
         <Text>     Telefone</Text>
-        <TextInput
-          placeholder="Digite o seu telefone"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          maxLength={11}
-          keyboardType={'phone-pad'}
-          onChangeText={text => this.validatePhone(text)}
-          value={this.state.profile.phone}
-        />
+        <View style={styles.InputStyle}>
+          <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
+          <TextInput
+            placeholder="Digite o seu telefone"
+            placeholderTextColor="#95a5a6"
+            width={280}
+            underlineColorAndroid="transparent"
+            returnKeyLabel={'next'}
+            maxLength={11}
+            keyboardType={'phone-pad'}
+            onChangeText={text => this.validatePhone(text)}
+            value={this.state.profile.phone}
+          />
+        </View>
 
         <Text>     Cargo</Text>
         <View
@@ -338,17 +353,20 @@ export default class RegisterScreen extends React.Component {
         </View>
 
         <Text>     CAE</Text>
-        <TextInput
-          placeholder="Lista com o CAE do seu município/estado"
-          placeholderTextColor="#95a5a6"
-          style={styles.InputStyle}
-          underlineColorAndroid="transparent"
-          returnKeyLabel={'next'}
-          maxLength={40}
-          keyboardType={'default'}
-          onChangeText={text => this.validateCae(text)}
-          value={this.state.profile.CAE}
-        />
+        <View style={styles.InputStyle}>
+          <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
+          <TextInput
+            placeholder="Lista com o CAE do seu município/estado"
+            placeholderTextColor="#95a5a6"
+            width={280}
+            underlineColorAndroid="transparent"
+            returnKeyLabel={'next'}
+            maxLength={40}
+            keyboardType={'default'}
+            onChangeText={text => this.validateCae(text)}
+            value={this.state.profile.CAE}
+          />
+        </View>
 
         {this.renderBtnLogin()}
 

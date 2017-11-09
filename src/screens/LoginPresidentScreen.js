@@ -1,23 +1,22 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput, Image, ActivityIndicator } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-
-const iconAccount = require('../images/account_circle.png');
-const iconLock = require('../images/ic_lock.png');
 
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
+
   content: {
     flex: 6,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-
   },
+
   footer: {
     flex: 0.7,
     borderTopColor: '#a9a9a9',
@@ -25,11 +24,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   icon: {
-    width: 30,
-    height: 30,
     margin: 5,
   },
+
   Inputemail: {
     paddingLeft: 2,
     paddingRight: 4,
@@ -41,6 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
   },
+
   InputPassword: {
     paddingLeft: 2,
     paddingRight: 4,
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
   },
+
   buttonLogin: {
     paddingHorizontal: 133,
     paddingVertical: 18,
@@ -61,7 +62,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
-
 });
 
 export default class LoginPresidentScreen extends React.Component {
@@ -97,7 +97,7 @@ export default class LoginPresidentScreen extends React.Component {
         <Header />
         <View style={styles.content}>
           <View style={styles.Inputemail}>
-            <Image source={iconAccount} style={styles.icon} />
+            <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
             <TextInput
               style={styles.styleInput}
               width={280}
@@ -105,14 +105,14 @@ export default class LoginPresidentScreen extends React.Component {
               onChangeText={email => this.setState({ email })}
               value={this.email}
               underlineColorAndroid="transparent"
-              placeholder="email"
+              placeholder="Email"
               keyboardType={'email-address'}
               onSubmitEditing={() => this.passwordInput.focus()}
             />
           </View>
 
           <View style={styles.InputPassword}>
-            <Image source={iconLock} style={styles.icon} />
+            <MaterialIcons name="lock" style={styles.icon} size={32} color="black" />
             <TextInput
               style={styles.styleInput}
               width={280}
