@@ -123,7 +123,10 @@ export default class StockFoodCheckoutScreen extends React.Component {
           backButton={'back'}
         />
         <View>
-          <Text style={{ fontWeight: 'bold', paddingTop: 5 }}>   Sim       Não</Text>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 10 }}>Sim</Text>
+            <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 20 }}>Nao</Text>
+          </View>
           {
             this.props.report.map(item => (
               <View style={styles.text} key={item.key}>

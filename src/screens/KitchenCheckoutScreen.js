@@ -126,11 +126,14 @@ export default class KitchenCheckoutScreen extends React.Component {
       <ScrollView style={styles.content}>
         <Header
           title={'Relatório'}
-          subTitle={'Estoque de Alimentos'}
+          subTitle={'Cozinha'}
           backButton
         />
         <View>
-          <Text style={{ fontWeight: 'bold', paddingTop: 5 }}>   Sim       Não</Text>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 10 }}>Sim</Text>
+            <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 20 }}>Nao</Text>
+          </View>
           {
             this.props.report.map(item => (
               <View style={styles.text} key={item.key}>
