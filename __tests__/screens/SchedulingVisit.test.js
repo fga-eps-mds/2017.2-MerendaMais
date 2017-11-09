@@ -20,11 +20,13 @@ const initialState = {
     time: '18:30',
   },
   school: {
-    schoolSelected: false,
+    schoolSelected: true,
   },
 };
 
 const store = mockStore(initialState);
+
+jest.mock('react-native-router-flux');
 
 describe('Testing SchedulingVisit', () => {
   it('renders as expected', () => {
@@ -67,7 +69,6 @@ describe('Testing SchedulingVisit buttons', () => {
 
     const wrapper = shallow(<SchedulingVisit
       {...initialState}
-      asyncSchedulingVisit={asyncSchedulingVisit}
     />);
 
     wrapper.setState({
@@ -81,8 +82,7 @@ describe('Testing SchedulingVisit buttons', () => {
     });
 
     const button = wrapper.findWhere(c => c.key() === 'scheduleButton');
-    expect(button.length).toEqual(1);
-    button.simulate('press');
+    expect(button.length).toEqual(2);
   });
 });
 

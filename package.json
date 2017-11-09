@@ -38,7 +38,9 @@
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/react-native-router-flux/"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^6.1.0",

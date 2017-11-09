@@ -12,7 +12,6 @@ const listReducer = (state = initialState.list, action) => {
         listOfCounselorsInAGroup: [...state.listOfCounselorsInAGroup, action.payload],
       };
     case RESET_LIST:
-      console.log('entrou');
       return {
         listOfCounselorsInAGroup: [],
       };

@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
+import Button from '../components/Button';
 
 
 const styles = StyleSheet.create({
@@ -21,6 +22,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     backgroundColor: '#FF9500',
+    justifyContent: 'flex-end',
+  },
+
+  disabledSchedullingButton: {
+    paddingVertical: 20,
+    borderWidth: 1,
+    borderRadius: 7,
+    marginHorizontal: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#DEDEDE',
     justifyContent: 'flex-end',
   },
 
@@ -66,11 +78,21 @@ export default class SchedulingVisit extends React.Component {
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
       visit: {
-        codSchool: 32,
+        codSchool: 0,
         date: '',
         time: '',
       },
     };
+  }
+
+  componentWillReceiveProps(newProps) {
+    const newVisit = {
+      codSchool: newProps.school.schoolCode,
+      date: this.state.visit.date,
+      time: this.state.visit.time,
+    };
+
+    this.setState({ visit: newVisit });
   }
 
   render() {
@@ -156,13 +178,22 @@ export default class SchedulingVisit extends React.Component {
           </View>
         </View>
         <View style={styles.Container}>
-          <TouchableOpacity
+          {this.props.school.schoolSelected && (
+            <Button
+              enabled
+              key="scheduleButton"
+              text="Agendar"
+              onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
+            />
+          )}
+
+          <Button
+            enabled={false}
+            text="Agendar"
             key="scheduleButton"
-            style={styles.schedullingButton}
-            onPress={() => this.props.asyncSchedulingVisit(this.state)}
-          >
-            <Text style={styles.buttonText}>Agendar</Text>
-          </TouchableOpacity>
+            onPress={() => ({})}
+            disabled
+          />
         </View>
       </ScrollView>
     );

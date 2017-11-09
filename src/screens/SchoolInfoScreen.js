@@ -2,20 +2,23 @@ import React from 'react';
 import axios from 'axios';
 import openMap from 'react-native-open-maps';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { SideMenu } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
+import Menu from '../components/Menu';
 import { SCHOOL_ENDPOINT } from '../constants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import Header from '../components/Header';
 
 const FILE_NAME = 'SchoolInfoScreen.js';
 
+const sideMenuIcon = require('../images/ic_menu_black_48dp_1x.png');
+const BackIcon = require('../images/ic_keyboard_arrow_left_48pt.png');
+// const Location = require('../images/ic_place.png');
 
 const styles = StyleSheet.create({
   headerBox: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 5,
+    padding: 10,
     backgroundColor: '#FF9500',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
@@ -23,7 +26,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   textLogo: {
     flex: 1,
     fontSize: 30,
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-
   buttonContainer: {
     paddingVertical: 10,
     borderWidth: 1,
@@ -43,19 +44,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
 
-  icon: {
-    width: 30,
-    height: 45,
-    margin: 5,
-  },
-
   buttonText: {
     textAlign: 'center',
     color: '#FFF',
   },
 
   listInfo: {
-    flex: 6,
+    flex: 4,
     marginHorizontal: 10,
     paddingTop: 5,
     // justifyContent: 'center',
@@ -64,7 +59,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
   },
-
   text: {
     flexDirection: 'row',
     color: '#95a5a6',
@@ -130,8 +124,7 @@ class SchoolInfoScreen extends React.Component {
         schoolLong: this.props.school.schoolLong,
       },
     );
-
-    Actions.popTo('schedulingVisit');
+    Actions.schedulingVisit();
   }
 
   showLocalizationButton() {
@@ -166,39 +159,58 @@ class SchoolInfoScreen extends React.Component {
   }
 
   render() {
+    const menu = <Menu />;
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <Header
-          title={'Informações da Escola'}
-          backButton
-        />
+      <SideMenu
+        menu={menu}
+        menuPosition="right"
+        isOpen={this.state.isOpen}
+        disableGestures
+        onChange={isOpen => this.updateMenuState(isOpen)}
+      >
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
+          <View style={styles.headerBox}>
+            <TouchableOpacity
+              onPress={() => Actions.pop()}
+            >
+              <Image source={BackIcon} />
+            </TouchableOpacity>
+            <Text style={styles.textLogo}>Pesquisar Escola</Text>
 
-        <Text style={styles.text}>  Infomações</Text>
-        <View style={styles.listInfo}>
-          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Nome: </Text>
-          <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolName}</Text>
-          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Email: </Text>
-          <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolEmail}</Text>
-          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Telefone: </Text>
-          <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolPhone}</Text>
-          {this.showLocalizationButton()}
+            <TouchableOpacity
+              onPress={() => this.updateMenuState(true)}
+            >
+              <Image source={sideMenuIcon} />
+            </TouchableOpacity>
+          </View>
+
+          <Text style={styles.text}>  Infomações</Text>
+          <View style={styles.listInfo}>
+            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Nome: </Text>
+            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolName}</Text>
+            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Email: </Text>
+            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolEmail}</Text>
+            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Telefone: </Text>
+            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolPhone}</Text>
+            {this.showLocalizationButton()}
+          </View>
+
+          <TouchableOpacity
+            onPress={() => this.selectSchoolForSchedule()}
+            style={styles.buttonContainer}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>Agendar Visita</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            // onPress={}
+            style={styles.buttonContainer}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>Acessar Visitas</Text>
+          </TouchableOpacity>
         </View>
-
-        <TouchableOpacity
-          // onPress={() => this.selectSchoolForSchedule()}
-          style={styles.buttonContainer}
-          activeOpacity={0.7}
-        >
-          <Text style={styles.buttonText}>Agendar Visita</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          // onPress={}
-          style={styles.buttonContainer}
-          activeOpacity={0.7}
-        >
-          <Text style={styles.buttonText}>Acessar Visitas</Text>
-        </TouchableOpacity>
-      </View>
+      </SideMenu>
     );
   }
 }
