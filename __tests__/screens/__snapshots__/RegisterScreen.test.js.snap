@@ -326,7 +326,7 @@ ShallowWrapper {
           disabled={false}
           ellipsizeMode="tail"
         >
-              UF
+              UF do CAE
         </Text>,
         <View
           style={
@@ -1304,12 +1304,12 @@ ShallowWrapper {
         "props": Object {
           "accessible": true,
           "allowFontScaling": true,
-          "children": "    UF",
+          "children": "    UF do CAE",
           "disabled": false,
           "ellipsizeMode": "tail",
         },
         "ref": null,
-        "rendered": "    UF",
+        "rendered": "    UF do CAE",
         "type": [Function],
       },
       Object {
@@ -2558,7 +2558,7 @@ ShallowWrapper {
             disabled={false}
             ellipsizeMode="tail"
           >
-                UF
+                UF do CAE
           </Text>,
           <View
             style={
@@ -3536,12 +3536,12 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": "    UF",
+            "children": "    UF do CAE",
             "disabled": false,
             "ellipsizeMode": "tail",
           },
           "ref": null,
-          "rendered": "    UF",
+          "rendered": "    UF do CAE",
           "type": [Function],
         },
         Object {
