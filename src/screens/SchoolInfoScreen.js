@@ -124,8 +124,7 @@ class SchoolInfoScreen extends React.Component {
         schoolLong: this.props.school.schoolLong,
       },
     );
-
-    Actions.popTo('schedulingVisit');
+    Actions.schedulingVisit();
   }
 
   showLocalizationButton() {
