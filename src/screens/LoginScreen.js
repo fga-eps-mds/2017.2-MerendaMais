@@ -109,7 +109,7 @@ export default class LoginScreen extends React.Component {
         <Header />
         <View style={styles.content}>
           <View style={styles.Inputemail}>
-            <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
+            <MaterialIcons name="email" style={styles.icon} size={28} color="black" />
             <TextInput
               width={300}
               returnKeyType="next"
@@ -118,12 +118,13 @@ export default class LoginScreen extends React.Component {
               underlineColorAndroid="transparent"
               placeholder="Email"
               keyboardType={'email-address'}
+              autoCapitalize={'none'}
               onSubmitEditing={() => this.passwordInput.focus()}
             />
           </View>
 
           <View style={styles.InputPassword}>
-            <MaterialIcons name="lock" style={styles.icon} size={32} color="black" />
+            <MaterialIcons name="lock" style={styles.icon} size={28} color="black" />
             <TextInput
               width={300}
               underlineColorAndroid="transparent"

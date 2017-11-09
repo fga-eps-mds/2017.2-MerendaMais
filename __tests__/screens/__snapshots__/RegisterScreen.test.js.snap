@@ -38,24 +38,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           CPF
         </Text>
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="user-circle"
-          size={32}
-          style={
-            Object {
-              "marginRight": 10,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="numeric"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="Digite o seu CPF"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -64,15 +47,40 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "flex-start",
               "marginBottom": 10,
               "marginTop": 1,
-              "padding": 10,
+              "padding": 8,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="user-circle"
+            size={26}
+            style={
+              Object {
+                "marginRight": 6,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="numeric"
+            maxLength={11}
+            onChangeText={[Function]}
+            placeholder="Digite o seu CPF"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -81,24 +89,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Nome
         </Text>
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="face"
-          size={32}
-          style={
-            Object {
-              "marginRight": 10,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="default"
-          maxLength={60}
-          onChangeText={[Function]}
-          placeholder="Digite o seu nome completo"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -107,15 +98,41 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "flex-start",
               "marginBottom": 10,
               "marginTop": 1,
-              "padding": 10,
+              "padding": 8,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="face"
+            size={26}
+            style={
+              Object {
+                "marginRight": 6,
+              }
+            }
+          />
+          <TextInput
+            autoCapitalize="words"
+            keyboardType="default"
+            maxLength={60}
+            onChangeText={[Function]}
+            placeholder="Digite o seu nome completo"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -124,24 +141,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Email
         </Text>
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="email"
-          size={32}
-          style={
-            Object {
-              "marginRight": 10,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="email-address"
-          maxLength={50}
-          onChangeText={[Function]}
-          placeholder="Digite o seu email"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -150,15 +150,41 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "flex-start",
               "marginBottom": 10,
               "marginTop": 1,
-              "padding": 10,
+              "padding": 8,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="email"
+            size={26}
+            style={
+              Object {
+                "marginRight": 6,
+              }
+            }
+          />
+          <TextInput
+            autoCapitalize="none"
+            keyboardType="email-address"
+            maxLength={50}
+            onChangeText={[Function]}
+            placeholder="Digite o seu email"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -167,25 +193,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Senha
         </Text>
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="lock"
-          size={32}
-          style={
-            Object {
-              "marginRight": 10,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="default"
-          maxLength={30}
-          onChangeText={[Function]}
-          placeholder="Digite sua senha"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          secureTextEntry={true}
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -194,14 +202,40 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "flex-start",
               "marginBottom": 10,
               "marginTop": 1,
-              "padding": 10,
+              "padding": 8,
             }
           }
-          underlineColorAndroid="transparent"
-        />
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="lock"
+            size={26}
+            style={
+              Object {
+                "marginRight": 6,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="default"
+            maxLength={30}
+            onChangeText={[Function]}
+            placeholder="Digite sua senha"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            secureTextEntry={true}
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -210,24 +244,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Confirmar Senha
         </Text>
-        <Icon
-          allowFontScaling={false}
-          color="gray"
-          name="lock"
-          size={32}
-          style={
-            Object {
-              "marginRight": 10,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="default"
-          onChangeText={[Function]}
-          placeholder="Digite sua senha novamente"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          secureTextEntry={true}
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -236,14 +253,39 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "flex-start",
               "marginBottom": 10,
               "marginTop": 1,
-              "padding": 10,
+              "padding": 8,
             }
           }
-          underlineColorAndroid="transparent"
-        />
+        >
+          <Icon
+            allowFontScaling={false}
+            color="gray"
+            name="lock"
+            size={26}
+            style={
+              Object {
+                "marginRight": 6,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="default"
+            onChangeText={[Function]}
+            placeholder="Digite sua senha novamente"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            secureTextEntry={true}
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -252,24 +294,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Telefone
         </Text>
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="phone"
-          size={32}
-          style={
-            Object {
-              "marginRight": 10,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="phone-pad"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="Digite o seu telefone"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -278,15 +303,40 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               "borderRadius": 7,
               "borderWidth": 1,
               "flexDirection": "row",
-              "justifyContent": "center",
+              "justifyContent": "flex-start",
               "marginBottom": 10,
               "marginTop": 1,
-              "padding": 10,
+              "padding": 8,
             }
           }
-          underlineColorAndroid="transparent"
-          value=""
-        />
+        >
+          <Icon
+            allowFontScaling={false}
+            color="black"
+            name="phone"
+            size={26}
+            style={
+              Object {
+                "marginRight": 6,
+              }
+            }
+          />
+          <TextInput
+            keyboardType="phone-pad"
+            maxLength={11}
+            onChangeText={[Function]}
+            placeholder="Digite o seu telefone"
+            placeholderTextColor="#95a5a6"
+            returnKeyLabel="next"
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -627,18 +677,23 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         </Text>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginBottom": 10,
-              "marginTop": 1,
-              "padding": 10,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#FAFAFA",
+                "borderColor": "gray",
+                "borderRadius": 7,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "marginBottom": 10,
+                "marginTop": 1,
+                "padding": 8,
+              },
+              Object {
+                "justifyContent": "center",
+              },
+            ]
           }
         >
           <Text

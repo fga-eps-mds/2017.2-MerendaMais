@@ -52,15 +52,15 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    marginRight: 10,
+    marginRight: 6,
   },
 
-  InputStyle: {
-    padding: 10,
+  InputFieldStyle: {
+    padding: 8,
     marginTop: 1,
     backgroundColor: '#FAFAFA',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     borderRadius: 7,
     marginBottom: 10,
@@ -68,12 +68,16 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
   },
 
-  InputDropdown: {
+  InputFieldDropdown: {
     marginTop: 1,
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 7,
     marginBottom: 10,
+  },
+
+  InputStyle: {
+    flex: 1,
   },
 
   buttonContainer: {
@@ -88,22 +92,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 18,
-  },
-
-  field: {
-    backgroundColor: '#FAFAFA',
-    paddingVertical: 4,
-    borderWidth: 1,
-    borderRadius: 7,
-    borderColor: 'gray',
-    marginHorizontal: 15,
-    marginBottom: 15,
-    marginTop: 15,
-    justifyContent: 'flex-start',
-    paddingLeft: 2,
-    paddingRight: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 
 });
@@ -252,20 +240,20 @@ export default class RegisterScreen extends React.Component {
     const passwordRegex = /^(?=.{6,})(?!.*\s).*$/g;
 
     if (this.state.password === '') {
-      return styles.InputStyle;
+      return styles.InputFieldStyle;
     } else if (passwordRegex.test(this.state.password)) {
-      return [styles.InputStyle, { borderColor: '#80FF80', borderWidth: 2 }];
+      return [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }];
     }
-    return [styles.InputStyle, { borderColor: '#FF9999', borderWidth: 2 }];
+    return [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }];
   }
 
   changeStyleIfPasswordsMatch(passwordCompared) {
     if (passwordCompared === '') {
-      return styles.InputStyle;
+      return styles.InputFieldStyle;
     } else if (this.state.password === passwordCompared) {
-      return [styles.InputStyle, { borderColor: '#80FF80', borderWidth: 2 }];
+      return [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }];
     }
-    return [styles.InputStyle, { borderColor: '#FF9999', borderWidth: 2 }];
+    return [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }];
   }
 
   renderBtnLogin() {
@@ -301,7 +289,7 @@ export default class RegisterScreen extends React.Component {
         <Text>Municipio do CAE</Text>
         <View
           key="municipalDistrict"
-          style={styles.InputDropdown}
+          style={styles.InputFieldDropdown}
         >
           <Picker
             selectedValue={this.state.profile.CAE_municipalDistrict}
@@ -325,91 +313,105 @@ export default class RegisterScreen extends React.Component {
             <View style={{ paddingHorizontal: 15 }}>
 
               <Text>CPF</Text>
-              <FontAwesome name="user-circle" style={styles.icon} size={32} color="black" />
-              <TextInput
-                placeholder="Digite o seu CPF"
-                placeholderTextColor="#95a5a6"
-                style={styles.InputStyle}
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                maxLength={11}
-                keyboardType={'numeric'}
-                onChangeText={text => this.validateCpf(text)}
-                value={this.state.profile.cpf}
-              />
+              <View style={styles.InputFieldStyle}>
+                <FontAwesome name="user-circle" style={styles.icon} size={26} color="black" />
+                <TextInput
+                  style={styles.InputStyle}
+                  placeholder="Digite o seu CPF"
+                  placeholderTextColor="#95a5a6"
+                  underlineColorAndroid="transparent"
+                  returnKeyLabel={'next'}
+                  maxLength={11}
+                  keyboardType={'numeric'}
+                  onChangeText={text => this.validateCpf(text)}
+                  value={this.state.profile.cpf}
+                />
+              </View>
 
               <Text>Nome</Text>
-              <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
-              <TextInput
-                placeholder="Digite o seu nome completo"
-                placeholderTextColor="#95a5a6"
-                style={styles.InputStyle}
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                maxLength={60}
-                keyboardType={'default'}
-                onChangeText={text => this.validateName(text)}
-                value={this.state.name}
-              />
+              <View style={styles.InputFieldStyle}>
+                <MaterialIcons name="face" style={styles.icon} size={26} color="black" />
+                <TextInput
+                  style={styles.InputStyle}
+                  placeholder="Digite o seu nome completo"
+                  placeholderTextColor="#95a5a6"
+                  underlineColorAndroid="transparent"
+                  returnKeyLabel={'next'}
+                  maxLength={60}
+                  keyboardType={'default'}
+                  autoCapitalize={'words'}
+                  onChangeText={text => this.validateName(text)}
+                  value={this.state.name}
+                />
+              </View>
 
               <Text>Email</Text>
-              <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
-              <TextInput
-                placeholder="Digite o seu email"
-                placeholderTextColor="#95a5a6"
-                style={styles.InputStyle}
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                maxLength={50}
-                keyboardType={'email-address'}
-                onChangeText={text => this.setState({ email: text })}
-                value={this.state.email}
-              />
+              <View style={styles.InputFieldStyle}>
+                <MaterialIcons name="email" style={styles.icon} size={26} color="black" />
+                <TextInput
+                  style={styles.InputStyle}
+                  placeholder="Digite o seu email"
+                  placeholderTextColor="#95a5a6"
+                  underlineColorAndroid="transparent"
+                  returnKeyLabel={'next'}
+                  maxLength={50}
+                  keyboardType={'email-address'}
+                  autoCapitalize={'none'}
+                  onChangeText={text => this.setState({ email: text })}
+                  value={this.state.email}
+                />
+              </View>
 
               <Text>Senha</Text>
-              <MaterialIcons name="lock" style={styles.icon} size={32} color="black" />
-              <TextInput
-                placeholder="Digite sua senha"
-                placeholderTextColor="#95a5a6"
-                style={this.changePasswordStyleAccordingToInput()}
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                maxLength={30}
-                keyboardType={'default'}
-                onChangeText={text => this.setState({ password: text })}
-                secureTextEntry
-              />
+              <View style={this.changePasswordStyleAccordingToInput()}>
+                <MaterialIcons name="lock" style={styles.icon} size={26} color="black" />
+                <TextInput
+                  style={styles.InputStyle}
+                  placeholder="Digite sua senha"
+                  placeholderTextColor="#95a5a6"
+                  underlineColorAndroid="transparent"
+                  returnKeyLabel={'next'}
+                  maxLength={30}
+                  keyboardType={'default'}
+                  onChangeText={text => this.setState({ password: text })}
+                  secureTextEntry
+                />
+              </View>
 
               <Text>Confirmar Senha</Text>
-              <MaterialIcons name="lock" style={styles.icon} size={32} color="gray" />
-              <TextInput
-                placeholder="Digite sua senha novamente"
-                placeholderTextColor="#95a5a6"
-                style={this.changeStyleIfPasswordsMatch(this.state.passwordCompared)}
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                keyboardType={'default'}
-                onChangeText={text => this.setState({ passwordCompared: text })}
-                secureTextEntry
-              />
+              <View style={this.changeStyleIfPasswordsMatch(this.state.passwordCompared)}>
+                <MaterialIcons name="lock" style={styles.icon} size={26} color="gray" />
+                <TextInput
+                  style={styles.InputStyle}
+                  placeholder="Digite sua senha novamente"
+                  placeholderTextColor="#95a5a6"
+                  underlineColorAndroid="transparent"
+                  returnKeyLabel={'next'}
+                  keyboardType={'default'}
+                  onChangeText={text => this.setState({ passwordCompared: text })}
+                  secureTextEntry
+                />
+              </View>
 
               <Text>Telefone</Text>
-              <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
-              <TextInput
-                placeholder="Digite o seu telefone"
-                placeholderTextColor="#95a5a6"
-                style={styles.InputStyle}
-                underlineColorAndroid="transparent"
-                returnKeyLabel={'next'}
-                maxLength={11}
-                keyboardType={'phone-pad'}
-                onChangeText={text => this.validatePhone(text)}
-                value={this.state.profile.phone}
-              />
+              <View style={styles.InputFieldStyle}>
+                <MaterialIcons name="phone" style={styles.icon} size={26} color="black" />
+                <TextInput
+                  style={styles.InputStyle}
+                  placeholder="Digite o seu telefone"
+                  placeholderTextColor="#95a5a6"
+                  underlineColorAndroid="transparent"
+                  returnKeyLabel={'next'}
+                  maxLength={11}
+                  keyboardType={'phone-pad'}
+                  onChangeText={text => this.validatePhone(text)}
+                  value={this.state.profile.phone}
+                />
+              </View>
 
               <Text>Cargo</Text>
               <View
-                style={styles.InputDropdown}
+                style={styles.InputFieldDropdown}
               >
                 <Picker
                   onValueChange={value => this.setState(
@@ -425,7 +427,7 @@ export default class RegisterScreen extends React.Component {
 
               <Text>Tipo de Conselheiro</Text>
               <View
-                style={styles.InputDropdown}
+                style={styles.InputFieldDropdown}
               >
                 <Picker
                   onValueChange={value => this.setState({
@@ -441,7 +443,7 @@ export default class RegisterScreen extends React.Component {
 
               <Text>Segmento</Text>
               <View
-                style={styles.InputDropdown}
+                style={styles.InputFieldDropdown}
               >
                 <Picker
                   onValueChange={value => this.setState({ profile: { ...this.state.profile,
@@ -458,7 +460,7 @@ export default class RegisterScreen extends React.Component {
 
               <Text>Tipo do CAE</Text>
               <View
-                style={styles.InputDropdown}
+                style={styles.InputFieldDropdown}
               >
                 <Picker
                   onValueChange={
@@ -487,7 +489,7 @@ export default class RegisterScreen extends React.Component {
 
               <Text>UF do CAE</Text>
               <View
-                style={styles.InputDropdown}
+                style={styles.InputFieldDropdown}
               >
                 <Picker
                   selectedValue={this.state.profile.CAE_UF}
@@ -504,9 +506,7 @@ export default class RegisterScreen extends React.Component {
               {municipalDistrict}
 
               <Text>CAE</Text>
-              <View
-                style={styles.InputStyle}
-              >
+              <View style={[styles.InputFieldStyle, { justifyContent: 'center' }]}>
                 <Text>{this.state.profile.CAE_municipalDistrict} {UfInitials}</Text>
               </View>
 
