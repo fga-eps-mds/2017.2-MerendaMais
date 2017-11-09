@@ -10,7 +10,7 @@ ShallowWrapper {
       Array [
         Object {
           "key": 0,
-          "label": "Escola (não) possui Cozinha",
+          "label": "Escola possui Cozinha",
           "markedNo": false,
           "markedYes": false,
           "status": false,
@@ -299,7 +299,7 @@ ShallowWrapper {
                 }
               }
             >
-              Escola (não) possui Cozinha
+              Escola possui Cozinha
             </Text>
           </View>
           <View
@@ -2017,7 +2017,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  Escola (não) possui Cozinha
+                  Escola possui Cozinha
                 </Text>
               </View>,
               <View
@@ -3694,7 +3694,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  Escola (não) possui Cozinha
+                  Escola possui Cozinha
                 </Text>,
               ],
               "style": Object {
@@ -3824,7 +3824,7 @@ ShallowWrapper {
                 "props": Object {
                   "accessible": true,
                   "allowFontScaling": true,
-                  "children": "Escola (não) possui Cozinha",
+                  "children": "Escola possui Cozinha",
                   "disabled": false,
                   "ellipsizeMode": "tail",
                   "style": Object {
@@ -3834,7 +3834,7 @@ ShallowWrapper {
                   },
                 },
                 "ref": null,
-                "rendered": "Escola (não) possui Cozinha",
+                "rendered": "Escola possui Cozinha",
                 "type": [Function],
               },
             ],
@@ -8750,7 +8750,7 @@ ShallowWrapper {
                   }
                 }
               >
-                Escola (não) possui Cozinha
+                Escola possui Cozinha
               </Text>
             </View>
             <View
@@ -10468,7 +10468,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Escola (não) possui Cozinha
+                    Escola possui Cozinha
                   </Text>
                 </View>,
                 <View
@@ -12145,7 +12145,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Escola (não) possui Cozinha
+                    Escola possui Cozinha
                   </Text>,
                 ],
                 "style": Object {
@@ -12275,7 +12275,7 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "Escola (não) possui Cozinha",
+                    "children": "Escola possui Cozinha",
                     "disabled": false,
                     "ellipsizeMode": "tail",
                     "style": Object {
@@ -12285,7 +12285,7 @@ ShallowWrapper {
                     },
                   },
                   "ref": null,
-                  "rendered": "Escola (não) possui Cozinha",
+                  "rendered": "Escola possui Cozinha",
                   "type": [Function],
                 },
               ],

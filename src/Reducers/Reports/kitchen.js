@@ -1,5 +1,5 @@
 const kitchen = [
-  { label: 'Escola (não) possui Cozinha', markedYes: false, markedNo: false, status: false, key: 0 },
+  { label: 'Escola possui Cozinha', markedYes: false, markedNo: false, status: false, key: 0 },
   { label: 'Merendeiras com esmalte nas unhas', markedYes: false, markedNo: false, status: false, key: 1 },
   { label: 'Merendeiras com unhas compridas', markedYes: false, markedNo: false, status: false, key: 2 },
   { label: 'Merendeiras doentes', markedYes: false, markedNo: false, status: false, key: 3 },

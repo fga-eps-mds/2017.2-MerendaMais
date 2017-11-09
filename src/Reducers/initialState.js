@@ -35,7 +35,7 @@ const initialState = {
     kitchenObservation: '',
     doc,
     docObservation: '',
-    documentationObservation: '',
+    otherObservation: '',
     foodQuality,
     foodQualityObservation: '',
     statusFoodQuality: false,
