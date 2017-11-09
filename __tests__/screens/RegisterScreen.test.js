@@ -28,7 +28,7 @@ const initialState = {
       CAE_Type: 'Estadual',
       CAE: 'Distrito Federal',
       CAE_UF: 'AC - Acre',
-      municipalDistrict: 'Brazlândia',
+      CAE_municipalDistrict: 'Brazlândia',
     },
   },
   application: {
@@ -122,7 +122,7 @@ describe('Testing RegisterScreen On pressed buttons', () => {
       expect(state.profile.segment).toEqual('Pais de alunos');
       expect(state.profile.CAE_Type).toEqual('Estadual');
       expect(state.profile.CAE_UF).toEqual('DF - Distrito Federal');
-      expect(state.profile.municipalDistrict).toEqual('Brasília');
+      expect(state.profile.CAE_municipalDistrict).toEqual('Brasília');
       expect(state.profile.CAE).toEqual('DF');
     };
 
