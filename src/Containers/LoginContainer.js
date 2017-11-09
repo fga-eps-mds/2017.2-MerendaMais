@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LoginCounselorScreen from '../screens/LoginCounselorScreen';
+import LoginScreen from '../screens/LoginScreen';
 import { asyncLoginCounselor } from '../actions/counselorActions';
 
 const mapStateToProps = state => (
@@ -15,4 +15,4 @@ const mapDispachtoProps = dispatch => (
   }
 );
 
-export default connect(mapStateToProps, mapDispachtoProps)(LoginCounselorScreen);
+export default connect(mapStateToProps, mapDispachtoProps)(LoginScreen);
