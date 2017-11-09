@@ -112,8 +112,8 @@ export default class RegisterScreen extends React.Component {
         counselorType: '',
         segment: '',
         CAE_Type: '',
-        UF: '',
-        municipalDistrict: '',
+        CAE_UF: '',
+        CAE_municipalDistrict: '',
         CAE: '',
       },
     };
@@ -181,11 +181,11 @@ export default class RegisterScreen extends React.Component {
       error = true;
       errorMessage += 'Tipo de CAE não selecionado\n';
     }
-    if (this.state.profile.UF === '') {
+    if (this.state.profile.CAE_UF === '') {
       error = true;
       errorMessage += 'UF não selecionada\n';
     }
-    if (this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.municipalDistrict === '') {
+    if (this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.CAE_municipalDistrict === '') {
       error = true;
       errorMessage += 'Município não selecionado\n';
     }
@@ -222,7 +222,7 @@ export default class RegisterScreen extends React.Component {
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
 
-    const UfInitials = this.state.profile.UF.substr(0, 2);
+    const UfInitials = this.state.profile.CAE_UF.substr(0, 2);
 
     const password = this.state.profile.isPresident === true ? (
       <View key="passwordPresident">
@@ -240,17 +240,17 @@ export default class RegisterScreen extends React.Component {
       </View>
     ) : null;
 
-    const municipalDistrict = this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.UF !== '' ? (
+    const municipalDistrict = this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.CAE_UF !== '' ? (
       <View >
-        <Text>     Municipio</Text>
+        <Text>     Municipio do CAE</Text>
         <View
           key="municipalDistrict"
           style={styles.InputDropdown}
         >
           <Picker
-            selectedValue={this.state.profile.municipalDistrict}
+            selectedValue={this.state.profile.CAE_municipalDistrict}
             onValueChange={value => this.setState({ profile: { ...this.state.profile,
-              municipalDistrict: value,
+              CAE_municipalDistrict: value,
               CAE: `${value} ${UfInitials}`.trim() } })}
           >
             <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />
@@ -378,13 +378,13 @@ export default class RegisterScreen extends React.Component {
                 value === STATE_COUNSELOR_CAE ?
                   this.setState({ profile: { ...this.state.profile,
                     CAE_Type: value,
-                    municipalDistrict: '',
+                    CAE_municipalDistrict: '',
                     CAE: `${UfInitials}`.trim() },
                   })
                   :
                   this.setState({ profile: { ...this.state.profile,
                     CAE_Type: value,
-                    CAE: `${this.state.profile.municipalDistrict} ${UfInitials}`.trim() },
+                    CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim() },
                   })
               )
             }
@@ -397,15 +397,15 @@ export default class RegisterScreen extends React.Component {
           </Picker>
         </View>
 
-        <Text>    UF</Text>
+        <Text>    UF do CAE</Text>
         <View
           style={styles.InputDropdown}
         >
           <Picker
-            selectedValue={this.state.profile.UF}
+            selectedValue={this.state.profile.CAE_UF}
             onValueChange={value => this.setState({ profile: { ...this.state.profile,
-              UF: value,
-              CAE: `${this.state.profile.municipalDistrict} ${value.substr(0, 2)}`.trim() } })}
+              CAE_UF: value,
+              CAE: `${this.state.profile.CAE_municipalDistrict} ${value.substr(0, 2)}`.trim() } })}
           >
             <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />
             {brazilianStates.estados.map(item =>
@@ -420,7 +420,7 @@ export default class RegisterScreen extends React.Component {
         <View
           style={styles.InputStyle}
         >
-          <Text>{this.state.profile.municipalDistrict} {UfInitials}</Text>
+          <Text>{this.state.profile.CAE_municipalDistrict} {UfInitials}</Text>
         </View>
 
         {this.renderBtnLogin()}
