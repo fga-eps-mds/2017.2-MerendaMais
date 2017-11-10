@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Picker,
   Alert,
+  KeyboardAvoidingView,
   ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
@@ -308,7 +309,7 @@ export default class RegisterScreen extends React.Component {
     return (
       <View style={styles.principal}>
         <Header />
-        <View style={styles.content}>
+        <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>
             <View style={{ paddingHorizontal: 15 }}>
 
@@ -514,7 +515,7 @@ export default class RegisterScreen extends React.Component {
 
             </View>
           </ScrollView>
-        </View>
+        </KeyboardAvoidingView>
 
         <View style={styles.footer}>
           <TouchableOpacity
