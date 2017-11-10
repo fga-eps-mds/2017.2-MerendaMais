@@ -9,6 +9,7 @@ import { StyleSheet,
   ScrollView,
   TextInput,
   Dimensions,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../components/Header';
 
@@ -130,7 +131,7 @@ export default class KitchenCheckoutScreen extends React.Component {
           subTitle={'Cozinha'}
           backButton
         />
-        <View style={styles.content}>
+        <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>
             <View>
               <View style={{ flexDirection: 'row' }}>
@@ -170,7 +171,7 @@ export default class KitchenCheckoutScreen extends React.Component {
               <Text style={styles.buttonText}>Concluir</Text>
             </TouchableOpacity>
           </ScrollView>
-        </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }

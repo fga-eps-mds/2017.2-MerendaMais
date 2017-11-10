@@ -8,6 +8,7 @@ import { StyleSheet,
   ScrollView,
   TextInput,
   Dimensions,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Header from '../components/Header';
 
@@ -101,7 +102,7 @@ export default class ReportObservationScreen extends React.Component {
           subTitle={'Observações adicionais'}
           backButton
         />
-        <View style={styles.content}>
+        <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>
             <View behavior="padding">
               <View style={styles.textBox}>
@@ -111,7 +112,7 @@ export default class ReportObservationScreen extends React.Component {
                   multiline
                   value={this.state.observation}
                   underlineColorAndroid="transparent"
-                  placeholder="Observações gerais que gostaria de adicionar ?(opcional)"
+                  placeholder="Observações gerais que gostaria de adicionar (opcional)"
                 />
               </View>
             </View>
@@ -126,7 +127,7 @@ export default class ReportObservationScreen extends React.Component {
               <Text style={styles.buttonText}>Concluir</Text>
             </TouchableOpacity>
           </ScrollView>
-        </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }
