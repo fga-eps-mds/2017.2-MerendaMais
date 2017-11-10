@@ -17,6 +17,7 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
+    backgroundColor: 'white',
   },
 
   buttonContainer: {
@@ -36,7 +37,6 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    backgroundColor: 'white',
     marginBottom: 9,
     flex: 6,
     flexDirection: 'column',
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     height: height * 0.25,
     paddingLeft: 10,
+    paddingTop: 10,
     fontSize: width * 0.05,
     textAlignVertical: 'top',
   },
@@ -94,36 +95,39 @@ export default class ReportObservationScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.content}>
+      <View style={styles.principal}>
         <Header
           title={'Relatório'}
           subTitle={'Observações adicionais'}
           backButton
         />
+        <View style={styles.content}>
+          <ScrollView>
+            <View behavior="padding">
+              <View style={styles.textBox}>
+                <TextInput
+                  onChangeText={text => this.setState({ observation: text })}
+                  style={styles.textInput}
+                  multiline
+                  value={this.state.observation}
+                  underlineColorAndroid="transparent"
+                  placeholder="Observações gerais que gostaria de adicionar ?(opcional)"
+                />
+              </View>
+            </View>
 
-        <View behavior="padding">
-          <View style={styles.textBox}>
-            <TextInput
-              onChangeText={text => this.setState({ observation: text })}
-              style={styles.textInput}
-              multiline
-              value={this.state.observation}
-              underlineColorAndroid="transparent"
-              placeholder="Observações gerais que gostaria de adicionar ?(opcional)"
-            />
-          </View>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={() =>
+                this.concludeReport()
+              }
+              key="setObservation"
+            >
+              <Text style={styles.buttonText}>Concluir</Text>
+            </TouchableOpacity>
+          </ScrollView>
         </View>
-
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() =>
-            this.concludeReport()
-          }
-          key="setObservation"
-        >
-          <Text style={styles.buttonText}>Concluir</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      </View>
     );
   }
 }
