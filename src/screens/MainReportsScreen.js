@@ -176,88 +176,90 @@ export default class MainReportsScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.content}>
+      <View style={styles.content}>
         <Header
           title={'Relatórios'}
           backButton
         />
-        <View>
-          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+        <ScrollView>
+          <View>
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.stockFoodCheckoutScreen()}
+              >
+                <Text style={styles.text}>Estoque de Alimentos</Text>
+              </TouchableOpacity>
+              {this.checkingStockFoodReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.kitchenCheckoutScreen()}
+              >
+                <Text style={styles.text}>Cozinha</Text>
+              </TouchableOpacity>
+              {this.checkingKitchenReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.refectoryCheckoutScreen()}
+              >
+                <Text style={styles.text}>Refeitório</Text>
+              </TouchableOpacity>
+              {this.checkingRefectoryReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.DocCheckoutScreen()}
+              >
+                <Text style={styles.text}>Documentação</Text>
+              </TouchableOpacity>
+              {this.checkingDocReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.foodQualityCheckoutScreen()}
+              >
+                <Text style={styles.text}>Qualidade da Alimentação</Text>
+              </TouchableOpacity>
+              {this.checkingFoodQualityReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
+              >
+                <Text style={styles.text}>Arredores da Escola</Text>
+              </TouchableOpacity>
+              {this.checkingSchoolSurroundingsReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.ReportObservationScreen()}
+              >
+                <Text style={styles.text}>+ Outras informações</Text>
+              </TouchableOpacity>
+              {this.checkingReportObservation()}
+            </View>
+
             <TouchableOpacity
-              onPress={() => Actions.stockFoodCheckoutScreen()}
+              style={styles.buttonPhoto}
             >
-              <Text style={styles.text}>Estoque de Alimentos</Text>
+              <Text style={styles.buttonText}>Anexar fotos</Text>
             </TouchableOpacity>
-            {this.checkingStockFoodReport()}
-          </View>
 
-          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
             <TouchableOpacity
-              onPress={() => Actions.kitchenCheckoutScreen()}
+              style={styles.buttonContainer}
             >
-              <Text style={styles.text}>Cozinha</Text>
+              <Text style={styles.buttonText}>Gerar Relatório Final</Text>
             </TouchableOpacity>
-            {this.checkingKitchenReport()}
           </View>
-
-          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-            <TouchableOpacity
-              onPress={() => Actions.refectoryCheckoutScreen()}
-            >
-              <Text style={styles.text}>Refeitório</Text>
-            </TouchableOpacity>
-            {this.checkingRefectoryReport()}
-          </View>
-
-          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-            <TouchableOpacity
-              onPress={() => Actions.DocCheckoutScreen()}
-            >
-              <Text style={styles.text}>Documentação</Text>
-            </TouchableOpacity>
-            {this.checkingDocReport()}
-          </View>
-
-          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-            <TouchableOpacity
-              onPress={() => Actions.foodQualityCheckoutScreen()}
-            >
-              <Text style={styles.text}>Qualidade da Alimentação</Text>
-            </TouchableOpacity>
-            {this.checkingFoodQualityReport()}
-          </View>
-
-          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-            <TouchableOpacity
-              onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
-            >
-              <Text style={styles.text}>Arredores da Escola</Text>
-            </TouchableOpacity>
-            {this.checkingSchoolSurroundingsReport()}
-          </View>
-
-          <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-            <TouchableOpacity
-              onPress={() => Actions.ReportObservationScreen()}
-            >
-              <Text style={styles.text}>+ Outras informações</Text>
-            </TouchableOpacity>
-            {this.checkingReportObservation()}
-          </View>
-
-          <TouchableOpacity
-            style={styles.buttonPhoto}
-          >
-            <Text style={styles.buttonText}>Anexar fotos</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.buttonContainer}
-          >
-            <Text style={styles.buttonText}>Gerar Relatório Final</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

@@ -5,13 +5,15 @@ import { StyleSheet,
   Text,
   TextInput,
   View,
-  Alert }
+  Alert,
+  ScrollView }
   from 'react-native';
 import Header from '../components/Header';
 
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
+    backgroundColor: 'white',
   },
 
   buttonContainer: {
@@ -127,34 +129,36 @@ export default class UpdateInfoScreen extends React.Component {
           title={'Editar Informações'}
           backButton
         />
-        <View style={styles.content}>
+        <ScrollView>
+          <View style={styles.content}>
 
-          <View style={styles.inputs}>
-            <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
-            <TextInput
-              width={280}
-              maxLength={60}
-              keyboardType={'default'}
-              placeholder="Digite seu nome"
-              underlineColorAndroid="transparent"
-              onChangeText={text => this.validateName(text)}
-              value={this.state.name}
-            />
-          </View>
+            <View style={styles.inputs}>
+              <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
+              <TextInput
+                width={280}
+                maxLength={60}
+                keyboardType={'default'}
+                placeholder="Digite seu nome"
+                underlineColorAndroid="transparent"
+                onChangeText={text => this.validateName(text)}
+                value={this.state.name}
+              />
+            </View>
 
-          <View style={styles.inputs}>
-            <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
-            <TextInput
-              width={280}
-              maxLength={11}
-              keyboardType={'phone-pad'}
-              placeholder="(00)00000-0000"
-              underlineColorAndroid="transparent"
-              onChangeText={text => this.validatePhone(text)}
-              value={this.state.phone}
-            />
+            <View style={styles.inputs}>
+              <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
+              <TextInput
+                width={280}
+                maxLength={11}
+                keyboardType={'phone-pad'}
+                placeholder="(00)00000-0000"
+                underlineColorAndroid="transparent"
+                onChangeText={text => this.validatePhone(text)}
+                value={this.state.phone}
+              />
+            </View>
           </View>
-        </View>
+        </ScrollView>
         <TouchableOpacity
           key="infoUpdate"
           style={styles.buttonContainer}
