@@ -28,6 +28,7 @@ const Routes = () => ({
         <Drawer
           hideNavBar
           key="drawer"
+          drawerLockMode="locked-closed"
           contentComponent={Menu}
           drawerWidth={270}
           drawerPosition="right"
