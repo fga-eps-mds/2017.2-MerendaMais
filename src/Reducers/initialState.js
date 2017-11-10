@@ -1,4 +1,9 @@
 import foodStock from './Reports/foodStock';
+import refectory from './Reports/refectory';
+import kitchen from './Reports/kitchen';
+import foodQuality from './Reports/foodQuality';
+import doc from './Reports/doc';
+import schoolSurroundings from './Reports/schoolSurroundings';
 
 const initialState = {
   counselor: {
@@ -25,6 +30,24 @@ const initialState = {
   report: {
     foodStock,
     foodStockObservation: '',
+    refectory,
+    refectoryObservation: '',
+    kitchen,
+    kitchenObservation: '',
+    doc,
+    docObservation: '',
+    otherObservation: '',
+    foodQuality,
+    foodQualityObservation: '',
+    statusFoodQuality: false,
+    statusFoodStock: false,
+    statusDoc: false,
+    statusKitchen: false,
+    statusRefectory: false,
+    statusSchoolSurroundings: false,
+    statusReportObservation: false,
+    schoolSurroundings,
+    schoolSurroundingsObservation: '',
   },
   school: {
     schoolCode: 0,

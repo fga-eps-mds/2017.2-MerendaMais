@@ -78,7 +78,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class StockFoodCheckoutScreen extends React.Component {
+export default class KitchenCheckoutScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      observation: this.props.observation,
+    };
+  }
   showPositiveCheckBox(item) {
     return (
       <View>
@@ -86,12 +92,18 @@ export default class StockFoodCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setStockFoodReportPositive(item.key)}
+          onSelect={() => this.props.setKitchenReportPositive(item.key)}
           disabled={item.markedNo}
           disabledColor={null}
         />
       </View>
     );
+  }
+
+  concludeReport() {
+    this.props.setStatusKitchen(true);
+    this.props.setKitchenObservation(this.state.observation);
+    Actions.pop();
   }
 
   showNegativeCheckBox(item) {
@@ -101,7 +113,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setStockFoodReportNegative(item.key)}
+          onSelect={() => this.props.setKitchenReportNegative(item.key)}
           disabled={item.markedYes}
           disabledColor={null}
         />
@@ -109,18 +121,13 @@ export default class StockFoodCheckoutScreen extends React.Component {
     );
   }
 
-  concludeReport() {
-    this.props.setStatusFoodStock(true);
-    Actions.pop();
-  }
-
   render() {
     return (
       <ScrollView style={styles.content}>
         <Header
           title={'Relatório'}
-          subTitle={'Estoque de Alimentos'}
-          backButton={'back'}
+          subTitle={'Cozinha'}
+          backButton
         />
         <View>
           <View style={{ flexDirection: 'row' }}>
@@ -142,10 +149,10 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <View behavior="padding">
           <View style={styles.textBox}>
             <TextInput
-              onChangeText={text => this.props.setFoodStockObservation(text)}
+              onChangeText={text => this.setState({ observation: text })}
               style={styles.textInput}
-              value={this.props.observation}
               multiline
+              value={this.state.observation}
               underlineColorAndroid="transparent"
               placeholder="Observações (opcional)"
             />
@@ -164,11 +171,11 @@ export default class StockFoodCheckoutScreen extends React.Component {
   }
 }
 
-StockFoodCheckoutScreen.propTypes = {
-  setStatusFoodStock: PropTypes.func.isRequired,
-  setFoodStockObservation: PropTypes.func.isRequired,
-  setStockFoodReportPositive: PropTypes.func.isRequired,
-  setStockFoodReportNegative: PropTypes.func.isRequired,
+KitchenCheckoutScreen.propTypes = {
+  setStatusKitchen: PropTypes.func.isRequired,
+  setKitchenObservation: PropTypes.func.isRequired,
+  setKitchenReportPositive: PropTypes.func.isRequired,
+  setKitchenReportNegative: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
   report: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
