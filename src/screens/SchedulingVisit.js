@@ -97,105 +97,107 @@ export default class SchedulingVisit extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.principal}>
+      <View style={styles.principal}>
         <Header
           title={'AGENDAR'}
           subTitle={'VISITA'}
           backButton
         />
-        <View style={styles.Container}>
-          <View>
-            <TouchableOpacity
-              key="searchSchoolButton"
-              style={styles.button}
-              onPress={() => Actions.searchSchool()}
-            >
-              <Text style={styles.buttonText}>Pesquisar escola</Text>
-            </TouchableOpacity>
+        <ScrollView>
+          <View style={styles.Container}>
+            <View>
+              <TouchableOpacity
+                key="searchSchoolButton"
+                style={styles.button}
+                onPress={() => Actions.searchSchool()}
+              >
+                <Text style={styles.buttonText}>Pesquisar escola</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
 
-        {this.props.school.schoolSelected && (
-          <SchoolData {...this.props.school} />
-        )}
-
-        <View style={styles.Container}>
-          <DatePicker
-            style={styles.Picker}
-            placeholder="Data"
-            date={this.state.visit.date}
-            mode="date"
-            format="DD-MM-YYYY"
-            confirmBtnText="Confirmar"
-            cancelBtnText="Cancelar"
-            customStyles={{
-              dateInput: {
-                borderRadius: 7,
-              },
-            }}
-            onDateChange={date => this.setState({ visit: { ...this.state.visit, date } })}
-          />
-        </View>
-
-        <View style={styles.Container}>
-          <DatePicker
-            style={styles.Picker}
-            placeholder="Horário"
-            date={this.state.visit.time}
-            mode="time"
-            confirmBtnText="Confirmar"
-            cancelBtnText="Cancelar"
-            customStyles={{
-              dateInput: {
-                borderRadius: 7,
-              },
-            }}
-            onDateChange={time => this.setState({ visit: { ...this.state.visit, time } })}
-          />
-        </View>
-
-        <View style={styles.Container}>
-          <View>
-            <TouchableOpacity
-              key="searchCounselorButton"
-              style={styles.button}
-              onPress={() => Alert.alert('Pesquisando')}
-            >
-              <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.Container}>
-          <View>
-            <TouchableOpacity
-              key="searchAgentButton"
-              style={styles.button}
-              onPress={() => Alert.alert('Pesquisando')}
-            >
-              <Text style={styles.buttonText}>Pesquisar Agente Sanitário</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.Container}>
           {this.props.school.schoolSelected && (
-            <Button
-              enabled
-              key="scheduleButton"
-              text="Agendar"
-              onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
-            />
+            <SchoolData {...this.props.school} />
           )}
 
-          <Button
-            enabled={false}
-            text="Agendar"
-            key="scheduleButton"
-            onPress={() => ({})}
-            disabled
-          />
-        </View>
-      </ScrollView>
+          <View style={styles.Container}>
+            <DatePicker
+              style={styles.Picker}
+              placeholder="Data"
+              date={this.state.visit.date}
+              mode="date"
+              format="DD-MM-YYYY"
+              confirmBtnText="Confirmar"
+              cancelBtnText="Cancelar"
+              customStyles={{
+                dateInput: {
+                  borderRadius: 7,
+                },
+              }}
+              onDateChange={date => this.setState({ visit: { ...this.state.visit, date } })}
+            />
+          </View>
+
+          <View style={styles.Container}>
+            <DatePicker
+              style={styles.Picker}
+              placeholder="Horário"
+              date={this.state.visit.time}
+              mode="time"
+              confirmBtnText="Confirmar"
+              cancelBtnText="Cancelar"
+              customStyles={{
+                dateInput: {
+                  borderRadius: 7,
+                },
+              }}
+              onDateChange={time => this.setState({ visit: { ...this.state.visit, time } })}
+            />
+          </View>
+
+          <View style={styles.Container}>
+            <View>
+              <TouchableOpacity
+                key="searchCounselorButton"
+                style={styles.button}
+                onPress={() => Alert.alert('Pesquisando')}
+              >
+                <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.Container}>
+            <View>
+              <TouchableOpacity
+                key="searchAgentButton"
+                style={styles.button}
+                onPress={() => Alert.alert('Pesquisando')}
+              >
+                <Text style={styles.buttonText}>Pesquisar Agente Sanitário</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.Container}>
+            {this.props.school.schoolSelected && (
+              <Button
+                enabled
+                key="scheduleButton"
+                text="Agendar"
+                onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
+              />
+            )}
+
+            <Button
+              enabled={false}
+              text="Agendar"
+              key="scheduleButton"
+              onPress={() => ({})}
+              disabled
+            />
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 }

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 
   textBox: {
-    paddingLeft: 2,
+    paddingLeft: 5,
     justifyContent: 'flex-start',
   },
   text: {
