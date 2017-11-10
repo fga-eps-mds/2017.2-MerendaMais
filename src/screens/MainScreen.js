@@ -73,7 +73,7 @@ class MainScreen extends React.Component {
           <TouchableOpacity
             style={styles.buttonInspect}
             activeOpacity={0.7}
-            onPress={() => Actions.stockFoodCheckoutScreen()}
+            onPress={() => Actions.mainReportsScreen()}
           >
             <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
           </TouchableOpacity>
