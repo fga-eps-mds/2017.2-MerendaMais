@@ -11,9 +11,15 @@ import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContaine
 import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckoutContainer';
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
+import MainReportsScreen from './src/screens/MainReportsScreen';
+import RefectoryCheckoutContainer from './src/Containers/RefectoryCheckoutContainer';
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 import Menu from './src/components/Menu';
-
+import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
+import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
+import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
+import ReportObservationContainer from './src/Containers/ReportObservationContainer';
+import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
 
 const Routes = () => ({
   render() {
@@ -37,9 +43,32 @@ const Routes = () => ({
             <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
             <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
+            <Scene key="mainReportsScreen" component={MainReportsScreen} hideNavBar />
+            <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
+            <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
+            <Scene
+              key="ReportObservationScreen"
+              component={ReportObservationContainer}
+              hideNavBar
+            />
             <Scene
               key="stockFoodCheckoutScreen"
               component={StockFoodCheckoutScreenContainer}
+              hideNavBar
+            />
+            <Scene
+              key="refectoryCheckoutScreen"
+              component={RefectoryCheckoutContainer}
+              hideNavBar
+            />
+            <Scene
+              key="foodQualityCheckoutScreen"
+              component={FoodQualityCheckoutContainer}
+              hideNavBar
+            />
+            <Scene
+              key="schoolSurroundingsCheckoutScreen"
+              component={SchoolSurroundingsCheckoutContainer}
               hideNavBar
             />
             <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />

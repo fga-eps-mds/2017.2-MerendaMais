@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.05,
     textAlignVertical: 'top',
   },
+
   textBox: {
     paddingLeft: 10,
     paddingTop: 30,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class StockFoodCheckoutScreen extends React.Component {
+export default class RefectoryCheckoutScreen extends React.Component {
   showPositiveCheckBox(item) {
     return (
       <View>
@@ -86,7 +87,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setStockFoodReportPositive(item.key)}
+          onSelect={() => this.props.setRefectoryReportPositive(item.key)}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -101,7 +102,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setStockFoodReportNegative(item.key)}
+          onSelect={() => this.props.setRefectoryReportNegative(item.key)}
           disabled={item.markedYes}
           disabledColor={null}
         />
@@ -110,7 +111,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
   }
 
   concludeReport() {
-    this.props.setStatusFoodStock(true);
+    this.props.setStatusRefectory(true);
     Actions.pop();
   }
 
@@ -119,8 +120,8 @@ export default class StockFoodCheckoutScreen extends React.Component {
       <ScrollView style={styles.content}>
         <Header
           title={'Relatório'}
-          subTitle={'Estoque de Alimentos'}
-          backButton={'back'}
+          subTitle={'Refeitório'}
+          backButton
         />
         <View>
           <View style={{ flexDirection: 'row' }}>
@@ -142,7 +143,7 @@ export default class StockFoodCheckoutScreen extends React.Component {
         <View behavior="padding">
           <View style={styles.textBox}>
             <TextInput
-              onChangeText={text => this.props.setFoodStockObservation(text)}
+              onChangeText={text => this.props.setRefectoryObservation(text)}
               style={styles.textInput}
               value={this.props.observation}
               multiline
@@ -164,11 +165,11 @@ export default class StockFoodCheckoutScreen extends React.Component {
   }
 }
 
-StockFoodCheckoutScreen.propTypes = {
-  setStatusFoodStock: PropTypes.func.isRequired,
-  setFoodStockObservation: PropTypes.func.isRequired,
-  setStockFoodReportPositive: PropTypes.func.isRequired,
-  setStockFoodReportNegative: PropTypes.func.isRequired,
+RefectoryCheckoutScreen.propTypes = {
+  setStatusRefectory: PropTypes.func.isRequired,
+  setRefectoryObservation: PropTypes.func.isRequired,
+  setRefectoryReportPositive: PropTypes.func.isRequired,
+  setRefectoryReportNegative: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
   report: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
