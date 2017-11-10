@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing SchedulingVisit renders as expected 1`] = `
-<ScrollViewMock
+<View
   style={
     Object {
       "flex": 1,
@@ -13,240 +13,242 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
     subTitle="VISITA"
     title="AGENDAR"
   />
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "marginTop": 20,
-      }
-    }
-  >
-    <View>
-      <TouchableOpacity
-        activeOpacity={0.2}
-        key="searchSchoolButton"
-        onPress={[Function]}
-        style={
-          Object {
-            "backgroundColor": "#FF9500",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 10,
-            "marginHorizontal": 20,
-            "marginTop": 10,
-            "paddingVertical": 15,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#FFF",
-              "textAlign": "center",
-            }
-          }
-        >
-          Pesquisar escola
-        </Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-  <SchoolData
-    schoolSelected={true}
-  />
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "marginTop": 20,
-      }
-    }
-  >
-    <DatePicker
-      TouchableComponent={[Function]}
-      androidMode="default"
-      cancelBtnText="Cancelar"
-      confirmBtnText="Confirmar"
-      customStyles={
-        Object {
-          "dateInput": Object {
-            "borderRadius": 7,
-          },
-        }
-      }
-      date=""
-      disabled={false}
-      duration={300}
-      format="DD-MM-YYYY"
-      height={259}
-      hideText={false}
-      iconSource={1}
-      modalOnResponderTerminationRequest={[Function]}
-      mode="date"
-      onDateChange={[Function]}
-      placeholder="Data"
-      showIcon={true}
+  <ScrollViewMock>
+    <View
       style={
         Object {
-          "marginHorizontal": 15,
-          "paddingLeft": 10,
-          "width": "95%",
+          "flex": 1,
+          "marginTop": 20,
         }
       }
+    >
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.2}
+          key="searchSchoolButton"
+          onPress={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#FF9500",
+              "borderRadius": 7,
+              "borderWidth": 1,
+              "justifyContent": "flex-end",
+              "marginBottom": 10,
+              "marginHorizontal": 20,
+              "marginTop": 10,
+              "paddingVertical": 15,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#FFF",
+                "textAlign": "center",
+              }
+            }
+          >
+            Pesquisar escola
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+    <SchoolData
+      schoolSelected={true}
     />
-  </View>
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "marginTop": 20,
-      }
-    }
-  >
-    <DatePicker
-      TouchableComponent={[Function]}
-      androidMode="default"
-      cancelBtnText="Cancelar"
-      confirmBtnText="Confirmar"
-      customStyles={
-        Object {
-          "dateInput": Object {
-            "borderRadius": 7,
-          },
-        }
-      }
-      date=""
-      disabled={false}
-      duration={300}
-      height={259}
-      hideText={false}
-      iconSource={1}
-      modalOnResponderTerminationRequest={[Function]}
-      mode="time"
-      onDateChange={[Function]}
-      placeholder="Horário"
-      showIcon={true}
+    <View
       style={
         Object {
-          "marginHorizontal": 15,
-          "paddingLeft": 10,
-          "width": "95%",
+          "flex": 1,
+          "marginTop": 20,
         }
       }
-    />
-  </View>
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "marginTop": 20,
-      }
-    }
-  >
-    <View>
-      <TouchableOpacity
-        activeOpacity={0.2}
-        key="searchCounselorButton"
-        onPress={[Function]}
-        style={
+    >
+      <DatePicker
+        TouchableComponent={[Function]}
+        androidMode="default"
+        cancelBtnText="Cancelar"
+        confirmBtnText="Confirmar"
+        customStyles={
           Object {
-            "backgroundColor": "#FF9500",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 10,
-            "marginHorizontal": 20,
-            "marginTop": 10,
-            "paddingVertical": 15,
+            "dateInput": Object {
+              "borderRadius": 7,
+            },
           }
         }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
+        date=""
+        disabled={false}
+        duration={300}
+        format="DD-MM-YYYY"
+        height={259}
+        hideText={false}
+        iconSource={1}
+        modalOnResponderTerminationRequest={[Function]}
+        mode="date"
+        onDateChange={[Function]}
+        placeholder="Data"
+        showIcon={true}
+        style={
+          Object {
+            "marginHorizontal": 15,
+            "paddingLeft": 10,
+            "width": "95%",
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginTop": 20,
+        }
+      }
+    >
+      <DatePicker
+        TouchableComponent={[Function]}
+        androidMode="default"
+        cancelBtnText="Cancelar"
+        confirmBtnText="Confirmar"
+        customStyles={
+          Object {
+            "dateInput": Object {
+              "borderRadius": 7,
+            },
+          }
+        }
+        date=""
+        disabled={false}
+        duration={300}
+        height={259}
+        hideText={false}
+        iconSource={1}
+        modalOnResponderTerminationRequest={[Function]}
+        mode="time"
+        onDateChange={[Function]}
+        placeholder="Horário"
+        showIcon={true}
+        style={
+          Object {
+            "marginHorizontal": 15,
+            "paddingLeft": 10,
+            "width": "95%",
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginTop": 20,
+        }
+      }
+    >
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.2}
+          key="searchCounselorButton"
+          onPress={[Function]}
           style={
             Object {
-              "color": "#FFF",
-              "textAlign": "center",
+              "backgroundColor": "#FF9500",
+              "borderRadius": 7,
+              "borderWidth": 1,
+              "justifyContent": "flex-end",
+              "marginBottom": 10,
+              "marginHorizontal": 20,
+              "marginTop": 10,
+              "paddingVertical": 15,
             }
           }
         >
-          Pesquisar Conselheiro
-        </Text>
-      </TouchableOpacity>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#FFF",
+                "textAlign": "center",
+              }
+            }
+          >
+            Pesquisar Conselheiro
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  </View>
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "marginTop": 20,
-      }
-    }
-  >
-    <View>
-      <TouchableOpacity
-        activeOpacity={0.2}
-        key="searchAgentButton"
-        onPress={[Function]}
-        style={
-          Object {
-            "backgroundColor": "#FF9500",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 10,
-            "marginHorizontal": 20,
-            "marginTop": 10,
-            "paddingVertical": 15,
-          }
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginTop": 20,
         }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
+      }
+    >
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.2}
+          key="searchAgentButton"
+          onPress={[Function]}
           style={
             Object {
-              "color": "#FFF",
-              "textAlign": "center",
+              "backgroundColor": "#FF9500",
+              "borderRadius": 7,
+              "borderWidth": 1,
+              "justifyContent": "flex-end",
+              "marginBottom": 10,
+              "marginHorizontal": 20,
+              "marginTop": 10,
+              "paddingVertical": 15,
             }
           }
         >
-          Pesquisar Agente Sanitário
-        </Text>
-      </TouchableOpacity>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#FFF",
+                "textAlign": "center",
+              }
+            }
+          >
+            Pesquisar Agente Sanitário
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  </View>
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "marginTop": 20,
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginTop": 20,
+        }
       }
-    }
-  >
-    <Button
-      enabled={true}
-      key="scheduleButton"
-      onPress={[Function]}
-      text="Agendar"
-    />
-    <Button
-      disabled={true}
-      enabled={false}
-      key="scheduleButton"
-      onPress={[Function]}
-      text="Agendar"
-    />
-  </View>
-</ScrollViewMock>
+    >
+      <Button
+        enabled={true}
+        key="scheduleButton"
+        onPress={[Function]}
+        text="Agendar"
+      />
+      <Button
+        disabled={true}
+        enabled={false}
+        key="scheduleButton"
+        onPress={[Function]}
+        text="Agendar"
+      />
+    </View>
+  </ScrollViewMock>
+</View>
 `;

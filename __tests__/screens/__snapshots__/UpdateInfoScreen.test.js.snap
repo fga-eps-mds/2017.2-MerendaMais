@@ -4,6 +4,7 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
 <View
   style={
     Object {
+      "backgroundColor": "white",
       "flex": 1,
     }
   }
@@ -13,95 +14,97 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
     subTitle=""
     title="Editar Informações"
   />
-  <View
-    style={
-      Object {
-        "flex": 6,
-        "flexDirection": "column",
-        "marginBottom": 9,
-        "marginTop": 30,
-      }
-    }
-  >
+  <ScrollViewMock>
     <View
       style={
         Object {
-          "alignItems": "center",
-          "backgroundColor": "#FAFAFA",
-          "borderColor": "gray",
-          "borderRadius": 7,
-          "borderWidth": 1,
-          "flexDirection": "row",
-          "justifyContent": "flex-start",
-          "marginBottom": 30,
-          "marginHorizontal": 15,
-          "paddingLeft": 2,
-          "paddingRight": 4,
-          "paddingVertical": 10,
+          "flex": 6,
+          "flexDirection": "column",
+          "marginBottom": 9,
+          "marginTop": 30,
         }
       }
     >
-      <Icon
-        allowFontScaling={false}
-        color="black"
-        name="face"
-        size={32}
+      <View
         style={
           Object {
-            "margin": 5,
+            "alignItems": "center",
+            "backgroundColor": "#FAFAFA",
+            "borderColor": "gray",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "marginBottom": 30,
+            "marginHorizontal": 15,
+            "paddingLeft": 2,
+            "paddingRight": 4,
+            "paddingVertical": 10,
           }
         }
-      />
-      <TextInput
-        keyboardType="default"
-        maxLength={60}
-        onChangeText={[Function]}
-        placeholder="Digite seu nome"
-        underlineColorAndroid="transparent"
-        value="Rodolfo"
-        width={280}
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#FAFAFA",
-          "borderColor": "gray",
-          "borderRadius": 7,
-          "borderWidth": 1,
-          "flexDirection": "row",
-          "justifyContent": "flex-start",
-          "marginBottom": 30,
-          "marginHorizontal": 15,
-          "paddingLeft": 2,
-          "paddingRight": 4,
-          "paddingVertical": 10,
-        }
-      }
-    >
-      <Icon
-        allowFontScaling={false}
-        color="black"
-        name="phone"
-        size={32}
+      >
+        <Icon
+          allowFontScaling={false}
+          color="black"
+          name="face"
+          size={32}
+          style={
+            Object {
+              "margin": 5,
+            }
+          }
+        />
+        <TextInput
+          keyboardType="default"
+          maxLength={60}
+          onChangeText={[Function]}
+          placeholder="Digite seu nome"
+          underlineColorAndroid="transparent"
+          value="Rodolfo"
+          width={280}
+        />
+      </View>
+      <View
         style={
           Object {
-            "margin": 5,
+            "alignItems": "center",
+            "backgroundColor": "#FAFAFA",
+            "borderColor": "gray",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "marginBottom": 30,
+            "marginHorizontal": 15,
+            "paddingLeft": 2,
+            "paddingRight": 4,
+            "paddingVertical": 10,
           }
         }
-      />
-      <TextInput
-        keyboardType="phone-pad"
-        maxLength={11}
-        onChangeText={[Function]}
-        placeholder="(00)00000-0000"
-        underlineColorAndroid="transparent"
-        value="6196661234"
-        width={280}
-      />
+      >
+        <Icon
+          allowFontScaling={false}
+          color="black"
+          name="phone"
+          size={32}
+          style={
+            Object {
+              "margin": 5,
+            }
+          }
+        />
+        <TextInput
+          keyboardType="phone-pad"
+          maxLength={11}
+          onChangeText={[Function]}
+          placeholder="(00)00000-0000"
+          underlineColorAndroid="transparent"
+          value="6196661234"
+          width={280}
+        />
+      </View>
     </View>
-  </View>
+  </ScrollViewMock>
   <TouchableOpacity
     activeOpacity={0.2}
     key="infoUpdate"
