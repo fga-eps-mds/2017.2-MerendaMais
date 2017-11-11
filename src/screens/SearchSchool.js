@@ -13,6 +13,8 @@ import { StyleSheet,
 import PropTypes from 'prop-types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
+import brazilianStates from '../brazilianStates';
+import municipalDistricts from '../municipalDistricts';
 
 import { SCHOOL_ENDPOINT } from '../constants';
 
@@ -101,6 +103,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
 
+  },
+
+  InputFieldDropdown: {
+    marginTop: 1,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 7,
+    marginBottom: 10,
   },
 
   Input: {
@@ -226,28 +236,45 @@ class SearchSchool extends React.Component {
   }
 
   render() {
+    const UfInitials = this.state.uf.substr(0, 2);
+    const municipalDistrict = this.state.uf !== '' ? (
+      <View
+        key="municipalDistrict"
+        style={styles.InputDropdown}
+      >
+        <Picker
+          onValueChange={city => this.setState({ city })}
+          selectedValue={this.state.city}
+        >
+          <Picker.Item value="" label="Escolha o Municipio" color="#95a5a6" />
+          {municipalDistricts[UfInitials].cidades.map(item =>
+            (<Picker.Item label={item} value={item} color="#000000" />))}
+        </Picker>
+      </View>
+    ) : null;
+
     return (
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Pesquisar Escola'}
           backButton
         />
-
         <View style={styles.bodyBox}>
           <View style={{ flex: 3 }}>
-            <View style={styles.Input}>
-              <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
-              <TextInput
-                width={280}
-                returnKeyType="go"
-                maxLength={50}
-                keyboardType={'default'}
-                onChangeText={text => this.validateCity(text)}
-                value={this.state.city} // CAE OR CITY ?
-                underlineColorAndroid="transparent"
-                placeholder="Estado/Município"
-              />
+            <View
+              style={styles.InputDropdown}
+            >
+              <Picker
+                onValueChange={uf => this.setState({ uf })}
+                selectedValue={this.state.uf}
+              >
+                <Picker.Item value="" label="Escolha a sua UF " color="#95a5a6" />
+                {brazilianStates.estados.map(item =>
+                  (<Picker.Item label={item} value={item} color="#000000" />))}
+              </Picker>
             </View>
+
+            {municipalDistrict}
 
             <View style={styles.Input}>
               <FontAwesome name="search" style={styles.icon} size={30} color="black" />
@@ -261,16 +288,6 @@ class SearchSchool extends React.Component {
                 underlineColorAndroid="transparent"
                 placeholder="Escola a pesquisar"
               />
-            </View>
-
-            <View style={styles.InputDropdown}>
-              <Picker
-                onValueChange={uf => this.setState({ uf })}
-                selectedValue={this.state.uf}
-              >
-                <Picker.Item value="" label="Escolha sua UF" color="#95a5a6" />
-                <Picker.Item value="DF" label="DF" />
-              </Picker>
             </View>
 
           </View>
