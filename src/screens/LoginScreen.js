@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
   View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   InputPassword: {
     marginTop: 30,
     flexDirection: 'row',
-    justifyContent: 'center',
+    alignItems: 'center',
     borderColor: 'gray',
     backgroundColor: '#FAFAFA',
     borderWidth: 1,
@@ -107,7 +108,7 @@ export default class LoginScreen extends React.Component {
     return (
       <View style={styles.principal}>
         <Header />
-        <View style={styles.content}>
+        <KeyboardAvoidingView style={styles.content} behavior="padding">
           <View style={styles.Inputemail}>
             <MaterialIcons name="email" style={styles.icon} size={28} color="black" />
             <TextInput
@@ -139,7 +140,7 @@ export default class LoginScreen extends React.Component {
 
           {this.renderBtnLogin()}
 
-        </View>
+        </KeyboardAvoidingView>
 
         <View style={styles.footer}>
           <TouchableOpacity

@@ -73,47 +73,54 @@ export default class ProfileInfoScreen extends React.Component {
   }
   render() {
     return (
-      <ScrollView style={styles.profileInfoScreen}>
+      <View style={styles.profileInfoScreen}>
         <Header
           title={'PERFIL'}
           backButton
         />
         <View style={styles.infoProfileBox}>
-          <View style={styles.field}>
-            <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
-            <Text>Nome: {this.props.counselor.name}</Text>
-          </View>
-          <View style={styles.field}>
-            <FontAwesome name="user-circle" style={styles.icon} size={32} color="black" />
-            <Text>CPF: {this.props.counselor.profile.cpf}</Text>
-          </View>
-          <View style={styles.field}>
-            <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
-            <Text>Telefone: {this.props.counselor.profile.phone}</Text>
-          </View>
-          <View style={styles.field}>
-            <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
-            <Text>Email: {this.props.counselor.email}</Text>
-          </View>
-          {this.verifyCharge()}
-          <View style={styles.field}>
-            <MaterialIcons name="supervisor-account" style={styles.icon} size={32} color="black" />
-            <Text>Tipo do Conselheiro: {this.props.counselor.profile.counselorType}</Text>
-          </View>
-          <View style={styles.field}>
-            <MaterialIcons name="people" style={styles.icon} size={32} color="black" />
-            <Text>Segmento: {this.props.counselor.profile.segment}</Text>
-          </View>
-          <View style={styles.field}>
-            <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
-            <Text>CAE: {this.props.counselor.profile.CAE}</Text>
-          </View>
-          <View style={styles.field}>
-            <MaterialIcons name="domain" style={styles.icon} size={32} color="black" />
-            <Text>Tipo do CAE: {this.props.counselor.profile.CAE_Type}</Text>
-          </View>
+          <ScrollView>
+            <View style={styles.field}>
+              <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
+              <Text>Nome: {this.props.counselor.name}</Text>
+            </View>
+            <View style={styles.field}>
+              <FontAwesome name="user-circle" style={styles.icon} size={32} color="black" />
+              <Text>CPF: {this.props.counselor.profile.cpf}</Text>
+            </View>
+            <View style={styles.field}>
+              <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
+              <Text>Telefone: {this.props.counselor.profile.phone}</Text>
+            </View>
+            <View style={styles.field}>
+              <MaterialIcons name="email" style={styles.icon} size={32} color="black" />
+              <Text>Email: {this.props.counselor.email}</Text>
+            </View>
+            {this.verifyCharge()}
+            <View style={styles.field}>
+              <MaterialIcons
+                name="supervisor-account"
+                style={styles.icon}
+                size={32}
+                color="black"
+              />
+              <Text>Tipo do Conselheiro: {this.props.counselor.profile.counselorType}</Text>
+            </View>
+            <View style={styles.field}>
+              <MaterialIcons name="people" style={styles.icon} size={32} color="black" />
+              <Text>Segmento: {this.props.counselor.profile.segment}</Text>
+            </View>
+            <View style={styles.field}>
+              <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
+              <Text>CAE: {this.props.counselor.profile.CAE}</Text>
+            </View>
+            <View style={styles.field}>
+              <MaterialIcons name="domain" style={styles.icon} size={32} color="black" />
+              <Text>Tipo do CAE: {this.props.counselor.profile.CAE_Type}</Text>
+            </View>
+          </ScrollView>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

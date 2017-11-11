@@ -14,7 +14,9 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
     subTitle=""
     title="Merenda +"
   />
-  <View
+  <KeyboardAvoidingView
+    behavior="padding"
+    keyboardVerticalOffset={0}
     style={
       Object {
         "flex": 6,
@@ -737,7 +739,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         </TouchableOpacity>
       </View>
     </ScrollViewMock>
-  </View>
+  </KeyboardAvoidingView>
   <View
     style={
       Object {

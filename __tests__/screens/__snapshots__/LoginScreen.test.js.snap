@@ -13,7 +13,9 @@ exports[`Testing LoginCounselor renders as expected 1`] = `
     subTitle=""
     title="Merenda +"
   />
-  <View
+  <KeyboardAvoidingView
+    behavior="padding"
+    keyboardVerticalOffset={0}
     style={
       Object {
         "backgroundColor": "white",
@@ -60,12 +62,12 @@ exports[`Testing LoginCounselor renders as expected 1`] = `
     <View
       style={
         Object {
+          "alignItems": "center",
           "backgroundColor": "#FAFAFA",
           "borderColor": "gray",
           "borderRadius": 7,
           "borderWidth": 1,
           "flexDirection": "row",
-          "justifyContent": "center",
           "marginTop": 30,
         }
       }
@@ -120,7 +122,7 @@ exports[`Testing LoginCounselor renders as expected 1`] = `
         Entrar
       </Text>
     </TouchableOpacity>
-  </View>
+  </KeyboardAvoidingView>
   <View
     style={
       Object {

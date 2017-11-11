@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing DocCheckout Screen renders as expected 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "white",
@@ -9,12 +9,12 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
     }
   }
 >
-  <View>
-    <Header
-      backButton={true}
-      subTitle=""
-      title="Relatórios"
-    />
+  <Header
+    backButton={true}
+    subTitle=""
+    title="Relatórios"
+  />
+  <ScrollViewMock>
     <View>
       <View
         style={
@@ -293,6 +293,6 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
         </Text>
       </TouchableOpacity>
     </View>
-  </View>
-</Component>
+  </ScrollViewMock>
+</View>
 `;

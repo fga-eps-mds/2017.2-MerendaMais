@@ -21,7 +21,7 @@ exports[`Testing SchoolData component renders correctly 1`] = `
     style={
       Object {
         "justifyContent": "flex-start",
-        "paddingLeft": 2,
+        "paddingLeft": 5,
       }
     }
   >
