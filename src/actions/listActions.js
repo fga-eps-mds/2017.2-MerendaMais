@@ -25,7 +25,7 @@ const convertingProfileStringToJSON = (profileStringSingleQuote) => {
   return profileJSON;
 };
 
-const getCounselorProfile = (counselorInformations, nuvemCode, dispatch) => {
+const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) => {
   const getProfileHeader = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
@@ -39,7 +39,9 @@ const getCounselorProfile = (counselorInformations, nuvemCode, dispatch) => {
       completeCounselorInformations.cpf = profile.cpf;
       completeCounselorInformations.phone = profile.phone;
 
-      dispatch(setList(counselorInformations));
+      if (profile.cpf !== CPF) {
+        dispatch(setList(counselorInformations));
+      }
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'getCounselorProfile',
@@ -47,7 +49,7 @@ const getCounselorProfile = (counselorInformations, nuvemCode, dispatch) => {
     });
 };
 
-const getCounselor = (counselorLink, dispatch) => {
+const getCounselor = (counselorLink, CPF, dispatch) => {
   axios.get(counselorLink)
     .then((response) => {
       logInfo(FILE_NAME, 'getCounselor',
@@ -58,7 +60,7 @@ const getCounselor = (counselorLink, dispatch) => {
         cpf: '',
         phone: '',
       };
-      getCounselorProfile(counselorInformations, response.data.cod, dispatch);
+      getCounselorProfile(counselorInformations, response.data.cod, CPF, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'getCounselor',
@@ -66,7 +68,7 @@ const getCounselor = (counselorLink, dispatch) => {
     });
 };
 
-const getCounselorFromGroup = (codGroup, dispatch) => {
+const getCounselorFromGroup = (codGroup, CPF, dispatch) => {
   console.log(codGroup);
   axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
     .then((response) => {
@@ -74,7 +76,7 @@ const getCounselorFromGroup = (codGroup, dispatch) => {
         `list of counselors: ${JSON.stringify(response.data[0], null, 2)}`);
 
       for (let i = 0; i < response.data.length; i += 1) {
-        getCounselor(response.data[i].links[1].href, dispatch);
+        getCounselor(response.data[i].links[1].href, CPF, dispatch);
       }
     })
     .catch((error) => {
@@ -83,7 +85,7 @@ const getCounselorFromGroup = (codGroup, dispatch) => {
     });
 };
 
-export const asyncGetCounselorFromGroup = CAE => (dispatch) => {
+export const asyncGetCounselorFromGroup = (CAE, CPF) => (dispatch) => {
   dispatch(resetList());
 
   const paramsToNuvem = {
@@ -96,7 +98,7 @@ export const asyncGetCounselorFromGroup = CAE => (dispatch) => {
   axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
     .then((response) => {
       const codGroup = response.data[0].codGrupo;
-      getCounselorFromGroup(codGroup, dispatch);
+      getCounselorFromGroup(codGroup, CPF, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'asyncGetCounselorFromGroup',

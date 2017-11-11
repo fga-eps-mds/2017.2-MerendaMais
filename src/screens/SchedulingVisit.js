@@ -87,7 +87,8 @@ export default class SchedulingVisit extends React.Component {
   }
 
   componentWillMount() {
-    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE);
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
   }
 
   componentWillReceiveProps(newProps) {
