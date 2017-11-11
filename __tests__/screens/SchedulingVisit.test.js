@@ -45,12 +45,14 @@ describe('Testing SchedulingVisit buttons', () => {
   //   expect(button.length).toEqual(1);
   //   button.simulate('press');
   // });
-  it('Test if search counselor button is rendered', () => {
-    const wrapper = shallow(<SchedulingVisit {...initialState} />);
-    const button = wrapper.findWhere(c => c.key() === 'searchCounselorButton');
-    expect(button.length).toEqual(1);
-    button.simulate('press');
-  });
+
+  // it('Test if search counselor button is rendered', () => {
+  //   const wrapper = shallow(<SchedulingVisit {...initialState} />);
+  //   const button = wrapper.findWhere(c => c.key() === 'searchCounselorButton');
+  //   expect(button.length).toEqual(1);
+  //   button.simulate('press');
+  // });
+
   it('Test if search agent button is rendered', () => {
     const wrapper = shallow(<SchedulingVisit {...initialState} />);
     const button = wrapper.findWhere(c => c.key() === 'searchAgentButton');

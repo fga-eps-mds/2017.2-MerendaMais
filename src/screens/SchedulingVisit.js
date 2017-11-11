@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import PopupDialog from 'react-native-popup-dialog';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
@@ -103,6 +104,13 @@ export default class SchedulingVisit extends React.Component {
           subTitle={'VISITA'}
           backButton
         />
+        <PopupDialog
+          style={{ flex: 1 }}
+          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+          height="70%"
+          width="85%"
+        />
+
         <ScrollView>
           <View style={styles.Container}>
             <View>
@@ -160,7 +168,7 @@ export default class SchedulingVisit extends React.Component {
               <TouchableOpacity
                 key="searchCounselorButton"
                 style={styles.button}
-                onPress={() => Alert.alert('Pesquisando')}
+                onPress={() => this.popupDialog.show()}
               >
                 <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
               </TouchableOpacity>
