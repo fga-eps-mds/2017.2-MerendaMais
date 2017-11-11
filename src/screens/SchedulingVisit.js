@@ -86,6 +86,10 @@ export default class SchedulingVisit extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE);
+  }
+
   componentWillReceiveProps(newProps) {
     const newVisit = {
       codSchool: newProps.school.schoolCode,
@@ -94,6 +98,12 @@ export default class SchedulingVisit extends React.Component {
     };
 
     this.setState({ visit: newVisit });
+  }
+
+  listOfCounselors() {
+    this.popupDialog.show();
+    console.log('list:');
+    console.log(this.props.listOfCounselorsInAGroup);
   }
 
   render() {
@@ -168,7 +178,7 @@ export default class SchedulingVisit extends React.Component {
               <TouchableOpacity
                 key="searchCounselorButton"
                 style={styles.button}
-                onPress={() => this.popupDialog.show()}
+                onPress={() => this.listOfCounselors()}
               >
                 <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
               </TouchableOpacity>
@@ -215,6 +225,7 @@ const { shape, string, number } = PropTypes;
 
 SchedulingVisit.propTypes = {
   asyncSchedulingVisit: PropTypes.func.isRequired,
+  asyncGetCounselorFromGroup: PropTypes.func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
@@ -225,4 +236,9 @@ SchedulingVisit.propTypes = {
     schoolPhone: string.isRequired,
     schoolEmail: string.isRequired,
   }).isRequired,
+  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    cpf: PropTypes.string,
+    phone: PropTypes.string,
+  })).isRequired,
 };

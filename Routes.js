@@ -34,8 +34,8 @@ const Routes = () => ({
           drawerPosition="right"
         >
           <Scene key="root">
-            <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
+            <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
