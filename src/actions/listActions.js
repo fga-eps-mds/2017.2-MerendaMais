@@ -69,7 +69,6 @@ const getCounselor = (counselorLink, CPF, dispatch) => {
 };
 
 const getCounselorFromGroup = (codGroup, CPF, dispatch) => {
-  console.log(codGroup);
   axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
     .then((response) => {
       logInfo(FILE_NAME, 'getCounselorFromGroup',
