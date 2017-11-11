@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet,
   Text,
@@ -135,9 +135,9 @@ class SearchSchool extends React.Component {
     this.state = {
       isOpen: false,
       isLoading: false,
+      uf: '',
       city: '',
       name: '',
-      uf: '',
       schoolList: [],
     };
 
@@ -183,7 +183,7 @@ class SearchSchool extends React.Component {
         nome: this.state.name,
         municipio: this.state.city,
         campos: 'nome',
-        uf: this.state.uf,
+        uf: this.state.uf.substr(0, 2),
       },
     })
       .then((response) => {
@@ -236,8 +236,12 @@ class SearchSchool extends React.Component {
   }
 
   render() {
+    logInfo(FILE_NAME, 'render()',
+      `State of search page: ${JSON.stringify(this.state, null, 2)}`);
+
     const UfInitials = this.state.uf.substr(0, 2);
-    const municipalDistrict = this.state.uf !== '' ? (
+
+    const municipalDistrict = this.state.uf !== '' && this.state.uf !== 'DF - Distrito Federal' ? (
       <View
         key="municipalDistrict"
         style={styles.InputDropdown}
