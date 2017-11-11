@@ -107,6 +107,29 @@ export default class SchedulingVisit extends React.Component {
     console.log(this.props.listOfCounselorsInAGroup);
   }
 
+  renderCounselorList() {
+    return (
+      this.props.listOfCounselorsInAGroup.map(counselor => (
+        <View style={styles.listRegisters}>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+              {counselor.name}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+              {counselor.cpf}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+              {counselor.phone}
+            </Text>
+          </View>
+        </View>
+      ))
+    );
+  }
+
   render() {
     return (
       <View style={styles.principal}>
@@ -120,7 +143,11 @@ export default class SchedulingVisit extends React.Component {
           ref={(popupDialog) => { this.popupDialog = popupDialog; }}
           height="70%"
           width="85%"
-        />
+        >
+          <ScrollView key="showInviteCounselorList">
+            {this.renderCounselorList()}
+          </ScrollView>
+        </PopupDialog>
 
         <ScrollView>
           <View style={styles.Container}>
