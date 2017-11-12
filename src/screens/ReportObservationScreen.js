@@ -91,7 +91,7 @@ export default class ReportObservationScreen extends React.Component {
   concludeReport() {
     this.props.setStatusReportObservation(true);
     this.props.setReportObservation(this.state.observation);
-    Actions.pop();
+    Actions.mainReportsScreen();
   }
 
   render() {
