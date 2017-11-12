@@ -82,9 +82,9 @@ const styles = StyleSheet.create({
   listRegisters: {
     flex: 1,
     marginHorizontal: 15,
-    marginVertical: 10,
+    marginVertical: 5,
     borderColor: 'black',
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderRadius: 3,
     backgroundColor: '#FAFAFA',
     justifyContent: 'space-between',
@@ -142,10 +142,17 @@ export default class SchedulingVisit extends React.Component {
     }
   }
 
+  changeStyleAccordingToInput(counselor) {
+    if (this.state.invitedList[counselor.nuvemCode] !== undefined) {
+      return [styles.listRegisters, { borderColor: '#FF9500' }];
+    }
+    return styles.listRegisters;
+  }
+
   renderCounselorList() {
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
-        <View style={styles.listRegisters} key={counselor.nuvemCode}>
+        <View style={this.changeStyleAccordingToInput(counselor)} key={counselor.nuvemCode}>
           <TouchableOpacity
             onPress={() => this.manageInvitedListState(counselor)}
           >
@@ -198,7 +205,7 @@ export default class SchedulingVisit extends React.Component {
               />
             </View>,
           ]}
-          height="70%"
+          height="80%"
           width="85%"
         >
           <ScrollView key="showInviteCounselorList">
