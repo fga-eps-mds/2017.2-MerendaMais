@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
-import PopupDialog, { DialogTitle, SlideAnimation } from 'react-native-popup-dialog';
+import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialog';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
@@ -103,6 +103,7 @@ export default class SchedulingVisit extends React.Component {
         date: '',
         time: '',
       },
+      invitedList: {},
     };
   }
 
@@ -127,11 +128,27 @@ export default class SchedulingVisit extends React.Component {
     console.log(this.props.listOfCounselorsInAGroup);
   }
 
+  manageInvitedListState(counselor) {
+    const newElement = this.state.invitedList;
+
+    // If the counselor is not at the list (undefined),
+    // we will add him to the list, where its key is the counselor's nuvemCode
+    if (newElement[counselor.nuvemCode] === undefined) {
+      newElement[counselor.nuvemCode] = counselor;
+      this.setState({ invitedList: newElement });
+    } else {
+      delete newElement[counselor.nuvemCode];
+      this.setState({ invitedList: newElement });
+    }
+  }
+
   renderCounselorList() {
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
-        <View style={styles.listRegisters}>
-          <TouchableOpacity>
+        <View style={styles.listRegisters} key={counselor.nuvemCode}>
+          <TouchableOpacity
+            onPress={() => this.manageInvitedListState(counselor)}
+          >
             <View style={styles.textBox}>
               <Text style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
@@ -153,10 +170,7 @@ export default class SchedulingVisit extends React.Component {
   }
 
   render() {
-    const slideAnimation = new SlideAnimation({
-      slideFrom: 'bottom',
-    });
-
+    console.log(this.state.invitedList);
     return (
       <View style={styles.principal}>
         <Header
@@ -168,7 +182,22 @@ export default class SchedulingVisit extends React.Component {
           style={{ flex: 1 }}
           ref={(popupDialog) => { this.popupDialog = popupDialog; }}
           dialogTitle={<DialogTitle title="Conselheiros do seu CAE" />}
-          dialogAnimation={slideAnimation}
+          actions={[
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+              <DialogButton
+                buttonStyle={{ marginVertical: -18 }}
+                text="ACEITAR"
+                onPress={() => null}
+                key="dialogButton1"
+              />
+              <DialogButton
+                buttonStyle={{ marginVertical: -18 }}
+                text="CANCELAR"
+                onPress={() => null}
+                key="dialogButton2"
+              />
+            </View>,
+          ]}
           height="70%"
           width="85%"
         >
