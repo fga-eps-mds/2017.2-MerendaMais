@@ -15,42 +15,6 @@ const styles = StyleSheet.create({
     borderLeftColor: 'black',
     borderLeftWidth: 1,
   },
-
-  avatarContainer: {
-    marginBottom: 20,
-    marginTop: 20,
-  },
-
-  avatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    flex: 1,
-  },
-
-  fieldStyle: {
-    padding: 15,
-    backgroundColor: '#FF9500',
-    flexDirection: 'row',
-    borderColor: '#e68a00',
-    borderWidth: 1,
-  },
-
-  name: {
-    position: 'absolute',
-    left: 70,
-    top: 20,
-  },
-
-  icon: {
-    marginRight: 10,
-  },
-
-  item: {
-    fontSize: 16,
-    fontWeight: '300',
-    padding: 5,
-  },
 });
 
 class Menu extends React.PureComponent {
