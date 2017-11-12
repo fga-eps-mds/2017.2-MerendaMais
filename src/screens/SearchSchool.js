@@ -5,6 +5,7 @@ import { StyleSheet,
   Text,
   View,
   TouchableOpacity,
+  ScrollView,
   TextInput,
   FlatList,
   ActivityIndicator,
@@ -73,6 +74,7 @@ const styles = StyleSheet.create({
     flex: 2.5,
     justifyContent: 'center',
     width: 320,
+    marginTop: 15,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 7,
@@ -258,7 +260,7 @@ class SearchSchool extends React.Component {
     ) : null;
 
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Pesquisar Escola'}
           backButton
@@ -322,7 +324,7 @@ class SearchSchool extends React.Component {
             {this.buttonActivation()}
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
