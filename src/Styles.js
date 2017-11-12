@@ -23,6 +23,21 @@ const styles = {
     textAlign: 'center',
     color: '#FFF',
   },
+  item: {
+    fontSize: 16,
+    fontWeight: '300',
+    padding: 5,
+  },
+  fieldStyle: {
+    padding: 15,
+    backgroundColor: '#FF9500',
+    flexDirection: 'row',
+    borderColor: '#e68a00',
+    borderWidth: 1,
+  },
+  icon: {
+    marginRight: 10,
+  },
 };
 
 export default styles;

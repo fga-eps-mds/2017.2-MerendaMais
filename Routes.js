@@ -14,7 +14,7 @@ import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
 import MainReportsScreen from './src/screens/MainReportsScreen';
 import RefectoryCheckoutContainer from './src/Containers/RefectoryCheckoutContainer';
 import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
-import Menu from './src/components/Menu';
+import MenuContainer from './src/Containers/MenuContainer';
 import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
 import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
@@ -29,7 +29,7 @@ const Routes = () => ({
           hideNavBar
           key="drawer"
           drawerLockMode="locked-closed"
-          contentComponent={Menu}
+          contentComponent={MenuContainer}
           drawerWidth={270}
           drawerPosition="right"
         >
