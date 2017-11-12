@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
-import PopupDialog from 'react-native-popup-dialog';
+import PopupDialog, { DialogTitle, SlideAnimation } from 'react-native-popup-dialog';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
@@ -70,6 +70,26 @@ const styles = StyleSheet.create({
     margin: 5,
   },
 
+  textBox: {
+    paddingLeft: 2,
+    justifyContent: 'flex-start',
+  },
+  text: {
+    fontSize: 15,
+    paddingVertical: 5,
+  },
+
+  listRegisters: {
+    flex: 1,
+    marginHorizontal: 15,
+    marginVertical: 10,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 3,
+    backgroundColor: '#FAFAFA',
+    justifyContent: 'space-between',
+  },
+
 });
 
 export default class SchedulingVisit extends React.Component {
@@ -111,26 +131,32 @@ export default class SchedulingVisit extends React.Component {
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
         <View style={styles.listRegisters}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-              {counselor.name}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.cpf}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.phone}
-            </Text>
-          </View>
+          <TouchableOpacity>
+            <View style={styles.textBox}>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+                {counselor.name}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+                {counselor.cpf}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+                {counselor.phone}
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       ))
     );
   }
 
   render() {
+    const slideAnimation = new SlideAnimation({
+      slideFrom: 'bottom',
+    });
+
     return (
       <View style={styles.principal}>
         <Header
@@ -141,6 +167,8 @@ export default class SchedulingVisit extends React.Component {
         <PopupDialog
           style={{ flex: 1 }}
           ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+          dialogTitle={<DialogTitle title="Conselheiros do seu CAE" />}
+          dialogAnimation={slideAnimation}
           height="70%"
           width="85%"
         >

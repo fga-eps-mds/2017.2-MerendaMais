@@ -56,6 +56,7 @@ const getCounselor = (counselorLink, CPF, dispatch) => {
         `name of counselors: ${JSON.stringify(response.data.nomeCompleto, null, 2)}`);
 
       const counselorInformations = {
+        nuvemCode: response.data.cod,
         name: response.data.nomeCompleto,
         cpf: '',
         phone: '',
