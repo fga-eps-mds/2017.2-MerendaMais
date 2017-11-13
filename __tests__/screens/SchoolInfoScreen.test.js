@@ -22,6 +22,11 @@ const initialState = {
     schoolLat: '',
     schoolLong: '',
   },
+  counselor: {
+    profile: {
+      CAE: 'Distrito Federal',
+    },
+  },
 };
 
 const store = mockStore(initialState);
