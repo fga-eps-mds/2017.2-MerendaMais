@@ -2,6 +2,8 @@ import schoolReducer from '../../src/Reducers/schoolReducer';
 import initialState from '../../src/Reducers/initialState';
 import {
   SET_SCHOOL_INFO,
+  SET_SCHOOL_UF,
+  SET_SCHOOL_CITY,
 } from '../../src/actions/types';
 
 describe('Testing schoolReducer', () => {
@@ -55,5 +57,31 @@ describe('Testing schoolReducer', () => {
     school = schoolReducer(school, action);
 
     expect(school).toEqual(sendedSchool);
+  });
+
+  it('sets uf', () => {
+    let school = { ...initialState.school };
+
+    expect(school.uf).not.toBe('DF - Distrito Federal');
+
+    school = schoolReducer(school, {
+      type: SET_SCHOOL_UF,
+      payload: 'DF - Distrito Federal',
+    });
+
+    expect(school.uf).toBe('DF - Distrito Federal');
+  });
+
+  it('sets city', () => {
+    let school = { ...initialState.school };
+
+    expect(school.city).not.toBe('Brasília');
+
+    school = schoolReducer(school, {
+      type: SET_SCHOOL_CITY,
+      payload: 'Brasília',
+    });
+
+    expect(school.city).toBe('Brasília');
   });
 });
