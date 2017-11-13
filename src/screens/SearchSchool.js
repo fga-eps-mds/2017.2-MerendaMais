@@ -273,7 +273,19 @@ class SearchSchool extends React.Component {
               style={styles.InputDropdown}
             >
               <Picker
-                onValueChange={uf => this.setState({ uf })}
+                onValueChange={uf => (
+                  uf === 'DF - Distrito Federal' ?
+                    this.setState({
+                      ...this.state,
+                      uf,
+                      city: '',
+                    })
+                    :
+                    this.setState({
+                      ...this.state,
+                      uf,
+                    })
+                )}
                 selectedValue={this.state.uf}
               >
                 <Picker.Item value="" label="Escolha a sua UF " color="#95a5a6" />
