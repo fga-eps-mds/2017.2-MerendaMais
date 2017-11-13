@@ -176,6 +176,8 @@ class SearchSchool extends React.Component {
     } else {
       Alert.alert('FALHA NA PESQUISA', errorMessage);
     }
+    this.props.setUf(this.state.uf);
+    this.props.setCity(this.state.city);
   }
 
   searchSchools() {
@@ -331,6 +333,8 @@ class SearchSchool extends React.Component {
 
 SearchSchool.propTypes = {
   setSchoolInfo: PropTypes.func.isRequired,
+  setCity: PropTypes.func.isRequired,
+  setUf: PropTypes.func.isRequired,
 };
 
 export default SearchSchool;
