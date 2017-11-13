@@ -176,7 +176,7 @@ class SearchSchool extends React.Component {
     } else {
       Alert.alert('FALHA NA PESQUISA', errorMessage);
     }
-    this.props.setUf(this.state.uf);
+    this.props.setUf(this.state.uf.substr(0, 2));
     this.props.setCity(this.state.city);
   }
 

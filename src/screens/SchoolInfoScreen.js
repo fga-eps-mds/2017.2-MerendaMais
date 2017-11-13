@@ -7,7 +7,6 @@ import { Actions } from 'react-native-router-flux';
 import { SCHOOL_ENDPOINT } from '../constants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
-import store from '../Reducers/store';
 
 const FILE_NAME = 'SchoolInfoScreen.js';
 
@@ -148,9 +147,8 @@ class SchoolInfoScreen extends React.Component {
   }
 
   showScheduleVisitButton() {
-    const newState = store.getState();
-    if (newState.school.uf === newState.counselor.cae ||
-       `${newState.school.uf.substr(0, 2)} - ${newState.school.city}` === newState.counselor.cae) {
+    if (this.props.school.uf === this.props.counselor.profile.CAE ||
+       `${this.props.school.city} - ${this.props.school.uf}` === this.props.counselor.profile.CAE) {
       return (
         <View>
           <TouchableOpacity
@@ -212,15 +210,13 @@ class SchoolInfoScreen extends React.Component {
   }
 }
 
-const { shape, func, number } = PropTypes;
+const { shape, func, number, string } = PropTypes;
 
 SchoolInfoScreen.propTypes = {
   setSchoolInfo: func.isRequired,
-  /*
   counselor: shape({
-    cae: string.isRequired,
+    CAE: string.isRequired,
   }).isRequired,
-  */
   school: shape({
     schoolCode: number.isRequired,
   }).isRequired,
