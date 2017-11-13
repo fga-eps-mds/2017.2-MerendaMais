@@ -35,7 +35,7 @@ const schedulingVisit = (visitData) => {
 
   const stringVisit = convertingJSONToString(visitData.visit);
 
-  const SendEmail = (
+  const SendEmailAlert = (
     Alert.alert(
       'Agendamento Realizado',
       'Deseja convidar um agente para essa visita? Se a resposta for sim, seu aplicativo de email padrão será aberto.',
@@ -72,7 +72,7 @@ const schedulingVisit = (visitData) => {
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
-      SendEmail();
+      SendEmailAlert();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',
