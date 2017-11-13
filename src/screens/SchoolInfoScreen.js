@@ -7,6 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import { SCHOOL_ENDPOINT } from '../constants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
+import store from '../Reducers/store';
 
 const FILE_NAME = 'SchoolInfoScreen.js';
 
@@ -146,6 +147,27 @@ class SchoolInfoScreen extends React.Component {
     return (null);
   }
 
+  showScheduleVisitButton() {
+    const newState = store.getState();
+    if (newState.school.uf === newState.counselor.cae ||
+       `${newState.school.uf.substr(0, 2)} - ${newState.school.city}` === newState.counselor.cae) {
+      return (
+        <View>
+          <TouchableOpacity
+            onPress={() => this.selectSchoolForSchedule()}
+            style={styles.buttonContainer}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>Agendar Visita</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    // If we can't return the button, return nothing.
+    return (null);
+  }
+
   updateMenuState(isOpen) {
     this.setState({ isOpen });
   }
@@ -176,13 +198,8 @@ class SchoolInfoScreen extends React.Component {
           </View>
         </ScrollView>
 
-        <TouchableOpacity
-          onPress={() => this.selectSchoolForSchedule()}
-          style={styles.buttonContainer}
-          activeOpacity={0.7}
-        >
-          <Text style={styles.buttonText}>Agendar Visita</Text>
-        </TouchableOpacity>
+        {this.showScheduleVisitButton()}
+
         <TouchableOpacity
           // onPress={}
           style={styles.buttonContainer}
@@ -199,6 +216,11 @@ const { shape, func, number } = PropTypes;
 
 SchoolInfoScreen.propTypes = {
   setSchoolInfo: func.isRequired,
+  /*
+  counselor: shape({
+    cae: string.isRequired,
+  }).isRequired,
+  */
   school: shape({
     schoolCode: number.isRequired,
   }).isRequired,
