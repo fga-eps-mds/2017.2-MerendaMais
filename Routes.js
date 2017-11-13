@@ -20,7 +20,6 @@ import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutCo
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
-import sendEmail from './src/screens/SendEmail';
 
 const Routes = () => ({
   render() {
@@ -35,7 +34,6 @@ const Routes = () => ({
           drawerPosition="right"
         >
           <Scene key="root">
-            <Scene key="sendEmail" component={sendEmail} hideNavBar />
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
