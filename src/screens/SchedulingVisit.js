@@ -149,6 +149,11 @@ export default class SchedulingVisit extends React.Component {
     return styles.listRegisters;
   }
 
+  cancelInviteList() {
+    this.setState({ invitedList: {} });
+    this.popupDialog.dismiss();
+  }
+
   renderCounselorList() {
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
@@ -200,7 +205,7 @@ export default class SchedulingVisit extends React.Component {
               <DialogButton
                 buttonStyle={{ marginVertical: -18 }}
                 text="CANCELAR"
-                onPress={() => null}
+                onPress={() => this.cancelInviteList()}
                 key="dialogButton2"
               />
             </View>,
