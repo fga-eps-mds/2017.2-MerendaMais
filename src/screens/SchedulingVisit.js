@@ -102,8 +102,8 @@ export default class SchedulingVisit extends React.Component {
         codSchool: 0,
         date: '',
         time: '',
+        invitedList: {},
       },
-      invitedList: {},
     };
   }
 
@@ -117,6 +117,7 @@ export default class SchedulingVisit extends React.Component {
       codSchool: newProps.school.schoolCode,
       date: this.state.visit.date,
       time: this.state.visit.time,
+      invitedList: this.state.visit.invitedList,
     };
 
     this.setState({ visit: newVisit });
@@ -129,7 +130,7 @@ export default class SchedulingVisit extends React.Component {
   }
 
   manageInvitedListState(counselor) {
-    const newElement = this.state.invitedList;
+    const newElement = this.state.visit.invitedList;
 
     // If the counselor is not at the list (undefined),
     // we will add him to the list, where its key is the counselor's nuvemCode
@@ -143,15 +144,41 @@ export default class SchedulingVisit extends React.Component {
   }
 
   changeStyleAccordingToInput(counselor) {
-    if (this.state.invitedList[counselor.nuvemCode] !== undefined) {
+    if (this.state.visit.invitedList[counselor.nuvemCode] !== undefined) {
       return [styles.listRegisters, { borderColor: '#FF9500' }];
     }
     return styles.listRegisters;
   }
 
   cancelInviteList() {
-    this.setState({ invitedList: {} });
+    this.setState({ visit: { ...this.state.visit, invitedList: {} } });
     this.popupDialog.dismiss();
+  }
+
+  showInvitedList() {
+    if (this.state.visit.invitedList !== {}) {
+      return (
+        Object.entries(this.state.visit.invitedList).map(counselor => (
+          <View style={styles.listRegisters} key={counselor.nuvemCode}>
+            <View style={styles.textBox}>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+                {counselor[1].name}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+                {counselor[1].cpf}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+                {counselor[1].phone}
+              </Text>
+            </View>
+          </View>
+        ))
+      );
+    }
+    return null;
   }
 
   renderCounselorList() {
@@ -182,7 +209,7 @@ export default class SchedulingVisit extends React.Component {
   }
 
   render() {
-    console.log(this.state.invitedList);
+    console.log(this.state.visit.invitedList);
     return (
       <View style={styles.principal}>
         <Header
@@ -199,7 +226,7 @@ export default class SchedulingVisit extends React.Component {
               <DialogButton
                 buttonStyle={{ marginVertical: -18 }}
                 text="ACEITAR"
-                onPress={() => null}
+                onPress={() => this.popupDialog.dismiss()}
                 key="dialogButton1"
               />
               <DialogButton
@@ -281,6 +308,8 @@ export default class SchedulingVisit extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
+
+          {this.showInvitedList()}
 
           <View style={styles.Container}>
             <View>

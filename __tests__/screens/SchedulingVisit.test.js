@@ -86,6 +86,7 @@ describe('Testing SchedulingVisit buttons', () => {
         codSchool: 32,
         date: '31-12-2017',
         time: '18:30',
+        invitedList: {},
       },
     });
 
