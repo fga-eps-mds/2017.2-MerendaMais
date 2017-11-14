@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
+import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
 
 
@@ -159,22 +160,7 @@ export default class SchedulingVisit extends React.Component {
     if (this.state.visit.invitedList !== {}) {
       return (
         Object.entries(this.state.visit.invitedList).map(counselor => (
-          <View style={styles.listRegisters} key={counselor.nuvemCode}>
-            <View style={styles.textBox}>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-                {counselor[1].name}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-                {counselor[1].cpf}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-                {counselor[1].phone}
-              </Text>
-            </View>
-          </View>
+          <InvitedCounselorsData {...counselor[1]} />
         ))
       );
     }
