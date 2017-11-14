@@ -65,8 +65,6 @@ const initialState = {
     codSchool: 0,
     date: '',
     time: '',
-    invitedAgent: false,
-    agentEmail: '',
   },
 };
 

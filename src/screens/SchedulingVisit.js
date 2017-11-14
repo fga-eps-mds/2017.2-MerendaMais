@@ -11,6 +11,8 @@ import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
 import Button from '../components/Button';
 
+import store from '../Reducers/store';
+
 const styles = StyleSheet.create({
 
   principal: {
@@ -107,6 +109,11 @@ export default class SchedulingVisit extends React.Component {
     this.popupDialog.dismiss();
   }
 
+  notInvitingAgent() {
+    this.setState({ visit: { ...this.state.visit, invitedAgent: false } });
+    this.popupDialog.dismiss();
+  }
+
   buttonActivation() {
     if (this.state.visit.agentEmail > '') {
       return (
@@ -123,12 +130,19 @@ export default class SchedulingVisit extends React.Component {
         enabled
         key="notInvitingButton"
         text="Cancelar"
-        onPress={() => { this.popupDialog.dismiss(); }}
+        onPress={() => { this.notInvitingAgent(); }}
       />
     );
   }
 
+  testa() {
+    console.log('DEFINITIVO');
+    console.log(this.state.visit);
+  }
   render() {
+    const newStateDoc = store.getState();
+    console.log(newStateDoc.schedule);
+
     return (
       <View style={styles.principal}>
         <Header
