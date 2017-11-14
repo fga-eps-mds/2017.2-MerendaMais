@@ -74,13 +74,15 @@ const styles = StyleSheet.create({
     flex: 2.5,
     justifyContent: 'center',
     width: 320,
-    marginTop: 15,
+    marginTop: 60,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 7,
   },
 
   item: {
+    flex: 1,
+    width: null,
     borderBottomColor: 'black',
     borderBottomWidth: 0.5,
     borderRadius: 7,
@@ -140,6 +142,7 @@ class SearchSchool extends React.Component {
       uf: '',
       city: '',
       name: '',
+      bairro: '',
       schoolList: [],
     };
 
@@ -178,6 +181,7 @@ class SearchSchool extends React.Component {
     }
     this.props.setUf(this.state.uf.substr(0, 2));
     this.props.setCity(this.state.city);
+    Alert.alert('Caso sua escola não esteja na lista, procure pelo nome');
   }
 
   searchSchools() {
@@ -186,8 +190,9 @@ class SearchSchool extends React.Component {
       params: {
         nome: this.state.name,
         municipio: this.state.city,
-        campos: 'nome',
+        campos: 'nome,endereco',
         uf: this.state.uf.substr(0, 2),
+        quantidadeDeItens: 30,
       },
     })
       .then((response) => {
@@ -262,6 +267,7 @@ class SearchSchool extends React.Component {
     ) : null;
 
     return (
+
       <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Pesquisar Escola'}
@@ -278,7 +284,7 @@ class SearchSchool extends React.Component {
                     this.setState({
                       ...this.state,
                       uf,
-                      city: '',
+                      city: 'Brasília',
                     })
                     :
                     this.setState({
@@ -312,6 +318,7 @@ class SearchSchool extends React.Component {
 
           </View>
 
+
           <View style={styles.listSchools} >
             <FlatList
               data={this.state.schoolList}
@@ -322,7 +329,7 @@ class SearchSchool extends React.Component {
                     style={styles.buttonSelectSchool}
                     onPress={() => this.props.setSchoolInfo(item.codEscola)}
                   >
-                    <Text style={{ fontSize: 16 }}>{item.nome}</Text>
+                    <Text style={{ fontSize: 12 }}>{item.nome}</Text>
                     <Ionicons
                       name="ios-arrow-forward-outline"
                       style={styles.icon}
@@ -334,11 +341,13 @@ class SearchSchool extends React.Component {
               )}
             />
           </View>
+
           <View key="renderButton" style={styles.buttonArea} >
             {this.buttonActivation()}
           </View>
         </View>
       </ScrollView>
+
     );
   }
 }

@@ -233,7 +233,7 @@ exports[`Testing SearchSchool renders as expected 1`] = `
           "borderWidth": 1,
           "flex": 2.5,
           "justifyContent": "center",
-          "marginTop": 15,
+          "marginTop": 60,
           "width": 320,
         }
       }
