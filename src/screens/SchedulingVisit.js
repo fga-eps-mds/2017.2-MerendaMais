@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Picker, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import PopupDialog, {
+  DialogTitle,
+  DialogButton,
+} from 'react-native-popup-dialog';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
 import Button from '../components/Button';
+import { SEND_EMAIL_ALERT_BODY } from '../constants';
 
 
 const styles = StyleSheet.create({
@@ -81,6 +86,8 @@ export default class SchedulingVisit extends React.Component {
         codSchool: 0,
         date: '',
         time: '',
+        invitedAgent: false,
+        agentEmail: '',
       },
     };
   }
@@ -95,6 +102,26 @@ export default class SchedulingVisit extends React.Component {
     this.setState({ visit: newVisit });
   }
 
+  invitingAgent() {
+    this.setState({ invitedAgent: true });
+    return (
+      <View>
+        <Picker
+          selectedValue={this.state.agentEmail}
+          onValueChange={value => this.setState({ agentEmail: value })}
+        >
+          <Picker.Item value="" label="Escolha o agente" color="#95a5a6" />
+          <Picker.Item value={'outroemail@email.com'} label={'Agente Sanitário'} />
+          <Picker.Item value={'email@email.com'} label={'Poder Executivo'} />
+        </Picker>
+        <Button
+          text="Ok"
+          onPress={() => { this.popupDialog.dismiss(); }}
+        />
+      </View>
+    );
+  }
+
   render() {
     return (
       <View style={styles.principal}>
@@ -103,6 +130,30 @@ export default class SchedulingVisit extends React.Component {
           subTitle={'VISITA'}
           backButton
         />
+
+        <PopupDialog
+          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+          dialogTitle={<DialogTitle title="Convidar um Agente?" />}
+        >
+          <View>
+            <Text>Deseja convidar um agente para essa visita? Se a resposta for sim,
+             seu aplicativo de email padrão será aberto com as informações já preenchidas.
+              Caso não tenha um aplicativo de email, será necessário baixar algum.</Text>
+            <DialogButton
+              enabled
+              key="notInvitingButton"
+              text="Não"
+              onPress={() => { this.popupDialog.dismiss(); }}
+            />
+            <DialogButton
+              enabled
+              key="invitingButton"
+              text="Sim"
+              onPress={() => { this.invitingAgent(); }}
+            />
+          </View>
+        </PopupDialog>
+
         <ScrollView>
           <View style={styles.Container}>
             <View>
@@ -172,9 +223,9 @@ export default class SchedulingVisit extends React.Component {
               <TouchableOpacity
                 key="searchAgentButton"
                 style={styles.button}
-                onPress={() => Alert.alert('Pesquisando')}
+                onPress={() => this.popupDialog.show()}
               >
-                <Text style={styles.buttonText}>Pesquisar Agente Sanitário</Text>
+                <Text style={styles.buttonText}>Convidar Agente</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -187,7 +238,6 @@ export default class SchedulingVisit extends React.Component {
                 onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
               />
             )}
-
             <Button
               enabled={false}
               text="Agendar"
@@ -195,13 +245,13 @@ export default class SchedulingVisit extends React.Component {
               onPress={() => ({})}
               disabled
             />
+
           </View>
         </ScrollView>
       </View>
     );
   }
 }
-
 
 const { shape, string, number } = PropTypes;
 

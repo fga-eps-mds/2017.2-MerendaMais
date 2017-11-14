@@ -25,6 +25,28 @@ const treatingPostsError = (error) => {
   }
 };
 
+
+/*const sendEmailAlert = (
+  Alert.alert(
+    SEND_EMAIL_ALERT_TITLE,
+    SEND_EMAIL_ALERT_BODY,
+    [
+      { text: 'Não', style: 'cancel' },
+      { text: 'Sim',
+        onPress: () => Communications.email(
+          // To, cc, bcc, subject, email text
+          ['email1@email.com', 'emailN@email.com'],
+          null,
+          null,
+          'Subject',
+          'Email Body text'),
+      },
+    ],
+    { cancelable: false }),
+  Actions.mainScreen()
+);
+*/
+
 const schedulingVisit = (visitData) => {
   const headerToSchedulingVisit = {
     headers: {
@@ -34,26 +56,6 @@ const schedulingVisit = (visitData) => {
   };
 
   const stringVisit = convertingJSONToString(visitData.visit);
-
-  const sendEmailAlert = (
-    Alert.alert(
-      SEND_EMAIL_ALERT_TITLE,
-      SEND_EMAIL_ALERT_BODY,
-      [
-        { text: 'Não', style: 'cancel' },
-        { text: 'Sim',
-          onPress: () => Communications.email(
-            // To, cc, bcc, subject, email text
-            ['email1@email.com', 'emailN@email.com'],
-            null,
-            null,
-            'Subject',
-            'Email Body text'),
-        },
-      ],
-      { cancelable: false }),
-    Actions.mainScreen()
-  );
 
   const bodyToSchedulingVisit = {
     conteudo: {
@@ -74,7 +76,7 @@ const schedulingVisit = (visitData) => {
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
-      sendEmailAlert();
+      // sendEmailAlert();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',
