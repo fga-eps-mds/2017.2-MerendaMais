@@ -167,6 +167,8 @@ class SearchSchool extends React.Component {
   }
 
   searchSchools() {
+    console.log('searchschools method');
+    console.log(this.state);
     this.setState({ isLoading: true });
     axios.get(SCHOOL_ENDPOINT, {
       params: {
@@ -181,17 +183,13 @@ class SearchSchool extends React.Component {
         logInfo(FILE_NAME, 'searchSchools', `School List: ${JSON.stringify(response.data, null, 2)}`);
 
         this.setState({ schoolList: response.data, isLoading: false });
-
+        logInfo(FILE_NAME, 'searchSchools', `New state: ${JSON.stringify(this.state, null, 2)}.`);
         // If response is an empty array, no schools could be found.
       })
       .catch((error) => {
         this.setState({ isLoading: false });
         logWarn(FILE_NAME, 'searchSchools', error);
       });
-  }
-
-  updateMenuState(isOpen) {
-    this.setState({ isOpen });
   }
 
   buttonActivation() {
