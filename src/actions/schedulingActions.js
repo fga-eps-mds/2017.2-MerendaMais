@@ -1,8 +1,10 @@
 import axios from 'axios';
+import Communications from 'react-native-communications';
+import { Actions } from 'react-native-router-flux';
 import { Alert } from 'react-native';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
-import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
+import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE, SEND_EMAIL_ALERT_TITLE, SEND_EMAIL_ALERT_BODY } from '../constants';
 
 const FILE_NAME = 'SchedulingActions.js';
 
@@ -33,6 +35,26 @@ const schedulingVisit = (visitData) => {
 
   const stringVisit = convertingJSONToString(visitData.visit);
 
+  const sendEmailAlert = (
+    Alert.alert(
+      SEND_EMAIL_ALERT_TITLE,
+      SEND_EMAIL_ALERT_BODY,
+      [
+        { text: 'Não', style: 'cancel' },
+        { text: 'Sim',
+          onPress: () => Communications.email(
+            // To, cc, bcc, subject, email text
+            ['email1@email.com', 'emailN@email.com'],
+            null,
+            null,
+            'Subject',
+            'Email Body text'),
+        },
+      ],
+      { cancelable: false }),
+    Actions.mainScreen()
+  );
+
   const bodyToSchedulingVisit = {
     conteudo: {
       JSON: stringVisit,
@@ -52,7 +74,7 @@ const schedulingVisit = (visitData) => {
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
-      Alert.alert('Agendamento realizado com sucesso');
+      sendEmailAlert();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',
