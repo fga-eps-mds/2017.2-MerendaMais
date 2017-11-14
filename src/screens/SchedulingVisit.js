@@ -64,8 +64,23 @@ const styles = StyleSheet.create({
 
   Picker: {
     marginHorizontal: 15,
-    paddingLeft: 10,
     width: '95%',
+  },
+
+  popUp: {
+    flex: 1,
+    alignItems: 'center',
+    margin: 20,
+  },
+
+  popUpText: {
+    fontSize: 15,
+    textAlign: 'justify',
+    lineHeight: 20,
+  },
+
+  popUpTitle: {
+    fontSize: 30,
   },
 
   icon: {
@@ -153,15 +168,19 @@ export default class SchedulingVisit extends React.Component {
 
         <PopupDialog
           ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-          dialogTitle={<DialogTitle title="Convidar um Agente?" />}
+          dialogTitle={<DialogTitle
+            title="Convidar um Agente?"
+            titleStyle={styles.popUpTitle}
+          />}
         >
-          <View>
-            <Text>Escolha algum dos órgãos abaixo para poder convidar um agente.
-            Para poder convidá-lo é necessário possuir um aplicativo de email instalado
-            no seu celular. Caso não possua ou não deseje convidar um agente, não selecione nenhum
-            órgão e clique em cancelar.</Text>
+          <View style={styles.popUp}>
+            <Text style={styles.popUpText}>Escolha algum dos agentes abaixo para poder convidá-lo.
+            Para isso, é necessário possuir um aplicativo de email instalado
+            no seu celular. Caso não possua ou não deseje convidar um agente,
+            não selecione nenhum agente e clique em cancelar.</Text>
 
             <Picker
+              style={styles.Picker}
               selectedValue={this.state.visit.agentEmail}
               onValueChange={
                 value => this.setState({ visit: { ...this.state.visit, agentEmail: value } })}
@@ -255,7 +274,15 @@ export default class SchedulingVisit extends React.Component {
                 enabled
                 key="scheduleButton"
                 text="Agendar"
-                onPress={() => { this.props.asyncSchedulingVisit(this.state); }}
+                onPress={() => {
+                  Alert.alert(
+                    'Agendamento Realizado',
+                    'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
+                    [
+                      { text: 'Ok', onPress: () => this.props.asyncSchedulingVisit(this.state), style: 'cancel' },
+                    ],
+                    { cancelable: false });
+                }}
               />
             )}
             <Button
