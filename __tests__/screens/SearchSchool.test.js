@@ -97,39 +97,39 @@ describe('Testing SearchSchool register method', () => {
   });
 
   // /* eslint-disable no-param-reassign */
-  // it('Test if wrong input is validated', () => {
-  //   let error = false;
-  //   let errorMessage = '';
-  //   const wrapper = shallow(<SearchSchool />);
+  it('Test if wrong input is validated', () => {
+    let error = false;
+    let errorMessage = '';
+    const wrapper = shallow(<SearchSchool />);
 
-  //   const spy = jest.spyOn(SearchSchool.prototype, 'register').mockImplementation(
-  //     () => {
-  //       const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g;
-  //       const cityRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
+    const spy = jest.spyOn(SearchSchool.prototype, 'register').mockImplementation(
+      () => {
+        const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g;
+        const cityRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
 
-  //       if (!cityRegex.test(wrapper.state('city') && !nameRegex.test(wrapper.state('name')) && !(wrapper.state('uf') > ''))) {
-  //         error = true;
-  //         errorMessage += 'Estado/Município e Escola com dados inválidos.';
-  //       }
-  //       if (wrapper.state('city').trim() === '' && wrapper.state('name').trim() === '' && wrapper.state('uf').trim() === '') {
-  //         error = true;
-  //         errorMessage += 'Estado/Município e Escola não preenchidos. Preencha no mínimo um dos campos.\n';
-  //       }
-  //     });
+        if (!cityRegex.test(wrapper.state('city') && !nameRegex.test(wrapper.state('name')) && !(wrapper.state('uf') > ''))) {
+          error = true;
+          errorMessage += 'Estado/Município e Escola com dados inválidos.';
+        }
+        if (wrapper.state('city').trim() === '' && wrapper.state('name').trim() === '' && wrapper.state('uf').trim() === '') {
+          error = true;
+          errorMessage += 'Estado/Município e Escola não preenchidos. Preencha no mínimo um dos campos.\n';
+        }
+      });
 
 
-  //   wrapper.setState({ name: '#' });
+    wrapper.setState({ name: '#' });
 
-  //   wrapper.instance().register();
+    wrapper.instance().register();
 
-  //   expect(spy).toHaveBeenCalled();
-  //   expect(error).toBe(true);
-  //   expect(errorMessage).toBe('Estado/Município e Escola com dados inválidos.');
-  //   spy.mockClear();
-  // });
+    expect(spy).toHaveBeenCalled();
+    expect(error).toBe(true);
+    expect(errorMessage).toBe('Estado/Município e Escola com dados inválidos.');
+    spy.mockClear();
+  });
   // /* eslint no-param-reassign: 0 */
 
-  it('Test searchSchool method', () => {
+  it('Test searchSchool method', async () => {
     const state = {
       name: 'BOM JESUS',
       city: 'Porto Velho',
@@ -149,11 +149,26 @@ describe('Testing SearchSchool register method', () => {
     const wrapper = shallow(<SearchSchool />);
     wrapper.setState(state);
 
-    wrapper.instance().searchSchools();
+    await wrapper.instance().searchSchools();
 
     // Without this timeout, the wrapper doesn't update the state for some reason.
-    setTimeout(() => {
-      expect(wrapper.state()).toEqual([{ nome: 'BOM JESUS' }]);
-    }, 20);
+    expect(wrapper.state('schoolList')).toEqual([{ nome: 'BOM JESUS' }]);
   });
+
+  // it('Testing school list rendering', () => {
+  //   const wrapper = shallow(<SearchSchool />);
+  //   const state = {
+  //     schoolList: [
+  //       {
+  //         nome: 'Nome da Escola',
+  //       },
+  //     ],
+  //   };
+
+  //   console.log(wrapper);
+  //   wrapper.setState(state);
+  //   const schoolButton = wrapper.findWhere(c => c.key() === 'Nome da Escola');
+  //   expect(schoolButton.length).toBe(1);
+  //   schoolButton.simulate('press');
+  // });
 });

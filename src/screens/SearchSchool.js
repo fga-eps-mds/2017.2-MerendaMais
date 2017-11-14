@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet,
+import {
+  StyleSheet,
   Text,
   View,
   TouchableOpacity,
@@ -9,7 +10,8 @@ import { StyleSheet,
   FlatList,
   ActivityIndicator,
   Alert,
-  Picker } from 'react-native';
+  Picker,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
@@ -82,7 +84,8 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
 
-  buttonSelectSchool: { padding: 10,
+  buttonSelectSchool: {
+    padding: 10,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -135,6 +138,12 @@ class SearchSchool extends React.Component {
     this.validateCity = this.validateCity.bind(this);
   }
 
+  setStateAsync(data) {
+    return new Promise((resolve) => {
+      this.setState(data, resolve);
+    });
+  }
+
   validateName(name) {
     const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g, '');
     this.setState({ name: validName });
@@ -170,26 +179,31 @@ class SearchSchool extends React.Component {
     console.log('searchschools method');
     console.log(this.state);
     this.setState({ isLoading: true });
-    axios.get(SCHOOL_ENDPOINT, {
-      params: {
-        nome: this.state.name,
-        municipio: this.state.city,
-        campos: 'nome',
-        uf: this.state.uf,
-      },
-    })
-      .then((response) => {
-        logInfo(FILE_NAME, 'searchSchools', 'Successfully searched school lists.');
-        logInfo(FILE_NAME, 'searchSchools', `School List: ${JSON.stringify(response.data, null, 2)}`);
-
-        this.setState({ schoolList: response.data, isLoading: false });
-        logInfo(FILE_NAME, 'searchSchools', `New state: ${JSON.stringify(this.state, null, 2)}.`);
-        // If response is an empty array, no schools could be found.
+    return new Promise((resolved) => {
+      axios.get(SCHOOL_ENDPOINT, {
+        params: {
+          nome: this.state.name,
+          municipio: this.state.city,
+          campos: 'nome',
+          uf: this.state.uf,
+        },
       })
-      .catch((error) => {
-        this.setState({ isLoading: false });
-        logWarn(FILE_NAME, 'searchSchools', error);
-      });
+        .then(async (response) => {
+          logInfo(FILE_NAME, 'searchSchools', 'Successfully searched school lists.');
+          logInfo(FILE_NAME, 'searchSchools', `School List: ${JSON.stringify(response.data, null, 2)}`);
+
+          resolved(await this.setStateAsync(
+            { schoolList: response.data, isLoading: false },
+          ));
+
+          logInfo(FILE_NAME, 'searchSchools', `New state: ${JSON.stringify(this.state, null, 2)}.`);
+          // If response is an empty array, no schools could be found.
+        })
+        .catch((error) => {
+          this.setState({ isLoading: false });
+          logWarn(FILE_NAME, 'searchSchools', error);
+        });
+    });
   }
 
   buttonActivation() {
