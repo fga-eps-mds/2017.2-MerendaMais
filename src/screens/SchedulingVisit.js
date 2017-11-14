@@ -10,8 +10,6 @@ import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
 import Button from '../components/Button';
-import { SEND_EMAIL_ALERT_BODY } from '../constants';
-
 
 const styles = StyleSheet.create({
 
@@ -97,28 +95,36 @@ export default class SchedulingVisit extends React.Component {
       codSchool: newProps.school.schoolCode,
       date: this.state.visit.date,
       time: this.state.visit.time,
+      invitedAgent: this.state.visit.invitedAgent,
+      agentEmail: this.state.visit.agentEmail,
     };
 
     this.setState({ visit: newVisit });
   }
 
   invitingAgent() {
-    this.setState({ invitedAgent: true });
-    return (
-      <View>
-        <Picker
-          selectedValue={this.state.agentEmail}
-          onValueChange={value => this.setState({ agentEmail: value })}
-        >
-          <Picker.Item value="" label="Escolha o agente" color="#95a5a6" />
-          <Picker.Item value={'outroemail@email.com'} label={'Agente Sanitário'} />
-          <Picker.Item value={'email@email.com'} label={'Poder Executivo'} />
-        </Picker>
-        <Button
-          text="Ok"
-          onPress={() => { this.popupDialog.dismiss(); }}
+    this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
+    this.popupDialog.dismiss();
+  }
+
+  buttonActivation() {
+    if (this.state.visit.agentEmail > '') {
+      return (
+        <DialogButton
+          enabled
+          key="invitingButton"
+          text="Convidar"
+          onPress={() => { this.invitingAgent(); }}
         />
-      </View>
+      );
+    }
+    return (
+      <DialogButton
+        enabled
+        key="notInvitingButton"
+        text="Cancelar"
+        onPress={() => { this.popupDialog.dismiss(); }}
+      />
     );
   }
 
@@ -136,21 +142,21 @@ export default class SchedulingVisit extends React.Component {
           dialogTitle={<DialogTitle title="Convidar um Agente?" />}
         >
           <View>
-            <Text>Deseja convidar um agente para essa visita? Se a resposta for sim,
-             seu aplicativo de email padrão será aberto com as informações já preenchidas.
-              Caso não tenha um aplicativo de email, será necessário baixar algum.</Text>
-            <DialogButton
-              enabled
-              key="notInvitingButton"
-              text="Não"
-              onPress={() => { this.popupDialog.dismiss(); }}
-            />
-            <DialogButton
-              enabled
-              key="invitingButton"
-              text="Sim"
-              onPress={() => { this.invitingAgent(); }}
-            />
+            <Text>Escolha algum dos órgãos abaixo para poder convidar um agente.
+            Para poder convidá-lo é necessário possuir um aplicativo de email instalado
+            no seu celular. Caso não possua ou não deseje convidar um agente, não selecione nenhum
+            órgão e clique em cancelar.</Text>
+
+            <Picker
+              selectedValue={this.state.visit.agentEmail}
+              onValueChange={
+                value => this.setState({ visit: { ...this.state.visit, agentEmail: value } })}
+            >
+              <Picker.Item value="" label="Escolha o agente" color="#95a5a6" />
+              <Picker.Item value={'outroemail@email.com'} label={'Agente Sanitário'} />
+              <Picker.Item value={'email@email.com'} label={'Poder Executivo'} />
+            </Picker>
+            {this.buttonActivation()}
           </View>
         </PopupDialog>
 
