@@ -22,6 +22,30 @@ const initialState = {
     codSchool: 32,
     date: '31-12-2017',
     time: '18:30',
+    listOfInvitees: {
+      6122: {
+        nuvemCode: 6122,
+        confirmed: false,
+      },
+      6201: {
+        nuvemCode: 6201,
+        confirmed: false,
+      },
+    },
+  },
+  listOfInviteesWithCounselorInformations: {
+    6122: {
+      nuvemCode: 6122,
+      name: 'Lucas Penido Antunes',
+      cpf: '11111111111',
+      phone: '11111111111',
+    },
+    6201: {
+      nuvemCode: 6201,
+      name: 'Kamilla Costa Souzaa',
+      cpf: '00000000000',
+      phone: '99999999999',
+    },
   },
   school: {
     schoolSelected: true,
@@ -45,12 +69,12 @@ jest.mock('react-native-router-flux');
 // });
 
 describe('Testing SchedulingVisit buttons', () => {
-  // it('Test if search school button is rendered', () => {
-  //   const wrapper = shallow(<SchedulingVisit {...initialState} />);
-  //   const button = wrapper.findWhere(c => c.key() === 'searchSchoolButton');
-  //   expect(button.length).toEqual(1);
-  //   button.simulate('press');
-  // });
+  it('Test if search school button is rendered', () => {
+    const wrapper = shallow(<SchedulingVisit {...initialState} />);
+    const button = wrapper.findWhere(c => c.key() === 'searchSchoolButton');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
 
   // it('Test if search counselor button is rendered', () => {
   //   const wrapper = shallow(<SchedulingVisit {...initialState} />);
@@ -86,7 +110,16 @@ describe('Testing SchedulingVisit buttons', () => {
         codSchool: 32,
         date: '31-12-2017',
         time: '18:30',
-        invitedList: {},
+        listOfInvitees: {
+          6122: {
+            nuvemCode: 6122,
+            confirmed: false,
+          },
+          6201: {
+            nuvemCode: 6201,
+            confirmed: false,
+          },
+        },
       },
     });
 

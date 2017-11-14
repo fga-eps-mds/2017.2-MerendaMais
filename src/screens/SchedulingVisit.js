@@ -103,8 +103,9 @@ export default class SchedulingVisit extends React.Component {
         codSchool: 0,
         date: '',
         time: '',
-        invitedList: {},
+        listOfInvitees: {},
       },
+      listOfInviteesWithCounselorInformations: {},
     };
   }
 
@@ -118,50 +119,60 @@ export default class SchedulingVisit extends React.Component {
       codSchool: newProps.school.schoolCode,
       date: this.state.visit.date,
       time: this.state.visit.time,
-      invitedList: this.state.visit.invitedList,
+      listOfInvitees: this.state.visit.listOfInvitees,
     };
 
     this.setState({ visit: newVisit });
   }
 
-  listOfCounselors() {
-    this.popupDialog.show();
-    console.log('list:');
-    console.log(this.props.listOfCounselorsInAGroup);
-  }
-
   manageInvitedListState(counselor) {
-    const newElement = this.state.visit.invitedList;
+    const newListWithInformations = this.state.listOfInviteesWithCounselorInformations;
+    const newList = this.state.visit.listOfInvitees;
 
     // If the counselor is not at the list (undefined),
     // we will add him to the list, where its key is the counselor's nuvemCode
-    if (newElement[counselor.nuvemCode] === undefined) {
-      newElement[counselor.nuvemCode] = counselor;
-      this.setState({ invitedList: newElement });
+    if (newListWithInformations[counselor.nuvemCode] === undefined) {
+      newListWithInformations[counselor.nuvemCode] = counselor;
+      this.setState({ listOfInviteesWithCounselorInformations:
+       newListWithInformations });
+
+      newList[counselor.nuvemCode] = {
+        nuvemCode: counselor.nuvemCode,
+        confirmed: false,
+      };
+      this.setState({ visit: { ...this.state.visit, listOfInvitees: newList } });
     } else {
-      delete newElement[counselor.nuvemCode];
-      this.setState({ invitedList: newElement });
+      delete newListWithInformations[counselor.nuvemCode];
+      this.setState({ listOfInviteesWithCounselorInformations:
+       newListWithInformations });
+
+      delete newList[counselor.nuvemCode];
+      this.setState({ visit: { ...this.state.visit, listOfInvitees: newList } });
     }
   }
 
   changeStyleAccordingToInput(counselor) {
-    if (this.state.visit.invitedList[counselor.nuvemCode] !== undefined) {
+    if (this.state.listOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
       return [styles.listRegisters, { borderColor: '#FF9500' }];
     }
     return styles.listRegisters;
   }
 
   cancelInviteList() {
-    this.setState({ visit: { ...this.state.visit, invitedList: {} } });
+    this.setState({ visit: { ...this.state.visit, listOfInvitees: {} } });
+
+    this.setState({ listOfInviteesWithCounselorInformations: {} });
+
     this.popupDialog.dismiss();
   }
 
   showInvitedList() {
-    if (this.state.visit.invitedList !== {}) {
+    if (this.statelistOfInviteesWithCounselorInformations !== {}) {
       return (
-        Object.entries(this.state.visit.invitedList).map(counselor => (
-          <InvitedCounselorsData {...counselor[1]} />
-        ))
+        Object.entries(this.state.listOfInviteesWithCounselorInformations)
+          .map(counselor => (
+            <InvitedCounselorsData {...counselor[1]} />
+          ))
       );
     }
     return null;
@@ -195,7 +206,6 @@ export default class SchedulingVisit extends React.Component {
   }
 
   render() {
-    console.log(this.state.visit.invitedList);
     return (
       <View style={styles.principal}>
         <Header
@@ -288,7 +298,7 @@ export default class SchedulingVisit extends React.Component {
               <TouchableOpacity
                 key="searchCounselorButton"
                 style={styles.button}
-                onPress={() => this.listOfCounselors()}
+                onPress={() => this.popupDialog.show()}
               >
                 <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
               </TouchableOpacity>
