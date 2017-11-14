@@ -56,7 +56,7 @@ const Header = props => (
   <View style={styles.wrapper}>
     {props.backButton && (
       <View style={styles.buttonWrapper}>
-        <TouchableOpacity onPress={() => Actions.mainScreen()} >
+        <TouchableOpacity onPress={() => Actions.pop()} >
           <Ionicons name="ios-arrow-back-outline" style={styles.icon} size={45} color="black" />
         </TouchableOpacity>
       </View>
