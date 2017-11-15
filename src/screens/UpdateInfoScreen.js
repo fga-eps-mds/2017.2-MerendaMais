@@ -87,6 +87,7 @@ export default class UpdateInfoScreen extends React.Component {
       phone: this.props.counselor.profile.phone,
       counselorType: this.props.counselor.profile.counselorType,
       segment: this.props.counselor.profile.segment,
+      error: false,
     };
 
     this.validateName = this.validateName.bind(this);
@@ -107,35 +108,35 @@ export default class UpdateInfoScreen extends React.Component {
     const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
-    let error = false;
+    this.state.error = false;
     let errorMessage = '';
 
     // Validating Counselor Name.
     if (!nameRegex.test(this.state.name) || this.state.name.trim() === '') {
-      error = true;
+      this.state.error = true;
       errorMessage += 'Nome inválido\n';
     }
 
     // Validating Counselor Phone.
     if (!phoneRegex1.test(this.state.phone) && !phoneRegex2.test(this.state.phone)) {
-      error = true;
+      this.state.error = true;
       errorMessage += 'Telefone inválido\n';
     }
 
     // Validating Counselor Type.
     if (this.state.counselorType === '') {
-      error = true;
+      this.state.error = true;
       errorMessage += 'Tipo de Conselheiro não selecionado\n';
     }
 
     // Validating Segment.
     if (this.state.segment === '') {
-      error = true;
+      this.state.error = true;
       errorMessage += 'Segmento não selecionado.\n';
     }
 
     // Checking if was found a irregularity in updateInformation fields.
-    if (error === false) {
+    if (this.state.error === false) {
       this.props.asyncEditCounselor(this.fetchCounselorData());
     } else {
       Alert.alert('FALHA AO EDITAR DADOS', errorMessage);

@@ -124,8 +124,94 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
             }
           }
           underlineColorAndroid="transparent"
-          value="6196661234"
+          value="61991234567"
         />
+      </View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+      >
+        Tipo de Conselheiro
+      </Text>
+      <View
+        style={
+          Object {
+            "borderColor": "gray",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "marginBottom": 10,
+            "marginTop": 1,
+          }
+        }
+      >
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue="Titular"
+        >
+          <PickerItem
+            color="#95a5a6"
+            label="Escolha seu cargo"
+            value=""
+          />
+          <PickerItem
+            label="Titular"
+            value="Titular"
+          />
+          <PickerItem
+            label="Suplente"
+            value="Suplente"
+          />
+        </Picker>
+      </View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+      >
+        Segmento
+      </Text>
+      <View
+        style={
+          Object {
+            "borderColor": "gray",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "marginBottom": 10,
+            "marginTop": 1,
+          }
+        }
+      >
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue="Poder executivo"
+        >
+          <PickerItem
+            color="#95a5a6"
+            label="Escolha seu segmento"
+            value=""
+          />
+          <PickerItem
+            label="Poder executivo"
+            value="Poder executivo"
+          />
+          <PickerItem
+            label="Trabalhadores da educação"
+            value="Trabalhadores da educação"
+          />
+          <PickerItem
+            label="Pais de alunos"
+            value="Pais de alunos"
+          />
+          <PickerItem
+            label="Entidades civis"
+            value="Entidades civis"
+          />
+        </Picker>
       </View>
     </View>
   </ScrollViewMock>

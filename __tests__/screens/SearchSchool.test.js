@@ -124,5 +124,4 @@ describe('Testing SearchSchool register method', () => {
     expect(errorMessage).toBe('Estado/Município e Escola com dados inválidos.');
     spy.mockClear();
   });
-  /* eslint no-param-reassign: 0 */
 });

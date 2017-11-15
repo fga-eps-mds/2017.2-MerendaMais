@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
-import { TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, TextInput, ActivityIndicator, Picker } from 'react-native';
 // imported as a connected component!
 import RegisterScreenContainer from '../../src/Containers/RegisterScreenContainer';
 import RegisterScreen from '../../src/screens/RegisterScreen';
@@ -96,35 +96,35 @@ describe('Testing RegisterScreen Input', () => {
   });
 
   it('should change state when the text of isPresident input component changes', () => {
-    const isPresidentInputComponent = wrapper.find('Picker').at(0);
+    const isPresidentInputComponent = wrapper.find(Picker).at(0);
     expect(wrapper.state().profile.isPresident).toEqual('');
     isPresidentInputComponent.simulate('valueChange', false);
     expect(wrapper.state().profile.isPresident).toEqual(false);
   });
 
   it('should change state when the text of counselorType input component changes', () => {
-    const counselorTypeInputComponent = wrapper.find('Picker').at(1);
+    const counselorTypeInputComponent = wrapper.find(Picker).at(1);
     expect(wrapper.state().profile.counselorType).toEqual('');
     counselorTypeInputComponent.simulate('valueChange', 'Suplente');
     expect(wrapper.state().profile.counselorType).toEqual('Suplente');
   });
 
   it('should change state when the text of segment input component changes', () => {
-    const segmentInputComponent = wrapper.find('Picker').at(2);
+    const segmentInputComponent = wrapper.find(Picker).at(2);
     expect(wrapper.state().profile.segment).toEqual('');
     segmentInputComponent.simulate('valueChange', 'Pais de alunos');
     expect(wrapper.state().profile.segment).toEqual('Pais de alunos');
   });
 
   it('should change state when the text of CAE_Type input component changes', () => {
-    const caeTypeInputComponent = wrapper.find('Picker').at(3);
+    const caeTypeInputComponent = wrapper.find(Picker).at(3);
     expect(wrapper.state().profile.CAE_Type).toEqual('');
     caeTypeInputComponent.simulate('valueChange', 'Estadual');
     expect(wrapper.state().profile.CAE_Type).toEqual('Estadual');
   });
 
   it('should change state when the text of UF input component changes', () => {
-    const UFInputComponent = wrapper.find('Picker').at(4);
+    const UFInputComponent = wrapper.find(Picker).at(4);
     UFInputComponent.simulate('valueChange', 'DF - Distrito Federal');
     expect(wrapper.state().profile.CAE_UF).toEqual('DF - Distrito Federal');
   });
