@@ -157,6 +157,22 @@ export default class MainReportsScreen extends React.Component {
     }
     return (null);
   }
+  checkingFoodHandlerReport() {
+    const newStateFoodHandler = store.getState();
+    if (newStateFoodHandler.report.statusFoodHandler) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
   checkingReportObservation() {
     const newStateReportObservation = store.getState();
     if (newStateReportObservation.report.statusReportObservation) {
@@ -235,6 +251,15 @@ export default class MainReportsScreen extends React.Component {
                 <Text style={styles.text}>Arredores da Escola</Text>
               </TouchableOpacity>
               {this.checkingSchoolSurroundingsReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.foodHandlerCheckoutScreen()}
+              >
+                <Text style={styles.text}>Manipuladores de Alimentos</Text>
+              </TouchableOpacity>
+              {this.checkingFoodHandlerReport()}
             </View>
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>

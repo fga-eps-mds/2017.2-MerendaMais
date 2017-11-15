@@ -26,6 +26,10 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_STATUSSTOCKFOOD,
   SET_ACCEPTEDMENU,
   SET_REFUSEDMENU,
+  SET_FOODHANDLEROBSERVATION,
+  SET_FOODHANDLERREPORT_POSITIVE,
+  SET_FOODHANDLERREPORT_NEGATIVE,
+  SET_STATUSFOODHANDLER,
 } from '../actions/types';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
@@ -68,6 +72,31 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         foodStockObservation: action.payload,
+      };
+    case SET_FOODHANDLERREPORT_POSITIVE:
+      return {
+        ...state,
+        foodHandler: state.foodHandler.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_FOODHANDLERREPORT_NEGATIVE:
+      return {
+        ...state,
+        foodHandler: state.foodHandler.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_FOODHANDLEROBSERVATION:
+      return {
+        ...state,
+        foodHandlerObservation: action.payload,
       };
 
     case SET_KITCHENREPORT_POSITIVE:
@@ -205,6 +234,11 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         statusKitchen: action.payload,
+      };
+    case SET_STATUSFOODHANDLER:
+      return {
+        ...state,
+        statusFoodHandler: action.payload,
       };
     case SET_STATUSREFECTORY:
       return {
