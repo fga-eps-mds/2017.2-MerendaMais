@@ -17,6 +17,28 @@ exports[`Testing SearchSchool renders as expected 1`] = `
   <View
     style={
       Object {
+        "marginLeft": 5,
+        "marginTop": 10,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#585858",
+        }
+      }
+    >
+      Para realizar a pesquisa é necessário inserir os campos abaixo
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
         "alignItems": "center",
         "flex": 10,
       }
