@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import {
   StyleSheet,
@@ -17,6 +17,7 @@ import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
 
 import { SCHOOL_ENDPOINT } from '../constants';
+import SchoolListButton from '../components/SchoolListButton';
 
 const FILE_NAME = 'SearchSchool.js';
 
@@ -217,8 +218,10 @@ class SearchSchool extends React.Component {
           />
         );
       }
+      console.log('Button activated');
       return (
         <TouchableOpacity
+          key="activatedButton"
           style={styles.buttonSearchAnabled}
           activeOpacity={0.7}
           onPress={() => this.register()}
@@ -287,26 +290,17 @@ class SearchSchool extends React.Component {
 
           </View>
 
-          <View style={styles.listSchools} >
+          <View style={styles.listSchools} key="schoolListView">
             <FlatList
               data={this.state.schoolList}
               keyExtractor={item => item.nome}
               renderItem={({ item }) => (
-                <View style={styles.item}>
-                  <TouchableOpacity
-                    style={styles.buttonSelectSchool}
-                    onPress={() => this.props.setSchoolInfo(item.codEscola)}
-                  >
-                    <Text style={{ fontSize: 16 }}>{item.nome}</Text>
-                    <Ionicons
-                      name="ios-arrow-forward-outline"
-                      style={styles.icon}
-                      size={35}
-                      color="black"
-                    />
-                  </TouchableOpacity>
-                </View>
-              )}
+                <SchoolListButton
+                  onPress={() => this.props.setSchoolInfo(item.codEscola)}
+                  item={item}
+                />
+              )
+              }
             />
           </View>
           <View key="renderButton" style={styles.buttonArea} >

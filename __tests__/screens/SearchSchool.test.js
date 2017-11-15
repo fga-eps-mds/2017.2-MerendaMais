@@ -1,5 +1,7 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
+import { FlatList } from 'react-native';
+import renderer from 'react-test-renderer';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import Adapter from 'enzyme-adapter-react-16';
@@ -7,6 +9,7 @@ import configureStore from 'redux-mock-store';
 import SearchSchoolContainer from '../../src/Containers/SearchSchoolContainer';
 import SearchSchool from '../../src/screens/SearchSchool';
 import { SCHOOL_ENDPOINT } from '../../src/constants';
+import { setSchoolInfo } from '../../src/actions/schoolActions';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -19,6 +22,12 @@ const initialState = {
   },
 };
 
+const state = {
+  name: 'BOM JESUS',
+  city: 'Porto Velho',
+  uf: 'RO',
+};
+
 const store = mockStore(initialState);
 
 describe('Testing SearchSchool', () => {
@@ -27,6 +36,8 @@ describe('Testing SearchSchool', () => {
       <SearchSchoolContainer />,
       { context: { store } },
     ).dive();
+
+    wrapper.setState(state);
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -57,6 +68,13 @@ describe('Testing SearchSchool button', () => {
   it('Test if SearchSchool Button is rendered', () => {
     const wrapper = shallow(<SearchSchool />);
     const button = wrapper.findWhere(c => c.key() === 'renderButton');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
+  it('Test if Searchbutton works when the fields are correct', () => {
+    const wrapper = shallow(<SearchSchool setSchoolInfo={() => ({})} />);
+    wrapper.setState({ city: 'Porto Velho' });
+    const button = wrapper.findWhere(c => c.key() === 'activatedButton');
     expect(button.length).toEqual(1);
     button.simulate('press');
   });
@@ -130,11 +148,6 @@ describe('Testing SearchSchool register method', () => {
   // /* eslint no-param-reassign: 0 */
 
   it('Test searchSchool method', async () => {
-    const state = {
-      name: 'BOM JESUS',
-      city: 'Porto Velho',
-      uf: 'RO',
-    };
     const mock = new MockAdapter(axios);
 
     mock.onGet(SCHOOL_ENDPOINT, {
@@ -155,20 +168,26 @@ describe('Testing SearchSchool register method', () => {
     expect(wrapper.state('schoolList')).toEqual([{ nome: 'BOM JESUS' }]);
   });
 
-  // it('Testing school list rendering', () => {
-  //   const wrapper = shallow(<SearchSchool />);
-  //   const state = {
-  //     schoolList: [
-  //       {
-  //         nome: 'Nome da Escola',
-  //       },
-  //     ],
-  //   };
+  it('Testing school list rendering', () => {
+    const wrapper = renderer.create(<SearchSchool />);
+    wrapper.getInstance().setState({ schoolList: [{ nome: 'Nome', codEscola: 1 }] });
+    wrapper.toJSON();
+    expect(wrapper).toMatchSnapshot();
+  });
 
-  //   console.log(wrapper);
-  //   wrapper.setState(state);
-  //   const schoolButton = wrapper.findWhere(c => c.key() === 'Nome da Escola');
-  //   expect(schoolButton.length).toBe(1);
-  //   schoolButton.simulate('press');
-  // });
+  it('Testing school list button', () => {
+    const wrapper = shallow(<SearchSchool setSchoolInfo={jest.fn(() => true)} />);
+    wrapper.setState({ schoolList: [{ nome: 'Nome', codEscola: 1 }] });
+    const component = wrapper.findWhere(c => c.key() === 'schoolListView');
+    const item = {
+      item: {
+        nome: 'Nome',
+        codEscola: 1,
+      },
+    };
+
+    const schoolItem = component.find(FlatList).props().renderItem(item);
+    const onPressResult = schoolItem.props.onPress();
+    expect(onPressResult).toBeTruthy();
+  });
 });
