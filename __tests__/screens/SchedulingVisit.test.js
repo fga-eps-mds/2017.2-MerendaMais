@@ -147,12 +147,13 @@ describe('Testing SchedulingVisit buttons', () => {
     button.simulate('press');
   });
 
-  // it('Test if search counselor button is rendered', () => {
-  //   const wrapper = shallow(<SchedulingVisit {...initialStateToScreen} />);
-  //   const button = wrapper.findWhere(c => c.key() === 'searchCounselorButton');
-  //   expect(button.length).toEqual(1);
-  //   button.simulate('press');
-  // });
+  it('Test if search counselor button is rendered', () => {
+    const wrapper = shallow(<SchedulingVisit {...initialStateToScreen} />);
+    const button = wrapper.findWhere(c => c.key() === 'searchCounselorButton').dive();
+    button.setProps({ onPress: jest.fn() });
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
 
   it('Test if search agent button is rendered', () => {
     const wrapper = shallow(<SchedulingVisit {...initialStateToScreen} />);
