@@ -95,9 +95,8 @@ export default class SchedulingVisit extends React.Component {
         codSchool: 0,
         date: '',
         time: '',
-        listOfInvitees: {},
+        listOfInvitees: this.props.listOfInvitees,
       },
-      listOfInviteesWithCounselorInformations: {},
     };
   }
 
@@ -118,15 +117,14 @@ export default class SchedulingVisit extends React.Component {
   }
 
   manageInvitedListState(counselor) {
-    const newListWithInformations = this.state.listOfInviteesWithCounselorInformations;
+    const newListWithInformations = this.props.listOfInviteesWithCounselorInformations;
     const newList = this.state.visit.listOfInvitees;
 
     // If the counselor is not at the list (undefined),
     // we will add him to the list, where its key is the counselor's nuvemCode
     if (newListWithInformations[counselor.nuvemCode] === undefined) {
       newListWithInformations[counselor.nuvemCode] = counselor;
-      this.setState({ listOfInviteesWithCounselorInformations:
-       newListWithInformations });
+      this.props.setlistOfInviteesWithCounselorInformations(newListWithInformations);
 
       newList[counselor.nuvemCode] = {
         nuvemCode: counselor.nuvemCode,
@@ -135,8 +133,7 @@ export default class SchedulingVisit extends React.Component {
       this.setState({ visit: { ...this.state.visit, listOfInvitees: newList } });
     } else {
       delete newListWithInformations[counselor.nuvemCode];
-      this.setState({ listOfInviteesWithCounselorInformations:
-       newListWithInformations });
+      this.props.setlistOfInviteesWithCounselorInformations(newListWithInformations);
 
       delete newList[counselor.nuvemCode];
       this.setState({ visit: { ...this.state.visit, listOfInvitees: newList } });
@@ -144,7 +141,7 @@ export default class SchedulingVisit extends React.Component {
   }
 
   changeStyleAccordingToInput(counselor) {
-    if (this.state.listOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
+    if (this.props.listOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
       return [styles.listRegisters, { borderColor: '#FF9500' }];
     }
     return styles.listRegisters;
@@ -153,21 +150,21 @@ export default class SchedulingVisit extends React.Component {
   cancelInviteList() {
     this.setState({ visit: { ...this.state.visit, listOfInvitees: {} } });
 
-    this.setState({ listOfInviteesWithCounselorInformations: {} });
+    this.props.setlistOfInviteesWithCounselorInformations({});
 
     this.popupDialog.dismiss();
   }
 
   showInvitedList() {
     // Check if the Object is empty
-    if (Object.keys(this.state.listOfInviteesWithCounselorInformations)
+    if (Object.keys(this.props.listOfInviteesWithCounselorInformations)
       .length !== 0) {
       return (
         <View>
           <Text style={{ fontSize: 20, textAlign: 'center', marginVertical: 10 }}>Lista de conselheiros convidados</Text>
           <View style={styles.invitedList}>
             {
-              Object.entries(this.state.listOfInviteesWithCounselorInformations)
+              Object.entries(this.props.listOfInviteesWithCounselorInformations)
                 .map(counselor => (
                   <InvitedCounselorsData
                     key={counselor[0]}
@@ -210,6 +207,7 @@ export default class SchedulingVisit extends React.Component {
   }
 
   render() {
+    console.log(this.props.listOfInviteesWithCounselorInformations);
     return (
       <View style={styles.principal}>
         <Header
@@ -344,11 +342,12 @@ export default class SchedulingVisit extends React.Component {
 }
 
 
-const { shape, string, number } = PropTypes;
+const { shape, string, number, bool, func } = PropTypes;
 
 SchedulingVisit.propTypes = {
-  asyncSchedulingVisit: PropTypes.func.isRequired,
-  asyncGetCounselorFromGroup: PropTypes.func.isRequired,
+  asyncSchedulingVisit: func.isRequired,
+  asyncGetCounselorFromGroup: func.isRequired,
+  setlistOfInviteesWithCounselorInformations: func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
@@ -360,8 +359,18 @@ SchedulingVisit.propTypes = {
     schoolEmail: string.isRequired,
   }).isRequired,
   listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    cpf: PropTypes.string,
-    phone: PropTypes.string,
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
   })).isRequired,
+  listOfInviteesWithCounselorInformations: shape({
+    nuvemCode: number.isRequired,
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
+  }).isRequired,
+  listOfInvitees: shape({
+    nuvemCode: number.isRequired,
+    confirmed: bool.isRequired,
+  }).isRequired,
 };

@@ -60,11 +60,13 @@ const initialState = {
   },
   list: {
     listOfCounselorsInAGroup: [],
+    listOfInviteesWithCounselorInformations: {},
   },
   schedule: {
     codSchool: 0,
     date: '',
     time: '',
+    listOfInvitees: {},
   },
 };
 
