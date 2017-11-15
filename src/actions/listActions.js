@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_LIST_OF_INVITEES_WITH_COUNSELOR_INFORMATIONS } from './types';
+  SET_NEW_LISTS } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
@@ -18,8 +18,8 @@ export const setList = counselorInformations => ({
   payload: counselorInformations,
 });
 
-export const setlistOfInviteesWithCounselorInformations = newList => ({
-  type: SET_LIST_OF_INVITEES_WITH_COUNSELOR_INFORMATIONS,
+export const setNewLists = newList => ({
+  type: SET_NEW_LISTS,
   payload: newList,
 });
 

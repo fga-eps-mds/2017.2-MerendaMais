@@ -1,7 +1,7 @@
 import initialState from './initialState';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_LIST_OF_INVITEES_WITH_COUNSELOR_INFORMATIONS } from '../actions/types';
+  SET_NEW_LISTS } from '../actions/types';
 
 const listReducer = (state = initialState.list, action) => {
   if (action === undefined) {
@@ -19,11 +19,11 @@ const listReducer = (state = initialState.list, action) => {
         ...state,
         listOfCounselorsInAGroup: [],
       };
-    case SET_LIST_OF_INVITEES_WITH_COUNSELOR_INFORMATIONS:
-      console.log('entrou');
+    case SET_NEW_LISTS:
       return {
         ...state,
-        listOfInviteesWithCounselorInformations: action.payload,
+        listOfInviteesWithCounselorInformations: action.payload.newListWithInformations,
+        listOfInvitees: action.payload.newList,
       };
     default:
       return state;

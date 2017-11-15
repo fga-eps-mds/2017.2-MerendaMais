@@ -110,34 +110,36 @@ export default class SchedulingVisit extends React.Component {
       codSchool: newProps.school.schoolCode,
       date: this.state.visit.date,
       time: this.state.visit.time,
-      listOfInvitees: this.state.visit.listOfInvitees,
+      listOfInvitees: newProps.listOfInvitees,
     };
 
     this.setState({ visit: newVisit });
   }
 
   manageInvitedListState(counselor) {
-    const newListWithInformations = this.props.listOfInviteesWithCounselorInformations;
-    const newList = this.state.visit.listOfInvitees;
+    const newLists = {
+      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
+      newList: this.state.visit.listOfInvitees,
+    };
 
     // If the counselor is not at the list (undefined),
     // we will add him to the list, where its key is the counselor's nuvemCode
-    if (newListWithInformations[counselor.nuvemCode] === undefined) {
-      newListWithInformations[counselor.nuvemCode] = counselor;
-      this.props.setlistOfInviteesWithCounselorInformations(newListWithInformations);
+    if (newLists.newListWithInformations[counselor.nuvemCode] === undefined) {
+      newLists.newListWithInformations[counselor.nuvemCode] = counselor;
 
-      newList[counselor.nuvemCode] = {
+      newLists.newList[counselor.nuvemCode] = {
         nuvemCode: counselor.nuvemCode,
         confirmed: false,
       };
-      this.setState({ visit: { ...this.state.visit, listOfInvitees: newList } });
+      this.props.setNewLists(newLists);
     } else {
-      delete newListWithInformations[counselor.nuvemCode];
-      this.props.setlistOfInviteesWithCounselorInformations(newListWithInformations);
+      delete newLists.newListWithInformations[counselor.nuvemCode];
+      delete newLists.newList[counselor.nuvemCode];
 
-      delete newList[counselor.nuvemCode];
-      this.setState({ visit: { ...this.state.visit, listOfInvitees: newList } });
+      this.props.setNewLists(newLists);
     }
+
+    this.forceUpdate();
   }
 
   changeStyleAccordingToInput(counselor) {
@@ -148,9 +150,12 @@ export default class SchedulingVisit extends React.Component {
   }
 
   cancelInviteList() {
-    this.setState({ visit: { ...this.state.visit, listOfInvitees: {} } });
+    const newLists = {
+      newListWithInformations: {},
+      newList: {},
+    };
 
-    this.props.setlistOfInviteesWithCounselorInformations({});
+    this.props.setNewLists(newLists);
 
     this.popupDialog.dismiss();
   }
@@ -207,7 +212,7 @@ export default class SchedulingVisit extends React.Component {
   }
 
   render() {
-    console.log(this.props.listOfInviteesWithCounselorInformations);
+    console.log(this.state.visit.listOfInvitees);
     return (
       <View style={styles.principal}>
         <Header
@@ -347,7 +352,7 @@ const { shape, string, number, bool, func } = PropTypes;
 SchedulingVisit.propTypes = {
   asyncSchedulingVisit: func.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
-  setlistOfInviteesWithCounselorInformations: func.isRequired,
+  setNewLists: func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
