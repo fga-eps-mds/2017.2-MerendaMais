@@ -9,9 +9,11 @@ const mapStateToProps = state => (
   }
 );
 
-const mapDispatchToProps = dispatch => ({
-  asyncRegisterCounselor: userData => dispatch(asyncRegisterCounselor(userData)),
-});
+const mapDispatchToProps = dispatch => (
+  {
+    asyncRegisterCounselor: userData => dispatch(asyncRegisterCounselor(userData)),
+  }
+);
 
 const RegisterScreenContainer = connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
 
