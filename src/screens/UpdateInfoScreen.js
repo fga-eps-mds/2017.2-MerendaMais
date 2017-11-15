@@ -6,9 +6,14 @@ import { StyleSheet,
   TextInput,
   View,
   Alert,
-  ScrollView }
-  from 'react-native';
+  Picker,
+  ScrollView } from 'react-native';
+import { TITULAR_COUNSELOR,
+  SURROGATE_COUNSELOR } from '../constants';
 import Header from '../components/Header';
+import { logInfo } from '../../logConfig/loggers';
+
+const FILE_NAME = 'UpdateInfoScreen.js';
 
 const styles = StyleSheet.create({
   principal: {
@@ -75,6 +80,7 @@ export default class UpdateInfoScreen extends React.Component {
     this.state = {
       name: this.props.counselor.name,
       phone: this.props.counselor.profile.phone,
+      counselorType: this.props.counselor.profile.counselorType,
     };
 
     this.validateName = this.validateName.bind(this);
@@ -98,14 +104,25 @@ export default class UpdateInfoScreen extends React.Component {
     let error = false;
     let errorMessage = '';
 
+    // Validating Counselor Name.
     if (!nameRegex.test(this.state.name) || this.state.name.trim() === '') {
       error = true;
       errorMessage += 'Nome inválido\n';
     }
+
+    // Validating Counselor Phone.
     if (!phoneRegex1.test(this.state.phone) && !phoneRegex2.test(this.state.phone)) {
       error = true;
       errorMessage += 'Telefone inválido\n';
     }
+
+    // Validating Counselor Type.
+    if (this.state.counselorType === '') {
+      error = true;
+      errorMessage += 'Tipo de Conselheiro não selecionado\n';
+    }
+
+    // Checking if was found a irregularity in register fields.
     if (error === false) {
       this.props.asyncEditCounselor(this.fetchCounselorData());
     } else {
@@ -123,7 +140,7 @@ export default class UpdateInfoScreen extends React.Component {
         cpf: this.props.counselor.profile.cpf,
         phone: this.state.phone,
         isPresident: this.props.counselor.profile.isPresident,
-        counselorType: this.props.counselor.profile.counselorType,
+        counselorType: this.state.counselorType,
         segment: this.props.counselor.profile.segment,
         CAE_Type: this.props.counselor.profile.CAE_Type,
         CAE_UF: this.props.counselor.profile.CAE_UF,
@@ -134,6 +151,9 @@ export default class UpdateInfoScreen extends React.Component {
   }
 
   render() {
+    logInfo(FILE_NAME, 'render()',
+      `State of update info page: ${JSON.stringify(this.state, null, 2)}`);
+
     return (
 
       <View style={styles.principal}>
@@ -175,6 +195,18 @@ export default class UpdateInfoScreen extends React.Component {
                 onChangeText={text => this.validatePhone(text)}
                 value={this.state.phone}
               />
+            </View>
+
+            <Text>Tipo de Conselheiro</Text>
+            <View style={styles.InputFieldDropdown}>
+              <Picker
+                onValueChange={value => this.setState({ counselorType: value })}
+                selectedValue={this.state.counselorType}
+              >
+                <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
+                <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
+                <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
+              </Picker>
             </View>
 
           </View>

@@ -199,7 +199,7 @@ export default class RegisterScreen extends React.Component {
       errorMessage += 'Cargo não selecionado.\n';
     }
 
-    // Validating Counselor Type
+    // Validating Counselor Type.
     if (this.state.profile.counselorType === '') {
       error = true;
       errorMessage += 'Tipo de Conselheiro não selecionado\n';
@@ -431,9 +431,9 @@ export default class RegisterScreen extends React.Component {
                 style={styles.InputFieldDropdown}
               >
                 <Picker
-                  onValueChange={value => this.setState({
-                    profile: { ...this.state.profile,
-                      counselorType: value } })}
+                  onValueChange={value => this.setState(
+                    { profile: { ...this.state.profile, counselorType: value } },
+                  )}
                   selectedValue={this.state.profile.counselorType}
                 >
                   <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
