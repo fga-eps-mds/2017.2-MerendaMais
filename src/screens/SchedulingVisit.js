@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { EvilIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialog';
 import { Actions } from 'react-native-router-flux';
@@ -15,6 +16,10 @@ const styles = StyleSheet.create({
   principal: {
     flex: 1,
     backgroundColor: 'white',
+  },
+
+  icon: {
+    marginRight: 15,
   },
 
   button: {
@@ -168,6 +173,20 @@ export default class SchedulingVisit extends React.Component {
     this.popupDialog.dismiss();
   }
 
+  deleteSpecificCounselor(counselorNuvemCode) {
+    const newLists = {
+      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
+      newList: this.state.visit.listOfInvitees,
+    };
+
+    delete newLists.newListWithInformations[counselorNuvemCode];
+    delete newLists.newList[counselorNuvemCode];
+
+    this.props.setNewLists(newLists);
+
+    this.forceUpdate();
+  }
+
   showInvitedList() {
     // Check if the Object is empty
     if (Object.keys(this.props.listOfInviteesWithCounselorInformations)
@@ -180,10 +199,17 @@ export default class SchedulingVisit extends React.Component {
               {
                 Object.entries(this.props.listOfInviteesWithCounselorInformations)
                   .map(counselor => (
-                    <InvitedCounselorsData
-                      key={counselor[0]}
-                      {...counselor[1]}
-                    />
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <InvitedCounselorsData
+                        key={counselor[0]}
+                        {...counselor[1]}
+                      />
+                      <TouchableOpacity
+                        onPress={() => this.deleteSpecificCounselor(counselor[0])}
+                      >
+                        <EvilIcons name="close" style={styles.icon} size={26} color="red" />
+                      </TouchableOpacity>
+                    </View>
                   ))
               }
             </ScrollView>
