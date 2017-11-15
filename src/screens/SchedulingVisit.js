@@ -14,28 +14,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  schedullingButton: {
-    paddingVertical: 20,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#FF9500',
-    justifyContent: 'flex-end',
-  },
-
-  disabledSchedullingButton: {
-    paddingVertical: 20,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#DEDEDE',
-    justifyContent: 'flex-end',
-  },
-
   button: {
     paddingVertical: 15,
     borderWidth: 1,
@@ -61,12 +39,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     paddingLeft: 10,
     width: '95%',
-  },
-
-  icon: {
-    width: 20,
-    height: 20,
-    margin: 5,
   },
 
 });
