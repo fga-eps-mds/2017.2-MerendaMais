@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet,
   Text,
   View,
   TouchableOpacity,
+  ScrollView,
   TextInput,
   FlatList,
   ActivityIndicator,
@@ -13,6 +14,8 @@ import { StyleSheet,
 import PropTypes from 'prop-types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
+import brazilianStates from '../brazilianStates';
+import municipalDistricts from '../municipalDistricts';
 
 import { SCHOOL_ENDPOINT } from '../constants';
 
@@ -71,12 +74,15 @@ const styles = StyleSheet.create({
     flex: 2.5,
     justifyContent: 'center',
     width: 320,
+    marginTop: 60,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 7,
   },
 
   item: {
+    flex: 1,
+    width: null,
     borderBottomColor: 'black',
     borderBottomWidth: 0.5,
     borderRadius: 7,
@@ -103,6 +109,14 @@ const styles = StyleSheet.create({
 
   },
 
+  InputFieldDropdown: {
+    marginTop: 1,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 7,
+    marginBottom: 10,
+  },
+
   Input: {
     marginTop: 20,
     paddingLeft: 2,
@@ -125,9 +139,9 @@ class SearchSchool extends React.Component {
     this.state = {
       isOpen: false,
       isLoading: false,
+      uf: '',
       city: '',
       name: '',
-      uf: '',
       schoolList: [],
     };
 
@@ -164,6 +178,8 @@ class SearchSchool extends React.Component {
     } else {
       Alert.alert('FALHA NA PESQUISA', errorMessage);
     }
+    this.props.setUf(this.state.uf.substr(0, 2));
+    this.props.setCity(this.state.city);
   }
 
   searchSchools() {
@@ -172,8 +188,9 @@ class SearchSchool extends React.Component {
       params: {
         nome: this.state.name,
         municipio: this.state.city,
-        campos: 'nome',
-        uf: this.state.uf,
+        campos: 'nome,endereco',
+        uf: this.state.uf.substr(0, 2),
+        quantidadeDeItens: 100,
       },
     })
       .then((response) => {
@@ -195,7 +212,8 @@ class SearchSchool extends React.Component {
   }
 
   buttonActivation() {
-    if (this.state.city > '' || this.state.name > '' || this.state.uf > '') {
+    if ((this.state.name > '' && this.state.uf > '') ||
+    ((this.state.city !== 'Brasília' && this.state.city > '') && this.state.uf > '')) {
       if (this.state.isLoading) {
         return (
           <ActivityIndicator
@@ -226,28 +244,65 @@ class SearchSchool extends React.Component {
   }
 
   render() {
+    logInfo(FILE_NAME, 'render()',
+      `State of search page: ${JSON.stringify(this.state, null, 2)}`);
+
+    const UfInitials = this.state.uf.substr(0, 2);
+
+    const municipalDistrict = this.state.uf !== '' && this.state.uf !== 'DF - Distrito Federal' ? (
+      <View
+        key="municipalDistrict"
+        style={styles.InputDropdown}
+      >
+        <Picker
+          onValueChange={city => this.setState({ city })}
+          selectedValue={this.state.city}
+        >
+          <Picker.Item value="" label="Escolha o Municipio" color="#95a5a6" />
+          {municipalDistricts[UfInitials].cidades.map(item =>
+            (<Picker.Item label={item} value={item} color="#000000" />))}
+        </Picker>
+      </View>
+    ) : null;
+
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+
+      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Pesquisar Escola'}
           backButton
         />
-
+        <View style={{ marginLeft: 5, marginTop: 10 }}>
+          <Text style={{ color: '#585858' }}>Para realizar a pesquisa é necessário inserir os campos abaixo</Text>
+        </View>
         <View style={styles.bodyBox}>
           <View style={{ flex: 3 }}>
-            <View style={styles.Input}>
-              <MaterialIcons name="location-city" style={styles.icon} size={32} color="black" />
-              <TextInput
-                width={280}
-                returnKeyType="go"
-                maxLength={50}
-                keyboardType={'default'}
-                onChangeText={text => this.validateCity(text)}
-                value={this.state.city} // CAE OR CITY ?
-                underlineColorAndroid="transparent"
-                placeholder="Estado/Município"
-              />
+            <View
+              style={styles.InputDropdown}
+            >
+              <Picker
+                onValueChange={uf => (
+                  uf === 'DF - Distrito Federal' ?
+                    this.setState({
+                      ...this.state,
+                      uf,
+                      city: 'Brasília',
+                    })
+                    :
+                    this.setState({
+                      ...this.state,
+                      uf,
+                    })
+                )}
+                selectedValue={this.state.uf}
+              >
+                <Picker.Item value="" label="Escolha a sua UF " color="#95a5a6" />
+                {brazilianStates.estados.map(item =>
+                  (<Picker.Item label={item} value={item} color="#000000" />))}
+              </Picker>
             </View>
+
+            {municipalDistrict}
 
             <View style={styles.Input}>
               <FontAwesome name="search" style={styles.icon} size={30} color="black" />
@@ -263,17 +318,8 @@ class SearchSchool extends React.Component {
               />
             </View>
 
-            <View style={styles.InputDropdown}>
-              <Picker
-                onValueChange={uf => this.setState({ uf })}
-                selectedValue={this.state.uf}
-              >
-                <Picker.Item value="" label="Escolha sua UF" color="#95a5a6" />
-                <Picker.Item value="DF" label="DF" />
-              </Picker>
-            </View>
-
           </View>
+
 
           <View style={styles.listSchools} >
             <FlatList
@@ -285,7 +331,7 @@ class SearchSchool extends React.Component {
                     style={styles.buttonSelectSchool}
                     onPress={() => this.props.setSchoolInfo(item.codEscola)}
                   >
-                    <Text style={{ fontSize: 16 }}>{item.nome}</Text>
+                    <Text style={{ fontSize: 12 }}>{item.nome}</Text>
                     <Ionicons
                       name="ios-arrow-forward-outline"
                       style={styles.icon}
@@ -297,17 +343,21 @@ class SearchSchool extends React.Component {
               )}
             />
           </View>
+
           <View key="renderButton" style={styles.buttonArea} >
             {this.buttonActivation()}
           </View>
         </View>
-      </View>
+      </ScrollView>
+
     );
   }
 }
 
 SearchSchool.propTypes = {
   setSchoolInfo: PropTypes.func.isRequired,
+  setCity: PropTypes.func.isRequired,
+  setUf: PropTypes.func.isRequired,
 };
 
 export default SearchSchool;

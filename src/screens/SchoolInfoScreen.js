@@ -146,6 +146,26 @@ class SchoolInfoScreen extends React.Component {
     return (null);
   }
 
+  showScheduleVisitButton() {
+    if (this.props.school.uf === this.props.counselor.profile.CAE ||
+       `${this.props.school.city} - ${this.props.school.uf}` === this.props.counselor.profile.CAE) {
+      return (
+        <View>
+          <TouchableOpacity
+            onPress={() => this.selectSchoolForSchedule()}
+            style={styles.buttonContainer}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>Agendar Visita</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    // If we can't return the button, return nothing.
+    return (null);
+  }
+
   updateMenuState(isOpen) {
     this.setState({ isOpen });
   }
@@ -176,13 +196,8 @@ class SchoolInfoScreen extends React.Component {
           </View>
         </ScrollView>
 
-        <TouchableOpacity
-          onPress={() => this.selectSchoolForSchedule()}
-          style={styles.buttonContainer}
-          activeOpacity={0.7}
-        >
-          <Text style={styles.buttonText}>Agendar Visita</Text>
-        </TouchableOpacity>
+        {this.showScheduleVisitButton()}
+
         <TouchableOpacity
           // onPress={}
           style={styles.buttonContainer}
@@ -195,10 +210,13 @@ class SchoolInfoScreen extends React.Component {
   }
 }
 
-const { shape, func, number } = PropTypes;
+const { shape, func, number, string } = PropTypes;
 
 SchoolInfoScreen.propTypes = {
   setSchoolInfo: func.isRequired,
+  counselor: shape({
+    CAE: string.isRequired,
+  }).isRequired,
   school: shape({
     schoolCode: number.isRequired,
   }).isRequired,

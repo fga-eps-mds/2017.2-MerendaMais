@@ -57,6 +57,8 @@ const initialState = {
     schoolLat: '',
     schoolLong: '',
     schoolSelected: false,
+    uf: '',
+    city: '',
   },
   list: {
     listOfCounselorsInAGroup: [],
