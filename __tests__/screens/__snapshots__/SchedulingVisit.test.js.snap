@@ -13,6 +13,79 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
     subTitle="VISITA"
     title="AGENDAR"
   />
+  <PopupDialog
+    dialogTitle={
+      <DialogTitle
+        haveTitleBar={true}
+        title="Convidar um Agente?"
+        titleAlign="center"
+        titleStyle={
+          Object {
+            "fontSize": 30,
+          }
+        }
+      />
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "margin": 20,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "justify",
+          }
+        }
+      >
+        Escolha algum dos agentes abaixo para poder convidá-lo. Para isso, é necessário possuir um aplicativo de email instalado no seu celular. Caso não possua ou não deseje convidar um agente, não selecione nenhum agente e clique em cancelar.
+      </Text>
+      <Picker
+        mode="dialog"
+        onValueChange={[Function]}
+        selectedValue=""
+        style={
+          Object {
+            "marginHorizontal": 15,
+            "width": "95%",
+          }
+        }
+      >
+        <PickerItem
+          color="#95a5a6"
+          label="Escolha o agente"
+          value=""
+        />
+        <PickerItem
+          label="Agente Sanitário"
+          value="outroemail@email.com"
+        />
+        <PickerItem
+          label="Poder Executivo"
+          value="email@email.com"
+        />
+      </Picker>
+      <DialogButton
+        align="center"
+        disabled={false}
+        enabled={true}
+        key="notInvitingButton"
+        onPress={[Function]}
+        text="Cancelar"
+      />
+    </View>
+  </PopupDialog>
   <ScrollViewMock>
     <View
       style={
@@ -95,7 +168,6 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
         style={
           Object {
             "marginHorizontal": 15,
-            "paddingLeft": 10,
             "width": "95%",
           }
         }
@@ -135,7 +207,6 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
         style={
           Object {
             "marginHorizontal": 15,
-            "paddingLeft": 10,
             "width": "95%",
           }
         }
@@ -222,7 +293,7 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
               }
             }
           >
-            Pesquisar Agente Sanitário
+            Convidar Agente
           </Text>
         </TouchableOpacity>
       </View>

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
-import { Alert } from 'react-native';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
-import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE, SEND_EMAIL_ALERT_TITLE, SEND_EMAIL_ALERT_BODY } from '../constants';
+import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
+
 
 const FILE_NAME = 'SchedulingActions.js';
 
@@ -25,6 +25,22 @@ const treatingPostsError = (error) => {
   }
 };
 
+
+const sendEmailAlert = (visitData) => {
+  const agentEmail = (visitData.visit.agentEmail);
+  if (visitData.visit.invitedAgent) {
+    Communications.email(
+    // To, cc, bcc, subject, email text
+      [agentEmail],
+      null,
+      null,
+      'Subject',
+      'Email Body text');
+  }
+  Actions.mainScreen();
+};
+
+
 const schedulingVisit = (visitData) => {
   const headerToSchedulingVisit = {
     headers: {
@@ -34,26 +50,6 @@ const schedulingVisit = (visitData) => {
   };
 
   const stringVisit = convertingJSONToString(visitData.visit);
-
-  const sendEmailAlert = (
-    Alert.alert(
-      SEND_EMAIL_ALERT_TITLE,
-      SEND_EMAIL_ALERT_BODY,
-      [
-        { text: 'Não', style: 'cancel' },
-        { text: 'Sim',
-          onPress: () => Communications.email(
-            // To, cc, bcc, subject, email text
-            ['email1@email.com', 'emailN@email.com'],
-            null,
-            null,
-            'Subject',
-            'Email Body text'),
-        },
-      ],
-      { cancelable: false }),
-    Actions.mainScreen()
-  );
 
   const bodyToSchedulingVisit = {
     conteudo: {
@@ -74,7 +70,7 @@ const schedulingVisit = (visitData) => {
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
-      sendEmailAlert();
+      sendEmailAlert(visitData);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',

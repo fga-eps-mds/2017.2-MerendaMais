@@ -15,6 +15,7 @@ const scheduleReducer = (state = initialState.schedule, action) => {
   switch (action.type) {
     case SET_SCHEDULE_INFO:
       return {
+        ...state,
         date: '',
         time: '',
       };
