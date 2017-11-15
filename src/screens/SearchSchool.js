@@ -180,7 +180,6 @@ class SearchSchool extends React.Component {
     }
     this.props.setUf(this.state.uf.substr(0, 2));
     this.props.setCity(this.state.city);
-    Alert.alert('Caso sua escola não esteja na lista, utilize o campo Nome na pesquisa');
   }
 
   searchSchools() {
@@ -273,6 +272,9 @@ class SearchSchool extends React.Component {
           title={'Pesquisar Escola'}
           backButton
         />
+        <View style={{ marginLeft: 5, marginTop: 10 }}>
+          <Text style={{ color: '#585858' }}>Para realizar a pesquisa é necessário inserir os campos abaixo</Text>
+        </View>
         <View style={styles.bodyBox}>
           <View style={{ flex: 3 }}>
             <View
