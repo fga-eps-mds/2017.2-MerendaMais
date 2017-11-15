@@ -63,7 +63,9 @@ const styles = StyleSheet.create({
 
   invitedList: {
     borderColor: 'black',
+    height: 250,
     borderWidth: 1.5,
+    padding: 1,
     marginHorizontal: 20,
     borderRadius: 5,
   },
@@ -81,6 +83,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  TopListText: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginVertical: 8,
   },
 
 });
@@ -166,17 +174,19 @@ export default class SchedulingVisit extends React.Component {
       .length !== 0) {
       return (
         <View>
-          <Text style={{ fontSize: 20, textAlign: 'center', marginVertical: 10 }}>Lista de conselheiros convidados</Text>
+          <Text style={styles.TopListText}>Lista de conselheiros convidados</Text>
           <View style={styles.invitedList}>
-            {
-              Object.entries(this.props.listOfInviteesWithCounselorInformations)
-                .map(counselor => (
-                  <InvitedCounselorsData
-                    key={counselor[0]}
-                    {...counselor[1]}
-                  />
-                ))
-            }
+            <ScrollView>
+              {
+                Object.entries(this.props.listOfInviteesWithCounselorInformations)
+                  .map(counselor => (
+                    <InvitedCounselorsData
+                      key={counselor[0]}
+                      {...counselor[1]}
+                    />
+                  ))
+              }
+            </ScrollView>
           </View>
         </View>
       );
