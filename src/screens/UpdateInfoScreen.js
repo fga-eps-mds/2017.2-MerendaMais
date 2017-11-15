@@ -8,8 +8,13 @@ import { StyleSheet,
   Alert,
   Picker,
   ScrollView } from 'react-native';
-import { TITULAR_COUNSELOR,
-  SURROGATE_COUNSELOR } from '../constants';
+import {
+  TITULAR_COUNSELOR,
+  SURROGATE_COUNSELOR,
+  EXECUTIVE_POWER,
+  EDUCATION_WORKERS,
+  STUDENT_PARENTS,
+  CIVILIAN_ENTITIES } from '../constants';
 import Header from '../components/Header';
 import { logInfo } from '../../logConfig/loggers';
 
@@ -81,6 +86,7 @@ export default class UpdateInfoScreen extends React.Component {
       name: this.props.counselor.name,
       phone: this.props.counselor.profile.phone,
       counselorType: this.props.counselor.profile.counselorType,
+      segment: this.props.counselor.profile.segment,
     };
 
     this.validateName = this.validateName.bind(this);
@@ -97,7 +103,7 @@ export default class UpdateInfoScreen extends React.Component {
     this.setState({ phone: validPhone });
   }
 
-  register() {
+  updateInformation() {
     const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
@@ -122,7 +128,13 @@ export default class UpdateInfoScreen extends React.Component {
       errorMessage += 'Tipo de Conselheiro não selecionado\n';
     }
 
-    // Checking if was found a irregularity in register fields.
+    // Validating Segment.
+    if (this.state.segment === '') {
+      error = true;
+      errorMessage += 'Segmento não selecionado.\n';
+    }
+
+    // Checking if was found a irregularity in updateInformation fields.
     if (error === false) {
       this.props.asyncEditCounselor(this.fetchCounselorData());
     } else {
@@ -141,7 +153,7 @@ export default class UpdateInfoScreen extends React.Component {
         phone: this.state.phone,
         isPresident: this.props.counselor.profile.isPresident,
         counselorType: this.state.counselorType,
-        segment: this.props.counselor.profile.segment,
+        segment: this.state.segment,
         CAE_Type: this.props.counselor.profile.CAE_Type,
         CAE_UF: this.props.counselor.profile.CAE_UF,
         CAE_municipalDistrict: this.props.counselor.profile.CAE_municipalDistrict,
@@ -209,12 +221,28 @@ export default class UpdateInfoScreen extends React.Component {
               </Picker>
             </View>
 
+            <Text>Segmento</Text>
+            <View
+              style={styles.InputFieldDropdown}
+            >
+              <Picker
+                onValueChange={value => this.setState({ segment: value })}
+                selectedValue={this.state.segment}
+              >
+                <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
+                <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />
+                <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />
+                <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />
+                <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />
+              </Picker>
+            </View>
+
           </View>
         </ScrollView>
         <TouchableOpacity
           key="infoUpdate"
           style={styles.buttonContainer}
-          onPress={() => this.register()}
+          onPress={() => this.updateInformation()}
         >
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>
