@@ -47,6 +47,15 @@ const getUpdateInfoWrapper = () => (
   )
 );
 
+const checkErrorInValidation = (wrapper, spy) => {
+  wrapper.instance().updateInformation();
+  expect(spy).toHaveBeenCalled();
+
+  expect(wrapper.state('error')).toEqual(true);
+
+  spy.mockClear();
+};
+
 const store = mockStore(initialState);
 
 describe('Testing UpdateInfoScreen', () => {
@@ -118,13 +127,8 @@ describe('Testing UpdateInfoScreen updateInformation method', () => {
       error: false,
     });
 
-    wrapper.instance().updateInformation();
-    expect(spy).toHaveBeenCalled();
-
-    // Here is expected true because a error ocurred in name input.
-    expect(wrapper.state('error')).toEqual(true);
-
-    spy.mockClear();
+    // Here is expected error equal true because a error ocurred on name input.
+    checkErrorInValidation(wrapper, spy);
   });
 
   it('Test if validation for a invalid name input is working', () => {
@@ -133,12 +137,54 @@ describe('Testing UpdateInfoScreen updateInformation method', () => {
       error: false,
     });
 
-    wrapper.instance().updateInformation();
-    expect(spy).toHaveBeenCalled();
+    // Here is expected error equal true because a error ocurred on name input.
+    checkErrorInValidation(wrapper, spy);
+  });
 
-    // Here is expected true because a error ocurred in name input.
-    expect(wrapper.state('error')).toEqual(true);
+  it('Test if validation for a invaid phone length input is working', () => {
+    wrapper.setState({
+      name: 'Rodrigson',
+      phone: '123',
+      error: false,
+    });
 
-    spy.mockClear();
+    // Here is expected true because a error ocurred on phone input.
+    checkErrorInValidation(wrapper, spy);
+  });
+
+  it('Test if validation for a invalid phone input is working', () => {
+    wrapper.setState({
+      name: 'Rodrigson',
+      phone: 'Abc#,',
+      error: false,
+    });
+
+    // Here is expected true because a error ocurred on phone input.
+    checkErrorInValidation(wrapper, spy);
+  });
+
+  it('Test if validation for a empty counselor type input is working', () => {
+    wrapper.setState({
+      name: 'Rodrigson',
+      phone: '61969696966',
+      counselorType: '',
+      error: false,
+    });
+
+    // Here is expected true because a error ocurred on counselor type input.
+    checkErrorInValidation(wrapper, spy);
+  });
+
+  it('Test if validation for a empty counselor segment input is working', () => {
+    wrapper.setState({
+      name: 'Rodrigson',
+      phone: '61969696966',
+      counselorType: 'Titular',
+      segment: '',
+      error: false,
+    });
+
+    // Here is expected true because a error ocurred on counselor segment input.
+    checkErrorInValidation(wrapper, spy);
   });
 });
