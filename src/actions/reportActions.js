@@ -24,6 +24,8 @@ import { SET_STOCKFOODREPORT_NEGATIVE,
   SET_SCHOOLSURROUNDINGSOBSERVATION,
   SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE,
   SET_SCHOOLSURROUNDINGSREPORT_POSITIVE,
+  SET_ACCEPTEDMENU,
+  SET_REFUSEDMENU,
 } from './types';
 
 export const setStockFoodReportPositive = key => ({
@@ -116,6 +118,16 @@ export const setDocReportNegative = key => ({
 export const setDocObservation = observation => ({
   type: SET_DOCOBSERVATION,
   payload: observation,
+});
+
+export const setAcceptedMenu = acceptedMenu => ({
+  type: SET_ACCEPTEDMENU,
+  payload: acceptedMenu,
+});
+
+export const setRefusedMenu = refusedMenu => ({
+  type: SET_REFUSEDMENU,
+  payload: refusedMenu,
 });
 
 export const setReportObservation = observation => ({

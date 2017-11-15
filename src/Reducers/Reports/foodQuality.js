@@ -11,6 +11,9 @@ const foodQuality = [
   { label: 'O cardápio é acompanhado de fichas técnicas de preparo', markedYes: false, markedNo: false, status: false, key: 9 },
   { label: 'O cardápio prevê a oferta de mais de duas porções de doces por semana', markedYes: false, markedNo: false, status: false, key: 10 },
   { label: 'O cardápio prevê a oferta de, no mínimo, três porções de frutas e hortaliças por semana', markedYes: false, markedNo: false, status: false, key: 11 },
+  { label: 'A alimentação escolar tem paladar saboroso e gostoso', markedYes: false, markedNo: false, status: false, key: 12 },
+  { label: 'Os cardápios são variados', markedYes: false, markedNo: false, status: false, key: 13 },
+  { label: 'Os cardápios estão afixados para visualização dos alunos e comunidade escolar', markedYes: false, markedNo: false, status: false, key: 14 },
 ];
 
 export default foodQuality;

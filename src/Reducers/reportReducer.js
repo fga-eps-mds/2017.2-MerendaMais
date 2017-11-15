@@ -24,6 +24,8 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_STATUSREPORTOBSERVATION,
   SET_STATUSSCHOOLSURROUNDINGS,
   SET_STATUSSTOCKFOOD,
+  SET_ACCEPTEDMENU,
+  SET_REFUSEDMENU,
 } from '../actions/types';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
@@ -143,6 +145,16 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         foodQualityObservation: action.payload,
+      };
+    case SET_ACCEPTEDMENU:
+      return {
+        ...state,
+        acceptedMenu: action.payload,
+      };
+    case SET_REFUSEDMENU:
+      return {
+        ...state,
+        refusedMenu: action.payload,
       };
 
     case SET_DOCREPORT_POSITIVE:

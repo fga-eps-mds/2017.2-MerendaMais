@@ -39,6 +39,8 @@ const initialState = {
     otherObservation: '',
     foodQuality,
     foodQualityObservation: '',
+    acceptedMenu: '',
+    refusedMenu: '',
     statusFoodQuality: false,
     statusFoodStock: false,
     statusDoc: false,
