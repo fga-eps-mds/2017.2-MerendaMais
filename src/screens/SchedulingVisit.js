@@ -212,7 +212,6 @@ export default class SchedulingVisit extends React.Component {
   }
 
   render() {
-    console.log(this.state.visit.listOfInvitees);
     return (
       <View style={styles.principal}>
         <Header

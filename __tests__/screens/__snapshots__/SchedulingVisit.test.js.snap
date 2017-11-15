@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing SchedulingVisit renders as expected 1`] = `
+<SchedulingVisit
+  asyncGetCounselorFromGroup={[Function]}
+  asyncSchedulingVisit={[Function]}
+  counselor={
+    Object {
+      "nuvemCode": 1,
+      "profile": Object {
+        "CAE": "DF",
+        "cpf": "99999999999",
+      },
+      "token": "tokenGenerico",
+    }
+  }
+  listOfCounselorsInAGroup={
+    Array [
+      Object {
+        "cpf": "11111111111",
+        "name": "Lucas Penido Antunes",
+        "phone": "11111111111",
+      },
+    ]
+  }
+  listOfInvitees={
+    Object {
+      "6122": Object {
+        "confirmed": false,
+        "nuvemCode": 6122,
+      },
+      "6201": Object {
+        "confirmed": false,
+        "nuvemCode": 6201,
+      },
+    }
+  }
+  listOfInviteesWithCounselorInformations={
+    Object {
+      "6122": Object {
+        "cpf": "11111111111",
+        "name": "Lucas Penido Antunes",
+        "nuvemCode": 6122,
+        "phone": "11111111111",
+      },
+      "6201": Object {
+        "cpf": "00000000000",
+        "name": "Kamilla Costa Souzaa",
+        "nuvemCode": 6201,
+        "phone": "99999999999",
+      },
+    }
+  }
+  school={
+    Object {
+      "schoolSelected": true,
+    }
+  }
+  setNewLists={[Function]}
+/>
+`;

@@ -7,9 +7,94 @@ import SchedulingVisitContainer from '../../src/Containers/SchedulingVisitContai
 
 Enzyme.configure({ adapter: new Adapter() });
 
-// const mockStore = configureStore();
+const mockStore = configureStore();
+
+const initialStateToScreen = {
+  counselor: {
+    token: 'genericalToken',
+
+    profile: {
+      CAE: 'DF',
+    },
+  },
+
+  school: {
+    schoolSelected: false,
+  },
+
+  listOfCounselorsInAGroup: [
+    {
+      name: 'Lucas Penido Antunes',
+      cpf: '11111111111',
+      phone: '11111111111',
+    },
+  ],
+
+  listOfInviteesWithCounselorInformations: {
+    6122: {
+      nuvemCode: 6122,
+      name: 'Lucas Penido Antunes',
+      cpf: '11111111111',
+      phone: '11111111111',
+    },
+    6201: {
+      nuvemCode: 6201,
+      name: 'Kamilla Costa Souzaa',
+      cpf: '00000000000',
+      phone: '99999999999',
+    },
+  },
+
+  listOfInvitees: {
+    6122: {
+      nuvemCode: 6122,
+      confirmed: false,
+    },
+    6201: {
+      nuvemCode: 6201,
+      confirmed: false,
+    },
+  },
+
+  asyncGetCounselorFromGroup: jest.fn(),
+};
 
 const initialState = {
+  list: {
+    listOfCounselorsInAGroup: [
+      {
+        name: 'Lucas Penido Antunes',
+        cpf: '11111111111',
+        phone: '11111111111',
+      },
+    ],
+
+    listOfInviteesWithCounselorInformations: {
+      6122: {
+        nuvemCode: 6122,
+        name: 'Lucas Penido Antunes',
+        cpf: '11111111111',
+        phone: '11111111111',
+      },
+      6201: {
+        nuvemCode: 6201,
+        name: 'Kamilla Costa Souzaa',
+        cpf: '00000000000',
+        phone: '99999999999',
+      },
+    },
+
+    listOfInvitees: {
+      6122: {
+        nuvemCode: 6122,
+        confirmed: false,
+      },
+      6201: {
+        nuvemCode: 6201,
+        confirmed: false,
+      },
+    },
+  },
   counselor: {
     nuvemCode: 1,
     token: 'tokenGenerico',
@@ -33,58 +118,44 @@ const initialState = {
       },
     },
   },
-  listOfInviteesWithCounselorInformations: {
-    6122: {
-      nuvemCode: 6122,
-      name: 'Lucas Penido Antunes',
-      cpf: '11111111111',
-      phone: '11111111111',
-    },
-    6201: {
-      nuvemCode: 6201,
-      name: 'Kamilla Costa Souzaa',
-      cpf: '00000000000',
-      phone: '99999999999',
-    },
-  },
+
   school: {
     schoolSelected: true,
   },
-  listOfCounselorsInAGroup: [{ name: 'Lucas' }],
   asyncGetCounselorFromGroup: jest.fn(),
 };
 
-// const store = mockStore(initialState);
+const store = mockStore(initialState);
 
 jest.mock('react-native-router-flux');
 
-// describe('Testing SchedulingVisit', () => {
-//   it('renders as expected', () => {
-//     const wrapper = shallow(
-//       <SchedulingVisitContainer />,
-//       { context: { store } },
-//     ).dive();
-//     expect(wrapper).toMatchSnapshot();
-//   });
-// });
+describe('Testing SchedulingVisit', () => {
+  it('renders as expected', () => {
+    const wrapper = shallow(
+      <SchedulingVisitContainer />,
+      { context: { store } },
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+});
 
 describe('Testing SchedulingVisit buttons', () => {
   it('Test if search school button is rendered', () => {
-    const wrapper = shallow(<SchedulingVisit {...initialState} />);
+    const wrapper = shallow(<SchedulingVisit {...initialStateToScreen} />);
     const button = wrapper.findWhere(c => c.key() === 'searchSchoolButton');
     expect(button.length).toEqual(1);
     button.simulate('press');
   });
 
   // it('Test if search counselor button is rendered', () => {
-  //   const wrapper = shallow(<SchedulingVisit {...initialState} />);
+  //   const wrapper = shallow(<SchedulingVisit {...initialStateToScreen} />);
   //   const button = wrapper.findWhere(c => c.key() === 'searchCounselorButton');
   //   expect(button.length).toEqual(1);
   //   button.simulate('press');
   // });
 
   it('Test if search agent button is rendered', () => {
-    const wrapper = shallow(<SchedulingVisit {...initialState} />);
+    const wrapper = shallow(<SchedulingVisit {...initialStateToScreen} />);
     const button = wrapper.findWhere(c => c.key() === 'searchAgentButton');
     expect(button.length).toEqual(1);
     button.simulate('press');
@@ -100,7 +171,7 @@ describe('Testing SchedulingVisit buttons', () => {
     };
 
     const wrapper = shallow(<SchedulingVisit
-      {...initialState}
+      {...initialStateToScreen}
     />);
 
     wrapper.setState({
@@ -124,12 +195,12 @@ describe('Testing SchedulingVisit buttons', () => {
     });
 
     const button = wrapper.findWhere(c => c.key() === 'scheduleButton');
-    expect(button.length).toEqual(2);
+    expect(button.length).toEqual(1);
   });
 });
 
 describe('Testing SchedulingVisit DatePickers', () => {
-  const wrapper = shallow(<SchedulingVisit {...initialState} />);
+  const wrapper = shallow(<SchedulingVisit {...initialStateToScreen} />);
 
   it('Test if date changes when DatePicker changes', () => {
     const datePickerComponent = wrapper.find('DatePicker').at(0);
