@@ -1,7 +1,11 @@
 import axios from 'axios';
-import { SET_LIST_COUNSELOR_GROUP, RESET_LIST } from './types';
+import { SET_LIST_COUNSELOR_GROUP,
+  RESET_LIST,
+  SET_LIST_OF_INVITEES_WITH_COUNSELOR_INFORMATIONS } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { APP_IDENTIFIER, DEFAULT_GROUP_LINK_NUVEM_CIVICA, DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
+import { APP_IDENTIFIER,
+  DEFAULT_GROUP_LINK_NUVEM_CIVICA,
+  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
 
 const FILE_NAME = 'listActions.js';
 
@@ -12,6 +16,11 @@ export const resetList = () => ({
 export const setList = counselorInformations => ({
   type: SET_LIST_COUNSELOR_GROUP,
   payload: counselorInformations,
+});
+
+export const setlistOfInviteesWithCounselorInformations = newList => ({
+  type: SET_LIST_OF_INVITEES_WITH_COUNSELOR_INFORMATIONS,
+  payload: newList,
 });
 
 // Used in Async Action to Login Counselor
