@@ -142,7 +142,6 @@ class SearchSchool extends React.Component {
       uf: '',
       city: '',
       name: '',
-      bairro: '',
       schoolList: [],
     };
 
@@ -181,7 +180,7 @@ class SearchSchool extends React.Component {
     }
     this.props.setUf(this.state.uf.substr(0, 2));
     this.props.setCity(this.state.city);
-    Alert.alert('Caso sua escola não esteja na lista, procure pelo nome');
+    Alert.alert('Caso sua escola não esteja na lista, utilize o campo Nome na pesquisa');
   }
 
   searchSchools() {
@@ -192,7 +191,7 @@ class SearchSchool extends React.Component {
         municipio: this.state.city,
         campos: 'nome,endereco',
         uf: this.state.uf.substr(0, 2),
-        quantidadeDeItens: 30,
+        quantidadeDeItens: 100,
       },
     })
       .then((response) => {
@@ -214,7 +213,8 @@ class SearchSchool extends React.Component {
   }
 
   buttonActivation() {
-    if (this.state.city > '' || this.state.name > '' || this.state.uf > '') {
+    if ((this.state.name > '' && this.state.uf > '') ||
+    ((this.state.city !== 'Brasília' && this.state.city > '') && this.state.uf > '')) {
       if (this.state.isLoading) {
         return (
           <ActivityIndicator
