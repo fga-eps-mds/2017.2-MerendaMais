@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
 
+  content: {
+    flex: 6,
+    marginTop: 8,
+    paddingHorizontal: 15,
+  },
+
   buttonContainer: {
     paddingVertical: 10,
     borderWidth: 1,
@@ -32,43 +38,49 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 
-  content: {
-    marginTop: 30,
-    marginBottom: 9,
-    flex: 6,
-    flexDirection: 'column',
+  InputFieldStyle: {
+    padding: 8,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderRadius: 7,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
 
-  inputs: {
-    backgroundColor: '#FAFAFA',
-    paddingVertical: 10,
+  InputFieldDropdown: {
+    marginTop: 1,
+    borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 7,
-    borderColor: 'gray',
-    marginHorizontal: 15,
-    marginBottom: 30,
-    justifyContent: 'flex-start',
-    paddingLeft: 2,
-    paddingRight: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginBottom: 10,
   },
 
   icon: {
     margin: 5,
+  },
+
+  InputStyle: {
+    flex: 1,
   },
 });
 
 export default class UpdateInfoScreen extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: this.props.counselor.name,
       phone: this.props.counselor.profile.phone,
     };
+
     this.validateName = this.validateName.bind(this);
     this.validatePhone = this.validatePhone.bind(this);
   }
+
   validateName(name) {
     const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
     this.setState({ name: validName });
@@ -132,31 +144,39 @@ export default class UpdateInfoScreen extends React.Component {
         <ScrollView>
           <View style={styles.content}>
 
-            <View style={styles.inputs}>
-              <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
+            <Text>Nome</Text>
+            <View style={styles.InputFieldStyle}>
+              <MaterialIcons name="face" style={styles.icon} size={26} color="black" />
               <TextInput
-                width={280}
+                style={styles.InputStyle}
+                placeholder="Digite o seu nome completo"
+                placeholderTextColor="#95a5a6"
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
                 maxLength={60}
                 keyboardType={'default'}
-                placeholder="Digite seu nome"
-                underlineColorAndroid="transparent"
+                autoCapitalize={'words'}
                 onChangeText={text => this.validateName(text)}
                 value={this.state.name}
               />
             </View>
 
-            <View style={styles.inputs}>
-              <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
+            <Text>Telefone</Text>
+            <View style={styles.InputFieldStyle}>
+              <MaterialIcons name="phone" style={styles.icon} size={26} color="black" />
               <TextInput
-                width={280}
+                style={styles.InputStyle}
+                placeholder="Digite o seu telefone"
+                placeholderTextColor="#95a5a6"
+                underlineColorAndroid="transparent"
+                returnKeyLabel={'next'}
                 maxLength={11}
                 keyboardType={'phone-pad'}
-                placeholder="(00)00000-0000"
-                underlineColorAndroid="transparent"
                 onChangeText={text => this.validatePhone(text)}
                 value={this.state.phone}
               />
             </View>
+
           </View>
         </ScrollView>
         <TouchableOpacity
