@@ -49,6 +49,15 @@ const schedulingVisit = (visitData) => {
     },
   };
 
+  // Adding the author of the schedule to the list of invitees
+  const authorsNuvemCode = visitData.nuvemCode;
+  const visitDataWithAuthor = visitData.visit;
+
+  visitDataWithAuthor.listOfInvitees[authorsNuvemCode] = {
+    nuvemCode: authorsNuvemCode,
+    confirmed: true,
+  };
+
   const stringVisit = convertingJSONToString(visitData.visit);
 
   const bodyToSchedulingVisit = {
