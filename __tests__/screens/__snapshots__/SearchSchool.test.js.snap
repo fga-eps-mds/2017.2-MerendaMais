@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing SearchSchool renders as expected 1`] = `
-<View
+<ScrollViewMock
   style={
     Object {
       "backgroundColor": "white",
@@ -14,6 +14,28 @@ exports[`Testing SearchSchool renders as expected 1`] = `
     subTitle=""
     title="Pesquisar Escola"
   />
+  <View
+    style={
+      Object {
+        "marginLeft": 5,
+        "marginTop": 10,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#585858",
+        }
+      }
+    >
+      Para realizar a pesquisa é necessário inserir os campos abaixo
+    </Text>
+  </View>
   <View
     style={
       Object {
@@ -32,39 +54,160 @@ exports[`Testing SearchSchool renders as expected 1`] = `
       <View
         style={
           Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
             "borderColor": "gray",
             "borderRadius": 7,
             "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginTop": 20,
+            "marginTop": 15,
             "paddingLeft": 2,
           }
         }
       >
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="location-city"
-          size={32}
-          style={
-            Object {
-              "margin": 8,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="default"
-          maxLength={50}
-          onChangeText={[Function]}
-          placeholder="Estado/Município"
-          returnKeyType="go"
-          underlineColorAndroid="transparent"
-          value=""
-          width={280}
-        />
+        <Picker
+          mode="dialog"
+          onValueChange={[Function]}
+          selectedValue=""
+        >
+          <PickerItem
+            color="#95a5a6"
+            label="Escolha a sua UF "
+            value=""
+          />
+          <PickerItem
+            color="#000000"
+            label="AC - Acre"
+            value="AC - Acre"
+          />
+          <PickerItem
+            color="#000000"
+            label="AL - Alagoas"
+            value="AL - Alagoas"
+          />
+          <PickerItem
+            color="#000000"
+            label="AP - Amapá"
+            value="AP - Amapá"
+          />
+          <PickerItem
+            color="#000000"
+            label="AM - Amazonas"
+            value="AM - Amazonas"
+          />
+          <PickerItem
+            color="#000000"
+            label="BA - Bahia"
+            value="BA - Bahia"
+          />
+          <PickerItem
+            color="#000000"
+            label="CE - Ceará"
+            value="CE - Ceará"
+          />
+          <PickerItem
+            color="#000000"
+            label="DF - Distrito Federal"
+            value="DF - Distrito Federal"
+          />
+          <PickerItem
+            color="#000000"
+            label="ES - Espírito Santo"
+            value="ES - Espírito Santo"
+          />
+          <PickerItem
+            color="#000000"
+            label="GO - Goiás"
+            value="GO - Goiás"
+          />
+          <PickerItem
+            color="#000000"
+            label="MA - Maranhão"
+            value="MA - Maranhão"
+          />
+          <PickerItem
+            color="#000000"
+            label="MT - Mato Grosso"
+            value="MT - Mato Grosso"
+          />
+          <PickerItem
+            color="#000000"
+            label="MS - Mato Grosso do Sul"
+            value="MS - Mato Grosso do Sul"
+          />
+          <PickerItem
+            color="#000000"
+            label="MG - Minas Gerais"
+            value="MG - Minas Gerais"
+          />
+          <PickerItem
+            color="#000000"
+            label="PA - Pará"
+            value="PA - Pará"
+          />
+          <PickerItem
+            color="#000000"
+            label="PB - Paraíba"
+            value="PB - Paraíba"
+          />
+          <PickerItem
+            color="#000000"
+            label="PR - Paraná"
+            value="PR - Paraná"
+          />
+          <PickerItem
+            color="#000000"
+            label="PE - Pernambuco"
+            value="PE - Pernambuco"
+          />
+          <PickerItem
+            color="#000000"
+            label="PI - Piauí"
+            value="PI - Piauí"
+          />
+          <PickerItem
+            color="#000000"
+            label="RJ - Rio de Janeiro"
+            value="RJ - Rio de Janeiro"
+          />
+          <PickerItem
+            color="#000000"
+            label="RN - Rio Grande do Norte"
+            value="RN - Rio Grande do Norte"
+          />
+          <PickerItem
+            color="#000000"
+            label="RS - Rio Grande do Sul"
+            value="RS - Rio Grande do Sul"
+          />
+          <PickerItem
+            color="#000000"
+            label="RO - Rondônia"
+            value="RO - Rondônia"
+          />
+          <PickerItem
+            color="#000000"
+            label="RR - Roraima"
+            value="RR - Roraima"
+          />
+          <PickerItem
+            color="#000000"
+            label="SC - Santa Catarina"
+            value="SC - Santa Catarina"
+          />
+          <PickerItem
+            color="#000000"
+            label="SP - São Paulo"
+            value="SP - São Paulo"
+          />
+          <PickerItem
+            color="#000000"
+            label="SE - Sergipe"
+            value="SE - Sergipe"
+          />
+          <PickerItem
+            color="#000000"
+            label="TO - Tocantins"
+            value="TO - Tocantins"
+          />
+        </Picker>
       </View>
       <View
         style={
@@ -103,33 +246,6 @@ exports[`Testing SearchSchool renders as expected 1`] = `
           width={280}
         />
       </View>
-      <View
-        style={
-          Object {
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "marginTop": 15,
-            "paddingLeft": 2,
-          }
-        }
-      >
-        <Picker
-          mode="dialog"
-          onValueChange={[Function]}
-          selectedValue=""
-        >
-          <PickerItem
-            color="#95a5a6"
-            label="Escolha sua UF"
-            value=""
-          />
-          <PickerItem
-            label="DF"
-            value="DF"
-          />
-        </Picker>
-      </View>
     </View>
     <View
       style={
@@ -139,6 +255,7 @@ exports[`Testing SearchSchool renders as expected 1`] = `
           "borderWidth": 1,
           "flex": 2.5,
           "justifyContent": "center",
+          "marginTop": 60,
           "width": 320,
         }
       }
@@ -200,5 +317,5 @@ exports[`Testing SearchSchool renders as expected 1`] = `
       </TouchableOpacity>
     </View>
   </View>
-</View>
+</ScrollViewMock>
 `;

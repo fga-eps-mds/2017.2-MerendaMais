@@ -4,6 +4,7 @@ import { setSchoolInfo } from '../actions/schoolActions';
 
 const mapStateToProps = state => (
   {
+    counselor: state.counselor,
     school: state.school,
     isLoading: state.application.isLoading,
     message_erro: state.application.message_erro,
