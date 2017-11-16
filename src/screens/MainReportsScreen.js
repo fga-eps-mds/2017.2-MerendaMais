@@ -214,6 +214,23 @@ export default class MainReportsScreen extends React.Component {
     return (null);
   }
 
+  checkingFoodPreparationReport() {
+    const newStateFoodPreparation = store.getState();
+    if (newStateFoodPreparation.report.statusFoodPreparation) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+
   render() {
     return (
       <View style={styles.content}>
@@ -293,6 +310,15 @@ export default class MainReportsScreen extends React.Component {
                 <Text style={styles.text_Water}>Abastecimento de Água e Esgoto Sanitário</Text>
               </TouchableOpacity>
               {this.checkingWaterSewerSupplyReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.foodPreparationCheckoutScreen()}
+              >
+                <Text style={styles.text_Water}>Abastecimento de Água e Esgoto Sanitário</Text>
+              </TouchableOpacity>
+              {this.checkingFoodPreparationReport()}
             </View>
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
