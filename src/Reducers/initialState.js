@@ -3,6 +3,7 @@ import refectory from './Reports/refectory';
 import kitchen from './Reports/kitchen';
 import foodQuality from './Reports/foodQuality';
 import foodHandler from './Reports/foodHandler';
+import waterSewerSupply from './Reports/waterSewerSupply';
 import doc from './Reports/doc';
 import schoolSurroundings from './Reports/schoolSurroundings';
 
@@ -45,6 +46,9 @@ const initialState = {
     foodHandler,
     foodHandlerObservation: '',
     statusFoodHandler: false,
+    waterSewerSupply,
+    waterSewerSupplyObservation: '',
+    statuSwaterSewerSupply: false,
     statusFoodQuality: false,
     statusFoodStock: false,
     statusDoc: false,

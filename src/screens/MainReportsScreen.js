@@ -48,6 +48,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingRight: 10,
   },
+  text_Water: {
+    paddingLeft: 20,
+    paddingTop: 5,
+    color: 'blue',
+    fontSize: 18,
+    paddingRight: 10,
+  },
 });
 
 export default class MainReportsScreen extends React.Component {
@@ -190,6 +197,23 @@ export default class MainReportsScreen extends React.Component {
     return (null);
   }
 
+  checkingWaterSewerSupplyReport() {
+    const newStateWaterSewerSupply = store.getState();
+    if (newStateWaterSewerSupply.report.statusWaterSewerSupply) {
+      this.state.anyReport = true;
+      return (
+        <View style={{ marginLeft: 10 }}>
+          <Checkbox
+            checked={this.state.anyReport}
+            label=" "
+            checkedColor="green"
+          />
+        </View>
+      );
+    }
+    return (null);
+  }
+
   render() {
     return (
       <View style={styles.content}>
@@ -260,6 +284,15 @@ export default class MainReportsScreen extends React.Component {
                 <Text style={styles.text}>Manipuladores de Alimentos</Text>
               </TouchableOpacity>
               {this.checkingFoodHandlerReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
+              >
+                <Text style={styles.text_Water}>Abastecimento de Água e Esgoto Sanitário</Text>
+              </TouchableOpacity>
+              {this.checkingWaterSewerSupplyReport()}
             </View>
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>

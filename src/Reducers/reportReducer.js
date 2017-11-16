@@ -30,6 +30,10 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_FOODHANDLERREPORT_POSITIVE,
   SET_FOODHANDLERREPORT_NEGATIVE,
   SET_STATUSFOODHANDLER,
+  SET_WATERSEWERSUPPLYOBSERVATION,
+  SET_WATERSEWERSUPPLYREPORT_POSITIVE,
+  SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
+  SET_STATUSWATERSEWERSUPPLY,
 } from '../actions/types';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
@@ -72,6 +76,31 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         foodStockObservation: action.payload,
+      };
+    case SET_WATERSEWERSUPPLYREPORT_POSITIVE:
+      return {
+        ...state,
+        waterSewerSupply: state.waterSewerSupply.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_WATERSEWERSUPPLYREPORT_NEGATIVE:
+      return {
+        ...state,
+        waterSewerSupply: state.waterSewerSupply.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_WATERSEWERSUPPLYOBSERVATION:
+      return {
+        ...state,
+        waterSewerSupplyObservationkObservation: action.payload,
       };
     case SET_FOODHANDLERREPORT_POSITIVE:
       return {
@@ -229,6 +258,11 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         statusDoc: action.payload,
+      };
+    case SET_STATUSWATERSEWERSUPPLY:
+      return {
+        ...state,
+        statusWaterSewerSupply: action.payload,
       };
     case SET_STATUSKITCHEN:
       return {

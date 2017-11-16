@@ -30,6 +30,10 @@ import { SET_STOCKFOODREPORT_NEGATIVE,
   SET_FOODHANDLERREPORT_POSITIVE,
   SET_FOODHANDLERREPORT_NEGATIVE,
   SET_STATUSFOODHANDLER,
+  SET_WATERSEWERSUPPLYOBSERVATION,
+  SET_WATERSEWERSUPPLYREPORT_POSITIVE,
+  SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
+  SET_STATUSWATERSEWERSUPPLY,
 } from './types';
 
 export const setStockFoodReportPositive = key => ({
@@ -67,6 +71,25 @@ export const setFoodHandlerReportNegative = key => ({
 
 export const setFoodHandlerObservation = observation => ({
   type: SET_FOODHANDLEROBSERVATION,
+  payload: observation,
+});
+
+export const setWaterSewerSupplyReportPositive = key => ({
+  type: SET_WATERSEWERSUPPLYREPORT_POSITIVE,
+  payload: {
+    key,
+  },
+});
+
+export const setWaterSewerSupplyReportNegative = key => ({
+  type: SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
+  payload: {
+    key,
+  },
+});
+
+export const setWaterSewerSupplyObservation = observation => ({
+  type: SET_WATERSEWERSUPPLYOBSERVATION,
   payload: observation,
 });
 
@@ -166,6 +189,11 @@ export const setStatusFoodQuality = statusFoodQuality => ({
 export const setStatusDoc = statusDoc => ({
   type: SET_STATUSDOC,
   payload: statusDoc,
+});
+
+export const setStatusWaterSewerSupply = statusWaterSewerSupply => ({
+  type: SET_STATUSWATERSEWERSUPPLY,
+  payload: statusWaterSewerSupply,
 });
 
 export const setStatusKitchen = statusKitchen => ({
