@@ -62,6 +62,8 @@ const initialState = {
   },
   list: {
     listOfCounselorsInAGroup: [],
+    listOfInviteesWithCounselorInformations: {},
+    listOfInvitees: {},
   },
   schedule: {
     codSchool: 0,

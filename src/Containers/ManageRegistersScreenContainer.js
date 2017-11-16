@@ -6,12 +6,13 @@ const mapStateToProps = state => (
   {
     listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
     CAE: state.counselor.profile.CAE,
+    cpf: state.counselor.profile.cpf,
   }
 );
 
 const mapDispachtoProps = dispatch => (
   {
-    asyncGetCounselorFromGroup: CAE => dispatch(asyncGetCounselorFromGroup(CAE)),
+    asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
   }
 );
 

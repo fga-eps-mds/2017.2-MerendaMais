@@ -75,6 +75,8 @@ export const SET_LIST_COUNSELOR_GROUP = 'SET_LIST_COUNSELOR_GROUP';
 
 export const RESET_LIST = 'RESET_LIST';
 
+export const SET_NEW_LISTS = 'SET_NEW_LISTS';
+
 // Scheduling Action types
 
 export const SET_SCHEDULE_INFO = 'SET_SCHEDULE_INFO';

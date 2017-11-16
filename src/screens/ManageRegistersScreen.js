@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 
 export default class ManageRegistersScreen extends React.Component {
   componentWillMount() {
-    this.props.asyncGetCounselorFromGroup(this.props.CAE);
+    this.props.asyncGetCounselorFromGroup(this.props.CAE, this.props.cpf);
   }
 
   arrayRegistersList() {
@@ -107,6 +107,7 @@ export default class ManageRegistersScreen extends React.Component {
 
 ManageRegistersScreen.propTypes = {
   CAE: PropTypes.string.isRequired,
+  cpf: PropTypes.string.isRequired,
   listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     cpf: PropTypes.string,

@@ -5,49 +5,30 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
+import { EvilIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
+import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
-
-import store from '../Reducers/store';
 
 const styles = StyleSheet.create({
 
   principal: {
     flex: 1,
+    backgroundColor: 'white',
   },
 
-  schedullingButton: {
-    paddingVertical: 20,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#FF9500',
-    justifyContent: 'flex-end',
-  },
-
-  disabledSchedullingButton: {
-    paddingVertical: 20,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#DEDEDE',
-    justifyContent: 'flex-end',
+  icon: {
+    marginRight: 15,
   },
 
   button: {
     paddingVertical: 15,
     borderWidth: 1,
     borderRadius: 7,
-    marginHorizontal: 20,
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 10,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -58,8 +39,8 @@ const styles = StyleSheet.create({
   },
 
   Container: {
-    flex: 1,
-    marginTop: 20,
+    marginTop: 15,
+    marginHorizontal: 20,
   },
 
   Picker: {
@@ -79,14 +60,55 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 
-  popUpTitle: {
-    fontSize: 30,
+  textBox: {
+    margin: 1.5,
+    paddingLeft: 2,
+    justifyContent: 'flex-start',
   },
 
-  icon: {
-    width: 20,
-    height: 20,
-    margin: 5,
+  text: {
+    fontSize: 15,
+    paddingVertical: 3,
+  },
+
+  listRegisters: {
+    marginHorizontal: 10,
+    marginVertical: 5,
+    borderColor: 'black',
+    borderWidth: 1.5,
+    borderRadius: 7,
+    backgroundColor: '#FAFAFA',
+    justifyContent: 'space-between',
+  },
+
+  invitedList: {
+    borderColor: 'black',
+    height: 250,
+    borderWidth: 1.5,
+    padding: 1,
+    marginHorizontal: 20,
+    borderRadius: 5,
+  },
+
+  dialogButtonStyle: {
+    marginVertical: -16,
+  },
+
+  footerPopUp: {
+    backgroundColor: '#F9F9FB',
+    borderColor: '#DAD9DC',
+    borderTopWidth: 0.5,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  TopListText: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginVertical: 8,
   },
 
 });
@@ -103,8 +125,14 @@ export default class SchedulingVisit extends React.Component {
         time: '',
         invitedAgent: false,
         agentEmail: '',
+        listOfInvitees: this.props.listOfInvitees,
       },
     };
+  }
+
+  componentWillMount() {
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
   }
 
   componentWillReceiveProps(newProps) {
@@ -114,6 +142,7 @@ export default class SchedulingVisit extends React.Component {
       time: this.state.visit.time,
       invitedAgent: this.state.visit.invitedAgent,
       agentEmail: this.state.visit.agentEmail,
+      listOfInvitees: newProps.listOfInvitees,
     };
 
     this.setState({ visit: newVisit });
@@ -121,12 +150,12 @@ export default class SchedulingVisit extends React.Component {
 
   invitingAgent() {
     this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
-    this.popupDialog.dismiss();
+    this.popupDialogAgent.dismiss();
   }
 
   notInvitingAgent() {
     this.setState({ visit: { ...this.state.visit, invitedAgent: false } });
-    this.popupDialog.dismiss();
+    this.popupDialogAgent.dismiss();
   }
 
   buttonActivation() {
@@ -150,14 +179,125 @@ export default class SchedulingVisit extends React.Component {
     );
   }
 
-  testa() {
-    console.log('DEFINITIVO');
-    console.log(this.state.visit);
-  }
-  render() {
-    const newStateDoc = store.getState();
-    console.log(newStateDoc.schedule);
+  manageInvitedListState(counselor) {
+    const newLists = {
+      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
+      newList: this.state.visit.listOfInvitees,
+    };
 
+    // If the counselor is not at the list (undefined),
+    // we will add him to the list, where its key is the counselor's nuvemCode
+    if (newLists.newListWithInformations[counselor.nuvemCode] === undefined) {
+      newLists.newListWithInformations[counselor.nuvemCode] = counselor;
+
+      newLists.newList[counselor.nuvemCode] = {
+        nuvemCode: counselor.nuvemCode,
+        confirmed: false,
+      };
+      this.props.setNewLists(newLists);
+    } else {
+      delete newLists.newListWithInformations[counselor.nuvemCode];
+      delete newLists.newList[counselor.nuvemCode];
+
+      this.props.setNewLists(newLists);
+    }
+
+    this.forceUpdate();
+  }
+
+  changeStyleAccordingToInput(counselor) {
+    if (this.props.listOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
+      return [styles.listRegisters, { borderColor: '#FF9500' }];
+    }
+    return styles.listRegisters;
+  }
+
+  cancelInviteList() {
+    const newLists = {
+      newListWithInformations: {},
+      newList: {},
+    };
+
+    this.props.setNewLists(newLists);
+
+    this.popupDialogCounselor.dismiss();
+  }
+
+  deleteSpecificCounselor(counselorNuvemCode) {
+    const newLists = {
+      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
+      newList: this.state.visit.listOfInvitees,
+    };
+
+    delete newLists.newListWithInformations[counselorNuvemCode];
+    delete newLists.newList[counselorNuvemCode];
+
+    this.props.setNewLists(newLists);
+
+    this.forceUpdate();
+  }
+
+  showInvitedList() {
+    // Check if the Object is empty
+    if (Object.keys(this.props.listOfInviteesWithCounselorInformations)
+      .length !== 0) {
+      return (
+        <View>
+          <Text style={styles.TopListText}>Lista de conselheiros convidados</Text>
+          <View style={styles.invitedList}>
+            <ScrollView>
+              {
+                Object.entries(this.props.listOfInviteesWithCounselorInformations)
+                  .map(counselor => (
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <InvitedCounselorsData
+                        key={counselor[0]}
+                        {...counselor[1]}
+                      />
+                      <TouchableOpacity
+                        onPress={() => this.deleteSpecificCounselor(counselor[0])}
+                      >
+                        <EvilIcons name="close" style={styles.icon} size={26} color="red" />
+                      </TouchableOpacity>
+                    </View>
+                  ))
+              }
+            </ScrollView>
+          </View>
+        </View>
+      );
+    }
+    return null;
+  }
+
+  renderCounselorList() {
+    return (
+      this.props.listOfCounselorsInAGroup.map(counselor => (
+        <View style={this.changeStyleAccordingToInput(counselor)} key={counselor.nuvemCode}>
+          <TouchableOpacity
+            onPress={() => this.manageInvitedListState(counselor)}
+          >
+            <View style={styles.textBox}>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+                {counselor.name}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+                {counselor.cpf}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+                {counselor.phone}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      ))
+    );
+  }
+
+  render() {
     return (
       <View style={styles.principal}>
         <Header
@@ -167,11 +307,13 @@ export default class SchedulingVisit extends React.Component {
         />
 
         <PopupDialog
-          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+          ref={(popupDialogAgent) => { this.popupDialogAgent = popupDialogAgent; }}
+          height="70%"
+          width="90%"
           dialogTitle={<DialogTitle
             title="Convidar um Agente?"
-            titleStyle={styles.popUpTitle}
           />}
+          actions={[this.buttonActivation()]}
         >
           <View style={styles.popUp}>
             <Text style={styles.popUpText}>Escolha algum dos agentes abaixo para poder convidá-lo.
@@ -189,13 +331,43 @@ export default class SchedulingVisit extends React.Component {
               <Picker.Item value={'outroemail@email.com'} label={'Agente Sanitário'} />
               <Picker.Item value={'email@email.com'} label={'Poder Executivo'} />
             </Picker>
-            {this.buttonActivation()}
+
           </View>
         </PopupDialog>
 
+        <PopupDialog
+          ref={(popupDialogCounselor) => {
+            this.popupDialogCounselor = popupDialogCounselor;
+          }}
+          dialogTitle={<DialogTitle title="Escolha quem deseja convidar" />}
+          overlayPointerEvents="none"
+          height="80%"
+          width="85%"
+          actions={[
+            <View style={styles.footerPopUp}>
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                text="ACEITAR"
+                onPress={() => this.popupDialogCounselor.dismiss()}
+                key="dialogButton1"
+              />
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                text="CANCELAR"
+                onPress={() => this.cancelInviteList()}
+                key="dialogButton2"
+              />
+            </View>,
+          ]}
+        >
+          <ScrollView key="showInviteCounselorList">
+            {this.renderCounselorList()}
+          </ScrollView>
+        </PopupDialog>
+
         <ScrollView>
-          <View style={styles.Container}>
-            <View>
+          <View>
+            <View style={styles.Container}>
               <TouchableOpacity
                 key="searchSchoolButton"
                 style={styles.button}
@@ -204,95 +376,94 @@ export default class SchedulingVisit extends React.Component {
                 <Text style={styles.buttonText}>Pesquisar escola</Text>
               </TouchableOpacity>
             </View>
-          </View>
 
-          {this.props.school.schoolSelected && (
-            <SchoolData {...this.props.school} />
-          )}
+            {this.props.school.schoolSelected && (
+              <SchoolData {...this.props.school} />
+            )}
 
-          <View style={styles.Container}>
-            <DatePicker
-              style={styles.Picker}
-              placeholder="Data"
-              date={this.state.visit.date}
-              mode="date"
-              format="DD-MM-YYYY"
-              confirmBtnText="Confirmar"
-              cancelBtnText="Cancelar"
-              customStyles={{
-                dateInput: {
-                  borderRadius: 7,
-                },
-              }}
-              onDateChange={date => this.setState({ visit: { ...this.state.visit, date } })}
-            />
-          </View>
+            <View style={[styles.Container, { marginVertical: 10 }]}>
+              <DatePicker
+                style={styles.Picker}
+                placeholder="Data"
+                date={this.state.visit.date}
+                mode="date"
+                format="DD-MM-YYYY"
+                confirmBtnText="Confirmar"
+                cancelBtnText="Cancelar"
+                customStyles={{
+                  dateInput: {
+                    borderRadius: 7,
+                  },
+                }}
+                onDateChange={date => this.setState({ visit: { ...this.state.visit, date } })}
+              />
+            </View>
 
-          <View style={styles.Container}>
-            <DatePicker
-              style={styles.Picker}
-              placeholder="Horário"
-              date={this.state.visit.time}
-              mode="time"
-              confirmBtnText="Confirmar"
-              cancelBtnText="Cancelar"
-              customStyles={{
-                dateInput: {
-                  borderRadius: 7,
-                },
-              }}
-              onDateChange={time => this.setState({ visit: { ...this.state.visit, time } })}
-            />
-          </View>
+            <View style={styles.Container}>
+              <DatePicker
+                style={styles.Picker}
+                placeholder="Horário"
+                date={this.state.visit.time}
+                mode="time"
+                confirmBtnText="Confirmar"
+                cancelBtnText="Cancelar"
+                customStyles={{
+                  dateInput: {
+                    borderRadius: 7,
+                  },
+                }}
+                onDateChange={time => this.setState({ visit: { ...this.state.visit, time } })}
+              />
+            </View>
 
-          <View style={styles.Container}>
-            <View>
+            <View style={styles.Container}>
               <TouchableOpacity
                 key="searchCounselorButton"
                 style={styles.button}
-                onPress={() => Alert.alert('Pesquisando')}
+                onPress={() => this.popupDialogCounselor.show()}
               >
-                <Text style={styles.buttonText}>Pesquisar Conselheiro</Text>
+                <Text style={styles.buttonText}>Adicionar Conselheiro</Text>
               </TouchableOpacity>
             </View>
-          </View>
 
-          <View style={styles.Container}>
-            <View>
+            {this.showInvitedList()}
+
+            <View style={styles.Container}>
               <TouchableOpacity
                 key="searchAgentButton"
                 style={styles.button}
-                onPress={() => this.popupDialog.show()}
+                onPress={() => this.popupDialogAgent.show()}
               >
                 <Text style={styles.buttonText}>Convidar Agente</Text>
               </TouchableOpacity>
             </View>
-          </View>
-          <View style={styles.Container}>
-            {this.props.school.schoolSelected && (
-              <Button
-                enabled
-                key="scheduleButton"
-                text="Agendar"
-                onPress={() => {
-                  Alert.alert(
-                    'Agendamento Realizado',
-                    'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
-                    [
-                      { text: 'Ok', onPress: () => this.props.asyncSchedulingVisit(this.state), style: 'cancel' },
-                    ],
-                    { cancelable: false });
-                }}
-              />
-            )}
-            <Button
-              enabled={false}
-              text="Agendar"
-              key="scheduleButton"
-              onPress={() => ({})}
-              disabled
-            />
 
+            <View>
+              {this.props.school.schoolSelected &&
+                this.state.visit.date !== '' && this.state.visit.time !== '' && (
+                  <Button
+                    enabled
+                    key="scheduleButton"
+                    text="Agendar"
+                    onPress={() => {
+                      Alert.alert(
+                        'Agendamento Realizado',
+                        'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
+                        [
+                          { text: 'Ok', onPress: () => this.props.asyncSchedulingVisit(this.state), style: 'cancel' },
+                        ],
+                        { cancelable: false });
+                    }}
+                  />
+                )}
+              <Button
+                enabled={false}
+                text="Agendar"
+                key="scheduleButton"
+                onPress={() => ({})}
+                disabled
+              />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -300,10 +471,13 @@ export default class SchedulingVisit extends React.Component {
   }
 }
 
-const { shape, string, number } = PropTypes;
+
+const { shape, string, number, bool, func } = PropTypes;
 
 SchedulingVisit.propTypes = {
-  asyncSchedulingVisit: PropTypes.func.isRequired,
+  asyncSchedulingVisit: func.isRequired,
+  asyncGetCounselorFromGroup: func.isRequired,
+  setNewLists: func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
@@ -313,5 +487,20 @@ SchedulingVisit.propTypes = {
     schoolName: string.isRequired,
     schoolPhone: string.isRequired,
     schoolEmail: string.isRequired,
+  }).isRequired,
+  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
+  })).isRequired,
+  listOfInviteesWithCounselorInformations: shape({
+    nuvemCode: number.isRequired,
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
+  }).isRequired,
+  listOfInvitees: shape({
+    nuvemCode: number.isRequired,
+    confirmed: bool.isRequired,
   }).isRequired,
 };
