@@ -129,7 +129,7 @@ const reportReducer = (state = initialState.report, action) => {
     case SET_FOODPREPARATIONOBSERVATION:
       return {
         ...state,
-        foodPreparationkObservation: action.payload,
+        foodPreparationObservation: action.payload,
       };
     case SET_FOODHANDLERREPORT_POSITIVE:
       return {

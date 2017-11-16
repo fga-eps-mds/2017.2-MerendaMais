@@ -48,13 +48,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingRight: 10,
   },
-  text_Water: {
-    paddingLeft: 20,
-    paddingTop: 5,
-    color: 'blue',
-    fontSize: 18,
-    paddingRight: 10,
-  },
 });
 
 export default class MainReportsScreen extends React.Component {
@@ -219,7 +212,7 @@ export default class MainReportsScreen extends React.Component {
     if (newStateFoodPreparation.report.statusFoodPreparation) {
       this.state.anyReport = true;
       return (
-        <View style={{ marginLeft: 10 }}>
+        <View style={{ marginLeft: 5 }}>
           <Checkbox
             checked={this.state.anyReport}
             label=" "
@@ -240,15 +233,6 @@ export default class MainReportsScreen extends React.Component {
         />
         <ScrollView>
           <View>
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.stockFoodCheckoutScreen()}
-              >
-                <Text style={styles.text}>Estoque de Alimentos</Text>
-              </TouchableOpacity>
-              {this.checkingStockFoodReport()}
-            </View>
-
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
               <TouchableOpacity
                 onPress={() => Actions.kitchenCheckoutScreen()}
@@ -278,20 +262,29 @@ export default class MainReportsScreen extends React.Component {
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
               <TouchableOpacity
-                onPress={() => Actions.foodQualityCheckoutScreen()}
-              >
-                <Text style={styles.text}>Qualidade da Alimentação</Text>
-              </TouchableOpacity>
-              {this.checkingFoodQualityReport()}
-            </View>
-
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
                 onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
               >
                 <Text style={styles.text}>Arredores da Escola</Text>
               </TouchableOpacity>
               {this.checkingSchoolSurroundingsReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.stockFoodCheckoutScreen()}
+              >
+                <Text style={styles.text}>Estoque de Alimentos</Text>
+              </TouchableOpacity>
+              {this.checkingStockFoodReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.foodQualityCheckoutScreen()}
+              >
+                <Text style={styles.text}>Qualidade da Alimentação</Text>
+              </TouchableOpacity>
+              {this.checkingFoodQualityReport()}
             </View>
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
@@ -307,7 +300,7 @@ export default class MainReportsScreen extends React.Component {
               <TouchableOpacity
                 onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
               >
-                <Text style={styles.text_Water}>Abastecimento de Água e Esgoto Sanitário</Text>
+                <Text style={styles.text}>Abastecimento de Água e Esgoto</Text>
               </TouchableOpacity>
               {this.checkingWaterSewerSupplyReport()}
             </View>
@@ -316,7 +309,7 @@ export default class MainReportsScreen extends React.Component {
               <TouchableOpacity
                 onPress={() => Actions.foodPreparationCheckoutScreen()}
               >
-                <Text style={styles.text_Water}>Abastecimento de Água e Esgoto Sanitário</Text>
+                <Text style={styles.text}>Preparação e Distribuição de Alimentos</Text>
               </TouchableOpacity>
               {this.checkingFoodPreparationReport()}
             </View>

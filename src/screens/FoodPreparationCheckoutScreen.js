@@ -122,7 +122,7 @@ export default class FoodPreparationCheckoutScreen extends React.Component {
       <View style={styles.principal}>
         <Header
           title={'Relatório'}
-          subTitle={'Refeitório'}
+          subTitle={'Preparação e Distribuição'}
           backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
