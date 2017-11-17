@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import {
   Text,
   StyleSheet,
   ScrollView,
   View,
-  TextInput,
   TouchableOpacity,
   Picker,
   Alert,
   KeyboardAvoidingView,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
@@ -26,7 +24,7 @@ import {
   EXECUTIVE_POWER,
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
-  CIVILIAN_ENTITIES
+  CIVILIAN_ENTITIES,
 } from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 import brazilianStates from '../brazilianStates';
@@ -35,6 +33,7 @@ import CpfField from '../components/CpfField';
 import NameField from '../components/NameField';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
+import PhoneField from '../components/PhoneField';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -304,8 +303,8 @@ export default class RegisterScreen extends React.Component {
               profile: {
                 ...this.state.profile,
                 CAE_municipalDistrict: value,
-                CAE: `${value} ${UfInitials}`.trim()
-              }
+                CAE: `${value} ${UfInitials}`.trim(),
+              },
             })}
           >
             <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />
@@ -361,20 +360,12 @@ export default class RegisterScreen extends React.Component {
               />
 
               <Text>Telefone</Text>
-              <View style={styles.InputFieldStyle}>
-                <MaterialIcons name="phone" style={styles.icon} size={26} color="black" />
-                <TextInput
-                  style={styles.InputStyle}
-                  placeholder="Digite o seu telefone"
-                  placeholderTextColor="#95a5a6"
-                  underlineColorAndroid="transparent"
-                  returnKeyLabel={'next'}
-                  maxLength={11}
-                  keyboardType={'phone-pad'}
-                  onChangeText={text => this.validatePhone(text)}
-                  value={this.state.profile.phone}
-                />
-              </View>
+              <PhoneField
+                value={this.state.profile.phone}
+                callback={validPhone =>
+                  this.setState({ profile: { ...this.state.profile, phone: validPhone } })}
+              />
+
 
               <Text>Cargo</Text>
               <View
@@ -416,8 +407,8 @@ export default class RegisterScreen extends React.Component {
                   onValueChange={value => this.setState({
                     profile: {
                       ...this.state.profile,
-                      segment: value
-                    }
+                      segment: value,
+                    },
                   })}
                   selectedValue={this.state.profile.segment}
                 >
@@ -442,7 +433,7 @@ export default class RegisterScreen extends React.Component {
                             ...this.state.profile,
                             CAE_Type: value,
                             CAE_municipalDistrict: '',
-                            CAE: `${UfInitials}`.trim()
+                            CAE: `${UfInitials}`.trim(),
                           },
                         })
                         :
@@ -450,7 +441,7 @@ export default class RegisterScreen extends React.Component {
                           profile: {
                             ...this.state.profile,
                             CAE_Type: value,
-                            CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim()
+                            CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim(),
                           },
                         })
                     )
@@ -474,8 +465,8 @@ export default class RegisterScreen extends React.Component {
                     profile: {
                       ...this.state.profile,
                       CAE_UF: value,
-                      CAE: `${this.state.profile.CAE_municipalDistrict} ${value.substr(0, 2)}`.trim()
-                    }
+                      CAE: `${this.state.profile.CAE_municipalDistrict} ${value.substr(0, 2)}`.trim(),
+                    },
                   })}
                 >
                   <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />
