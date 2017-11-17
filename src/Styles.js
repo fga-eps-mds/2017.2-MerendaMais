@@ -64,6 +64,13 @@ const styles = {
     borderWidth: 1,
     borderColor: 'gray',
   },
+  InputFieldDropdown: {
+    marginTop: 1,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 7,
+    marginBottom: 10,
+  },
   InputFieldIcon: {
     margin: 6,
   },
