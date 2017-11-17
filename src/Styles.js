@@ -38,6 +38,20 @@ const styles = {
   icon: {
     marginRight: 10,
   },
+  flatListButton: {
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  flatListItem: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 0.5,
+    borderRadius: 7,
+  },
+  flatListIcon: {
+    margin: 8,
+  },
 };
 
 export default styles;

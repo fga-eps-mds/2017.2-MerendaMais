@@ -248,6 +248,7 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       </View>
     </View>
     <View
+      key="schoolListView"
       style={
         Object {
           "borderColor": "black",
