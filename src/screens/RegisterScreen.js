@@ -29,6 +29,7 @@ import {
 import { logInfo } from '../../logConfig/loggers';
 import brazilianStates from '../brazilianStates';
 import municipalDistricts from '../municipalDistricts';
+import CpfField from '../components/CpfField';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -314,20 +315,11 @@ export default class RegisterScreen extends React.Component {
             <View style={{ paddingHorizontal: 15 }}>
 
               <Text>CPF</Text>
-              <View style={styles.InputFieldStyle}>
-                <FontAwesome name="user-circle" style={styles.icon} size={26} color="black" />
-                <TextInput
-                  style={styles.InputStyle}
-                  placeholder="Digite o seu CPF"
-                  placeholderTextColor="#95a5a6"
-                  underlineColorAndroid="transparent"
-                  returnKeyLabel={'next'}
-                  maxLength={11}
-                  keyboardType={'numeric'}
-                  onChangeText={text => this.validateCpf(text)}
-                  value={this.state.profile.cpf}
-                />
-              </View>
+              <CpfField
+                value={this.state.profile.cpf}
+                callback={validCpf =>
+                  this.setState({ profile: { ...this.state.profile, cpf: validCpf } })}
+              />
 
               <Text>Nome</Text>
               <View style={styles.InputFieldStyle}>
