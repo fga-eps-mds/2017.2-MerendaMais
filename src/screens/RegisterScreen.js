@@ -30,6 +30,7 @@ import { logInfo } from '../../logConfig/loggers';
 import brazilianStates from '../brazilianStates';
 import municipalDistricts from '../municipalDistricts';
 import CpfField from '../components/CpfField';
+import NameField from '../components/NameField';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -322,22 +323,11 @@ export default class RegisterScreen extends React.Component {
               />
 
               <Text>Nome</Text>
-              <View style={styles.InputFieldStyle}>
-                <MaterialIcons name="face" style={styles.icon} size={26} color="black" />
-                <TextInput
-                  style={styles.InputStyle}
-                  placeholder="Digite o seu nome completo"
-                  placeholderTextColor="#95a5a6"
-                  underlineColorAndroid="transparent"
-                  returnKeyLabel={'next'}
-                  maxLength={60}
-                  keyboardType={'default'}
-                  autoCapitalize={'words'}
-                  onChangeText={text => this.validateName(text)}
-                  value={this.state.name}
-                />
-              </View>
-
+              <NameField
+                value={this.state.name}
+                callback={validName => this.setState({ name: validName })}
+              />
+              
               <Text>Email</Text>
               <View style={styles.InputFieldStyle}>
                 <MaterialIcons name="email" style={styles.icon} size={26} color="black" />
