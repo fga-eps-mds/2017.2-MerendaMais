@@ -11,7 +11,8 @@ import {
   Picker,
   Alert,
   KeyboardAvoidingView,
-  ActivityIndicator } from 'react-native';
+  ActivityIndicator
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 import {
@@ -25,12 +26,14 @@ import {
   EXECUTIVE_POWER,
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
-  CIVILIAN_ENTITIES } from '../constants';
+  CIVILIAN_ENTITIES
+} from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 import brazilianStates from '../brazilianStates';
 import municipalDistricts from '../municipalDistricts';
 import CpfField from '../components/CpfField';
 import NameField from '../components/NameField';
+import EmailField from '../components/EmailField';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -190,7 +193,7 @@ export default class RegisterScreen extends React.Component {
 
     // Validating Phone.
     if (!phoneRegex1.test(this.state.profile.phone) &&
-    !phoneRegex2.test(this.state.profile.phone)) {
+      !phoneRegex2.test(this.state.profile.phone)) {
       error = true;
       errorMessage += 'Telefone inválido.\n';
     }
@@ -296,9 +299,13 @@ export default class RegisterScreen extends React.Component {
         >
           <Picker
             selectedValue={this.state.profile.CAE_municipalDistrict}
-            onValueChange={value => this.setState({ profile: { ...this.state.profile,
-              CAE_municipalDistrict: value,
-              CAE: `${value} ${UfInitials}`.trim() } })}
+            onValueChange={value => this.setState({
+              profile: {
+                ...this.state.profile,
+                CAE_municipalDistrict: value,
+                CAE: `${value} ${UfInitials}`.trim()
+              }
+            })}
           >
             <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />
             {municipalDistricts[UfInitials].cidades.map(item =>
@@ -327,23 +334,13 @@ export default class RegisterScreen extends React.Component {
                 value={this.state.name}
                 callback={validName => this.setState({ name: validName })}
               />
-              
+
               <Text>Email</Text>
-              <View style={styles.InputFieldStyle}>
-                <MaterialIcons name="email" style={styles.icon} size={26} color="black" />
-                <TextInput
-                  style={styles.InputStyle}
-                  placeholder="Digite o seu email"
-                  placeholderTextColor="#95a5a6"
-                  underlineColorAndroid="transparent"
-                  returnKeyLabel={'next'}
-                  maxLength={50}
-                  keyboardType={'email-address'}
-                  autoCapitalize={'none'}
-                  onChangeText={text => this.setState({ email: text })}
-                  value={this.state.email}
-                />
-              </View>
+
+              <EmailField
+                value={this.state.email}
+                callback={validEmail => this.setState({ email: validEmail })}
+              />
 
               <Text>Senha</Text>
               <View style={this.changePasswordStyleAccordingToInput()}>
@@ -429,8 +426,12 @@ export default class RegisterScreen extends React.Component {
                 style={styles.InputFieldDropdown}
               >
                 <Picker
-                  onValueChange={value => this.setState({ profile: { ...this.state.profile,
-                    segment: value } })}
+                  onValueChange={value => this.setState({
+                    profile: {
+                      ...this.state.profile,
+                      segment: value
+                    }
+                  })}
                   selectedValue={this.state.profile.segment}
                 >
                   <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
@@ -449,15 +450,21 @@ export default class RegisterScreen extends React.Component {
                   onValueChange={
                     value => (
                       value === STATE_COUNSELOR_CAE ?
-                        this.setState({ profile: { ...this.state.profile,
-                          CAE_Type: value,
-                          CAE_municipalDistrict: '',
-                          CAE: `${UfInitials}`.trim() },
+                        this.setState({
+                          profile: {
+                            ...this.state.profile,
+                            CAE_Type: value,
+                            CAE_municipalDistrict: '',
+                            CAE: `${UfInitials}`.trim()
+                          },
                         })
                         :
-                        this.setState({ profile: { ...this.state.profile,
-                          CAE_Type: value,
-                          CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim() },
+                        this.setState({
+                          profile: {
+                            ...this.state.profile,
+                            CAE_Type: value,
+                            CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim()
+                          },
                         })
                     )
                   }
@@ -476,9 +483,13 @@ export default class RegisterScreen extends React.Component {
               >
                 <Picker
                   selectedValue={this.state.profile.CAE_UF}
-                  onValueChange={value => this.setState({ profile: { ...this.state.profile,
-                    CAE_UF: value,
-                    CAE: `${this.state.profile.CAE_municipalDistrict} ${value.substr(0, 2)}`.trim() } })}
+                  onValueChange={value => this.setState({
+                    profile: {
+                      ...this.state.profile,
+                      CAE_UF: value,
+                      CAE: `${this.state.profile.CAE_municipalDistrict} ${value.substr(0, 2)}`.trim()
+                    }
+                  })}
                 >
                   <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />
                   {brazilianStates.estados.map(item =>
