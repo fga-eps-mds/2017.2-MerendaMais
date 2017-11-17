@@ -34,6 +34,7 @@ import municipalDistricts from '../municipalDistricts';
 import CpfField from '../components/CpfField';
 import NameField from '../components/NameField';
 import EmailField from '../components/EmailField';
+import PasswordField from '../components/PasswordField';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -343,20 +344,10 @@ export default class RegisterScreen extends React.Component {
               />
 
               <Text>Senha</Text>
-              <View style={this.changePasswordStyleAccordingToInput()}>
-                <MaterialIcons name="lock" style={styles.icon} size={26} color="black" />
-                <TextInput
-                  style={styles.InputStyle}
-                  placeholder="Digite sua senha"
-                  placeholderTextColor="#95a5a6"
-                  underlineColorAndroid="transparent"
-                  returnKeyLabel={'next'}
-                  maxLength={30}
-                  keyboardType={'default'}
-                  onChangeText={text => this.setState({ password: text })}
-                  secureTextEntry
-                />
-              </View>
+              <PasswordField
+                callback={validPassword => this.setState({ password: validPassword })}
+                password={this.state.password}
+              />
 
               <Text>Confirmar Senha</Text>
               <View style={this.changeStyleIfPasswordsMatch(this.state.passwordCompared)}>
