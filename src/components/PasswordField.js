@@ -15,12 +15,26 @@ const changePasswordStyleAccordingToInput = (password) => {
   return [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }];
 };
 
+const changeStyleIfPasswordsMatch = (password, passwordCompared) => {
+  if (passwordCompared === '') {
+    return styles.InputFieldStyle;
+  } else if (password === passwordCompared) {
+    return [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }];
+  }
+  return [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }];
+};
+
 const PasswordField = props => (
-  <View style={changePasswordStyleAccordingToInput(props.password)}>
+  <View
+    style={
+      props.isPassword ?
+        changePasswordStyleAccordingToInput(props.password) :
+        changeStyleIfPasswordsMatch(props.password, props.passwordCompared)}
+  >
     <MaterialIcons name="lock" style={styles.icon} size={26} color="black" />
     <TextInput
       style={styles.InputStyle}
-      placeholder="Digite sua senha"
+      placeholder={props.placeholder}
       placeholderTextColor="#95a5a6"
       underlineColorAndroid="transparent"
       returnKeyLabel={'next'}
@@ -35,6 +49,13 @@ const PasswordField = props => (
 PasswordField.propTypes = {
   callback: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,
+  passwordCompared: PropTypes.string,
+  isPassword: PropTypes.bool.isRequired,
+  placeholder: PropTypes.string.isRequired,
+};
+
+PasswordField.defaultProps = {
+  passwordCompared: '',
 };
 
 export default PasswordField;

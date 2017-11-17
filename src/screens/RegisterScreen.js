@@ -347,22 +347,18 @@ export default class RegisterScreen extends React.Component {
               <PasswordField
                 callback={validPassword => this.setState({ password: validPassword })}
                 password={this.state.password}
+                placeholder="Digite sua senha"
+                isPassword
               />
 
               <Text>Confirmar Senha</Text>
-              <View style={this.changeStyleIfPasswordsMatch(this.state.passwordCompared)}>
-                <MaterialIcons name="lock" style={styles.icon} size={26} color="gray" />
-                <TextInput
-                  style={styles.InputStyle}
-                  placeholder="Digite sua senha novamente"
-                  placeholderTextColor="#95a5a6"
-                  underlineColorAndroid="transparent"
-                  returnKeyLabel={'next'}
-                  keyboardType={'default'}
-                  onChangeText={text => this.setState({ passwordCompared: text })}
-                  secureTextEntry
-                />
-              </View>
+              <PasswordField
+                callback={validPassword => this.setState({ passwordCompared: validPassword })}
+                password={this.state.password}
+                passwordCompared={this.state.passwordCompared}
+                placeholder="Digite sua senha novamente"
+                isPassword={false}
+              />
 
               <Text>Telefone</Text>
               <View style={styles.InputFieldStyle}>
