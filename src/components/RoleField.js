@@ -20,7 +20,7 @@ const RoleField = props => (
 );
 
 RoleField.propTypes = {
-  selectedValue: PropTypes.bool.isRequired,
+  selectedValue: PropTypes.string.isRequired,
   callback: PropTypes.func.isRequired,
 };
 

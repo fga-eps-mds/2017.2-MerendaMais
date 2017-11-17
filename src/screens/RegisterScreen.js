@@ -35,6 +35,7 @@ import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
 import PhoneField from '../components/PhoneField';
 import RoleField from '../components/RoleField';
+import CounselorTypeField from '../components/CounselorTypeField';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -378,20 +379,12 @@ export default class RegisterScreen extends React.Component {
               />
 
               <Text>Tipo de Conselheiro</Text>
-              <View
-                style={styles.InputFieldDropdown}
-              >
-                <Picker
-                  onValueChange={value => this.setState(
-                    { profile: { ...this.state.profile, counselorType: value } },
-                  )}
-                  selectedValue={this.state.profile.counselorType}
-                >
-                  <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
-                  <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />
-                  <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />
-                </Picker>
-              </View>
+              <CounselorTypeField
+                selectedValue={this.state.profile.counselorType}
+                callback={counselorTypeChecked => this.setState(
+                  { profile: { ...this.state.profile, counselorType: counselorTypeChecked } },
+                )}
+              />
 
               <Text>Segmento</Text>
               <View
