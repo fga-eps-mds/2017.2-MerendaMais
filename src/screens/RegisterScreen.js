@@ -28,13 +28,13 @@ import {
 } from '../constants';
 import { logInfo } from '../../logConfig/loggers';
 import brazilianStates from '../brazilianStates';
-import municipalDistricts from '../municipalDistricts';
 import CpfField from '../components/CpfField';
 import NameField from '../components/NameField';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
 import PhoneField from '../components/PhoneField';
 import DropdownComponent from '../components/DropdownComponent';
+import MunicipalDistrict from '../components/MunicipalDistrict';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -103,6 +103,14 @@ const styles = StyleSheet.create({
 
 });
 
+const UfInitials = (CAE_UF) => {
+  if (CAE_UF !== '') {
+    return CAE_UF.substr(0, 2);
+  }
+
+  return '';
+};
+
 export default class RegisterScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -125,30 +133,8 @@ export default class RegisterScreen extends React.Component {
       passwordCompared: '',
     };
 
-    /* Bind is used in this functions, because they
-    use inside them React functions like: this.setState. */
-    this.validateCpf = this.validateCpf.bind(this);
-    this.validateName = this.validateName.bind(this);
-    this.validatePhone = this.validatePhone.bind(this);
     this.register = this.register.bind(this);
   }
-
-  // Functions that erase invalid caracteres.
-  validateCpf(cpf) {
-    const validCpf = cpf.replace(/[^0-9]/g, '');
-    this.setState({ profile: { ...this.state.profile, cpf: validCpf } });
-  }
-
-  validateName(name) {
-    const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ name: validName });
-  }
-
-  validatePhone(phone) {
-    const validPhone = phone.replace(/[^0-9]/g, '');
-    this.setState({ profile: { ...this.state.profile, phone: validPhone } });
-  }
-
 
   // Verify if there's a error in some field form.
   register() {
@@ -243,26 +229,6 @@ export default class RegisterScreen extends React.Component {
     }
   }
 
-  changePasswordStyleAccordingToInput() {
-    const passwordRegex = /^(?=.{6,})(?!.*\s).*$/g;
-
-    if (this.state.password === '') {
-      return styles.InputFieldStyle;
-    } else if (passwordRegex.test(this.state.password)) {
-      return [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }];
-    }
-    return [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }];
-  }
-
-  changeStyleIfPasswordsMatch(passwordCompared) {
-    if (passwordCompared === '') {
-      return styles.InputFieldStyle;
-    } else if (this.state.password === passwordCompared) {
-      return [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }];
-    }
-    return [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }];
-  }
-
   renderBtnLogin() {
     if (this.props.isLoading) {
       return (
@@ -288,33 +254,6 @@ export default class RegisterScreen extends React.Component {
   render() {
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
-
-    const UfInitials = this.state.profile.CAE_UF.substr(0, 2);
-
-    const municipalDistrict = this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.CAE_UF !== '' ? (
-      <View >
-        <Text>Municipio do CAE</Text>
-        <View
-          key="municipalDistrict"
-          style={styles.InputFieldDropdown}
-        >
-          <Picker
-            selectedValue={this.state.profile.CAE_municipalDistrict}
-            onValueChange={value => this.setState({
-              profile: {
-                ...this.state.profile,
-                CAE_municipalDistrict: value,
-                CAE: `${value} ${UfInitials}`.trim(),
-              },
-            })}
-          >
-            <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />
-            {municipalDistricts[UfInitials].cidades.map(item =>
-              (<Picker.Item label={item} value={`${item} -`} color="#000000" />))}
-          </Picker>
-        </View>
-      </View>
-    ) : null;
 
     return (
       <View style={styles.principal}>
@@ -423,7 +362,7 @@ export default class RegisterScreen extends React.Component {
                         ...this.state.profile,
                         CAE_Type: caeType,
                         CAE_municipalDistrict: '',
-                        CAE: `${UfInitials}`.trim(),
+                        CAE: `${UfInitials(this.state.profile.CAE_UF)}`.trim(),
                       },
                     })
                     :
@@ -431,7 +370,7 @@ export default class RegisterScreen extends React.Component {
                       profile: {
                         ...this.state.profile,
                         CAE_Type: caeType,
-                        CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim(),
+                        CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials(this.state.profile.CAE_UF)}`.trim(),
                       },
                     })
                 )}
@@ -458,11 +397,25 @@ export default class RegisterScreen extends React.Component {
                     item => (<Picker.Item label={item} value={item} color="#000000" />))}
               />
 
-              {municipalDistrict}
+              {this.state.profile.CAE_Type === MUNICIPAL_COUNSELOR_CAE && this.state.profile.CAE_UF !== '' && (
+                <MunicipalDistrict
+                  selectedValue={this.state.profile.CAE_municipalDistrict}
+                  callback={checkedValue => this.setState({
+                    profile: {
+                      ...this.state.profile,
+                      CAE_municipalDistrict: checkedValue,
+                      CAE: `${checkedValue} ${UfInitials(this.state.profile.CAE_UF)}`.trim(),
+                    },
+                  })}
+                  UfInitials={UfInitials(this.state.profile.CAE_UF)}
+                />
+              )}
 
               <Text>CAE</Text>
               <View style={[styles.InputFieldStyle, { justifyContent: 'center' }]}>
-                <Text>{this.state.profile.CAE_municipalDistrict} {UfInitials}</Text>
+                <Text>
+                  {this.state.profile.CAE_municipalDistrict} {UfInitials(this.state.profile.CAE_UF)}
+                </Text>
               </View>
 
               {this.renderBtnLogin()}

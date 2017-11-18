@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Picker } from 'react-native';
 import styles from '../Styles';
-import { PRESIDENT_COUNSELOR, COMMON_COUNSELOR } from '../constants';
 
 const DropdownComponent = props => (
   <View
