@@ -7,6 +7,7 @@ import styles from '../Styles';
 const changePasswordStyleAccordingToInput = (password) => {
   const passwordRegex = /^(?=.{6,})(?!.*\s).*$/g;
 
+
   if (password === '') {
     return styles.InputFieldStyle;
   } else if (passwordRegex.test(password)) {
@@ -42,8 +43,7 @@ const PasswordField = props => (
       keyboardType={'default'}
       onChangeText={password => props.callback(password)}
       secureTextEntry
-      value={props.value}
-      ref={() => passwordInput => props.ref(passwordInput)}
+      focus={props.focus}
     />
   </View>
 );
@@ -55,14 +55,13 @@ PasswordField.propTypes = {
   isPassword: PropTypes.bool.isRequired,
   placeholder: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
-  value: PropTypes.string.isRequired,
-  ref: PropTypes.func,
+  focus: PropTypes.bool,
 };
 
 PasswordField.defaultProps = {
   passwordCompared: '',
   width: '',
-  ref: () => (() => ({})),
+  focus: false,
 };
 
 export default PasswordField;

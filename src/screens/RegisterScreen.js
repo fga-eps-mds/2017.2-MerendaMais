@@ -269,7 +269,7 @@ export default class RegisterScreen extends React.Component {
                 password={this.state.password}
                 placeholder="Digite sua senha"
                 isPassword
-                value={this.state.password}
+                size={26}
               />
 
               <Text>Confirmar Senha</Text>
@@ -279,7 +279,7 @@ export default class RegisterScreen extends React.Component {
                 passwordCompared={this.state.passwordCompared}
                 placeholder="Digite sua senha novamente"
                 isPassword={false}
-                value={this.state.passwordCompared}
+                size={26}
               />
 
               <Text>Telefone</Text>

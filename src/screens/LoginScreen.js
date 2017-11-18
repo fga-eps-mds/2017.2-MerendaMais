@@ -12,6 +12,8 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
+import ButtonWithActivityIndicator from '../components/ButtonWithActivityIndicator';
+import { email } from 'react-native-communications';
 
 const styles = StyleSheet.create({
   principal: {
@@ -84,51 +86,41 @@ export default class LoginScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
+      focus: false,
     };
   }
 
-  renderBtnLogin() {
-    if (this.props.isLoading) {
-      return (
-        <ActivityIndicator style={styles.loading} size="large" color="#FF9500" />
-      );
-    }
-    return (
-      <TouchableOpacity
-        style={styles.buttonLogin}
-        activeOpacity={0.7}
-        key="LoginCounselor"
-        onPress={() => this.props.asyncLoginCounselor(this.state)}
-      >
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
-    );
-  }
-
   render() {
+    console.log(this.passwordInput);
     return (
       <View style={styles.principal}>
         <Header />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <EmailField
-            callback={email => this.setState({ email })}
+            callback={emailInput => this.setState({ email: emailInput })}
             placeholder="Email"
-            onSubmitEditing={() => this.passwordInput.focus()}
+            onSubmitEditing={() => this.setState({ focus: true })}
             value={this.state.email}
             size={28}
           />
 
           <PasswordField
-            callback={validPassword => this.setState({ validPassword })}
+            callback={passwordInput => this.setState({ password: passwordInput })}
             password={this.state.password}
             placeholder="Digite sua senha"
             isPassword
             size={28}
-            value={this.state.password}
-            ref={(passwordInput) => { this.passwordInput = passwordInput; }}
+            focus={this.state.focus}
           />
 
-          {this.renderBtnLogin()}
+          <ButtonWithActivityIndicator
+            activityIndicatorStyle={styles.loading}
+            onPress={() => this.props.asyncLoginCounselor(this.state)}
+            isLoading={this.props.isLoading}
+            buttonKey="LoginCounselor"
+            buttonText="Entrar"
+            buttonStyle={styles.buttonLogin}
+          />
 
         </KeyboardAvoidingView>
 

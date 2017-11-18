@@ -25,13 +25,15 @@ const ButtonWithActivityIndicator = props => (
   </View>
 );
 
+
+// For some reason, the style elements are considered numbers.
 ButtonWithActivityIndicator.propTypes = {
-  activityIndicatorStyle: PropTypes.element.isRequired,
+  activityIndicatorStyle: PropTypes.number.isRequired,
   isLoading: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
   buttonKey: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
-  buttonStyle: PropTypes.element.isRequired,
+  buttonStyle: PropTypes.number.isRequired,
 };
 
 export default ButtonWithActivityIndicator;
