@@ -272,7 +272,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Caixas de gordura em adequado estado de conservação e funcionamento.
+            Caixas de gordura em adequado estado de conservação e funcionamento
           </Text>
         </View>
       </View>

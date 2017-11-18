@@ -35,7 +35,7 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
   SET_STATUSWATERSEWERSUPPLY,
   SET_FOODPREPARATIONOBSERVATION,
-  SET_FOODPREPARATIONEPORT_POSITIVE,
+  SET_FOODPREPARATIONREPORT_POSITIVE,
   SET_FOODPREPARATIONREPORT_NEGATIVE,
   SET_STATUSFOODPREPARATION,
 } from '../actions/types';
@@ -106,7 +106,7 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         waterSewerSupplyObservation: action.payload,
       };
-    case SET_FOODPREPARATIONEPORT_POSITIVE:
+    case SET_FOODPREPARATIONREPORT_POSITIVE:
       return {
         ...state,
         foodPreparation: state.foodPreparation.map((item) => {
