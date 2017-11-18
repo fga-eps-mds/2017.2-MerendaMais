@@ -8,6 +8,27 @@ import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../c
 
 const FILE_NAME = 'SchedulingActions.js';
 
+export const asyncGetSchedule = counselor => (dispatch) => {
+  const getScheduleParamsAndHeader = {
+    params: {
+      codGrupoDestino: counselor.profile.codGroup,
+    },
+    headers: {
+      appToken: counselor.token,
+    },
+  };
+
+  axios.get(POSTS_LINK_NUVEM_CIVICA, getScheduleParamsAndHeader)
+    .then((response) => {
+      logInfo(FILE_NAME, 'asyncGetSchedule',
+        `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'schedulingVisit',
+        `Request result in an ${error}`);
+    });
+};
+
 // Treating request errors
 const treatingPostsError = (error) => {
   if (error.response.status === 401) {
@@ -76,7 +97,7 @@ const schedulingVisit = (visitData) => {
     },
   };
 
-  axios.post(POSTS_LINK_NUVEM_CIVICA, bodyToSchedulingVisit, headerToSchedulingVisit)
+  axios.post(`${POSTS_LINK_NUVEM_CIVICA}conteudos`, bodyToSchedulingVisit, headerToSchedulingVisit)
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
@@ -90,11 +111,9 @@ const schedulingVisit = (visitData) => {
     });
 };
 
-const asyncSchedulingVisit = visitData => () => {
+export const asyncSchedulingVisit = visitData => () => {
   logInfo(FILE_NAME, 'asyncSchedulingVisit',
     `Scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
 
   schedulingVisit(visitData);
 };
-
-export default asyncSchedulingVisit;

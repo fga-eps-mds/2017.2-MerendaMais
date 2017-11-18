@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Scene, Drawer } from 'react-native-router-flux';
+import { Router, Scene, Drawer, TabBar } from 'react-native-router-flux';
 
 import InitialScreen from './src/screens/InitialScreen';
 import LoginContainer from './src/Containers/LoginContainer';
@@ -20,6 +20,7 @@ import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutCo
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
+import StartInspection from './src/screens/StartInspection';
 
 const Routes = () => ({
   render() {
@@ -35,6 +36,7 @@ const Routes = () => ({
         >
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
+            <Scene key="startInspection" component={StartInspection} hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
