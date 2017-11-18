@@ -40,49 +40,10 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           CPF
         </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "flex-start",
-              "marginBottom": 10,
-              "marginTop": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Icon
-            allowFontScaling={false}
-            color="black"
-            name="user-circle"
-            size={26}
-            style={
-              Object {
-                "marginRight": 6,
-              }
-            }
-          />
-          <TextInput
-            keyboardType="numeric"
-            maxLength={11}
-            onChangeText={[Function]}
-            placeholder="Digite o seu CPF"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />
-        </View>
+        <CpfField
+          callback={[Function]}
+          value=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -91,50 +52,10 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Nome
         </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "flex-start",
-              "marginBottom": 10,
-              "marginTop": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Icon
-            allowFontScaling={false}
-            color="black"
-            name="face"
-            size={26}
-            style={
-              Object {
-                "marginRight": 6,
-              }
-            }
-          />
-          <TextInput
-            autoCapitalize="words"
-            keyboardType="default"
-            maxLength={60}
-            onChangeText={[Function]}
-            placeholder="Digite o seu nome completo"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />
-        </View>
+        <NameField
+          callback={[Function]}
+          value=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -143,50 +64,14 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Email
         </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "flex-start",
-              "marginBottom": 10,
-              "marginTop": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Icon
-            allowFontScaling={false}
-            color="black"
-            name="email"
-            size={26}
-            style={
-              Object {
-                "marginRight": 6,
-              }
-            }
-          />
-          <TextInput
-            autoCapitalize="none"
-            keyboardType="email-address"
-            maxLength={50}
-            onChangeText={[Function]}
-            placeholder="Digite o seu email"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />
-        </View>
+        <EmailField
+          callback={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Digite o seu email"
+          size={26}
+          value=""
+          width={null}
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -195,49 +80,16 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Senha
         </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "flex-start",
-              "marginBottom": 10,
-              "marginTop": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Icon
-            allowFontScaling={false}
-            color="black"
-            name="lock"
-            size={26}
-            style={
-              Object {
-                "marginRight": 6,
-              }
-            }
-          />
-          <TextInput
-            keyboardType="default"
-            maxLength={30}
-            onChangeText={[Function]}
-            placeholder="Digite sua senha"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            secureTextEntry={true}
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-            underlineColorAndroid="transparent"
-          />
-        </View>
+        <PasswordField
+          callback={[Function]}
+          focus={false}
+          isPassword={true}
+          password=""
+          passwordCompared=""
+          placeholder="Digite sua senha"
+          size={26}
+          width=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -246,48 +98,16 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Confirmar Senha
         </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "flex-start",
-              "marginBottom": 10,
-              "marginTop": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Icon
-            allowFontScaling={false}
-            color="gray"
-            name="lock"
-            size={26}
-            style={
-              Object {
-                "marginRight": 6,
-              }
-            }
-          />
-          <TextInput
-            keyboardType="default"
-            onChangeText={[Function]}
-            placeholder="Digite sua senha novamente"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            secureTextEntry={true}
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-            underlineColorAndroid="transparent"
-          />
-        </View>
+        <PasswordField
+          callback={[Function]}
+          focus={false}
+          isPassword={false}
+          password=""
+          passwordCompared=""
+          placeholder="Digite sua senha novamente"
+          size={26}
+          width=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -296,49 +116,10 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Telefone
         </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "flex-start",
-              "marginBottom": 10,
-              "marginTop": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Icon
-            allowFontScaling={false}
-            color="black"
-            name="phone"
-            size={26}
-            style={
-              Object {
-                "marginRight": 6,
-              }
-            }
-          />
-          <TextInput
-            keyboardType="phone-pad"
-            maxLength={11}
-            onChangeText={[Function]}
-            placeholder="Digite o seu telefone"
-            placeholderTextColor="#95a5a6"
-            returnKeyLabel="next"
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-            underlineColorAndroid="transparent"
-            value=""
-          />
-        </View>
+        <PhoneField
+          callback={[Function]}
+          value=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -347,37 +128,27 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Cargo
         </Text>
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginTop": 1,
-            }
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />,
+              <PickerItem
+                label="Presidente"
+                value={true}
+              />,
+              <PickerItem
+                label="Conselheiro"
+                value={false}
+              />,
+            ]
           }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu cargo"
-              value=""
-            />
-            <PickerItem
-              label="Presidente"
-              value={true}
-            />
-            <PickerItem
-              label="Conselheiro"
-              value={false}
-            />
-          </Picker>
-        </View>
+          selectedValue=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -386,37 +157,27 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Tipo de Conselheiro
         </Text>
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginTop": 1,
-            }
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />,
+              <PickerItem
+                label="Titular"
+                value="Titular"
+              />,
+              <PickerItem
+                label="Suplente"
+                value="Suplente"
+              />,
+            ]
           }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu cargo"
-              value=""
-            />
-            <PickerItem
-              label="Titular"
-              value="Titular"
-            />
-            <PickerItem
-              label="Suplente"
-              value="Suplente"
-            />
-          </Picker>
-        </View>
+          selectedValue=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -425,45 +186,35 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Segmento
         </Text>
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginTop": 1,
-            }
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu segmento"
+                value=""
+              />,
+              <PickerItem
+                label="Poder executivo"
+                value="Poder executivo"
+              />,
+              <PickerItem
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />,
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />,
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
+              />,
+            ]
           }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu segmento"
-              value=""
-            />
-            <PickerItem
-              label="Poder executivo"
-              value="Poder executivo"
-            />
-            <PickerItem
-              label="Trabalhadores da educação"
-              value="Trabalhadores da educação"
-            />
-            <PickerItem
-              label="Pais de alunos"
-              value="Pais de alunos"
-            />
-            <PickerItem
-              label="Entidades civis"
-              value="Entidades civis"
-            />
-          </Picker>
-        </View>
+          selectedValue=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -472,37 +223,27 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           Tipo do CAE
         </Text>
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginTop": 1,
-            }
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o Tipo do seu CAE"
+                value=""
+              />,
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />,
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />,
+            ]
           }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha o Tipo do seu CAE"
-              value=""
-            />
-            <PickerItem
-              label="Municipal"
-              value="Municipal"
-            />
-            <PickerItem
-              label="Estadual"
-              value="Estadual"
-            />
-          </Picker>
-        </View>
+          selectedValue=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -511,164 +252,149 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         >
           UF do CAE
         </Text>
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginBottom": 10,
-              "marginTop": 1,
-            }
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#000000"
+                label="AC - Acre"
+                value="AC - Acre"
+              />,
+              <PickerItem
+                color="#000000"
+                label="AL - Alagoas"
+                value="AL - Alagoas"
+              />,
+              <PickerItem
+                color="#000000"
+                label="AP - Amapá"
+                value="AP - Amapá"
+              />,
+              <PickerItem
+                color="#000000"
+                label="AM - Amazonas"
+                value="AM - Amazonas"
+              />,
+              <PickerItem
+                color="#000000"
+                label="BA - Bahia"
+                value="BA - Bahia"
+              />,
+              <PickerItem
+                color="#000000"
+                label="CE - Ceará"
+                value="CE - Ceará"
+              />,
+              <PickerItem
+                color="#000000"
+                label="DF - Distrito Federal"
+                value="DF - Distrito Federal"
+              />,
+              <PickerItem
+                color="#000000"
+                label="ES - Espírito Santo"
+                value="ES - Espírito Santo"
+              />,
+              <PickerItem
+                color="#000000"
+                label="GO - Goiás"
+                value="GO - Goiás"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MA - Maranhão"
+                value="MA - Maranhão"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MT - Mato Grosso"
+                value="MT - Mato Grosso"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MS - Mato Grosso do Sul"
+                value="MS - Mato Grosso do Sul"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MG - Minas Gerais"
+                value="MG - Minas Gerais"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PA - Pará"
+                value="PA - Pará"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PB - Paraíba"
+                value="PB - Paraíba"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PR - Paraná"
+                value="PR - Paraná"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PE - Pernambuco"
+                value="PE - Pernambuco"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PI - Piauí"
+                value="PI - Piauí"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RJ - Rio de Janeiro"
+                value="RJ - Rio de Janeiro"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RN - Rio Grande do Norte"
+                value="RN - Rio Grande do Norte"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RS - Rio Grande do Sul"
+                value="RS - Rio Grande do Sul"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RO - Rondônia"
+                value="RO - Rondônia"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RR - Roraima"
+                value="RR - Roraima"
+              />,
+              <PickerItem
+                color="#000000"
+                label="SC - Santa Catarina"
+                value="SC - Santa Catarina"
+              />,
+              <PickerItem
+                color="#000000"
+                label="SP - São Paulo"
+                value="SP - São Paulo"
+              />,
+              <PickerItem
+                color="#000000"
+                label="SE - Sergipe"
+                value="SE - Sergipe"
+              />,
+              <PickerItem
+                color="#000000"
+                label="TO - Tocantins"
+                value="TO - Tocantins"
+              />,
+            ]
           }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha a UF do seu CAE"
-              value=""
-            />
-            <PickerItem
-              color="#000000"
-              label="AC - Acre"
-              value="AC - Acre"
-            />
-            <PickerItem
-              color="#000000"
-              label="AL - Alagoas"
-              value="AL - Alagoas"
-            />
-            <PickerItem
-              color="#000000"
-              label="AP - Amapá"
-              value="AP - Amapá"
-            />
-            <PickerItem
-              color="#000000"
-              label="AM - Amazonas"
-              value="AM - Amazonas"
-            />
-            <PickerItem
-              color="#000000"
-              label="BA - Bahia"
-              value="BA - Bahia"
-            />
-            <PickerItem
-              color="#000000"
-              label="CE - Ceará"
-              value="CE - Ceará"
-            />
-            <PickerItem
-              color="#000000"
-              label="DF - Distrito Federal"
-              value="DF - Distrito Federal"
-            />
-            <PickerItem
-              color="#000000"
-              label="ES - Espírito Santo"
-              value="ES - Espírito Santo"
-            />
-            <PickerItem
-              color="#000000"
-              label="GO - Goiás"
-              value="GO - Goiás"
-            />
-            <PickerItem
-              color="#000000"
-              label="MA - Maranhão"
-              value="MA - Maranhão"
-            />
-            <PickerItem
-              color="#000000"
-              label="MT - Mato Grosso"
-              value="MT - Mato Grosso"
-            />
-            <PickerItem
-              color="#000000"
-              label="MS - Mato Grosso do Sul"
-              value="MS - Mato Grosso do Sul"
-            />
-            <PickerItem
-              color="#000000"
-              label="MG - Minas Gerais"
-              value="MG - Minas Gerais"
-            />
-            <PickerItem
-              color="#000000"
-              label="PA - Pará"
-              value="PA - Pará"
-            />
-            <PickerItem
-              color="#000000"
-              label="PB - Paraíba"
-              value="PB - Paraíba"
-            />
-            <PickerItem
-              color="#000000"
-              label="PR - Paraná"
-              value="PR - Paraná"
-            />
-            <PickerItem
-              color="#000000"
-              label="PE - Pernambuco"
-              value="PE - Pernambuco"
-            />
-            <PickerItem
-              color="#000000"
-              label="PI - Piauí"
-              value="PI - Piauí"
-            />
-            <PickerItem
-              color="#000000"
-              label="RJ - Rio de Janeiro"
-              value="RJ - Rio de Janeiro"
-            />
-            <PickerItem
-              color="#000000"
-              label="RN - Rio Grande do Norte"
-              value="RN - Rio Grande do Norte"
-            />
-            <PickerItem
-              color="#000000"
-              label="RS - Rio Grande do Sul"
-              value="RS - Rio Grande do Sul"
-            />
-            <PickerItem
-              color="#000000"
-              label="RO - Rondônia"
-              value="RO - Rondônia"
-            />
-            <PickerItem
-              color="#000000"
-              label="RR - Roraima"
-              value="RR - Roraima"
-            />
-            <PickerItem
-              color="#000000"
-              label="SC - Santa Catarina"
-              value="SC - Santa Catarina"
-            />
-            <PickerItem
-              color="#000000"
-              label="SP - São Paulo"
-              value="SP - São Paulo"
-            />
-            <PickerItem
-              color="#000000"
-              label="SE - Sergipe"
-              value="SE - Sergipe"
-            />
-            <PickerItem
-              color="#000000"
-              label="TO - Tocantins"
-              value="TO - Tocantins"
-            />
-          </Picker>
-        </View>
+          selectedValue=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -707,11 +433,15 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
              
           </Text>
         </View>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          key="userCreation"
-          onPress={[Function]}
-          style={
+        <ButtonWithActivityIndicator
+          activityIndicatorStyle={
+            Object {
+              "marginBottom": 15,
+              "marginTop": 15,
+            }
+          }
+          buttonKey="userCreation"
+          buttonStyle={
             Object {
               "alignItems": "center",
               "backgroundColor": "#FF9500",
@@ -721,22 +451,10 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               "paddingVertical": 14,
             }
           }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "white",
-                "fontSize": 18,
-              }
-            }
-          >
-            Concluir
-          </Text>
-        </TouchableOpacity>
+          buttonText="Concluir"
+          isLoading={false}
+          onPress={[Function]}
+        />
       </View>
     </ScrollViewMock>
   </KeyboardAvoidingView>

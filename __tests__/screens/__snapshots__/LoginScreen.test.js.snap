@@ -25,78 +25,33 @@ exports[`Testing LoginCounselor renders as expected 1`] = `
       }
     }
   >
-    <View
-      style={
+    <EmailField
+      callback={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Email"
+      size={28}
+      value=""
+      width={null}
+    />
+    <PasswordField
+      callback={[Function]}
+      focus={false}
+      isPassword={true}
+      password=""
+      passwordCompared=""
+      placeholder="Digite sua senha"
+      size={28}
+      width=""
+    />
+    <ButtonWithActivityIndicator
+      activityIndicatorStyle={
         Object {
-          "alignItems": "center",
-          "backgroundColor": "#FAFAFA",
-          "borderColor": "gray",
-          "borderRadius": 7,
-          "borderWidth": 1,
-          "flexDirection": "row",
+          "marginTop": 50,
+          "paddingVertical": 13,
         }
       }
-    >
-      <Icon
-        allowFontScaling={false}
-        color="black"
-        name="email"
-        size={28}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
-      />
-      <TextInput
-        autoCapitalize="none"
-        keyboardType="email-address"
-        onChangeText={[Function]}
-        onSubmitEditing={[Function]}
-        placeholder="Email"
-        returnKeyType="next"
-        underlineColorAndroid="transparent"
-        width={300}
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#FAFAFA",
-          "borderColor": "gray",
-          "borderRadius": 7,
-          "borderWidth": 1,
-          "flexDirection": "row",
-          "marginTop": 30,
-        }
-      }
-    >
-      <Icon
-        allowFontScaling={false}
-        color="black"
-        name="lock"
-        size={28}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
-      />
-      <TextInput
-        onChangeText={[Function]}
-        placeholder="Senha"
-        returnKeyType="go"
-        secureTextEntry={true}
-        underlineColorAndroid="transparent"
-        width={300}
-      />
-    </View>
-    <TouchableOpacity
-      activeOpacity={0.7}
-      key="LoginCounselor"
-      onPress={[Function]}
-      style={
+      buttonKey="LoginCounselor"
+      buttonStyle={
         Object {
           "alignItems": "center",
           "backgroundColor": "#FF9500",
@@ -106,22 +61,10 @@ exports[`Testing LoginCounselor renders as expected 1`] = `
           "paddingVertical": 18,
         }
       }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "white",
-            "fontSize": 20,
-          }
-        }
-      >
-        Entrar
-      </Text>
-    </TouchableOpacity>
+      buttonText="Entrar"
+      isLoading={false}
+      onPress={[Function]}
+    />
   </KeyboardAvoidingView>
   <View
     style={
