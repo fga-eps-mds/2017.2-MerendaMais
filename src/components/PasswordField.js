@@ -31,7 +31,7 @@ const PasswordField = props => (
         changePasswordStyleAccordingToInput(props.password) :
         changeStyleIfPasswordsMatch(props.password, props.passwordCompared)}
   >
-    <MaterialIcons name="lock" style={styles.icon} size={26} color="black" />
+    <MaterialIcons name="lock" style={styles.icon} size={props.size} color="black" />
     <TextInput
       style={styles.InputStyle}
       placeholder={props.placeholder}
@@ -42,6 +42,9 @@ const PasswordField = props => (
       keyboardType={'default'}
       onChangeText={password => props.callback(password)}
       secureTextEntry
+      width={props.width}
+      value={props.value}
+      ref={() => passwordInput => props.ref(passwordInput)}
     />
   </View>
 );
@@ -52,10 +55,16 @@ PasswordField.propTypes = {
   passwordCompared: PropTypes.string,
   isPassword: PropTypes.bool.isRequired,
   placeholder: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
+  width: PropTypes.number,
+  value: PropTypes.string.isRequired,
+  ref: PropTypes.func,
 };
 
 PasswordField.defaultProps = {
   passwordCompared: '',
+  width: '',
+  ref: () => (() => ({})),
 };
 
 export default PasswordField;

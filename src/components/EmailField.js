@@ -6,10 +6,11 @@ import styles from '../Styles';
 
 const EmailField = props => (
   <View style={styles.InputFieldStyle}>
-    <MaterialIcons name="email" style={styles.icon} size={26} color="black" />
+    <MaterialIcons name="email" style={styles.icon} size={props.size} color="black" />
     <TextInput
+      width={props.width}
       style={styles.InputStyle}
-      placeholder="Digite o seu email"
+      placeholder={props.placeholder}
       placeholderTextColor="#95a5a6"
       underlineColorAndroid="transparent"
       returnKeyLabel={'next'}
@@ -18,6 +19,7 @@ const EmailField = props => (
       autoCapitalize={'none'}
       onChangeText={email => props.callback(email)}
       value={props.value}
+      onSubmitEditing={() => props.onSubmitEditing()}
     />
   </View>
 );
@@ -25,6 +27,15 @@ const EmailField = props => (
 EmailField.propTypes = {
   value: PropTypes.string.isRequired,
   callback: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  width: PropTypes.number,
+  onSubmitEditing: PropTypes.func,
+  size: PropTypes.number.isRequired,
+};
+
+EmailField.defaultProps = {
+  width: null,
+  onSubmitEditing: () => (() => ({})),
 };
 
 export default EmailField;

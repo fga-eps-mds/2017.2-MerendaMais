@@ -1,16 +1,17 @@
 import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
 import {
   ActivityIndicator,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
-  View } from 'react-native';
+  View
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import EmailField from '../components/EmailField';
+import PasswordField from '../components/PasswordField';
 
 const styles = StyleSheet.create({
   principal: {
@@ -109,34 +110,25 @@ export default class LoginScreen extends React.Component {
       <View style={styles.principal}>
         <Header />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
-          <View style={styles.Inputemail}>
-            <MaterialIcons name="email" style={styles.icon} size={28} color="black" />
-            <TextInput
-              width={300}
-              returnKeyType="next"
-              onChangeText={email => this.setState({ email })}
-              value={this.email}
-              underlineColorAndroid="transparent"
-              placeholder="Email"
-              keyboardType={'email-address'}
-              autoCapitalize={'none'}
-              onSubmitEditing={() => this.passwordInput.focus()}
-            />
-          </View>
+          <EmailField
+            callback={email => this.setState({ email })}
+            placeholder="Email"
+            onSubmitEditing={() => this.passwordInput.focus()}
+            value={this.state.email}
+            size={28}
+            width={300}
+          />
 
-          <View style={styles.InputPassword}>
-            <MaterialIcons name="lock" style={styles.icon} size={28} color="black" />
-            <TextInput
-              width={300}
-              underlineColorAndroid="transparent"
-              returnKeyType="go"
-              value={this.password}
-              secureTextEntry
-              onChangeText={password => this.setState({ password })}
-              placeholder="Senha"
-              ref={(passwordInput) => { this.passwordInput = passwordInput; }}
-            />
-          </View>
+          <PasswordField
+            callback={validPassword => this.setState({ validPassword })}
+            password={this.state.password}
+            placeholder="Digite sua senha"
+            isPassword
+            size={28}
+            value={this.state.password}
+            width={300}
+            ref={(passwordInput) => { this.passwordInput = passwordInput; }}
+          />
 
           {this.renderBtnLogin()}
 

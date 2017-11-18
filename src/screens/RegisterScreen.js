@@ -229,28 +229,6 @@ export default class RegisterScreen extends React.Component {
     }
   }
 
-  renderBtnLogin() {
-    if (this.props.isLoading) {
-      return (
-        <ActivityIndicator
-          style={{ marginTop: 15, marginBottom: 15 }}
-          size="large"
-          color="#FF9500"
-        />
-      );
-    }
-    return (
-      <TouchableOpacity
-        onPress={() => this.register()}
-        style={styles.buttonContainer}
-        activeOpacity={0.7}
-        key="userCreation"
-      >
-        <Text style={styles.buttonText}>Concluir</Text>
-      </TouchableOpacity>
-    );
-  }
-
   render() {
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
@@ -280,6 +258,8 @@ export default class RegisterScreen extends React.Component {
               <EmailField
                 value={this.state.email}
                 callback={validEmail => this.setState({ email: validEmail })}
+                placeholder="Digite o seu email"
+                size={26}
               />
 
               <Text>Senha</Text>
@@ -288,6 +268,7 @@ export default class RegisterScreen extends React.Component {
                 password={this.state.password}
                 placeholder="Digite sua senha"
                 isPassword
+                value={this.state.password}
               />
 
               <Text>Confirmar Senha</Text>
@@ -297,6 +278,7 @@ export default class RegisterScreen extends React.Component {
                 passwordCompared={this.state.passwordCompared}
                 placeholder="Digite sua senha novamente"
                 isPassword={false}
+                value={this.state.passwordCompared}
               />
 
               <Text>Telefone</Text>
@@ -393,7 +375,8 @@ export default class RegisterScreen extends React.Component {
                 })}
                 picker={[
                   <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />,
-                ] && brazilianStates.estados.map(
+                ] &&
+                  brazilianStates.estados.map(
                     item => (<Picker.Item label={item} value={item} color="#000000" />))}
               />
 
@@ -418,7 +401,23 @@ export default class RegisterScreen extends React.Component {
                 </Text>
               </View>
 
-              {this.renderBtnLogin()}
+              {this.props.isLoading ?
+                (
+                  <ActivityIndicator
+                    style={{ marginTop: 15, marginBottom: 15 }}
+                    size="large"
+                    color="#FF9500"
+                  />
+                ) : (
+                  <TouchableOpacity
+                    onPress={() => this.register()}
+                    style={styles.buttonContainer}
+                    activeOpacity={0.7}
+                    key="userCreation"
+                  >
+                    <Text style={styles.buttonText}>Concluir</Text>
+                  </TouchableOpacity>
+                )}
 
             </View>
           </ScrollView>
