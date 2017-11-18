@@ -199,9 +199,9 @@ export const setRefusedMenu = refusedMenu => ({
   payload: refusedMenu,
 });
 
-export const setReportObservation = observation => ({
+export const setReportObservation = otherObservation => ({
   type: SET_REPORTOBSERVATION,
-  payload: observation,
+  payload: otherObservation,
 });
 
 export const setStatusFoodQuality = statusFoodQuality => ({

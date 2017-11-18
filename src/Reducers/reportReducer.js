@@ -104,7 +104,7 @@ const reportReducer = (state = initialState.report, action) => {
     case SET_WATERSEWERSUPPLYOBSERVATION:
       return {
         ...state,
-        waterSewerSupplyObservationkObservation: action.payload,
+        waterSewerSupplyObservation: action.payload,
       };
     case SET_FOODPREPARATIONEPORT_POSITIVE:
       return {

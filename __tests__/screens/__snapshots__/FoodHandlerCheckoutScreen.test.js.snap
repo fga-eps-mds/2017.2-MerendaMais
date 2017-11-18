@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
+exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
 <View
   style={
     Object {
@@ -11,7 +11,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
-    subTitle="Qualidade de Alimento"
+    subTitle="Manipuladores de Alimentos"
     title="Relatório"
   />
   <KeyboardAvoidingView
@@ -132,7 +132,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            As refeições são frescas
+            Uniforme completo
           </Text>
         </View>
         <View
@@ -202,7 +202,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            As refeições são saudáveis
+            Manipuladores com maquiagem (batom, sombra, lápis de olho, etc)
           </Text>
         </View>
         <View
@@ -272,7 +272,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Há variedade de alimentos
+            Merendeiras com esmalte nas unhas
           </Text>
         </View>
         <View
@@ -342,7 +342,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            O cardápio está sendo seguido
+            Merendeiras com unhas compridas
           </Text>
         </View>
         <View
@@ -412,7 +412,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            As refeições têm boa aparência
+            Merendeiras doentes
           </Text>
         </View>
         <View
@@ -482,7 +482,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            A escola oferece alimentos proibidos
+            Merendeiras sem touca
           </Text>
         </View>
         <View
@@ -552,7 +552,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Foi fornecida alimentação escolar na data da visita
+            Merendeiras usando brincos, anéis ou pulseiras
           </Text>
         </View>
         <View
@@ -622,586 +622,8 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            A maioria dos alunos rejeitou a alimentação oferecida
+            Visitantes/Merendeiras sem touca
           </Text>
-        </View>
-        <View
-          key="8"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            São realizados testes de aceitabilidade entre os alunos
-          </Text>
-        </View>
-        <View
-          key="9"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            O cardápio é acompanhado de fichas técnicas de preparo
-          </Text>
-        </View>
-        <View
-          key="10"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            O cardápio prevê a oferta de mais de duas porções de doces por semana
-          </Text>
-        </View>
-        <View
-          key="11"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            O cardápio prevê a oferta de, no mínimo, três porções de frutas e hortaliças por semana
-          </Text>
-        </View>
-        <View
-          key="12"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            A alimentação escolar tem paladar saboroso e gostoso
-          </Text>
-        </View>
-        <View
-          key="13"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            Os cardápios são variados
-          </Text>
-        </View>
-        <View
-          key="14"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            Os cardápios estão afixados para visualização dos alunos e comunidade escolar
-          </Text>
-        </View>
-      </View>
-      <View>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "fontSize": 15,
-              "marginLeft": 15,
-              "marginTop": 15,
-            }
-          }
-        >
-          Qual o cardápio mais aceito?
-        </Text>
-        <View
-          style={
-            Object {
-              "marginLeft": 10,
-              "marginRight": 10,
-              "marginTop": 5,
-            }
-          }
-        >
-          <TextInput
-            multiline={true}
-            onChangeText={[Function]}
-            placeholder="Observação sobre o cardápio"
-            style={
-              Object {
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "fontSize": 30,
-                "height": 133.4,
-                "paddingLeft": 10,
-                "paddingTop": 10,
-                "textAlignVertical": "top",
-              }
-            }
-            underlineColorAndroid="transparent"
-          />
-        </View>
-      </View>
-      <View>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "fontSize": 15,
-              "marginLeft": 15,
-              "marginTop": 15,
-            }
-          }
-        >
-          Qual o cardápio menos aceito?
-        </Text>
-        <View
-          style={
-            Object {
-              "marginLeft": 10,
-              "marginRight": 10,
-              "marginTop": 5,
-            }
-          }
-        >
-          <TextInput
-            multiline={true}
-            onChangeText={[Function]}
-            placeholder="Observação sobre o cardápio"
-            style={
-              Object {
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "fontSize": 30,
-                "height": 133.4,
-                "paddingLeft": 10,
-                "paddingTop": 10,
-                "textAlignVertical": "top",
-              }
-            }
-            underlineColorAndroid="transparent"
-          />
         </View>
       </View>
       <View
@@ -1219,7 +641,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           <TextInput
             multiline={true}
             onChangeText={[Function]}
-            placeholder="Observações gerais (opcional)"
+            placeholder="Observações (opcional)"
             style={
               Object {
                 "borderRadius": 12,
