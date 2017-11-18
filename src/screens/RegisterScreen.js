@@ -34,8 +34,7 @@ import NameField from '../components/NameField';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
 import PhoneField from '../components/PhoneField';
-import RoleField from '../components/RoleField';
-import CounselorTypeField from '../components/CounselorTypeField';
+import DropdownComponent from '../components/DropdownComponent';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -370,97 +369,94 @@ export default class RegisterScreen extends React.Component {
 
 
               <Text>Cargo</Text>
-              <RoleField
+              <DropdownComponent
                 selectedValue={this.state.profile.isPresident}
                 callback={isPresidentChecked =>
                   this.setState(
-                    { profile: { ...this.state.profile, isPresident: isPresidentChecked } }
+                    { profile: { ...this.state.profile, isPresident: isPresidentChecked } },
                   )}
+                picker={[
+                  <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
+                  <Picker.Item value label={PRESIDENT_COUNSELOR} />,
+                  <Picker.Item value={false} label={COMMON_COUNSELOR} />,
+                ]}
               />
 
               <Text>Tipo de Conselheiro</Text>
-              <CounselorTypeField
+              <DropdownComponent
                 selectedValue={this.state.profile.counselorType}
                 callback={counselorTypeChecked => this.setState(
                   { profile: { ...this.state.profile, counselorType: counselorTypeChecked } },
                 )}
+                picker={[
+                  <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
+                  <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />,
+                  <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />,
+                ]}
               />
 
               <Text>Segmento</Text>
-              <View
-                style={styles.InputFieldDropdown}
-              >
-                <Picker
-                  onValueChange={value => this.setState({
-                    profile: {
-                      ...this.state.profile,
-                      segment: value,
-                    },
-                  })}
-                  selectedValue={this.state.profile.segment}
-                >
-                  <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />
-                  <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />
-                  <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />
-                  <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />
-                  <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />
-                </Picker>
-              </View>
+              <DropdownComponent
+                selectedValue={this.state.profile.segment}
+                callback={segmentChecked => this.setState({
+                  profile: {
+                    ...this.state.profile,
+                    segment: segmentChecked,
+                  },
+                })}
+                picker={[
+                  <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />,
+                  <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />,
+                  <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />,
+                  <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />,
+                  <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />,
+                ]}
+              />
 
               <Text>Tipo do CAE</Text>
-              <View
-                style={styles.InputFieldDropdown}
-              >
-                <Picker
-                  onValueChange={
-                    value => (
-                      value === STATE_COUNSELOR_CAE ?
-                        this.setState({
-                          profile: {
-                            ...this.state.profile,
-                            CAE_Type: value,
-                            CAE_municipalDistrict: '',
-                            CAE: `${UfInitials}`.trim(),
-                          },
-                        })
-                        :
-                        this.setState({
-                          profile: {
-                            ...this.state.profile,
-                            CAE_Type: value,
-                            CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim(),
-                          },
-                        })
-                    )
-                  }
-                  selectedValue={this.state.profile.CAE_Type}
-                >
-
-                  <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />
-                  <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />
-                  <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />
-                </Picker>
-              </View>
+              <DropdownComponent
+                selectedValue={this.state.profile.CAE_Type}
+                callback={caeType => (
+                  caeType === STATE_COUNSELOR_CAE ?
+                    this.setState({
+                      profile: {
+                        ...this.state.profile,
+                        CAE_Type: caeType,
+                        CAE_municipalDistrict: '',
+                        CAE: `${UfInitials}`.trim(),
+                      },
+                    })
+                    :
+                    this.setState({
+                      profile: {
+                        ...this.state.profile,
+                        CAE_Type: caeType,
+                        CAE: `${this.state.profile.CAE_municipalDistrict} ${UfInitials}`.trim(),
+                      },
+                    })
+                )}
+                picker={[
+                  <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />,
+                  <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />,
+                  <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />,
+                ]}
+              />
 
               <Text>UF do CAE</Text>
-              <View
-                style={styles.InputFieldDropdown}
-              >
-                <Picker
-                  selectedValue={this.state.profile.CAE_UF}
-                  onValueChange={value => this.setState({
-                    profile: {
-                      ...this.state.profile,
-                      CAE_UF: value,
-                      CAE: `${this.state.profile.CAE_municipalDistrict} ${value.substr(0, 2)}`.trim(),
-                    },
-                  })}
-                >
-                  <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />
-                  {brazilianStates.estados.map(item =>
-                    (<Picker.Item label={item} value={item} color="#000000" />))}
-                </Picker>
-              </View>
+              <DropdownComponent
+                selectedValue={this.state.profile.CAE_UF}
+                callback={checkedUf => this.setState({
+                  profile: {
+                    ...this.state.profile,
+                    CAE_UF: checkedUf,
+                    CAE: `${this.state.profile.CAE_municipalDistrict} ${checkedUf.substr(0, 2)}`.trim(),
+                  },
+                })}
+                picker={[
+                  <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />,
+                ] && brazilianStates.estados.map(
+                    item => (<Picker.Item label={item} value={item} color="#000000" />))}
+              />
 
               {municipalDistrict}
 

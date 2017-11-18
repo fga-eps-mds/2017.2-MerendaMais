@@ -4,24 +4,24 @@ import { View, Picker } from 'react-native';
 import styles from '../Styles';
 import { PRESIDENT_COUNSELOR, COMMON_COUNSELOR } from '../constants';
 
-const RoleField = props => (
+const DropdownComponent = props => (
   <View
     style={styles.InputFieldDropdown}
   >
     <Picker
-      onValueChange={isPresidentChecked => props.callback(isPresidentChecked)}
+      onValueChange={checkedAttribute => props.callback(checkedAttribute)}
       selectedValue={props.selectedValue}
     >
-      <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />
-      <Picker.Item value label={PRESIDENT_COUNSELOR} />
-      <Picker.Item value={false} label={COMMON_COUNSELOR} />
+      {props.picker}
+
     </Picker>
   </View>
 );
 
-RoleField.propTypes = {
+DropdownComponent.propTypes = {
   selectedValue: PropTypes.string.isRequired,
   callback: PropTypes.func.isRequired,
+  picker: PropTypes.element.isRequired,
 };
 
-export default RoleField;
+export default DropdownComponent;
