@@ -119,6 +119,7 @@ export default class SchedulingVisit extends React.Component {
     this.state = {
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
+      codGrupoDestino: this.props.counselor.profile.codGroup,
       visit: {
         codSchool: 0,
         date: '',

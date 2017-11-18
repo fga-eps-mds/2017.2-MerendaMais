@@ -72,6 +72,7 @@ const schedulingVisit = (visitData) => {
       tipo: {
         codTipoPostagem: POSTING_TYPE_CODE,
       },
+      codGrupoDestino: visitData.codGrupoDestino,
     },
   };
 
