@@ -5,7 +5,7 @@ import {
   Text,
   TouchableOpacity,
   KeyboardAvoidingView,
-  View
+  View,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -116,7 +116,6 @@ export default class LoginScreen extends React.Component {
             onSubmitEditing={() => this.passwordInput.focus()}
             value={this.state.email}
             size={28}
-            width={300}
           />
 
           <PasswordField
@@ -126,7 +125,6 @@ export default class LoginScreen extends React.Component {
             isPassword
             size={28}
             value={this.state.password}
-            width={300}
             ref={(passwordInput) => { this.passwordInput = passwordInput; }}
           />
 

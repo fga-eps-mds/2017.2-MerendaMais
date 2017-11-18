@@ -35,6 +35,7 @@ import PasswordField from '../components/PasswordField';
 import PhoneField from '../components/PhoneField';
 import DropdownComponent from '../components/DropdownComponent';
 import MunicipalDistrict from '../components/MunicipalDistrict';
+import ButtonWithActivityIndicator from '../components/ButtonWithActivityIndicator';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -401,23 +402,14 @@ export default class RegisterScreen extends React.Component {
                 </Text>
               </View>
 
-              {this.props.isLoading ?
-                (
-                  <ActivityIndicator
-                    style={{ marginTop: 15, marginBottom: 15 }}
-                    size="large"
-                    color="#FF9500"
-                  />
-                ) : (
-                  <TouchableOpacity
-                    onPress={() => this.register()}
-                    style={styles.buttonContainer}
-                    activeOpacity={0.7}
-                    key="userCreation"
-                  >
-                    <Text style={styles.buttonText}>Concluir</Text>
-                  </TouchableOpacity>
-                )}
+              <ButtonWithActivityIndicator
+                activityIndicatorStyle={{ marginTop: 15, marginBottom: 15 }}
+                onPress={() => this.register()}
+                isLoading={this.props.isLoading}
+                buttonKey="userCreation"
+                buttonText="Concluir"
+                buttonStyle={styles.buttonContainer}
+              />
 
             </View>
           </ScrollView>

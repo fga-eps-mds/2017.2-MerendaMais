@@ -8,7 +8,7 @@ const EmailField = props => (
   <View style={styles.InputFieldStyle}>
     <MaterialIcons name="email" style={styles.icon} size={props.size} color="black" />
     <TextInput
-      width={props.width}
+      width={300}
       style={styles.InputStyle}
       placeholder={props.placeholder}
       placeholderTextColor="#95a5a6"
@@ -28,7 +28,6 @@ EmailField.propTypes = {
   value: PropTypes.string.isRequired,
   callback: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
-  width: PropTypes.number,
   onSubmitEditing: PropTypes.func,
   size: PropTypes.number.isRequired,
 };

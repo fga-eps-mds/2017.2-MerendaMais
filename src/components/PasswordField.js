@@ -42,7 +42,6 @@ const PasswordField = props => (
       keyboardType={'default'}
       onChangeText={password => props.callback(password)}
       secureTextEntry
-      width={props.width}
       value={props.value}
       ref={() => passwordInput => props.ref(passwordInput)}
     />
@@ -56,7 +55,6 @@ PasswordField.propTypes = {
   isPassword: PropTypes.bool.isRequired,
   placeholder: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
-  width: PropTypes.number,
   value: PropTypes.string.isRequired,
   ref: PropTypes.func,
 };
