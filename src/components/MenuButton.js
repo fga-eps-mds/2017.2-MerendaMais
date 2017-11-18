@@ -6,7 +6,7 @@ import styles from '../Styles';
 
 const MenuButton = props => (
   <TouchableOpacity
-    key={props.key}
+    key="menuButton"
     activeOpacity={0.7}
     onPress={() => props.onPress()}
   >
