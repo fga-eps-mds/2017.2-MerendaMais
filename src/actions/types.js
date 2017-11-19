@@ -77,6 +77,8 @@ export const RESET_LIST = 'RESET_LIST';
 
 export const SET_NEW_LISTS = 'SET_NEW_LISTS';
 
+export const SET_SCHEDULE_LIST = 'SET_SCHEDULE_LIST';
+
 // Scheduling Action types
 
 export const SET_SCHEDULE_INFO = 'SET_SCHEDULE_INFO';

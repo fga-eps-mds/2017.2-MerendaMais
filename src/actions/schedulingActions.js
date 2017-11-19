@@ -4,9 +4,38 @@ import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
 import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
-
+import { setScheduleList } from './listActions';
 
 const FILE_NAME = 'SchedulingActions.js';
+
+const convertingContentStringToJSON = (profileStringSingleQuote) => {
+  // Changing ' to " in string received from Nuvem Civica.
+  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
+
+  // Converting profile string to profile JSON.
+  const profileJSON = JSON.parse(profileStringDoubleQuote);
+
+  return profileJSON;
+};
+
+const getContent = (contentLink, counselor, dispatch) => {
+  const getContentHeader = {
+    headers: {
+      appToken: counselor.token,
+    },
+  };
+  axios.get(contentLink, getContentHeader)
+    .then((response) => {
+      logInfo(FILE_NAME, 'asyncGetSchedule',
+        `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
+      const content = convertingContentStringToJSON(response.data.JSON);
+      dispatch(setScheduleList(content));
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'schedulingVisit',
+        `Request result in an ${error}`);
+    });
+};
 
 export const asyncGetSchedule = counselor => (dispatch) => {
   const getScheduleParamsAndHeader = {
@@ -22,6 +51,9 @@ export const asyncGetSchedule = counselor => (dispatch) => {
     .then((response) => {
       logInfo(FILE_NAME, 'asyncGetSchedule',
         `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
+      for (let i = 0; i < response.data.length; i + 1) {
+        getContent(response.data[i].conteudos[0].links[0].href, counselor, dispatch);
+      }
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',

@@ -1,13 +1,19 @@
 import axios from 'axios';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_NEW_LISTS } from './types';
+  SET_NEW_LISTS,
+  SET_SCHEDULE_LIST } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
   DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
 
 const FILE_NAME = 'listActions.js';
+
+export const setScheduleList = scheduleList => ({
+  type: SET_SCHEDULE_LIST,
+  payload: scheduleList,
+});
 
 export const resetList = () => ({
   type: RESET_LIST,
