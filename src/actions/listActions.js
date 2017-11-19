@@ -42,6 +42,7 @@ const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) =>
   };
   axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${nuvemCode}/perfil`, getProfileHeader)
     .then((response) => {
+      console.log(response);
       const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
       const completeCounselorInformations = counselorInformations;
 

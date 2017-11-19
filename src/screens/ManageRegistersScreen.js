@@ -77,7 +77,7 @@ export default class ManageRegistersScreen extends React.Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.disableCounselor()} >
               <View style={styles.redBox}>
                 <Text>EXCLUIR</Text>
               </View>
