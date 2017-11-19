@@ -9,6 +9,7 @@ import LoginScreen from '../../src/screens/LoginScreen';
 import EmailField from '../../src/components/EmailField';
 import PasswordField from '../../src/components/PasswordField';
 import ButtonWithActivityIndicator from '../../src/components/ButtonWithActivityIndicator';
+import { Actions } from '../../__mocks__/react-native-router-flux';
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -23,6 +24,8 @@ const initialState = {
 };
 
 const store = mockStore(initialState);
+
+jest.mock('react-native-router-flux');
 
 describe('Testing LoginCounselor', () => {
   it('renders as expected', () => {
@@ -49,6 +52,22 @@ describe('Testing Login Screen Input', () => {
     expect(wrapper.state('password')).toEqual('');
     passwordInputComponent.simulate('ChangeText', '12345678');
     expect(wrapper.state('password')).toEqual('12345678');
+  });
+
+  it('should update focus on submit', () => {
+    const emailInputComponent = wrapper.find(EmailField).dive().find(TextInput);
+
+    // TODO: Refactor to use simulate
+    emailInputComponent.props().onSubmitEditing();
+    //
+
+    expect(wrapper.state('focus')).toBeTruthy();
+  });
+
+  it('Should change screen when Register button is pressed', () => {
+    const registerButton = wrapper.find(TouchableOpacity);
+    registerButton.simulate('press');
+    expect(Actions.registerScreen.mock.calls.length).toBe(1);
   });
 });
 

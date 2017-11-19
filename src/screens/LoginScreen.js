@@ -89,7 +89,6 @@ export default class LoginScreen extends React.Component {
   }
 
   render() {
-    console.log(this.passwordInput);
     return (
       <View style={styles.principal}>
         <Header />

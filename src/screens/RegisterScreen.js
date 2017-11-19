@@ -9,7 +9,6 @@ import {
   Picker,
   Alert,
   KeyboardAvoidingView,
-  ActivityIndicator,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';

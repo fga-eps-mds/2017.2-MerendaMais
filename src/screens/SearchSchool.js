@@ -193,8 +193,6 @@ class SearchSchool extends React.Component {
   }
 
   searchSchools() {
-    console.log('searchschools method');
-    console.log(this.state);
     this.setState({ isLoading: true });
     return new Promise((resolved) => {
       axios.get(SCHOOL_ENDPOINT, {
@@ -235,7 +233,6 @@ class SearchSchool extends React.Component {
           />
         );
       }
-      console.log('Button activated');
       return (
         <TouchableOpacity
           key="activatedButton"

@@ -7,4 +7,5 @@ export const Actions = {
   manageRegisters: () => ({}),
   drawerOpen: jest.fn(),
   mainReportsScreen: jest.fn(),
+  registerScreen: jest.fn(),
 };

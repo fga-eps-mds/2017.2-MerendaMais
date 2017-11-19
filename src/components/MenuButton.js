@@ -36,7 +36,6 @@ MenuButton.propTypes = {
   text: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
   isLogout: PropTypes.bool,
-  key: PropTypes.string.isRequired,
 };
 
 MenuButton.defaultProps = {
