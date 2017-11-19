@@ -4,6 +4,7 @@ import { asyncGetSchedule } from '../actions/schedulingActions';
 
 const mapStateToProps = state => ({
   counselor: state.counselor,
+  listOfSchedulingInAGroup: state.list.listOfSchedulingInAGroup,
 });
 
 const mapDispatchToProps = dispatch => ({
