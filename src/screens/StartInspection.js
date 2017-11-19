@@ -15,6 +15,16 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 
 const styles = StyleSheet.create({
+  principal: {
+    flex: 1,
+  },
+
+  content: {
+    flex: 1,
+    paddingTop: 10,
+    backgroundColor: 'white',
+  },
+
   listSchedule: {
     flex: 1,
     marginHorizontal: 15,
@@ -24,14 +34,28 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: '#FAFAFA',
     justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
+
   textBox: {
-    paddingLeft: 2,
+    paddingLeft: 4,
     justifyContent: 'flex-start',
   },
+
   text: {
     fontSize: 15,
-    paddingVertical: 5,
+    paddingVertical: 2,
+  },
+
+  buttonBox: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 7,
+    backgroundColor: '#4cd964',
+    padding: 8,
+    justifyContent: 'center',
+    marginRight: 20,
   },
 });
 
@@ -72,14 +96,12 @@ class StartInspection extends React.Component {
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-              {schedule.listOfInvitees.length}
+              {Object.keys(schedule.listOfInvitees).length}
             </Text>
           </View>
           <View style={styles.buttonBox}>
             <TouchableOpacity>
-              <View style={styles.greenBox}>
-                <Text>FISCALIZAR</Text>
-              </View>
+              <Text>FISCALIZAR</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -87,15 +109,16 @@ class StartInspection extends React.Component {
     );
   }
   render() {
+    console.log(this.props.listOfSchedulingInAGroup);
     return (
-      <View>
+      <View style={styles.principal}>
         <Header
           title={'Visitas Agendadas'}
           backButton
         />
-        <View>
+        <ScrollView style={styles.content}>
           {this.arrayScheduleList()}
-        </View>
+        </ScrollView>
       </View>
     );
   }

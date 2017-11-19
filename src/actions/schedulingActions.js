@@ -51,7 +51,7 @@ export const asyncGetSchedule = counselor => (dispatch) => {
     .then((response) => {
       logInfo(FILE_NAME, 'asyncGetSchedule',
         `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
-      for (let i = 0; i < response.data.length; i + 1) {
+      for (let i = 0; i < response.data.length; i += 1) {
         getContent(response.data[i].conteudos[0].links[0].href, counselor, dispatch);
       }
     })
