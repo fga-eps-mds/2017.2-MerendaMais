@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, Alert, ScrollView } from 'react-native';
 // import PopupDialog, {
 //  DialogTitle,
 //  DialogButton,
@@ -12,6 +12,9 @@ import Header from '../components/Header';
 // import SchoolData from '../components/SchoolData';
 // import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
+
+const { height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
 
@@ -38,6 +41,12 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 
+  content: {
+    marginBottom: 9,
+    flex: 6,
+    flexDirection: 'column',
+  },
+
   Container: {
     marginTop: 15,
     marginHorizontal: 20,
@@ -60,15 +69,27 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 
+  textInput: {
+    borderWidth: 1,
+    borderRadius: 12,
+    height: height * 0.25,
+    paddingLeft: 10,
+    paddingTop: 10,
+    fontSize: width * 0.05,
+    textAlignVertical: 'top',
+  },
+
   textBox: {
-    margin: 1.5,
-    paddingLeft: 2,
-    justifyContent: 'flex-start',
+    marginTop: 1,
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginBottom: 15,
   },
 
   text: {
+    marginTop: 20,
+    marginLeft: 25,
     fontSize: 15,
-    paddingVertical: 3,
   },
 
   listRegisters: {
@@ -112,7 +133,7 @@ const styles = StyleSheet.create({
   },
 
 });
-
+// Escolher localização, Data, Hora, Convidar conselheiros, Descrição da Reunião
 export default class ScheduleMeeting extends React.Component {
   constructor(props) {
     super(props);
@@ -134,102 +155,105 @@ export default class ScheduleMeeting extends React.Component {
           subTitle={'REUNIÃO'}
           backButton
         />
-
-        <ScrollView>
-          <View>
-            <View style={styles.Container}>
-              <TouchableOpacity
-                key="searchSchoolButton"
-                style={styles.button}
-                onPress={() => Alert.alert('pesquisando')}
-              >
-                <Text style={styles.buttonText}>Pesquisar escola</Text>
-              </TouchableOpacity>
-            </View>
-
-
-            <View style={[styles.Container, { marginVertical: 10 }]}>
-              <DatePicker
-                style={styles.Picker}
-                placeholder="Data"
-                date={this.state.meeting.date}
-                mode="date"
-                format="DD-MM-YYYY"
-                confirmBtnText="Confirmar"
-                cancelBtnText="Cancelar"
-                customStyles={{
-                  dateInput: {
-                    borderRadius: 7,
-                  },
-                }}
-                onDateChange={date => this.setState({ meeting: { ...this.state.meeting, date } })}
-              />
-            </View>
-
-            <View style={styles.Container}>
-              <DatePicker
-                style={styles.Picker}
-                placeholder="Horário"
-                date={this.state.meeting.time}
-                mode="time"
-                confirmBtnText="Confirmar"
-                cancelBtnText="Cancelar"
-                customStyles={{
-                  dateInput: {
-                    borderRadius: 7,
-                  },
-                }}
-                onDateChange={time => this.setState({ meeting: { ...this.state.meeting, time } })}
-              />
-            </View>
-
-            <View style={styles.Container}>
-              <TouchableOpacity
-                key="searchCounselorButton"
-                style={styles.button}
-                onPress={() => Alert.alert('adicionando')}
-              >
-                <Text style={styles.buttonText}>Adicionar Conselheiro</Text>
-              </TouchableOpacity>
-            </View>
-
-
-            <View style={styles.Container}>
-              <TouchableOpacity
-                key="searchAgentButton"
-                style={styles.button}
-                onPress={() => Alert.alert('adicionando')}
-              >
-                <Text style={styles.buttonText}>Convidar Agente</Text>
-              </TouchableOpacity>
-            </View>
-
+        <KeyboardAvoidingView style={styles.content} behavior="padding">
+          <ScrollView>
             <View>
-              <Button
-                enabled
-                key="scheduleButton"
-                text="Agendar"
-                onPress={() => {
-                  Alert.alert(
-                    'Agendamento Realizado',
-                    'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
-                    [
-                      { text: 'Ok', onPress: () => Alert.alert('Agendando'), style: 'cancel' },
-                    ],
-                    { cancelable: false });
-                }}
-              />
+              <View style={styles.Container}>
+                <TouchableOpacity
+                  key="searchLocation"
+                  style={styles.button}
+                  onPress={() => Alert.alert('pesquisando')}
+                >
+                  <Text style={styles.buttonText}>Escolher Localização</Text>
+                </TouchableOpacity>
+              </View>
 
-              <Button
-                enabled={false}
-                text="Agendar"
-                key="scheduleButton"
-                onPress={() => ({})}
-                disabled
-              />
+              <View style={[styles.Container, { marginVertical: 10 }]}>
+                <DatePicker
+                  style={styles.Picker}
+                  placeholder="Data"
+                  date={this.state.meeting.date}
+                  mode="date"
+                  format="DD-MM-YYYY"
+                  confirmBtnText="Confirmar"
+                  cancelBtnText="Cancelar"
+                  customStyles={{
+                    dateInput: {
+                      borderRadius: 7,
+                    },
+                  }}
+                  onDateChange={date => this.setState({ meeting: { ...this.state.meeting, date } })}
+                />
+              </View>
+
+              <View style={styles.Container}>
+                <DatePicker
+                  style={styles.Picker}
+                  placeholder="Horário"
+                  date={this.state.meeting.time}
+                  mode="time"
+                  confirmBtnText="Confirmar"
+                  cancelBtnText="Cancelar"
+                  customStyles={{
+                    dateInput: {
+                      borderRadius: 7,
+                    },
+                  }}
+                  onDateChange={time => this.setState({ meeting: { ...this.state.meeting, time } })}
+                />
+              </View>
+
+              <View style={styles.Container}>
+                <TouchableOpacity
+                  key="searchCounselorButton"
+                  style={styles.button}
+                  onPress={() => Alert.alert('adicionando')}
+                >
+                  <Text style={styles.buttonText}>Convidar Conselheiros</Text>
+                </TouchableOpacity>
+              </View>
+
+              <View behavior="padding">
+                <Text style={styles.text}>Descrição da reunião</Text>
+                <View style={styles.textBox}>
+                  <TextInput
+                    // onChangeText={text => this.props.setFoodStockObservation(text)}
+                    style={styles.textInput}
+                    // value={this.props.observation}
+                    multiline
+                    underlineColorAndroid="transparent"
+                    placeholder="opcional"
+                  />
+                </View>
+              </View>
+
+              <View>
+                <Button
+                  enabled
+                  key="scheduleButton"
+                  text="Agendar"
+                  onPress={() => {
+                    Alert.alert(
+                      'Agendamento Realizado',
+                      'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
+                      [
+                        { text: 'Ok', onPress: () => Alert.alert('Agendando'), style: 'cancel' },
+                      ],
+                      { cancelable: false });
+                  }}
+                />
+
+                <Button
+                  enabled={false}
+                  text="Agendar"
+                  key="scheduleButton"
+                  onPress={() => ({})}
+                  disabled
+                />
+              </View>
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </KeyboardAvoidingView>
       </View>
     );
   }
