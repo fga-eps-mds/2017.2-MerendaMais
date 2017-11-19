@@ -46,6 +46,12 @@ class Menu extends React.PureComponent {
           onPress={() => { Actions.schedulingVisit(); }}
         />
         <MenuButton
+          key="scheduleMeeting"
+          text="Agendar reunião"
+          iconName="access-time"
+          onPress={() => { Actions.scheduleMeeting(); }}
+        />
+        <MenuButton
           key="logout"
           text="Sair"
           iconName="logout"

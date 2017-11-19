@@ -20,6 +20,7 @@ import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutCo
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
+import ScheduleMeetingContainer from './src/Containers/ScheduleMeetingContainer';
 
 const Routes = () => ({
   render() {
@@ -36,6 +37,7 @@ const Routes = () => ({
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
+            <Scene key="scheduleMeeting" component={ScheduleMeetingContainer} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
