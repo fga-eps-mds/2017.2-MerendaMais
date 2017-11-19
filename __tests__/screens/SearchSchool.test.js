@@ -59,7 +59,6 @@ describe('Testing SearchSchool Input', () => {
 
   it('should change state when the text of city input component changes', () => {
     wrapper.setState({ uf: initialState.school.uf });
-    console.log(wrapper.debug());
     const cityInputComponent = wrapper.find('Picker').at(1);
     cityInputComponent.simulate('valueChange', 'Ouro Preto');
     expect(wrapper.state().city).toEqual('Ouro Preto');

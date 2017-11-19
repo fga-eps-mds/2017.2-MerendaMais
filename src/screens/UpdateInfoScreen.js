@@ -93,19 +93,6 @@ export default class UpdateInfoScreen extends React.Component {
       segment: this.props.counselor.profile.segment,
       error: false,
     };
-
-    this.validateName = this.validateName.bind(this);
-    this.validatePhone = this.validatePhone.bind(this);
-  }
-
-  validateName(name) {
-    const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ name: validName });
-  }
-
-  validatePhone(phone) {
-    const validPhone = phone.replace(/[^0-9]/g, '');
-    this.setState({ phone: validPhone });
   }
 
   updateInformation() {

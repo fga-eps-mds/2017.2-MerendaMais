@@ -22,8 +22,6 @@ describe('Testing CpfField component', () => {
     const wrapper = shallow(<CpfField {...props} />);
     const textInput = wrapper.find(TextInput).at(0);
 
-    console.log(textInput.debug());
-
     textInput.simulate('ChangeText', '1111111111');
 
     expect(callback.mock.calls.length).toBe(1);
