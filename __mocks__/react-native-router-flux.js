@@ -5,4 +5,6 @@ export const Actions = {
   profileInfoScreen: () => ({}),
   schedulingVisit: () => ({}),
   manageRegisters: () => ({}),
+  drawerOpen: jest.fn(),
+  mainReportsScreen: jest.fn(),
 };
