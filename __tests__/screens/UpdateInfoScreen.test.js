@@ -6,6 +6,9 @@ import { TextInput, Picker } from 'react-native';
 // imported as a connected component!
 import UpdateInfoScreenContainer from '../../src/Containers/UpdateInfoScreenContainer';
 import UpdateInfoScreen from '../../src/screens/UpdateInfoScreen';
+import NameField from '../../src/components/NameField';
+import PhoneField from '../../src/components/PhoneField';
+import DropdownComponent from '../../src/components/DropdownComponent';
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -72,30 +75,31 @@ describe('Testing UpdateInfoScreen Input', () => {
   const wrapper = getUpdateInfoWrapper();
 
   it('should change state when the text of name input component changes', () => {
-    const nameInputComponent = wrapper.find(TextInput).at(0);
+    const nameInputComponent = wrapper.find(NameField).dive().find(TextInput);
     expect(wrapper.state('name')).toEqual(initialState.counselor.name);
     nameInputComponent.simulate('ChangeText', 'Maria');
     expect(wrapper.state('name')).toEqual('Maria');
   });
 
   it('should change state when the text of phone input component changes', () => {
-    const phoneInputComponent = wrapper.find(TextInput).at(1);
+    const phoneInputComponent = wrapper.find(PhoneField).dive().find(TextInput);
+
     expect(wrapper.state('phone')).toEqual(initialState.counselor.profile.phone);
     phoneInputComponent.simulate('ChangeText', '99999999999');
     expect(wrapper.state('phone')).toEqual('99999999999');
   });
 
   it('should change state when the choice of counselor type input component changes', () => {
-    const counselorTypeInputComponent = wrapper.find(Picker).at(0);
+    const counselorTypeInputComponent = wrapper.find(DropdownComponent).at(0).dive().find(Picker);
     expect(wrapper.state('counselorType')).toEqual(initialState.counselor.profile.counselorType);
     counselorTypeInputComponent.simulate('valueChange', 'Suplente');
     expect(wrapper.state('counselorType')).toEqual('Suplente');
   });
 
   it('should change state when the choice of counselor segment input component changes', () => {
-    const counselorSegmentInputComponent = wrapper.find(Picker).at(1);
+    const segmentInputComponent = wrapper.find(DropdownComponent).at(1).dive().find(Picker);
     expect(wrapper.state('segment')).toEqual(initialState.counselor.profile.segment);
-    counselorSegmentInputComponent.simulate('valueChange', 'Trabalhadores da Educação');
+    segmentInputComponent.simulate('valueChange', 'Trabalhadores da Educação');
     expect(wrapper.state('segment')).toEqual('Trabalhadores da Educação');
   });
 });

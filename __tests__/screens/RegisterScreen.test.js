@@ -6,6 +6,13 @@ import { TouchableOpacity, TextInput, ActivityIndicator, Picker } from 'react-na
 // imported as a connected component!
 import RegisterScreenContainer from '../../src/Containers/RegisterScreenContainer';
 import RegisterScreen from '../../src/screens/RegisterScreen';
+import CpfField from '../../src/components/CpfField';
+import NameField from '../../src/components/NameField';
+import EmailField from '../../src/components/EmailField';
+import PasswordField from '../../src/components/PasswordField';
+import PhoneField from '../../src/components/PhoneField';
+import DropdownComponent from '../../src/components/DropdownComponent';
+import ButtonWithActivityIndicator from '../../src/components/ButtonWithActivityIndicator';
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -54,77 +61,77 @@ describe('Testing RegisterScreen Input', () => {
   const wrapper = shallow(<RegisterScreen />);
 
   it('should change state when the text of cpf input component changes', () => {
-    const cpfInputComponent = wrapper.find(TextInput).at(0);
+    const cpfInputComponent = wrapper.find(CpfField).dive().find(TextInput);
     expect(wrapper.state().profile.cpf).toEqual('');
     cpfInputComponent.simulate('ChangeText', '11111111111');
     expect(wrapper.state().profile.cpf).toEqual('11111111111');
   });
 
   it('should change state when the text of name input component changes', () => {
-    const nameInputComponent = wrapper.find(TextInput).at(1);
+    const nameInputComponent = wrapper.find(NameField).dive().find(TextInput);
     expect(wrapper.state('name')).toEqual('');
     nameInputComponent.simulate('ChangeText', 'test');
     expect(wrapper.state('name')).toEqual('test');
   });
 
   it('should change state when the text of email input component changes', () => {
-    const emailInputComponent = wrapper.find(TextInput).at(2);
+    const emailInputComponent = wrapper.find(EmailField).dive().find(TextInput);
     expect(wrapper.state('email')).toEqual('');
     emailInputComponent.simulate('ChangeText', 'test5@test.com');
     expect(wrapper.state('email')).toEqual('test5@test.com');
   });
 
   it('should change state when the text of password input component changes', () => {
-    const passwordInputComponent = wrapper.find(TextInput).at(3);
+    const passwordInputComponent = wrapper.find(PasswordField).at(0).dive().find(TextInput);
     expect(wrapper.state('password')).toEqual('');
     passwordInputComponent.simulate('ChangeText', 'senhas');
     expect(wrapper.state('password')).toEqual('senhas');
   });
 
   it('should change state when the text of confirm password input component changes', () => {
-    const confirmPasswordInputComponent = wrapper.find(TextInput).at(4);
+    const confirmPasswordInputComponent = wrapper.find(PasswordField).at(1).dive().find(TextInput);
     expect(wrapper.state('passwordCompared')).toEqual('');
     confirmPasswordInputComponent.simulate('ChangeText', 'senhas');
     expect(wrapper.state('passwordCompared')).toEqual('senhas');
   });
 
   it('should change state when the text of phone input component changes', () => {
-    const phoneInputComponent = wrapper.find(TextInput).at(5);
+    const phoneInputComponent = wrapper.find(PhoneField).dive().find(TextInput);
     expect(wrapper.state().profile.phone).toEqual('');
     phoneInputComponent.simulate('ChangeText', '555555555');
     expect(wrapper.state().profile.phone).toEqual('555555555');
   });
 
   it('should change state when the text of isPresident input component changes', () => {
-    const isPresidentInputComponent = wrapper.find(Picker).at(0);
+    const isPresidentInputComponent = wrapper.find(DropdownComponent).at(0).dive().find(Picker);
     expect(wrapper.state().profile.isPresident).toEqual('');
     isPresidentInputComponent.simulate('valueChange', false);
     expect(wrapper.state().profile.isPresident).toEqual(false);
   });
 
   it('should change state when the text of counselorType input component changes', () => {
-    const counselorTypeInputComponent = wrapper.find(Picker).at(1);
+    const counselorTypeInputComponent = wrapper.find(DropdownComponent).at(1).dive().find(Picker);
     expect(wrapper.state().profile.counselorType).toEqual('');
     counselorTypeInputComponent.simulate('valueChange', 'Suplente');
     expect(wrapper.state().profile.counselorType).toEqual('Suplente');
   });
 
   it('should change state when the text of segment input component changes', () => {
-    const segmentInputComponent = wrapper.find(Picker).at(2);
+    const segmentInputComponent = wrapper.find(DropdownComponent).at(2).dive().find(Picker);
     expect(wrapper.state().profile.segment).toEqual('');
     segmentInputComponent.simulate('valueChange', 'Pais de alunos');
     expect(wrapper.state().profile.segment).toEqual('Pais de alunos');
   });
 
   it('should change state when the text of CAE_Type input component changes', () => {
-    const caeTypeInputComponent = wrapper.find(Picker).at(3);
+    const caeTypeInputComponent = wrapper.find(DropdownComponent).at(3).dive().find(Picker);
     expect(wrapper.state().profile.CAE_Type).toEqual('');
     caeTypeInputComponent.simulate('valueChange', 'Estadual');
     expect(wrapper.state().profile.CAE_Type).toEqual('Estadual');
   });
 
   it('should change state when the text of UF input component changes', () => {
-    const UFInputComponent = wrapper.find(Picker).at(4);
+    const UFInputComponent = wrapper.find(DropdownComponent).at(4).dive().find(Picker);
     UFInputComponent.simulate('valueChange', 'DF - Distrito Federal');
     expect(wrapper.state().profile.CAE_UF).toEqual('DF - Distrito Federal');
   });
@@ -174,7 +181,7 @@ describe('Testing RegisterScreen On pressed buttons', () => {
       },
     });
 
-    const touch = wrapper.findWhere(c => c.key() === 'userCreation');
+    const touch = wrapper.find(ButtonWithActivityIndicator).dive().find(TouchableOpacity);
     expect(touch.length).toEqual(1);
     touch.simulate('press');
   });
@@ -186,20 +193,16 @@ describe('Testing RegisterScreen On pressed buttons', () => {
 
     const wrapper = shallow(<RegisterScreen {...myProps} />);
 
-    expect(wrapper.find(ActivityIndicator).length).toEqual(1);
+    const buttonAndIndicator = wrapper.find(ButtonWithActivityIndicator).dive();
 
-    // We expect receive just one TouchableOpacity, because we've two and one just appear
-    // if is loading is false.
-    expect(wrapper.find(TouchableOpacity).length).toEqual(1);
+    expect(buttonAndIndicator.find(ActivityIndicator).length).toEqual(1);
   });
 
   it('Test if loading spinning does not exist', () => {
     const wrapper = shallow(<RegisterScreen {...initialState.application} />);
 
-    expect(wrapper.find(ActivityIndicator).length).toEqual(0);
+    const buttonAndIndicator = wrapper.find(ButtonWithActivityIndicator).dive();
 
-    // We expect receive two TouchableOpacity, because we've two and one just desappear
-    // if is loading is true.
-    expect(wrapper.find(TouchableOpacity).length).toEqual(2);
+    expect(buttonAndIndicator.find(ActivityIndicator).length).toEqual(0);
   });
 });

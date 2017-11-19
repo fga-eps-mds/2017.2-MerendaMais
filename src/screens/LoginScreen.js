@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  ActivityIndicator,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -13,7 +12,6 @@ import Header from '../components/Header';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
 import ButtonWithActivityIndicator from '../components/ButtonWithActivityIndicator';
-import { email } from 'react-native-communications';
 
 const styles = StyleSheet.create({
   principal: {
