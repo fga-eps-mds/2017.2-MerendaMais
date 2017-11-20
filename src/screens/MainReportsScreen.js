@@ -5,6 +5,7 @@ import { StyleSheet,
   View,
   ScrollView,
   Dimensions,
+  BackHandler,
 } from 'react-native';
 import Checkbox from 'react-native-checkbox';
 import { Ionicons } from '@expo/vector-icons';
@@ -83,6 +84,10 @@ export default class MainReportsScreen extends React.Component {
       anyReport: false,
       whatever: '',
     };
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
   }
 
   checkingFoodQualityReport() {
