@@ -1,10 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, Alert, ScrollView } from 'react-native';
-// import PopupDialog, {
-//  DialogTitle,
-//  DialogButton,
-// } from 'react-native-popup-dialog';
+import PopupDialog, {
+  DialogTitle,
+  DialogButton,
+} from 'react-native-popup-dialog';
 // import { EvilIcons } from '@expo/vector-icons';
 // import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
@@ -155,6 +155,40 @@ export default class ScheduleMeeting extends React.Component {
           subTitle={'REUNIÃO'}
           backButton
         />
+
+        <PopupDialog
+          ref={(popupDialogCounselor) => {
+            this.popupDialogCounselor = popupDialogCounselor;
+          }}
+          dialogTitle={<DialogTitle title="Escolha quem deseja convidar" />}
+          overlayPointerEvents="none"
+          height="80%"
+          width="85%"
+          actions={[
+            <View style={styles.footerPopUp}>
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                text="ACEITAR"
+                onPress={() => this.popupDialogCounselor.dismiss()}
+                key="dialogButton1"
+              />
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                text="CANCELAR"
+                onPress={() => this.popupDialogCounselor.dismiss()}// this.cancelInviteList()
+                key="dialogButton2"
+              />
+            </View>,
+          ]}
+        >
+          <ScrollView key="showInviteCounselorList">
+            {
+            // {this.renderCounselorList()}
+            }
+            <Text> TESTE</Text>
+          </ScrollView>
+        </PopupDialog>
+
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>
             <View>
@@ -207,7 +241,7 @@ export default class ScheduleMeeting extends React.Component {
                 <TouchableOpacity
                   key="searchCounselorButton"
                   style={styles.button}
-                  onPress={() => Alert.alert('adicionando')}
+                  onPress={() => this.popupDialogCounselor.show()}
                 >
                   <Text style={styles.buttonText}>Convidar Conselheiros</Text>
                 </TouchableOpacity>
@@ -230,7 +264,7 @@ export default class ScheduleMeeting extends React.Component {
               <View>
                 <Button
                   enabled
-                  key="scheduleButton"
+                  key="scheduleMeetingButton"
                   text="Agendar"
                   onPress={() => {
                     Alert.alert(
@@ -243,13 +277,13 @@ export default class ScheduleMeeting extends React.Component {
                   }}
                 />
 
-                <Button
+                {/* <Button
                   enabled={false}
                   text="Agendar"
-                  key="scheduleButton"
+                  key="scheduleMeetingButtonDisabled"
                   onPress={() => ({})}
                   disabled
-                />
+                /> */}
               </View>
             </View>
           </ScrollView>
