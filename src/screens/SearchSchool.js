@@ -6,11 +6,13 @@ import { StyleSheet,
   View,
   TouchableOpacity,
   TextInput,
+  BackHandler,
   FlatList,
   ActivityIndicator,
   Alert,
   Picker } from 'react-native';
 import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
 
@@ -133,6 +135,9 @@ class SearchSchool extends React.Component {
 
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
+  }
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
   }
 
   validateName(name) {

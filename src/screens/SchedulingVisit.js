@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView, Dimensions, BackHandler } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Ionicons } from '@expo/vector-icons';
 import DatePicker from 'react-native-datepicker';
@@ -103,7 +103,12 @@ export default class SchedulingVisit extends React.Component {
         date: '',
         time: '',
       },
+      verification: true,
     };
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
   }
 
   componentWillReceiveProps(newProps) {
