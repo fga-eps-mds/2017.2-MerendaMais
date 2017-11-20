@@ -5,11 +5,8 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  TextInput,
-  FlatList,
   ActivityIndicator,
   Alert,
-  Picker,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
@@ -72,6 +69,15 @@ class StartInspection extends React.Component {
     this.props.asyncGetSchedule(this.props.counselor);
   }
 
+  verification(listOfInvitees) {
+    if (listOfInvitees[this.props.counselor.nuvemCode] === undefined) {
+      Alert.alert('Você não foi convidado para esta visita.');
+    } else if (!listOfInvitees[this.props.counselor.nuvemCode].confirmed) {
+      Alert.alert('Você não confirmou esta visita.');
+    }
+    return (null);
+  }
+
   arrayScheduleList() {
     if (this.props.listOfSchedulingInAGroup.length === 0) {
       return (
@@ -100,7 +106,9 @@ class StartInspection extends React.Component {
             </Text>
           </View>
           <View style={styles.buttonBox}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.verification(schedule.listOfInvitees)}
+            >
               <Text>FISCALIZAR</Text>
             </TouchableOpacity>
           </View>
