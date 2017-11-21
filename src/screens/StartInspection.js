@@ -9,7 +9,6 @@ import {
   Alert,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
 
 const styles = StyleSheet.create({
   principal: {
@@ -18,7 +17,7 @@ const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 6,
     backgroundColor: 'white',
   },
 
@@ -120,10 +119,6 @@ class StartInspection extends React.Component {
     console.log(this.props.listOfSchedulingInAGroup);
     return (
       <View style={styles.principal}>
-        <Header
-          title={'Visitas Agendadas'}
-          backButton
-        />
         <ScrollView style={styles.content}>
           {this.arrayScheduleList()}
         </ScrollView>
