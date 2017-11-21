@@ -55,3 +55,6 @@ export const REGISTER_SUCCEED = 'Cadastro realizado com sucesso!';
 export const REGISTER_NUVEM_ERROR = 'Usuário não cadastrado na Nuvem ou perfil não existe.';
 export const EDIT_SUCCEED = 'Dados alterados com sucesso!';
 export const INTERNAL_ERROR = 'Erro interno. Tente novamente mais tarde!';
+
+export const SCHOOL_NOT_FOUND = 'Nenhuma escola encontrada! Verifique se foi digitado corretamente.';
+export const ERROR_FIND_SCHOOL = 'Erro ao procurar escola. Tente novamente mais tarde.';

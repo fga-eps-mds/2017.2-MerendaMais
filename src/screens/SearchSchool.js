@@ -16,11 +16,16 @@ import {
 import PropTypes from 'prop-types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
+import ShowToast from '../components/Toast';
+import SchoolListButton from '../components/SchoolListButton';
 import brazilianStates from '../brazilianStates';
 import municipalDistricts from '../municipalDistricts';
 
-import { SCHOOL_ENDPOINT } from '../constants';
-import SchoolListButton from '../components/SchoolListButton';
+import {
+  SCHOOL_ENDPOINT,
+  SCHOOL_NOT_FOUND,
+  ERROR_FIND_SCHOOL } from '../constants';
+
 
 const FILE_NAME = 'SearchSchool.js';
 
@@ -215,10 +220,14 @@ class SearchSchool extends React.Component {
 
           logInfo(FILE_NAME, 'searchSchools', `New state: ${JSON.stringify(this.state, null, 2)}.`);
           // If response is an empty array, no schools could be found.
+          if (this.state.schoolList.length === 0) {
+            ShowToast.Toast(SCHOOL_NOT_FOUND);
+          }
         })
         .catch((error) => {
           this.setState({ isLoading: false });
           logWarn(FILE_NAME, 'searchSchools', error);
+          ShowToast.Toast(ERROR_FIND_SCHOOL);
         });
     });
   }
