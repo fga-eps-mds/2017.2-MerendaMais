@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
-  Alert,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 20,
   },
+  buttonText: {
+    fontSize: 12,
+  },
 });
 
 class StartInspection extends React.Component {
@@ -70,11 +73,35 @@ class StartInspection extends React.Component {
 
   verification(listOfInvitees) {
     if (listOfInvitees[this.props.counselor.nuvemCode] === undefined) {
-      Alert.alert('Você não foi convidado para esta visita.');
+      return (
+        <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
+          <TouchableOpacity
+            disabled
+          >
+            <Text style={styles.buttonText}>NÃO CONVIDADO</Text>
+          </TouchableOpacity>
+        </View>
+      );
     } else if (!listOfInvitees[this.props.counselor.nuvemCode].confirmed) {
-      Alert.alert('Você não confirmou esta visita.');
+      return (
+        <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
+          <TouchableOpacity
+            disabled
+          >
+            <Text style={styles.buttonText}>NÃO CONFIRMOU</Text>
+          </TouchableOpacity>
+        </View>
+      );
     }
-    return (null);
+    return (
+      <View style={styles.buttonBox}>
+        <TouchableOpacity
+          onPress={() => Actions.mainReportsScreen()}
+        >
+          <Text style={styles.buttonText}>FISCALIZAR</Text>
+        </TouchableOpacity>
+      </View>
+    );
   }
 
   arrayScheduleList() {
@@ -104,13 +131,7 @@ class StartInspection extends React.Component {
               {Object.keys(schedule.listOfInvitees).length}
             </Text>
           </View>
-          <View style={styles.buttonBox}>
-            <TouchableOpacity
-              onPress={() => this.verification(schedule.listOfInvitees)}
-            >
-              <Text>FISCALIZAR</Text>
-            </TouchableOpacity>
-          </View>
+          {this.verification(schedule.listOfInvitees)}
         </View>
       ))
     );
