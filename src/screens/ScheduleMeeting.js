@@ -6,7 +6,7 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import { EvilIcons } from '@expo/vector-icons';
-// import { Actions } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 // import SchoolData from '../components/SchoolData';
@@ -323,7 +323,7 @@ export default class ScheduleMeeting extends React.Component {
                 <TouchableOpacity
                   key="searchLocation"
                   style={styles.button}
-                  onPress={() => Alert.alert('pesquisando')}
+                  onPress={() => Actions.ScheduleMeetingMap()}
                 >
                   <Text style={styles.buttonText}>Escolher Localização</Text>
                 </TouchableOpacity>
