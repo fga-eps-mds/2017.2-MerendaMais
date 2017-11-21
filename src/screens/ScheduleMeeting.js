@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, Alert, ScrollView } from 'react-native';
 import PopupDialog, {
   DialogTitle,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
 
 });
-// Escolher localização, Data, Hora, Convidar conselheiros, Descrição da Reunião
+
 export default class ScheduleMeeting extends React.Component {
   constructor(props) {
     super(props);
@@ -142,11 +142,45 @@ export default class ScheduleMeeting extends React.Component {
         codSchool: 0,
         date: '',
         time: '',
-        invitedAgent: false,
-        agentEmail: '',
       },
     };
   }
+
+  componentWillMount() {
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
+  }
+
+  renderCounselorList() {
+    return (
+      this.props.listOfCounselorsInAGroup.map(counselor => (
+        <View
+          // style={this.changeStyleAccordingToInput(counselor)}
+          key={counselor.nuvemCode}
+        >
+          <TouchableOpacity
+            onPress={() => Alert.alert('Oi')}// this.manageInvitedListState(counselor)
+          >
+            <View style={styles.textBox}>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+                {counselor.name}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+                {counselor.cpf}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+                {counselor.phone}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      ))
+    );
+  }
+
   render() {
     return (
       <View style={styles.principal}>
@@ -182,10 +216,7 @@ export default class ScheduleMeeting extends React.Component {
           ]}
         >
           <ScrollView key="showInviteCounselorList">
-            {
-            // {this.renderCounselorList()}
-            }
-            <Text> TESTE</Text>
+            {this.renderCounselorList()}
           </ScrollView>
         </PopupDialog>
 
@@ -292,3 +323,18 @@ export default class ScheduleMeeting extends React.Component {
     );
   }
 }
+
+const { shape, string, number, func } = PropTypes;
+
+ScheduleMeeting.propTypes = {
+  asyncGetCounselorFromGroup: func.isRequired,
+  counselor: shape({
+    token: string.isRequired,
+    nuvemCode: number.isRequired,
+  }).isRequired,
+  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
+  })).isRequired,
+};
