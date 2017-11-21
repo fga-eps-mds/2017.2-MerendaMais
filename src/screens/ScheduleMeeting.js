@@ -5,12 +5,12 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-// import { EvilIcons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 // import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import Header from '../components/Header';
 // import SchoolData from '../components/SchoolData';
-// import InvitedCounselorsData from '../components/InvitedCounselorsData';
+import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
 
 const { height } = Dimensions.get('window');
@@ -80,13 +80,24 @@ const styles = StyleSheet.create({
   },
 
   textBox: {
+    margin: 1.5,
+    paddingLeft: 2,
+    justifyContent: 'flex-start',
+  },
+
+  text: {
+    fontSize: 15,
+    paddingVertical: 3,
+  },
+
+  textBoxDescription: {
     marginTop: 1,
     paddingLeft: 20,
     paddingRight: 20,
     marginBottom: 15,
   },
 
-  text: {
+  textDescription: {
     marginTop: 20,
     marginLeft: 25,
     fontSize: 15,
@@ -139,9 +150,9 @@ export default class ScheduleMeeting extends React.Component {
     super(props);
     this.state = {
       meeting: {
-        codSchool: 0,
         date: '',
         time: '',
+        listOfInvitees: this.props.listOfInvitees,
       },
     };
   }
@@ -151,15 +162,99 @@ export default class ScheduleMeeting extends React.Component {
       this.props.counselor.profile.cpf);
   }
 
+  changeStyleAccordingToInput(counselor) {
+    if (this.props.listOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
+      return [styles.listRegisters, { borderColor: '#FF9500' }];
+    }
+    return styles.listRegisters;
+  }
+
+  cancelInviteList() {
+    const newLists = {
+      newListWithInformations: {},
+      newList: {},
+    };
+
+    this.props.setNewLists(newLists);
+
+    this.popupDialogCounselor.dismiss();
+  }
+
+  manageInvitedListState(counselor) {
+    const newLists = {
+      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
+      newList: this.state.meeting.listOfInvitees,
+    };
+    // If the counselor is not at the list (undefined),
+    // we will add him to the list, where its key is the counselor's nuvemCode
+    if (newLists.newListWithInformations[counselor.nuvemCode] === undefined) {
+      newLists.newListWithInformations[counselor.nuvemCode] = counselor;
+      newLists.newList[counselor.nuvemCode] = {
+        nuvemCode: counselor.nuvemCode,
+        confirmed: false,
+      };
+      this.props.setNewLists(newLists);
+    } else {
+      delete newLists.newListWithInformations[counselor.nuvemCode];
+      delete newLists.newList[counselor.nuvemCode];
+      this.props.setNewLists(newLists);
+    }
+    this.forceUpdate();
+  }
+
+  deleteSpecificCounselor(counselorNuvemCode) {
+    const newLists = {
+      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
+      newList: this.state.meeting.listOfInvitees,
+    };
+
+    delete newLists.newListWithInformations[counselorNuvemCode];
+    delete newLists.newList[counselorNuvemCode];
+
+    this.props.setNewLists(newLists);
+
+    this.forceUpdate();
+  }
+
+  showInvitedList() {
+    // Check if the Object is empty
+    if (Object.keys(this.props.listOfInviteesWithCounselorInformations)
+      .length !== 0) {
+      return (
+        <View>
+          <Text style={styles.TopListText}>Lista de conselheiros convidados</Text>
+          <View style={styles.invitedList}>
+            <ScrollView>
+              {
+                Object.entries(this.props.listOfInviteesWithCounselorInformations)
+                  .map(counselor => (
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <InvitedCounselorsData
+                        key={counselor[0]}
+                        {...counselor[1]}
+                      />
+                      <TouchableOpacity
+                        onPress={() => this.deleteSpecificCounselor(counselor[0])}
+                      >
+                        <EvilIcons name="close" style={styles.icon} size={26} color="red" />
+                      </TouchableOpacity>
+                    </View>
+                  ))
+              }
+            </ScrollView>
+          </View>
+        </View>
+      );
+    }
+    return null;
+  }
+
   renderCounselorList() {
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
-        <View
-          // style={this.changeStyleAccordingToInput(counselor)}
-          key={counselor.nuvemCode}
-        >
+        <View style={this.changeStyleAccordingToInput(counselor)} key={counselor.nuvemCode}>
           <TouchableOpacity
-            onPress={() => Alert.alert('Oi')}// this.manageInvitedListState(counselor)
+            onPress={() => this.manageInvitedListState(counselor)}
           >
             <View style={styles.textBox}>
               <Text style={styles.text}>
@@ -180,6 +275,7 @@ export default class ScheduleMeeting extends React.Component {
       ))
     );
   }
+
 
   render() {
     return (
@@ -209,7 +305,7 @@ export default class ScheduleMeeting extends React.Component {
               <DialogButton
                 buttonStyle={styles.dialogButtonStyle}
                 text="CANCELAR"
-                onPress={() => this.popupDialogCounselor.dismiss()}// this.cancelInviteList()
+                onPress={() => this.cancelInviteList()}
                 key="dialogButton2"
               />
             </View>,
@@ -278,9 +374,11 @@ export default class ScheduleMeeting extends React.Component {
                 </TouchableOpacity>
               </View>
 
+              {this.showInvitedList()}
+
               <View behavior="padding">
-                <Text style={styles.text}>Descrição da reunião</Text>
-                <View style={styles.textBox}>
+                <Text style={styles.textDescription}>Descrição da reunião</Text>
+                <View style={styles.textBoxDescription}>
                   <TextInput
                     // onChangeText={text => this.props.setFoodStockObservation(text)}
                     style={styles.textInput}
@@ -324,10 +422,11 @@ export default class ScheduleMeeting extends React.Component {
   }
 }
 
-const { shape, string, number, func } = PropTypes;
+const { shape, string, number, func, bool } = PropTypes;
 
 ScheduleMeeting.propTypes = {
   asyncGetCounselorFromGroup: func.isRequired,
+  setNewLists: func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
@@ -337,4 +436,14 @@ ScheduleMeeting.propTypes = {
     cpf: string.isRequired,
     phone: string.isRequired,
   })).isRequired,
+  listOfInviteesWithCounselorInformations: shape({
+    nuvemCode: number.isRequired,
+    name: string.isRequired,
+    cpf: string.isRequired,
+    phone: string.isRequired,
+  }).isRequired,
+  listOfInvitees: shape({
+    nuvemCode: number.isRequired,
+    confirmed: bool.isRequired,
+  }).isRequired,
 };
