@@ -15,6 +15,7 @@ import {
   DEFAULT_USER_LINK_NUVEM_CIVICA,
   PROFILE_TYPE_CODE,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA } from '../constants';
+import ShowToast from '../components/Toast';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -326,6 +327,8 @@ const authenticatingUserInRegister = (userData, dispatch) => {
         `User response data received from authentication: ${JSON.stringify(response.data, null, 2)}`);
 
       associateProfileToCounselor(response.headers.apptoken, response.data.cod, userData, dispatch);
+
+      ShowToast.Toast('Cadastro realizado com sucesso!');
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'authenticatingUserInRegister',
