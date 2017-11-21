@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 7,
+    height: 400,
   },
 
   item: {
@@ -223,6 +224,29 @@ class SearchSchool extends React.Component {
     });
   }
 
+  showFlatList() {
+    if (this.state.schoolList.length !== 0) {
+      return (
+        <View style={styles.listSchools} key="schoolListView">
+          <ScrollView>
+            <FlatList
+              data={this.state.schoolList}
+              keyExtractor={item => item.nome}
+              renderItem={({ item }) => (
+                <SchoolListButton
+                  onPress={() => this.props.setSchoolInfo(item.codEscola)}
+                  item={item}
+                />
+              )
+              }
+            />
+          </ScrollView>
+        </View>
+      );
+    }
+    return (null);
+  }
+
   buttonActivation() {
     if ((this.state.name > '' && this.state.uf > '') ||
     ((this.state.city !== 'Brasília' && this.state.city > '') && this.state.uf > '')) {
@@ -334,19 +358,7 @@ class SearchSchool extends React.Component {
 
           </View>
 
-          <View style={styles.listSchools} key="schoolListView">
-            <FlatList
-              data={this.state.schoolList}
-              keyExtractor={item => item.nome}
-              renderItem={({ item }) => (
-                <SchoolListButton
-                  onPress={() => this.props.setSchoolInfo(item.codEscola)}
-                  item={item}
-                />
-              )
-              }
-            />
-          </View>
+          {this.showFlatList()}
 
           <View key="renderButton" style={styles.buttonArea} >
             {this.buttonActivation()}
