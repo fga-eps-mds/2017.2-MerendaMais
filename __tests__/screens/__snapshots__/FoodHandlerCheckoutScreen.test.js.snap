@@ -202,7 +202,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Manipuladores com maquiagem (batom, sombra, lápis de olho, etc)
+            Manipuladoras com maquiagem (batom, sombra, lápis de olho, etc)
           </Text>
         </View>
         <View
@@ -272,7 +272,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras com esmalte nas unhas
+            Manipuladoras com esmalte nas unhas
           </Text>
         </View>
         <View
@@ -342,7 +342,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras com unhas compridas
+            Manipuladores com unhas compridas
           </Text>
         </View>
         <View
@@ -412,7 +412,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras doentes
+            Manipuladores doentes
           </Text>
         </View>
         <View
@@ -482,7 +482,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras sem touca
+            Manipuladores sem touca
           </Text>
         </View>
         <View
@@ -552,7 +552,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras usando brincos, anéis ou pulseiras
+            Manipuladoras usando brincos, anéis ou pulseiras
           </Text>
         </View>
         <View
@@ -622,7 +622,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Visitantes/Merendeiras sem touca
+            Visitantes/Manipuladores sem touca
           </Text>
         </View>
       </View>

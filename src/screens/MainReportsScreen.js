@@ -235,33 +235,6 @@ export default class MainReportsScreen extends React.Component {
           <View>
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
               <TouchableOpacity
-                onPress={() => Actions.kitchenCheckoutScreen()}
-              >
-                <Text style={styles.text}>Cozinha</Text>
-              </TouchableOpacity>
-              {this.checkingKitchenReport()}
-            </View>
-
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.refectoryCheckoutScreen()}
-              >
-                <Text style={styles.text}>Refeitório</Text>
-              </TouchableOpacity>
-              {this.checkingRefectoryReport()}
-            </View>
-
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.DocCheckoutScreen()}
-              >
-                <Text style={styles.text}>Documentação</Text>
-              </TouchableOpacity>
-              {this.checkingDocReport()}
-            </View>
-
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
                 onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
               >
                 <Text style={styles.text}>Arredores da Escola</Text>
@@ -276,6 +249,15 @@ export default class MainReportsScreen extends React.Component {
                 <Text style={styles.text}>Estoque de Alimentos</Text>
               </TouchableOpacity>
               {this.checkingStockFoodReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.DocCheckoutScreen()}
+              >
+                <Text style={styles.text}>Documentação</Text>
+              </TouchableOpacity>
+              {this.checkingDocReport()}
             </View>
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
@@ -298,11 +280,29 @@ export default class MainReportsScreen extends React.Component {
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
               <TouchableOpacity
+                onPress={() => Actions.refectoryCheckoutScreen()}
+              >
+                <Text style={styles.text}>Refeitório</Text>
+              </TouchableOpacity>
+              {this.checkingRefectoryReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
                 onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
               >
                 <Text style={styles.text}>Abastecimento de Água e Esgoto</Text>
               </TouchableOpacity>
               {this.checkingWaterSewerSupplyReport()}
+            </View>
+
+            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+              <TouchableOpacity
+                onPress={() => Actions.kitchenCheckoutScreen()}
+              >
+                <Text style={styles.text}>Cozinha</Text>
+              </TouchableOpacity>
+              {this.checkingKitchenReport()}
             </View>
 
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>
