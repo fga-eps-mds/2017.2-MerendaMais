@@ -194,6 +194,7 @@ export default class SchedulingVisit extends React.Component {
       newLists.newList[counselor.nuvemCode] = {
         nuvemCode: counselor.nuvemCode,
         confirmed: false,
+        realizedVisit: false,
       };
       this.props.setNewLists(newLists);
     } else {
@@ -503,5 +504,6 @@ SchedulingVisit.propTypes = {
   listOfInvitees: shape({
     nuvemCode: number.isRequired,
     confirmed: bool.isRequired,
+    realizedVisit: bool.isRequired,
   }).isRequired,
 };

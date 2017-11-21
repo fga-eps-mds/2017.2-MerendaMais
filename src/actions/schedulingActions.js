@@ -18,6 +18,56 @@ const convertingContentStringToJSON = (profileStringSingleQuote) => {
   return profileJSON;
 };
 
+const verifyDate = (schedule) => {
+  const date = new Date();
+  const systemDay = date.getDate();
+  const systemMonth = date.getMonth() + 1;
+  const systemYear = date.getFullYear();
+
+  const daySchedule = schedule.date.substr(0, 2);
+  const monthSchedule = schedule.date.substr(3, 2);
+  const yearSchedule = schedule.date.substr(6);
+
+  console.log('schedule - system');
+  console.log(daySchedule, systemDay);
+  console.log(monthSchedule, systemMonth);
+  console.log(yearSchedule, systemYear);
+
+  if (yearSchedule < systemYear) {
+    return true;
+  } else if (yearSchedule > systemYear) {
+    return false;
+  }
+  if (monthSchedule < systemMonth) {
+    return true;
+  } else if (monthSchedule > systemMonth) {
+    return false;
+  }
+  if (daySchedule < systemDay) {
+    return true;
+  }
+  return false;
+};
+
+
+const defineScheduleStatus = (schedule, counselor) => {
+  if (schedule.listOfInvitees[counselor.nuvemCode] !== undefined) {
+    if (schedule.listOfInvitees[counselor.nuvemCode].realizedVisit) {
+      console.log('JA FISCALIZADO!!!!');
+    } else if (verifyDate(schedule)) {
+      console.log('EXPIROU!!!');
+    } else {
+      console.log('PENDENTE!!!!');
+    }
+  } else if (schedule.listOfInvitees[counselor.nuvemCode] === undefined) {
+    if (verifyDate(schedule)) {
+      console.log('EXPIROU!!!');
+    } else {
+      console.log('PENDENTE!!!!');
+    }
+  }
+};
+
 const getContent = (contentLink, counselor, dispatch) => {
   const getContentHeader = {
     headers: {
@@ -29,7 +79,7 @@ const getContent = (contentLink, counselor, dispatch) => {
       logInfo(FILE_NAME, 'asyncGetSchedule',
         `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
       const content = convertingContentStringToJSON(response.data.JSON);
-      dispatch(setScheduleList(content));
+      defineScheduleStatus(content, counselor);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',
@@ -109,6 +159,7 @@ const schedulingVisit = (visitData) => {
   visitDataWithAuthor.listOfInvitees[authorsNuvemCode] = {
     nuvemCode: authorsNuvemCode,
     confirmed: true,
+    realizedVisit: false,
   };
 
   const stringVisit = convertingJSONToString(visitData.visit);
