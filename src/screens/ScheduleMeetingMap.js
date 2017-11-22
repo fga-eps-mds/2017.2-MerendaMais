@@ -1,7 +1,11 @@
 import React from 'react';
 import { MapView } from 'expo';
-import { StyleSheet, Text, TextInput, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import PopupDialog, {
+  DialogTitle,
+  DialogButton,
+} from 'react-native-popup-dialog';
 import Header from '../components/Header';
 
 const { height } = Dimensions.get('window');
@@ -14,9 +18,9 @@ const styles = StyleSheet.create({
   },
   button: {
     paddingVertical: 15,
-    borderWidth: 2,
+    borderWidth: 3,
     borderRadius: 7,
-    marginBottom: 5,
+    marginBottom: 1,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -39,6 +43,24 @@ const styles = StyleSheet.create({
     paddingLeft: 2,
     justifyContent: 'flex-start',
   },
+  text: {
+    fontSize: 15,
+    paddingVertical: 3,
+  },
+  dialogButtonStyle: {
+    marginVertical: -16,
+  },
+
+  footerPopUp: {
+    backgroundColor: '#F9F9FB',
+    borderColor: '#DAD9DC',
+    borderTopWidth: 0.5,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
 });
 
@@ -47,29 +69,43 @@ export default class ScheduleMeetingMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: {
-        latitude: 60.0,
-        longitude: -30.0,
+      meetingLocation: {},
+      userLocation: {
+        latitude: 0.0,
+        longitude: 0.0,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
+      region: {},
       error: null,
     };
   }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
-          location: { ...this.state.location, latitude: position.coords.latitude } });
+          userLocation: { ...this.state.userLocation, latitude: position.coords.latitude } });
         this.setState({
-          location: { ...this.state.location, longitude: position.coords.longitude } });
+          userLocation: { ...this.state.userLocation, longitude: position.coords.longitude } });
+        this.setState({ region: this.state.userLocation });
         console.log('ONDE EU TO');
         console.log(position.coords.latitude);
         console.log(position.coords.longitude);
+        this.showPopUp();
       },
       error => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
+  }
+
+  showPopUp() {
+    this.popupMapsInstruction.show();
+  }
+
+  mostrapramim() {
+    console.log('O STATE DEPOIS DO DRAG');
+    console.log(this.state);
   }
 
   render() {
@@ -82,27 +118,45 @@ export default class ScheduleMeetingMap extends React.Component {
           subTitle={'ESCOLHA O LOCAL'}
           backButton
         />
-        <View style={styles.textBox}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Local da Reunião"
-            // onChangeText={text => this.setState({ passwordCompared: text })}
-          />
-        </View>
+
+        <PopupDialog
+          ref={(popupMapsInstruction) => {
+            this.popupMapsInstruction = popupMapsInstruction;
+          }}
+          dialogTitle={<DialogTitle title="Escolhendo local para Reunião" />}
+          overlayPointerEvents="none"
+          height="30%"
+          width="85%"
+        >
+          <Text style={styles.text}> Para escolher o local da Reunião, segure e arraste
+          o marcador até o local desejado. Ele começará em sua posição atual.
+          É possível dar ou retirar zoom conforme o desejado.</Text>
+          <View style={styles.footerPopUp}>
+            <DialogButton
+              buttonStyle={styles.dialogButtonStyle}
+              text="Ok"
+              onPress={() => this.popupMapsInstruction.dismiss()}
+              key="dialogButton1"
+            />
+          </View>
+        </PopupDialog>
         <MapView
           provider={MapView.PROVIDER_GOOGLE}
           style={{ flex: 1 }}
-          region={this.state.location}
+          region={this.state.region}
+          onRegionChange={region => this.setState({ region })}
         >
           <MapView.Marker
-            coordinate={this.state.location}
+            coordinate={this.state.userLocation}
+            draggable
             pinColor="orange"
+            onDragEnd={e => this.setState({ meetingLocation: e.nativeEvent.coordinate })}
           />
         </MapView>
         <TouchableOpacity
           key="setMeetingLocationButton"
           style={styles.button}
-          // onPress={() => Actions.ScheduleMeetingMap()}
+          onPress={() => this.mostrapramim()} // Actions.ScheduleMeetingMap()}
         >
           <Text style={styles.buttonText}>Definir Local da Reunião</Text>
         </TouchableOpacity>
