@@ -112,7 +112,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {schedule.codSchool}
+              {schedule.schoolName}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Data: </Text>

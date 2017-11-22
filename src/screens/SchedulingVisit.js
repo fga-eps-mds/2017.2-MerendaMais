@@ -122,6 +122,7 @@ export default class SchedulingVisit extends React.Component {
       codGrupoDestino: this.props.counselor.profile.codGroup,
       visit: {
         codSchool: 0,
+        schoolName: '',
         date: '',
         time: '',
         invitedAgent: false,
@@ -139,6 +140,7 @@ export default class SchedulingVisit extends React.Component {
   componentWillReceiveProps(newProps) {
     const newVisit = {
       codSchool: newProps.school.schoolCode,
+      schoolName: newProps.school.schoolName,
       date: this.state.visit.date,
       time: this.state.visit.time,
       invitedAgent: this.state.visit.invitedAgent,
