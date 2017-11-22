@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing DocCheckout Screen renders as expected 1`] = `
+exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
 <View
   style={
     Object {
@@ -11,7 +11,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
-    subTitle="Documentação"
+    subTitle="Preparação e Distribuição"
     title="Relatório"
   />
   <KeyboardAvoidingView
@@ -132,7 +132,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Ausência de registros de imunização
+            Higienização de frutas e verduras é realizada de maneira adequada
           </Text>
         </View>
         <View
@@ -202,7 +202,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Ausência de registro de higienização dos utensílios
+            A água sanitária utilizada é própria para alimentos
           </Text>
         </View>
         <View
@@ -272,7 +272,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Ausência de registro de capacitação ou treinamento de Merendeiras
+            O descongelamento dos alimentos é feito na geladeira
           </Text>
         </View>
         <View
@@ -342,7 +342,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Ausência de registro de portabilidade da água
+            Uso de água potável no preparo de gelo e alimentos
           </Text>
         </View>
         <View
@@ -412,7 +412,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Ausência de registro de exames periódicos dos manipuladores
+            Os alimentos preparados, que serão congelados ou refrigerados, são adequadamente acondicionados e identificados com: nome da preparação, data de preparo e prazo de validade após a abertura ou retirada da embalagem original
           </Text>
         </View>
         <View
@@ -482,7 +482,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Presença de comprovante de limpeza da caixa d'água potável (semestral)
+            Caso as refeições aconteçam em sala de aula, a escola possui carrinho para transportar os alimentos?
           </Text>
         </View>
         <View
@@ -552,147 +552,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               }
             }
           >
-            Presença de comprovante de limpeza do reservatório de água subterrâneo (semestral)
-          </Text>
-        </View>
-        <View
-          key="7"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            Presença de comprovante de limpeza da caixa de gordura (quinzenal)
-          </Text>
-        </View>
-        <View
-          key="8"
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#008000"
-            />
-          </View>
-          <View>
-            <Checkbox
-              checkboxStyle={
-                Object {
-                  "borderColor": "black",
-                  "borderRadius": 2,
-                  "borderWidth": 2,
-                  "flexWrap": "wrap",
-                  "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
-                  "width": 25,
-                }
-              }
-              defaultColor="#fff"
-              disabled={false}
-              disabledColor={null}
-              onSelect={[Function]}
-              selected={false}
-              selectedColor="#B22222"
-            />
-          </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "flex": 1,
-                "fontSize": 15,
-                "paddingTop": 15,
-              }
-            }
-          >
-            Presença de comprovante de desinsetização e desratização (semestral)
+            Os carrinhos estão em boas condições e em quantidades suficientes
           </Text>
         </View>
       </View>

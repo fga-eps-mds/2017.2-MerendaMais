@@ -17,6 +17,17 @@ import { setDocReportPositive,
   setSchoolSurroundingsReportPositive, setSchoolSurroundingsReportNegative,
   setSchoolSurroundingsObservation,
   setStockFoodReportPositive, setStockFoodReportNegative, setFoodStockObservation,
+  setAcceptedMenu, setRefusedMenu,
+  setFoodHandlerReportPositive,
+  setFoodHandlerReportNegative,
+  setFoodHandlerObservation,
+  setStatusFoodHandler,
+  setFoodPreparationReportPositive,
+  setFoodPreparationReportNegative, setFoodPreparationObservation, setStatusFoodPreparation,
+  setWaterSewerSupplyReportPositive,
+  setWaterSewerSupplyReportNegative,
+  setWaterSewerSupplyObservation,
+  setStatusWaterSewerSupply,
 } from '../../src/actions/reportActions';
 
 import { SET_STOCKFOODREPORT_NEGATIVE,
@@ -45,6 +56,20 @@ import { SET_STOCKFOODREPORT_NEGATIVE,
   SET_SCHOOLSURROUNDINGSOBSERVATION,
   SET_SCHOOLSURROUNDINGSREPORT_NEGATIVE,
   SET_SCHOOLSURROUNDINGSREPORT_POSITIVE,
+  SET_ACCEPTEDMENU,
+  SET_REFUSEDMENU,
+  SET_FOODHANDLEROBSERVATION,
+  SET_FOODHANDLERREPORT_POSITIVE,
+  SET_FOODHANDLERREPORT_NEGATIVE,
+  SET_STATUSFOODHANDLER,
+  SET_WATERSEWERSUPPLYOBSERVATION,
+  SET_WATERSEWERSUPPLYREPORT_POSITIVE,
+  SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
+  SET_STATUSWATERSEWERSUPPLY,
+  SET_FOODPREPARATIONOBSERVATION,
+  SET_FOODPREPARATIONREPORT_POSITIVE,
+  SET_FOODPREPARATIONREPORT_NEGATIVE,
+  SET_STATUSFOODPREPARATION,
 } from '../../src/actions/types';
 
 describe('Testing reportActions', () => {
@@ -361,5 +386,173 @@ describe('Testing reportActions', () => {
 
     expect(actionReturn.payload).toEqual({ key: 1 });
     expect(actionReturn.type).toBe(SET_REFECTORYREPORT_NEGATIVE);
+  });
+
+  it('Testing setFoodHandlerObservation', () => {
+    let actionReturn = setFoodHandlerObservation();
+
+    expect(actionReturn.payload).not.toBe('Uniforme completo');
+    expect(actionReturn.type).toBe(SET_FOODHANDLEROBSERVATION);
+
+    actionReturn = setFoodHandlerObservation('Uniforme completo');
+
+    expect(actionReturn.payload).toBe('Uniforme completo');
+    expect(actionReturn.type).toBe(SET_FOODHANDLEROBSERVATION);
+  });
+
+  it('Testing setFoodHandlerReportPositive', () => {
+    let actionReturn = setFoodHandlerReportPositive(1);
+
+    expect(actionReturn.payload).not.toBe(1);
+    expect(actionReturn.type).toBe(SET_FOODHANDLERREPORT_POSITIVE);
+
+    actionReturn = setFoodHandlerReportPositive(1);
+
+    expect(actionReturn.payload).toEqual({ key: 1 });
+    expect(actionReturn.type).toBe(SET_FOODHANDLERREPORT_POSITIVE);
+  });
+
+  it('Testing setFoodHandlerReportNegative', () => {
+    let actionReturn = setFoodHandlerReportNegative(1);
+
+    expect(actionReturn.payload).not.toBe(1);
+    expect(actionReturn.type).toBe(SET_FOODHANDLERREPORT_NEGATIVE);
+
+    actionReturn = setFoodHandlerReportNegative(1);
+
+    expect(actionReturn.payload).toEqual({ key: 1 });
+    expect(actionReturn.type).toBe(SET_FOODHANDLERREPORT_NEGATIVE);
+  });
+
+  it('Testing setFoodPreparationObservation', () => {
+    let actionReturn = setFoodPreparationObservation();
+
+    expect(actionReturn.payload).not.toBe('A água sanitária utilizada é própria para alimentos');
+    expect(actionReturn.type).toBe(SET_FOODPREPARATIONOBSERVATION);
+
+    actionReturn = setFoodPreparationObservation('A água sanitária utilizada é própria para alimentos');
+
+    expect(actionReturn.payload).toBe('A água sanitária utilizada é própria para alimentos');
+    expect(actionReturn.type).toBe(SET_FOODPREPARATIONOBSERVATION);
+  });
+
+  it('Testing setFoodPreparationReportPositive', () => {
+    let actionReturn = setFoodPreparationReportPositive(1);
+
+    expect(actionReturn.payload).not.toBe(1);
+    expect(actionReturn.type).toBe(SET_FOODPREPARATIONREPORT_POSITIVE);
+
+    actionReturn = setFoodPreparationReportPositive(1);
+
+    expect(actionReturn.payload).toEqual({ key: 1 });
+    expect(actionReturn.type).toBe(SET_FOODPREPARATIONREPORT_POSITIVE);
+  });
+
+  it('Testing setFoodPreparationReportNegative', () => {
+    let actionReturn = setFoodPreparationReportNegative(1);
+
+    expect(actionReturn.payload).not.toBe(1);
+    expect(actionReturn.type).toBe(SET_FOODPREPARATIONREPORT_NEGATIVE);
+
+    actionReturn = setFoodPreparationReportNegative(1);
+
+    expect(actionReturn.payload).toEqual({ key: 1 });
+    expect(actionReturn.type).toBe(SET_FOODPREPARATIONREPORT_NEGATIVE);
+  });
+
+  it('Testing setWaterSewerSupplyObservation', () => {
+    let actionReturn = setWaterSewerSupplyObservation();
+
+    expect(actionReturn.payload).not.toBe('Fossas e esgotos conectados à rede pública');
+    expect(actionReturn.type).toBe(SET_WATERSEWERSUPPLYOBSERVATION);
+
+    actionReturn = setWaterSewerSupplyObservation('Fossas e esgotos conectados à rede pública');
+
+    expect(actionReturn.payload).toBe('Fossas e esgotos conectados à rede pública');
+    expect(actionReturn.type).toBe(SET_WATERSEWERSUPPLYOBSERVATION);
+  });
+
+  it('Testing setWaterSewerSupplyReportPositive', () => {
+    let actionReturn = setWaterSewerSupplyReportPositive(1);
+
+    expect(actionReturn.payload).not.toBe(1);
+    expect(actionReturn.type).toBe(SET_WATERSEWERSUPPLYREPORT_POSITIVE);
+
+    actionReturn = setWaterSewerSupplyReportPositive(1);
+
+    expect(actionReturn.payload).toEqual({ key: 1 });
+    expect(actionReturn.type).toBe(SET_WATERSEWERSUPPLYREPORT_POSITIVE);
+  });
+
+  it('Testing setWaterSewerSupplyReportNegative', () => {
+    let actionReturn = setWaterSewerSupplyReportNegative(1);
+
+    expect(actionReturn.payload).not.toBe(1);
+    expect(actionReturn.type).toBe(SET_WATERSEWERSUPPLYREPORT_NEGATIVE);
+
+    actionReturn = setWaterSewerSupplyReportNegative(1);
+
+    expect(actionReturn.payload).toEqual({ key: 1 });
+    expect(actionReturn.type).toBe(SET_WATERSEWERSUPPLYREPORT_NEGATIVE);
+  });
+
+  it('Testing acceptedMenu', () => {
+    let actionReturn = setAcceptedMenu();
+
+    expect(actionReturn.payload).not.toBe('O cardápio mais aceito foi o que continha frango assado');
+    expect(actionReturn.type).toBe(SET_ACCEPTEDMENU);
+
+    actionReturn = setAcceptedMenu('O cardápio mais aceito foi o que continha frango assado');
+
+    expect(actionReturn.payload).toBe('O cardápio mais aceito foi o que continha frango assado');
+    expect(actionReturn.type).toBe(SET_ACCEPTEDMENU);
+  });
+
+  it('Testing refusedMenu', () => {
+    let actionReturn = setRefusedMenu();
+
+    expect(actionReturn.payload).not.toBe('O cardápio menos aceito foi o que continha frango assado');
+    expect(actionReturn.type).toBe(SET_REFUSEDMENU);
+
+    actionReturn = setRefusedMenu('O cardápio menos aceito foi o que continha frango assado');
+
+    expect(actionReturn.payload).toBe('O cardápio menos aceito foi o que continha frango assado');
+    expect(actionReturn.type).toBe(SET_REFUSEDMENU);
+  });
+
+  it('Testing setStatusFoodHandler', () => {
+    let actionReturn = setStatusFoodHandler();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSFOODHANDLER);
+
+    actionReturn = setStatusFoodHandler({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSFOODHANDLER);
+  });
+
+  it('Testing setStatusFoodPreparation', () => {
+    let actionReturn = setStatusFoodPreparation();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSFOODPREPARATION);
+
+    actionReturn = setStatusFoodPreparation({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSFOODPREPARATION);
+  });
+
+  it('Testing setStatusWaterSewerSupply', () => {
+    let actionReturn = setStatusWaterSewerSupply();
+
+    expect(actionReturn.payload).not.toBe({});
+    expect(actionReturn.type).toBe(SET_STATUSWATERSEWERSUPPLY);
+
+    actionReturn = setStatusWaterSewerSupply({});
+
+    expect(actionReturn.payload).toEqual({ });
+    expect(actionReturn.type).toBe(SET_STATUSWATERSEWERSUPPLY);
   });
 });

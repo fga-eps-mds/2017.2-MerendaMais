@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.05,
     textAlignVertical: 'top',
   },
+
   textBox: {
     paddingLeft: 10,
     paddingTop: 30,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class KitchenCheckoutScreen extends React.Component {
+export default class FoodPreparationCheckoutScreen extends React.Component {
   showPositiveCheckBox(item) {
     return (
       <View>
@@ -88,17 +89,12 @@ export default class KitchenCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setKitchenReportPositive(item.key)}
+          onSelect={() => this.props.setFoodPreparationReportPositive(item.key)}
           disabled={item.markedNo}
           disabledColor={null}
         />
       </View>
     );
-  }
-
-  concludeReport() {
-    this.props.setStatusKitchen(true);
-    Actions.pop();
   }
 
   showNegativeCheckBox(item) {
@@ -108,7 +104,7 @@ export default class KitchenCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setKitchenReportNegative(item.key)}
+          onSelect={() => this.props.setFoodPreparationReportNegative(item.key)}
           disabled={item.markedYes}
           disabledColor={null}
         />
@@ -116,12 +112,17 @@ export default class KitchenCheckoutScreen extends React.Component {
     );
   }
 
+  concludeReport() {
+    this.props.setStatusFoodPreparation(true);
+    Actions.pop();
+  }
+
   render() {
     return (
       <View style={styles.principal}>
         <Header
           title={'Relatório'}
-          subTitle={'Cozinha'}
+          subTitle={'Preparação e Distribuição'}
           backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
@@ -146,10 +147,10 @@ export default class KitchenCheckoutScreen extends React.Component {
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.props.setKitchenObservation(text)}
+                  onChangeText={text => this.props.setFoodPreparationObservation(text)}
                   style={styles.textInput}
-                  multiline
                   value={this.props.observation}
+                  multiline
                   underlineColorAndroid="transparent"
                   placeholder="Observações (opcional)"
                 />
@@ -170,11 +171,11 @@ export default class KitchenCheckoutScreen extends React.Component {
   }
 }
 
-KitchenCheckoutScreen.propTypes = {
-  setStatusKitchen: PropTypes.func.isRequired,
-  setKitchenObservation: PropTypes.func.isRequired,
-  setKitchenReportPositive: PropTypes.func.isRequired,
-  setKitchenReportNegative: PropTypes.func.isRequired,
+FoodPreparationCheckoutScreen.propTypes = {
+  setStatusFoodPreparation: PropTypes.func.isRequired,
+  setFoodPreparationObservation: PropTypes.func.isRequired,
+  setFoodPreparationReportPositive: PropTypes.func.isRequired,
+  setFoodPreparationReportNegative: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
   report: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,

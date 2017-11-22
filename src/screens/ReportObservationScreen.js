@@ -80,17 +80,8 @@ const styles = StyleSheet.create({
 });
 
 export default class ReportObservationScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      observation: this.props.observation,
-    };
-  }
-
-
   concludeReport() {
     this.props.setStatusReportObservation(true);
-    this.props.setReportObservation(this.state.observation);
     Actions.pop();
   }
 
@@ -107,10 +98,10 @@ export default class ReportObservationScreen extends React.Component {
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.setState({ observation: text })}
+                  onChangeText={text => this.props.setReportObservation(text)}
                   style={styles.textInput}
                   multiline
-                  value={this.state.observation}
+                  value={this.props.observation}
                   underlineColorAndroid="transparent"
                   placeholder="Observações gerais que gostaria de adicionar (opcional)"
                 />
