@@ -67,8 +67,6 @@ const initialState = {
   },
   schedule: {
     codSchool: 0,
-    date: '',
-    time: '',
     meetingLatitude: 0.0,
     meetingLongitude: 0.0,
   },

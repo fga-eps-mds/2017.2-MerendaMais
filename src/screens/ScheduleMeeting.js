@@ -153,6 +153,9 @@ export default class ScheduleMeeting extends React.Component {
         date: '',
         time: '',
         listOfInvitees: this.props.listOfInvitees,
+        lat: this.props.schedule.meetingLatitude,
+        long: this.props.schedule.meetingLongitude,
+        meetingDescription: '',
       },
     };
   }
@@ -276,8 +279,8 @@ export default class ScheduleMeeting extends React.Component {
     );
   }
 
-
   render() {
+    console.log(this.state.meeting);
     return (
       <View style={styles.principal}>
         <Header
@@ -380,12 +383,14 @@ export default class ScheduleMeeting extends React.Component {
                 <Text style={styles.textDescription}>Descrição da reunião</Text>
                 <View style={styles.textBoxDescription}>
                   <TextInput
-                    // onChangeText={text => this.props.setFoodStockObservation(text)}
+                    onChangeText={meetingDescription => this.setState(
+                      { meeting: { ...this.state.meeting, meetingDescription } })}
                     style={styles.textInput}
-                    // value={this.props.observation}
+                    value={this.state.meetingDescription}
+                    maxLength={250}
                     multiline
                     underlineColorAndroid="transparent"
-                    placeholder="opcional"
+                    placeholder="Opcional( Max: 250 caracteres )"
                   />
                 </View>
               </View>
