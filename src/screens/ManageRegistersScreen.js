@@ -77,7 +77,7 @@ export default class ManageRegistersScreen extends React.Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.props.disableCounselor()} >
+            <TouchableOpacity onPress={() => this.props.disableCounselor(counselor)} >
               <View style={styles.redBox}>
                 <Text>EXCLUIR</Text>
               </View>
@@ -114,4 +114,5 @@ ManageRegistersScreen.propTypes = {
     phone: PropTypes.string,
   })).isRequired,
   asyncGetCounselorFromGroup: PropTypes.func.isRequired,
+  disableCounselor: PropTypes.func.isRequired,
 };
