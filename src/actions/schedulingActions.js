@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
 import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
-
+import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 
 const FILE_NAME = 'SchedulingActions.js';
 
@@ -96,4 +96,19 @@ const asyncSchedulingVisit = visitData => () => {
   schedulingVisit(visitData);
 };
 
+
 export default asyncSchedulingVisit;
+
+export const setMeetingLocationLatitude = latitude => ({
+  type: SET_MEETING_LOCATION_LATITUDE,
+  payload: {
+    latitude,
+  },
+});
+
+export const setMeetingLocationLongitude = longitude => ({
+  type: SET_MEETING_LOCATION_LONGITUDE,
+  payload: {
+    longitude,
+  },
+});

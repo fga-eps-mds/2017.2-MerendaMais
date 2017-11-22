@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MapView } from 'expo';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -89,9 +90,7 @@ export default class ScheduleMeetingMap extends React.Component {
         this.setState({
           userLocation: { ...this.state.userLocation, longitude: position.coords.longitude } });
         this.setState({ region: this.state.userLocation });
-        console.log('ONDE EU TO');
-        console.log(position.coords.latitude);
-        console.log(position.coords.longitude);
+        this.setState({ meetingLocation: this.state.userLocation });
         this.showPopUp();
       },
       error => this.setState({ error: error.message }),
@@ -103,14 +102,18 @@ export default class ScheduleMeetingMap extends React.Component {
     this.popupMapsInstruction.show();
   }
 
-  mostrapramim() {
-    console.log('O STATE DEPOIS DO DRAG');
-    console.log(this.state);
+  concludeMeetingLocation() {
+    this.props.setMeetingLocationLatitude(this.state.meetingLocation.latitude);
+    this.props.setMeetingLocationLongitude(this.state.meetingLocation.longitude);
+    console.log('A Lat Long que eu to passando');
+    console.log(this.state.meetingLocation.latitude);
+    console.log(this.state.meetingLocation.longitude);
+    Actions.pop();
   }
 
   render() {
-    console.log('O STATE');
-    console.log(this.state);
+    console.log('A Lat Long da store');
+    console.log(this.props.schedule);
     return (
       <View style={styles.principal}>
         <Header
@@ -156,7 +159,7 @@ export default class ScheduleMeetingMap extends React.Component {
         <TouchableOpacity
           key="setMeetingLocationButton"
           style={styles.button}
-          onPress={() => this.mostrapramim()} // Actions.ScheduleMeetingMap()}
+          onPress={() => this.concludeMeetingLocation()}
         >
           <Text style={styles.buttonText}>Definir Local da Reunião</Text>
         </TouchableOpacity>
@@ -164,3 +167,14 @@ export default class ScheduleMeetingMap extends React.Component {
     );
   }
 }
+
+const { func, number, shape } = PropTypes;
+
+ScheduleMeetingMap.propTypes = {
+  setMeetingLocationLongitude: func.isRequired,
+  setMeetingLocationLatitude: func.isRequired,
+  schedule: shape({
+    meetingLatitude: number.isRequired,
+    meetingLongitude: number.isRequired,
+  }).isRequired,
+};

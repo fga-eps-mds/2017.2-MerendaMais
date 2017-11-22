@@ -21,7 +21,7 @@ import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
 import ScheduleMeetingContainer from './src/Containers/ScheduleMeetingContainer';
-import ScheduleMeetingMap from './src/screens/ScheduleMeetingMap';
+import ScheduleMeetingMapContainer from './src/Containers/ScheduleMeetingMapContainer';
 
 const Routes = () => ({
   render() {
@@ -38,8 +38,8 @@ const Routes = () => ({
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene
-              key="ScheduleMeetingMap"
-              component={ScheduleMeetingMap}
+              key="scheduleMeetingMap"
+              component={ScheduleMeetingMapContainer}
               hideNavBar
             />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />

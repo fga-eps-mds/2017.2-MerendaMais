@@ -323,7 +323,7 @@ export default class ScheduleMeeting extends React.Component {
                 <TouchableOpacity
                   key="searchLocation"
                   style={styles.button}
-                  onPress={() => Actions.ScheduleMeetingMap()}
+                  onPress={() => Actions.scheduleMeetingMap()}
                 >
                   <Text style={styles.buttonText}>Escolher Localização</Text>
                 </TouchableOpacity>
@@ -427,6 +427,10 @@ const { shape, string, number, func, bool } = PropTypes;
 ScheduleMeeting.propTypes = {
   asyncGetCounselorFromGroup: func.isRequired,
   setNewLists: func.isRequired,
+  schedule: shape({
+    meetingLatitude: number.isRequired,
+    meetingLongitude: number.isRequired,
+  }).isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
