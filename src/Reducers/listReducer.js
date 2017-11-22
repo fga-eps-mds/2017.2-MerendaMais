@@ -21,6 +21,11 @@ const listReducer = (state = initialState.list, action) => {
       return {
         ...state,
         listOfCounselorsInAGroup: [],
+        listOfInviteesWithCounselorInformations: {},
+        listOfInvitees: {},
+        listOfPendingScheduleInAGroup: [],
+        listOfExpiredScheduleInAGroup: [],
+        listOfAlreadyInpectionedSchedueInAGroup: [],
       };
     case SET_NEW_LISTS:
       return {

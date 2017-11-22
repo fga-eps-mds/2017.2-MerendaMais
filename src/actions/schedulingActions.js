@@ -6,7 +6,8 @@ import { convertingJSONToString } from './counselorActions';
 import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
 import { setPendingScheduleList,
   setExpiredScheduleList,
-  setAlreadyInspectionedScheduleList } from './listActions';
+  setAlreadyInspectionedScheduleList,
+  resetList } from './listActions';
 
 const FILE_NAME = 'SchedulingActions.js';
 
@@ -85,6 +86,8 @@ const getContent = (contentLink, counselor, dispatch) => {
 };
 
 export const asyncGetSchedule = counselor => (dispatch) => {
+  dispatch(resetList());
+
   const getScheduleParamsAndHeader = {
     params: {
       codGrupoDestino: counselor.profile.codGroup,

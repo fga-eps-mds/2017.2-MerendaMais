@@ -4,14 +4,13 @@ import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
 import StartPendingInspectionContainer from '../Containers/StartPendingInspectionContainer';
 import StartExpiredInspectionContainer from '../Containers/StartExpiredInspectionContainer';
 import Header from '../components/Header';
+import StartAlreadyInspectionedInspectionContainer from '../Containers/StartAlreadyInspectionedInspectionContainer';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
-
-const FirstRoute = () => <View style={[styles.container, { backgroundColor: '#ff4081' }]} />;
 
 export default class Principal extends Component {
   constructor(props) {
@@ -35,7 +34,7 @@ export default class Principal extends Component {
 
   renderScene = SceneMap({
     first: StartPendingInspectionContainer,
-    second: FirstRoute,
+    second: StartAlreadyInspectionedInspectionContainer,
     third: StartExpiredInspectionContainer,
   });
 
