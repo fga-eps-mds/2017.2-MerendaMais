@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 
@@ -47,6 +47,16 @@ export default class ManageRegistersScreen extends React.Component {
     this.props.asyncGetCounselorFromGroup(this.props.CAE, this.props.cpf);
   }
 
+  disableCounselor(counselor, codGroup) {
+    Alert.alert(
+      'Desativar Conselheiro',
+      'Você deseja realmente desassociar esse Conselheiro da Aplicação?',
+      [
+        { text: 'Cancelar', onPress: () => console.log('Cancelar') },
+        { text: 'Desassociar', onPress: () => this.props.disableCounselorFromGroup(counselor, codGroup, this.props.appToken) },
+      ]);
+  }
+
   arrayRegistersList() {
     if (this.props.listOfCounselorsInAGroup.length === 0) {
       return (
@@ -77,7 +87,9 @@ export default class ManageRegistersScreen extends React.Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.props.disableCounselor(counselor)} >
+            <TouchableOpacity
+              onPress={() => this.disableCounselor(counselor, this.props.codGroup)}
+            >
               <View style={styles.redBox}>
                 <Text>EXCLUIR</Text>
               </View>
@@ -108,11 +120,13 @@ export default class ManageRegistersScreen extends React.Component {
 ManageRegistersScreen.propTypes = {
   CAE: PropTypes.string.isRequired,
   cpf: PropTypes.string.isRequired,
+  codGroup: PropTypes.string.isRequired,
+  appToken: PropTypes.string.isRequired,
   listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     cpf: PropTypes.string,
     phone: PropTypes.string,
   })).isRequired,
   asyncGetCounselorFromGroup: PropTypes.func.isRequired,
-  disableCounselor: PropTypes.func.isRequired,
+  disableCounselorFromGroup: PropTypes.func.isRequired,
 };

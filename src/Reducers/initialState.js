@@ -21,6 +21,7 @@ const initialState = {
       segment: '',
       CAE_Type: '',
       CAE: '',
+      codGroup: '',
     },
   },
   application: {

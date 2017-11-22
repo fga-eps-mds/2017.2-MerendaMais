@@ -182,7 +182,16 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
         `${response.data}`);
       logInfo(FILE_NAME, 'addCounselorToGroup', JSON.stringify(response));
 
-      dispatch(setCounselor(counselor));
+      let counselorWithCodGroup = counselor;
+      counselorWithCodGroup = {
+        ...counselorWithCodGroup,
+        profile: {
+          ...counselorWithCodGroup.profile,
+          codGroup,
+        },
+      };
+
+      dispatch(setCounselor(counselorWithCodGroup));
 
       dispatch(isNotLoading());
 
@@ -519,6 +528,45 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
 
 // Functions focused in Counselor Login
 
+const getCodGroup = (counselorWithProfile, dispatch) => {
+  const paramsToNuvem = {
+    params: {
+      codAplicativo: APP_IDENTIFIER,
+      descricao: counselorWithProfile.profile.CAE,
+    },
+  };
+
+  axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
+    .then((response) => {
+      const codGroup = response.data[0].codGrupo;
+
+      let counselorWithCodGroup = counselorWithProfile;
+
+      counselorWithCodGroup = {
+        ...counselorWithCodGroup,
+        profile: {
+          ...counselorWithCodGroup.profile,
+          codGroup,
+        },
+      };
+
+      logInfo(FILE_NAME, 'getCodGroup',
+        `Código do Grupo: ${JSON.stringify(counselorWithCodGroup, null, 2)}`);
+
+      dispatch(setCounselor(counselorWithCodGroup));
+
+      dispatch(isNotLoading());
+
+      Actions.mainScreen();
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'searchAGroup',
+        `Request result in an ${error}`);
+
+      dispatch(isNotLoading());
+    });
+};
+
 // Used in Async Action to Login Counselor
 const convertingProfileStringToJSON = (profileStringSingleQuote) => {
   // Changing ' to " in string received from Nuvem Civica.
@@ -549,11 +597,7 @@ const getUserProfileInLogin = (counselor, dispatch) => {
       logInfo(FILE_NAME, 'getUserProfileInLogin',
         `Final Counselor sent to store after login: ${JSON.stringify(counselorWithProfile, null, 2)}`);
 
-      dispatch(setCounselor(counselorWithProfile));
-
-      dispatch(isNotLoading());
-
-      Actions.mainScreen();
+      getCodGroup(counselorWithProfile, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'gettingUserProfileInLogin',
