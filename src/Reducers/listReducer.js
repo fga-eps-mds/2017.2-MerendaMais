@@ -1,8 +1,10 @@
 import initialState from './initialState';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_SCHEDULE_LIST,
-  SET_NEW_LISTS } from '../actions/types';
+  SET_NEW_LISTS,
+  SET_PENDING_SCHEDULE_LIST,
+  SET_EXPIRED_SCHEDULE_LIST,
+  SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from '../actions/types';
 
 const listReducer = (state = initialState.list, action) => {
   if (action === undefined) {
@@ -26,10 +28,21 @@ const listReducer = (state = initialState.list, action) => {
         listOfInviteesWithCounselorInformations: action.payload.newListWithInformations,
         listOfInvitees: action.payload.newList,
       };
-    case SET_SCHEDULE_LIST:
+    case SET_PENDING_SCHEDULE_LIST:
       return {
         ...state,
-        listOfSchedulingInAGroup: [...state.listOfSchedulingInAGroup, action.payload],
+        listOfPendingScheduleInAGroup: [...state.listOfPendingScheduleInAGroup, action.payload],
+      };
+    case SET_EXPIRED_SCHEDULE_LIST:
+      return {
+        ...state,
+        listOfExpiredScheduleInAGroup: [...state.listOfExpiredScheduleInAGroup, action.payload],
+      };
+    case SET_ALREADY_INPECTIONED_SCHEDULE_LIST:
+      return {
+        ...state,
+        listOfAlreadyInpectionedSchedueInAGroup:
+         [...state.listOfAlreadyInpectionedSchedueInAGroup, action.payload],
       };
     default:
       return state;

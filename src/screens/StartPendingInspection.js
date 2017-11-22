@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class StartInspection extends React.Component {
+class StartPendingInspection extends React.Component {
   constructor(props) {
     super(props);
 
@@ -105,13 +105,13 @@ class StartInspection extends React.Component {
   }
 
   arrayScheduleList() {
-    if (this.props.listOfSchedulingInAGroup.length === 0) {
+    if (this.props.listOfPendingScheduleInAGroup.length === 0) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
     }
     return (
-      this.props.listOfSchedulingInAGroup.map(schedule => (
+      this.props.listOfPendingScheduleInAGroup.map(schedule => (
         <View style={styles.listSchedule}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
@@ -137,7 +137,7 @@ class StartInspection extends React.Component {
     );
   }
   render() {
-    console.log(this.props.listOfSchedulingInAGroup);
+    console.log(this.props.listOfPendingScheduleInAGroup);
     return (
       <View style={styles.principal}>
         <ScrollView style={styles.content}>
@@ -150,9 +150,9 @@ class StartInspection extends React.Component {
 
 const { shape, func } = PropTypes;
 
-StartInspection.propTypes = {
+StartPendingInspection.propTypes = {
   asyncGetSchedule: func.isRequired,
-  listOfSchedulingInAGroup: PropTypes.arrayOf(PropTypes.shape({
+  listOfPendingScheduleInAGroup: PropTypes.arrayOf(PropTypes.shape({
     codSchool: PropTypes.number,
     date: PropTypes.string,
     time: PropTypes.string,
@@ -161,4 +161,4 @@ StartInspection.propTypes = {
   }).isRequired,
 };
 
-export default StartInspection;
+export default StartPendingInspection;

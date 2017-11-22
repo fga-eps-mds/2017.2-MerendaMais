@@ -36,7 +36,7 @@ const Routes = () => ({
         >
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
-            <Scene key="startInspection" component={PrincipalStartInspection} hideNavBar />
+            <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />

@@ -4,7 +4,9 @@ import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
 import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
-import { setScheduleList } from './listActions';
+import { setPendingScheduleList,
+  setExpiredScheduleList,
+  setAlreadyInspectionedScheduleList } from './listActions';
 
 const FILE_NAME = 'SchedulingActions.js';
 
@@ -28,11 +30,6 @@ const verifyDate = (schedule) => {
   const monthSchedule = schedule.date.substr(3, 2);
   const yearSchedule = schedule.date.substr(6);
 
-  console.log('schedule - system');
-  console.log(daySchedule, systemDay);
-  console.log(monthSchedule, systemMonth);
-  console.log(yearSchedule, systemYear);
-
   if (yearSchedule < systemYear) {
     return true;
   } else if (yearSchedule > systemYear) {
@@ -50,20 +47,20 @@ const verifyDate = (schedule) => {
 };
 
 
-const defineScheduleStatus = (schedule, counselor) => {
+const defineScheduleStatus = (schedule, counselor, dispatch) => {
   if (schedule.listOfInvitees[counselor.nuvemCode] !== undefined) {
     if (schedule.listOfInvitees[counselor.nuvemCode].realizedVisit) {
-      console.log('JA FISCALIZADO!!!!');
+      dispatch(setAlreadyInspectionedScheduleList(schedule));
     } else if (verifyDate(schedule)) {
-      console.log('EXPIROU!!!');
+      dispatch(setExpiredScheduleList(schedule));
     } else {
-      console.log('PENDENTE!!!!');
+      dispatch(setPendingScheduleList(schedule));
     }
   } else if (schedule.listOfInvitees[counselor.nuvemCode] === undefined) {
     if (verifyDate(schedule)) {
-      console.log('EXPIROU!!!');
+      dispatch(setExpiredScheduleList(schedule));
     } else {
-      console.log('PENDENTE!!!!');
+      dispatch(setPendingScheduleList(schedule));
     }
   }
 };
@@ -79,7 +76,7 @@ const getContent = (contentLink, counselor, dispatch) => {
       logInfo(FILE_NAME, 'asyncGetSchedule',
         `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
       const content = convertingContentStringToJSON(response.data.JSON);
-      defineScheduleStatus(content, counselor);
+      defineScheduleStatus(content, counselor, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',

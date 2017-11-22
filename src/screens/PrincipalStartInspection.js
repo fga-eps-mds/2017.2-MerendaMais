@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
-import StartInspectionContainer from '../Containers/StartInspectionContainer';
+import StartPendingInspectionContainer from '../Containers/StartPendingInspectionContainer';
 import Header from '../components/Header';
 
 const styles = StyleSheet.create({
@@ -34,7 +34,7 @@ export default class Principal extends Component {
   renderHeader = props => <Header title={'Visitas Agendadas'} backButton {...props} />
 
   renderScene = SceneMap({
-    first: StartInspectionContainer,
+    first: StartPendingInspectionContainer,
     second: FirstRoute,
     third: ThirdRoute,
   });
