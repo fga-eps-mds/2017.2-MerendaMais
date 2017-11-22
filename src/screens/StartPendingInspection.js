@@ -126,6 +126,16 @@ class StartPendingInspection extends React.Component {
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
               {schedule.time}
             </Text>
+            {
+              schedule.invitedAgent ? (
+                <Text style={styles.text}>
+                  <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
+                </Text>
+              ) :
+                <Text style={styles.text}>
+                  <Text style={{ fontWeight: 'bold' }}>Agente não convidado</Text>
+                </Text>
+            }
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
               {Object.keys(schedule.listOfInvitees).length}
