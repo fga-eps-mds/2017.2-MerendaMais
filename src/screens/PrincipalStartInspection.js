@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
 import StartPendingInspectionContainer from '../Containers/StartPendingInspectionContainer';
+import StartExpiredInspectionContainer from '../Containers/StartExpiredInspectionContainer';
 import Header from '../components/Header';
 
 const styles = StyleSheet.create({
@@ -11,7 +12,6 @@ const styles = StyleSheet.create({
 });
 
 const FirstRoute = () => <View style={[styles.container, { backgroundColor: '#ff4081' }]} />;
-const ThirdRoute = () => <View style={[styles.container, { backgroundColor: '#673ab7' }]} />;
 
 export default class Principal extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class Principal extends Component {
   renderScene = SceneMap({
     first: StartPendingInspectionContainer,
     second: FirstRoute,
-    third: ThirdRoute,
+    third: StartExpiredInspectionContainer,
   });
 
   render() {
