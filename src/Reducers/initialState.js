@@ -24,6 +24,7 @@ const initialState = {
       segment: '',
       CAE_Type: '',
       CAE: '',
+      codGroup: '',
     },
   },
   application: {
@@ -78,6 +79,9 @@ const initialState = {
     listOfCounselorsInAGroup: [],
     listOfInviteesWithCounselorInformations: {},
     listOfInvitees: {},
+    listOfPendingScheduleInAGroup: [],
+    listOfExpiredScheduleInAGroup: [],
+    listOfAlreadyInpectionedSchedueInAGroup: [],
   },
   schedule: {
     codSchool: 0,

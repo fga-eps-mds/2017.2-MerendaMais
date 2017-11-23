@@ -352,107 +352,112 @@ exports[`Testing SearchSchool register method Testing school list rendering 1`] 
             "borderRadius": 7,
             "borderWidth": 1,
             "flex": 2.5,
+            "height": 400,
             "justifyContent": "center",
             "marginTop": 60,
             "width": 320,
           }
         }
       >
-        <RCTScrollView
-          data={
-            Array [
-              Object {
-                "codEscola": 1,
-                "nome": "Nome",
-              },
-            ]
-          }
-          disableVirtualization={false}
-          getItem={[Function]}
-          getItemCount={[Function]}
-          horizontal={false}
-          initialNumToRender={10}
-          keyExtractor={[Function]}
-          maxToRenderPerBatch={10}
-          numColumns={1}
-          onContentSizeChange={[Function]}
-          onEndReachedThreshold={2}
-          onLayout={[Function]}
-          onMomentumScrollEnd={[Function]}
-          onScroll={[Function]}
-          onScrollBeginDrag={[Function]}
-          onScrollEndDrag={[Function]}
-          onViewableItemsChanged={undefined}
-          renderItem={[Function]}
-          scrollEventThrottle={50}
-          stickyHeaderIndices={Array []}
-          updateCellsBatchingPeriod={50}
-          windowSize={21}
-        >
+        <RCTScrollView>
           <View>
-            <View
-              onLayout={[Function]}
-              style={null}
-            >
-              <View
-                style={
+            <RCTScrollView
+              data={
+                Array [
                   Object {
-                    "borderBottomColor": "black",
-                    "borderBottomWidth": 0.5,
-                    "borderRadius": 7,
-                  }
-                }
-              >
+                    "codEscola": 1,
+                    "nome": "Nome",
+                  },
+                ]
+              }
+              disableVirtualization={false}
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={false}
+              initialNumToRender={10}
+              keyExtractor={[Function]}
+              maxToRenderPerBatch={10}
+              numColumns={1}
+              onContentSizeChange={[Function]}
+              onEndReachedThreshold={2}
+              onLayout={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              onViewableItemsChanged={undefined}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              stickyHeaderIndices={Array []}
+              updateCellsBatchingPeriod={50}
+              windowSize={21}
+            >
+              <View>
                 <View
-                  accessibilityComponentType={undefined}
-                  accessibilityLabel={undefined}
-                  accessibilityTraits={undefined}
-                  accessible={true}
-                  collapsable={undefined}
-                  hitSlop={undefined}
-                  isTVSelectable={true}
-                  nativeID={undefined}
-                  onLayout={undefined}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "opacity": 1,
-                      "padding": 10,
-                    }
-                  }
-                  testID={undefined}
-                  tvParallaxProperties={undefined}
+                  onLayout={[Function]}
+                  style={null}
                 >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
+                  <View
                     style={
                       Object {
-                        "fontSize": 16,
+                        "borderBottomColor": "black",
+                        "borderBottomWidth": 0.5,
+                        "borderRadius": 7,
                       }
                     }
                   >
-                    Nome
-                  </Text>
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                  />
+                    <View
+                      accessibilityComponentType={undefined}
+                      accessibilityLabel={undefined}
+                      accessibilityTraits={undefined}
+                      accessible={true}
+                      collapsable={undefined}
+                      hitSlop={undefined}
+                      isTVSelectable={true}
+                      nativeID={undefined}
+                      onLayout={undefined}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "opacity": 1,
+                          "padding": 10,
+                        }
+                      }
+                      testID={undefined}
+                      tvParallaxProperties={undefined}
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        disabled={false}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 16,
+                          }
+                        }
+                      >
+                        Nome
+                      </Text>
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        disabled={false}
+                        ellipsizeMode="tail"
+                      />
+                    </View>
+                  </View>
                 </View>
               </View>
-            </View>
+            </RCTScrollView>
           </View>
         </RCTScrollView>
       </View>
@@ -1047,35 +1052,6 @@ exports[`Testing SearchSchool renders as expected 1`] = `
           width={280}
         />
       </View>
-    </View>
-    <View
-      key="schoolListView"
-      style={
-        Object {
-          "borderColor": "black",
-          "borderRadius": 7,
-          "borderWidth": 1,
-          "flex": 2.5,
-          "justifyContent": "center",
-          "marginTop": 60,
-          "width": 320,
-        }
-      }
-    >
-      <FlatList
-        data={Array []}
-        disableVirtualization={false}
-        horizontal={false}
-        initialNumToRender={10}
-        keyExtractor={[Function]}
-        maxToRenderPerBatch={10}
-        numColumns={1}
-        onEndReachedThreshold={2}
-        renderItem={[Function]}
-        scrollEventThrottle={50}
-        updateCellsBatchingPeriod={50}
-        windowSize={21}
-      />
     </View>
     <View
       key="renderButton"

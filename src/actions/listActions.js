@@ -1,13 +1,31 @@
 import axios from 'axios';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_NEW_LISTS } from './types';
+  SET_NEW_LISTS,
+  SET_PENDING_SCHEDULE_LIST,
+  SET_EXPIRED_SCHEDULE_LIST,
+  SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
   DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
 
 const FILE_NAME = 'listActions.js';
+
+export const setPendingScheduleList = scheduleList => ({
+  type: SET_PENDING_SCHEDULE_LIST,
+  payload: scheduleList,
+});
+
+export const setExpiredScheduleList = scheduleList => ({
+  type: SET_EXPIRED_SCHEDULE_LIST,
+  payload: scheduleList,
+});
+
+export const setAlreadyInspectionedScheduleList = scheduleList => ({
+  type: SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  payload: scheduleList,
+});
 
 export const resetList = () => ({
   type: RESET_LIST,
