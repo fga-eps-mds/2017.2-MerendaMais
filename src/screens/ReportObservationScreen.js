@@ -9,6 +9,7 @@ import { StyleSheet,
   TextInput,
   Dimensions,
   KeyboardAvoidingView,
+  BackHandler,
 } from 'react-native';
 import Header from '../components/Header';
 
@@ -86,7 +87,9 @@ export default class ReportObservationScreen extends React.Component {
       observation: this.props.observation,
     };
   }
-
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
+  }
 
   concludeReport() {
     this.props.setStatusReportObservation(true);

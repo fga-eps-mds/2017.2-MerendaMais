@@ -10,6 +10,7 @@ import { StyleSheet,
   TextInput,
   Dimensions,
   KeyboardAvoidingView,
+  BackHandler,
 } from 'react-native';
 import Header from '../components/Header';
 
@@ -87,6 +88,10 @@ export default class KitchenCheckoutScreen extends React.Component {
       observation: this.props.observation,
     };
   }
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
+  }
+
   showPositiveCheckBox(item) {
     return (
       <View>
