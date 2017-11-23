@@ -143,6 +143,44 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
 
+  InputFieldStyle: {
+    marginHorizontal: 65,
+    marginLeft: 35,
+    paddingVertical: 8,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 7,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+
+    /*
+    marginTop: 1,
+    padding: 8,
+    // paddingLeft: 20,
+    // paddingRight: 20,
+    marginBottom: 15,
+
+    marginTop: 15,
+    marginHorizontal: 20,
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: 'gray',
+    paddingVertical: 15,
+    marginVertical: 10,
+    marginHorizontal: 10,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginBottom: 8,
+    */
+  },
+
 });
 
 export default class ScheduleMeeting extends React.Component {
@@ -276,6 +314,28 @@ export default class ScheduleMeeting extends React.Component {
       />
     );
   }
+  showLocation() {
+    if (this.state.meeting.lat !== null && this.state.meeting.long !== null) {
+      return (
+        <View>
+          <Text style={styles.textDescription}>Localização</Text>
+          <View style={[styles.InputFieldStyle]}>
+            <Text>Lat: {this.state.meeting.lat.toFixed(12)},
+                  Long: {this.state.meeting.long.toFixed(12)}
+            </Text>
+          </View>
+        </View>
+      );
+    }
+    return (
+      <View>
+        <Text style={styles.textDescription}>Localização</Text>
+        <View style={[styles.InputFieldStyle]}>
+          <Text>Ainda não foi selecionada</Text>
+        </View>
+      </View>
+    );
+  }
 
 
   renderCounselorList() {
@@ -357,6 +417,8 @@ export default class ScheduleMeeting extends React.Component {
                   <Text style={styles.buttonText}>Escolher Localização</Text>
                 </TouchableOpacity>
               </View>
+
+              {this.showLocation()}
 
               <View style={[styles.Container, { marginVertical: 10 }]}>
                 <DatePicker
