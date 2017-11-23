@@ -80,7 +80,7 @@ describe('Testing counselorReducer', () => {
         segment: '',
         CAE_Type: '',
         CAE: '',
-        codGroup: 0,
+        codGroup: '',
       },
     };
 

@@ -49,3 +49,7 @@ export const USER_ALREADY_REGISTER_IN_APPLICATION = '\nUsuário já cadastrado n
 export const USER_JUST_ALREADY_REGISTER_IN_NUVEM = '\nUsuário já possui um cadastro na Nuvem Cívica ou em alguma aplicação que a utiliza.\n\nCaso queira utilizar esse e-mail, insira a senha utilizada para realizar o Login na Nuvem Cívica com o e-mail informado.\n\nCaso contrário cadastre-se com o outro e-mail não vinculado a Nuvem Cívica ainda.';
 export const SEND_EMAIL_ALERT_TITLE = 'Agendamento Realizado';
 export const SEND_EMAIL_ALERT_BODY = 'Deseja convidar um agente para essa visita? Se a resposta for sim, seu aplicativo de email padrão será aberto com as informações já preenchidas. Caso não tenha um aplicativo de email, será necessário baixar algum.';
+export const COUNSELOR_DISABLED_SUCCESS = 'Conselheiro desassociado com sucesso!';
+export const COUNSELOR_DISABLED_FAILED = 'Erro ao desassociar conselheiro da aplicação!';
+export const COUNSELOR_GROUP_DISABLED_SUCCESS = 'Conselheiro apagado do grupo (CAE) com sucesso!';
+export const COUNSELOR_GROUP_DISABLED_FAILED = 'Não foi possível apagar conselheiro do grup (CAE).';

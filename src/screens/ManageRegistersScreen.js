@@ -47,11 +47,8 @@ const styles = StyleSheet.create({
 
 export default class ManageRegistersScreen extends React.Component {
   componentWillMount() {
+    console.log(this.props);
     this.props.asyncGetCounselorFromGroup(this.props.CAE, this.props.cpf);
-  }
-
-  componentWillReceiveProps(newProps) {
-    console.log(newProps);
   }
 
   disableCounselor(counselor, codGroup) {

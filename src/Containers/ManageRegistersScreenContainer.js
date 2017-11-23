@@ -13,7 +13,7 @@ const mapStateToProps = state => (
   }
 );
 
-const mapDispachtoProps = dispatch => (
+const mapDispatchToProps = dispatch => (
   {
     asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
     disableCounselor: (counselor, codGroup) =>
@@ -21,4 +21,7 @@ const mapDispachtoProps = dispatch => (
   }
 );
 
-export default connect(mapStateToProps, mapDispachtoProps)(ManageRegistersScreen);
+const ManageRegistersScreenContainer =
+  connect(mapStateToProps, mapDispatchToProps)(ManageRegistersScreen);
+
+export default ManageRegistersScreenContainer;
