@@ -7,8 +7,7 @@ import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../c
 import { setPendingScheduleList,
   setExpiredScheduleList,
   setAlreadyInspectionedScheduleList,
-  resetList,
-  asyncGetCounselorFromGroup } from './listActions';
+  resetList } from './listActions';
 
 const FILE_NAME = 'SchedulingActions.js';
 
