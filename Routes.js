@@ -23,6 +23,7 @@ import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurround
 import FoodHandlerCheckoutContainer from './src/Containers/FoodHandlerCheckoutContainer';
 import WaterSewerSupplyCheckoutContainer from './src/Containers/WaterSewerSupplyCheckoutContainer';
 import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCheckoutContainer';
+import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
 
 const Routes = () => ({
   render() {
@@ -38,6 +39,7 @@ const Routes = () => ({
         >
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
+            <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />

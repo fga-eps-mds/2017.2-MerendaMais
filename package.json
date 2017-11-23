@@ -64,6 +64,7 @@
     "react-native-popup-dialog": "^0.9.39",
     "react-native-router-flux": "^4.0.0-beta.23",
     "react-native-selectbox": "^0.1.2",
+    "react-native-tab-view": "0.0.70",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
