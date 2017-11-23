@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import { logInfo } from '../../logConfig/loggers';
+
+const FILE_NAME = 'ManageRegistersScreen.js';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -47,15 +50,20 @@ export default class ManageRegistersScreen extends React.Component {
     this.props.asyncGetCounselorFromGroup(this.props.CAE, this.props.cpf);
   }
 
+  componentWillReceiveProps(newProps) {
+    console.log(newProps);
+  }
+
   disableCounselor(counselor, codGroup) {
     Alert.alert(
       'Desativar Conselheiro',
       'Você deseja realmente desassociar esse Conselheiro da Aplicação?',
       [
         { text: 'Cancelar', onPress: () => console.log('Cancelar') },
-        { text: 'Desassociar', onPress: () => this.props.disableCounselorFromGroup(counselor, codGroup, this.props.appToken) },
+        { text: 'Desassociar', onPress: () => this.props.disableCounselor(counselor, codGroup) },
       ]);
   }
+
 
   arrayRegistersList() {
     if (this.props.listOfCounselorsInAGroup.length === 0) {
@@ -101,6 +109,8 @@ export default class ManageRegistersScreen extends React.Component {
   }
 
   render() {
+    logInfo(FILE_NAME, 'rebder',
+      `Counselor List: ${this.props.listOfCounselorsInAGroup}`);
     return (
       <View style={{ backgroundColor: 'white', flex: 1 }}>
         <View>
@@ -121,12 +131,11 @@ ManageRegistersScreen.propTypes = {
   CAE: PropTypes.string.isRequired,
   cpf: PropTypes.string.isRequired,
   codGroup: PropTypes.string.isRequired,
-  appToken: PropTypes.string.isRequired,
   listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     cpf: PropTypes.string,
     phone: PropTypes.string,
   })).isRequired,
   asyncGetCounselorFromGroup: PropTypes.func.isRequired,
-  disableCounselorFromGroup: PropTypes.func.isRequired,
+  disableCounselor: PropTypes.func.isRequired,
 };

@@ -1,12 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import axios from 'axios';
+import { REACT_NATIVE_EMAIL, REACT_NATIVE_PASS } from 'react-native-dotenv';
 import { Alert } from 'react-native';
 import { } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { APP_IDENTIFIER,
-  APP_TOKEN,
+import {
+  APP_IDENTIFIER,
   AUTHENTICATE_LINK_NUVEM_CIVICA,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
-  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
+  DEFAULT_USER_LINK_NUVEM_CIVICA,
+} from '../constants';
 
 const FILE_NAME = 'ManageRegistersActions.js';
 
@@ -14,61 +17,91 @@ export const resetList = () => ({
   type: '',
 });
 
-const disableCounselorFromApp = (counselor, appToken, dispatch) => {
+const disableCounselorFromApp = async (counselor, MASTER_TOKEN) => {
   const disableAppHeader = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
-      appToken: APP_TOKEN,
+      appToken: MASTER_TOKEN,
     },
   };
-  console.log(counselor.nuvemCode, appToken, APP_IDENTIFIER);
-  axios.delete(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`, disableAppHeader)
-    .then((response) => {
-      Alert.alert('Conselheiro desassociado com sucesso!');
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, '',
-        `Request result in an ${error}`);
-      Alert.alert('Erro ao desassociar conselheiro da aplicação!');
-    });
+
+  return new Promise((resolve, reject) => {
+    axios.delete(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`, disableAppHeader)
+      .then((response) => {
+        logInfo(FILE_NAME, 'disableCounselorFromApp',
+          `Disable response: ${JSON.stringify(response.status)}`);
+        resolve('Conselheiro desassociado com sucesso!');
+        Alert.alert('Conselheiro desassociado com sucesso!');
+      })
+      .catch((error) => {
+        logWarn(FILE_NAME, '',
+          `Request result in an ${error}`);
+        reject('Erro ao desassociar conselheiro da aplicação!');
+        Alert.alert('Erro ao desassociar conselheiro da aplicação!');
+      });
+  });
 };
 
-const authenticatingMasterCounselor = (counselor, dispatch) => {
+const authenticatingMasterCounselor = async () => {
   const authenticationHeader = {
     headers: {
-      email: 'merendamaisfga@gmail.com',
-      senha: 'codamais',
+      email: REACT_NATIVE_EMAIL,
+      senha: REACT_NATIVE_PASS,
     },
   };
 
-  axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
-    .then((response) => {
-      logInfo(FILE_NAME, 'authenticatingCounselorInLogin',
-        `Master authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
+  return new Promise((resolve, reject) => {
+    axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
+      .then((response) => {
+        logInfo(FILE_NAME, 'authenticatingMasterCounselor',
+          `Master authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
 
-      disableCounselorFromApp(counselor, response.headers.apptoken, dispatch);
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'authenticatingCounselorInLogin',
-        `Request result in an ${error}`);
-    });
+        resolve(response.headers.apptoken);
+      })
+      .catch((error) => {
+        logWarn(FILE_NAME, 'authenticatingCounselorInLogin',
+          `Request result in an ${error}`);
+        reject(error);
+      });
+  });
 };
 
-
-export const disableCounselorFromGroup = (counselor, codGroup, appToken) => (dispatch) => {
-  console.log(counselor);
+const disableCounselorFromGroup = (counselor, codGroup, MASTER_TOKEN) => {
   const disableGroupHeader = {
     headers: {
-      appToken,
+      appToken: MASTER_TOKEN,
     },
   };
-  axios.delete(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros/${counselor.codMembro}`, disableGroupHeader)
-    .then((response) => {
-      console.log(response.data);
-      authenticatingMasterCounselor(counselor, dispatch);
+
+  return new Promise((resolve, rejected) => {
+    axios.delete(
+      `${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros/${counselor.codMembro}`,
+      disableGroupHeader)
+      .then((response) => {
+        logInfo(FILE_NAME, 'disableCounselorFromApp',
+          ` Disable from group response: ${JSON.stringify(response.status)}`);
+        resolve(response);
+      })
+      .catch((error) => {
+        logWarn(FILE_NAME, '',
+          `Request result in an ${error}`);
+        rejected(error);
+      });
+  });
+};
+
+export const disableCounselor = (counselor, codGroup) => async () => {
+  const MASTER_TOKEN = await authenticatingMasterCounselor();
+
+  logInfo(FILE_NAME, 'disableCounselor', `Master Token: ${MASTER_TOKEN}`);
+
+  await disableCounselorFromGroup(counselor, codGroup, MASTER_TOKEN);
+  await disableCounselorFromApp(counselor, MASTER_TOKEN)
+    .then((message) => {
+      Alert.alert(message);
     })
-    .catch((error) => {
-      logWarn(FILE_NAME, '',
-        `Request result in an ${error}`);
+    .catch((errorMessage) => {
+      Alert.alert(errorMessage);
     });
 };
+

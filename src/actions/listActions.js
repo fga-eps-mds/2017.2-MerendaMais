@@ -35,7 +35,6 @@ const convertingProfileStringToJSON = (profileStringSingleQuote) => {
 };
 
 const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) => {
-  console.log(counselorInformations);
   const getProfileHeader = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
@@ -85,7 +84,7 @@ const getCounselorFromGroup = (codGroup, CPF, dispatch) => {
   axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
     .then((response) => {
       logInfo(FILE_NAME, 'getCounselorFromGroup',
-        `list of counselors: ${JSON.stringify(response.data[0], null, 2)}`);
+        `list of counselors: ${JSON.stringify(response.data, null, 2)}`);
       for (let i = 0; i < response.data.length; i += 1) {
         getCounselor(response.data[i].links[1].href, response.data[i].links[0].href, CPF, dispatch);
       }

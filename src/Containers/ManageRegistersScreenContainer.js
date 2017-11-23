@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ManageRegistersScreen from '../screens/ManageRegistersScreen';
 import { asyncGetCounselorFromGroup } from '../actions/listActions';
-import { disableCounselorFromGroup } from '../actions/ManagerRegisterActions';
+import { disableCounselor } from '../actions/ManagerRegisterActions';
 
 const mapStateToProps = state => (
   {
@@ -16,8 +16,8 @@ const mapStateToProps = state => (
 const mapDispachtoProps = dispatch => (
   {
     asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
-    disableCounselorFromGroup: (counselor, codGroup, appToken) =>
-      dispatch(disableCounselorFromGroup(counselor, codGroup, appToken)),
+    disableCounselor: (counselor, codGroup) =>
+      dispatch(disableCounselor(counselor, codGroup)),
   }
 );
 
