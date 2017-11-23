@@ -24,6 +24,20 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_STATUSREPORTOBSERVATION,
   SET_STATUSSCHOOLSURROUNDINGS,
   SET_STATUSSTOCKFOOD,
+  SET_ACCEPTEDMENU,
+  SET_REFUSEDMENU,
+  SET_FOODHANDLEROBSERVATION,
+  SET_FOODHANDLERREPORT_POSITIVE,
+  SET_FOODHANDLERREPORT_NEGATIVE,
+  SET_STATUSFOODHANDLER,
+  SET_WATERSEWERSUPPLYOBSERVATION,
+  SET_WATERSEWERSUPPLYREPORT_POSITIVE,
+  SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
+  SET_STATUSWATERSEWERSUPPLY,
+  SET_FOODPREPARATIONOBSERVATION,
+  SET_FOODPREPARATIONREPORT_POSITIVE,
+  SET_FOODPREPARATIONREPORT_NEGATIVE,
+  SET_STATUSFOODPREPARATION,
 } from '../actions/types';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
@@ -66,6 +80,81 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         foodStockObservation: action.payload,
+      };
+    case SET_WATERSEWERSUPPLYREPORT_POSITIVE:
+      return {
+        ...state,
+        waterSewerSupply: state.waterSewerSupply.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_WATERSEWERSUPPLYREPORT_NEGATIVE:
+      return {
+        ...state,
+        waterSewerSupply: state.waterSewerSupply.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_WATERSEWERSUPPLYOBSERVATION:
+      return {
+        ...state,
+        waterSewerSupplyObservation: action.payload,
+      };
+    case SET_FOODPREPARATIONREPORT_POSITIVE:
+      return {
+        ...state,
+        foodPreparation: state.foodPreparation.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_FOODPREPARATIONREPORT_NEGATIVE:
+      return {
+        ...state,
+        foodPreparation: state.foodPreparation.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_FOODPREPARATIONOBSERVATION:
+      return {
+        ...state,
+        foodPreparationObservation: action.payload,
+      };
+    case SET_FOODHANDLERREPORT_POSITIVE:
+      return {
+        ...state,
+        foodHandler: state.foodHandler.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedYes: !item.markedYes, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_FOODHANDLERREPORT_NEGATIVE:
+      return {
+        ...state,
+        foodHandler: state.foodHandler.map((item) => {
+          if (item.key === action.payload.key) {
+            return { ...item, markedNo: !item.markedNo, status: !item.status };
+          }
+          return item;
+        }),
+      };
+    case SET_FOODHANDLEROBSERVATION:
+      return {
+        ...state,
+        foodHandlerObservation: action.payload,
       };
 
     case SET_KITCHENREPORT_POSITIVE:
@@ -144,6 +233,16 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         foodQualityObservation: action.payload,
       };
+    case SET_ACCEPTEDMENU:
+      return {
+        ...state,
+        acceptedMenu: action.payload,
+      };
+    case SET_REFUSEDMENU:
+      return {
+        ...state,
+        refusedMenu: action.payload,
+      };
 
     case SET_DOCREPORT_POSITIVE:
       return {
@@ -189,10 +288,25 @@ const reportReducer = (state = initialState.report, action) => {
         ...state,
         statusDoc: action.payload,
       };
+    case SET_STATUSFOODPREPARATION:
+      return {
+        ...state,
+        statusFoodPreparation: action.payload,
+      };
+    case SET_STATUSWATERSEWERSUPPLY:
+      return {
+        ...state,
+        statusWaterSewerSupply: action.payload,
+      };
     case SET_STATUSKITCHEN:
       return {
         ...state,
         statusKitchen: action.payload,
+      };
+    case SET_STATUSFOODHANDLER:
+      return {
+        ...state,
+        statusFoodHandler: action.payload,
       };
     case SET_STATUSREFECTORY:
       return {
