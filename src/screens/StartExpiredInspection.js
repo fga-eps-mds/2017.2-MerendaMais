@@ -115,7 +115,6 @@ class StartExpiredInspection extends React.Component {
     );
   }
   render() {
-    console.log(this.props.listOfExpiredScheduleInAGroup);
     return (
       <View style={styles.principal}>
         <ScrollView style={styles.content}>

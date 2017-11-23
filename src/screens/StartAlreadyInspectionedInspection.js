@@ -116,7 +116,6 @@ class StartAlreadyInspectionedInspection extends React.Component {
   }
 
   render() {
-    console.log(this.props.listOfAlreadyInpectionedSchedueInAGroup);
     return (
       <View style={styles.principal}>
         <ScrollView style={styles.content}>
