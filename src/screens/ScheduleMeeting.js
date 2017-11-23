@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, Alert, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, Alert, ScrollView, BackHandler } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import { EvilIcons } from '@expo/vector-icons';
+import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
-import Header from '../components/Header';
 // import SchoolData from '../components/SchoolData';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
@@ -156,29 +155,27 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 1,
     borderColor: 'gray',
-
-    /*
-    marginTop: 1,
-    padding: 8,
-    // paddingLeft: 20,
-    // paddingRight: 20,
-    marginBottom: 15,
-
-    marginTop: 15,
-    marginHorizontal: 20,
-    borderRadius: 7,
-    borderWidth: 1,
-    borderColor: 'gray',
-    paddingVertical: 15,
-    marginVertical: 10,
-    marginHorizontal: 10,
-    marginTop: 1,
-    backgroundColor: '#FAFAFA',
+  },
+  textLogo: {
+    fontSize: width * 0.08,
+    color: 'white',
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginLeft: 60,
+  },
+  wrapper: {
+    height: 100,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#FF9500',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
     alignItems: 'center',
-    marginBottom: 8,
-    */
+  },
+
+  icon_header: {
+    marginLeft: 20,
   },
 
 });
@@ -194,7 +191,6 @@ export default class ScheduleMeeting extends React.Component {
         lat: this.props.schedule.meetingLatitude,
         long: this.props.schedule.meetingLongitude,
         meetingDescription: '',
-        convidados: false,
       },
     };
   }
@@ -202,6 +198,10 @@ export default class ScheduleMeeting extends React.Component {
   componentWillMount() {
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
   }
 
   changeStyleAccordingToInput(counselor) {
@@ -314,6 +314,7 @@ export default class ScheduleMeeting extends React.Component {
       />
     );
   }
+
   showLocation() {
     if (this.state.meeting.lat !== null && this.state.meeting.long !== null) {
       return (
@@ -365,16 +366,9 @@ export default class ScheduleMeeting extends React.Component {
     );
   }
 
-
   render() {
     return (
       <View style={styles.principal}>
-        <Header
-          title={'AGENDAR'}
-          subTitle={'REUNIÃO'}
-          backButton
-        />
-
         <PopupDialog
           ref={(popupDialogCounselor) => {
             this.popupDialogCounselor = popupDialogCounselor;
@@ -404,6 +398,18 @@ export default class ScheduleMeeting extends React.Component {
             {this.renderCounselorList()}
           </ScrollView>
         </PopupDialog>
+
+        <View style={styles.wrapper}>
+          <TouchableOpacity onPress={() => Actions.mainScreen()} >
+            <Ionicons
+              name="ios-arrow-back-outline"
+              style={styles.icon_header}
+              size={45}
+              color="black"
+            />
+          </TouchableOpacity>
+          <Text style={styles.textLogo}>Agendar Reunião</Text>
+        </View>
 
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>

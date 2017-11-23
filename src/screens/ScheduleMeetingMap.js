@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MapView } from 'expo';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, BackHandler } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PopupDialog, {
   DialogTitle,
@@ -96,7 +96,7 @@ export default class ScheduleMeetingMap extends React.Component {
       error => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
-  //  BackHandler.addEventListener('hardwareBackPress', () => Actions.ScheduleMeeting());
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.scheduleMeeting());
   }
 
   showPopUp() {
