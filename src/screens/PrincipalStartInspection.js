@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
 import StartPendingInspectionContainer from '../Containers/StartPendingInspectionContainer';
 import StartExpiredInspectionContainer from '../Containers/StartExpiredInspectionContainer';
