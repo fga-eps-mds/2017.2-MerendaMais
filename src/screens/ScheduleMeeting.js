@@ -156,6 +156,7 @@ export default class ScheduleMeeting extends React.Component {
         lat: this.props.schedule.meetingLatitude,
         long: this.props.schedule.meetingLongitude,
         meetingDescription: '',
+        convidados: false,
       },
     };
   }
@@ -252,6 +253,31 @@ export default class ScheduleMeeting extends React.Component {
     return null;
   }
 
+  buttonActivation() {
+    if (this.state.meeting.date !== '' && this.state.meeting.lat !== null
+    && Object.keys(this.state.meeting.listOfInvitees).length !== 0
+     && this.state.meeting.long !== null && this.state.meeting.time !== '') {
+      return (
+        <Button
+          enabled
+          key="scheduleMeetingButton"
+          text="Agendar Reunião"
+          onPress={() => { Alert.alert('Agendando'); }}
+        />
+      );
+    }
+    return (
+      <Button
+        enabled={false}
+        text="Agendar Reunião"
+        key="disabledScheduleMeetindButton"
+        onPress={() => ({})}
+        disabled
+      />
+    );
+  }
+
+
   renderCounselorList() {
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
@@ -279,8 +305,8 @@ export default class ScheduleMeeting extends React.Component {
     );
   }
 
+
   render() {
-    console.log(this.state.meeting);
     return (
       <View style={styles.principal}>
         <Header
@@ -394,31 +420,7 @@ export default class ScheduleMeeting extends React.Component {
                   />
                 </View>
               </View>
-
-              <View>
-                <Button
-                  enabled
-                  key="scheduleMeetingButton"
-                  text="Agendar"
-                  onPress={() => {
-                    Alert.alert(
-                      'Agendamento Realizado',
-                      'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
-                      [
-                        { text: 'Ok', onPress: () => Alert.alert('Agendando'), style: 'cancel' },
-                      ],
-                      { cancelable: false });
-                  }}
-                />
-
-                {/* <Button
-                  enabled={false}
-                  text="Agendar"
-                  key="scheduleMeetingButtonDisabled"
-                  onPress={() => ({})}
-                  disabled
-                /> */}
-              </View>
+              {this.buttonActivation()}
             </View>
           </ScrollView>
         </KeyboardAvoidingView>

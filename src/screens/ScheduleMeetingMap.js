@@ -96,6 +96,7 @@ export default class ScheduleMeetingMap extends React.Component {
       error => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
+  //  BackHandler.addEventListener('hardwareBackPress', () => Actions.ScheduleMeeting());
   }
 
   showPopUp() {
@@ -105,10 +106,11 @@ export default class ScheduleMeetingMap extends React.Component {
   concludeMeetingLocation() {
     this.props.setMeetingLocationLatitude(this.state.meetingLocation.latitude);
     this.props.setMeetingLocationLongitude(this.state.meetingLocation.longitude);
-    console.log('A Lat Long que eu to passando');
+    console.log('PASSANDO  DO MAPA');
+    console.log(this.state);
     console.log(this.state.meetingLocation.latitude);
     console.log(this.state.meetingLocation.longitude);
-    Actions.pop();
+    Actions.scheduleMeeting();
   }
 
   render() {

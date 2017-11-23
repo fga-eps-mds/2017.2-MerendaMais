@@ -22,12 +22,12 @@ const scheduleReducer = (state = initialState.schedule, action) => {
     case SET_MEETING_LOCATION_LATITUDE:
       return {
         ...state,
-        meetingLatitude: action.payload,
+        meetingLatitude: action.payload.latitude,
       };
     case SET_MEETING_LOCATION_LONGITUDE:
       return {
         ...state,
-        meetingLongitude: action.payload,
+        meetingLongitude: action.payload.longitude,
       };
     default:
       return state;
