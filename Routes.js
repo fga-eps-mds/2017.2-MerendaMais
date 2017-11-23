@@ -43,7 +43,12 @@ const Routes = () => ({
               hideNavBar
             />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
-            <Scene key="scheduleMeeting" component={ScheduleMeetingContainer} hideNavBar />
+            <Scene
+              key="scheduleMeeting"
+              component={ScheduleMeetingContainer}
+              type="reset"
+              hideNavBar
+            />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
