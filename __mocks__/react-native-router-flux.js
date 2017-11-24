@@ -5,4 +5,5 @@ export const Actions = {
   profileInfoScreen: () => ({}),
   schedulingVisit: () => ({}),
   manageRegisters: () => ({}),
+  refresh: jest.fn(),
 };
