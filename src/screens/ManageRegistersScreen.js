@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
 import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'ManageRegistersScreen.js';
@@ -46,9 +45,43 @@ const styles = StyleSheet.create({
 });
 
 export default class ManageRegistersScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      presidentChecked: this.props.counselor.profile.presidentChecked,
+    };
+  }
   componentWillMount() {
     console.log(this.props);
-    this.props.asyncGetCounselorFromGroup(this.props.CAE, this.props.cpf);
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
+  }
+
+  acceptCounselor() {
+    this.setState({ presidentChecked: true });
+    this.props.asyncAcceptCounselor(this.fetchCounselorData());
+  }
+
+  fetchCounselorData() {
+    return {
+      nuvemCode: this.props.counselor.nuvemCode,
+      name: this.props.counselor.name,
+      token: this.props.counselor.token,
+      userName: this.props.counselor.userName,
+      profile: {
+        cpf: this.props.counselor.profile.cpf,
+        phone: this.props.counselor.profile.phone,
+        isPresident: this.props.counselor.profile.isPresident,
+        counselorType: this.props.counselor.profile.counselorType,
+        segment: this.props.counselor.profile.segment,
+        CAE_Type: this.props.counselor.profile.CAE_Type,
+        CAE_UF: this.props.counselor.profile.CAE_UF,
+        CAE_municipalDistrict: this.props.counselor.profile.CAE_municipalDistrict,
+        CAE: this.props.counselor.profile.CAE,
+        presidentChecked: this.state.presidentChecked,
+      },
+    };
   }
 
   disableCounselor(counselor, codGroup) {
@@ -86,14 +119,17 @@ export default class ManageRegistersScreen extends React.Component {
             </Text>
           </View>
           <View style={styles.buttonBox}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.acceptCounselor()}
+            >
               <View style={styles.greenBox}>
                 <Text>VALIDAR</Text>
               </View>
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => this.disableCounselor(counselor, this.props.codGroup)}
+              onPress={() => this.disableCounselor(counselor,
+                this.props.counselor.profile.codGroup)}
             >
               <View style={styles.redBox}>
                 <Text>EXCLUIR</Text>
@@ -110,12 +146,6 @@ export default class ManageRegistersScreen extends React.Component {
       `Counselor List: ${this.props.listOfCounselorsInAGroup}`);
     return (
       <View style={{ backgroundColor: 'white', flex: 1 }}>
-        <View>
-          <Header
-            title={'Gerenciar Registro'}
-            backButton
-          />
-        </View>
         <ScrollView>
           {this.arrayRegistersList()}
         </ScrollView>
@@ -124,15 +154,34 @@ export default class ManageRegistersScreen extends React.Component {
   }
 }
 
+const { shape, string, number, bool } = PropTypes;
+
 ManageRegistersScreen.propTypes = {
-  CAE: PropTypes.string.isRequired,
-  cpf: PropTypes.string.isRequired,
-  codGroup: PropTypes.string.isRequired,
+  counselor: shape({
+    name: string.isRequired,
+    nuvemCode: number.isRequired,
+    token: string.isRequired,
+    userName: string.isRequired,
+    profile: shape({
+      cpf: string.isRequired,
+      phone: string.isRequired,
+      isPresident: bool.isRequired,
+      counselorType: string.isRequired,
+      segment: string.isRequired,
+      CAE_Type: string.isRequired,
+      CAE_UF: string.isRequired,
+      CAE_municipalDistrict: string.isRequired,
+      CAE: string.isRequired,
+      codGroup: string.isRequired,
+      presidentChecked: bool.isRequired,
+    }).isRequired,
+  }).isRequired,
   listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     cpf: PropTypes.string,
     phone: PropTypes.string,
   })).isRequired,
   asyncGetCounselorFromGroup: PropTypes.func.isRequired,
+  asyncAcceptCounselor: PropTypes.func.isRequired,
   disableCounselor: PropTypes.func.isRequired,
 };

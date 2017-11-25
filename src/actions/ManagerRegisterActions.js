@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { REACT_NATIVE_EMAIL, REACT_NATIVE_PASS } from 'react-native-dotenv';
 import { Alert } from 'react-native';
-import { RESET_LIST } from './types';
+import { RESET_LIST, SET_COUNSELOR_ACCEPTED } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import {
   APP_IDENTIFIER,
@@ -73,6 +73,84 @@ export const authenticatingMasterCounselor = async () => {
   });
 };
 
+export const convertingJSONToString = (profileJSON) => {
+  // Converting profile JSON to profile string received from Nuvem Civica.
+  const profileStringDoubleQuote = JSON.stringify(profileJSON);
+
+  // Changing " to '.
+  const profileStringSingleQuote = profileStringDoubleQuote.replace(/"/g, "'");
+
+  return profileStringSingleQuote;
+};
+
+const acceptCounselorProfile = (counselorData, dispatch) => {
+  const headerToAcceptCounselor = {
+    headers: {
+      appToken: counselorData.token,
+    },
+  };
+
+  const stringProfile = convertingJSONToString(counselorData.profile);
+
+  const setCounselorAccepted = counselor => ({
+    type: SET_COUNSELOR_ACCEPTED,
+    payload: {
+      presidentChecked: counselor.presidentChecked,
+    },
+  });
+  // Creating body of PUT method.
+  const bodyToAcceptCounselorProfile = {
+    camposAdicionais: stringProfile,
+    tipoPerfil: {
+      codTipoPerfil: 239,
+    },
+  };
+
+  axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToAcceptCounselorProfile, headerToAcceptCounselor)
+    .then(() => {
+      logInfo(FILE_NAME, 'acceptCounselorProfile',
+        `Counselor Profile accept. Sending to Store: ${counselorData.name} and ${JSON.stringify(counselorData.profile, null, 2)}`);
+
+      dispatch(setCounselorAccepted(counselorData));
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'acceptCounselorProfile',
+        `Request result in an ${error}`);
+    });
+};
+
+const acceptCounselor = (counselorData, dispatch) => {
+  const headerToAcceptCounselor = {
+    headers: {
+      appToken: counselorData.token,
+    },
+  };
+
+  const bodyToAcceptCounselor = {
+    presidentChecked: counselorData.presidentChecked,
+  };
+
+  axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToAcceptCounselor, headerToAcceptCounselor)
+    .then((response) => {
+      logInfo(FILE_NAME, 'acceptCounselor',
+        `User data of Counselor accepted: ${JSON.stringify(response.data, null, 2)}`);
+
+      acceptCounselorProfile(counselorData, dispatch);
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'acceptCounselor',
+        `Request result in an ${error}`);
+    });
+};
+
+export const asyncAcceptCounselor = counselorData => (dispatch) => {
+  logInfo(FILE_NAME, 'asyncAcceptCounselor',
+    `counselor data to accept: ${JSON.stringify(counselorData, null, 2)}`);
+
+
+  acceptCounselor(counselorData, dispatch);
+};
+
 export const disableCounselorFromGroup = (counselor, codGroup, MASTER_TOKEN) => {
   const disableGroupHeader = {
     headers: {
@@ -113,4 +191,3 @@ export const disableCounselor = (counselor, codGroup) => async (dispatch) => {
   dispatch(resetList());
   Actions.refresh();
 };
-

@@ -25,7 +25,7 @@ const initialState = {
       CAE_Type: '',
       CAE: '',
       codGroup: '',
-      presidentChecked: '',
+      presidentChecked: false,
     },
   },
   application: {
