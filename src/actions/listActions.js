@@ -71,20 +71,22 @@ const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) =>
       }
     })
     .catch((error) => {
-      logWarn(FILE_NAME, 'getCounselorProfile',
+      logWarn(FILE_NAME, '',
         `Request result in an ${error}`);
     });
 };
 
-const getCounselor = (counselorLink, CPF, dispatch) => {
+const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
   axios.get(counselorLink)
     .then((response) => {
       logInfo(FILE_NAME, 'getCounselor',
         `name of counselors: ${JSON.stringify(response.data.nomeCompleto, null, 2)}`);
-
+      const auxCodMembro = linkWithCodMembro.substr(linkWithCodMembro.indexOf('membros/'));
+      const codMembro = auxCodMembro.substr(8);
       const counselorInformations = {
         nuvemCode: response.data.cod,
         name: response.data.nomeCompleto,
+        codMembro,
         cpf: '',
         phone: '',
       };
@@ -100,10 +102,9 @@ const getCounselorFromGroup = (codGroup, CPF, dispatch) => {
   axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
     .then((response) => {
       logInfo(FILE_NAME, 'getCounselorFromGroup',
-        `list of counselors: ${JSON.stringify(response.data[0], null, 2)}`);
-
+        `list of counselors: ${JSON.stringify(response.data, null, 2)}`);
       for (let i = 0; i < response.data.length; i += 1) {
-        getCounselor(response.data[i].links[1].href, CPF, dispatch);
+        getCounselor(response.data[i].links[1].href, response.data[i].links[0].href, CPF, dispatch);
       }
     })
     .catch((error) => {
@@ -121,7 +122,6 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => (dispatch) => {
       descricao: CAE,
     },
   };
-
   axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
     .then((response) => {
       const codGroup = response.data[0].codGrupo;

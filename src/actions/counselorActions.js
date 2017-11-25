@@ -217,7 +217,6 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
       logInfo(FILE_NAME, 'addCounselorToGroup', JSON.stringify(response));
 
       let counselorWithCodGroup = counselor;
-
       counselorWithCodGroup = {
         ...counselorWithCodGroup,
         profile: {
