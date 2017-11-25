@@ -32,6 +32,6 @@ describe('Testing ManagerRegistersScreen', () => {
     const wrapper = shallow(
       <ManageNotAcceptedRegistersScreenContainer />,
       { context: { store } },
-    ).dive();
+    );
   });
 });
