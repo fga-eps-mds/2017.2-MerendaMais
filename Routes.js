@@ -13,7 +13,6 @@ import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer'
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
 import MainReportsScreen from './src/screens/MainReportsScreen';
 import RefectoryCheckoutContainer from './src/Containers/RefectoryCheckoutContainer';
-import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 import MenuContainer from './src/Containers/MenuContainer';
 import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
 import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
@@ -24,6 +23,8 @@ import FoodHandlerCheckoutContainer from './src/Containers/FoodHandlerCheckoutCo
 import WaterSewerSupplyCheckoutContainer from './src/Containers/WaterSewerSupplyCheckoutContainer';
 import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCheckoutContainer';
 import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
+import PrincipalManageRegister from './src/screens/PrincipalManageRegister';
+
 
 const Routes = () => ({
   render() {
@@ -41,7 +42,7 @@ const Routes = () => ({
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
-            <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
+            <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
             <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />

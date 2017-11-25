@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   },
 });
 const FirstRoute = () => <View style={[styles.container, { backgroundColor: '#ff4081' }]} />;
-const ThirdRoute = () => <View style={[styles.container, { backgroundColor: '#673ab7' }]} />;
 
 export default class Principal extends Component {
   constructor(props) {
@@ -21,7 +20,6 @@ export default class Principal extends Component {
       routes: [
         { key: 'first', title: 'Não gerenciados' },
         { key: 'second', title: 'Validados' },
-        { key: 'third', title: 'Excluidos' },
       ],
     };
   }
@@ -35,7 +33,6 @@ export default class Principal extends Component {
   renderScene = SceneMap({
     first: ManageRegistersScreenContainer,
     second: FirstRoute,
-    third: ThirdRoute,
   });
 
   render() {
