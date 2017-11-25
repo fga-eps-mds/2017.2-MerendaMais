@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
 import Header from '../components/Header';
-import ManageRegistersScreenContainer from '../Containers/ManageRegistersScreenContainer';
+import ManageNotAcceptedRegistersScreenContainer from '../Containers/ManageNotAcceptedRegistersScreenContainer';
+import ManageAcceptedRegistersScreenContainer from '../Containers/ManageAcceptedRegistersScreenContainer';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
-const FirstRoute = () => <View style={[styles.container, { backgroundColor: '#ff4081' }]} />;
 
 export default class Principal extends Component {
   constructor(props) {
@@ -31,8 +31,8 @@ export default class Principal extends Component {
   renderHeader = props => <Header title={'Gerenciar Registro'} backButton {...props} />
 
   renderScene = SceneMap({
-    first: ManageRegistersScreenContainer,
-    second: FirstRoute,
+    first: ManageNotAcceptedRegistersScreenContainer,
+    second: ManageAcceptedRegistersScreenContainer,
   });
 
   render() {

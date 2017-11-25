@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity
 import PropTypes from 'prop-types';
 import { logInfo } from '../../logConfig/loggers';
 
-const FILE_NAME = 'ManageRegistersScreen.js';
+const FILE_NAME = 'ManageNotAcceptedRegistersScreen.js';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ManageRegistersScreen extends React.Component {
+export default class ManageNotAcceptedRegistersScreen extends React.Component {
   componentWillMount() {
     console.log(this.props);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
@@ -129,7 +129,7 @@ export default class ManageRegistersScreen extends React.Component {
 
 const { shape, string, number, bool } = PropTypes;
 
-ManageRegistersScreen.propTypes = {
+ManageNotAcceptedRegistersScreen.propTypes = {
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,

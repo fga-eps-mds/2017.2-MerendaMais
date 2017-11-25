@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ManageRegistersScreen from '../screens/ManageRegistersScreen';
+import ManageNotAcceptedRegistersScreen from '../screens/ManageNotAcceptedRegistersScreen';
 import { asyncGetCounselorFromGroup } from '../actions/listActions';
 import { disableCounselor, asyncAcceptCounselor } from '../actions/ManagerRegisterActions';
 
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-const ManageRegistersScreenContainer =
-  connect(mapStateToProps, mapDispatchToProps)(ManageRegistersScreen);
+const ManageNotAcceptedRegistersScreenContainer =
+  connect(mapStateToProps, mapDispatchToProps)(ManageNotAcceptedRegistersScreen);
 
-export default ManageRegistersScreenContainer;
+export default ManageNotAcceptedRegistersScreenContainer;

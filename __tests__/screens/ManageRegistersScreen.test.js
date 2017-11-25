@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import ManageRegistersScreenContainer from '../../src/Containers/ManageRegistersScreenContainer';
+import ManageNotAcceptedRegistersScreenContainer from '../../src/Containers/ManageNotAcceptedRegistersScreenContainer';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -30,7 +30,7 @@ const store = mockStore(initialState);
 describe('Testing ManagerRegistersScreen', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
-      <ManageRegistersScreenContainer />,
+      <ManageNotAcceptedRegistersScreenContainer />,
       { context: { store } },
     ).dive();
   });
