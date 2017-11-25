@@ -63,11 +63,10 @@ const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) =>
       const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
       const completeCounselorInformations = counselorInformations;
 
-      completeCounselorInformations.cpf = profile.cpf;
-      completeCounselorInformations.phone = profile.phone;
+      completeCounselorInformations.profile = profile;
 
       if (profile.cpf !== CPF) {
-        dispatch(setList(counselorInformations));
+        dispatch(setList(completeCounselorInformations));
       }
     })
     .catch((error) => {
@@ -87,8 +86,7 @@ const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
         nuvemCode: response.data.cod,
         name: response.data.nomeCompleto,
         codMembro,
-        cpf: '',
-        phone: '',
+        profile: {},
       };
       getCounselorProfile(counselorInformations, response.data.cod, CPF, dispatch);
     })

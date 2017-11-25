@@ -6,7 +6,7 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const SET_COUNSELOR_EDITED = 'SET_COUNSELOR_EDITED';
 
 // Counselor Manage
-export const SET_COUNSELOR_ACCEPTED = 'SET_COUNSELOR_ACCEPTED';
+export const SET_COUNSELOR_PROFILE_ACCEPTED = 'SET_COUNSELOR_ACCEPTED';
 
 // Application Actions types
 export const IS_LOADING = 'IS_LOADING';

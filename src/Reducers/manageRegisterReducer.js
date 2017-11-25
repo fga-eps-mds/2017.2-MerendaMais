@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { SET_COUNSELOR_ACCEPTED } from '../actions/types';
+import { SET_COUNSELOR_PROFILE_ACCEPTED } from '../actions/types';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'counselorReducer.js';
@@ -16,10 +16,10 @@ const manageRegisterReducer = (state = initialState.counselor, action) => {
   }
 
   switch (action.type) {
-    case SET_COUNSELOR_ACCEPTED:
+    case SET_COUNSELOR_PROFILE_ACCEPTED:
       return {
         ...state,
-        presidentChecked: action.payload.presidentChecked,
+        profile: action.payload,
       };
     default:
       return state;

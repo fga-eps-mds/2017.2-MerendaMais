@@ -109,6 +109,7 @@ export default class RegisterScreen extends React.Component {
         cpf: '',
         phone: '',
         isPresident: '',
+        presidentChecked: false,
         counselorType: '',
         segment: '',
         CAE_Type: '',

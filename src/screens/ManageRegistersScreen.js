@@ -45,43 +45,16 @@ const styles = StyleSheet.create({
 });
 
 export default class ManageRegistersScreen extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      presidentChecked: this.props.counselor.profile.presidentChecked,
-    };
-  }
   componentWillMount() {
     console.log(this.props);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
   }
 
-  acceptCounselor() {
-    this.setState({ presidentChecked: true });
-    this.props.asyncAcceptCounselor(this.fetchCounselorData());
-  }
-
-  fetchCounselorData() {
-    return {
-      nuvemCode: this.props.counselor.nuvemCode,
-      name: this.props.counselor.name,
-      token: this.props.counselor.token,
-      userName: this.props.counselor.userName,
-      profile: {
-        cpf: this.props.counselor.profile.cpf,
-        phone: this.props.counselor.profile.phone,
-        isPresident: this.props.counselor.profile.isPresident,
-        counselorType: this.props.counselor.profile.counselorType,
-        segment: this.props.counselor.profile.segment,
-        CAE_Type: this.props.counselor.profile.CAE_Type,
-        CAE_UF: this.props.counselor.profile.CAE_UF,
-        CAE_municipalDistrict: this.props.counselor.profile.CAE_municipalDistrict,
-        CAE: this.props.counselor.profile.CAE,
-        presidentChecked: this.state.presidentChecked,
-      },
-    };
+  acceptCounselor(counselor) {
+    const counselorWithpresidentChecked = counselor;
+    counselorWithpresidentChecked.profile.presidentChecked = true;
+    this.props.asyncAcceptCounselor(counselorWithpresidentChecked);
   }
 
   disableCounselor(counselor, codGroup) {
@@ -111,16 +84,16 @@ export default class ManageRegistersScreen extends React.Component {
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.cpf}
+              {counselor.profile.cpf}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.phone}
+              {counselor.profile.phone}
             </Text>
           </View>
           <View style={styles.buttonBox}>
             <TouchableOpacity
-              onPress={() => this.acceptCounselor()}
+              onPress={() => this.acceptCounselor(counselor)}
             >
               <View style={styles.greenBox}>
                 <Text>VALIDAR</Text>
