@@ -158,8 +158,10 @@ export default class SchedulingVisit extends React.Component {
     this.state = {
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
+      codGrupoDestino: this.props.counselor.profile.codGroup,
       visit: {
         codSchool: 0,
+        schoolName: '',
         date: '',
         time: '',
         invitedAgent: false,
@@ -182,6 +184,7 @@ export default class SchedulingVisit extends React.Component {
   componentWillReceiveProps(newProps) {
     const newVisit = {
       codSchool: newProps.school.schoolCode,
+      schoolName: newProps.school.schoolName,
       date: this.state.visit.date,
       time: this.state.visit.time,
       invitedAgent: this.state.visit.invitedAgent,
@@ -237,6 +240,7 @@ export default class SchedulingVisit extends React.Component {
       newLists.newList[counselor.nuvemCode] = {
         nuvemCode: counselor.nuvemCode,
         confirmed: false,
+        realizedVisit: false,
       };
       this.props.setNewLists(newLists);
     } else {
@@ -552,5 +556,6 @@ SchedulingVisit.propTypes = {
   listOfInvitees: shape({
     nuvemCode: number.isRequired,
     confirmed: bool.isRequired,
+    realizedVisit: bool.isRequired,
   }).isRequired,
 };
