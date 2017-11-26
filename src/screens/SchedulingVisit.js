@@ -125,7 +125,7 @@ export default class SchedulingVisit extends React.Component {
         time: '',
         invitedAgent: false,
         agentEmail: '',
-        listOfInvitees: this.props.listOfInvitees,
+        visitListOfInvitees: this.props.visitListOfInvitees,
       },
     };
   }
@@ -142,7 +142,7 @@ export default class SchedulingVisit extends React.Component {
       time: this.state.visit.time,
       invitedAgent: this.state.visit.invitedAgent,
       agentEmail: this.state.visit.agentEmail,
-      listOfInvitees: newProps.listOfInvitees,
+      visitListOfInvitees: newProps.visitListOfInvitees,
     };
 
     this.setState({ visit: newVisit });
@@ -180,66 +180,67 @@ export default class SchedulingVisit extends React.Component {
   }
 
   manageInvitedListState(counselor) {
-    const newLists = {
-      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
-      newList: this.state.visit.listOfInvitees,
+    const visitNewLists = {
+      visitNewListWithInformations: this.props.visitListOfInviteesWithCounselorInformations,
+      visitNewList: this.state.visit.visitListOfInvitees,
     };
 
     // If the counselor is not at the list (undefined),
     // we will add him to the list, where its key is the counselor's nuvemCode
-    if (newLists.newListWithInformations[counselor.nuvemCode] === undefined) {
-      newLists.newListWithInformations[counselor.nuvemCode] = counselor;
+    if (visitNewLists.visitNewListWithInformations[counselor.nuvemCode] === undefined) {
+      visitNewLists.visitNewListWithInformations[counselor.nuvemCode] = counselor;
 
-      newLists.newList[counselor.nuvemCode] = {
+      visitNewLists.visitNewList[counselor.nuvemCode] = {
         nuvemCode: counselor.nuvemCode,
         confirmed: false,
       };
-      this.props.setNewLists(newLists);
+      this.props.setVisitNewLists(visitNewLists);
     } else {
-      delete newLists.newListWithInformations[counselor.nuvemCode];
-      delete newLists.newList[counselor.nuvemCode];
+      delete visitNewLists.visitNewListWithInformations[counselor.nuvemCode];
+      delete visitNewLists.visitNewList[counselor.nuvemCode];
 
-      this.props.setNewLists(newLists);
+      this.props.setVisitNewLists(visitNewLists);
     }
 
     this.forceUpdate();
   }
 
   changeStyleAccordingToInput(counselor) {
-    if (this.props.listOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
+    if
+    (this.props.visitListOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
       return [styles.listRegisters, { borderColor: '#FF9500' }];
     }
     return styles.listRegisters;
   }
 
   cancelInviteList() {
-    const newLists = {
-      newListWithInformations: {},
-      newList: {},
+    const visitNewLists = {
+      visitNewListWithInformations: {},
+      visitNewList: {},
     };
 
-    this.props.setNewLists(newLists);
+    this.props.setVisitNewLists(visitNewLists);
 
     this.popupDialogCounselor.dismiss();
   }
 
   deleteSpecificCounselor(counselorNuvemCode) {
-    const newLists = {
-      newListWithInformations: this.props.listOfInviteesWithCounselorInformations,
-      newList: this.state.visit.listOfInvitees,
+    const visitNewLists = {
+      visitNewListWithInformations: this.props.visitListOfInviteesWithCounselorInformations,
+      visitNewList: this.state.visit.visitListOfInvitees,
     };
 
-    delete newLists.newListWithInformations[counselorNuvemCode];
-    delete newLists.newList[counselorNuvemCode];
+    delete visitNewLists.visitNewListWithInformations[counselorNuvemCode];
+    delete visitNewLists.visitNewList[counselorNuvemCode];
 
-    this.props.setNewLists(newLists);
+    this.props.setVisitNewLists(visitNewLists);
 
     this.forceUpdate();
   }
 
   showInvitedList() {
     // Check if the Object is empty
-    if (Object.keys(this.props.listOfInviteesWithCounselorInformations)
+    if (Object.keys(this.props.visitListOfInviteesWithCounselorInformations)
       .length !== 0) {
       return (
         <View>
@@ -247,7 +248,7 @@ export default class SchedulingVisit extends React.Component {
           <View style={styles.invitedList}>
             <ScrollView>
               {
-                Object.entries(this.props.listOfInviteesWithCounselorInformations)
+                Object.entries(this.props.visitListOfInviteesWithCounselorInformations)
                   .map(counselor => (
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                       <InvitedCounselorsData
@@ -477,7 +478,7 @@ const { shape, string, number, bool, func } = PropTypes;
 SchedulingVisit.propTypes = {
   asyncSchedulingVisit: func.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
-  setNewLists: func.isRequired,
+  setVisitNewLists: func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
@@ -493,13 +494,13 @@ SchedulingVisit.propTypes = {
     cpf: string.isRequired,
     phone: string.isRequired,
   })).isRequired,
-  listOfInviteesWithCounselorInformations: shape({
+  visitListOfInviteesWithCounselorInformations: shape({
     nuvemCode: number.isRequired,
     name: string.isRequired,
     cpf: string.isRequired,
     phone: string.isRequired,
   }).isRequired,
-  listOfInvitees: shape({
+  visitListOfInvitees: shape({
     nuvemCode: number.isRequired,
     confirmed: bool.isRequired,
   }).isRequired,

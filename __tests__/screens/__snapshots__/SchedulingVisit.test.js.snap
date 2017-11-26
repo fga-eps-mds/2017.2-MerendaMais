@@ -23,7 +23,13 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
       },
     ]
   }
-  listOfInvitees={
+  school={
+    Object {
+      "schoolSelected": true,
+    }
+  }
+  setVisitNewLists={[Function]}
+  visitListOfInvitees={
     Object {
       "6122": Object {
         "confirmed": false,
@@ -35,7 +41,7 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
       },
     }
   }
-  listOfInviteesWithCounselorInformations={
+  visitListOfInviteesWithCounselorInformations={
     Object {
       "6122": Object {
         "cpf": "11111111111",
@@ -51,11 +57,5 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
       },
     }
   }
-  school={
-    Object {
-      "schoolSelected": true,
-    }
-  }
-  setNewLists={[Function]}
 />
 `;

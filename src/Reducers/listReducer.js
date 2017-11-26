@@ -1,7 +1,9 @@
 import initialState from './initialState';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_NEW_LISTS } from '../actions/types';
+  SET_VISIT_NEW_LISTS,
+  SET_MEETING_NEW_LISTS,
+} from '../actions/types';
 
 const listReducer = (state = initialState.list, action) => {
   if (action === undefined) {
@@ -19,11 +21,18 @@ const listReducer = (state = initialState.list, action) => {
         ...state,
         listOfCounselorsInAGroup: [],
       };
-    case SET_NEW_LISTS:
+    case SET_VISIT_NEW_LISTS:
       return {
         ...state,
-        listOfInviteesWithCounselorInformations: action.payload.newListWithInformations,
-        listOfInvitees: action.payload.newList,
+        visitListOfInviteesWithCounselorInformations: action.payload.visitNewListWithInformations,
+        visitListOfInvitees: action.payload.visitNewList,
+      };
+    case SET_MEETING_NEW_LISTS:
+      return {
+        ...state,
+        meetingListOfInviteesWithCounselorInformations:
+          action.payload.meetingNewListWithInformations,
+        meetingListOfInvitees: action.payload.meetingNewList,
       };
     default:
       return state;

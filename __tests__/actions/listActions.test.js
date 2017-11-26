@@ -1,5 +1,5 @@
-import { resetList, setList, setNewLists } from '../../src/actions/listActions';
-import { SET_LIST_COUNSELOR_GROUP, RESET_LIST, SET_NEW_LISTS } from '../../src/actions/types';
+import { resetList, setList, setVisitNewLists } from '../../src/actions/listActions';
+import { SET_LIST_COUNSELOR_GROUP, RESET_LIST, SET_VISIT_NEW_LISTS } from '../../src/actions/types';
 
 describe('Testing listActions', () => {
   it('Testing Set a List of Counselors', () => {
@@ -30,7 +30,7 @@ describe('Testing listActions', () => {
 
   it('Testing set new lists', () => {
     const newList1 = {
-      listOfInviteesWithCounselorInformations: {
+      visitListOfInviteesWithCounselorInformations: {
         6122: {
           cpf: 11111111111,
           name: 'Lucas Penido Antunes',
@@ -38,7 +38,7 @@ describe('Testing listActions', () => {
           phone: 11111111111,
         },
       },
-      listOfInvitees: {
+      visitListOfInvitees: {
         6122: {
           confirmed: false,
           nuvemCode: 6122,
@@ -47,7 +47,7 @@ describe('Testing listActions', () => {
     };
 
     const newList2 = {
-      listOfInviteesWithCounselorInformations: {
+      visitListOfInviteesWithCounselorInformations: {
         6201: {
           cpf: '00000000000',
           name: 'Kamilla Costa Souzaa',
@@ -55,7 +55,7 @@ describe('Testing listActions', () => {
           phone: 99999999999,
         },
       },
-      listOfInvitees: {
+      visitListOfInvitees: {
         6201: {
           confirmed: false,
           nuvemCode: 6201,
@@ -63,11 +63,11 @@ describe('Testing listActions', () => {
       },
     };
 
-    const actionReturn = setNewLists(newList1);
+    const actionReturn = setVisitNewLists(newList1);
 
     expect(actionReturn.payload).not.toEqual(newList2);
 
     expect(actionReturn.payload).toEqual(newList1);
-    expect(actionReturn.type).toEqual(SET_NEW_LISTS);
+    expect(actionReturn.type).toEqual(SET_VISIT_NEW_LISTS);
   });
 });

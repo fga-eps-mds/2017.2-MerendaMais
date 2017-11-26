@@ -62,8 +62,10 @@ const initialState = {
   },
   list: {
     listOfCounselorsInAGroup: [],
-    listOfInviteesWithCounselorInformations: {},
-    listOfInvitees: {},
+    visitListOfInviteesWithCounselorInformations: {},
+    visitListOfInvitees: {},
+    meetingListOfInviteesWithCounselorInformations: {},
+    meetingListOfInvitees: {},
   },
   schedule: {
     codSchool: 0,

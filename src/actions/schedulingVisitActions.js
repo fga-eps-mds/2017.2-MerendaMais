@@ -53,7 +53,7 @@ const schedulingVisit = (visitData) => {
   const authorsNuvemCode = visitData.nuvemCode;
   const visitDataWithAuthor = visitData.visit;
 
-  visitDataWithAuthor.listOfInvitees[authorsNuvemCode] = {
+  visitDataWithAuthor.visitListOfInvitees[authorsNuvemCode] = {
     nuvemCode: authorsNuvemCode,
     confirmed: true,
   };

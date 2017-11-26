@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import ScheduleMeeting from '../screens/ScheduleMeeting';
-import { asyncGetCounselorFromGroup, setNewLists } from '../actions/listActions';
+import { asyncGetCounselorFromGroup, setMeetingNewLists } from '../actions/listActions';
 
 const mapStateToProps = state => ({
   listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
-  listOfInviteesWithCounselorInformations: state.list.listOfInviteesWithCounselorInformations,
-  listOfInvitees: state.list.listOfInvitees,
+  meetingListOfInviteesWithCounselorInformations:
+    state.list.meetingListOfInviteesWithCounselorInformations,
+  meetingListOfInvitees: state.list.meetingListOfInvitees,
   counselor: state.counselor,
   schedule: state.schedule,
   school: state.school,
@@ -14,8 +15,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
 
-  setNewLists: newListWithInformations =>
-    dispatch(setNewLists(newListWithInformations)),
+  setMeetingNewLists: meetingNewListWithInformations =>
+    dispatch(setMeetingNewLists(meetingNewListWithInformations)),
 });
 
 const ScheduleMeetingContainer = connect(mapStateToProps, mapDispatchToProps)(ScheduleMeeting);
