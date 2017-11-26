@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing StartPendingInspection Screen renders as expected 1`] = `
+<TabViewAnimated
+  initialLayout={
+    Object {
+      "height": 0,
+      "width": 0,
+    }
+  }
+  navigationState={
+    Object {
+      "index": 0,
+      "routes": Array [
+        Object {
+          "key": "first",
+          "title": "Pendentes",
+        },
+        Object {
+          "key": "second",
+          "title": "Fiscalizados",
+        },
+        Object {
+          "key": "third",
+          "title": "Expirados",
+        },
+      ],
+    }
+  }
+  onIndexChange={[Function]}
+  renderFooter={[Function]}
+  renderHeader={[Function]}
+  renderPager={[Function]}
+  renderScene={[Function]}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+/>
+`;

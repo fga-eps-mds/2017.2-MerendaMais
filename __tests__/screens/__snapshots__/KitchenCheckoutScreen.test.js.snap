@@ -202,7 +202,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras com esmalte nas unhas
+            Telhado sem forro
           </Text>
         </View>
         <View
@@ -272,7 +272,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras com unhas compridas
+            Telhado com furos
           </Text>
         </View>
         <View
@@ -342,7 +342,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras doentes
+            Congelador sem termômetro
           </Text>
         </View>
         <View
@@ -412,7 +412,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras sem touca
+            Lixeiras destampadas
           </Text>
         </View>
         <View
@@ -482,7 +482,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Merendeiras usando brincos, anéis ou pulseiras
+            Chão difícil de limpar
           </Text>
         </View>
         <View
@@ -552,7 +552,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Visitantes/Merendeiras sem touca
+            Parede difícil de limpar
           </Text>
         </View>
         <View
@@ -622,7 +622,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Telhado sem forro
+            Janelas sem tela de pressão
           </Text>
         </View>
         <View
@@ -692,7 +692,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Telhado com furos
+            Portas sem tela de pressão
           </Text>
         </View>
         <View
@@ -762,7 +762,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Congelador sem termômetro
+            Portas sem rodapé
           </Text>
         </View>
         <View
@@ -832,7 +832,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Lixeiras destampadas
+            Insetos sobrevoando o local
           </Text>
         </View>
         <View
@@ -902,7 +902,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Chão difícil de limpar
+            Animais
           </Text>
         </View>
         <View
@@ -972,7 +972,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Parede difícil de limpar
+            Ventilador de teto empoeirado
           </Text>
         </View>
         <View
@@ -1042,7 +1042,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Janelas sem tela de pressão
+            Equipamentos sujos
           </Text>
         </View>
         <View
@@ -1112,7 +1112,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Portas sem tela de pressão
+            Local mal iluminado
           </Text>
         </View>
         <View
@@ -1182,7 +1182,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Portas sem rodapé
+            Local sujo
           </Text>
         </View>
         <View
@@ -1252,7 +1252,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Insetos sobrevoando o local
+            Lixo não é armazenado em local fechado
           </Text>
         </View>
         <View
@@ -1322,7 +1322,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Animais
+            Tamanho da cozinha é adequado
           </Text>
         </View>
         <View
@@ -1392,7 +1392,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Ventilador de teto empoeirado
+            Presença de planilha de rotina de higienização das instalações
           </Text>
         </View>
         <View
@@ -1462,7 +1462,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Equipamentos sujos
+            Produtos de higienização regularizados pelo Ministério da Saúde
           </Text>
         </View>
         <View
@@ -1532,7 +1532,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Local mal iluminado
+            Presença de ralo sifonado com o sistema abre e fecha
           </Text>
         </View>
         <View
@@ -1602,7 +1602,7 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Local sujo
+            Instalações elétricas adequadas
           </Text>
         </View>
         <View
@@ -1672,7 +1672,147 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
               }
             }
           >
-            Lixo não é armazenado em local fechado
+            Existência de lavatórios na área de manipulação com água corrente, em posições adequadas em relação ao fluxo de produção e serviço, e em número suficiente de modo a atender toda a área de produção
+          </Text>
+        </View>
+        <View
+          key="23"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            A quantidade de equipamentos é suficiente (geladeira, freezer, fogão, liquidificador, cortador de legumes, etc)
+          </Text>
+        </View>
+        <View
+          key="24"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            A quantidade de utensílios é suficiente (pratos, copos, talheres, panelas, conchas, facas, etc)
           </Text>
         </View>
       </View>

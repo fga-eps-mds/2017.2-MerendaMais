@@ -20,6 +20,10 @@ import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutCo
 import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
+import FoodHandlerCheckoutContainer from './src/Containers/FoodHandlerCheckoutContainer';
+import WaterSewerSupplyCheckoutContainer from './src/Containers/WaterSewerSupplyCheckoutContainer';
+import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCheckoutContainer';
+import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
 
 const Routes = () => ({
   render() {
@@ -35,6 +39,7 @@ const Routes = () => ({
         >
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
+            <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
@@ -69,6 +74,21 @@ const Routes = () => ({
             <Scene
               key="schoolSurroundingsCheckoutScreen"
               component={SchoolSurroundingsCheckoutContainer}
+              hideNavBar
+            />
+            <Scene
+              key="foodHandlerCheckoutScreen"
+              component={FoodHandlerCheckoutContainer}
+              hideNavBar
+            />
+            <Scene
+              key="waterSewerSupplyCheckoutScreen"
+              component={WaterSewerSupplyCheckoutContainer}
+              hideNavBar
+            />
+            <Scene
+              key="foodPreparationCheckoutScreen"
+              component={FoodPreparationCheckoutContainer}
               hideNavBar
             />
             <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />

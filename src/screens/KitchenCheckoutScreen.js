@@ -81,12 +81,6 @@ const styles = StyleSheet.create({
 });
 
 export default class KitchenCheckoutScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      observation: this.props.observation,
-    };
-  }
   showPositiveCheckBox(item) {
     return (
       <View>
@@ -104,7 +98,6 @@ export default class KitchenCheckoutScreen extends React.Component {
 
   concludeReport() {
     this.props.setStatusKitchen(true);
-    this.props.setKitchenObservation(this.state.observation);
     Actions.pop();
   }
 
@@ -153,10 +146,10 @@ export default class KitchenCheckoutScreen extends React.Component {
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.setState({ observation: text })}
+                  onChangeText={text => this.props.setKitchenObservation(text)}
                   style={styles.textInput}
                   multiline
-                  value={this.state.observation}
+                  value={this.props.observation}
                   underlineColorAndroid="transparent"
                   placeholder="Observações (opcional)"
                 />
