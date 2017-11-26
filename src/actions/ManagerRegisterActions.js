@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { REACT_NATIVE_EMAIL, REACT_NATIVE_PASS } from 'react-native-dotenv';
 import { Alert } from 'react-native';
-import { RESET_LIST, SET_COUNSELOR_PROFILE_ACCEPTED } from './types';
+import { RESET_LIST } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import {
   APP_IDENTIFIER,
@@ -20,11 +20,6 @@ const FILE_NAME = 'ManageRegistersActions.js';
 
 export const resetList = () => ({
   type: RESET_LIST,
-});
-
-const setCounselorProfileAccepted = counselorProfile => ({
-  type: SET_COUNSELOR_PROFILE_ACCEPTED,
-  payload: counselorProfile,
 });
 
 export const authenticatingMasterCounselor = async () => {
@@ -61,7 +56,7 @@ export const convertingJSONToString = (profileJSON) => {
   return profileStringSingleQuote;
 };
 
-const acceptCounselor = async (counselorData, dispatch) => {
+const acceptCounselor = async (counselorData) => {
   const MASTER_TOKEN = await authenticatingMasterCounselor();
 
   const headerToAcceptCounselor = {
@@ -83,9 +78,11 @@ const acceptCounselor = async (counselorData, dispatch) => {
   axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToAcceptCounselorProfile, headerToAcceptCounselor)
     .then(() => {
       logInfo(FILE_NAME, 'acceptCounselor',
-        `Counselor Profile accept. Sending to Store: ${counselorData.name} and ${JSON.stringify(counselorData.profile, null, 2)}`);
+        'Counselor Profile accept.');
 
-      dispatch(setCounselorProfileAccepted(counselorData.profile));
+      Alert.alert('Conselheiro validado com sucesso');
+
+      Actions.refresh();
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'acceptCounselor',

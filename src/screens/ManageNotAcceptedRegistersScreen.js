@@ -1,9 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
-import { logInfo } from '../../logConfig/loggers';
-
-const FILE_NAME = 'ManageNotAcceptedRegistersScreen.js';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -46,7 +43,6 @@ const styles = StyleSheet.create({
 
 export default class ManageNotAcceptedRegistersScreen extends React.Component {
   componentWillMount() {
-    console.log(this.props);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
   }
@@ -69,14 +65,14 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
 
 
   arrayRegistersList() {
-    if (this.props.listOfCounselorsInAGroup.length === 0) {
+    if (this.props.listOfNotCheckedCounselors.length === 0) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
     }
     return (
-      this.props.listOfCounselorsInAGroup.map(counselor => (
-        <View style={styles.listRegisters}>
+      this.props.listOfNotCheckedCounselors.map(counselor => (
+        <View style={styles.listRegisters} key={(counselor.nuvemCode).toString()}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
@@ -115,8 +111,6 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
   }
 
   render() {
-    logInfo(FILE_NAME, 'rebder',
-      `Counselor List: ${this.props.listOfCounselorsInAGroup}`);
     return (
       <View style={{ backgroundColor: 'white', flex: 1 }}>
         <ScrollView>
@@ -149,7 +143,7 @@ ManageNotAcceptedRegistersScreen.propTypes = {
       presidentChecked: bool.isRequired,
     }).isRequired,
   }).isRequired,
-  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+  listOfNotCheckedCounselors: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     cpf: PropTypes.string,
     phone: PropTypes.string,

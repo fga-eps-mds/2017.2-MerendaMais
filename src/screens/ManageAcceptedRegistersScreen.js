@@ -1,9 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
-import { logInfo } from '../../logConfig/loggers';
-
-const FILE_NAME = 'ManageAcceptedRegistersScreen.js';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -45,12 +42,6 @@ const styles = StyleSheet.create({
 });
 
 export default class ManageAcceptedRegistersScreen extends React.Component {
-  acceptCounselor(counselor) {
-    const counselorWithpresidentChecked = counselor;
-    counselorWithpresidentChecked.profile.presidentChecked = true;
-    this.props.asyncAcceptCounselor(counselorWithpresidentChecked);
-  }
-
   disableCounselor(counselor, codGroup) {
     Alert.alert(
       'Desativar Conselheiro',
@@ -63,14 +54,14 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
 
 
   arrayRegistersList() {
-    if (this.props.listOfCounselorsInAGroup.length === 0) {
+    if (this.props.listOfCheckedCounselors.length === 0) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
     }
     return (
-      this.props.listOfCounselorsInAGroup.map(counselor => (
-        <View style={styles.listRegisters}>
+      this.props.listOfCheckedCounselors.map(counselor => (
+        <View style={styles.listRegisters} key={(counselor.nuvemCode).toString()}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
@@ -87,14 +78,6 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
           </View>
           <View style={styles.buttonBox}>
             <TouchableOpacity
-              onPress={() => this.acceptCounselor(counselor)}
-            >
-              <View style={styles.greenBox}>
-                <Text>VALIDAR</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
               onPress={() => this.disableCounselor(counselor,
                 this.props.counselor.profile.codGroup)}
             >
@@ -109,8 +92,6 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
   }
 
   render() {
-    logInfo(FILE_NAME, 'rebder',
-      `Counselor List: ${this.props.listOfCounselorsInAGroup}`);
     return (
       <View style={{ backgroundColor: 'white', flex: 1 }}>
         <ScrollView>
@@ -143,11 +124,10 @@ ManageAcceptedRegistersScreen.propTypes = {
       presidentChecked: bool.isRequired,
     }).isRequired,
   }).isRequired,
-  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+  listOfCheckedCounselors: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     cpf: PropTypes.string,
     phone: PropTypes.string,
   })).isRequired,
-  asyncAcceptCounselor: PropTypes.func.isRequired,
   disableCounselor: PropTypes.func.isRequired,
 };

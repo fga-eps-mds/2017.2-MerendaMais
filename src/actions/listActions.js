@@ -4,8 +4,10 @@ import { SET_LIST_COUNSELOR_GROUP,
   SET_NEW_LISTS,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
-  SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from './types';
-import { logInfo, logWarn } from '../../logConfig/loggers';
+  SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  SET_CHECKED_LIST,
+  SET_NOT_CHECKED_LIST } from './types';
+import { logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
   DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
@@ -41,6 +43,16 @@ export const setNewLists = newList => ({
   payload: newList,
 });
 
+export const setlistOfCheckedCounselors = checkedCounselor => ({
+  type: SET_CHECKED_LIST,
+  payload: checkedCounselor,
+});
+
+export const setlistOfNotCheckedCounselors = notCheckedCounselor => ({
+  type: SET_NOT_CHECKED_LIST,
+  payload: notCheckedCounselor,
+});
+
 // Used in Async Action to Login Counselor
 const convertingProfileStringToJSON = (profileStringSingleQuote) => {
   // Changing ' to " in string received from Nuvem Civica.
@@ -67,6 +79,12 @@ const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) =>
 
       if (profile.cpf !== CPF) {
         dispatch(setList(completeCounselorInformations));
+
+        if (completeCounselorInformations.profile.presidentChecked) {
+          dispatch(setlistOfCheckedCounselors(completeCounselorInformations));
+        } else {
+          dispatch(setlistOfNotCheckedCounselors(completeCounselorInformations));
+        }
       }
     })
     .catch((error) => {
@@ -78,8 +96,6 @@ const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) =>
 const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
   axios.get(counselorLink)
     .then((response) => {
-      logInfo(FILE_NAME, 'getCounselor',
-        `name of counselors: ${JSON.stringify(response.data.nomeCompleto, null, 2)}`);
       const auxCodMembro = linkWithCodMembro.substr(linkWithCodMembro.indexOf('membros/'));
       const codMembro = auxCodMembro.substr(8);
       const counselorInformations = {
@@ -99,8 +115,6 @@ const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
 const getCounselorFromGroup = (codGroup, CPF, dispatch) => {
   axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
     .then((response) => {
-      logInfo(FILE_NAME, 'getCounselorFromGroup',
-        `list of counselors: ${JSON.stringify(response.data, null, 2)}`);
       for (let i = 0; i < response.data.length; i += 1) {
         getCounselor(response.data[i].links[1].href, response.data[i].links[0].href, CPF, dispatch);
       }

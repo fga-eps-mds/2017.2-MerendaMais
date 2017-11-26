@@ -5,7 +5,7 @@ import { disableCounselor, asyncAcceptCounselor } from '../actions/ManagerRegist
 
 const mapStateToProps = state => (
   {
-    listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
+    listOfNotCheckedCounselors: state.list.listOfNotCheckedCounselors,
     counselor: state.counselor,
   }
 );
