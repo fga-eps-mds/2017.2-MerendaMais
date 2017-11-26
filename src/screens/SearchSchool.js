@@ -16,11 +16,16 @@ import {
 import PropTypes from 'prop-types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
+import ShowToast from '../components/Toast';
+import SchoolListButton from '../components/SchoolListButton';
 import brazilianStates from '../brazilianStates';
 import municipalDistricts from '../municipalDistricts';
 
-import { SCHOOL_ENDPOINT } from '../constants';
-import SchoolListButton from '../components/SchoolListButton';
+import {
+  SCHOOL_ENDPOINT,
+  SCHOOL_NOT_FOUND,
+  ERROR_FIND_SCHOOL } from '../constants';
+
 
 const FILE_NAME = 'SearchSchool.js';
 
@@ -81,6 +86,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 7,
+    height: 400,
   },
 
   item: {
@@ -213,12 +219,39 @@ class SearchSchool extends React.Component {
 
           logInfo(FILE_NAME, 'searchSchools', `New state: ${JSON.stringify(this.state, null, 2)}.`);
           // If response is an empty array, no schools could be found.
+          if (this.state.schoolList.length === 0) {
+            ShowToast.Toast(SCHOOL_NOT_FOUND);
+          }
         })
         .catch((error) => {
           this.setState({ isLoading: false });
           logWarn(FILE_NAME, 'searchSchools', error);
+          ShowToast.Toast(ERROR_FIND_SCHOOL);
         });
     });
+  }
+
+  showFlatList() {
+    if (this.state.schoolList.length !== 0) {
+      return (
+        <View style={styles.listSchools} key="schoolListView">
+          <ScrollView>
+            <FlatList
+              data={this.state.schoolList}
+              keyExtractor={item => item.nome}
+              renderItem={({ item }) => (
+                <SchoolListButton
+                  onPress={() => this.props.setSchoolInfo(item.codEscola)}
+                  item={item}
+                />
+              )
+              }
+            />
+          </ScrollView>
+        </View>
+      );
+    }
+    return (null);
   }
 
   buttonActivation() {
@@ -331,19 +364,7 @@ class SearchSchool extends React.Component {
 
           </View>
 
-          <View style={styles.listSchools} key="schoolListView">
-            <FlatList
-              data={this.state.schoolList}
-              keyExtractor={item => item.nome}
-              renderItem={({ item }) => (
-                <SchoolListButton
-                  onPress={() => this.props.setSchoolInfo(item.codEscola)}
-                  item={item}
-                />
-              )
-              }
-            />
-          </View>
+          {this.showFlatList()}
 
           <View key="renderButton" style={styles.buttonArea} >
             {this.buttonActivation()}

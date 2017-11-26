@@ -905,6 +905,304 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
             O cardápio prevê a oferta de, no mínimo, três porções de frutas e hortaliças por semana
           </Text>
         </View>
+        <View
+          key="12"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            A alimentação escolar tem paladar saboroso e gostoso
+          </Text>
+        </View>
+        <View
+          key="13"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            Os cardápios são variados
+          </Text>
+        </View>
+        <View
+          key="14"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            Os cardápios estão afixados para visualização dos alunos e comunidade escolar
+          </Text>
+        </View>
+      </View>
+      <View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Qual o cardápio mais aceito?
+        </Text>
+        <View
+          style={
+            Object {
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 5,
+            }
+          }
+        >
+          <TextInput
+            multiline={true}
+            onChangeText={[Function]}
+            placeholder="Observação sobre o cardápio"
+            style={
+              Object {
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontSize": 30,
+                "height": 133.4,
+                "paddingLeft": 10,
+                "paddingTop": 10,
+                "textAlignVertical": "top",
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
+      </View>
+      <View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Qual o cardápio menos aceito?
+        </Text>
+        <View
+          style={
+            Object {
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 5,
+            }
+          }
+        >
+          <TextInput
+            multiline={true}
+            onChangeText={[Function]}
+            placeholder="Observação sobre o cardápio"
+            style={
+              Object {
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontSize": 30,
+                "height": 133.4,
+                "paddingLeft": 10,
+                "paddingTop": 10,
+                "textAlignVertical": "top",
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
       </View>
       <View
         behavior="padding"
@@ -921,7 +1219,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           <TextInput
             multiline={true}
             onChangeText={[Function]}
-            placeholder="Observações (opcional)"
+            placeholder="Observações gerais (opcional)"
             style={
               Object {
                 "borderRadius": 12,

@@ -59,7 +59,7 @@ const MainScreen = () => (
       <TouchableOpacity
         style={styles.buttonInspect}
         activeOpacity={0.7}
-        onPress={() => Actions.mainReportsScreen()}
+        onPress={() => Actions.StartPendingInspection()}
       >
         <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
       </TouchableOpacity>

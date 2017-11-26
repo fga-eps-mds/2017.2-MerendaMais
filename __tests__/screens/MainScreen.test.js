@@ -30,6 +30,6 @@ describe('Test MainScreen buttons', () => {
     const wrapper = shallow(<MainScreen />).dive();
     const drawer = wrapper.find(TouchableOpacity).at(1);
     drawer.simulate('press');
-    expect(Actions.mainReportsScreen.mock.calls.length).toBe(1);
+    expect(Actions.StartPendingInspection.mock.calls.length).toBe(1);
   });
 });
