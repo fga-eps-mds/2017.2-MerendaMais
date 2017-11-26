@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import ScheduleMeeting from '../screens/ScheduleMeeting';
+import asyncSchedulingMeeting from '../actions/schedulingMeetingActions';
 import { asyncGetCounselorFromGroup, setMeetingNewLists } from '../actions/listActions';
 
 const mapStateToProps = state => ({
@@ -9,11 +10,12 @@ const mapStateToProps = state => ({
   meetingListOfInvitees: state.list.meetingListOfInvitees,
   counselor: state.counselor,
   schedule: state.schedule,
-  school: state.school,
 });
 
 const mapDispatchToProps = dispatch => ({
   asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
+
+  asyncSchedulingMeeting: meetingData => dispatch(asyncSchedulingMeeting(meetingData)),
 
   setMeetingNewLists: meetingNewListWithInformations =>
     dispatch(setMeetingNewLists(meetingNewListWithInformations)),

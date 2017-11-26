@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, Alert, ScrollView, BackHandler } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, ScrollView, BackHandler } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -184,12 +184,14 @@ export default class ScheduleMeeting extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      appToken: this.props.counselor.token,
+      nuvemCode: this.props.counselor.nuvemCode,
       meeting: {
+        lat: this.props.schedule.meetingLatitude,
+        long: this.props.schedule.meetingLongitude,
         date: '',
         time: '',
         meetingListOfInvitees: this.props.meetingListOfInvitees,
-        lat: this.props.schedule.meetingLatitude,
-        long: this.props.schedule.meetingLongitude,
         meetingDescription: '',
       },
     };
@@ -301,7 +303,7 @@ export default class ScheduleMeeting extends React.Component {
           enabled
           key="scheduleMeetingButton"
           text="Agendar Reunião"
-          onPress={() => { Alert.alert('Agendando'); }}
+          onPress={() => { this.props.asyncSchedulingMeeting(this.state); }}
         />
       );
     }
@@ -322,8 +324,8 @@ export default class ScheduleMeeting extends React.Component {
         <View>
           <Text style={styles.textDescription}>Localização</Text>
           <View style={[styles.InputFieldStyle]}>
-            <Text>Lat: {this.state.meeting.lat.toFixed(12)},
-                  Long: {this.state.meeting.long.toFixed(12)}
+            <Text>Lat: {this.state.meeting.lat.toFixed(7)},
+                  Long: {this.state.meeting.long.toFixed(7)}
             </Text>
           </View>
         </View>
@@ -501,6 +503,7 @@ export default class ScheduleMeeting extends React.Component {
 const { shape, string, number, func, bool } = PropTypes;
 
 ScheduleMeeting.propTypes = {
+  asyncSchedulingMeeting: func.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   setMeetingNewLists: func.isRequired,
   schedule: shape({
