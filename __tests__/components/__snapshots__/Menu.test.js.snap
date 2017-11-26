@@ -42,7 +42,7 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
     text="Agendar visita"
   />
   <MenuButton
-    iconName="access-time"
+    iconName="insert-invitation"
     isLogout={false}
     key="scheduleMeeting"
     onPress={[Function]}
