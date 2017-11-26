@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SchedulingVisit from '../screens/SchedulingVisit';
-import asyncSchedulingVisit from '../actions/schedulingActions';
+import asyncSchedulingVisit from '../actions/schedulingVisitActions';
 import { asyncGetCounselorFromGroup,
   setNewLists } from '../actions/listActions';
 

@@ -2,7 +2,10 @@
 export const APP_IDENTIFIER = 463;
 
 // Posting type code to use in Nuvem Cívica.
-export const POSTING_TYPE_CODE = 381;
+export const VISIT_POSTING_TYPE_CODE = 381;
+
+// Posting type code to use in Nuvem Cívica.
+export const MEETING_POSTING_TYPE_CODE = 386;
 
 // Profile type code to use in Nuvem Cívica.
 export const PROFILE_TYPE_CODE = 239;

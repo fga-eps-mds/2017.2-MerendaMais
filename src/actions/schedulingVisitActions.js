@@ -3,10 +3,10 @@ import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
-import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
+import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, VISIT_POSTING_TYPE_CODE } from '../constants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 
-const FILE_NAME = 'SchedulingActions.js';
+const FILE_NAME = 'schedulingVisitActions.js';
 
 // Treating request errors
 const treatingPostsError = (error) => {
@@ -70,7 +70,7 @@ const schedulingVisit = (visitData) => {
         codPessoa: visitData.nuvemCode,
       },
       tipo: {
-        codTipoPostagem: POSTING_TYPE_CODE,
+        codTipoPostagem: VISIT_POSTING_TYPE_CODE,
       },
     },
   };

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ScheduleMeetingMap from '../screens/ScheduleMeetingMap';
-import { setMeetingLocationLatitude, setMeetingLocationLongitude } from '../actions/schedulingActions';
+import { setMeetingLocationLatitude, setMeetingLocationLongitude } from '../actions/schedulingMeetingActions';
 
 
 const mapStateToProps = state => ({
