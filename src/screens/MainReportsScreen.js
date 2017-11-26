@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet,
+import {
+  StyleSheet,
   TouchableOpacity,
   Text,
   View,
@@ -11,6 +12,7 @@ import Checkbox from 'react-native-checkbox';
 import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import store from '../Reducers/store';
+import { sideMenuBackPress } from '../../Routes';
 
 const { width } = Dimensions.get('window');
 
@@ -86,8 +88,14 @@ export default class MainReportsScreen extends React.Component {
     };
   }
 
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
+  // Don't forget to mount AND unmount the event when you leave the screen.
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', sideMenuBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', sideMenuBackPress);
   }
 
   checkingFoodQualityReport() {

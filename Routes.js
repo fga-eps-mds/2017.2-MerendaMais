@@ -1,6 +1,5 @@
 import React from 'react';
-import { Router, Scene, Drawer } from 'react-native-router-flux';
-
+import { Router, Scene, Drawer, Actions } from 'react-native-router-flux';
 import InitialScreen from './src/screens/InitialScreen';
 import LoginContainer from './src/Containers/LoginContainer';
 import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContainer';
@@ -21,6 +20,26 @@ import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
 import ReportObservationContainer from './src/Containers/ReportObservationContainer';
 import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
 
+
+// Navigation methods for the hardware back press on android.
+// They can also be used for general back press management.
+
+
+// Use this method if you want the back button to go for the previous screen.
+export const defaultBackPress = () => {
+  console.log('Default Back Press!');
+  Actions.pop();
+  return true;
+};
+
+// Use this method if you want the back button to go to the mainScreen.
+// TODO: Rename this method to something better.
+export const sideMenuBackPress = () => {
+  console.log('Side menu back press');
+  Actions.popTo('mainScreen');
+  return true;
+};
+
 const Routes = () => ({
   render() {
     return (
@@ -34,9 +53,9 @@ const Routes = () => ({
           drawerPosition="right"
         >
           <Scene key="root">
-            <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
+            <Scene key="initialScreen" component={InitialScreen} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
-            <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
+            <Scene key="mainScreen" component={MainScreen} hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
             <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
             <Scene key="loginScreen" component={LoginContainer} hideNavBar />
@@ -48,7 +67,7 @@ const Routes = () => ({
               type="reset"
               hideNavBar
             />
-            <Scene key="mainReportsScreen" component={MainReportsScreen} type="reset" hideNavBar />
+            <Scene key="mainReportsScreen" component={MainReportsScreen} hideNavBar />
             <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
             <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
             <Scene
