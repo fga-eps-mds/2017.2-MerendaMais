@@ -4,6 +4,7 @@ import asyncSchedulingMeeting from '../actions/schedulingMeetingActions';
 import { asyncGetCounselorFromGroup, setMeetingNewLists } from '../actions/listActions';
 
 const mapStateToProps = state => ({
+  isLoading: state.application.isLoading,
   listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
   meetingListOfInviteesWithCounselorInformations:
     state.list.meetingListOfInviteesWithCounselorInformations,

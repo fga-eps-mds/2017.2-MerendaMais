@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, ScrollView, BackHandler } from 'react-native';
+import { StyleSheet, ActivityIndicator, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, ScrollView, BackHandler } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -173,9 +173,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: 'center',
   },
-
   icon_header: {
     marginLeft: 20,
+  },
+  loading: {
+    marginTop: 50,
+    paddingVertical: 13,
   },
 
 });
@@ -298,6 +301,11 @@ export default class ScheduleMeeting extends React.Component {
     if (this.state.meeting.date !== '' && this.state.meeting.lat !== null
     && Object.keys(this.state.meeting.meetingListOfInvitees).length !== 0
      && this.state.meeting.long !== null && this.state.meeting.time !== '') {
+      if (this.props.isLoading) {
+        return (
+          <ActivityIndicator style={styles.loading} size="large" color="#FF9500" />
+        );
+      }
       return (
         <Button
           enabled
@@ -503,6 +511,7 @@ export default class ScheduleMeeting extends React.Component {
 const { shape, string, number, func, bool } = PropTypes;
 
 ScheduleMeeting.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   asyncSchedulingMeeting: func.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   setMeetingNewLists: func.isRequired,

@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
+import { isLoading, isNotLoading } from './applicationActions';
 import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, MEETING_POSTING_TYPE_CODE } from '../constants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 
@@ -25,7 +26,7 @@ const treatingPostsError = (error) => {
   }
 };
 
-const schedulingMeeting = (meetingData) => {
+const schedulingMeeting = (meetingData, dispatch) => {
   const headerToSchedulingMeeting = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
@@ -64,6 +65,7 @@ const schedulingMeeting = (meetingData) => {
       logInfo(FILE_NAME, 'schedulingMeeting',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
       Alert.alert('Agendamento realizado com sucesso');
+      dispatch(isNotLoading());
       Actions.mainScreen();
     })
     .catch((error) => {
@@ -71,14 +73,18 @@ const schedulingMeeting = (meetingData) => {
         `Request result in an ${error}`);
 
       treatingPostsError(error);
+
+      dispatch(isNotLoading());
     });
 };
 
-const asyncSchedulingMeeting = meetingData => () => {
+const asyncSchedulingMeeting = meetingData => (dispatch) => {
   logInfo(FILE_NAME, 'asyncSchedulingMeeting',
     `Scheduling meeting data: ${JSON.stringify(meetingData, null, 2)}`);
 
-  schedulingMeeting(meetingData);
+  dispatch(isLoading());
+
+  schedulingMeeting(meetingData, dispatch);
 };
 
 
