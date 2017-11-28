@@ -13,7 +13,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import Header from '../components/Header';
 import {
   CONTENT,
-  SELECTORS } from '../constants';
+  SELECTORS } from '../resolutionNumber26';
 
 const styles = StyleSheet.create({
   container: {

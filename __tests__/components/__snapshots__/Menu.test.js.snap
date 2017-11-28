@@ -42,6 +42,13 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
     text="Agendar visita"
   />
   <MenuButton
+    iconName="gavel"
+    isLogout={false}
+    key="seeLegislation"
+    onPress={[Function]}
+    text="Consultar Cartilha"
+  />
+  <MenuButton
     iconName="logout"
     isLogout={true}
     key="logout"
