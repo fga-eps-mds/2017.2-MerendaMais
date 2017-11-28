@@ -319,7 +319,7 @@ export default class ScheduleMeeting extends React.Component {
       <Button
         enabled={false}
         text="Agendar Reunião"
-        key="disabledScheduleMeetindButton"
+        key="scheduleMeetingButton"
         onPress={() => ({})}
         disabled
       />
@@ -411,7 +411,9 @@ export default class ScheduleMeeting extends React.Component {
         </PopupDialog>
 
         <View style={styles.wrapper}>
-          <TouchableOpacity onPress={() => Actions.mainScreen()} >
+          <TouchableOpacity
+            onPress={() => Actions.mainScreen()}
+          >
             <Ionicons
               name="ios-arrow-back-outline"
               style={styles.icon_header}
@@ -427,7 +429,7 @@ export default class ScheduleMeeting extends React.Component {
             <View>
               <View style={styles.Container}>
                 <TouchableOpacity
-                  key="searchLocation"
+                  key="openMeetingMap"
                   style={styles.button}
                   onPress={() => Actions.scheduleMeetingMap()}
                 >
