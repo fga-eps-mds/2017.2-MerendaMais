@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
-  Alert,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -126,17 +125,21 @@ class StartPendingInspection extends React.Component {
   }
 
   mountListOfInvitees(listOfInvitees) {
-    this.setState({ invitees: [] });
-    let list = this.state.invitees;
+    let list = [];
 
     // Faz um map da list de conselheiros do CAE
     this.props.listOfCounselorsInAGroup.map((counselor) => {
       /* caso o conselheiro do CAE esteja na lista de convidados
       ele será adicionado numa lista com suas informações
-      O conselheiro da cessão não será mostrado por que ele não é colocado em
+      O conselheiro da sessão não será mostrado por que ele não é colocado em
       listOfCounselorsInAGroup */
       if (listOfInvitees[counselor.nuvemCode] !== undefined) {
-        list.push(counselor);
+        const completeCounselor = {
+          ...counselor,
+          confirmed: listOfInvitees[counselor.nuvemCode].confirmed,
+          realizedVisit: listOfInvitees[counselor.nuvemCode].realizedVisit,
+        };
+        list.push(completeCounselor);
         return this.setState({ invitees: list });
       }
 
@@ -225,14 +228,6 @@ class StartPendingInspection extends React.Component {
                 <Text style={styles.buttonText}>CONVIDADOS</Text>
               </TouchableOpacity>
             </View>
-
-            <View style={styles.buttonInvitees}>
-              <TouchableOpacity
-                onPress={() => Alert.alert('PARTICIPANTES')}
-              >
-                <Text style={styles.buttonText}>PARTICIPANTES</Text>
-              </TouchableOpacity>
-            </View>
           </View>
         </View>
       ))
@@ -256,28 +251,19 @@ class StartPendingInspection extends React.Component {
               <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
               {counselor.phone}
             </Text>
-          </View>
-        </View>
-      ))
-    );
-  }
-
-  renderParticipantsList() {
-    return (
-      this.state.invitees.map(counselor => (
-        <View style={styles.listRegisters} key={counselor.nuvemCode}>
-          <View style={styles.textBox}>
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-              {counselor.name}
+              <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>
+              { counselor.confirmed ?
+                <Text> Confirmado </Text>
+                : <Text> Não Confirmado </Text>
+              }
             </Text>
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.cpf}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.confirmed}
+              <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
+              { counselor.confirmed ?
+                <Text> Realizada </Text>
+                : <Text> Não Realizada </Text>
+              }
             </Text>
           </View>
         </View>
@@ -292,7 +278,6 @@ class StartPendingInspection extends React.Component {
       <View style={styles.principal}>
         <PopupDialog
           /* Popup para mostrar a lista de convidados */
-
           ref={(popupDialog) => {
             this.popupDialog = popupDialog;
           }}
