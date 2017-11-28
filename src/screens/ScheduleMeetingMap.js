@@ -71,13 +71,12 @@ export default class ScheduleMeetingMap extends React.Component {
     super(props);
     this.state = {
       meetingLocation: {},
-      userLocation: {
+      region: {
         latitude: 0.0,
         longitude: 0.0,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
-      region: {},
       error: null,
     };
   }
@@ -86,11 +85,10 @@ export default class ScheduleMeetingMap extends React.Component {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
-          userLocation: { ...this.state.userLocation, latitude: position.coords.latitude } });
+          region: { ...this.state.region, latitude: position.coords.latitude } });
         this.setState({
-          userLocation: { ...this.state.userLocation, longitude: position.coords.longitude } });
-        this.setState({ region: this.state.userLocation });
-        this.setState({ meetingLocation: this.state.userLocation });
+          region: { ...this.state.region, longitude: position.coords.longitude } });
+        this.setState({ meetingLocation: this.state.region });
         this.showPopUp();
       },
       error => this.setState({ error: error.message }),
@@ -152,7 +150,7 @@ export default class ScheduleMeetingMap extends React.Component {
           onRegionChange={region => this.setState({ region })}
         >
           <MapView.Marker
-            coordinate={this.state.userLocation}
+            coordinate={this.state.region}
             draggable
             pinColor="orange"
             onDragEnd={e => this.setState({ meetingLocation: e.nativeEvent.coordinate })}
