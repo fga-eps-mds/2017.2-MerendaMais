@@ -87,7 +87,6 @@ const asyncSchedulingMeeting = meetingData => (dispatch) => {
   schedulingMeeting(meetingData, dispatch);
 };
 
-
 export default asyncSchedulingMeeting;
 
 export const setMeetingLocationLatitude = latitude => ({

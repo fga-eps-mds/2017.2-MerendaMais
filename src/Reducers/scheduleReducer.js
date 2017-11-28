@@ -1,3 +1,4 @@
+import { Actions } from 'react-native-router-flux';
 import initialState from './initialState';
 import { SET_MEETING_LOCATION_LATITUDE, SET_MEETING_LOCATION_LONGITUDE } from '../actions/types';
 // import { logInfo } from '../../logConfig/loggers';
@@ -19,6 +20,7 @@ const scheduleReducer = (state = initialState.schedule, action) => {
         meetingLatitude: action.payload.latitude,
       };
     case SET_MEETING_LOCATION_LONGITUDE:
+      Actions.ScheduleMeeting();
       return {
         ...state,
         meetingLongitude: action.payload.longitude,

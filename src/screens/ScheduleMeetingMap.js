@@ -108,7 +108,7 @@ export default class ScheduleMeetingMap extends React.Component {
     console.log(this.state);
     console.log(this.state.meetingLocation.latitude);
     console.log(this.state.meetingLocation.longitude);
-    Actions.scheduleMeeting();
+    // Actions.scheduleMeeting();
   }
 
   render() {
@@ -147,6 +147,7 @@ export default class ScheduleMeetingMap extends React.Component {
           provider={MapView.PROVIDER_GOOGLE}
           style={{ flex: 1 }}
           region={this.state.region}
+          key = "mapChanging"
           onRegionChange={region => this.setState({ region })}
         >
           <MapView.Marker
