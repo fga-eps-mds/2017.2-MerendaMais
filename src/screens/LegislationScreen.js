@@ -4,6 +4,7 @@ import {
   Text,
   View,
   TouchableHighlight,
+  ScrollView,
 } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
@@ -97,8 +98,11 @@ export default class LegislationScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Accordion Example</Text>
+      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+        <Header
+          title={'Legislação'}
+          backButton
+        />
 
         <View style={styles.selectors}>
           <Text style={styles.selectTitle}>Select:</Text>
@@ -116,16 +120,6 @@ export default class LegislationScreen extends Component {
           ))}
         </View>
 
-        <TouchableHighlight onPress={this.toggleExpanded}>
-          <View style={styles.header}>
-            <Text style={styles.headerText}>Single Collapsible</Text>
-          </View>
-        </TouchableHighlight>
-        <Collapsible collapsed={this.state.collapsed} align="center">
-          <View style={styles.content}>
-            <Text>Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs</Text>
-          </View>
-        </Collapsible>
         <Accordion
           activeSection={this.state.activeSection}
           sections={CONTENT}
@@ -135,7 +129,7 @@ export default class LegislationScreen extends Component {
           onChange={section => this.setSection(section)}
         />
 
-      </View>
+      </ScrollView>
     );
   }
 }
