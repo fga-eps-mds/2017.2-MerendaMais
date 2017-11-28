@@ -67,11 +67,22 @@ const styles = StyleSheet.create({
     padding: 8,
     justifyContent: 'center',
     marginRight: 20,
+    marginTop: 5,
   },
 
   buttonText: {
     fontSize: 12,
     textAlign: 'center',
+  },
+
+  popUp: {
+    marginBottom: 120,
+  },
+
+  popUpText: {
+    fontSize: 15,
+    textAlign: 'justify',
+    lineHeight: 20,
   },
 
   footerPopUp: {
@@ -247,12 +258,14 @@ class StartPendingInspection extends React.Component {
       <View style={styles.principal}>
         <PopupDialog
           /* Popup para mostrar a lista de convidados */
+
           ref={(popupDialog) => {
             this.popupDialog = popupDialog;
           }}
-          dialogTitle={<DialogTitle title="Escolha quem deseja convidar" />}
+          dialogTitle={<DialogTitle title="Convidados" />}
+          dialogStyle={styles.popUp}
           overlayPointerEvents="none"
-          height="60%"
+          height="70%"
           width="85%"
           actions={[
             <View style={styles.footerPopUp}>
