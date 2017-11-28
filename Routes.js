@@ -24,6 +24,7 @@ import FoodHandlerCheckoutContainer from './src/Containers/FoodHandlerCheckoutCo
 import WaterSewerSupplyCheckoutContainer from './src/Containers/WaterSewerSupplyCheckoutContainer';
 import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCheckoutContainer';
 import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
+import LegislationScreen from './src/screens/LegislationScreen';
 
 const Routes = () => ({
   render() {
@@ -92,6 +93,7 @@ const Routes = () => ({
               hideNavBar
             />
             <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
+            <Scene key="lesgislationScreen" component={LegislationScreen} hideNavBar />
           </Scene>
         </Drawer>
       </Router>

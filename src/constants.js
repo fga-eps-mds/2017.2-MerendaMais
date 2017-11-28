@@ -65,3 +65,43 @@ export const COUNSELOR_DISABLED_SUCCESS = 'Conselheiro desassociado com sucesso!
 export const COUNSELOR_DISABLED_FAILED = 'Erro ao desassociar conselheiro da aplicação!';
 export const COUNSELOR_GROUP_DISABLED_SUCCESS = 'Conselheiro apagado do grupo (CAE) com sucesso!';
 export const COUNSELOR_GROUP_DISABLED_FAILED = 'Não foi possível apagar conselheiro do grup (CAE).';
+
+export const BACON_IPSUM = 'Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs. Picanha beef prosciutto meatball turkey shoulder shank salami cupim doner jowl pork belly cow. Chicken shankle rump swine tail frankfurter meatloaf ground round flank ham hock tongue shank andouille boudin brisket. ';
+
+export const CONTENT = [
+  {
+    title: 'Capitulo I',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Second',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Third',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Fourth',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Fifth',
+    content: BACON_IPSUM,
+  },
+];
+
+export const SELECTORS = [
+  {
+    title: 'First',
+    value: 0,
+  },
+  {
+    title: 'Third',
+    value: 2,
+  },
+  {
+    title: 'None',
+    value: false,
+  },
+];
