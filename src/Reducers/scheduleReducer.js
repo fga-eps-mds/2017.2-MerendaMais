@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { SET_SCHEDULE_INFO, SET_MEETING_LOCATION_LATITUDE, SET_MEETING_LOCATION_LONGITUDE } from '../actions/types';
+import { SET_MEETING_LOCATION_LATITUDE, SET_MEETING_LOCATION_LONGITUDE } from '../actions/types';
 // import { logInfo } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'schoolReducer.js';
@@ -13,12 +13,6 @@ const scheduleReducer = (state = initialState.schedule, action) => {
   }
 
   switch (action.type) {
-    case SET_SCHEDULE_INFO:
-      return {
-        ...state,
-        date: '',
-        time: '',
-      };
     case SET_MEETING_LOCATION_LATITUDE:
       return {
         ...state,
