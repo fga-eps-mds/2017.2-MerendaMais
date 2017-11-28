@@ -168,8 +168,7 @@ describe('Testing ScheduleMeeting buttons', () => {
   it('Test if schedule button is rendered', () => {
     const asyncSchedulingMeeting = (state) => {
       expect(state.nuvemCode).toEqual(1);
-      expect(state.token).toEqual('tokenGenerico');
-      expect(state.meeting.codSchool).toEqual(32);
+      expect(state.appToken).toEqual('tokenGenerico');
       expect(state.meeting.date).toEqual('31-12-2017');
       expect(state.meeting.time).toEqual('18:30');
       expect(state.meeting.lat).toEqual(0.00);

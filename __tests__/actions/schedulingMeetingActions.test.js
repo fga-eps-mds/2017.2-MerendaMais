@@ -1,5 +1,3 @@
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import * as actions from '../../src/actions/schedulingMeetingActions';
 import * as types from '../../src/actions/types';
 
