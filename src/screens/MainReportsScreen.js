@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
     marginHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     marginHorizontal: 15,
     marginTop: 30,
-    marginBottom: 20,
+    marginBottom: 10,
     backgroundColor: '#FF9500',
   },
 
@@ -333,6 +333,12 @@ export default class MainReportsScreen extends React.Component {
               style={styles.buttonContainer}
             >
               <Text style={styles.buttonText}>Gerar Relatório Final</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.buttonContainer}
+            >
+              <Text style={styles.buttonText}>Encerrar Fiscalização</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>

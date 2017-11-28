@@ -333,7 +333,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             "backgroundColor": "#FF9500",
             "borderRadius": 7,
             "borderWidth": 1,
-            "marginBottom": 20,
+            "marginBottom": 10,
             "marginHorizontal": 15,
             "marginTop": 30,
             "paddingVertical": 10,
@@ -363,9 +363,9 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             "borderRadius": 7,
             "borderWidth": 1,
             "justifyContent": "flex-end",
-            "marginBottom": 20,
+            "marginBottom": 10,
             "marginHorizontal": 15,
-            "marginTop": 30,
+            "marginTop": 10,
             "paddingVertical": 10,
           }
         }
@@ -383,6 +383,36 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           }
         >
           Gerar Relatório Final
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        style={
+          Object {
+            "backgroundColor": "#FF9500",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 10,
+            "marginHorizontal": 15,
+            "marginTop": 10,
+            "paddingVertical": 10,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#FFF",
+              "textAlign": "center",
+            }
+          }
+        >
+          Encerrar Fiscalização
         </Text>
       </TouchableOpacity>
     </View>

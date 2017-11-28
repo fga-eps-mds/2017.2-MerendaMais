@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -54,9 +55,10 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     backgroundColor: '#4cd964',
     padding: 7,
-    marginBottom: 20,
+    marginBottom: 5,
     justifyContent: 'center',
     marginRight: 20,
+    marginTop: 5,
   },
 
   buttonInvitees: {
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 20,
     marginTop: 5,
+    marginBottom: 5,
   },
 
   buttonText: {
@@ -222,6 +225,14 @@ class StartPendingInspection extends React.Component {
                 <Text style={styles.buttonText}>CONVIDADOS</Text>
               </TouchableOpacity>
             </View>
+
+            <View style={styles.buttonInvitees}>
+              <TouchableOpacity
+                onPress={() => Alert.alert('PARTICIPANTES')}
+              >
+                <Text style={styles.buttonText}>PARTICIPANTES</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       ))
@@ -244,6 +255,29 @@ class StartPendingInspection extends React.Component {
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
               {counselor.phone}
+            </Text>
+          </View>
+        </View>
+      ))
+    );
+  }
+
+  renderParticipantsList() {
+    return (
+      this.state.invitees.map(counselor => (
+        <View style={styles.listRegisters} key={counselor.nuvemCode}>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+              {counselor.name}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+              {counselor.cpf}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+              {counselor.confirmed}
             </Text>
           </View>
         </View>
