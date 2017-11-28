@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import VisitInvites from '../screens/VisitInvites';
 
 
-const mapStateToProps = () => (
-  {}
+const mapStateToProps = state => (
+  {
+    counselor: state.counselor,
+  }
 );
 
 const mapDispachtoProps = () => (
