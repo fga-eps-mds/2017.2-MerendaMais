@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-
+import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 
 const styles = StyleSheet.create({
@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
 const PrincipalNotifications = () => (
   <View style={styles.principal}>
     <Header
-      title={'Editar Informações'}
+      title={'Acesar notificações'}
       backButton
     />
 
     <TouchableOpacity
       style={styles.button}
       activeOpacity={0.7}
-      // onPress={() => Actions.visiteInvites()}
+      onPress={() => Actions.VisitInvites()}
     >
       <Text style={{ color: 'white', fontSize: 20 }}>Convites de visitas</Text>
     </TouchableOpacity>

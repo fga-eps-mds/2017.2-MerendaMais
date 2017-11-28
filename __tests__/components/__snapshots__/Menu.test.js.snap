@@ -42,6 +42,13 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
     text="Agendar visita"
   />
   <MenuButton
+    iconName="notifications"
+    isLogout={false}
+    key="notifications"
+    onPress={[Function]}
+    text="Notificações"
+  />
+  <MenuButton
     iconName="logout"
     isLogout={true}
     key="logout"

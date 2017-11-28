@@ -25,6 +25,7 @@ import WaterSewerSupplyCheckoutContainer from './src/Containers/WaterSewerSupply
 import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCheckoutContainer';
 import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
 import PrincipalNotifications from './src/screens/PrincipalNotifications';
+import VisitInvitesContainer from './src/Containers/VisitInvitesContainer';
 
 const Routes = () => ({
   render() {
@@ -42,6 +43,7 @@ const Routes = () => ({
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
             <Scene key="PrincipalNotifications" component={PrincipalNotifications} hideNavBar />
+            <Scene key="VisitInvites" component={VisitInvitesContainer} hideNavBar />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
