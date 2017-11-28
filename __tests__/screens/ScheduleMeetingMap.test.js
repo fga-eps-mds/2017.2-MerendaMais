@@ -42,6 +42,7 @@ describe('Testing SchoolInfoScreen', () => {
 
 describe('Testing ScheduleMeetingMap button', () => {
   it('Test if setMeetingLocation Button is rendered', () => {
+    jest.mock('react-native-router-flux');
     const wrapper = shallow(<ScheduleMeetingMap {...initialState} />);
     const button = wrapper.findWhere(c => c.key() === 'setMeetingLocationButton');
     expect(button.length).toEqual(1);

@@ -26,7 +26,7 @@ const treatingPostsError = (error) => {
   }
 };
 
-const schedulingMeeting = (meetingData, dispatch) => {
+export const schedulingMeeting = (meetingData, dispatch) => {
   const headerToSchedulingMeeting = {
     headers: {
       appIdentifier: APP_IDENTIFIER,

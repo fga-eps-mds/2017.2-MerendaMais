@@ -151,11 +151,11 @@ describe('Testing ScheduleMeeting Screen', () => {
 
 describe('Testing ScheduleMeeting buttons', () => {
   it('Test if goToMeetingMaps Button is rendered', () => {
+    jest.mock('react-native-router-flux');
     const wrapper = shallow(<ScheduleMeeting {...initialStateToScreen} />);
     const button = wrapper.findWhere(c => c.key() === 'openMeetingMap');
     expect(button.length).toEqual(1);
-    // We are not simulating button press because we faced problems with action types
-    // button.simulate('press');
+    button.simulate('press');
   });
   it('Test if inviteCounselors Button is rendered', () => {
     const wrapper = shallow(<ScheduleMeeting {...initialStateToScreen} />);
