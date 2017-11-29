@@ -7,8 +7,9 @@ import {
   ScrollView,
 } from 'react-native';
 
-import * as Animatable from 'react-native-animatable';
 import Accordion from 'react-native-collapsible/Accordion';
+import RenderContent from '../components/AccordionContent';
+import RenderHeader from '../components/AccordionHeader';
 import Header from '../components/Header';
 import {
   CONTENT,
@@ -16,35 +17,11 @@ import {
   RESOLUTION_1_DATE } from '../resolutionNumber1';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   title: {
     textAlign: 'center',
     fontSize: 22,
     fontWeight: '300',
     marginBottom: 20,
-  },
-  header: {
-    backgroundColor: '#F5FCFF',
-    padding: 10,
-  },
-  headerText: {
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  content: {
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  active: {
-    backgroundColor: 'rgba(255,255,255,1)',
-  },
-  inactive: {
-    backgroundColor: 'rgba(245,252,255,1)',
   },
   selectors: {
     marginBottom: 10,
@@ -66,22 +43,6 @@ const styles = StyleSheet.create({
 });
 
 export default class Resolution1Screen extends Component {
-  static renderHeader(section, i, isActive) {
-    return (
-      <Animatable.View duration={400} style={[styles.header, isActive ? styles.active : styles.inactive]} transition="backgroundColor">
-        <Text style={styles.headerText}>{section.title}</Text>
-      </Animatable.View>
-    );
-  }
-
-  static renderContent(section, i, isActive) {
-    return (
-      <Animatable.View duration={400} style={[styles.content, isActive ? styles.active : styles.inactive]} transition="backgroundColor">
-        <Animatable.Text animation={isActive ? 'bounceIn' : undefined}>{section.content}</Animatable.Text>
-      </Animatable.View>
-    );
-  }
-
   state = {
     activeSection: false,
     collapsed: true,
@@ -125,8 +86,8 @@ export default class Resolution1Screen extends Component {
           <Accordion
             activeSection={this.state.activeSection}
             sections={CONTENT}
-            renderHeader={Resolution1Screen.renderHeader}
-            renderContent={Resolution1Screen.renderContent}
+            renderHeader={RenderHeader}
+            renderContent={RenderContent}
             duration={400}
             onChange={section => this.setSection(section)}
           />
