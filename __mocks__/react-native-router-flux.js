@@ -12,4 +12,5 @@ export const Actions = {
   StartPendingInspection: jest.fn(),
   scheduleMeeting: jest.fn(),
   scheduleMeetingMap: jest.fn(),
+
 };

@@ -90,9 +90,7 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       coordinate={
         Object {
           "latitude": 0,
-          "latitudeDelta": 0.0922,
           "longitude": 0,
-          "longitudeDelta": 0.0421,
         }
       }
       draggable={true}

@@ -150,11 +150,11 @@ describe('Testing listActions', () => {
       },
     };
 
-    const actionReturn = actions.setNewLists(newList1);
+    const actionReturn = actions.setVisitNewLists(newList1);
 
     expect(actionReturn.payload).not.toEqual(newList2);
 
     expect(actionReturn.payload).toEqual(newList1);
-    expect(actionReturn.type).toEqual(types.SET_NEW_LISTS);
+    expect(actionReturn.type).toEqual(types.SET_VISIT_NEW_LISTS);
   });
 });
