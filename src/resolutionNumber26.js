@@ -1,4 +1,33 @@
-// Chapters of Legislation from Resolução n°26
+// Chapters of Legislation from Resolution n°26
+export const LEGAL_FUNDAMENTATION = 'Constituição Federal, de 1988, arts. 6º, 205, 208 e 211.\n' +
+                                    'Lei nº 8.666, de 21 de junho de 1993.\n' +
+                                    'Lei nº 9.394, de 20 de dezembro de 1996.\n' +
+                                    'Lei nº 9.452, de 20 de março de 1997.\n' +
+                                    'Lei nº 10.520, de 17 de julho de 2002.\n' +
+                                    'Lei nº 10.831, de 23 de dezembro de 2003.\n' +
+                                    'Portaria Interministerial MEC/MS nº 1.010, de 08 de maio de 2006.\n' +
+                                    'Lei nº 11.346, de 15 de setembro de 2006.\n' +
+                                    'Lei nº 11.524 de 24 de setembro de 2007.\n' +
+                                    'Lei nº 11.947, de 16 de junho de 2009.\n' +
+                                    'Decreto nº 7083, de 27 de janeiro de 2010.\n' +
+                                    'Resolução Conselho Federal de Nutricionistas nº 465, 23 de agosto de 2010.\n' +
+                                    'Decreto nº 7.507, de 27 de junho de 2011.\n' +
+                                    'Resolução CD/FNDE nº 31, de 1º de julho de 2011.\n' +
+                                    'Lei nº 12.512, de 14 de outubro de 2011.\n' +
+                                    'Decreto nº 7.611, de 17 de novembro de 2011.\n' +
+                                    'Resolução CD/FNDE nº 2, de 18 de janeiro de 2012.\n' +
+                                    'Decreto nº 7.775, de 04 de julho de 2012.\n' +
+                                    '\nO PRESIDENTE DO CONSELHO DELIBERATIVO DO FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO - FNDE, no uso das atribuições que lhe são conferidas pelo art. 7º, § 1º, da Lei nº 5.537, de 21 de novembro de 1968, e pelos arts. 4º, § 2º, e 14 do Anexo I do Decreto nº 7.691, de 2 de março de 2012, publicado no D.O.U. de 6 de março de 2012, e pelos arts. 3º, inciso I, alíneas "a" e "b"; 5º, caput; e 6º, inciso VI, do Anexo da Resolução nº 31, de 30 de setembro de 2003, publicada no D.O.U. de 2 de outubro de 2003, neste ato representado conforme deliberado na Reunião Extraordinária do Conselho Deliberativo do FNDE realizada no dia 31 de maio de 2012, e\n' +
+                                    '\nCONSIDERANDO o disposto na Constituição Federal nos artigos 6º, 205, 208, inciso VII, e artigo 211;\n' +
+                                    '\nCONSIDERANDO que a alimentação adequada é um direito fundamental do ser humano, reconhecido internacionalmente pela Declaração Universal dos Direitos Humanos (art. 25) e pelo Pacto Internacional de Direitos Econômicos, Sociais e Culturais - PIDESC (art. 11), sendo inerente à dignidade da pessoa humana e indispensável à realização dos direitos consagrados na Constituição Federal, devendo o poder público adotar as políticas e ações que se façam necessárias para promover e garantir a segurança alimentar e nutricional da população, como disposto na Lei nº 11.346, de 15 de setembro de 2006, que cria o Sistema Nacional de Segurança Alimentar e Nutricional;\n' +
+                                    '\nCONSIDERANDO que o Artigo 6º da Constituição Federal, após a EC 064/2010, estabelece que "São direitos sociais a educação, a saúde, a alimentação, o trabalho, a moradia, o lazer, a segurança, a previdência social, a proteção à maternidade e à infância, a assistência aos desamparados, na forma desta Constituição";\n' +
+                                    '\nCONSIDERANDO a importância das ações educativas que perpassem pelo currículo escolar, abordando o tema alimentação e nutrição e a inclusão da educação alimentar e nutricional no processo de ensino e aprendizagem dentro da perspectiva do desenvolvimento de práticas saudáveis de vida e da segurança alimentar e nutricional;\n' +
+                                    '\nCONSIDERANDO a importância da intersetorialidade por meio de políticas, programas, ações governamentais e não governamentais para a execução do Programa Nacional de Alimentação Escolar - PNAE, por meio de ações articuladas entre educação, saúde, agricultura, sociedade civil, ação social, entre outros;\n' +
+                                    '\nCONSIDERANDO o fortalecimento da Agricultura Familiar e sua contribuição para o desenvolvimento social e econômico local; e\n' +
+                                    '\nCONSIDERANDO a necessidade de consolidar normativos dispersos em vários dispositivos legais e de inserir novas orientações ao público, resolve "ad referendum":\n' +
+                                    '\nArt. 1º Estabelecer as normas para a execução técnica, administrativa e financeira do PNAE aos Estados, ao Distrito Federal, aos Municípios e às entidades federais.\n' +
+                                    '\nParágrafo único. A alimentação escolar é direito dos alunos da educação básica pública e dever do Estado e será promovida e incentivada com vista ao atendimento das diretrizes estabelecidas nesta Resolução.\n';
+
 export const CHAPTER_I = 'DAS DIRETRIZES E DO OBJETIVO DO PROGRAMA\n ' +
                          '\nArt. 2º São diretrizes da Alimentação Escolar:\n ' +
                          '\nI - o emprego da alimentação saudável e adequada, compreendendo o uso de alimentos variados, seguros, que respeitem a cultura, as tradições e os hábitos alimentares saudáveis, contribuindo para o crescimento e o desenvolvimento dos alunos e para a melhoria do rendimento escolar, em conformidade com a sua faixa etária e seu estado de saúde, inclusive dos que necessitam de atenção específica;\n ' +
