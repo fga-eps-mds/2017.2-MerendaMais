@@ -12,7 +12,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import Header from '../components/Header';
 import {
   CONTENT,
-  SELECTORS } from '../resolutionNumber26';
+  SELECTORS } from '../resolutionNumber1';
 
 const styles = StyleSheet.create({
   container: {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class LegislationScreen extends Component {
+export default class Resolution1Screen extends Component {
   static renderHeader(section, i, isActive) {
     return (
       <Animatable.View duration={400} style={[styles.header, isActive ? styles.active : styles.inactive]} transition="backgroundColor">
@@ -122,8 +122,8 @@ export default class LegislationScreen extends Component {
         <Accordion
           activeSection={this.state.activeSection}
           sections={CONTENT}
-          renderHeader={LegislationScreen.renderHeader}
-          renderContent={LegislationScreen.renderContent}
+          renderHeader={Resolution1Screen.renderHeader}
+          renderContent={Resolution1Screen.renderContent}
           duration={400}
           onChange={section => this.setSection(section)}
         />

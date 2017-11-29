@@ -24,7 +24,9 @@ import FoodHandlerCheckoutContainer from './src/Containers/FoodHandlerCheckoutCo
 import WaterSewerSupplyCheckoutContainer from './src/Containers/WaterSewerSupplyCheckoutContainer';
 import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCheckoutContainer';
 import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
-import LegislationScreen from './src/screens/LegislationScreen';
+import MainLegislationScreen from './src/screens/MainLegislationScreen';
+import Resolution26Screen from './src/screens/Resolution26Screen';
+import Resolution1Screen from './src/screens/Resolution1Screen';
 
 const Routes = () => ({
   render() {
@@ -93,7 +95,9 @@ const Routes = () => ({
               hideNavBar
             />
             <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
-            <Scene key="lesgislationScreen" component={LegislationScreen} hideNavBar />
+            <Scene key="lesgislationScreen" component={MainLegislationScreen} hideNavBar />
+            <Scene key="resolution26Screen" component={Resolution26Screen} hideNavBar />
+            <Scene key="resolution1Screen" component={Resolution1Screen} hideNavBar />
           </Scene>
         </Drawer>
       </Router>
