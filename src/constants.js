@@ -7,6 +7,12 @@ export const APP_TOKEN = 'v1_8841323707E44F8131B11AF90E417AA5732CACA7AD8A8842D34
 // Posting type code to use in Nuvem Cívica.
 export const POSTING_TYPE_CODE = 381;
 
+// Visit posting type code to use in Nuvem Cívica.
+export const VISIT_POSTING_TYPE_CODE = 381;
+
+// Meeting posting type code to use in Nuvem Cívica.
+export const MEETING_POSTING_TYPE_CODE = 386;
+
 // Profile type code to use in Nuvem Cívica.
 export const PROFILE_TYPE_CODE = 239;
 

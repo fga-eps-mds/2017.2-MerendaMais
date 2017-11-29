@@ -24,6 +24,8 @@ import FoodHandlerCheckoutContainer from './src/Containers/FoodHandlerCheckoutCo
 import WaterSewerSupplyCheckoutContainer from './src/Containers/WaterSewerSupplyCheckoutContainer';
 import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCheckoutContainer';
 import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
+import ScheduleMeetingContainer from './src/Containers/ScheduleMeetingContainer';
+import ScheduleMeetingMapContainer from './src/Containers/ScheduleMeetingMapContainer';
 
 const Routes = () => ({
   render() {
@@ -40,7 +42,18 @@ const Routes = () => ({
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
+            <Scene
+              key="scheduleMeetingMap"
+              component={ScheduleMeetingMapContainer}
+              hideNavBar
+            />
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
+            <Scene
+              key="scheduleMeeting"
+              component={ScheduleMeetingContainer}
+              type="reset"
+              hideNavBar
+            />
             <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />

@@ -1,9 +1,10 @@
 import listReducer from '../../src/Reducers/listReducer';
 import initialState from '../../src/Reducers/initialState';
 import { SET_LIST_COUNSELOR_GROUP,
-  RESET_LIST, SET_NEW_LISTS,
+  RESET_LIST,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
+  SET_VISIT_NEW_LISTS,
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from '../../src/actions/types';
 
 describe('Testing listReducer', () => {
@@ -57,12 +58,12 @@ describe('Testing listReducer', () => {
   it('Set new Lists of invitees', () => {
     let list = initialState.list;
 
-    expect(list.listOfInviteesWithCounselorInformations).toEqual({});
-    expect(list.listOfInvitees).toEqual({});
+    expect(list.visitListOfInviteesWithCounselorInformations).toEqual({});
+    expect(list.visitListOfInvitees).toEqual({});
     expect(list.listOfCounselorsInAGroup).toEqual([]);
 
     const newLists = {
-      newListWithInformations: {
+      visitNewListWithInformations: {
         6122: {
           cpf: 11111111111,
           name: 'Lucas Penido Antunes',
@@ -76,7 +77,7 @@ describe('Testing listReducer', () => {
           phone: 99999999999,
         },
       },
-      newList: {
+      visitNewList: {
         6122: {
           confirmed: false,
           nuvemCode: 6122,
@@ -89,15 +90,15 @@ describe('Testing listReducer', () => {
     };
 
     const action = {
-      type: SET_NEW_LISTS,
+      type: SET_VISIT_NEW_LISTS,
       payload: newLists,
     };
 
     list = listReducer(list, action);
 
-    expect(list.listOfInviteesWithCounselorInformations)
-      .toEqual(newLists.newListWithInformations);
-    expect(list.listOfInvitees).toEqual(newLists.newList);
+    expect(list.visitListOfInviteesWithCounselorInformations)
+      .toEqual(newLists.visitNewListWithInformations);
+    expect(list.visitListOfInvitees).toEqual(newLists.visitNewList);
     expect(list.listOfCounselorsInAGroup).toEqual([]);
   });
 
