@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
 import Header from '../components/Header';
 import ManageNotAcceptedRegistersScreenContainer from '../Containers/ManageNotAcceptedRegistersScreenContainer';

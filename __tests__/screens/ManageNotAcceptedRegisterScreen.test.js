@@ -27,11 +27,12 @@ const initialState = {
 
 const store = mockStore(initialState);
 
-describe('Testing ManagerRegistersScreen', () => {
+describe('Testing ManagerNotAcceptedRegistersScreen', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
       <ManageNotAcceptedRegistersScreenContainer />,
       { context: { store } },
     );
+    expect(wrapper).toMatchSnapshot();
   });
 });
