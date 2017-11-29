@@ -12,7 +12,8 @@ import Accordion from 'react-native-collapsible/Accordion';
 import Header from '../components/Header';
 import {
   CONTENT,
-  SELECTORS } from '../resolutionNumber1';
+  SELECTORS,
+  RESOLUTION_1_DATE } from '../resolutionNumber1';
 
 const styles = StyleSheet.create({
   container: {
@@ -97,9 +98,10 @@ export default class Resolution1Screen extends Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Legislação'}
+          subTitle={'Resolução Nº 1'}
           backButton
         />
 
@@ -118,19 +120,18 @@ export default class Resolution1Screen extends Component {
             </TouchableHighlight>
           ))}
         </View>
-
-        <Accordion
-          activeSection={this.state.activeSection}
-          sections={CONTENT}
-          renderHeader={Resolution1Screen.renderHeader}
-          renderContent={Resolution1Screen.renderContent}
-          duration={400}
-          onChange={section => this.setSection(section)}
-        />
-
-      </ScrollView>
+        <ScrollView>
+          <Text style={styles.title}>{RESOLUTION_1_DATE}</Text>
+          <Accordion
+            activeSection={this.state.activeSection}
+            sections={CONTENT}
+            renderHeader={Resolution1Screen.renderHeader}
+            renderContent={Resolution1Screen.renderContent}
+            duration={400}
+            onChange={section => this.setSection(section)}
+          />
+        </ScrollView>
+      </View>
     );
   }
 }
-
-// export default LegislationScreen;

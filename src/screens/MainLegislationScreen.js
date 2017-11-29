@@ -4,22 +4,6 @@ import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
 
 const styles = StyleSheet.create({
-  field: {
-    backgroundColor: '#FAFAFA',
-    paddingVertical: 4,
-    borderWidth: 1,
-    borderRadius: 7,
-    borderColor: 'gray',
-    marginHorizontal: 15,
-    marginBottom: 15,
-    marginTop: 15,
-    justifyContent: 'flex-start',
-    paddingLeft: 2,
-    paddingRight: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
   legislationScreen: {
     flex: 1,
     backgroundColor: '#FAFAFA',
@@ -54,20 +38,31 @@ const MainLegislationScreen = () => ({
           title={'Legislação'}
           backButton
         />
-        <View style={styles.infoProfileBox}>
-          <ScrollView>
-            <TouchableOpacity
-              onPress={() => Actions.resolution26Screen()}
-            >
-              <Text style={styles.buttonText}>Resolução Número 26</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => Actions.resolution1Screen()}
-            >
-              <Text style={styles.buttonText}>Resolução Número 1</Text>
-            </TouchableOpacity>
-          </ScrollView>
-        </View>
+        <ScrollView>
+          <TouchableOpacity
+            onPress={() => Actions.resolution1Screen()}
+          >
+            <Text style={styles.buttonText}>Resolução Nº 1</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => Actions.resolution26Screen()}
+          >
+            <Text style={styles.buttonText}>Resolução Nº 26</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => Actions.lawNumber11947Screen()}
+          >
+            <Text style={styles.buttonText}>Lei Nº 11.947</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => Actions.lawNumber12982Screen()}
+          >
+            <Text style={styles.buttonText}>Lei N° 12.982</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     );
   },

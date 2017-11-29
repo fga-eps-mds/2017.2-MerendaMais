@@ -1,22 +1,24 @@
 // Chapters of Legislation from Resolution n°26
+export const RESOLUTION_26_DATE = 'RESOLUÇÃO Nº 26, DE 17 DE JUNHO DE 2013';
+
 export const LEGAL_FUNDAMENTATION = 'Constituição Federal, de 1988, arts. 6º, 205, 208 e 211.\n' +
-                                    'Lei nº 8.666, de 21 de junho de 1993.\n' +
-                                    'Lei nº 9.394, de 20 de dezembro de 1996.\n' +
-                                    'Lei nº 9.452, de 20 de março de 1997.\n' +
-                                    'Lei nº 10.520, de 17 de julho de 2002.\n' +
-                                    'Lei nº 10.831, de 23 de dezembro de 2003.\n' +
-                                    'Portaria Interministerial MEC/MS nº 1.010, de 08 de maio de 2006.\n' +
-                                    'Lei nº 11.346, de 15 de setembro de 2006.\n' +
-                                    'Lei nº 11.524 de 24 de setembro de 2007.\n' +
-                                    'Lei nº 11.947, de 16 de junho de 2009.\n' +
-                                    'Decreto nº 7083, de 27 de janeiro de 2010.\n' +
-                                    'Resolução Conselho Federal de Nutricionistas nº 465, 23 de agosto de 2010.\n' +
-                                    'Decreto nº 7.507, de 27 de junho de 2011.\n' +
-                                    'Resolução CD/FNDE nº 31, de 1º de julho de 2011.\n' +
-                                    'Lei nº 12.512, de 14 de outubro de 2011.\n' +
-                                    'Decreto nº 7.611, de 17 de novembro de 2011.\n' +
-                                    'Resolução CD/FNDE nº 2, de 18 de janeiro de 2012.\n' +
-                                    'Decreto nº 7.775, de 04 de julho de 2012.\n' +
+                                    '\nLei nº 8.666, de 21 de junho de 1993.\n' +
+                                    '\nLei nº 9.394, de 20 de dezembro de 1996.\n' +
+                                    '\nLei nº 9.452, de 20 de março de 1997.\n' +
+                                    '\nLei nº 10.520, de 17 de julho de 2002.\n' +
+                                    '\nLei nº 10.831, de 23 de dezembro de 2003.\n' +
+                                    '\nPortaria Interministerial MEC/MS nº 1.010, de 08 de maio de 2006.\n' +
+                                    '\nLei nº 11.346, de 15 de setembro de 2006.\n' +
+                                    '\nLei nº 11.524 de 24 de setembro de 2007.\n' +
+                                    '\nLei nº 11.947, de 16 de junho de 2009.\n' +
+                                    '\nDecreto nº 7083, de 27 de janeiro de 2010.\n' +
+                                    '\nResolução Conselho Federal de Nutricionistas nº 465, 23 de agosto de 2010.\n' +
+                                    '\nDecreto nº 7.507, de 27 de junho de 2011.\n' +
+                                    '\nResolução CD/FNDE nº 31, de 1º de julho de 2011.\n' +
+                                    '\nLei nº 12.512, de 14 de outubro de 2011.\n' +
+                                    '\nDecreto nº 7.611, de 17 de novembro de 2011.\n' +
+                                    '\nResolução CD/FNDE nº 2, de 18 de janeiro de 2012.\n' +
+                                    '\nDecreto nº 7.775, de 04 de julho de 2012.\n' +
                                     '\nO PRESIDENTE DO CONSELHO DELIBERATIVO DO FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO - FNDE, no uso das atribuições que lhe são conferidas pelo art. 7º, § 1º, da Lei nº 5.537, de 21 de novembro de 1968, e pelos arts. 4º, § 2º, e 14 do Anexo I do Decreto nº 7.691, de 2 de março de 2012, publicado no D.O.U. de 6 de março de 2012, e pelos arts. 3º, inciso I, alíneas "a" e "b"; 5º, caput; e 6º, inciso VI, do Anexo da Resolução nº 31, de 30 de setembro de 2003, publicada no D.O.U. de 2 de outubro de 2003, neste ato representado conforme deliberado na Reunião Extraordinária do Conselho Deliberativo do FNDE realizada no dia 31 de maio de 2012, e\n' +
                                     '\nCONSIDERANDO o disposto na Constituição Federal nos artigos 6º, 205, 208, inciso VII, e artigo 211;\n' +
                                     '\nCONSIDERANDO que a alimentação adequada é um direito fundamental do ser humano, reconhecido internacionalmente pela Declaração Universal dos Direitos Humanos (art. 25) e pelo Pacto Internacional de Direitos Econômicos, Sociais e Culturais - PIDESC (art. 11), sendo inerente à dignidade da pessoa humana e indispensável à realização dos direitos consagrados na Constituição Federal, devendo o poder público adotar as políticas e ações que se façam necessárias para promover e garantir a segurança alimentar e nutricional da população, como disposto na Lei nº 11.346, de 15 de setembro de 2006, que cria o Sistema Nacional de Segurança Alimentar e Nutricional;\n' +
@@ -518,9 +520,13 @@ export const CHAPTER_XIV = 'DAS DISPOSIÇÕES GERAIS\n ' +
                            '\nArt. 72 Esta Resolução entrará em vigor na data de sua publicação, revogando-se a Resolução CD/FNDE nº 38, de 16 de julho de 2009, e outras disposições em contrário.\n ' +
                            '\nJOSÉ HENRIQUE PAIM FERNANDES\n ';
 
-export const ANEXOS = 'Os Anexos, assim como a legislação, podem ser encontrados no seguinte link: https://www.fnde.gov.br/fndelegis/action/UrlPublicasAction.php?acao=abrirAtoPublico&sgl_tipo=RES&num_ato=00000026&seq_ato=000&vlr_ano=2013&sgl_orgao=FNDE/MEC';
+export const ANEXOS = 'Os Anexos, assim como a legislação, podem ser encontrados no seguinte link:\n\n https://www.fnde.gov.br/fndelegis/action/UrlPublicasAction.php?acao=abrirAtoPublico&sgl_tipo=RES&num_ato=00000026&seq_ato=000&vlr_ano=2013&sgl_orgao=FNDE/MEC';
 
 export const CONTENT = [
+  {
+    title: 'Fundamentação Legal',
+    content: LEGAL_FUNDAMENTATION,
+  },
   {
     title: 'Capitulo I',
     content: CHAPTER_I,
@@ -577,64 +583,76 @@ export const CONTENT = [
     title: 'Capitulo XIV',
     content: CHAPTER_XIV,
   },
+  {
+    title: 'Anexos',
+    content: ANEXOS,
+  },
 ];
 
 export const SELECTORS = [
   {
-    title: 'Capitulo I',
+    title: 'Fundamentação Legal',
     value: 0,
   },
   {
-    title: 'Capitulo II',
+    title: 'Capitulo I',
     value: 1,
   },
   {
-    title: 'Capitulo III',
+    title: 'Capitulo II',
     value: 2,
   },
   {
-    title: 'Capitulo IV',
+    title: 'Capitulo III',
     value: 3,
   },
   {
-    title: 'Capitulo V',
+    title: 'Capitulo IV',
     value: 4,
   },
   {
-    title: 'Capitulo VI',
+    title: 'Capitulo V',
     value: 5,
   },
   {
-    title: 'Capitulo VII',
+    title: 'Capitulo VI',
     value: 6,
   },
   {
-    title: 'Capitulo VIII',
+    title: 'Capitulo VII',
     value: 7,
   },
   {
-    title: 'Capitulo IX',
+    title: 'Capitulo VIII',
     value: 8,
   },
   {
-    title: 'Capitulo X',
+    title: 'Capitulo IX',
     value: 9,
   },
   {
-    title: 'Capitulo XI',
+    title: 'Capitulo X',
     value: 10,
   },
   {
-    title: 'Capitulo XII',
+    title: 'Capitulo XI',
     value: 11,
   },
   {
-    title: 'Capitulo XIII',
+    title: 'Capitulo XII',
     value: 12,
   },
   {
-    title: 'Capitulo XIV',
+    title: 'Capitulo XIII',
     value: 13,
+  },
+  {
+    title: 'Capitulo XIV',
+    value: 14,
+  },
+  {
+    title: 'Anexos',
+    value: 15,
   },
   {
     title: 'None',

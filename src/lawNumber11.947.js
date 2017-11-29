@@ -1,5 +1,7 @@
 // Clause of Law Number 11.947
 // Each "Chapter" has at least 10 clauses
+export const LAW_11947_DATE = 'LEI Nº 11.947, DE 16 DE JUNHO DE 2009.\n ';
+
 export const CHAPTER_I = 'O VICE–PRESIDENTE DA REPÚBLICA, no exercício do cargo de PRESIDENTE DA REPÚBLICA Faço saber que o Congresso Nacional decreta e eu sanciono a seguinte Lei: \n ' +
                          '\nArt. 1o  Para os efeitos desta Lei, entende-se por alimentação escolar todo alimento oferecido no ambiente escolar, independentemente de sua origem, durante o período letivo. \n ' +
                          '\nArt. 2o  São diretrizes da alimentação escolar: \n ' +
@@ -84,6 +86,7 @@ export const CHAPTER_II = 'Art. 11.  A responsabilidade técnica pela alimentaç
                          '\nIII - cometerem irregularidades na execução do PNAE, na forma estabelecida pelo Conselho Deliberativo do FNDE. \n ' +
                          '\n§ 1o  Sem prejuízo do previsto no caput, fica o FNDE autorizado a comunicar eventuais irregularidades na execução do PNAE ao Ministério Público e demais órgãos ou autoridades ligadas ao tema de que trata o Programa. \n ' +
                          '\n§ 2o  O restabelecimento do repasse dos recursos financeiros à conta do PNAE ocorrerá na forma definida pelo Conselho Deliberativo do FNDE. \n ';
+
 export const CHAPTER_III = 'Art. 21.  Ocorrendo a suspensão prevista no art. 20, fica o FNDE autorizado a realizar, em conta específica, o repasse dos recursos equivalentes, pelo prazo de 180 (cento e oitenta) dias, diretamente às unidades executoras, conforme previsto no art. 6o desta Lei, correspondentes às escolas atingidas, para fornecimento da alimentação escolar, dispensando-se o procedimento licitatório para aquisição emergencial dos gêneros alimentícios, mantidas as demais regras estabelecidas para execução do PNAE, inclusive quanto à prestação de contas. \n ' +
                        '\nParágrafo único.  A partir da publicação desta Lei, o FNDE terá até 180 (cento e oitenta) dias para regulamentar a matéria de que trata o caput deste artigo. \n ' +
                        '\nArt. 22.  O Programa Dinheiro Direto na Escola - PDDE, com o objetivo de prestar assistência financeira, em caráter suplementar, às escolas públicas da educação básica das redes estaduais, municipais e do Distrito Federal, às escolas de educação especial qualificadas como beneficentes de assistência social ou de atendimento direto e gratuito ao público, às escolas mantidas por entidades de tais gêneros e aos polos presenciais do sistema Universidade Aberta do Brasil - UAB que ofertem programas de formação inicial ou continuada a profissionais da educação básica, observado o disposto no art. 25, passa a ser regido pelo disposto nesta Lei.  (Redação dada pela Lei nº 12.695, de 2012)\n ' +
@@ -138,7 +141,10 @@ export const CHAPTER_III = 'Art. 21.  Ocorrendo a suspensão prevista no art. 20
                        '\n§ 3o  As atividades exercidas no âmbito do Pronera não caracterizam vínculo empregatício e os valores recebidos a título de bolsa não se incorporam, para qualquer efeito, ao vencimento, salário, remuneração ou proventos recebidos. (Incluído pela Lei nº 12.695, de 2012)\n ' +
                        '\nArt. 34.  Ficam revogados os arts. 1o a 14 da Medida Provisória no 2.178-36, de 24 de agosto de 2001, e a Lei no 8.913, de 12 de julho de 1994. \n ' +
                        '\nArt. 35.  Esta Lei entra em vigor na data de sua publicação. \n ' +
-                       '\nBrasília,  16  de junho de 2009; 188o da Independência e 121o da República. \n ';
+                       '\nBrasília,  16  de junho de 2009; 188o da Independência e 121o da República. \n ' +
+                       '\nJOSÉ ALENCAR GOMES DA SILVA \n' +
+                       'Fernando Haddad\n' +
+                       'Paulo Bernardo Silva \n';
 export const CONTENT = [
   {
     title: 'Capitulo I',
@@ -168,7 +174,7 @@ export const SELECTORS = [
     value: 2,
   },
   {
-    title: 'None',
+    title: 'Nenhum',
     value: false,
   },
 ];

@@ -13,7 +13,7 @@ import Header from '../components/Header';
 import {
   CONTENT,
   SELECTORS,
-  RESOLUTION_26_DATE } from '../resolutionNumber26';
+  LAW_12982_DATE } from '../lawNumber12.982';
 
 const styles = StyleSheet.create({
   container: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Resolution26Screen extends Component {
+export default class LawNumber12982Screen extends Component {
   static renderHeader(section, i, isActive) {
     return (
       <Animatable.View duration={400} style={[styles.header, isActive ? styles.active : styles.inactive]} transition="backgroundColor">
@@ -98,15 +98,15 @@ export default class Resolution26Screen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white', paddingBottom: 20 }}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Legislação'}
-          subTitle={'Resolução Nº 26'}
+          subTitle={'Lei Nº 12.982'}
           backButton
         />
 
         <View style={styles.selectors}>
-          <Text style={styles.selectTitle}>Select:</Text>
+          <Text style={styles.selectTitle}>Selecionar:</Text>
           {SELECTORS.map(selector => (
             <TouchableHighlight
               key={selector.title}
@@ -121,12 +121,12 @@ export default class Resolution26Screen extends Component {
           ))}
         </View>
         <ScrollView>
-          <Text style={styles.title}>{RESOLUTION_26_DATE}</Text>
+          <Text style={styles.title}>{LAW_12982_DATE}</Text>
           <Accordion
             activeSection={this.state.activeSection}
             sections={CONTENT}
-            renderHeader={Resolution26Screen.renderHeader}
-            renderContent={Resolution26Screen.renderContent}
+            renderHeader={LawNumber12982Screen.renderHeader}
+            renderContent={LawNumber12982Screen.renderContent}
             duration={400}
             onChange={section => this.setSection(section)}
           />
