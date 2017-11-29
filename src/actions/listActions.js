@@ -89,7 +89,7 @@ const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) =>
     })
     .catch((error) => {
       logWarn(FILE_NAME, '',
-        `Request result in an ${error}`);
+        `Request result in an ${error} nuvem code ${nuvemCode}`);
     });
 };
 

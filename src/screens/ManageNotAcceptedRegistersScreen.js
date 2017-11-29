@@ -42,7 +42,11 @@ const styles = StyleSheet.create({
 });
 
 export default class ManageNotAcceptedRegistersScreen extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
+    this.getCounselorFromGroup();
+  }
+
+  getCounselorFromGroup() {
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
   }
@@ -51,6 +55,8 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
     const counselorWithpresidentChecked = counselor;
     counselorWithpresidentChecked.profile.presidentChecked = true;
     this.props.asyncAcceptCounselor(counselorWithpresidentChecked);
+
+    this.getCounselorFromGroup();
   }
 
   disableCounselor(counselor, codGroup) {
