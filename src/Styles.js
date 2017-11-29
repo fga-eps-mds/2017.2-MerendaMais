@@ -52,6 +52,32 @@ const styles = {
   flatListIcon: {
     margin: 8,
   },
+  InputFieldStyle: {
+    padding: 8,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderRadius: 7,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
+  InputFieldDropdown: {
+    marginTop: 1,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 7,
+    marginBottom: 10,
+  },
+  InputFieldIcon: {
+    margin: 6,
+  },
+  InputStyle: {
+    flex: 1,
+  },
+
 };
 
 export default styles;

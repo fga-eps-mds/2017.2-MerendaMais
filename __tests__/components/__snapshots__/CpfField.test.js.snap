@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing CpfField component Test if CpfField renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FAFAFA",
+      "borderColor": "gray",
+      "borderRadius": 7,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "justifyContent": "flex-start",
+      "marginBottom": 10,
+      "marginTop": 1,
+      "padding": 8,
+    }
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    color="black"
+    name="user-circle"
+    size={26}
+    style={
+      Object {
+        "marginRight": 10,
+      }
+    }
+  />
+  <TextInput
+    keyboardType="numeric"
+    maxLength={11}
+    onChangeText={[Function]}
+    placeholder="Digite o seu CPF"
+    placeholderTextColor="#95a5a6"
+    returnKeyLabel="next"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;

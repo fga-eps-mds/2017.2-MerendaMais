@@ -32,50 +32,10 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
       >
         Nome
       </Text>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "marginBottom": 10,
-            "marginTop": 1,
-            "padding": 8,
-          }
-        }
-      >
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="face"
-          size={26}
-          style={
-            Object {
-              "margin": 5,
-            }
-          }
-        />
-        <TextInput
-          autoCapitalize="words"
-          keyboardType="default"
-          maxLength={60}
-          onChangeText={[Function]}
-          placeholder="Digite o seu nome completo"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-          underlineColorAndroid="transparent"
-          value="Rodolfo"
-        />
-      </View>
+      <NameField
+        callback={[Function]}
+        value="Rodolfo"
+      />
       <Text
         accessible={true}
         allowFontScaling={true}
@@ -84,49 +44,10 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
       >
         Telefone
       </Text>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "marginBottom": 10,
-            "marginTop": 1,
-            "padding": 8,
-          }
-        }
-      >
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="phone"
-          size={26}
-          style={
-            Object {
-              "margin": 5,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="phone-pad"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="Digite o seu telefone"
-          placeholderTextColor="#95a5a6"
-          returnKeyLabel="next"
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-          underlineColorAndroid="transparent"
-          value="61991234567"
-        />
-      </View>
+      <PhoneField
+        callback={[Function]}
+        value="61991234567"
+      />
       <Text
         accessible={true}
         allowFontScaling={true}
@@ -135,37 +56,27 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
       >
         Tipo de Conselheiro
       </Text>
-      <View
-        style={
-          Object {
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "marginBottom": 10,
-            "marginTop": 1,
-          }
+      <DropdownComponent
+        callback={[Function]}
+        picker={
+          Array [
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha seu cargo"
+              value=""
+            />,
+            <PickerItem
+              label="Titular"
+              value="Titular"
+            />,
+            <PickerItem
+              label="Suplente"
+              value="Suplente"
+            />,
+          ]
         }
-      >
-        <Picker
-          mode="dialog"
-          onValueChange={[Function]}
-          selectedValue="Titular"
-        >
-          <PickerItem
-            color="#95a5a6"
-            label="Escolha seu cargo"
-            value=""
-          />
-          <PickerItem
-            label="Titular"
-            value="Titular"
-          />
-          <PickerItem
-            label="Suplente"
-            value="Suplente"
-          />
-        </Picker>
-      </View>
+        selectedValue="Titular"
+      />
       <Text
         accessible={true}
         allowFontScaling={true}
@@ -174,45 +85,35 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
       >
         Segmento
       </Text>
-      <View
-        style={
-          Object {
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "marginBottom": 10,
-            "marginTop": 1,
-          }
+      <DropdownComponent
+        callback={[Function]}
+        picker={
+          Array [
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha seu segmento"
+              value=""
+            />,
+            <PickerItem
+              label="Poder executivo"
+              value="Poder executivo"
+            />,
+            <PickerItem
+              label="Trabalhadores da educação"
+              value="Trabalhadores da educação"
+            />,
+            <PickerItem
+              label="Pais de alunos"
+              value="Pais de alunos"
+            />,
+            <PickerItem
+              label="Entidades civis"
+              value="Entidades civis"
+            />,
+          ]
         }
-      >
-        <Picker
-          mode="dialog"
-          onValueChange={[Function]}
-          selectedValue="Poder executivo"
-        >
-          <PickerItem
-            color="#95a5a6"
-            label="Escolha seu segmento"
-            value=""
-          />
-          <PickerItem
-            label="Poder executivo"
-            value="Poder executivo"
-          />
-          <PickerItem
-            label="Trabalhadores da educação"
-            value="Trabalhadores da educação"
-          />
-          <PickerItem
-            label="Pais de alunos"
-            value="Pais de alunos"
-          />
-          <PickerItem
-            label="Entidades civis"
-            value="Entidades civis"
-          />
-        </Picker>
-      </View>
+        selectedValue="Poder executivo"
+      />
     </View>
   </ScrollViewMock>
   <TouchableOpacity

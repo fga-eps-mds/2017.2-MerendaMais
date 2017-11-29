@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MainScreen screen renders as expected 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FF9500",
+        "borderBottomColor": "black",
+        "borderBottomWidth": 1,
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "padding": 20,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "white",
+          "flex": 1,
+          "fontSize": 30,
+          "fontWeight": "bold",
+          "paddingLeft": 48,
+          "textAlign": "center",
+        }
+      }
+    >
+      Merenda +
+    </Text>
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Icon
+        allowFontScaling={false}
+        name="navicon"
+        size={32}
+      />
+    </TouchableOpacity>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 10,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FF9500",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "justifyContent": "center",
+          "paddingHorizontal": 50,
+          "paddingVertical": 20,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 20,
+          }
+        }
+      >
+        Fiscalizar
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;

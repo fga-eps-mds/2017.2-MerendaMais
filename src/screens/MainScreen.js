@@ -42,46 +42,30 @@ const styles = StyleSheet.create({
 });
 
 
-class MainScreen extends React.Component {
-  constructor(props) {
-    super(props);
+const MainScreen = () => (
+  <View style={{ flex: 1, backgroundColor: 'white' }}>
 
-    this.state = {
-      isOpen: false,
-    };
-  }
+    <View style={styles.headerBox}>
+      <Text style={styles.textLogo}>Merenda +</Text>
 
-  updateMenuState(isOpen) {
-    this.setState({ isOpen });
-  }
+      <TouchableOpacity
+        onPress={() => Actions.drawerOpen()}
+      >
+        <FontAwesome name="navicon" size={32} />
+      </TouchableOpacity>
+    </View>
 
-  render() {
-    return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={styles.bodyBox}>
+      <TouchableOpacity
+        style={styles.buttonInspect}
+        activeOpacity={0.7}
+        onPress={() => Actions.StartPendingInspection()}
+      >
+        <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
 
-        <View style={styles.headerBox}>
-          <Text style={styles.textLogo}>Merenda +</Text>
-
-          <TouchableOpacity
-            onPress={() => Actions.drawerOpen()}
-          >
-            <FontAwesome name="navicon" size={32} />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.bodyBox}>
-          <TouchableOpacity
-            style={styles.buttonInspect}
-            activeOpacity={0.7}
-            onPress={() => Actions.StartPendingInspection()}
-          >
-            <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-    );
-  }
-}
+);
 
 export default MainScreen;
