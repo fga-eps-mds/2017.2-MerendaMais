@@ -67,10 +67,6 @@ const MainLegislationScreen = () => ({
                 onPress={() => Alert.alert(
                   'Resolução CD/FNDE/MEC Nº 1',
                   'Resolução CD/FNDE/MEC Nº 1, de 8 de fevereiro de 2017 - Altera o valor per capita para oferta da alimentação escolar do Programa de Alimentação Escolar - PNAE.',
-                  [
-                    { text: 'OK', onPress: () => Actions.legislationScreen, style: 'cancel' },
-                  ],
-                  { cancelable: false },
                 )}
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
@@ -86,10 +82,6 @@ const MainLegislationScreen = () => ({
                 onPress={() => Alert.alert(
                   'Resolução/CD/FNDE nº 26',
                   'Resolução/CD/FNDE nº 26, de 17 de junho de 2013 - Dispõe sobre o atendimento da alimentação escolar aos alunos da educação básica no âmbito do Programa Nacional de Alimentação Escolar –PNAE.',
-                  [
-                    { text: 'OK', onPress: () => Actions.legislationScreen, style: 'cancel' },
-                  ],
-                  { cancelable: false },
                 )}
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
@@ -105,10 +97,6 @@ const MainLegislationScreen = () => ({
                 onPress={() => Alert.alert(
                   'Lei Nº 11.947, DE 16 DE JUNHO DE 2009.',
                   'Dispõe sobre o atendimento da alimentação escolar e do Programa Dinheiro Direto na Escola aos alunos da educação básica;',
-                  [
-                    { text: 'OK', onPress: () => Actions.legislationScreen, style: 'cancel' },
-                  ],
-                  { cancelable: false },
                 )}
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
@@ -124,10 +112,6 @@ const MainLegislationScreen = () => ({
                 onPress={() => Alert.alert(
                   'Lei nº 12.982, de 28 de maio de 2014',
                   'Altera a Lei nº 11.947, de 16 de junho de 2009, para determinar o provimento de alimentação escolar adequada aos alunos portadores de estado ou de condição de saúde específica.',
-                  [
-                    { text: 'OK', onPress: () => Actions.legislationScreen, style: 'cancel' },
-                  ],
-                  { cancelable: false },
                 )}
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
@@ -142,7 +126,7 @@ const MainLegislationScreen = () => ({
                 'Para visualizar a cartilha do PNAE, é necessário baixá-la externamente em seu navegador de internet, ' +
                 'deseja continuar?',
                 [
-                  { text: 'Não', onPress: () => Actions.legislationScreen, style: 'cancel' },
+                  { text: 'Não', style: 'cancel' },
                   { text: 'Sim', onPress: () => Linking.openURL('http://portal.tcu.gov.br/main.jsp?lumPageId=8A8182A25B4A7A25015B5E1770516ECC&previewItemId=8A8182A25B4A7A25015B5E21D1AA2BB0&lumItemId=8A8182A25B4A7A25015B5E21D1CD2BB4') },
                 ],
                 { cancelable: false },
@@ -158,7 +142,7 @@ const MainLegislationScreen = () => ({
                 'Para consultar toda a legislação e manuais do PNAE, ' +
                 'Clique em Sim para ser redirecionado para o site do FDNE, deseja continuar?',
                 [
-                  { text: 'Não', onPress: () => Actions.legislationScreen, style: 'cancel' },
+                  { text: 'Não', style: 'cancel' },
                   { text: 'Sim', onPress: () => Linking.openURL('http://www.fnde.gov.br/programas/pnae') },
                 ],
                 { cancelable: false },
