@@ -25,6 +25,7 @@ const initialState = {
       CAE_Type: '',
       CAE: '',
       codGroup: '',
+      presidentChecked: false,
     },
   },
   application: {
@@ -77,6 +78,8 @@ const initialState = {
   },
   list: {
     listOfCounselorsInAGroup: [],
+    listOfCheckedCounselors: [],
+    listOfNotCheckedCounselors: [],
     listOfInviteesWithCounselorInformations: {},
     listOfInvitees: {},
     listOfPendingScheduleInAGroup: [],

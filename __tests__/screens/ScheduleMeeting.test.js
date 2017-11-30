@@ -40,8 +40,10 @@ const initialState = {
     listOfCounselorsInAGroup: [
       {
         name: 'Lucas Penido Antunes',
-        cpf: '11111111111',
-        phone: '11111111111',
+        profile: {
+          cpf: '11111111111',
+          phone: '11111111111',
+        },
       },
     ],
 
@@ -102,8 +104,10 @@ const initialStateToScreen = {
   listOfCounselorsInAGroup: [
     {
       name: 'Lucas Penido Antunes',
-      cpf: '11111111111',
-      phone: '11111111111',
+      profile: {
+        cpf: '11111111111',
+        phone: '11111111111',
+      },
     },
   ],
 

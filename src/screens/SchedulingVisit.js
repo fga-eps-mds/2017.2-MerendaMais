@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Picker, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Picker, TouchableOpacity, Alert, ScrollView, Dimensions, BackHandler, ActivityIndicator } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import { EvilIcons } from '@expo/vector-icons';
+import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
-import Header from '../components/Header';
 import SchoolData from '../components/SchoolData';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
+
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
 
@@ -19,9 +20,45 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  textLogo: {
+    // Font size 30 looks nice on 360 width phone.
+    // (x * widthYourPhone = fontSize) where x is the proportion used in fontSize above.
+    fontSize: width * 0.08,
+    color: 'white',
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginLeft: 60,
+  },
+  wrapper: {
+    height: 100,
+    flexDirection: 'row',
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#FF9500',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    alignItems: 'center',
+  },
+  schedullingButton: {
+    paddingVertical: 20,
+    borderWidth: 1,
+    borderRadius: 7,
+    marginHorizontal: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#FF9500',
+    justifyContent: 'flex-end',
+  },
 
-  icon: {
-    marginRight: 15,
+  disabledSchedullingButton: {
+    paddingVertical: 20,
+    borderWidth: 1,
+    borderRadius: 7,
+    marginHorizontal: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#DEDEDE',
+    justifyContent: 'flex-end',
   },
 
   button: {
@@ -42,7 +79,9 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginHorizontal: 20,
   },
-
+  icon_header: {
+    marginLeft: 20,
+  },
   Picker: {
     marginHorizontal: 15,
     width: '95%',
@@ -111,6 +150,12 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
 
+  invitedListStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
 });
 
 export default class SchedulingVisit extends React.Component {
@@ -129,12 +174,13 @@ export default class SchedulingVisit extends React.Component {
         agentEmail: '',
         visitListOfInvitees: this.props.visitListOfInvitees,
       },
+      verification: true,
+      enabled: true,
     };
   }
 
-  componentWillMount() {
-    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
-      this.props.counselor.profile.cpf);
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
   }
 
   componentWillReceiveProps(newProps) {
@@ -149,6 +195,11 @@ export default class SchedulingVisit extends React.Component {
     };
 
     this.setState({ visit: newVisit });
+  }
+
+  getCounselorFromGroup() {
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
   }
 
   invitingAgent() {
@@ -250,11 +301,17 @@ export default class SchedulingVisit extends React.Component {
         <View>
           <Text style={styles.TopListText}>Lista de conselheiros convidados</Text>
           <View style={styles.invitedList}>
-            <ScrollView>
+            <ScrollView
+              /* This make the nested ScrollView works. */
+              onTouchStart={() => this.setState({ enabled: false })}
+              onTouchEnd={() => this.setState({ enabled: true })}
+              onScrollBeginDrag={() => this.setState({ enabled: false })}
+              onScrollEndDrag={() => this.setState({ enabled: true })}
+            >
               {
                 Object.entries(this.props.visitListOfInviteesWithCounselorInformations)
                   .map(counselor => (
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <View style={styles.invitedListStyle} key={counselor[0]}>
                       <InvitedCounselorsData
                         key={counselor[0]}
                         {...counselor[1]}
@@ -276,6 +333,11 @@ export default class SchedulingVisit extends React.Component {
   }
 
   renderCounselorList() {
+    if (this.props.listOfCounselorsInAGroup.length === 0) {
+      return (
+        <ActivityIndicator style={{ marginTop: 50, justifyContent: 'center' }} size="large" color="#FF9500" />
+      );
+    }
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
         <View style={this.changeStyleAccordingToInput(counselor)} key={counselor.nuvemCode}>
@@ -289,11 +351,11 @@ export default class SchedulingVisit extends React.Component {
               </Text>
               <Text style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-                {counselor.cpf}
+                {counselor.profile.cpf}
               </Text>
               <Text style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-                {counselor.phone}
+                {counselor.profile.phone}
               </Text>
             </View>
           </TouchableOpacity>
@@ -305,11 +367,17 @@ export default class SchedulingVisit extends React.Component {
   render() {
     return (
       <View style={styles.principal}>
-        <Header
-          title={'AGENDAR'}
-          subTitle={'VISITA'}
-          backButton
-        />
+        <View style={styles.wrapper}>
+          <TouchableOpacity onPress={() => Actions.mainScreen()} >
+            <Ionicons
+              name="ios-arrow-back-outline"
+              style={styles.icon_header}
+              size={45}
+              color="black"
+            />
+          </TouchableOpacity>
+          <Text style={styles.textLogo}>Agendar Visita</Text>
+        </View>
 
         <PopupDialog
           ref={(popupDialogAgent) => { this.popupDialogAgent = popupDialogAgent; }}
@@ -370,7 +438,10 @@ export default class SchedulingVisit extends React.Component {
           </ScrollView>
         </PopupDialog>
 
-        <ScrollView>
+        <ScrollView
+          /* This make the nested ScrollView works. */
+          scrollEnabled={this.state.enabled}
+        >
           <View>
             <View style={styles.Container}>
               <TouchableOpacity
@@ -425,7 +496,10 @@ export default class SchedulingVisit extends React.Component {
               <TouchableOpacity
                 key="searchCounselorButton"
                 style={styles.button}
-                onPress={() => this.popupDialogCounselor.show()}
+                onPress={() => {
+                  this.popupDialogCounselor.show();
+                  this.getCounselorFromGroup();
+                }}
               >
                 <Text style={styles.buttonText}>Adicionar Conselheiro</Text>
               </TouchableOpacity>
@@ -477,7 +551,7 @@ export default class SchedulingVisit extends React.Component {
 }
 
 
-const { shape, string, number, bool, func } = PropTypes;
+const { shape, string, number, func } = PropTypes;
 
 SchedulingVisit.propTypes = {
   asyncSchedulingVisit: func.isRequired,
@@ -499,14 +573,7 @@ SchedulingVisit.propTypes = {
     phone: string.isRequired,
   })).isRequired,
   visitListOfInviteesWithCounselorInformations: shape({
-    nuvemCode: number.isRequired,
-    name: string.isRequired,
-    cpf: string.isRequired,
-    phone: string.isRequired,
   }).isRequired,
   visitListOfInvitees: shape({
-    nuvemCode: number.isRequired,
-    confirmed: bool.isRequired,
-    realizedVisit: bool.isRequired,
   }).isRequired,
 };

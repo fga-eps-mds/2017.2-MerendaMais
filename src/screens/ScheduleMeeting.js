@@ -8,7 +8,6 @@ import PopupDialog, {
 import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
-// import SchoolData from '../components/SchoolData';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
 
@@ -187,6 +186,7 @@ export default class ScheduleMeeting extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      enabled: true,
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
       meeting: {
@@ -200,13 +200,13 @@ export default class ScheduleMeeting extends React.Component {
     };
   }
 
-  componentWillMount() {
-    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
-      this.props.counselor.profile.cpf);
-  }
-
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
+  }
+
+  getCounselorFromGroup() {
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
   }
 
   changeStyleAccordingToInput(counselor) {
@@ -272,7 +272,13 @@ export default class ScheduleMeeting extends React.Component {
         <View>
           <Text style={styles.TopListText}>Lista de conselheiros convidados</Text>
           <View style={styles.invitedList}>
-            <ScrollView>
+            <ScrollView
+              /* This make the nested ScrollView works. */
+              onTouchStart={() => this.setState({ enabled: false })}
+              onTouchEnd={() => this.setState({ enabled: true })}
+              onScrollBeginDrag={() => this.setState({ enabled: false })}
+              onScrollEndDrag={() => this.setState({ enabled: true })}
+            >
               {
                 Object.entries(this.props.meetingListOfInviteesWithCounselorInformations)
                   .map(counselor => (
@@ -351,6 +357,11 @@ export default class ScheduleMeeting extends React.Component {
 
 
   renderCounselorList() {
+    if (this.props.listOfCounselorsInAGroup.length === 0) {
+      return (
+        <ActivityIndicator style={{ marginTop: 50, justifyContent: 'center' }} size="large" color="#FF9500" />
+      );
+    }
     return (
       this.props.listOfCounselorsInAGroup.map(counselor => (
         <View style={this.changeStyleAccordingToInput(counselor)} key={counselor.nuvemCode}>
@@ -364,11 +375,11 @@ export default class ScheduleMeeting extends React.Component {
               </Text>
               <Text style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-                {counselor.cpf}
+                {counselor.profile.cpf}
               </Text>
               <Text style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-                {counselor.phone}
+                {counselor.profile.phone}
               </Text>
             </View>
           </TouchableOpacity>
@@ -425,7 +436,10 @@ export default class ScheduleMeeting extends React.Component {
         </View>
 
         <KeyboardAvoidingView style={styles.content} behavior="padding">
-          <ScrollView>
+          <ScrollView
+            /* This make the nested ScrollView works. */
+            scrollEnabled={this.state.enabled}
+          >
             <View>
               <View style={styles.Container}>
                 <TouchableOpacity
@@ -478,7 +492,10 @@ export default class ScheduleMeeting extends React.Component {
                 <TouchableOpacity
                   key="searchCounselorButton"
                   style={styles.button}
-                  onPress={() => this.popupDialogCounselor.show()}
+                  onPress={() => {
+                    this.popupDialogCounselor.show();
+                    this.getCounselorFromGroup();
+                  }}
                 >
                   <Text style={styles.buttonText}>Convidar Conselheiros</Text>
                 </TouchableOpacity>

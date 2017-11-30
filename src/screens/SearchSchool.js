@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  BackHandler,
   FlatList,
   ActivityIndicator,
   Alert,
   Picker,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
 import ShowToast from '../components/Toast';
@@ -30,28 +32,14 @@ import {
 const FILE_NAME = 'SearchSchool.js';
 
 const styles = StyleSheet.create({
-  headerBox: {
+  searchSchoolScreen: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'white',
   },
 
   bodyBox: {
     flex: 10,
     alignItems: 'center',
-  },
-
-  textLogo: {
-    flex: 1,
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
 
   icon: {
@@ -97,13 +85,6 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
 
-  buttonSelectSchool: {
-    padding: 10,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-
   buttonArea: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -117,14 +98,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
 
-  },
-
-  InputFieldDropdown: {
-    marginTop: 1,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 7,
-    marginBottom: 10,
   },
 
   Input: {
@@ -147,6 +120,7 @@ class SearchSchool extends React.Component {
     super(props);
 
     this.state = {
+      enabled: true,
       isOpen: false,
       isLoading: false,
       uf: '',
@@ -157,6 +131,9 @@ class SearchSchool extends React.Component {
 
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
+  }
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
   }
 
   setStateAsync(data) {
@@ -235,7 +212,13 @@ class SearchSchool extends React.Component {
     if (this.state.schoolList.length !== 0) {
       return (
         <View style={styles.listSchools} key="schoolListView">
-          <ScrollView>
+          <ScrollView
+            /* This make the nested ScrollView works. */
+            onTouchStart={() => this.setState({ enabled: false })}
+            onTouchEnd={() => this.setState({ enabled: true })}
+            onScrollBeginDrag={() => this.setState({ enabled: false })}
+            onScrollEndDrag={() => this.setState({ enabled: true })}
+          >
             <FlatList
               data={this.state.schoolList}
               keyExtractor={item => item.nome}
@@ -311,67 +294,71 @@ class SearchSchool extends React.Component {
 
     return (
 
-      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={styles.searchSchoolScreen}>
         <Header
           title={'Pesquisar Escola'}
           backButton
         />
-        <View style={{ marginLeft: 5, marginTop: 10 }}>
-          <Text style={{ color: '#585858' }}>Para realizar a pesquisa é necessário inserir os campos abaixo</Text>
-        </View>
-        <View style={styles.bodyBox}>
-          <View style={{ flex: 3 }}>
-            <View
-              style={styles.InputDropdown}
-            >
-              <Picker
-                onValueChange={uf => (
-                  uf === 'DF - Distrito Federal' ?
-                    this.setState({
-                      ...this.state,
-                      uf,
-                      city: 'Brasília',
-                    })
-                    :
-                    this.setState({
-                      ...this.state,
-                      uf,
-                    })
-                )}
-                selectedValue={this.state.uf}
+        <ScrollView
+          /* This make the nested ScrollView works. */
+          scrollEnabled={this.state.enabled}
+        >
+          <View style={{ marginLeft: 5, marginTop: 10 }}>
+            <Text style={{ color: '#585858' }}>Para realizar a pesquisa é necessário inserir os campos abaixo</Text>
+          </View>
+          <View style={styles.bodyBox}>
+            <View style={{ flex: 3 }}>
+              <View
+                style={styles.InputDropdown}
               >
-                <Picker.Item value="" label="Escolha a sua UF " color="#95a5a6" />
-                {brazilianStates.estados.map(item =>
-                  (<Picker.Item label={item} value={item} color="#000000" />))}
-              </Picker>
+                <Picker
+                  onValueChange={uf => (
+                    uf === 'DF - Distrito Federal' ?
+                      this.setState({
+                        ...this.state,
+                        uf,
+                        city: 'Brasília',
+                      })
+                      :
+                      this.setState({
+                        ...this.state,
+                        uf,
+                      })
+                  )}
+                  selectedValue={this.state.uf}
+                >
+                  <Picker.Item value="" label="Escolha a sua UF " color="#95a5a6" />
+                  {brazilianStates.estados.map(item =>
+                    (<Picker.Item label={item} value={item} color="#000000" />))}
+                </Picker>
+              </View>
+
+              {municipalDistrict}
+
+              <View style={styles.Input}>
+                <FontAwesome name="search" style={styles.icon} size={30} color="black" />
+                <TextInput
+                  width={280}
+                  returnKeyType="go"
+                  maxLength={50}
+                  keyboardType={'default'}
+                  onChangeText={text => this.validateName(text)}
+                  value={this.state.name}
+                  underlineColorAndroid="transparent"
+                  placeholder="Escola a pesquisar"
+                />
+              </View>
+
             </View>
 
-            {municipalDistrict}
+            {this.showFlatList()}
 
-            <View style={styles.Input}>
-              <FontAwesome name="search" style={styles.icon} size={30} color="black" />
-              <TextInput
-                width={280}
-                returnKeyType="go"
-                maxLength={50}
-                keyboardType={'default'}
-                onChangeText={text => this.validateName(text)}
-                value={this.state.name}
-                underlineColorAndroid="transparent"
-                placeholder="Escola a pesquisar"
-              />
+            <View key="renderButton" style={styles.buttonArea} >
+              {this.buttonActivation()}
             </View>
-
           </View>
-
-          {this.showFlatList()}
-
-          <View key="renderButton" style={styles.buttonArea} >
-            {this.buttonActivation()}
-          </View>
-        </View>
-      </ScrollView>
-
+        </ScrollView>
+      </View>
     );
   }
 }

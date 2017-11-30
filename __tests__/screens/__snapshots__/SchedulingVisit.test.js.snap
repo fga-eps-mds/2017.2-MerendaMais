@@ -17,9 +17,11 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
   listOfCounselorsInAGroup={
     Array [
       Object {
-        "cpf": "11111111111",
         "name": "Lucas Penido Antunes",
-        "phone": "11111111111",
+        "profile": Object {
+          "cpf": "11111111111",
+          "phone": "11111111111",
+        },
       },
     ]
   }

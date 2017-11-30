@@ -234,8 +234,6 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
     .catch((error) => {
       logWarn(FILE_NAME, 'addCounselorToGroup',
         `Request result in an ${error}`);
-      console.log(error.request);
-      console.log(error.message);
       dispatch(isNotLoading());
     });
 };

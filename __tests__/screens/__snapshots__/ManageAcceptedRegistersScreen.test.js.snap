@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing ManageAcceptedRegistersScreen renders as expected 1`] = `
+<ManageAcceptedRegistersScreen
+  asyncAcceptCounselor={[Function]}
+  asyncGetCounselorFromGroup={[Function]}
+  counselor={
+    Object {
+      "profile": Object {
+        "CAE": "RO",
+        "codGroup": "0",
+        "cpf": "11111111111",
+      },
+      "token": 1,
+    }
+  }
+  disableCounselor={[Function]}
+/>
+`;
