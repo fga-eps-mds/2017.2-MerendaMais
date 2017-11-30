@@ -1,10 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import { logInfo } from '../../logConfig/loggers';
-
-const FILE_NAME = 'ManageRegistersScreen.js';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -45,10 +41,22 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ManageRegistersScreen extends React.Component {
-  componentWillMount() {
-    console.log(this.props);
-    this.props.asyncGetCounselorFromGroup(this.props.CAE, this.props.cpf);
+export default class ManageNotAcceptedRegistersScreen extends React.Component {
+  componentDidMount() {
+    this.getCounselorFromGroup();
+  }
+
+  getCounselorFromGroup() {
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
+  }
+
+  acceptCounselor(counselor) {
+    const counselorWithpresidentChecked = counselor;
+    counselorWithpresidentChecked.profile.presidentChecked = true;
+    this.props.asyncAcceptCounselor(counselorWithpresidentChecked);
+
+    this.getCounselorFromGroup();
   }
 
   disableCounselor(counselor, codGroup) {
@@ -56,21 +64,26 @@ export default class ManageRegistersScreen extends React.Component {
       'Desativar Conselheiro',
       'Você deseja realmente desassociar esse Conselheiro da Aplicação?',
       [
-        { text: 'Cancelar', onPress: () => console.log('Cancelar') },
-        { text: 'Desassociar', onPress: () => this.props.disableCounselor(counselor, codGroup) },
+        { text: 'Cancelar' },
+        { text: 'Desassociar',
+          onPress: () => {
+            this.props.disableCounselor(counselor, codGroup);
+            this.getCounselorFromGroup();
+          },
+        },
       ]);
   }
 
 
   arrayRegistersList() {
-    if (this.props.listOfCounselorsInAGroup.length === 0) {
+    if (this.props.listOfNotCheckedCounselors.length === 0) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
     }
     return (
-      this.props.listOfCounselorsInAGroup.map(counselor => (
-        <View style={styles.listRegisters}>
+      this.props.listOfNotCheckedCounselors.map(counselor => (
+        <View style={styles.listRegisters} key={(counselor.nuvemCode).toString()}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
@@ -78,22 +91,25 @@ export default class ManageRegistersScreen extends React.Component {
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.cpf}
+              {counselor.profile.cpf}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.phone}
+              {counselor.profile.phone}
             </Text>
           </View>
           <View style={styles.buttonBox}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.acceptCounselor(counselor)}
+            >
               <View style={styles.greenBox}>
                 <Text>VALIDAR</Text>
               </View>
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => this.disableCounselor(counselor, this.props.codGroup)}
+              onPress={() => this.disableCounselor(counselor,
+                this.props.counselor.profile.codGroup)}
             >
               <View style={styles.redBox}>
                 <Text>EXCLUIR</Text>
@@ -106,16 +122,8 @@ export default class ManageRegistersScreen extends React.Component {
   }
 
   render() {
-    logInfo(FILE_NAME, 'rebder',
-      `Counselor List: ${this.props.listOfCounselorsInAGroup}`);
     return (
       <View style={{ backgroundColor: 'white', flex: 1 }}>
-        <View>
-          <Header
-            title={'Gerenciar Registro'}
-            backButton
-          />
-        </View>
         <ScrollView>
           {this.arrayRegistersList()}
         </ScrollView>
@@ -124,15 +132,34 @@ export default class ManageRegistersScreen extends React.Component {
   }
 }
 
-ManageRegistersScreen.propTypes = {
-  CAE: PropTypes.string.isRequired,
-  cpf: PropTypes.string.isRequired,
-  codGroup: PropTypes.string.isRequired,
-  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+const { shape, string, number, bool } = PropTypes;
+
+ManageNotAcceptedRegistersScreen.propTypes = {
+  counselor: shape({
+    name: string.isRequired,
+    nuvemCode: number.isRequired,
+    token: string.isRequired,
+    userName: string.isRequired,
+    profile: shape({
+      cpf: string.isRequired,
+      phone: string.isRequired,
+      isPresident: bool.isRequired,
+      counselorType: string.isRequired,
+      segment: string.isRequired,
+      CAE_Type: string.isRequired,
+      CAE_UF: string.isRequired,
+      CAE_municipalDistrict: string.isRequired,
+      CAE: string.isRequired,
+      codGroup: number.isRequired,
+      presidentChecked: bool.isRequired,
+    }).isRequired,
+  }).isRequired,
+  listOfNotCheckedCounselors: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     cpf: PropTypes.string,
     phone: PropTypes.string,
   })).isRequired,
   asyncGetCounselorFromGroup: PropTypes.func.isRequired,
+  asyncAcceptCounselor: PropTypes.func.isRequired,
   disableCounselor: PropTypes.func.isRequired,
 };

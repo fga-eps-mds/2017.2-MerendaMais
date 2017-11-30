@@ -13,7 +13,6 @@ import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer'
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
 import MainReportsScreen from './src/screens/MainReportsScreen';
 import RefectoryCheckoutContainer from './src/Containers/RefectoryCheckoutContainer';
-import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
 import MenuContainer from './src/Containers/MenuContainer';
 import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
 import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
@@ -26,6 +25,8 @@ import FoodPreparationCheckoutContainer from './src/Containers/FoodPreparationCh
 import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
 import ScheduleMeetingContainer from './src/Containers/ScheduleMeetingContainer';
 import ScheduleMeetingMapContainer from './src/Containers/ScheduleMeetingMapContainer';
+import PrincipalManageRegister from './src/screens/PrincipalManageRegister';
+
 
 const Routes = () => ({
   render() {
@@ -54,14 +55,20 @@ const Routes = () => ({
               type="reset"
               hideNavBar
             />
-            <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
+            <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
             <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
             <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
             <Scene key="loginScreen" component={LoginContainer} hideNavBar />
             <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
             <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
-            <Scene key="mainReportsScreen" component={MainReportsScreen} hideNavBar />
+            <Scene
+              key="schedulingVisit"
+              component={SchedulingVisitContainer}
+              type="reset"
+              hideNavBar
+            />
+            <Scene key="mainReportsScreen" component={MainReportsScreen} type="reset" hideNavBar />
             <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
             <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
             <Scene

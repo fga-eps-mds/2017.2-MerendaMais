@@ -241,8 +241,6 @@ class StartPendingInspection extends React.Component {
   }
 
   render() {
-    console.log('listOfPendingScheduleInAGroup');
-    console.log(this.props.listOfPendingScheduleInAGroup);
     return (
       <View style={styles.principal}>
         <PopupDialog

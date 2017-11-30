@@ -51,6 +51,14 @@ class Menu extends React.PureComponent {
           iconName="insert-invitation"
           onPress={() => { Actions.scheduleMeeting(); }}
         />
+        {this.props.counselor.profile.isPresident && (
+          <MenuButton
+            key="manageRegisters"
+            text="Gerenciar Conselheiros"
+            iconName="group-work"
+            onPress={() => { Actions.manageRegisters(); }}
+          />
+        )}
         <MenuButton
           key="logout"
           text="Sair"
@@ -66,14 +74,6 @@ class Menu extends React.PureComponent {
           )}
           isLogout
         />
-        {this.props.counselor.profile.isPresident && (
-          <MenuButton
-            key="manageRegisters"
-            text="Gerenciar Conselheiros"
-            iconName="group-work"
-            onPress={() => { Actions.manageRegisters(); }}
-          />
-        )}
       </View>
     );
   }
