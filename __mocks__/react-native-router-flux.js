@@ -10,4 +10,7 @@ export const Actions = {
   registerScreen: jest.fn(),
   refresh: jest.fn(),
   StartPendingInspection: jest.fn(),
+  scheduleMeeting: jest.fn(),
+  scheduleMeetingMap: jest.fn(),
+
 };

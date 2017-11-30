@@ -1,19 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing SchedulingVisit renders as expected 1`] = `
-<SchedulingVisit
+exports[`Testing ScheduleMeeting Screen renders as expected 1`] = `
+<ScheduleMeeting
   asyncGetCounselorFromGroup={[Function]}
-  asyncSchedulingVisit={[Function]}
+  asyncSchedulingMeeting={[Function]}
   counselor={
     Object {
-      "nuvemCode": 1,
       "profile": Object {
-        "CAE": "DF",
-        "cpf": "99999999999",
+        "CAE": "Distrito Federal",
       },
-      "token": "tokenGenerico",
     }
   }
+  isLoading={false}
   listOfCounselorsInAGroup={
     Array [
       Object {
@@ -23,13 +21,7 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
       },
     ]
   }
-  school={
-    Object {
-      "schoolSelected": true,
-    }
-  }
-  setVisitNewLists={[Function]}
-  visitListOfInvitees={
+  meetingListOfInvitees={
     Object {
       "6122": Object {
         "confirmed": false,
@@ -41,7 +33,7 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
       },
     }
   }
-  visitListOfInviteesWithCounselorInformations={
+  meetingListOfInviteesWithCounselorInformations={
     Object {
       "6122": Object {
         "cpf": "11111111111",
@@ -57,5 +49,13 @@ exports[`Testing SchedulingVisit renders as expected 1`] = `
       },
     }
   }
+  schedule={
+    Object {
+      "codSchool": 0,
+      "meetingLatitude": null,
+      "meetingLongitude": null,
+    }
+  }
+  setMeetingNewLists={[Function]}
 />
 `;

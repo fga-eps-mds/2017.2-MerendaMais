@@ -3,13 +3,13 @@ import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
-import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, POSTING_TYPE_CODE } from '../constants';
+import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, VISIT_POSTING_TYPE_CODE } from '../constants';
 import { setPendingScheduleList,
   setExpiredScheduleList,
   setAlreadyInspectionedScheduleList,
   resetList } from './listActions';
 
-const FILE_NAME = 'SchedulingActions.js';
+const FILE_NAME = 'schedulingVisitActions.js';
 
 const convertingContentStringToJSON = (profileStringSingleQuote) => {
   // Changing ' to " in string received from Nuvem Civica.
@@ -156,7 +156,7 @@ const schedulingVisit = (visitData) => {
   const authorsNuvemCode = visitData.nuvemCode;
   const visitDataWithAuthor = visitData.visit;
 
-  visitDataWithAuthor.listOfInvitees[authorsNuvemCode] = {
+  visitDataWithAuthor.visitListOfInvitees[authorsNuvemCode] = {
     nuvemCode: authorsNuvemCode,
     confirmed: true,
     realizedVisit: false,
@@ -174,7 +174,7 @@ const schedulingVisit = (visitData) => {
         codPessoa: visitData.nuvemCode,
       },
       tipo: {
-        codTipoPostagem: POSTING_TYPE_CODE,
+        codTipoPostagem: VISIT_POSTING_TYPE_CODE,
       },
       codGrupoDestino: visitData.codGrupoDestino,
     },
@@ -200,3 +200,6 @@ export const asyncSchedulingVisit = visitData => () => {
 
   schedulingVisit(visitData);
 };
+
+
+export default asyncSchedulingVisit;

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_NEW_LISTS,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
-  SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from './types';
+  SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  SET_VISIT_NEW_LISTS,
+  SET_MEETING_NEW_LISTS } from './types';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
@@ -36,9 +37,14 @@ export const setList = counselorInformations => ({
   payload: counselorInformations,
 });
 
-export const setNewLists = newList => ({
-  type: SET_NEW_LISTS,
+export const setVisitNewLists = newList => ({
+  type: SET_VISIT_NEW_LISTS,
   payload: newList,
+});
+
+export const setMeetingNewLists = meetingNewList => ({
+  type: SET_MEETING_NEW_LISTS,
+  payload: meetingNewList,
 });
 
 // Used in Async Action to Login Counselor

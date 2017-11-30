@@ -82,12 +82,17 @@ const initialState = {
     listOfPendingScheduleInAGroup: [],
     listOfExpiredScheduleInAGroup: [],
     listOfAlreadyInpectionedSchedueInAGroup: [],
+    visitListOfInviteesWithCounselorInformations: {},
+    visitListOfInvitees: {},
+    meetingListOfInviteesWithCounselorInformations: {},
+    meetingListOfInvitees: {},
   },
   schedule: {
     codSchool: 0,
-    date: '',
-    time: '',
+    meetingLatitude: null,
+    meetingLongitude: null,
   },
 };
+
 
 export default initialState;
