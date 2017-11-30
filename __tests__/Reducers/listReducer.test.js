@@ -4,7 +4,9 @@ import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST, SET_NEW_LISTS,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
-  SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from '../../src/actions/types';
+  SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  SET_CHECKED_LIST,
+  SET_NOT_CHECKED_LIST } from '../../src/actions/types';
 
 describe('Testing listReducer', () => {
   it('Set list of counselors and eraser it', () => {
@@ -285,6 +287,124 @@ describe('Testing listReducer', () => {
       .toEqual(firstAlreadyInspectionedSchedule);
     expect(list.listOfAlreadyInpectionedSchedueInAGroup[1])
       .toEqual(secondAlreadyInspectionedSchedule);
+  });
+
+  it('Set list of checked couselor', () => {
+    let list = initialState.list;
+
+    expect(list.listOfCheckedCounselors).toEqual([]);
+
+    const firstCounselorChecked = {
+      firstCounselorChecked: {
+        codMembro: 965,
+        name: 'teste1',
+        nuvemCode: 6037,
+        profile: {
+          CAE: 'DF',
+          CAE_Type: 'Estadual',
+          cpf: '05632456789',
+          isPresident: false,
+          phone: '45676567890',
+          presidentChecked: true,
+          segment: 'Titular',
+        },
+      },
+    };
+
+    const secondCounselorChecked = {
+      secondCounselorChecked: {
+        codMembro: 945,
+        name: 'teste2',
+        nuvemCode: 6054,
+        profile: {
+          CAE: 'DF',
+          CAE_Type: 'Estadual',
+          cpf: '03528561523',
+          isPresident: false,
+          phone: '4263598276',
+          presidentChecked: true,
+          segment: 'Titular',
+        },
+      },
+    };
+
+    const actionOne = {
+      type: SET_CHECKED_LIST,
+      payload: firstCounselorChecked,
+    };
+
+    const actionTwo = {
+      type: SET_CHECKED_LIST,
+      payload: secondCounselorChecked,
+    };
+
+    list = listReducer(list, actionOne);
+
+    expect(list.listOfCheckedCounselors).toEqual([firstCounselorChecked]);
+
+    list = listReducer(list, actionTwo);
+
+    expect(list.listOfCheckedCounselors[0]).toEqual(firstCounselorChecked);
+    expect(list.listOfCheckedCounselors[1]).toEqual(secondCounselorChecked);
+  });
+
+  it('Set list of not checked couselor', () => {
+    let list = initialState.list;
+
+    expect(list.listOfNotCheckedCounselors).toEqual([]);
+
+    const firstCounselorNotChecked = {
+      firstCounselorNotChecked: {
+        codMembro: 965,
+        name: 'teste1',
+        nuvemCode: 6037,
+        profile: {
+          CAE: 'DF',
+          CAE_Type: 'Estadual',
+          cpf: '05632456789',
+          isPresident: false,
+          phone: '45676567890',
+          presidentChecked: false,
+          segment: 'Titular',
+        },
+      },
+    };
+
+    const secondCounselorNotChecked = {
+      secondCounselorNotChecked: {
+        codMembro: 945,
+        name: 'teste2',
+        nuvemCode: 6054,
+        profile: {
+          CAE: 'DF',
+          CAE_Type: 'Estadual',
+          cpf: '03528561523',
+          isPresident: false,
+          phone: '4263598276',
+          presidentChecked: false,
+          segment: 'Titular',
+        },
+      },
+    };
+
+    const actionOne = {
+      type: SET_NOT_CHECKED_LIST,
+      payload: firstCounselorNotChecked,
+    };
+
+    const actionTwo = {
+      type: SET_NOT_CHECKED_LIST,
+      payload: secondCounselorNotChecked,
+    };
+
+    list = listReducer(list, actionOne);
+
+    expect(list.listOfNotCheckedCounselors).toEqual([firstCounselorNotChecked]);
+
+    list = listReducer(list, actionTwo);
+
+    expect(list.listOfNotCheckedCounselors[0]).toEqual(firstCounselorNotChecked);
+    expect(list.listOfNotCheckedCounselors[1]).toEqual(secondCounselorNotChecked);
   });
 
   it('Default action type', () => {
