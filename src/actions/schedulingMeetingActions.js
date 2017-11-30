@@ -60,7 +60,7 @@ export const schedulingMeeting = (meetingData, dispatch) => {
     },
   };
 
-  axios.post(POSTS_LINK_NUVEM_CIVICA, bodyToSchedulingMeeting, headerToSchedulingMeeting)
+  axios.post(`${POSTS_LINK_NUVEM_CIVICA}conteudos`, bodyToSchedulingMeeting, headerToSchedulingMeeting)
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingMeeting',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
@@ -68,7 +68,7 @@ export const schedulingMeeting = (meetingData, dispatch) => {
       dispatch(isNotLoading());
       Actions.mainScreen();
     })
-    .catch((error) => {
+    .catch((response, error) => {
       logWarn(FILE_NAME, 'schedulingMeeting',
         `Request result in an ${error}`);
 
