@@ -52,6 +52,13 @@ describe('Testing Menu Side Bar', () => {
     button.simulate('press');
   });
 
+  it('Test onPress seeLegislation', () => {
+    const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
+    const button = wrapper.findWhere(c => c.key() === 'seeLegislation');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
+
   it('Test onPress logout', () => {
     const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
     const button = wrapper.findWhere(c => c.key() === 'logout');
