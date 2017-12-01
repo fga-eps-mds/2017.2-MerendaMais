@@ -89,6 +89,27 @@ class SchoolInfoScreen extends React.Component {
       .then((response) => {
         logInfo(FILE_NAME, 'componentWillMount',
           `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
+        let schoolPhone = '';
+        let schoolEmail = '';
+        let schoolStudents = '';
+        console.log('telefone');
+
+
+        if (response.data.telefone !== undefined && response.data.telefone !== ' ') {
+          schoolPhone = response.data.telefone;
+        } else {
+          schoolPhone = 'Informação não disponível';
+        }
+        if (response.data.email !== undefined && response.data.email !== ' ') {
+          schoolEmail = response.data.email;
+        } else {
+          schoolEmail = 'Informação não disponível';
+        }
+        if (response.data.qtdAlunos !== undefined && response.data.qtdAlunos !== 0) {
+          schoolStudents = response.data.qtdAlunos;
+        } else {
+          schoolStudents = 'Informação não disponível';
+        }
 
         // Since we get the response in portuguese, we need to "translate" it so we
         // can add it in the store.
@@ -96,11 +117,11 @@ class SchoolInfoScreen extends React.Component {
           {
             schoolCode: response.data.codEscola,
             schoolName: response.data.nome,
-            schoolPhone: response.data.telefone,
-            schoolEmail: response.data.email,
+            schoolPhone,
+            schoolEmail,
             schoolLat: response.data.latitude,
             schoolLong: response.data.longitude,
-            schoolStudents: response.data.qtdAlunos,
+            schoolStudents,
           });
       })
       .catch((error) => {
@@ -129,7 +150,6 @@ class SchoolInfoScreen extends React.Component {
     if (this.props.school.schoolLat !== undefined) {
       return (
         <View key="renderButton">
-          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
           <TouchableOpacity
             onPress={() => this.goToMaps()}
             style={styles.buttonContainer}
@@ -143,7 +163,9 @@ class SchoolInfoScreen extends React.Component {
     }
 
     // If we can't return the button, return nothing.
-    return (null);
+    return (
+      <Text style={styles.textResponse}>Localização não disponível</Text>
+    );
   }
 
   showScheduleVisitButton() {
@@ -186,18 +208,19 @@ class SchoolInfoScreen extends React.Component {
         <ScrollView>
           <Text style={styles.text}>Infomações</Text>
           <View style={styles.listInfo}>
-            <Text style={styles.textInfotmation}>Nome: </Text>
+            <Text style={styles.textInfotmation}>Nome:</Text>
             <Text style={styles.textResponse}>{this.props.school.schoolName}</Text>
 
-            <Text style={styles.textInfotmation}>Email: </Text>
+            <Text style={styles.textInfotmation}>Email:</Text>
             <Text style={styles.textResponse}>{this.props.school.schoolEmail}</Text>
 
-            <Text style={styles.textInfotmation}>Telefone: </Text>
+            <Text style={styles.textInfotmation}>Telefone:</Text>
             <Text style={styles.textResponse}>{this.props.school.schoolPhone}</Text>
 
-            <Text style={styles.textInfotmation}>Quantidade de Alunos: </Text>
+            <Text style={styles.textInfotmation}>Quantidade de Alunos:</Text>
             <Text style={styles.textResponse}>{this.props.school.schoolStudents}</Text>
 
+            <Text style={styles.textInfotmation}>Localização:</Text>
             {this.showLocalizationButton()}
           </View>
         </ScrollView>
