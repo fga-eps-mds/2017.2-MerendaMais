@@ -72,6 +72,7 @@ const initialState = {
     schoolEmail: '',
     schoolLat: '',
     schoolLong: '',
+    schoolStudents: '',
     schoolSelected: false,
     uf: '',
     city: '',

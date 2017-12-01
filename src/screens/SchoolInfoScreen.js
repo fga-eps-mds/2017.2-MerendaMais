@@ -11,33 +11,20 @@ import Header from '../components/Header';
 const FILE_NAME = 'SchoolInfoScreen.js';
 
 const styles = StyleSheet.create({
-  headerBox: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 5,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 
-  textLogo: {
+  schoolInfoScreen: {
     flex: 1,
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+
+    backgroundColor: 'white',
   },
 
   buttonContainer: {
-    paddingVertical: 10,
+    paddingVertical: 16,
     borderWidth: 1,
-    borderRadius: 7,
+    borderRadius: 8,
     marginHorizontal: 15,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 15,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -58,11 +45,21 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    flexDirection: 'row',
     color: '#95a5a6',
     fontSize: 20,
     paddingTop: 10,
+    paddingLeft: 10,
     paddingBottom: 5,
+  },
+
+  textInfotmation: {
+    paddingVertical: 2,
+    color: '#95a5a6',
+    fontSize: 20,
+  },
+
+  textResponse: {
+    fontSize: 19,
   },
 
 });
@@ -80,14 +77,13 @@ class SchoolInfoScreen extends React.Component {
     };
   }
 
-
-  componentWillMount() {
+  componentDidMount() {
     logInfo(FILE_NAME, 'componentWillMount',
       `URL:${SCHOOL_ENDPOINT}/${this.props.school.schoolCode}`);
 
     axios.get(`${SCHOOL_ENDPOINT}/${this.props.school.schoolCode}`, {
       params: {
-        campos: 'nome,email,telefone,latitude,longitude',
+        campos: 'nome,email,telefone,latitude,longitude,qtdAlunos',
       },
     })
       .then((response) => {
@@ -104,13 +100,13 @@ class SchoolInfoScreen extends React.Component {
             schoolEmail: response.data.email,
             schoolLat: response.data.latitude,
             schoolLong: response.data.longitude,
+            schoolStudents: response.data.qtdAlunos,
           });
       })
       .catch((error) => {
         logWarn(FILE_NAME, 'componentWillMount', error);
       });
-  }
-  componentDidMount() {
+
     BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
   }
 
@@ -182,20 +178,26 @@ class SchoolInfoScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={styles.schoolInfoScreen}>
         <Header
           title={'Informações da Escola'}
           backButton
         />
         <ScrollView>
-          <Text style={styles.text}>  Infomações</Text>
+          <Text style={styles.text}>Infomações</Text>
           <View style={styles.listInfo}>
-            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Nome: </Text>
-            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolName}</Text>
-            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Email: </Text>
-            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolEmail}</Text>
-            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Telefone: </Text>
-            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolPhone}</Text>
+            <Text style={styles.textInfotmation}>Nome: </Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolName}</Text>
+
+            <Text style={styles.textInfotmation}>Email: </Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolEmail}</Text>
+
+            <Text style={styles.textInfotmation}>Telefone: </Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolPhone}</Text>
+
+            <Text style={styles.textInfotmation}>Quantidade de Alunos: </Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolStudents}</Text>
+
             {this.showLocalizationButton()}
           </View>
         </ScrollView>
