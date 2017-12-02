@@ -10,7 +10,7 @@ import { StyleSheet,
 import Checkbox from 'react-native-checkbox';
 import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
-import store from '../Reducers/store';
+import store from '../../Reducers/store';
 
 const { width } = Dimensions.get('window');
 

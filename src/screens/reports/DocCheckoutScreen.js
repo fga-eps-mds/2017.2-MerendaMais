@@ -1,4 +1,5 @@
 import React from 'react';
+import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet,
@@ -10,7 +11,7 @@ import { StyleSheet,
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -79,10 +80,40 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ReportObservationScreen extends React.Component {
+export default class DocCheckoutScreen extends React.Component {
+  showPositiveCheckBox(item) {
+    return (
+      <View>
+        <Checkbox
+          checkboxStyle={styles.checkbox}
+          selected={item.markedYes}
+          selectedColor={'#008000'}
+          onSelect={() => this.props.setDocReportPositive(item.key)}
+          disabled={item.markedNo}
+          disabledColor={null}
+        />
+      </View>
+    );
+  }
+
   concludeReport() {
-    this.props.setStatusReportObservation(true);
+    this.props.setStatusDoc(true);
     Actions.mainReportsScreen();
+  }
+
+  showNegativeCheckBox(item) {
+    return (
+      <View>
+        <Checkbox
+          checkboxStyle={styles.checkbox}
+          selected={item.markedNo}
+          selectedColor={'#B22222'}
+          onSelect={() => this.props.setDocReportNegative(item.key)}
+          disabled={item.markedYes}
+          disabledColor={null}
+        />
+      </View>
+    );
   }
 
   render() {
@@ -90,29 +121,44 @@ export default class ReportObservationScreen extends React.Component {
       <View style={styles.principal}>
         <Header
           title={'Relatório'}
-          subTitle={'Observações adicionais'}
+          subTitle={'Documentação'}
           backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>
+            <View>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 10 }}>Sim</Text>
+                <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 20 }}>Nao</Text>
+              </View>
+              {
+                this.props.report.map(item => (
+                  <View style={styles.text} key={item.key}>
+                    {this.showPositiveCheckBox(item)}
+                    {this.showNegativeCheckBox(item)}
+                    <Text style={styles.label}>{item.label}</Text>
+                  </View>
+                ),
+                )
+              }
+            </View>
+
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.props.setReportObservation(text)}
+                  onChangeText={text => this.props.setDocObservation(text)}
                   style={styles.textInput}
                   multiline
                   value={this.props.observation}
                   underlineColorAndroid="transparent"
-                  placeholder="Observações gerais que gostaria de adicionar (opcional)"
+                  placeholder="Observações (opcional)"
                 />
               </View>
             </View>
 
             <TouchableOpacity
               style={styles.buttonContainer}
-              onPress={() =>
-                this.concludeReport()
-              }
+              onPress={() => this.concludeReport()}
               key="setObservation"
             >
               <Text style={styles.buttonText}>Concluir</Text>
@@ -124,8 +170,14 @@ export default class ReportObservationScreen extends React.Component {
   }
 }
 
-ReportObservationScreen.propTypes = {
-  setStatusReportObservation: PropTypes.func.isRequired,
-  setReportObservation: PropTypes.func.isRequired,
+DocCheckoutScreen.propTypes = {
+  setStatusDoc: PropTypes.func.isRequired,
+  setDocObservation: PropTypes.func.isRequired,
+  setDocReportPositive: PropTypes.func.isRequired,
+  setDocReportNegative: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
+  report: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    key: PropTypes.number,
+  })).isRequired,
 };

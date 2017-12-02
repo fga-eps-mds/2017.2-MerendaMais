@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 
 import Accordion from 'react-native-collapsible/Accordion';
-import RenderContent from '../components/AccordionContent';
-import RenderHeader from '../components/AccordionHeader';
-import Header from '../components/Header';
+import RenderContent from '../../components/AccordionContent';
+import RenderHeader from '../../components/AccordionHeader';
+import Header from '../../components/Header';
 import {
   CONTENT,
   SELECTORS,
-  LAW_12982_DATE } from '../constants/legislation/lawNumber12.982';
+  LAW_12982_DATE } from '../../constants/legislation/lawNumber12.982';
 
 const styles = StyleSheet.create({
   title: {

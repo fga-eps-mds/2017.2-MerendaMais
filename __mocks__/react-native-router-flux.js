@@ -6,7 +6,7 @@ export const Actions = {
   schedulingVisit: () => ({}),
   manageRegisters: () => ({}),
   lesgislationScreen: () => ({}),
-  resolution1Screen: jest.fn(),
+  Resolution1Screen: jest.fn(),
   drawerOpen: jest.fn(),
   mainReportsScreen: jest.fn(),
   registerScreen: jest.fn(),

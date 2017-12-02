@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ScheduleMeetingMap from '../screens/ScheduleMeetingMap';
+import ScheduleMeetingMap from '../screens/scheduleMeeting/ScheduleMeetingMap';
 import { setMeetingLocationLatitude, setMeetingLocationLongitude } from '../actions/schedulingMeetingActions';
 
 

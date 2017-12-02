@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import { TouchableOpacity } from 'react-native';
-import MainLegislationScreen from '../../src/screens/MainLegislationScreen';
+import MainLegislationScreen from '../../src/screens/legislation/MainLegislationScreen';
 import { Actions } from '../../__mocks__/react-native-router-flux';
 
 
@@ -28,6 +28,6 @@ describe('Testing MainLegislationScreen Render', () => {
 //     const law11Button = wrapper.find(TouchableOpacity);
 //     // console.log(law11Button.debug());
 //     law11Button.simulate('press');
-//     expect(Actions.resolution1Screen.mock.calls.length).toBe(1);
+//     expect(Actions.Resolution1Screen.mock.calls.length).toBe(1);
 //   });
 // });

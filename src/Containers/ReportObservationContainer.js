@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ReportObservationScreen from '../screens/ReportObservationScreen';
+import ReportObservationScreen from '../screens/reports/ReportObservationScreen';
 import { setReportObservation, setStatusReportObservation } from '../actions/reportActions';
 
 const mapStateToProps = state => ({

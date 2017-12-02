@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FoodHandlerCheckoutScreen from '../screens/FoodHandlerCheckoutScreen';
+import FoodHandlerCheckoutScreen from '../screens/reports/FoodHandlerCheckoutScreen';
 import { setFoodHandlerReportPositive,
   setFoodHandlerReportNegative,
   setFoodHandlerObservation,

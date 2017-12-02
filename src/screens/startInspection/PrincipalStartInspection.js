@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
-import Header from '../components/Header';
-import ManageNotAcceptedRegistersScreenContainer from '../Containers/ManageNotAcceptedRegistersScreenContainer';
-import ManageAcceptedRegistersScreenContainer from '../Containers/ManageAcceptedRegistersScreenContainer';
+import StartPendingInspectionContainer from '../../Containers/StartPendingInspectionContainer';
+import StartExpiredInspectionContainer from '../../Containers/StartExpiredInspectionContainer';
+import Header from '../../components/Header';
+import StartAlreadyInspectionedInspectionContainer from '../../Containers/StartAlreadyInspectionedInspectionContainer';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,8 +19,9 @@ export default class Principal extends Component {
     this.state = {
       index: 0,
       routes: [
-        { key: 'first', title: 'Não gerenciados' },
-        { key: 'second', title: 'Validados' },
+        { key: 'first', title: 'Pendentes' },
+        { key: 'second', title: 'Fiscalizados' },
+        { key: 'third', title: 'Expirados' },
       ],
     };
   }
@@ -28,11 +30,12 @@ export default class Principal extends Component {
 
   renderFooter = props => <TabBar style={{ backgroundColor: '#FF9500', borderTopWidth: 1, borderBottomColor: 'black' }} tabStyle={{ paddingHorizontal: -0 }} {...props} />;
 
-  renderHeader = props => <Header title={'Gerenciar Registro'} backButton {...props} />
+  renderHeader = props => <Header title={'Visitas Agendadas'} backButton {...props} />
 
   renderScene = SceneMap({
-    first: ManageNotAcceptedRegistersScreenContainer,
-    second: ManageAcceptedRegistersScreenContainer,
+    first: StartPendingInspectionContainer,
+    second: StartAlreadyInspectionedInspectionContainer,
+    third: StartExpiredInspectionContainer,
   });
 
   render() {

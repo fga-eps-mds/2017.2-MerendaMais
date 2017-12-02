@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView, View, TouchableOpacity, Linking, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { FontAwesome } from '@expo/vector-icons';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const styles = StyleSheet.create({
   legislationScreen: {
@@ -60,7 +60,7 @@ const MainLegislationScreen = () => ({
           <View style={{ padding: 10 }}>
 
             <TouchableOpacity
-              onPress={() => Actions.resolution1Screen()}
+              onPress={() => Actions.Resolution1Screen()}
               style={styles.fieldStyle}
             >
               <Text style={styles.buttonTexts}>Resolução Nº 1</Text>
@@ -77,7 +77,7 @@ const MainLegislationScreen = () => ({
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => Actions.resolution26Screen()}
+              onPress={() => Actions.Resolution26Screen()}
               style={styles.fieldStyle}
             >
               <Text style={styles.buttonTexts}>Resolução Nº 26</Text>
@@ -94,7 +94,7 @@ const MainLegislationScreen = () => ({
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => Actions.lawNumber11947Screen()}
+              onPress={() => Actions.LawNumber11947Screen()}
               style={styles.fieldStyle}
             >
               <Text style={styles.buttonTexts}>Lei Nº 11.947</Text>
@@ -111,7 +111,7 @@ const MainLegislationScreen = () => ({
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => Actions.lawNumber12982Screen()}
+              onPress={() => Actions.LawNumber12982Screen()}
               style={styles.fieldStyle}
             >
               <Text style={styles.buttonTexts}>Lei N° 12.982</Text>

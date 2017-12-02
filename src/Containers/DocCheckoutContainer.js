@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import DocCheckoutScreen from '../screens/DocCheckoutScreen';
+import DocCheckoutScreen from '../screens/reports/DocCheckoutScreen';
 import { setDocReportPositive,
   setDocReportNegative,
   setDocObservation,

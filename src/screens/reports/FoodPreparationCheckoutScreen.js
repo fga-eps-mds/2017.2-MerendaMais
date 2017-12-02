@@ -11,7 +11,7 @@ import { StyleSheet,
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.05,
     textAlignVertical: 'top',
   },
+
   textBox: {
     paddingLeft: 10,
     paddingTop: 30,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class WaterSewerSupplyCheckoutScreen extends React.Component {
+export default class FoodPreparationCheckoutScreen extends React.Component {
   showPositiveCheckBox(item) {
     return (
       <View>
@@ -88,17 +89,12 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setWaterSewerSupplyReportPositive(item.key)}
+          onSelect={() => this.props.setFoodPreparationReportPositive(item.key)}
           disabled={item.markedNo}
           disabledColor={null}
         />
       </View>
     );
-  }
-
-  concludeReport() {
-    this.props.setStatusWaterSewerSupply(true);
-    Actions.mainReportsScreen();
   }
 
   showNegativeCheckBox(item) {
@@ -108,7 +104,7 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setWaterSewerSupplyReportNegative(item.key)}
+          onSelect={() => this.props.setFoodPreparationReportNegative(item.key)}
           disabled={item.markedYes}
           disabledColor={null}
         />
@@ -116,12 +112,17 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
     );
   }
 
+  concludeReport() {
+    this.props.setStatusFoodPreparation(true);
+    Actions.mainReportsScreen();
+  }
+
   render() {
     return (
       <View style={styles.principal}>
         <Header
           title={'Relatório'}
-          subTitle={'Abastecimento de Água e Esgoto'}
+          subTitle={'Preparação e Distribuição'}
           backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
@@ -146,10 +147,10 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.props.setWaterSewerSupplyObservation(text)}
+                  onChangeText={text => this.props.setFoodPreparationObservation(text)}
                   style={styles.textInput}
-                  multiline
                   value={this.props.observation}
+                  multiline
                   underlineColorAndroid="transparent"
                   placeholder="Observações (opcional)"
                 />
@@ -170,11 +171,11 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
   }
 }
 
-WaterSewerSupplyCheckoutScreen.propTypes = {
-  setStatusWaterSewerSupply: PropTypes.func.isRequired,
-  setWaterSewerSupplyObservation: PropTypes.func.isRequired,
-  setWaterSewerSupplyReportPositive: PropTypes.func.isRequired,
-  setWaterSewerSupplyReportNegative: PropTypes.func.isRequired,
+FoodPreparationCheckoutScreen.propTypes = {
+  setStatusFoodPreparation: PropTypes.func.isRequired,
+  setFoodPreparationObservation: PropTypes.func.isRequired,
+  setFoodPreparationReportPositive: PropTypes.func.isRequired,
+  setFoodPreparationReportNegative: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
   report: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,

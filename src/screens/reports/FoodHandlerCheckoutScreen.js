@@ -11,7 +11,7 @@ import { StyleSheet,
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class DocCheckoutScreen extends React.Component {
+export default class FoodHandlerCheckoutScreen extends React.Component {
   showPositiveCheckBox(item) {
     return (
       <View>
@@ -88,7 +88,7 @@ export default class DocCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setDocReportPositive(item.key)}
+          onSelect={() => this.props.setFoodHandlerReportPositive(item.key)}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -97,7 +97,7 @@ export default class DocCheckoutScreen extends React.Component {
   }
 
   concludeReport() {
-    this.props.setStatusDoc(true);
+    this.props.setStatusFoodHandler(true);
     Actions.mainReportsScreen();
   }
 
@@ -108,7 +108,7 @@ export default class DocCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setDocReportNegative(item.key)}
+          onSelect={() => this.props.setFoodHandlerReportNegative(item.key)}
           disabled={item.markedYes}
           disabledColor={null}
         />
@@ -121,7 +121,7 @@ export default class DocCheckoutScreen extends React.Component {
       <View style={styles.principal}>
         <Header
           title={'Relatório'}
-          subTitle={'Documentação'}
+          subTitle={'Manipuladores de Alimentos'}
           backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
@@ -146,7 +146,7 @@ export default class DocCheckoutScreen extends React.Component {
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.props.setDocObservation(text)}
+                  onChangeText={text => this.props.setFoodHandlerObservation(text)}
                   style={styles.textInput}
                   multiline
                   value={this.props.observation}
@@ -170,11 +170,11 @@ export default class DocCheckoutScreen extends React.Component {
   }
 }
 
-DocCheckoutScreen.propTypes = {
-  setStatusDoc: PropTypes.func.isRequired,
-  setDocObservation: PropTypes.func.isRequired,
-  setDocReportPositive: PropTypes.func.isRequired,
-  setDocReportNegative: PropTypes.func.isRequired,
+FoodHandlerCheckoutScreen.propTypes = {
+  setStatusFoodHandler: PropTypes.func.isRequired,
+  setFoodHandlerObservation: PropTypes.func.isRequired,
+  setFoodHandlerReportPositive: PropTypes.func.isRequired,
+  setFoodHandlerReportNegative: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
   report: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,

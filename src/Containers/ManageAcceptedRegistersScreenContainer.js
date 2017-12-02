@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ManageAcceptedRegistersScreen from '../screens/ManageAcceptedRegistersScreen';
+import ManageAcceptedRegistersScreen from '../screens/manageCounselors/ManageAcceptedRegistersScreen';
 import { asyncGetCounselorFromGroup } from '../actions/listActions';
 import { disableCounselor, asyncAcceptCounselor } from '../actions/ManagerRegisterActions';
 

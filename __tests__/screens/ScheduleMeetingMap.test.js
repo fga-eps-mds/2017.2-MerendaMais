@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import ScheduleMeetingMapContainer from '../../src/Containers/ScheduleMeetingMapContainer';
-import ScheduleMeetingMap from '../../src/screens/ScheduleMeetingMap';
+import ScheduleMeetingMap from '../../src/screens/scheduleMeeting/ScheduleMeetingMap';
 
 Enzyme.configure({ adapter: new Adapter() });
 

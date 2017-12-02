@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SchoolSurroundingsCheckoutScreen from '../screens/SchoolSurroundingsCheckoutScreen';
+import SchoolSurroundingsCheckoutScreen from '../screens/reports/SchoolSurroundingsCheckoutScreen';
 import { setSchoolSurroundingsReportPositive, setSchoolSurroundingsReportNegative, setSchoolSurroundingsObservation, setStatusSchoolSurroundings } from '../actions/reportActions';
 
 const mapStateToProps = state => ({

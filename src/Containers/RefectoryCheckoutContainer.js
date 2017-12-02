@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import RefectoryCheckoutScreen from '../screens/RefectoryCheckoutScreen';
+import RefectoryCheckoutScreen from '../screens/reports/RefectoryCheckoutScreen';
 import { setRefectoryReportPositive, setRefectoryReportNegative, setRefectoryObservation, setStatusRefectory } from '../actions/reportActions';
 
 const mapStateToProps = state => ({

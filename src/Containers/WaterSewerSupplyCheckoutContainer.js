@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import WaterSewerSupplyCheckoutScreen from '../screens/WaterSewerSupplyCheckoutScreen';
+import WaterSewerSupplyCheckoutScreen from '../screens/reports/WaterSewerSupplyCheckoutScreen';
 import { setWaterSewerSupplyReportPositive,
   setWaterSewerSupplyReportNegative,
   setWaterSewerSupplyObservation,

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet,
@@ -11,7 +10,7 @@ import { StyleSheet,
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -73,7 +72,6 @@ const styles = StyleSheet.create({
     fontSize: width * 0.05,
     textAlignVertical: 'top',
   },
-
   textBox: {
     paddingLeft: 10,
     paddingTop: 30,
@@ -81,39 +79,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class RefectoryCheckoutScreen extends React.Component {
-  showPositiveCheckBox(item) {
-    return (
-      <View>
-        <Checkbox
-          checkboxStyle={styles.checkbox}
-          selected={item.markedYes}
-          selectedColor={'#008000'}
-          onSelect={() => this.props.setRefectoryReportPositive(item.key)}
-          disabled={item.markedNo}
-          disabledColor={null}
-        />
-      </View>
-    );
-  }
-
-  showNegativeCheckBox(item) {
-    return (
-      <View>
-        <Checkbox
-          checkboxStyle={styles.checkbox}
-          selected={item.markedNo}
-          selectedColor={'#B22222'}
-          onSelect={() => this.props.setRefectoryReportNegative(item.key)}
-          disabled={item.markedYes}
-          disabledColor={null}
-        />
-      </View>
-    );
-  }
-
+export default class ReportObservationScreen extends React.Component {
   concludeReport() {
-    this.props.setStatusRefectory(true);
+    this.props.setStatusReportObservation(true);
     Actions.mainReportsScreen();
   }
 
@@ -122,44 +90,29 @@ export default class RefectoryCheckoutScreen extends React.Component {
       <View style={styles.principal}>
         <Header
           title={'Relatório'}
-          subTitle={'Refeitório'}
+          subTitle={'Observações adicionais'}
           backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>
-            <View>
-              <View style={{ flexDirection: 'row' }}>
-                <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 10 }}>Sim</Text>
-                <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 20 }}>Nao</Text>
-              </View>
-              {
-                this.props.report.map(item => (
-                  <View style={styles.text} key={item.key}>
-                    {this.showPositiveCheckBox(item)}
-                    {this.showNegativeCheckBox(item)}
-                    <Text style={styles.label}>{item.label}</Text>
-                  </View>
-                ),
-                )
-              }
-            </View>
-
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.props.setRefectoryObservation(text)}
+                  onChangeText={text => this.props.setReportObservation(text)}
                   style={styles.textInput}
-                  value={this.props.observation}
                   multiline
+                  value={this.props.observation}
                   underlineColorAndroid="transparent"
-                  placeholder="Observações (opcional)"
+                  placeholder="Observações gerais que gostaria de adicionar (opcional)"
                 />
               </View>
             </View>
 
             <TouchableOpacity
               style={styles.buttonContainer}
-              onPress={() => this.concludeReport()}
+              onPress={() =>
+                this.concludeReport()
+              }
               key="setObservation"
             >
               <Text style={styles.buttonText}>Concluir</Text>
@@ -171,14 +124,8 @@ export default class RefectoryCheckoutScreen extends React.Component {
   }
 }
 
-RefectoryCheckoutScreen.propTypes = {
-  setStatusRefectory: PropTypes.func.isRequired,
-  setRefectoryObservation: PropTypes.func.isRequired,
-  setRefectoryReportPositive: PropTypes.func.isRequired,
-  setRefectoryReportNegative: PropTypes.func.isRequired,
+ReportObservationScreen.propTypes = {
+  setStatusReportObservation: PropTypes.func.isRequired,
+  setReportObservation: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
-  report: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-    key: PropTypes.number,
-  })).isRequired,
 };

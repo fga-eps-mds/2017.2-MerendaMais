@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import StartPendingInspection from '../screens/StartPendingInspection';
+import StartPendingInspection from '../screens/startInspection/StartPendingInspection';
 import { asyncGetSchedule } from '../actions/schedulingVisitActions';
 import { asyncGetCounselorFromGroup } from '../actions/listActions';
 

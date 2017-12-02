@@ -7,7 +7,7 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');

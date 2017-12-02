@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 
 import Accordion from 'react-native-collapsible/Accordion';
-import RenderContent from '../components/AccordionContent';
-import RenderHeader from '../components/AccordionHeader';
-import Header from '../components/Header';
+import RenderContent from '../../components/AccordionContent';
+import RenderHeader from '../../components/AccordionHeader';
+import Header from '../../components/Header';
 import {
   CONTENT,
   SELECTORS,
-  LAW_11947_DATE } from '../constants/legislation/lawNumber11.947';
+  RESOLUTION_1_DATE } from '../../constants/legislation/resolutionNumber1';
 
 const styles = StyleSheet.create({
   title: {
@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     padding: 10,
+    justifyContent: 'center',
   },
 });
 
-export default class LawNumber11947Screen extends Component {
+export default class Resolution1Screen extends Component {
   state = {
     activeSection: false,
     collapsed: true,
@@ -65,7 +66,7 @@ export default class LawNumber11947Screen extends Component {
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Legislação'}
-          subTitle={'Lei Nº 11.947'}
+          subTitle={'Resolução Nº 1'}
           backButton
         />
         <ScrollView
@@ -90,7 +91,7 @@ export default class LawNumber11947Screen extends Component {
           </View>
         </ScrollView>
         <ScrollView>
-          <Text style={styles.title}>{LAW_11947_DATE}</Text>
+          <Text style={styles.title}>{RESOLUTION_1_DATE}</Text>
           <Accordion
             activeSection={this.state.activeSection}
             sections={CONTENT}

@@ -11,7 +11,7 @@ import { StyleSheet,
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class SchoolSurroundingsCheckoutScreen extends React.Component {
+export default class RefectoryCheckoutScreen extends React.Component {
   showPositiveCheckBox(item) {
     return (
       <View>
@@ -89,7 +89,7 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setSchoolSurroundingsReportPositive(item.key)}
+          onSelect={() => this.props.setRefectoryReportPositive(item.key)}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -104,7 +104,7 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
           checkboxStyle={styles.checkbox}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setSchoolSurroundingsReportNegative(item.key)}
+          onSelect={() => this.props.setRefectoryReportNegative(item.key)}
           disabled={item.markedYes}
           disabledColor={null}
         />
@@ -113,7 +113,7 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
   }
 
   concludeReport() {
-    this.props.setStatusSchoolSurroundings(true);
+    this.props.setStatusRefectory(true);
     Actions.mainReportsScreen();
   }
 
@@ -122,7 +122,7 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
       <View style={styles.principal}>
         <Header
           title={'Relatório'}
-          subTitle={'Arredores da Escola'}
+          subTitle={'Refeitório'}
           backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
@@ -147,7 +147,7 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
             <View behavior="padding">
               <View style={styles.textBox}>
                 <TextInput
-                  onChangeText={text => this.props.setSchoolSurroundingsObservation(text)}
+                  onChangeText={text => this.props.setRefectoryObservation(text)}
                   style={styles.textInput}
                   value={this.props.observation}
                   multiline
@@ -171,11 +171,11 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
   }
 }
 
-SchoolSurroundingsCheckoutScreen.propTypes = {
-  setStatusSchoolSurroundings: PropTypes.func.isRequired,
-  setSchoolSurroundingsObservation: PropTypes.func.isRequired,
-  setSchoolSurroundingsReportPositive: PropTypes.func.isRequired,
-  setSchoolSurroundingsReportNegative: PropTypes.func.isRequired,
+RefectoryCheckoutScreen.propTypes = {
+  setStatusRefectory: PropTypes.func.isRequired,
+  setRefectoryObservation: PropTypes.func.isRequired,
+  setRefectoryReportPositive: PropTypes.func.isRequired,
+  setRefectoryReportNegative: PropTypes.func.isRequired,
   observation: PropTypes.string.isRequired,
   report: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,

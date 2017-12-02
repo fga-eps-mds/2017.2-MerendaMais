@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // import { TouchableHighlight } from 'react-native';
-import Resolution1Screen from '../../src/screens/Resolution1Screen';
+import Resolution1Screen from '../../src/screens/legislation/Resolution1Screen';
 // imported as a connected component!
 
 

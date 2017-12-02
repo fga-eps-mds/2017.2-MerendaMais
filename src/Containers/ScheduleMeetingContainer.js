@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ScheduleMeeting from '../screens/ScheduleMeeting';
+import ScheduleMeeting from '../screens/scheduleMeeting/ScheduleMeeting';
 import asyncSchedulingMeeting from '../actions/schedulingMeetingActions';
 import { asyncGetCounselorFromGroup, setMeetingNewLists } from '../actions/listActions';
 

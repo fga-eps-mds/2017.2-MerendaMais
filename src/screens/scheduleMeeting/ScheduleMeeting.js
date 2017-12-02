@@ -8,8 +8,8 @@ import PopupDialog, {
 import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
-import InvitedCounselorsData from '../components/InvitedCounselorsData';
-import Button from '../components/Button';
+import InvitedCounselorsData from '../../components/InvitedCounselorsData';
+import Button from '../../components/Button';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
