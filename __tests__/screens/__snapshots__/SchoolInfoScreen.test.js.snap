@@ -77,136 +77,163 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
             />
             <PickerItem
               color="#000000"
+              key="AC - Acre"
               label="AC - Acre"
               value="AC - Acre"
             />
             <PickerItem
               color="#000000"
+              key="AL - Alagoas"
               label="AL - Alagoas"
               value="AL - Alagoas"
             />
             <PickerItem
               color="#000000"
+              key="AP - Amapá"
               label="AP - Amapá"
               value="AP - Amapá"
             />
             <PickerItem
               color="#000000"
+              key="AM - Amazonas"
               label="AM - Amazonas"
               value="AM - Amazonas"
             />
             <PickerItem
               color="#000000"
+              key="BA - Bahia"
               label="BA - Bahia"
               value="BA - Bahia"
             />
             <PickerItem
               color="#000000"
+              key="CE - Ceará"
               label="CE - Ceará"
               value="CE - Ceará"
             />
             <PickerItem
               color="#000000"
+              key="DF - Distrito Federal"
               label="DF - Distrito Federal"
               value="DF - Distrito Federal"
             />
             <PickerItem
               color="#000000"
+              key="ES - Espírito Santo"
               label="ES - Espírito Santo"
               value="ES - Espírito Santo"
             />
             <PickerItem
               color="#000000"
+              key="GO - Goiás"
               label="GO - Goiás"
               value="GO - Goiás"
             />
             <PickerItem
               color="#000000"
+              key="MA - Maranhão"
               label="MA - Maranhão"
               value="MA - Maranhão"
             />
             <PickerItem
               color="#000000"
+              key="MT - Mato Grosso"
               label="MT - Mato Grosso"
               value="MT - Mato Grosso"
             />
             <PickerItem
               color="#000000"
+              key="MS - Mato Grosso do Sul"
               label="MS - Mato Grosso do Sul"
               value="MS - Mato Grosso do Sul"
             />
             <PickerItem
               color="#000000"
+              key="MG - Minas Gerais"
               label="MG - Minas Gerais"
               value="MG - Minas Gerais"
             />
             <PickerItem
               color="#000000"
+              key="PA - Pará"
               label="PA - Pará"
               value="PA - Pará"
             />
             <PickerItem
               color="#000000"
+              key="PB - Paraíba"
               label="PB - Paraíba"
               value="PB - Paraíba"
             />
             <PickerItem
               color="#000000"
+              key="PR - Paraná"
               label="PR - Paraná"
               value="PR - Paraná"
             />
             <PickerItem
               color="#000000"
+              key="PE - Pernambuco"
               label="PE - Pernambuco"
               value="PE - Pernambuco"
             />
             <PickerItem
               color="#000000"
+              key="PI - Piauí"
               label="PI - Piauí"
               value="PI - Piauí"
             />
             <PickerItem
               color="#000000"
+              key="RJ - Rio de Janeiro"
               label="RJ - Rio de Janeiro"
               value="RJ - Rio de Janeiro"
             />
             <PickerItem
               color="#000000"
+              key="RN - Rio Grande do Norte"
               label="RN - Rio Grande do Norte"
               value="RN - Rio Grande do Norte"
             />
             <PickerItem
               color="#000000"
+              key="RS - Rio Grande do Sul"
               label="RS - Rio Grande do Sul"
               value="RS - Rio Grande do Sul"
             />
             <PickerItem
               color="#000000"
+              key="RO - Rondônia"
               label="RO - Rondônia"
               value="RO - Rondônia"
             />
             <PickerItem
               color="#000000"
+              key="RR - Roraima"
               label="RR - Roraima"
               value="RR - Roraima"
             />
             <PickerItem
               color="#000000"
+              key="SC - Santa Catarina"
               label="SC - Santa Catarina"
               value="SC - Santa Catarina"
             />
             <PickerItem
               color="#000000"
+              key="SP - São Paulo"
               label="SP - São Paulo"
               value="SP - São Paulo"
             />
             <PickerItem
               color="#000000"
+              key="SE - Sergipe"
               label="SE - Sergipe"
               value="SE - Sergipe"
             />
             <PickerItem
               color="#000000"
+              key="TO - Tocantins"
               label="TO - Tocantins"
               value="TO - Tocantins"
             />
