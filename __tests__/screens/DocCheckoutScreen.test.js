@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // imported as a connected component!
-import DocCheckoutContainer from '../../src/Containers/DocCheckoutContainer';
+import DocCheckoutContainer from '../../src/Containers/reports/DocCheckoutContainer';
 import doc from '../../src/constants/reports/doc';
 
 Enzyme.configure({ adapter: new Adapter() });

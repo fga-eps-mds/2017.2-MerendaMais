@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import ManageNotAcceptedRegistersScreen from '../screens/manageCounselors/ManageNotAcceptedRegistersScreen';
-import { asyncGetCounselorFromGroup } from '../actions/listActions';
-import { disableCounselor, asyncAcceptCounselor } from '../actions/ManagerRegisterActions';
+import ManageNotAcceptedRegistersScreen from '../../screens/manageCounselors/ManageNotAcceptedRegistersScreen';
+import { asyncGetCounselorFromGroup } from '../../actions/listActions';
+import { disableCounselor, asyncAcceptCounselor } from '../../actions/ManagerRegisterActions';
 
 const mapStateToProps = state => (
   {

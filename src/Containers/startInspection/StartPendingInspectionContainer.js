@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import StartPendingInspection from '../screens/startInspection/StartPendingInspection';
-import { asyncGetSchedule } from '../actions/schedulingVisitActions';
-import { asyncGetCounselorFromGroup } from '../actions/listActions';
+import StartPendingInspection from '../../screens/startInspection/StartPendingInspection';
+import { asyncGetSchedule } from '../../actions/schedulingVisitActions';
+import { asyncGetCounselorFromGroup } from '../../actions/listActions';
 
 const mapStateToProps = state => ({
   counselor: state.counselor,

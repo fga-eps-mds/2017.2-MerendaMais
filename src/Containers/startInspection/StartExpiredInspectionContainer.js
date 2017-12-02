@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import StartExpiredInspection from '../screens/startInspection/StartExpiredInspection';
+import StartExpiredInspection from '../../screens/startInspection/StartExpiredInspection';
 
 const mapStateToProps = state => ({
   counselor: state.counselor,

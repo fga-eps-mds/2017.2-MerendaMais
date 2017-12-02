@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import StartAlreadyInspectionedInspection from '../screens/startInspection/StartAlreadyInspectionedInspection';
+import StartAlreadyInspectionedInspection from '../../screens/startInspection/StartAlreadyInspectionedInspection';
 
 const mapStateToProps = state => ({
   counselor: state.counselor,

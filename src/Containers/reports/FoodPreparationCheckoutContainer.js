@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
-import FoodPreparationCheckoutScreen from '../screens/reports/FoodPreparationCheckoutScreen';
-import { setFoodPreparationReportPositive, setFoodPreparationReportNegative, setFoodPreparationObservation, setStatusFoodPreparation } from '../actions/reportActions';
+import FoodPreparationCheckoutScreen from '../../screens/reports/FoodPreparationCheckoutScreen';
+import {
+  setFoodPreparationReportPositive,
+  setFoodPreparationReportNegative,
+  setFoodPreparationObservation,
+  setStatusFoodPreparation } from '../../actions/reportActions';
 
 const mapStateToProps = state => ({
   report: state.report.foodPreparation,

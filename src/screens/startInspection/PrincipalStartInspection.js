@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
-import StartPendingInspectionContainer from '../../Containers/StartPendingInspectionContainer';
-import StartExpiredInspectionContainer from '../../Containers/StartExpiredInspectionContainer';
+import StartPendingInspectionContainer from '../../Containers/startInspection/StartPendingInspectionContainer';
+import StartExpiredInspectionContainer from '../../Containers/startInspection/StartExpiredInspectionContainer';
 import Header from '../../components/Header';
-import StartAlreadyInspectionedInspectionContainer from '../../Containers/StartAlreadyInspectionedInspectionContainer';
+import StartAlreadyInspectionedInspectionContainer from '../../Containers/startInspection/StartAlreadyInspectionedInspectionContainer';
 
 const styles = StyleSheet.create({
   container: {

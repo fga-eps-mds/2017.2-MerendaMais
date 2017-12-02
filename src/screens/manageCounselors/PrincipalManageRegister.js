@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { TabViewAnimated, SceneMap, TabBar } from 'react-native-tab-view';
 import Header from '../../components/Header';
-import ManageNotAcceptedRegistersScreenContainer from '../../Containers/ManageNotAcceptedRegistersScreenContainer';
-import ManageAcceptedRegistersScreenContainer from '../../Containers/ManageAcceptedRegistersScreenContainer';
+import ManageNotAcceptedRegistersScreenContainer from '../../Containers/manageCounselors/ManageNotAcceptedRegistersScreenContainer';
+import ManageAcceptedRegistersScreenContainer from '../../Containers/manageCounselors/ManageAcceptedRegistersScreenContainer';
 
 const styles = StyleSheet.create({
   container: {

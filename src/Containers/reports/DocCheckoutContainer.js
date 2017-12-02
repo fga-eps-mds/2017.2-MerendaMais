@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import DocCheckoutScreen from '../screens/reports/DocCheckoutScreen';
+import DocCheckoutScreen from '../../screens/reports/DocCheckoutScreen';
 import { setDocReportPositive,
   setDocReportNegative,
   setDocObservation,
   setStatusDoc,
-} from '../actions/reportActions';
+} from '../../actions/reportActions';
 
 const mapStateToProps = state => ({
   report: state.report.doc,

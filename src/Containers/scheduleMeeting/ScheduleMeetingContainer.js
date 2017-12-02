@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import ScheduleMeeting from '../screens/scheduleMeeting/ScheduleMeeting';
-import asyncSchedulingMeeting from '../actions/schedulingMeetingActions';
-import { asyncGetCounselorFromGroup, setMeetingNewLists } from '../actions/listActions';
+import ScheduleMeeting from '../../screens/scheduleMeeting/ScheduleMeeting';
+import asyncSchedulingMeeting from '../../actions/schedulingMeetingActions';
+import { asyncGetCounselorFromGroup, setMeetingNewLists } from '../../actions/listActions';
 
 const mapStateToProps = state => ({
   isLoading: state.application.isLoading,

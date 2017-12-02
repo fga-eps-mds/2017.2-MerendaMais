@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import WaterSewerSupplyCheckoutScreen from '../screens/reports/WaterSewerSupplyCheckoutScreen';
+import WaterSewerSupplyCheckoutScreen from '../../screens/reports/WaterSewerSupplyCheckoutScreen';
 import { setWaterSewerSupplyReportPositive,
   setWaterSewerSupplyReportNegative,
   setWaterSewerSupplyObservation,
   setStatusWaterSewerSupply,
-} from '../actions/reportActions';
+} from '../../actions/reportActions';
 
 const mapStateToProps = state => ({
   report: state.report.waterSewerSupply,

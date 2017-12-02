@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import ManageAcceptedRegistersScreenContainer from '../../src/Containers/ManageAcceptedRegistersScreenContainer';
+import ManageAcceptedRegistersScreenContainer from '../../src/Containers/manageCounselors/ManageAcceptedRegistersScreenContainer';
 
 Enzyme.configure({ adapter: new Adapter() });
 
