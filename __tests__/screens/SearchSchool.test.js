@@ -8,7 +8,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import SearchSchoolContainer from '../../src/Containers/SearchSchoolContainer';
 import SearchSchool from '../../src/screens/SearchSchool';
-import { SCHOOL_ENDPOINT } from '../../src/constants';
+import { SCHOOL_ENDPOINT } from '../../src/constants/generalConstants';
 
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -14,7 +14,7 @@ import Header from '../components/Header';
 import {
   CONTENT,
   SELECTORS,
-  RESOLUTION_26_DATE } from '../resolutionNumber26';
+  RESOLUTION_26_DATE } from '../constants/legislation/resolutionNumber26';
 
 const styles = StyleSheet.create({
   title: {

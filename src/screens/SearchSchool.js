@@ -20,13 +20,13 @@ import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
 import ShowToast from '../components/Toast';
 import SchoolListButton from '../components/SchoolListButton';
-import brazilianStates from '../brazilianStates';
-import municipalDistricts from '../municipalDistricts';
+import brazilianStates from '../constants/brazilianStates';
+import municipalDistricts from '../constants/municipalDistricts';
 
 import {
   SCHOOL_ENDPOINT,
   SCHOOL_NOT_FOUND,
-  ERROR_FIND_SCHOOL } from '../constants';
+  ERROR_FIND_SCHOOL } from '../constants/generalConstants';
 
 
 const FILE_NAME = 'SearchSchool.js';

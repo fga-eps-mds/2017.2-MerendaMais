@@ -3,7 +3,10 @@ import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
-import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, VISIT_POSTING_TYPE_CODE } from '../constants';
+import {
+  APP_IDENTIFIER,
+  POSTS_LINK_NUVEM_CIVICA,
+  VISIT_POSTING_TYPE_CODE } from '../constants/generalConstants';
 import { setPendingScheduleList,
   setExpiredScheduleList,
   setAlreadyInspectionedScheduleList,

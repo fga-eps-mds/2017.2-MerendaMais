@@ -24,9 +24,9 @@ import {
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
   CIVILIAN_ENTITIES,
-} from '../constants';
+} from '../constants/generalConstants';
 import { logInfo } from '../../logConfig/loggers';
-import brazilianStates from '../brazilianStates';
+import brazilianStates from '../constants/brazilianStates';
 import CpfField from '../components/CpfField';
 import NameField from '../components/NameField';
 import EmailField from '../components/EmailField';

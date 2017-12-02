@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 // imported as a connected component!
 // import StockFoodCheckoutScreen from '../../src/screens/StockFoodCheckoutScreen'
 import StockFoodCheckoutContainer from '../../src/Containers/StockFoodCheckoutContainer';
-import foodStock from '../../src/Reducers/Reports/foodStock';
+import foodStock from '../../src/constants/reports/foodStock';
 
 Enzyme.configure({ adapter: new Adapter() });
 

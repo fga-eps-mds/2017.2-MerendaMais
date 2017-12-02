@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // imported as a connected component!
 import SchoolSurroundingsCheckoutContainer from '../../src/Containers/SchoolSurroundingsCheckoutContainer';
-import schoolSurroundings from '../../src/Reducers/Reports/schoolSurroundings';
+import schoolSurroundings from '../../src/constants/reports/schoolSurroundings';
 
 Enzyme.configure({ adapter: new Adapter() });
 

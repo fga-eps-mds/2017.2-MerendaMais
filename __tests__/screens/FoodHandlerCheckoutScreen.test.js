@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // imported as a connected component!
 import FoodHandlerCheckoutContainer from '../../src/Containers/FoodHandlerCheckoutContainer';
-import foodHandler from '../../src/Reducers/Reports/foodHandler';
+import foodHandler from '../../src/constants/reports/foodHandler';
 
 Enzyme.configure({ adapter: new Adapter() });
 

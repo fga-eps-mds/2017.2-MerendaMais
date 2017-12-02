@@ -14,7 +14,7 @@ import Header from '../components/Header';
 import {
   CONTENT,
   SELECTORS,
-  LAW_12982_DATE } from '../lawNumber12.982';
+  LAW_12982_DATE } from '../constants/legislation/lawNumber12.982';
 
 const styles = StyleSheet.create({
   title: {

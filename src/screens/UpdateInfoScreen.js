@@ -6,16 +6,14 @@ import {
   View,
   Alert,
   Picker,
-  ScrollView,
-} from 'react-native';
+  ScrollView } from 'react-native';
 import {
   TITULAR_COUNSELOR,
   SURROGATE_COUNSELOR,
   EXECUTIVE_POWER,
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
-  CIVILIAN_ENTITIES,
-} from '../constants';
+  CIVILIAN_ENTITIES } from '../constants/generalConstants';
 import Header from '../components/Header';
 import { logInfo } from '../../logConfig/loggers';
 import DropdownComponent from '../components/DropdownComponent';
