@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import SchedulingVisit from '../screens/SchedulingVisit';
-import { asyncSchedulingVisit } from '../actions/schedulingActions';
+import { asyncSchedulingVisit } from '../actions/schedulingVisitActions';
 import { asyncGetCounselorFromGroup,
-  setNewLists } from '../actions/listActions';
+  setVisitNewLists } from '../actions/listActions';
 
 const mapStateToProps = state => ({
   listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
-  listOfInviteesWithCounselorInformations: state.list.listOfInviteesWithCounselorInformations,
-  listOfInvitees: state.list.listOfInvitees,
+  visitListOfInviteesWithCounselorInformations:
+  state.list.visitListOfInviteesWithCounselorInformations,
+  visitListOfInvitees: state.list.visitListOfInvitees,
   counselor: state.counselor,
   school: state.school,
 });
@@ -17,8 +18,8 @@ const mapDispatchToProps = dispatch => ({
 
   asyncSchedulingVisit: visitData => dispatch(asyncSchedulingVisit(visitData)),
 
-  setNewLists: newListWithInformations =>
-    dispatch(setNewLists(newListWithInformations)),
+  setVisitNewLists: visitNewListWithInformations =>
+    dispatch(setVisitNewLists(visitNewListWithInformations)),
 });
 
 const SchedulingVisitContainer = connect(mapStateToProps, mapDispatchToProps)(SchedulingVisit);

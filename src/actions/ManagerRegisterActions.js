@@ -14,13 +14,88 @@ import {
   COUNSELOR_DISABLED_FAILED,
   COUNSELOR_GROUP_DISABLED_SUCCESS,
   COUNSELOR_GROUP_DISABLED_FAILED,
-} from '../constants';
+} from '../constants/generalConstants';
 
 const FILE_NAME = 'ManageRegistersActions.js';
 
 export const resetList = () => ({
   type: RESET_LIST,
 });
+
+export const authenticatingMasterCounselor = async () => {
+  const authenticationHeader = {
+    headers: {
+      email: REACT_NATIVE_EMAIL,
+      senha: REACT_NATIVE_PASS,
+    },
+  };
+
+  return new Promise((resolve, reject) => {
+    axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
+      .then((response) => {
+        logInfo(FILE_NAME, 'authenticatingMasterCounselor',
+          `Master authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
+
+        resolve(response.headers.apptoken);
+      })
+      .catch((error) => {
+        logWarn(FILE_NAME, 'authenticatingMasterCounselor',
+          `Request result in an ${error}`);
+        reject('Não foi possível adquirir token para desassociação.');
+      });
+  });
+};
+
+export const convertingJSONToString = (profileJSON) => {
+  // Converting profile JSON to profile string received from Nuvem Civica.
+  const profileStringDoubleQuote = JSON.stringify(profileJSON);
+
+  // Changing " to '.
+  const profileStringSingleQuote = profileStringDoubleQuote.replace(/"/g, "'");
+
+  return profileStringSingleQuote;
+};
+
+const acceptCounselor = async (counselorData) => {
+  const MASTER_TOKEN = await authenticatingMasterCounselor();
+
+  const headerToAcceptCounselor = {
+    headers: {
+      appToken: MASTER_TOKEN,
+    },
+  };
+
+  const stringProfile = convertingJSONToString(counselorData.profile);
+
+  // Creating body of PUT method.
+  const bodyToAcceptCounselorProfile = {
+    camposAdicionais: stringProfile,
+    tipoPerfil: {
+      codTipoPerfil: 239,
+    },
+  };
+
+  axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToAcceptCounselorProfile, headerToAcceptCounselor)
+    .then(() => {
+      logInfo(FILE_NAME, 'acceptCounselor',
+        'Counselor Profile accept.');
+
+      Alert.alert('Conselheiro validado com sucesso');
+
+      Actions.refresh();
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'acceptCounselor',
+        `Request result in an ${error}`);
+    });
+};
+
+export const asyncAcceptCounselor = counselorData => (dispatch) => {
+  logInfo(FILE_NAME, 'asyncAcceptCounselor',
+    `counselor data to accept: ${JSON.stringify(counselorData, null, 2)}`);
+
+  acceptCounselor(counselorData, dispatch);
+};
 
 export const disableCounselorFromApp = async (counselor, MASTER_TOKEN) => {
   const disableAppHeader = {
@@ -45,30 +120,6 @@ export const disableCounselorFromApp = async (counselor, MASTER_TOKEN) => {
         logWarn(FILE_NAME, '',
           `Header: ${JSON.stringify(disableAppHeader)}`);
         reject(COUNSELOR_DISABLED_FAILED);
-      });
-  });
-};
-
-export const authenticatingMasterCounselor = async () => {
-  const authenticationHeader = {
-    headers: {
-      email: REACT_NATIVE_EMAIL,
-      senha: REACT_NATIVE_PASS,
-    },
-  };
-
-  return new Promise((resolve, reject) => {
-    axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
-      .then((response) => {
-        logInfo(FILE_NAME, 'authenticatingMasterCounselor',
-          `Master authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
-
-        resolve(response.headers.apptoken);
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'authenticatingMasterCounselor',
-          `Request result in an ${error}`);
-        reject('Não foi possível adquirir token para desassociação.');
       });
   });
 };
@@ -113,4 +164,3 @@ export const disableCounselor = (counselor, codGroup) => async (dispatch) => {
   dispatch(resetList());
   Actions.refresh();
 };
-

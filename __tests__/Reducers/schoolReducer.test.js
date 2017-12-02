@@ -16,6 +16,8 @@ describe('Testing schoolReducer', () => {
     expect(school.schoolEmail).not.toBe('schoolemail@gmail.com');
     expect(school.schoolLat).not.toBe('-150000');
     expect(school.schoolLong).not.toBe('+150000');
+    expect(school.schoolStudents).not.toBe('100');
+
 
     const receivedSchool = {
       schoolCode: 1,
@@ -24,6 +26,7 @@ describe('Testing schoolReducer', () => {
       schoolEmail: 'schoolemail@gmail.com',
       schoolLat: '-150000',
       schoolLong: '+150000',
+      schoolStudents: '100',
     };
 
     school = schoolReducer(school, {
@@ -37,6 +40,7 @@ describe('Testing schoolReducer', () => {
     expect(school.schoolEmail).toBe('schoolemail@gmail.com');
     expect(school.schoolLat).toBe('-150000');
     expect(school.schoolLong).toBe('+150000');
+    expect(school.schoolStudents).toBe('100');
   });
   it('Undefined action sended', () => {
     let school = initialState.school;
@@ -47,6 +51,7 @@ describe('Testing schoolReducer', () => {
     expect(school.schoolEmail).toBe('');
     expect(school.schoolLat).toBe('');
     expect(school.schoolLong).toBe('');
+    expect(school.schoolStudents).toBe('');
 
     const sendedSchool = school;
 

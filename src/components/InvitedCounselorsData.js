@@ -24,11 +24,11 @@ const InvitedCounselorsData = counselor => (
     </Text>
     <Text style={styles.text}>
       <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-      {counselor.cpf}
+      {counselor.profile.cpf}
     </Text>
     <Text style={styles.text}>
       <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-      {counselor.phone}
+      {counselor.profile.phone}
     </Text>
   </View>
 );

@@ -24,13 +24,15 @@ const initialStateToScreen = {
 
   listOfCounselorsInAGroup: [
     {
-      name: 'Lucas Penido Antunes',
-      cpf: '11111111111',
-      phone: '11111111111',
+      name: 'Teste',
+      profile: {
+        cpf: '11111111111',
+        phone: '11111111111',
+      },
     },
   ],
 
-  listOfInviteesWithCounselorInformations: {
+  visitListOfInviteesWithCounselorInformations: {
     6122: {
       nuvemCode: 6122,
       name: 'Lucas Penido Antunes',
@@ -45,7 +47,7 @@ const initialStateToScreen = {
     },
   },
 
-  listOfInvitees: {
+  visitListOfInvitees: {
     6122: {
       nuvemCode: 6122,
       confirmed: false,
@@ -64,12 +66,14 @@ const initialState = {
     listOfCounselorsInAGroup: [
       {
         name: 'Lucas Penido Antunes',
-        cpf: '11111111111',
-        phone: '11111111111',
+        profile: {
+          cpf: '11111111111',
+          phone: '11111111111',
+        },
       },
     ],
 
-    listOfInviteesWithCounselorInformations: {
+    visitListOfInviteesWithCounselorInformations: {
       6122: {
         nuvemCode: 6122,
         name: 'Lucas Penido Antunes',
@@ -84,7 +88,7 @@ const initialState = {
       },
     },
 
-    listOfInvitees: {
+    visitListOfInvitees: {
       6122: {
         nuvemCode: 6122,
         confirmed: false,
@@ -107,7 +111,7 @@ const initialState = {
     codSchool: 32,
     date: '31-12-2017',
     time: '18:30',
-    listOfInvitees: {
+    visitListOfInvitees: {
       6122: {
         nuvemCode: 6122,
         confirmed: false,
@@ -182,7 +186,7 @@ describe('Testing SchedulingVisit buttons', () => {
         codSchool: 32,
         date: '31-12-2017',
         time: '18:30',
-        listOfInvitees: {
+        visitListOfInvitees: {
           6122: {
             nuvemCode: 6122,
             confirmed: false,

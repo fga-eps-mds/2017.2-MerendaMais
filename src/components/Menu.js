@@ -46,6 +46,26 @@ class Menu extends React.PureComponent {
           onPress={() => { Actions.schedulingVisit(); }}
         />
         <MenuButton
+          key="scheduleMeeting"
+          text="Agendar reunião"
+          iconName="insert-invitation"
+          onPress={() => { Actions.scheduleMeeting(); }}
+        />
+        {this.props.counselor.profile.isPresident && (
+          <MenuButton
+            key="manageRegisters"
+            text="Gerenciar Conselheiros"
+            iconName="group-work"
+            onPress={() => { Actions.manageRegisters(); }}
+          />
+        )}
+        <MenuButton
+          key="seeLegislation"
+          text="Consultar Legislação"
+          iconName="gavel"
+          onPress={() => { Actions.lesgislationScreen(); }}
+        />
+        <MenuButton
           key="logout"
           text="Sair"
           iconName="logout"
@@ -60,14 +80,6 @@ class Menu extends React.PureComponent {
           )}
           isLogout
         />
-        {this.props.counselor.profile.isPresident && (
-          <MenuButton
-            key="manageRegisters"
-            text="Gerenciar Conselheiros"
-            iconName="group-work"
-            onPress={() => { Actions.manageRegisters(); }}
-          />
-        )}
       </View>
     );
   }
