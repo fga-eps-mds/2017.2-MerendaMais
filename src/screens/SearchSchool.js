@@ -328,8 +328,11 @@ class SearchSchool extends React.Component {
                   selectedValue={this.state.uf}
                 >
                   <Picker.Item value="" label="Escolha a sua UF " color="#95a5a6" />
-                  {brazilianStates.estados.map(item =>
-                    (<Picker.Item label={item} value={item} color="#000000" />))}
+                  {
+                    brazilianStates.estados.map(item => (
+                      <Picker.Item label={item} value={item} key={item} color="#000000" />
+                    ))
+                  }
                 </Picker>
               </View>
 
