@@ -100,7 +100,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
             }
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-              {Object.keys(schedule.listOfInvitees).length}
+              {Object.keys(schedule.visitListOfInvitees).length}
             </Text>
           </View>
           <View style={styles.buttonBox}>

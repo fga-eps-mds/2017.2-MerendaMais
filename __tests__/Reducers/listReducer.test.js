@@ -117,7 +117,7 @@ describe('Testing listReducer', () => {
         schoolName: 'FGA',
         date: '13-12-2017',
         time: '16:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           1010: {
             confirmed: true,
             nuvemCode: 1010,
@@ -134,7 +134,7 @@ describe('Testing listReducer', () => {
         schoolName: 'FGA',
         date: '11-12-2017',
         time: '15:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           2017: {
             confirmed: true,
             nuvemCode: 2017,
@@ -179,7 +179,7 @@ describe('Testing listReducer', () => {
         schoolName: 'FGA',
         date: '13-12-2017',
         time: '16:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           1010: {
             confirmed: true,
             nuvemCode: 1010,
@@ -196,7 +196,7 @@ describe('Testing listReducer', () => {
         schoolName: 'FGA',
         date: '11-12-2017',
         time: '15:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           2017: {
             confirmed: true,
             nuvemCode: 2017,
@@ -241,7 +241,7 @@ describe('Testing listReducer', () => {
         schoolName: 'FGA',
         date: '13-12-2017',
         time: '16:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           1010: {
             confirmed: true,
             nuvemCode: 1010,
@@ -258,7 +258,7 @@ describe('Testing listReducer', () => {
         schoolName: 'FGA',
         date: '11-12-2017',
         time: '15:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           2017: {
             confirmed: true,
             nuvemCode: 2017,

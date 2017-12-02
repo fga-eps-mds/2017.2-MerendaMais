@@ -125,8 +125,8 @@ class StartPendingInspection extends React.Component {
   }
 
   mountvisitListOfInvitees(visitListOfInvitees) {
-    let list = [];
-
+    const list = [];
+    this.setState({ invitees: [] });
     // Faz um map da list de conselheiros do CAE
     this.props.listOfCounselorsInAGroup.map((counselor) => {
       /* caso o conselheiro do CAE esteja na lista de convidados
@@ -145,7 +145,6 @@ class StartPendingInspection extends React.Component {
 
       return null;
     });
-    list = [];
     this.popupDialog.show();
   }
 
@@ -189,23 +188,23 @@ class StartPendingInspection extends React.Component {
       );
     }
     return (
-      this.props.listOfPendingScheduleInAGroup.map(schedule => (
-        <View style={styles.listSchedule}>
+      this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
+        <View style={styles.listSchedule} key={visitSchedule.codPostagem}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {schedule.schoolName}
+              {visitSchedule.content.schoolName}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {schedule.date}
+              {visitSchedule.content.date}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {schedule.time}
+              {visitSchedule.content.time}
             </Text>
             {
-              schedule.invitedAgent ? (
+              visitSchedule.content.invitedAgent ? (
                 <Text style={styles.text}>
                   <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
                 </Text>
@@ -216,14 +215,15 @@ class StartPendingInspection extends React.Component {
             }
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-              {Object.keys(schedule.visitListOfInvitees).length}
+              {Object.keys(visitSchedule.content.visitListOfInvitees).length}
             </Text>
           </View>
           <View>
-            {this.verification(schedule.visitListOfInvitees)}
+            {this.verification(visitSchedule.content.visitListOfInvitees)}
             <View style={styles.buttonInvitees}>
               <TouchableOpacity
-                onPress={() => this.mountvisitListOfInvitees(schedule.visitListOfInvitees)}
+                onPress={() =>
+                  this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
               >
                 <Text style={styles.buttonText}>CONVIDADOS</Text>
               </TouchableOpacity>
@@ -244,12 +244,12 @@ class StartPendingInspection extends React.Component {
               {counselor.name}
             </Text>
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.cpf}
+              <Text style={{ fontWeight: 'bold' }}>Email: </Text>
+              {counselor.email}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.phone}
+              {counselor.profile.phone}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>

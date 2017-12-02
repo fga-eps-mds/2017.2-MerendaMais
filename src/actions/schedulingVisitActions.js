@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Alert } from 'react-native';
 import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
@@ -24,15 +25,15 @@ const convertingContentStringToJSON = (profileStringSingleQuote) => {
   return profileJSON;
 };
 
-const verifyDate = (schedule) => {
+const verifyDate = (visitSchedule) => {
   const date = new Date();
   const systemDay = date.getDate();
   const systemMonth = date.getMonth() + 1;
   const systemYear = date.getFullYear();
 
-  const daySchedule = schedule.date.substr(0, 2);
-  const monthSchedule = schedule.date.substr(3, 2);
-  const yearSchedule = schedule.date.substr(6);
+  const daySchedule = visitSchedule.content.date.substr(0, 2);
+  const monthSchedule = visitSchedule.content.date.substr(3, 2);
+  const yearSchedule = visitSchedule.content.date.substr(6);
 
   if (yearSchedule < systemYear) {
     return true;
@@ -51,20 +52,20 @@ const verifyDate = (schedule) => {
 };
 
 
-const defineScheduleStatus = (schedule, counselor, dispatch) => {
-  if (schedule.visitListOfInvitees[counselor.nuvemCode] !== undefined) {
-    if (schedule.visitListOfInvitees[counselor.nuvemCode].realizedVisit) {
-      dispatch(setAlreadyInspectionedScheduleList(schedule));
-    } else if (verifyDate(schedule)) {
-      dispatch(setExpiredScheduleList(schedule));
+const defineScheduleStatus = (visitSchedule, counselor, dispatch) => {
+  if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode] !== undefined) {
+    if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode].realizedVisit) {
+      dispatch(setAlreadyInspectionedScheduleList(visitSchedule));
+    } else if (verifyDate(visitSchedule)) {
+      dispatch(setExpiredScheduleList(visitSchedule));
     } else {
-      dispatch(setPendingScheduleList(schedule));
+      dispatch(setPendingScheduleList(visitSchedule));
     }
-  } else if (schedule.visitListOfInvitees[counselor.nuvemCode] === undefined) {
-    if (verifyDate(schedule)) {
-      dispatch(setExpiredScheduleList(schedule));
+  } else if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode] === undefined) {
+    if (verifyDate(visitSchedule)) {
+      dispatch(setExpiredScheduleList(visitSchedule));
     } else {
-      dispatch(setPendingScheduleList(schedule));
+      dispatch(setPendingScheduleList(visitSchedule));
     }
   }
 };
@@ -79,8 +80,14 @@ const getContent = (contentLink, counselor, dispatch) => {
     .then((response) => {
       logInfo(FILE_NAME, 'asyncGetSchedule',
         `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
-      const content = convertingContentStringToJSON(response.data.JSON);
-      defineScheduleStatus(content, counselor, dispatch);
+
+      const visitSchedule = {
+        codPostagem: response.data.postagem.codPostagem,
+        codConteudoPost: response.data.codConteudoPost,
+        content: convertingContentStringToJSON(response.data.JSON),
+      };
+
+      defineScheduleStatus(visitSchedule, counselor, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',
@@ -134,16 +141,14 @@ const treatingPostsError = (error) => {
 
 const sendEmailAlert = (visitData) => {
   const agentEmail = (visitData.visit.agentEmail);
-  if (visitData.visit.invitedAgent) {
-    Communications.email(
-    // To, cc, bcc, subject, email text
-      [agentEmail],
-      null,
-      null,
-      'Subject',
-      'Email Body text');
-  }
-  Actions.mainScreen();
+
+  Communications.email(
+  // To, cc, bcc, subject, email text
+    [agentEmail],
+    null,
+    null,
+    'Subject',
+    'Email Body text');
 };
 
 
@@ -187,7 +192,16 @@ const schedulingVisit = (visitData) => {
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
-      sendEmailAlert(visitData);
+      if (visitData.visit.invitedAgent) {
+        sendEmailAlert(visitData);
+      }
+      Alert.alert(
+        'Agendamento Realizado',
+        'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
+        [
+          { text: 'Ok', onPress: () => Actions.mainScreen(), style: 'cancel' },
+        ],
+        { cancelable: false });
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',

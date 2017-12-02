@@ -26,7 +26,7 @@ const listReducer = (state = initialState.list, action) => {
         listOfCheckedCounselors: [],
         listOfNotCheckedCounselors: [],
         listOfInviteesWithCounselorInformations: {},
-        listOfInvitees: {},
+        visitListOfInvitees: {},
         listOfPendingScheduleInAGroup: [],
         listOfExpiredScheduleInAGroup: [],
         listOfAlreadyInpectionedSchedueInAGroup: [],
