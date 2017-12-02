@@ -11,7 +11,7 @@ import { SET_LIST_COUNSELOR_GROUP,
 import { logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
-  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
+  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants/generalConstants';
 
 const FILE_NAME = 'listActions.js';
 

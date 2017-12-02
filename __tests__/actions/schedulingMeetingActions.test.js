@@ -2,7 +2,7 @@
 // import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../src/actions/schedulingMeetingActions';
 import * as types from '../../src/actions/types';
-// import { POSTS_LINK_NUVEM_CIVICA } from '../../src/constants';
+// import { POSTS_LINK_NUVEM_CIVICA } from '../../src/constants/generalConstants';
 
 const LATITUDE = 0.9;
 const LONGITUDE = 0.8;

@@ -4,7 +4,7 @@ import openMap from 'react-native-open-maps';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, BackHandler } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { SCHOOL_ENDPOINT } from '../constants';
+import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
 

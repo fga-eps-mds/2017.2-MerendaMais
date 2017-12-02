@@ -4,7 +4,10 @@ import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
 import { isLoading, isNotLoading } from './applicationActions';
-import { APP_IDENTIFIER, POSTS_LINK_NUVEM_CIVICA, MEETING_POSTING_TYPE_CODE } from '../constants';
+import {
+  APP_IDENTIFIER,
+  POSTS_LINK_NUVEM_CIVICA,
+  MEETING_POSTING_TYPE_CODE } from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 
 const FILE_NAME = 'schedulingMeetingActions.js';

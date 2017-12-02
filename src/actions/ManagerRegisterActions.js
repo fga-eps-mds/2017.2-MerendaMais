@@ -14,7 +14,7 @@ import {
   COUNSELOR_DISABLED_FAILED,
   COUNSELOR_GROUP_DISABLED_SUCCESS,
   COUNSELOR_GROUP_DISABLED_FAILED,
-} from '../constants';
+} from '../constants/generalConstants';
 
 const FILE_NAME = 'ManageRegistersActions.js';
 

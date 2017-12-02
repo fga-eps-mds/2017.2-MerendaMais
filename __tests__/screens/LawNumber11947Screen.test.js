@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
-import LawNumber11947Screen from '../../src/screens/LawNumber11947Screen';
+import LawNumber11947Screen from '../../src/screens/legislation/LawNumber11947Screen';
 // imported as a connected component!
 
 
