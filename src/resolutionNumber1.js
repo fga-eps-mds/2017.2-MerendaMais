@@ -63,8 +63,4 @@ export const SELECTORS = [
     title: 'Artigo 2º',
     value: 2,
   },
-  {
-    title: 'None',
-    value: false,
-  },
 ];

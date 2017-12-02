@@ -6,7 +6,6 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
     Object {
       "backgroundColor": "white",
       "flex": 1,
-      "paddingBottom": 20,
     }
   }
 >
@@ -124,38 +123,6 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
             style={false}
           >
             Artigo 2º
-          </Text>
-        </View>
-      </TouchableHighlight>
-      <TouchableHighlight
-        activeOpacity={0.85}
-        key="None"
-        onPress={[Function]}
-        underlayColor="black"
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#F5FCFF",
-              "paddingBottom": 20,
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 10,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            None
           </Text>
         </View>
       </TouchableHighlight>

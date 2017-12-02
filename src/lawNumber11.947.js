@@ -173,8 +173,4 @@ export const SELECTORS = [
     title: 'Capitulo III',
     value: 2,
   },
-  {
-    title: 'Nenhum',
-    value: false,
-  },
 ];

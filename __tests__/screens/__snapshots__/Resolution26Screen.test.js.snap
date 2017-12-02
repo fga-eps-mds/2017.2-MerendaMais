@@ -491,38 +491,6 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           </Text>
         </View>
       </TouchableHighlight>
-      <TouchableHighlight
-        activeOpacity={0.85}
-        key="Nenhum"
-        onPress={[Function]}
-        underlayColor="black"
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#F5FCFF",
-              "paddingBottom": 20,
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 10,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            Nenhum
-          </Text>
-        </View>
-      </TouchableHighlight>
     </View>
   </ScrollViewMock>
   <ScrollViewMock>

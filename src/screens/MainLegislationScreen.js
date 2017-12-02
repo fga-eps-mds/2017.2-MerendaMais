@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FAFAFA',
   },
-
   buttonContainer: {
     paddingVertical: 10,
     borderWidth: 1,
@@ -20,7 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
-
   buttonText: {
     paddingLeft: 20,
     paddingTop: 5,
@@ -40,11 +38,13 @@ const styles = StyleSheet.create({
   },
   fieldStyle: {
     padding: 15,
+    margin: 6,
     backgroundColor: 'white',
     flexDirection: 'row',
     borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 2,
+    borderWidth: 2,
+    borderRadius: 3,
+    justifyContent: 'space-between',
   },
 });
 
@@ -63,6 +63,8 @@ const MainLegislationScreen = () => ({
               onPress={() => Actions.resolution1Screen()}
               style={styles.fieldStyle}
             >
+              <Text style={styles.buttonTexts}>Resolução Nº 1</Text>
+
               <TouchableOpacity
                 onPress={() => Alert.alert(
                   'Resolução CD/FNDE/MEC Nº 1',
@@ -71,13 +73,15 @@ const MainLegislationScreen = () => ({
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
-              <Text style={styles.buttonTexts}>Resolução Nº 1</Text>
+
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => Actions.resolution26Screen()}
               style={styles.fieldStyle}
             >
+              <Text style={styles.buttonTexts}>Resolução Nº 26</Text>
+
               <TouchableOpacity
                 onPress={() => Alert.alert(
                   'Resolução/CD/FNDE nº 26',
@@ -86,13 +90,15 @@ const MainLegislationScreen = () => ({
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
-              <Text style={styles.buttonTexts}>Resolução Nº 26</Text>
+
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => Actions.lawNumber11947Screen()}
               style={styles.fieldStyle}
             >
+              <Text style={styles.buttonTexts}>Lei Nº 11.947</Text>
+
               <TouchableOpacity
                 onPress={() => Alert.alert(
                   'Lei Nº 11.947, DE 16 DE JUNHO DE 2009.',
@@ -101,13 +107,15 @@ const MainLegislationScreen = () => ({
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
-              <Text style={styles.buttonTexts}>Lei Nº 11.947</Text>
+
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => Actions.lawNumber12982Screen()}
               style={styles.fieldStyle}
             >
+              <Text style={styles.buttonTexts}>Lei N° 12.982</Text>
+
               <TouchableOpacity
                 onPress={() => Alert.alert(
                   'Lei nº 12.982, de 28 de maio de 2014',
@@ -116,7 +124,7 @@ const MainLegislationScreen = () => ({
               >
                 <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
-              <Text style={styles.buttonTexts}>Lei N° 12.982</Text>
+
             </TouchableOpacity>
 
             <TouchableOpacity

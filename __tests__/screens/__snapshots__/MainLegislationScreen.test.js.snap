@@ -129,9 +129,11 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
             Object {
               "backgroundColor": "white",
               "borderColor": "black",
-              "borderRadius": 2,
-              "borderWidth": 1,
+              "borderRadius": 3,
+              "borderWidth": 2,
               "flexDirection": "row",
+              "justifyContent": "space-between",
+              "margin": 6,
               "opacity": 1,
               "padding": 15,
             }
@@ -139,37 +141,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           testID={undefined}
           tvParallaxProperties={undefined}
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            collapsable={undefined}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            nativeID={undefined}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-            />
-          </View>
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -186,37 +157,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           >
             Resolução Nº 1
           </Text>
-        </View>
-        <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          collapsable={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "backgroundColor": "white",
-              "borderColor": "black",
-              "borderRadius": 2,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "opacity": 1,
-              "padding": 15,
-            }
-          }
-          testID={undefined}
-          tvParallaxProperties={undefined}
-        >
           <View
             accessibilityComponentType={undefined}
             accessibilityLabel={undefined}
@@ -248,6 +188,39 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
               ellipsizeMode="tail"
             />
           </View>
+        </View>
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          collapsable={undefined}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          nativeID={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderColor": "black",
+              "borderRadius": 3,
+              "borderWidth": 2,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "margin": 6,
+              "opacity": 1,
+              "padding": 15,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -264,37 +237,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           >
             Resolução Nº 26
           </Text>
-        </View>
-        <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          collapsable={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "backgroundColor": "white",
-              "borderColor": "black",
-              "borderRadius": 2,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "opacity": 1,
-              "padding": 15,
-            }
-          }
-          testID={undefined}
-          tvParallaxProperties={undefined}
-        >
           <View
             accessibilityComponentType={undefined}
             accessibilityLabel={undefined}
@@ -326,6 +268,39 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
               ellipsizeMode="tail"
             />
           </View>
+        </View>
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          collapsable={undefined}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          nativeID={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderColor": "black",
+              "borderRadius": 3,
+              "borderWidth": 2,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "margin": 6,
+              "opacity": 1,
+              "padding": 15,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -342,37 +317,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           >
             Lei Nº 11.947
           </Text>
-        </View>
-        <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          collapsable={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "backgroundColor": "white",
-              "borderColor": "black",
-              "borderRadius": 2,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "opacity": 1,
-              "padding": 15,
-            }
-          }
-          testID={undefined}
-          tvParallaxProperties={undefined}
-        >
           <View
             accessibilityComponentType={undefined}
             accessibilityLabel={undefined}
@@ -404,22 +348,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
               ellipsizeMode="tail"
             />
           </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "fontSize": 20,
-                "fontWeight": "bold",
-                "padding": 5,
-              }
-            }
-          >
-            Lei N° 12.982
-          </Text>
         </View>
         <View
           accessibilityComponentType={undefined}
@@ -441,9 +369,91 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
             Object {
               "backgroundColor": "white",
               "borderColor": "black",
-              "borderRadius": 2,
-              "borderWidth": 1,
+              "borderRadius": 3,
+              "borderWidth": 2,
               "flexDirection": "row",
+              "justifyContent": "space-between",
+              "margin": 6,
+              "opacity": 1,
+              "padding": 15,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "blue",
+                "fontSize": 20,
+                "fontWeight": "bold",
+                "padding": 5,
+              }
+            }
+          >
+            Lei N° 12.982
+          </Text>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              disabled={false}
+              ellipsizeMode="tail"
+            />
+          </View>
+        </View>
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          collapsable={undefined}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          nativeID={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderColor": "black",
+              "borderRadius": 3,
+              "borderWidth": 2,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "margin": 6,
               "opacity": 1,
               "padding": 15,
             }
@@ -488,9 +498,11 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
             Object {
               "backgroundColor": "white",
               "borderColor": "black",
-              "borderRadius": 2,
-              "borderWidth": 1,
+              "borderRadius": 3,
+              "borderWidth": 2,
               "flexDirection": "row",
+              "justifyContent": "space-between",
+              "margin": 6,
               "opacity": 1,
               "padding": 15,
             }

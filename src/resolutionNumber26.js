@@ -654,8 +654,4 @@ export const SELECTORS = [
     title: 'Anexos',
     value: 15,
   },
-  {
-    title: 'Nenhum',
-    value: false,
-  },
 ];

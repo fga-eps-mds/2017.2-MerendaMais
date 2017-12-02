@@ -63,7 +63,7 @@ export default class Resolution1Screen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white', paddingBottom: 20 }}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header
           title={'Legislação'}
           subTitle={'Resolução Nº 1'}
