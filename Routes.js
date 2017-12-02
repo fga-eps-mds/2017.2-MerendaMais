@@ -26,7 +26,11 @@ import PrincipalStartInspection from './src/screens/PrincipalStartInspection';
 import ScheduleMeetingContainer from './src/Containers/ScheduleMeetingContainer';
 import ScheduleMeetingMapContainer from './src/Containers/ScheduleMeetingMapContainer';
 import PrincipalManageRegister from './src/screens/PrincipalManageRegister';
-
+import MainLegislationScreen from './src/screens/MainLegislationScreen';
+import Resolution26Screen from './src/screens/Resolution26Screen';
+import Resolution1Screen from './src/screens/Resolution1Screen';
+import LawNumber11947Screen from './src/screens/LawNumber11947Screen';
+import LawNumber12982Screen from './src/screens/LawNumber12982Screen';
 
 const Routes = () => ({
   render() {
@@ -112,6 +116,11 @@ const Routes = () => ({
               hideNavBar
             />
             <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
+            <Scene key="lesgislationScreen" component={MainLegislationScreen} hideNavBar />
+            <Scene key="resolution26Screen" component={Resolution26Screen} hideNavBar />
+            <Scene key="resolution1Screen" component={Resolution1Screen} hideNavBar />
+            <Scene key="lawNumber11947Screen" component={LawNumber11947Screen} hideNavBar />
+            <Scene key="lawNumber12982Screen" component={LawNumber12982Screen} hideNavBar />
           </Scene>
         </Drawer>
       </Router>

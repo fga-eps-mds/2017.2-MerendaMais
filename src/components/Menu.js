@@ -60,6 +60,12 @@ class Menu extends React.PureComponent {
           />
         )}
         <MenuButton
+          key="seeLegislation"
+          text="Consultar Legislação"
+          iconName="gavel"
+          onPress={() => { Actions.lesgislationScreen(); }}
+        />
+        <MenuButton
           key="logout"
           text="Sair"
           iconName="logout"
