@@ -52,15 +52,15 @@ const verifyDate = (schedule) => {
 
 
 const defineScheduleStatus = (schedule, counselor, dispatch) => {
-  if (schedule.listOfInvitees[counselor.nuvemCode] !== undefined) {
-    if (schedule.listOfInvitees[counselor.nuvemCode].realizedVisit) {
+  if (schedule.visitListOfInvitees[counselor.nuvemCode] !== undefined) {
+    if (schedule.visitListOfInvitees[counselor.nuvemCode].realizedVisit) {
       dispatch(setAlreadyInspectionedScheduleList(schedule));
     } else if (verifyDate(schedule)) {
       dispatch(setExpiredScheduleList(schedule));
     } else {
       dispatch(setPendingScheduleList(schedule));
     }
-  } else if (schedule.listOfInvitees[counselor.nuvemCode] === undefined) {
+  } else if (schedule.visitListOfInvitees[counselor.nuvemCode] === undefined) {
     if (verifyDate(schedule)) {
       dispatch(setExpiredScheduleList(schedule));
     } else {

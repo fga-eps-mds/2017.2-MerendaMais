@@ -124,7 +124,7 @@ class StartPendingInspection extends React.Component {
       this.props.counselor.profile.cpf);
   }
 
-  mountListOfInvitees(listOfInvitees) {
+  mountvisitListOfInvitees(visitListOfInvitees) {
     let list = [];
 
     // Faz um map da list de conselheiros do CAE
@@ -133,11 +133,11 @@ class StartPendingInspection extends React.Component {
       ele será adicionado numa lista com suas informações
       O conselheiro da sessão não será mostrado por que ele não é colocado em
       listOfCounselorsInAGroup */
-      if (listOfInvitees[counselor.nuvemCode] !== undefined) {
+      if (visitListOfInvitees[counselor.nuvemCode] !== undefined) {
         const completeCounselor = {
           ...counselor,
-          confirmed: listOfInvitees[counselor.nuvemCode].confirmed,
-          realizedVisit: listOfInvitees[counselor.nuvemCode].realizedVisit,
+          confirmed: visitListOfInvitees[counselor.nuvemCode].confirmed,
+          realizedVisit: visitListOfInvitees[counselor.nuvemCode].realizedVisit,
         };
         list.push(completeCounselor);
         return this.setState({ invitees: list });
@@ -149,8 +149,8 @@ class StartPendingInspection extends React.Component {
     this.popupDialog.show();
   }
 
-  verification(listOfInvitees) {
-    if (listOfInvitees[this.props.counselor.nuvemCode] === undefined) {
+  verification(visitListOfInvitees) {
+    if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
       return (
         <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
           <TouchableOpacity
@@ -160,7 +160,7 @@ class StartPendingInspection extends React.Component {
           </TouchableOpacity>
         </View>
       );
-    } else if (!listOfInvitees[this.props.counselor.nuvemCode].confirmed) {
+    } else if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
       return (
         <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
           <TouchableOpacity
@@ -216,14 +216,14 @@ class StartPendingInspection extends React.Component {
             }
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-              {Object.keys(schedule.listOfInvitees).length}
+              {Object.keys(schedule.visitListOfInvitees).length}
             </Text>
           </View>
           <View>
-            {this.verification(schedule.listOfInvitees)}
+            {this.verification(schedule.visitListOfInvitees)}
             <View style={styles.buttonInvitees}>
               <TouchableOpacity
-                onPress={() => this.mountListOfInvitees(schedule.listOfInvitees)}
+                onPress={() => this.mountvisitListOfInvitees(schedule.visitListOfInvitees)}
               >
                 <Text style={styles.buttonText}>CONVIDADOS</Text>
               </TouchableOpacity>
