@@ -14,135 +14,151 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
     subTitle="Lei Nº 11.947"
     title="Legislação"
   />
-  <View
-    style={
-      Object {
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "marginBottom": 10,
-      }
-    }
+  <ScrollViewMock
+    horizontal={true}
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
+    <View
       style={
         Object {
-          "fontSize": 14,
-          "fontWeight": "500",
-          "padding": 10,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginBottom": 10,
         }
       }
     >
-      Selecionar:
-    </Text>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="Capitulo I"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
         style={
           Object {
-            "backgroundColor": "#F5FCFF",
+            "fontSize": 14,
+            "fontWeight": "500",
             "padding": 10,
           }
         }
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={false}
-        >
-          Capitulo I
-        </Text>
-      </View>
-    </TouchableHighlight>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="Capitulo II"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#F5FCFF",
-            "padding": 10,
-          }
-        }
+        Selecionar:
+      </Text>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="Capitulo I"
+        onPress={[Function]}
+        underlayColor="black"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={false}
-        >
-          Capitulo II
-        </Text>
-      </View>
-    </TouchableHighlight>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="Capitulo III"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#F5FCFF",
-            "padding": 10,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={false}
-        >
-          Capitulo III
-        </Text>
-      </View>
-    </TouchableHighlight>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="Nenhum"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#F5FCFF",
-            "padding": 10,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
+        <View
           style={
             Object {
-              "fontWeight": "bold",
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             }
           }
         >
-          Nenhum
-        </Text>
-      </View>
-    </TouchableHighlight>
-  </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={false}
+          >
+            Capitulo I
+          </Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="Capitulo II"
+        onPress={[Function]}
+        underlayColor="black"
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={false}
+          >
+            Capitulo II
+          </Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="Capitulo III"
+        onPress={[Function]}
+        underlayColor="black"
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={false}
+          >
+            Capitulo III
+          </Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="Nenhum"
+        onPress={[Function]}
+        underlayColor="black"
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Nenhum
+          </Text>
+        </View>
+      </TouchableHighlight>
+    </View>
+  </ScrollViewMock>
   <ScrollViewMock>
     <Text
       accessible={true}

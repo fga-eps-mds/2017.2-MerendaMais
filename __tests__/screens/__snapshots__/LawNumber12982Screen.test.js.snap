@@ -63,35 +63,6 @@ exports[`Testing LawNumber12982Screen renders as expected 1`] = `
         </Text>
       </View>
     </TouchableHighlight>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="Nenhum"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#F5FCFF",
-            "padding": 10,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "fontWeight": "bold",
-            }
-          }
-        >
-          Nenhum
-        </Text>
-      </View>
-    </TouchableHighlight>
   </View>
   <ScrollViewMock>
     <Text

@@ -26,9 +26,4 @@ export const SELECTORS = [
     title: 'Capitulo I',
     value: 0,
   },
-
-  {
-    title: 'Nenhum',
-    value: false,
-  },
 ];

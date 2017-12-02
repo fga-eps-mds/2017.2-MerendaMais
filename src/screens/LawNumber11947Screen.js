@@ -30,7 +30,10 @@ const styles = StyleSheet.create({
   },
   selector: {
     backgroundColor: '#F5FCFF',
-    padding: 10,
+    paddingBottom: 20,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   activeSelector: {
     fontWeight: 'bold',
@@ -65,22 +68,27 @@ export default class LawNumber11947Screen extends Component {
           subTitle={'Lei Nº 11.947'}
           backButton
         />
-
-        <View style={styles.selectors}>
-          <Text style={styles.selectTitle}>Selecionar:</Text>
-          {SELECTORS.map(selector => (
-            <TouchableHighlight
-              key={selector.title}
-              onPress={() => this.setSection(selector.value)}
-            >
-              <View style={styles.selector}>
-                <Text style={selector.value === this.state.activeSection && styles.activeSelector}>
-                  {selector.title}
-                </Text>
-              </View>
-            </TouchableHighlight>
-          ))}
-        </View>
+        <ScrollView
+          horizontal
+        >
+          <View style={styles.selectors}>
+            <Text style={styles.selectTitle}>Selecionar:</Text>
+            {SELECTORS.map(selector => (
+              <TouchableHighlight
+                key={selector.title}
+                onPress={() => this.setSection(selector.value)}
+              >
+                <View style={styles.selector}>
+                  <Text
+                    style={selector.value === this.state.activeSection && styles.activeSelector}
+                  >
+                    {selector.title}
+                  </Text>
+                </View>
+              </TouchableHighlight>
+            ))}
+          </View>
+        </ScrollView>
         <ScrollView>
           <Text style={styles.title}>{LAW_11947_DATE}</Text>
           <Accordion

@@ -655,7 +655,7 @@ export const SELECTORS = [
     value: 15,
   },
   {
-    title: 'None',
+    title: 'Nenhum',
     value: false,
   },
 ];

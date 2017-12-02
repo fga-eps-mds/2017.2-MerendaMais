@@ -6,6 +6,7 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
     Object {
       "backgroundColor": "white",
       "flex": 1,
+      "paddingBottom": 20,
     }
   }
 >
@@ -14,135 +15,152 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
     subTitle="Resolução Nº 1"
     title="Legislação"
   />
-  <View
-    style={
-      Object {
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "marginBottom": 10,
-      }
-    }
+  <ScrollViewMock
+    horizontal={true}
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
+    <View
       style={
         Object {
-          "fontSize": 14,
-          "fontWeight": "500",
-          "padding": 10,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginBottom": 10,
         }
       }
     >
-      Select:
-    </Text>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="FUNDAMENTAÇÃO LEGAL:"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
         style={
           Object {
-            "backgroundColor": "#F5FCFF",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "justifyContent": "center",
             "padding": 10,
           }
         }
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={false}
-        >
-          FUNDAMENTAÇÃO LEGAL:
-        </Text>
-      </View>
-    </TouchableHighlight>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="Artigo 1º"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#F5FCFF",
-            "padding": 10,
-          }
-        }
+        Selecionar:
+      </Text>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="FUNDAMENTAÇÃO LEGAL:"
+        onPress={[Function]}
+        underlayColor="black"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={false}
-        >
-          Artigo 1º
-        </Text>
-      </View>
-    </TouchableHighlight>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="Artigo 2º"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#F5FCFF",
-            "padding": 10,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={false}
-        >
-          Artigo 2º
-        </Text>
-      </View>
-    </TouchableHighlight>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      key="None"
-      onPress={[Function]}
-      underlayColor="black"
-    >
-      <View
-        style={
-          Object {
-            "backgroundColor": "#F5FCFF",
-            "padding": 10,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
+        <View
           style={
             Object {
-              "fontWeight": "bold",
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             }
           }
         >
-          None
-        </Text>
-      </View>
-    </TouchableHighlight>
-  </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={false}
+          >
+            FUNDAMENTAÇÃO LEGAL:
+          </Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="Artigo 1º"
+        onPress={[Function]}
+        underlayColor="black"
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={false}
+          >
+            Artigo 1º
+          </Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="Artigo 2º"
+        onPress={[Function]}
+        underlayColor="black"
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={false}
+          >
+            Artigo 2º
+          </Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        activeOpacity={0.85}
+        key="None"
+        onPress={[Function]}
+        underlayColor="black"
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#F5FCFF",
+              "paddingBottom": 20,
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            None
+          </Text>
+        </View>
+      </TouchableHighlight>
+    </View>
+  </ScrollViewMock>
   <ScrollViewMock>
     <Text
       accessible={true}

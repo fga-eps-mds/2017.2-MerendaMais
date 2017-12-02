@@ -30,7 +30,10 @@ const styles = StyleSheet.create({
   },
   selector: {
     backgroundColor: '#F5FCFF',
-    padding: 10,
+    paddingBottom: 20,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   activeSelector: {
     fontWeight: 'bold',
@@ -39,6 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     padding: 10,
+    justifyContent: 'center',
   },
 });
 
@@ -65,22 +69,27 @@ export default class Resolution26Screen extends Component {
           subTitle={'Resolução Nº 26'}
           backButton
         />
-
-        <View style={styles.selectors}>
-          <Text style={styles.selectTitle}>Select:</Text>
-          {SELECTORS.map(selector => (
-            <TouchableHighlight
-              key={selector.title}
-              onPress={() => this.setSection(selector.value)}
-            >
-              <View style={styles.selector}>
-                <Text style={selector.value === this.state.activeSection && styles.activeSelector}>
-                  {selector.title}
-                </Text>
-              </View>
-            </TouchableHighlight>
-          ))}
-        </View>
+        <ScrollView
+          horizontal
+        >
+          <View style={styles.selectors}>
+            <Text style={styles.selectTitle}>Selecionar:</Text>
+            {SELECTORS.map(selector => (
+              <TouchableHighlight
+                key={selector.title}
+                onPress={() => this.setSection(selector.value)}
+              >
+                <View style={styles.selector}>
+                  <Text
+                    style={selector.value === this.state.activeSection && styles.activeSelector}
+                  >
+                    {selector.title}
+                  </Text>
+                </View>
+              </TouchableHighlight>
+            ))}
+          </View>
+        </ScrollView>
         <ScrollView>
           <Text style={styles.title}>{RESOLUTION_26_DATE}</Text>
           <Accordion
