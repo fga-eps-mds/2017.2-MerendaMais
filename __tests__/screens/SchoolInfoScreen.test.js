@@ -21,6 +21,12 @@ const initialState = {
     schoolEmail: 'teste@teste.com',
     schoolLat: '',
     schoolLong: '',
+    schoolStudents: '1000',
+  },
+  counselor: {
+    profile: {
+      CAE: 'Distrito Federal',
+    },
   },
 };
 

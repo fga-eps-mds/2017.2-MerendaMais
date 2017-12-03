@@ -14,7 +14,15 @@ import {
   AUTHENTICATE_LINK_NUVEM_CIVICA,
   DEFAULT_USER_LINK_NUVEM_CIVICA,
   PROFILE_TYPE_CODE,
-  DEFAULT_GROUP_LINK_NUVEM_CIVICA } from '../constants';
+  DEFAULT_GROUP_LINK_NUVEM_CIVICA,
+  LOGIN_SUCCEED,
+  LOGIN_PASSWORD_ERROR,
+  LOGIN_PROFILE_ERROR,
+  EDIT_SUCCEED,
+  INTERNAL_ERROR,
+  REGISTER_SUCCEED,
+  REGISTER_NUVEM_ERROR } from '../constants/generalConstants';
+import ShowToast from '../components/Toast';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -42,15 +50,19 @@ export const setCounselorEdited = counselor => ({
 // Trating request errors
 const treatingEditCounselorError = (error) => {
   if (error.response.status === 401) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingEditCounselorError',
       `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 403) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingEditCounselorError',
       `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 404) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingEditCounselorError',
       `Not Found according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingEditCounselorError',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
@@ -64,12 +76,15 @@ const treatingAuthenticatingCounselorInRegisterError = (error) => {
 
     Alert.alert(REGISTER_FAIL_TITLE, USER_JUST_ALREADY_REGISTER_IN_NUVEM);
   } else if (error.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
       `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
       `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
   } else {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInRegisterError',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
@@ -78,15 +93,19 @@ const treatingAuthenticatingCounselorInRegisterError = (error) => {
 // Trating request errors
 const treatingRegisterCounselorError = (error) => {
   if (error.response.status === 401) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingRegisterCounselorError',
       `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 403) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingRegisterCounselorError',
       `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 404) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingRegisterCounselorError',
       `Not Found according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingRegisterCounselorError',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
@@ -95,15 +114,19 @@ const treatingRegisterCounselorError = (error) => {
 // Trating request errors
 const treatingAssociateProfileToCounselorError = (error) => {
   if (error.response.status === 401) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
       `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 403) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
       `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 404) {
+    ShowToast.Toast(REGISTER_NUVEM_ERROR);
     logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
       `User isn't register in Nuvem or Profile type doesn't exist - Error code received in request - ${error.response.status}`);
   } else {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAssociateProfileToCounselorError',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
@@ -112,12 +135,15 @@ const treatingAssociateProfileToCounselorError = (error) => {
 // Trating request errors
 const treatingVerifyUserInApplicationError = (error) => {
   if (error.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingVerifyUserInApplicationError',
       `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingVerifyUserInApplicationError',
       `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
   } else {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingVerifyUserInApplicationError',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
@@ -126,15 +152,19 @@ const treatingVerifyUserInApplicationError = (error) => {
 // Trating request errors
 const treatingAuthenticatingCounselorInLoginError = (erro) => {
   if (erro.response.status === 401) {
+    ShowToast.Toast(LOGIN_PASSWORD_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
       `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
   } else if (erro.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
       `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
   } else if (erro.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
       `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
   } else {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
       `Unknown error - Error code received in request - ${erro.response.status}`);
   }
@@ -143,15 +173,19 @@ const treatingAuthenticatingCounselorInLoginError = (erro) => {
 // Trating request errors
 const treatingGetUserProfileInLoginError = (error) => {
   if (error.response.status === 404) {
+    ShowToast.Toast(LOGIN_PROFILE_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
       `User isn't register in application or Profile didn't find for this user - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
       `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
   } else if (error.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
       `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
   } else {
+    ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
@@ -182,7 +216,16 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
         `${response.data}`);
       logInfo(FILE_NAME, 'addCounselorToGroup', JSON.stringify(response));
 
-      dispatch(setCounselor(counselor));
+      let counselorWithCodGroup = counselor;
+      counselorWithCodGroup = {
+        ...counselorWithCodGroup,
+        profile: {
+          ...counselorWithCodGroup.profile,
+          codGroup,
+        },
+      };
+
+      dispatch(setCounselor(counselorWithCodGroup));
 
       dispatch(isNotLoading());
 
@@ -191,8 +234,6 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
     .catch((error) => {
       logWarn(FILE_NAME, 'addCounselorToGroup',
         `Request result in an ${error}`);
-      console.log(error.request);
-      console.log(error.message);
       dispatch(isNotLoading());
     });
 };
@@ -326,6 +367,8 @@ const authenticatingUserInRegister = (userData, dispatch) => {
         `User response data received from authentication: ${JSON.stringify(response.data, null, 2)}`);
 
       associateProfileToCounselor(response.headers.apptoken, response.data.cod, userData, dispatch);
+
+      ShowToast.Toast(REGISTER_SUCCEED);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'authenticatingUserInRegister',
@@ -470,6 +513,8 @@ const editCounselorProfile = (counselorData, dispatch) => {
         `Counselor Profile edited. Sending to Store: ${counselorData.name} and ${JSON.stringify(counselorData.profile, null, 2)}`);
 
       dispatch(setCounselorEdited(counselorData));
+      Actions.mainScreen();
+      ShowToast.Toast(EDIT_SUCCEED);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'editCounselorProfile',
@@ -519,6 +564,45 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
 
 // Functions focused in Counselor Login
 
+const getCodGroup = (counselorWithProfile, dispatch) => {
+  const paramsToNuvem = {
+    params: {
+      codAplicativo: APP_IDENTIFIER,
+      descricao: counselorWithProfile.profile.CAE,
+    },
+  };
+
+  axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
+    .then((response) => {
+      const codGroup = response.data[0].codGrupo;
+
+      let counselorWithCodGroup = counselorWithProfile;
+
+      counselorWithCodGroup = {
+        ...counselorWithCodGroup,
+        profile: {
+          ...counselorWithCodGroup.profile,
+          codGroup,
+        },
+      };
+
+      logInfo(FILE_NAME, 'getCodGroup',
+        `Código do Grupo: ${JSON.stringify(counselorWithCodGroup, null, 2)}`);
+
+      dispatch(setCounselor(counselorWithCodGroup));
+
+      dispatch(isNotLoading());
+
+      Actions.mainScreen();
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'searchAGroup',
+        `Request result in an ${error}`);
+
+      dispatch(isNotLoading());
+    });
+};
+
 // Used in Async Action to Login Counselor
 const convertingProfileStringToJSON = (profileStringSingleQuote) => {
   // Changing ' to " in string received from Nuvem Civica.
@@ -549,11 +633,9 @@ const getUserProfileInLogin = (counselor, dispatch) => {
       logInfo(FILE_NAME, 'getUserProfileInLogin',
         `Final Counselor sent to store after login: ${JSON.stringify(counselorWithProfile, null, 2)}`);
 
-      dispatch(setCounselor(counselorWithProfile));
+      getCodGroup(counselorWithProfile, dispatch);
 
-      dispatch(isNotLoading());
-
-      Actions.mainScreen();
+      ShowToast.Toast(LOGIN_SUCCEED);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'gettingUserProfileInLogin',

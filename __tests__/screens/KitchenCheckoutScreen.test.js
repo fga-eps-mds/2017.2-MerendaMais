@@ -3,8 +3,8 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // imported as a connected component!
-import KitchenCheckoutContainer from '../../src/Containers/KitchenCheckoutContainer';
-import kitchen from '../../src/Reducers/Reports/kitchen';
+import KitchenCheckoutContainer from '../../src/Containers/reports/KitchenCheckoutContainer';
+import kitchen from '../../src/constants/reports/kitchen';
 
 Enzyme.configure({ adapter: new Adapter() });
 

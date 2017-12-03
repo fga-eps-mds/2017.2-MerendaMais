@@ -7,18 +7,29 @@ import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
 import MainScreen from './src/screens/MainScreen';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
-import StockFoodCheckoutScreenContainer from './src/Containers/StockFoodCheckoutContainer';
+import StockFoodCheckoutScreenContainer from './src/Containers/reports/StockFoodCheckoutContainer';
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
-import MainReportsScreen from './src/screens/MainReportsScreen';
-import RefectoryCheckoutContainer from './src/Containers/RefectoryCheckoutContainer';
-import ManageRegistersScreenContainer from './src/Containers/ManageRegistersScreenContainer';
-import Menu from './src/components/Menu';
-import KitchenCheckoutContainer from './src/Containers/KitchenCheckoutContainer';
-import FoodQualityCheckoutContainer from './src/Containers/FoodQualityCheckoutContainer';
-import DocCheckoutContainer from './src/Containers/DocCheckoutContainer';
-import ReportObservationContainer from './src/Containers/ReportObservationContainer';
-import SchoolSurroundingsCheckoutContainer from './src/Containers/SchoolSurroundingsCheckoutContainer';
+import MainReportsScreen from './src/screens/reports/MainReportsScreen';
+import RefectoryCheckoutContainer from './src/Containers/reports/RefectoryCheckoutContainer';
+import MenuContainer from './src/Containers/MenuContainer';
+import KitchenCheckoutContainer from './src/Containers/reports/KitchenCheckoutContainer';
+import FoodQualityCheckoutContainer from './src/Containers/reports/FoodQualityCheckoutContainer';
+import DocCheckoutContainer from './src/Containers/reports/DocCheckoutContainer';
+import ReportObservationContainer from './src/Containers/reports/ReportObservationContainer';
+import SchoolSurroundingsCheckoutContainer from './src/Containers/reports/SchoolSurroundingsCheckoutContainer';
+import FoodHandlerCheckoutContainer from './src/Containers/reports/FoodHandlerCheckoutContainer';
+import WaterSewerSupplyCheckoutContainer from './src/Containers/reports/WaterSewerSupplyCheckoutContainer';
+import FoodPreparationCheckoutContainer from './src/Containers/reports/FoodPreparationCheckoutContainer';
+import PrincipalStartInspection from './src/screens/startInspection/PrincipalStartInspection';
+import ScheduleMeetingContainer from './src/Containers/scheduleMeeting/ScheduleMeetingContainer';
+import ScheduleMeetingMapContainer from './src/Containers/scheduleMeeting/ScheduleMeetingMapContainer';
+import PrincipalManageRegister from './src/screens/manageCounselors/PrincipalManageRegister';
+import MainLegislationScreen from './src/screens/legislation/MainLegislationScreen';
+import Resolution26Screen from './src/screens/legislation/Resolution26Screen';
+import Resolution1Screen from './src/screens/legislation/Resolution1Screen';
+import LawNumber11947Screen from './src/screens/legislation/LawNumber11947Screen';
+import LawNumber12982Screen from './src/screens/legislation/LawNumber12982Screen';
 
 
 // Navigation methods for the hardware back press on android.
@@ -48,14 +59,27 @@ const Routes = () => ({
           hideNavBar
           key="drawer"
           drawerLockMode="locked-closed"
-          contentComponent={Menu}
+          contentComponent={MenuContainer}
           drawerWidth={270}
           drawerPosition="right"
         >
           <Scene key="root">
-            <Scene key="initialScreen" component={InitialScreen} hideNavBar />
-            <Scene key="manageRegisters" component={ManageRegistersScreenContainer} hideNavBar />
-            <Scene key="mainScreen" component={MainScreen} hideNavBar />
+            <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
+            <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
+            <Scene
+              key="scheduleMeetingMap"
+              component={ScheduleMeetingMapContainer}
+              hideNavBar
+            />
+            <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
+            <Scene
+              key="scheduleMeeting"
+              component={ScheduleMeetingContainer}
+              type="reset"
+              hideNavBar
+            />
+            <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
+            <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
             <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
             <Scene key="loginScreen" component={LoginContainer} hideNavBar />
@@ -95,7 +119,27 @@ const Routes = () => ({
               component={SchoolSurroundingsCheckoutContainer}
               hideNavBar
             />
+            <Scene
+              key="foodHandlerCheckoutScreen"
+              component={FoodHandlerCheckoutContainer}
+              hideNavBar
+            />
+            <Scene
+              key="waterSewerSupplyCheckoutScreen"
+              component={WaterSewerSupplyCheckoutContainer}
+              hideNavBar
+            />
+            <Scene
+              key="foodPreparationCheckoutScreen"
+              component={FoodPreparationCheckoutContainer}
+              hideNavBar
+            />
             <Scene key="schoolInfoScreen" component={SchoolInfoContainer} hideNavBar />
+            <Scene key="lesgislationScreen" component={MainLegislationScreen} hideNavBar />
+            <Scene key="Resolution26Screen" component={Resolution26Screen} hideNavBar />
+            <Scene key="Resolution1Screen" component={Resolution1Screen} hideNavBar />
+            <Scene key="LawNumber11947Screen" component={LawNumber11947Screen} hideNavBar />
+            <Scene key="LawNumber12982Screen" component={LawNumber12982Screen} hideNavBar />
           </Scene>
         </Drawer>
       </Router>

@@ -27,6 +27,20 @@ import {
   SET_STATUSREPORTOBSERVATION,
   SET_STATUSSCHOOLSURROUNDINGS,
   SET_STATUSSTOCKFOOD,
+  SET_ACCEPTEDMENU,
+  SET_REFUSEDMENU,
+  SET_FOODHANDLEROBSERVATION,
+  SET_FOODHANDLERREPORT_POSITIVE,
+  SET_FOODHANDLERREPORT_NEGATIVE,
+  SET_STATUSFOODHANDLER,
+  SET_WATERSEWERSUPPLYOBSERVATION,
+  SET_WATERSEWERSUPPLYREPORT_POSITIVE,
+  SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
+  SET_STATUSWATERSEWERSUPPLY,
+  SET_FOODPREPARATIONOBSERVATION,
+  SET_FOODPREPARATIONREPORT_POSITIVE,
+  SET_FOODPREPARATIONREPORT_NEGATIVE,
+  SET_STATUSFOODPREPARATION,
 } from '../../src/actions/types';
 
 describe('Testing reportReducer', () => {
@@ -438,5 +452,223 @@ describe('Testing reportReducer', () => {
     });
 
     expect(report.statusFoodStock).toBe(true);
+  });
+
+  it('sets acceptedMenu', () => {
+    let report = { ...initialState.report };
+
+    expect(report.acceptedMenu).not.toBe('O cardápio mais aceito foi o que continha frango assado.');
+
+    report = reportReducer(report, {
+      type: SET_ACCEPTEDMENU,
+      payload: 'O cardápio mais aceito foi o que continha frango assado.',
+    });
+
+    expect(report.acceptedMenu).toBe('O cardápio mais aceito foi o que continha frango assado.');
+  });
+
+  it('sets refusedMenu', () => {
+    let report = { ...initialState.report };
+
+    expect(report.refusedMenu).not.toBe('O cardápio menos aceito foi o que continha frango assado.');
+
+    report = reportReducer(report, {
+      type: SET_REFUSEDMENU,
+      payload: 'O cardápio menos aceito foi o que continha frango assado.',
+    });
+
+    expect(report.refusedMenu).toBe('O cardápio menos aceito foi o que continha frango assado.');
+  });
+
+  it('sets food handler report observation', () => {
+    let report = { ...initialState.report };
+
+    expect(report.foodHandlerObservation).not.toBe('Uniforme completo');
+
+    report = reportReducer(report, {
+      type: SET_FOODHANDLEROBSERVATION,
+      payload: 'Uniforme completo',
+    });
+
+    expect(report.foodHandlerObservation).toBe('Uniforme completo');
+  });
+
+  it('sets food handler report positive', () => {
+    // let report = { ...initialState.report };
+    let report = {
+      foodHandler: [
+        { label: 'Uniforme completo', markedYes: false, markedNo: false, status: false, key: 0 },
+        { label: 'Merendeiras doentes', markedYes: false, markedNo: false, status: false, key: 1 },
+      ],
+    };
+
+    const foodHanlderReportPositiveBefore = report;
+
+    report = reportReducer(report, {
+      type: SET_FOODHANDLERREPORT_POSITIVE,
+      payload: 0,
+    });
+
+    expect(report).toEqual(foodHanlderReportPositiveBefore);
+  });
+
+  it('sets food handler report negative', () => {
+    // let report = { ...initialState.report };
+    let report = {
+      foodHandler: [
+        { label: 'Uniforme completo', markedYes: false, markedNo: false, status: false, key: 0 },
+        { label: 'Merendeiras doentes', markedYes: false, markedNo: false, status: false, key: 1 },
+      ],
+    };
+
+    const foodHanlderReportNegativeBefore = report;
+
+    report = reportReducer(report, {
+      type: SET_FOODHANDLERREPORT_NEGATIVE,
+      payload: 0,
+    });
+
+    expect(report).toEqual(foodHanlderReportNegativeBefore);
+  });
+
+  it('sets food preparation report observation', () => {
+    let report = { ...initialState.report };
+
+    expect(report.foodPreparationObservation).not.toBe('Higienização de frutas e verduras é realizada de maneira adequada');
+
+    report = reportReducer(report, {
+      type: SET_FOODPREPARATIONOBSERVATION,
+      payload: 'Higienização de frutas e verduras é realizada de maneira adequada',
+    });
+
+    expect(report.foodPreparationObservation).toBe('Higienização de frutas e verduras é realizada de maneira adequada');
+  });
+
+  it('sets food preparation report positive', () => {
+    // let report = { ...initialState.report };
+    let report = {
+      foodPreparation: [
+        { label: 'Higienização de frutas e verduras é realizada de maneira adequada', markedYes: false, markedNo: false, status: false, key: 0 },
+        { label: 'A água sanitária utilizada é própria para alimentos', markedYes: false, markedNo: false, status: false, key: 1 },
+      ],
+    };
+
+    const foodPreparationReportPositiveBefore = report;
+
+    report = reportReducer(report, {
+      type: SET_FOODPREPARATIONREPORT_POSITIVE,
+      payload: 0,
+    });
+
+    expect(report).toEqual(foodPreparationReportPositiveBefore);
+  });
+
+  it('sets food preparation report negative', () => {
+    // let report = { ...initialState.report };
+    let report = {
+      foodPreparation: [
+        { label: 'Higienização de frutas e verduras é realizada de maneira adequada', markedYes: false, markedNo: false, status: false, key: 0 },
+        { label: 'A água sanitária utilizada é própria para alimentos', markedYes: false, markedNo: false, status: false, key: 1 },
+      ],
+    };
+
+    const foodPreparationReportNegativeBefore = report;
+
+    report = reportReducer(report, {
+      type: SET_FOODPREPARATIONREPORT_NEGATIVE,
+      payload: 0,
+    });
+
+    expect(report).toEqual(foodPreparationReportNegativeBefore);
+  });
+
+  it('sets water sewer supply report observation', () => {
+    let report = { ...initialState.report };
+
+    expect(report.waterSewerSupplyObservation).not.toBe('Fossas e esgotos conectados à rede pública');
+
+    report = reportReducer(report, {
+      type: SET_WATERSEWERSUPPLYOBSERVATION,
+      payload: 'Fossas e esgotos conectados à rede pública',
+    });
+
+    expect(report.waterSewerSupplyObservation).toBe('Fossas e esgotos conectados à rede pública');
+  });
+
+  it('sets water sewer supply report positive', () => {
+    // let report = { ...initialState.report };
+    let report = {
+      waterSewerSupply: [
+        { label: 'Fossas e esgotos conectados à rede pública', markedYes: false, markedNo: false, status: false, key: 0 },
+        { label: 'Caixas de gordura em adequado estado de conservação e funcionamento', markedYes: false, markedNo: false, status: false, key: 1 },
+      ],
+    };
+
+    const waterSewerSupplyReportPositiveBefore = report;
+
+    report = reportReducer(report, {
+      type: SET_WATERSEWERSUPPLYREPORT_POSITIVE,
+      payload: 0,
+    });
+
+    expect(report).toEqual(waterSewerSupplyReportPositiveBefore);
+  });
+
+  it('sets water sewer supply report negative', () => {
+    // let report = { ...initialState.report };
+    let report = {
+      waterSewerSupply: [
+        { label: 'Fossas e esgotos conectados à rede pública', markedYes: false, markedNo: false, status: false, key: 0 },
+        { label: 'Caixas de gordura em adequado estado de conservação e funcionamento', markedYes: false, markedNo: false, status: false, key: 1 },
+      ],
+    };
+
+    const waterSewerSupplyReportNegativeBefore = report;
+
+    report = reportReducer(report, {
+      type: SET_WATERSEWERSUPPLYREPORT_NEGATIVE,
+      payload: 0,
+    });
+
+    expect(report).toEqual(waterSewerSupplyReportNegativeBefore);
+  });
+
+  it('sets status food handler', () => {
+    let report = { ...initialState.report };
+
+    expect(report.statusFoodHandler).not.toBe(true);
+
+    report = reportReducer(report, {
+      type: SET_STATUSFOODHANDLER,
+      payload: true,
+    });
+
+    expect(report.statusFoodHandler).toBe(true);
+  });
+
+  it('sets status food preparation', () => {
+    let report = { ...initialState.report };
+
+    expect(report.statusFoodPreparation).not.toBe(true);
+
+    report = reportReducer(report, {
+      type: SET_STATUSFOODPREPARATION,
+      payload: true,
+    });
+
+    expect(report.statusFoodPreparation).toBe(true);
+  });
+
+  it('sets status water sewer supply', () => {
+    let report = { ...initialState.report };
+
+    expect(report.statusWaterSewerSupply).not.toBe(true);
+
+    report = reportReducer(report, {
+      type: SET_STATUSWATERSEWERSUPPLY,
+      payload: true,
+    });
+
+    expect(report.statusWaterSewerSupply).toBe(true);
   });
 });

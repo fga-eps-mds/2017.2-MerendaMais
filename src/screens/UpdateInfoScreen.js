@@ -1,19 +1,37 @@
 import React, { PropTypes } from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet,
+import {
+  StyleSheet,
   TouchableOpacity,
   Text,
-  TextInput,
   View,
   Alert,
-  ScrollView }
-  from 'react-native';
+  Picker,
+  ScrollView } from 'react-native';
+import {
+  TITULAR_COUNSELOR,
+  SURROGATE_COUNSELOR,
+  EXECUTIVE_POWER,
+  EDUCATION_WORKERS,
+  STUDENT_PARENTS,
+  CIVILIAN_ENTITIES } from '../constants/generalConstants';
 import Header from '../components/Header';
+import { logInfo } from '../../logConfig/loggers';
+import DropdownComponent from '../components/DropdownComponent';
+import NameField from '../components/NameField';
+import PhoneField from '../components/PhoneField';
+
+const FILE_NAME = 'UpdateInfoScreen.js';
 
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
     backgroundColor: 'white',
+  },
+
+  content: {
+    flex: 6,
+    marginTop: 8,
+    paddingHorizontal: 15,
   },
 
   buttonContainer: {
@@ -32,69 +50,82 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 
-  content: {
-    marginTop: 30,
-    marginBottom: 9,
-    flex: 6,
-    flexDirection: 'column',
+  InputFieldStyle: {
+    padding: 8,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderRadius: 7,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
 
-  inputs: {
-    backgroundColor: '#FAFAFA',
-    paddingVertical: 10,
+  InputFieldDropdown: {
+    marginTop: 1,
+    borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 7,
-    borderColor: 'gray',
-    marginHorizontal: 15,
-    marginBottom: 30,
-    justifyContent: 'flex-start',
-    paddingLeft: 2,
-    paddingRight: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginBottom: 10,
   },
 
   icon: {
     margin: 5,
+  },
+
+  InputStyle: {
+    flex: 1,
   },
 });
 
 export default class UpdateInfoScreen extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: this.props.counselor.name,
       phone: this.props.counselor.profile.phone,
+      counselorType: this.props.counselor.profile.counselorType,
+      segment: this.props.counselor.profile.segment,
+      error: false,
     };
-    this.validateName = this.validateName.bind(this);
-    this.validatePhone = this.validatePhone.bind(this);
-  }
-  validateName(name) {
-    const validName = name.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g, '');
-    this.setState({ name: validName });
   }
 
-  validatePhone(phone) {
-    const validPhone = phone.replace(/[^0-9]/g, '');
-    this.setState({ phone: validPhone });
-  }
-
-  register() {
+  updateInformation() {
     const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
-    let error = false;
+    this.state.error = false;
     let errorMessage = '';
 
+    // Validating Counselor Name.
     if (!nameRegex.test(this.state.name) || this.state.name.trim() === '') {
-      error = true;
+      this.state.error = true;
       errorMessage += 'Nome inválido\n';
     }
+
+    // Validating Counselor Phone.
     if (!phoneRegex1.test(this.state.phone) && !phoneRegex2.test(this.state.phone)) {
-      error = true;
+      this.state.error = true;
       errorMessage += 'Telefone inválido\n';
     }
-    if (error === false) {
+
+    // Validating Counselor Type.
+    if (this.state.counselorType === '') {
+      this.state.error = true;
+      errorMessage += 'Tipo de Conselheiro não selecionado\n';
+    }
+
+    // Validating Segment.
+    if (this.state.segment === '') {
+      this.state.error = true;
+      errorMessage += 'Segmento não selecionado.\n';
+    }
+
+    // Checking if was found a irregularity in updateInformation fields.
+    if (this.state.error === false) {
       this.props.asyncEditCounselor(this.fetchCounselorData());
     } else {
       Alert.alert('FALHA AO EDITAR DADOS', errorMessage);
@@ -111,8 +142,8 @@ export default class UpdateInfoScreen extends React.Component {
         cpf: this.props.counselor.profile.cpf,
         phone: this.state.phone,
         isPresident: this.props.counselor.profile.isPresident,
-        counselorType: this.props.counselor.profile.counselorType,
-        segment: this.props.counselor.profile.segment,
+        counselorType: this.state.counselorType,
+        segment: this.state.segment,
         CAE_Type: this.props.counselor.profile.CAE_Type,
         CAE_UF: this.props.counselor.profile.CAE_UF,
         CAE_municipalDistrict: this.props.counselor.profile.CAE_municipalDistrict,
@@ -122,6 +153,9 @@ export default class UpdateInfoScreen extends React.Component {
   }
 
   render() {
+    logInfo(FILE_NAME, 'render()',
+      `State of update info page: ${JSON.stringify(this.state, null, 2)}`);
+
     return (
 
       <View style={styles.principal}>
@@ -129,40 +163,54 @@ export default class UpdateInfoScreen extends React.Component {
           title={'Editar Informações'}
           backButton
         />
+
         <ScrollView>
           <View style={styles.content}>
 
-            <View style={styles.inputs}>
-              <MaterialIcons name="face" style={styles.icon} size={32} color="black" />
-              <TextInput
-                width={280}
-                maxLength={60}
-                keyboardType={'default'}
-                placeholder="Digite seu nome"
-                underlineColorAndroid="transparent"
-                onChangeText={text => this.validateName(text)}
-                value={this.state.name}
-              />
-            </View>
+            <Text>Nome</Text>
+            <NameField
+              value={this.state.name}
+              callback={validName => this.setState({ name: validName })}
+            />
 
-            <View style={styles.inputs}>
-              <MaterialIcons name="phone" style={styles.icon} size={32} color="black" />
-              <TextInput
-                width={280}
-                maxLength={11}
-                keyboardType={'phone-pad'}
-                placeholder="(00)00000-0000"
-                underlineColorAndroid="transparent"
-                onChangeText={text => this.validatePhone(text)}
-                value={this.state.phone}
-              />
-            </View>
+            <Text>Telefone</Text>
+            <PhoneField
+              value={this.state.phone}
+              callback={validPhone =>
+                this.setState({ phone: validPhone })}
+            />
+
+            <Text>Tipo de Conselheiro</Text>
+            <DropdownComponent
+              selectedValue={this.state.counselorType}
+              callback={counselorTypeChecked =>
+                this.setState({ counselorType: counselorTypeChecked })}
+              picker={[
+                <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
+                <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />,
+                <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />,
+              ]}
+            />
+
+            <Text>Segmento</Text>
+            <DropdownComponent
+              selectedValue={this.state.segment}
+              callback={segmentChecked => this.setState({ segment: segmentChecked })}
+              picker={[
+                <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />,
+                <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />,
+                <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />,
+                <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />,
+                <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />,
+              ]}
+            />
+
           </View>
         </ScrollView>
         <TouchableOpacity
           key="infoUpdate"
           style={styles.buttonContainer}
-          onPress={() => this.register()}
+          onPress={() => this.updateInformation()}
         >
           <Text style={styles.buttonText}>Concluir</Text>
         </TouchableOpacity>

@@ -34,4 +34,28 @@ describe('Testing schoolActions', () => {
     store.dispatch(actions.asyncChangeToSchoolInfoScreen({ schooCode: 1 }));
     expect(store.getActions()).toEqual([expectedPayload]);
   });
+
+  it('Testing setUf', () => {
+    let actionReturn = actions.setUf();
+
+    expect(actionReturn.payload).not.toBe('DF - Distrito Federal');
+    expect(actionReturn.type).toBe(types.SET_SCHOOL_UF);
+
+    actionReturn = actions.setUf('DF - Distrito Federal');
+
+    expect(actionReturn.payload).toBe('DF - Distrito Federal');
+    expect(actionReturn.type).toBe(types.SET_SCHOOL_UF);
+  });
+
+  it('Testing setCity', () => {
+    let actionReturn = actions.setCity();
+
+    expect(actionReturn.payload).not.toBe('Brasília');
+    expect(actionReturn.type).toBe(types.SET_SCHOOL_CITY);
+
+    actionReturn = actions.setCity('Brasília');
+
+    expect(actionReturn.payload).toBe('Brasília');
+    expect(actionReturn.type).toBe(types.SET_SCHOOL_CITY);
+  });
 });

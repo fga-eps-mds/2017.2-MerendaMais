@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FF9500",
+      "borderLeftColor": "black",
+      "borderLeftWidth": 1,
+      "flex": 1,
+      "height": 1334,
+      "paddingTop": 20,
+    }
+  }
+>
+  <MenuButton
+    iconName="search"
+    isLogout={false}
+    key="searchSchool"
+    onPress={[Function]}
+    text="Pesquisar Escola"
+  />
+  <MenuButton
+    iconName="settings"
+    isLogout={false}
+    key="updateInfoScreen"
+    onPress={[Function]}
+    text="Editar Dados"
+  />
+  <MenuButton
+    iconName="account-box"
+    isLogout={false}
+    key="profileInfoScreen"
+    onPress={[Function]}
+    text="Perfil"
+  />
+  <MenuButton
+    iconName="access-time"
+    isLogout={false}
+    key="schedulingVisit"
+    onPress={[Function]}
+    text="Agendar visita"
+  />
+  <MenuButton
+    iconName="insert-invitation"
+    isLogout={false}
+    key="scheduleMeeting"
+    onPress={[Function]}
+    text="Agendar reunião"
+  />
+  <MenuButton
+    iconName="gavel"
+    isLogout={false}
+    key="seeLegislation"
+    onPress={[Function]}
+    text="Consultar Legislação"
+  />
+  <MenuButton
+    iconName="logout"
+    isLogout={true}
+    key="logout"
+    onPress={[Function]}
+    text="Sair"
+  />
+</View>
+`;

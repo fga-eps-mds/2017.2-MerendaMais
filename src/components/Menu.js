@@ -1,8 +1,8 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
-import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
+import { Dimensions, StyleSheet, View, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import store from '../Reducers/store';
+import MenuButton from './MenuButton';
 
 const window = Dimensions.get('window');
 
@@ -15,121 +15,60 @@ const styles = StyleSheet.create({
     borderLeftColor: 'black',
     borderLeftWidth: 1,
   },
-
-  avatarContainer: {
-    marginBottom: 20,
-    marginTop: 20,
-  },
-
-  avatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    flex: 1,
-  },
-
-  fieldStyle: {
-    padding: 15,
-    backgroundColor: '#FF9500',
-    flexDirection: 'row',
-    borderColor: '#e68a00',
-    borderWidth: 1,
-  },
-
-  name: {
-    position: 'absolute',
-    left: 70,
-    top: 20,
-  },
-
-  icon: {
-    marginRight: 10,
-  },
-
-  item: {
-    fontSize: 16,
-    fontWeight: '300',
-    padding: 5,
-  },
 });
 
-const Menu = () => {
-  const newState = store.getState();
-  if (newState.counselor.profile.isPresident) {
+class Menu extends React.PureComponent {
+  render() {
     return (
       <View style={styles.menu}>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.searchSchool()}
-        >
-          <View style={styles.fieldStyle}>
-            <MaterialIcons name="search" style={styles.icon} size={32} color="black" />
-            <Text
-              style={styles.item}
-            >
-              Pesquisar Escola
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.updateInfoScreen()}
-        >
-          <View style={styles.fieldStyle}>
-            <MaterialIcons name="settings" style={styles.icon} size={32} color="black" />
-            <Text
-              style={styles.item}
-            >
-              Editar Dados
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.profileInfoScreen()}
-        >
-          <View style={styles.fieldStyle}>
-            <MaterialIcons name="account-box" style={styles.icon} size={32} color="black" />
-            <Text
-              style={styles.item}
-            >
-              Perfil
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.schedulingVisit()}
-        >
-          <View style={styles.fieldStyle}>
-            <MaterialIcons name="access-time" style={styles.icon} size={32} color="black" />
-            <Text
-              style={styles.item}
-            >
-              Agendar visita
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => Actions.manageRegisters()}
-        >
-          <View style={styles.fieldStyle}>
-            <MaterialIcons name="group-work" style={styles.icon} size={32} color="black" />
-            <Text
-              style={styles.item}
-            >
-              Gerenciar Conselheiros
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          activeOpacity={0.7}
+        <MenuButton
+          key="searchSchool"
+          text="Pesquisar Escola"
+          iconName="search"
+          onPress={() => { Actions.searchSchool(); }}
+        />
+        <MenuButton
+          key="updateInfoScreen"
+          text="Editar Dados"
+          iconName="settings"
+          onPress={() => { Actions.updateInfoScreen(); }}
+        />
+        <MenuButton
+          key="profileInfoScreen"
+          text="Perfil"
+          iconName="account-box"
+          onPress={() => { Actions.profileInfoScreen(); }}
+        />
+        <MenuButton
+          key="schedulingVisit"
+          text="Agendar visita"
+          iconName="access-time"
+          onPress={() => { Actions.schedulingVisit(); }}
+        />
+        <MenuButton
+          key="scheduleMeeting"
+          text="Agendar reunião"
+          iconName="insert-invitation"
+          onPress={() => { Actions.scheduleMeeting(); }}
+        />
+        {this.props.counselor.profile.isPresident && (
+          <MenuButton
+            key="manageRegisters"
+            text="Gerenciar Conselheiros"
+            iconName="group-work"
+            onPress={() => { Actions.manageRegisters(); }}
+          />
+        )}
+        <MenuButton
+          key="seeLegislation"
+          text="Consultar Legislação"
+          iconName="gavel"
+          onPress={() => { Actions.lesgislationScreen(); }}
+        />
+        <MenuButton
+          key="logout"
+          text="Sair"
+          iconName="logout"
           onPress={() => Alert.alert(
             'Sair',
             'Realmente deseja sair da sua conta?',
@@ -139,102 +78,27 @@ const Menu = () => {
             ],
             { cancelable: false },
           )}
-        >
-          <View style={styles.fieldStyle}>
-            <MaterialCommunityIcons name="logout" style={styles.icon} size={32} color="black" />
-            <Text
-              style={styles.item}
-            >
-              Sair
-            </Text>
-          </View>
-        </TouchableOpacity>
-
+          isLogout
+        />
       </View>
     );
   }
-  return (
-    <View style={styles.menu}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => Actions.searchSchool()}
-      >
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="search" style={styles.icon} size={32} color="black" />
-          <Text
-            style={styles.item}
-          >
-            Pesquisar Escola
-          </Text>
-        </View>
-      </TouchableOpacity>
+}
 
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => Actions.updateInfoScreen()}
-      >
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="settings" style={styles.icon} size={32} color="black" />
-          <Text
-            style={styles.item}
-          >
-            Editar Dados
-          </Text>
-        </View>
-      </TouchableOpacity>
+Menu.propTypes = {
+  counselor: PropTypes.shape({
+    profile: {
+      isPresident: PropTypes.bool.isRequired,
+    },
+  }),
+};
 
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => Actions.profileInfoScreen()}
-      >
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="account-box" style={styles.icon} size={32} color="black" />
-          <Text
-            style={styles.item}
-          >
-            Perfil
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => Actions.schedulingVisit()}
-      >
-        <View style={styles.fieldStyle}>
-          <MaterialIcons name="access-time" style={styles.icon} size={32} color="black" />
-          <Text
-            style={styles.item}
-          >
-            Agendar visita
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => Alert.alert(
-          'Sair',
-          'Realmente deseja sair da sua conta?',
-          [
-            { text: 'Não', onPress: () => Actions.drawerOpen(), style: 'cancel' },
-            { text: 'Sim', onPress: () => Actions.initialScreen() },
-          ],
-          { cancelable: false },
-        )}
-      >
-        <View style={styles.fieldStyle}>
-          <MaterialCommunityIcons name="logout" style={styles.icon} size={32} color="black" />
-          <Text
-            style={styles.item}
-          >
-            Sair
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-    </View>
-  );
+Menu.defaultProps = {
+  counselor: PropTypes.shape({
+    prifle: {
+      isPresident: false,
+    },
+  }),
 };
 
 export default Menu;

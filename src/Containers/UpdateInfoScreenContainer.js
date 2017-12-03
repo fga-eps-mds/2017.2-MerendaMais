@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
-import UpdateInfoScreen from '../screens/UpdateInfoScreen';
 import { asyncEditCounselor } from '../actions/counselorActions';
+import UpdateInfoScreen from '../screens/UpdateInfoScreen';
 
-const mapStateToProps = state => ({
-  counselor: state.counselor,
-});
+const mapStateToProps = state => (
+  {
+    counselor: state.counselor,
+  }
+);
 
 const mapDispatchToProps = dispatch => (
   {

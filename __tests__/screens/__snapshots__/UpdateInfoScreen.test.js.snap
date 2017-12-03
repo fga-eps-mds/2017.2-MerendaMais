@@ -19,90 +19,101 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
       style={
         Object {
           "flex": 6,
-          "flexDirection": "column",
-          "marginBottom": 9,
-          "marginTop": 30,
+          "marginTop": 8,
+          "paddingHorizontal": 15,
         }
       }
     >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "marginBottom": 30,
-            "marginHorizontal": 15,
-            "paddingLeft": 2,
-            "paddingRight": 4,
-            "paddingVertical": 10,
-          }
-        }
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
       >
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="face"
-          size={32}
-          style={
-            Object {
-              "margin": 5,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="default"
-          maxLength={60}
-          onChangeText={[Function]}
-          placeholder="Digite seu nome"
-          underlineColorAndroid="transparent"
-          value="Rodolfo"
-          width={280}
-        />
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "gray",
-            "borderRadius": 7,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "marginBottom": 30,
-            "marginHorizontal": 15,
-            "paddingLeft": 2,
-            "paddingRight": 4,
-            "paddingVertical": 10,
-          }
-        }
+        Nome
+      </Text>
+      <NameField
+        callback={[Function]}
+        value="Rodolfo"
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
       >
-        <Icon
-          allowFontScaling={false}
-          color="black"
-          name="phone"
-          size={32}
-          style={
-            Object {
-              "margin": 5,
-            }
-          }
-        />
-        <TextInput
-          keyboardType="phone-pad"
-          maxLength={11}
-          onChangeText={[Function]}
-          placeholder="(00)00000-0000"
-          underlineColorAndroid="transparent"
-          value="6196661234"
-          width={280}
-        />
-      </View>
+        Telefone
+      </Text>
+      <PhoneField
+        callback={[Function]}
+        value="61991234567"
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+      >
+        Tipo de Conselheiro
+      </Text>
+      <DropdownComponent
+        callback={[Function]}
+        picker={
+          Array [
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha seu cargo"
+              value=""
+            />,
+            <PickerItem
+              label="Titular"
+              value="Titular"
+            />,
+            <PickerItem
+              label="Suplente"
+              value="Suplente"
+            />,
+          ]
+        }
+        selectedValue="Titular"
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+      >
+        Segmento
+      </Text>
+      <DropdownComponent
+        callback={[Function]}
+        picker={
+          Array [
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha seu segmento"
+              value=""
+            />,
+            <PickerItem
+              label="Poder executivo"
+              value="Poder executivo"
+            />,
+            <PickerItem
+              label="Trabalhadores da educação"
+              value="Trabalhadores da educação"
+            />,
+            <PickerItem
+              label="Pais de alunos"
+              value="Pais de alunos"
+            />,
+            <PickerItem
+              label="Entidades civis"
+              value="Entidades civis"
+            />,
+          ]
+        }
+        selectedValue="Poder executivo"
+      />
     </View>
   </ScrollViewMock>
   <TouchableOpacity
