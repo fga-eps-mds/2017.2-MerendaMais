@@ -27,6 +27,7 @@ import {
   SCHOOL_ENDPOINT,
   SCHOOL_NOT_FOUND,
   ERROR_FIND_SCHOOL } from '../constants/generalConstants';
+import { backHandlerPopToMain } from '../NavigationFunctions';
 
 
 const FILE_NAME = 'SearchSchool.js';
@@ -132,8 +133,13 @@ class SearchSchool extends React.Component {
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
   }
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
   setStateAsync(data) {

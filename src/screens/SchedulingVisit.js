@@ -11,6 +11,7 @@ import DatePicker from 'react-native-datepicker';
 import SchoolData from '../components/SchoolData';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
+import { backHandlerPopToMain } from '../NavigationFunctions';
 
 const { width } = Dimensions.get('window');
 
@@ -179,8 +180,8 @@ export default class SchedulingVisit extends React.Component {
     };
   }
 
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
   componentWillReceiveProps(newProps) {
@@ -196,6 +197,11 @@ export default class SchedulingVisit extends React.Component {
 
     this.setState({ visit: newVisit });
   }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
 
   getCounselorFromGroup() {
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,

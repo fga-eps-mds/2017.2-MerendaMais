@@ -31,26 +31,6 @@ import Resolution1Screen from './src/screens/legislation/Resolution1Screen';
 import LawNumber11947Screen from './src/screens/legislation/LawNumber11947Screen';
 import LawNumber12982Screen from './src/screens/legislation/LawNumber12982Screen';
 
-
-// Navigation methods for the hardware back press on android.
-// They can also be used for general back press management.
-
-
-// Use this method if you want the back button to go for the previous screen.
-export const defaultBackPress = () => {
-  console.log('Default Back Press!');
-  Actions.pop();
-  return true;
-};
-
-// Use this method if you want the back button to go to the mainScreen.
-// TODO: Rename this method to something better.
-export const sideMenuBackPress = () => {
-  console.log('Side menu back press');
-  Actions.popTo('mainScreen');
-  return true;
-};
-
 const Routes = () => ({
   render() {
     return (
@@ -75,7 +55,6 @@ const Routes = () => ({
             <Scene
               key="scheduleMeeting"
               component={ScheduleMeetingContainer}
-              type="reset"
               hideNavBar
             />
             <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />

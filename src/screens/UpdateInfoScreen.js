@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View,
-  Alert,
-  Picker,
-  ScrollView } from 'react-native';
+    StyleSheet,
+    TouchableOpacity,
+    Text,
+    View,
+    Alert,
+    Picker,
+    ScrollView,
+    BackHandler
+} from 'react-native';
 import {
   TITULAR_COUNSELOR,
   SURROGATE_COUNSELOR,
@@ -19,6 +21,7 @@ import { logInfo } from '../../logConfig/loggers';
 import DropdownComponent from '../components/DropdownComponent';
 import NameField from '../components/NameField';
 import PhoneField from '../components/PhoneField';
+import { backHandlerPopToMain } from '../NavigationFunctions';
 
 const FILE_NAME = 'UpdateInfoScreen.js';
 
@@ -91,6 +94,14 @@ export default class UpdateInfoScreen extends React.Component {
       segment: this.props.counselor.profile.segment,
       error: false,
     };
+  }
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
   updateInformation() {

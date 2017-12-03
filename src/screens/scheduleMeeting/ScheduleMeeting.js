@@ -10,6 +10,7 @@ import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import InvitedCounselorsData from '../../components/InvitedCounselorsData';
 import Button from '../../components/Button';
+import { backHandlerPopToMain } from '../../NavigationFunctions';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -200,8 +201,12 @@ export default class ScheduleMeeting extends React.Component {
     };
   }
 
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
   getCounselorFromGroup() {

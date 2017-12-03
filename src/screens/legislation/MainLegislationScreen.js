@@ -1,8 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, View, TouchableOpacity, Linking, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  ScrollView,
+  View,
+  TouchableOpacity,
+  Linking,
+  Alert,
+  BackHandler,
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { FontAwesome } from '@expo/vector-icons';
 import Header from '../../components/Header';
+import { backHandlerPopToMain } from '../../NavigationFunctions';
 
 const styles = StyleSheet.create({
   legislationScreen: {
@@ -48,7 +58,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const MainLegislationScreen = () => ({
+export default class MainLegislationScreen extends React.PureComponent {
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
   render() {
     return (
       <View style={styles.legislationScreen}>
@@ -162,7 +180,5 @@ const MainLegislationScreen = () => ({
         </ScrollView>
       </View>
     );
-  },
-});
-
-export default MainLegislationScreen;
+  }
+};

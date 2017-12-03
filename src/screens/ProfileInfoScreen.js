@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, ScrollView, View } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, BackHandler } from 'react-native';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import Header from '../components/Header';
+import { backHandlerPopToMain } from '../NavigationFunctions';
 
 const styles = StyleSheet.create({
   field: {
@@ -54,6 +55,14 @@ const styles = StyleSheet.create({
 });
 
 export default class ProfileInfoScreen extends React.Component {
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
   verifyCharge() {
     if (this.props.counselor.profile.isPresident) {
       return (
