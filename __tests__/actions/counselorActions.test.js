@@ -1,5 +1,25 @@
-import { setCounselor, setToken, setCounselorEdited } from '../../src/actions/counselorActions';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import * as actions from '../../src/actions/counselorActions';
 import { SET_COUNSELOR, SET_TOKEN, SET_COUNSELOR_EDITED } from '../../src/actions/types';
+import {
+  APP_IDENTIFIER,
+  AUTHENTICATE_LINK_NUVEM_CIVICA,
+  DEFAULT_USER_LINK_NUVEM_CIVICA,
+} from '../../src/constants/generalConstants';
+
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+describe('Testing file auxiliary functions', () => {
+  it('Test convertingJSONToString', () => {
+    const functionReturn = actions.convertingJSONToString({ chave: "valor" });
+    expect(functionReturn).toEqual("{'chave':'valor'}");
+  });
+});
 
 describe('Testing counselorActions', () => {
   it('Testing set Counselor', () => {
@@ -7,7 +27,7 @@ describe('Testing counselorActions', () => {
       name: 'Rodolfo',
     };
 
-    const actionReturn = setCounselor(firstCounselor);
+    const actionReturn = actions.setCounselor(firstCounselor);
 
     const secondCounselor = {
       name: 'Mario',
@@ -21,7 +41,7 @@ describe('Testing counselorActions', () => {
   it('Testing set Counselor Token', () => {
     const firstToken = 'EuSouUmTokenGenerico';
 
-    const actionReturn = setToken(firstToken);
+    const actionReturn = actions.setToken(firstToken);
 
     const secondToken = 'EuSouOutroTokenGenerico';
 
@@ -43,7 +63,7 @@ describe('Testing counselorActions', () => {
       },
     };
 
-    const actionReturn = setCounselorEdited(firstCounselor);
+    const actionReturn = actions.setCounselorEdited(firstCounselor);
 
     const secondCounselor = {
       name: 'Mario',
@@ -62,5 +82,79 @@ describe('Testing counselorActions', () => {
     expect(actionReturn.payload.name).toEqual(firstCounselor.name);
     expect(actionReturn.payload.profile).toBe(firstCounselor.profile);
     expect(actionReturn.type).toEqual(SET_COUNSELOR_EDITED);
+  });
+});
+
+describe('Testing counselorActions async actions', () => {
+  const mock = new MockAdapter(axios);
+  const counselor = {
+    nuvemCode: 1,
+    email: 'user@user.com',
+    name: 'User',
+    userName: 'username',
+    password: 'password',
+    token: 1,
+    profile: {},
+  };
+
+  const authenticationHeader = {
+    headers: {
+      appIdentifier: APP_IDENTIFIER,
+      email: 'user@user.com',
+      senha: 'password',
+    },
+  };
+
+  afterEach(() => {
+    mock.reset();
+  });
+
+  it('Testing authenticatingCounselorInLogin', async () => {
+    const response = {
+      nomeCompleto: counselor.name,
+      cod: counselor.nuvemCode,
+      nomeUsuario: counselor.userName,
+      password: counselor.password,
+      apptoken: 1,
+      email: counselor.email,
+      profile: {},
+    };
+
+    mock.onGet(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
+      .reply(200, response, { apptoken: 1 });
+
+    const actionReturn = await actions.authenticatingCounselorInLogin(authenticationHeader);
+    expect(actionReturn).toEqual(counselor);
+  });
+
+  it('Testing authenticatingCounselorInLogin catch', async () => {
+    mock.onGet(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
+      .reply(400);
+
+    try {
+      await actions.authenticatingCounselorInLogin({});
+    } catch (e) {
+      expect(e.response.status).toBe(400);
+    }
+  });
+
+  it('Testing getUserProfileInLogin', async () => {
+    const response = { ...counselor, profile: 'campos' };
+    mock.onGet(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`)
+      .reply(200, { ...response, camposAdicionais: '\'campos\'' });
+
+    const actionReturn = await actions.getUserProfileInLogin(counselor);
+    expect(actionReturn).toEqual(response);
+  });
+
+  it('Testing getUserProfileInLogin catch', async () => {
+    mock.onGet(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`)
+      .reply(400);
+
+    try {
+      await actions.getUserProfileInLogin({});
+    } catch (e) {
+      expect(e.response.status).toBe(404);
+    }
   });
 });
