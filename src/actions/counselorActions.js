@@ -26,6 +26,7 @@ import {
   REGISTER_NUVEM_ERROR,
 } from '../constants/generalConstants';
 import ShowToast from '../components/Toast';
+import { AuthError, ProfileError, GroupError } from '../Exceptions';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -568,7 +569,7 @@ export const asyncEditCounselor = counselorData => (dispatch) => {
 
 // Functions focused in Counselor Login
 
-const getCodGroup = (counselorWithProfile) => {
+const getCodGroup = async (counselorWithProfile) => {
   const paramsToNuvem = {
     params: {
       codAplicativo: APP_IDENTIFIER,
@@ -576,38 +577,27 @@ const getCodGroup = (counselorWithProfile) => {
     },
   };
 
-  return new Promise((resolve, reject) => {
-    axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
-      .then((response) => {
-        const codGroup = response.data[0].codGrupo;
+  try {
+    const response = await axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem);
+    const codGroup = response.data[0].codGrupo;
 
-        let counselorWithCodGroup = counselorWithProfile;
+    let counselorWithCodGroup = counselorWithProfile;
 
-        counselorWithCodGroup = {
-          ...counselorWithCodGroup,
-          profile: {
-            ...counselorWithCodGroup.profile,
-            codGroup,
-          },
-        };
+    counselorWithCodGroup = {
+      ...counselorWithCodGroup,
+      profile: {
+        ...counselorWithCodGroup.profile,
+        codGroup,
+      },
+    };
 
-        logInfo(FILE_NAME, 'getCodGroup',
-          `Código do Grupo: ${JSON.stringify(counselorWithCodGroup, null, 2)}`);
+    logInfo(FILE_NAME, 'getCodGroup',
+      `Código do Grupo: ${JSON.stringify(counselorWithCodGroup, null, 2)}`);
 
-        resolve(counselorWithCodGroup);
-
-        // dispatch(setCounselor(counselorWithCodGroup));
-
-        // dispatch(isNotLoading());
-
-        // Actions.mainScreen();
-      })
-      .catch((error) => {
-        reject(error);
-
-        // dispatch(isNotLoading());
-      });
-  });
+    return counselorWithCodGroup;
+  } catch (error) {
+    throw new GroupError(error.response);
+  }
 };
 
 // Used in Async Action to Login Counselor
@@ -622,84 +612,68 @@ export const convertingProfileStringToJSON = (profileStringSingleQuote) => {
 };
 
 // Used in Async Action to Login Counselor
-export const getUserProfileInLogin = (counselor) => {
+export const getUserProfileInLogin = async (counselor) => {
   const getProfileHeader = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
     },
   };
 
-  return new Promise((resolve, reject) => {
-    axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`, getProfileHeader)
-      .then((response) => {
-        logInfo(FILE_NAME, 'getUserProfileInLogin',
-          `Profile data of user: ${counselor.nuvemCode} -> ${JSON.stringify(response.data, null, 2)}`);
+  try {
+    const response = await axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`, getProfileHeader);
 
-        const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
-        const counselorWithProfile = counselor;
-        counselorWithProfile.profile = profile;
+    logInfo(FILE_NAME, 'getUserProfileInLogin',
+      `Profile data of user: ${counselor.nuvemCode} -> ${JSON.stringify(response.data, null, 2)}`);
 
-        logInfo(FILE_NAME, 'getUserProfileInLogin',
-          `Final Counselor sent to store after login: ${JSON.stringify(counselorWithProfile, null, 2)}`);
+    const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
+    const counselorWithProfile = counselor;
+    counselorWithProfile.profile = profile;
 
-        resolve(counselorWithProfile);
+    logInfo(FILE_NAME, 'getUserProfileInLogin',
+      `Final Counselor sent to store after login: ${JSON.stringify(counselorWithProfile, null, 2)}`);
 
-        // getCodGroup(counselorWithProfile, dispatch);
+    return counselorWithProfile;
+  } catch (error) {
+    logWarn(FILE_NAME, 'gettingUserProfileInLogin',
+      `Request result in an ${error}`);
 
-        // ShowToast.Toast(LOGIN_SUCCEED);
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'gettingUserProfileInLogin',
-          `Request result in an ${error}`);
-
-        reject(error);
-        // treatingGetUserProfileInLoginError(error);
-
-        // Setting state loading false, to deactivate the loading spin.
-        // dispatch(isNotLoading());
-      });
-  });
+    throw new ProfileError(error.response);
+  }
 };
 
 // Used in Async Action to Login Counselor
-export const authenticatingCounselorInLogin = async authenticationHeader => (
-  new Promise((resolve, reject) => {
-    axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
-      .then((response) => {
-        logInfo(FILE_NAME, 'authenticatingCounselorInLogin',
-          `User authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
+export const authenticatingCounselorInLogin = async (authenticationHeader) => {
+  try {
+    const response = await axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader);
 
-        logInfo(FILE_NAME, 'authenticatingCounselorInLogin',
-          `User response data received from authentication: ${JSON.stringify(response.data, null, 2)}`);
+    logInfo(FILE_NAME, 'authenticatingCounselorInLogin',
+      `User authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
+    logInfo(FILE_NAME, 'authenticatingCounselorInLogin',
+      `User response data received from authentication: ${JSON.stringify(response.data, null, 2)}`);
+    // To catch response header data you need to use response.headers.<Attribute-Needed>.
+    const counselor = {
+      nuvemCode: response.data.cod,
+      email: response.data.email,
+      name: response.data.nomeCompleto,
+      userName: response.data.nomeUsuario,
+      password: authenticationHeader.headers.senha,
+      token: response.headers.apptoken,
+      profile: {},
+    };
 
-        // To catch response header data you need to use response.headers.<Attribute-Needed>.
-        const counselor = {
-          nuvemCode: response.data.cod,
-          email: response.data.email,
-          name: response.data.nomeCompleto,
-          userName: response.data.nomeUsuario,
-          password: authenticationHeader.headers.senha,
-          token: response.headers.apptoken,
-          profile: {},
-        };
+    return counselor;
+  } catch (error) {
+    logWarn(FILE_NAME, 'authenticatingCounselorInLogin',
+      `Request result in an ${error}`);
+    throw new AuthError(error.response);
+  }
+};
 
-        resolve(counselor);
-
-        // getUserProfileInLogin(counselor, dispatch);
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'authenticatingCounselorInLogin',
-          `Request result in an ${error}`);
-
-        reject(error);
-
-        // treatingAuthenticatingCounselorInLoginError(error);
-
-        // Setting state loading false, to deactivate the loading spin.
-        // dispatch(isNotLoading());
-      });
-  })
-);
+export const counselorActionsAuxiliary = {
+  authenticatingCounselorInLogin,
+  getUserProfileInLogin,
+  getCodGroup,
+};
 
 // Async Action to Login
 export const asyncLoginCounselor = userData => async (dispatch) => {
@@ -718,34 +692,35 @@ export const asyncLoginCounselor = userData => async (dispatch) => {
   // Setting state loading true, to activate the loading spin.
   dispatch(isLoading());
 
-  // Request to authenticate the user and get his token.
-  await authenticatingCounselorInLogin(authenticationHeader)
-    .then(async (counselor) => {
-      await getUserProfileInLogin(counselor)
-        .then(async (counselorWithProfile) => {
-          await getCodGroup(counselorWithProfile)
-            .then((counselorWithCodGroup) => {
-              dispatch(setCounselor(counselorWithCodGroup));
+  try {
+    const counselorAuthenticated =
+      await counselorActionsAuxiliary.authenticatingCounselorInLogin(authenticationHeader);
 
-              ShowToast.Toast(LOGIN_SUCCEED);
+    const counselorWithProfile =
+      await counselorActionsAuxiliary.getUserProfileInLogin(counselorAuthenticated);
 
-              dispatch(isNotLoading());
+    const counselorWithCodGroup =
+      await counselorActionsAuxiliary.getCodGroup(counselorWithProfile);
 
-              Actions.mainScreen();
-            })
-            .catch((error) => {
-              logWarn(FILE_NAME, 'searchAGroup',
-                `Request result in an ${error}`);
-              dispatch(isNotLoading());
-            });
-        })
-        .catch((error) => {
-          treatingGetUserProfileInLoginError(error);
-          dispatch(isNotLoading());
-        });
-    })
-    .catch((error) => {
+    dispatch(setCounselor(counselorWithCodGroup));
+
+    ShowToast.Toast(LOGIN_SUCCEED);
+
+    dispatch(isNotLoading());
+
+    Actions.mainScreen();
+  } catch (error) {
+    if (error instanceof AuthError) {
       treatingAuthenticatingCounselorInLoginError(error);
-      dispatch(isNotLoading());
-    });
+    } else if (error instanceof ProfileError) {
+      treatingGetUserProfileInLoginError(error);
+    } else if (error instanceof GroupError) {
+      logWarn(FILE_NAME, 'searchAGroup',
+        `Request result in an ${error}`);
+    }
+
+    dispatch(isNotLoading());
+  }
 };
+
+export default asyncLoginCounselor;
