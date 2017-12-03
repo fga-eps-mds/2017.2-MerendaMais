@@ -66,6 +66,12 @@ class Menu extends React.PureComponent {
           onPress={() => { Actions.lesgislationScreen(); }}
         />
         <MenuButton
+          key="doComplaint"
+          text="Denunciar"
+          iconName="report-problem"
+          onPress={() => { Actions.complaintScreen(); }}
+        />
+        <MenuButton
           key="logout"
           text="Sair"
           iconName="logout"

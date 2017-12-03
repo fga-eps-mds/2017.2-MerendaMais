@@ -31,6 +31,7 @@ import Resolution26Screen from './src/screens/legislation/Resolution26Screen';
 import Resolution1Screen from './src/screens/legislation/Resolution1Screen';
 import LawNumber11947Screen from './src/screens/legislation/LawNumber11947Screen';
 import LawNumber12982Screen from './src/screens/legislation/LawNumber12982Screen';
+import complaintScreen from './src/screens/complaintScreen';
 
 const Routes = () => ({
   render() {
@@ -47,6 +48,28 @@ const Routes = () => ({
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
+            <Scene key="complaintScreen" component={complaintScreen} hideNavBar />
+            <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
+            <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
+            <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
+            <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
+            <Scene key="loginScreen" component={LoginContainer} hideNavBar />
+            <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
+            <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
+            <Scene key="mainReportsScreen" component={MainReportsScreen} type="reset" hideNavBar />
+            <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
+            <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
+            <Scene
+              key="schedulingVisit"
+              component={SchedulingVisitContainer}
+              type="reset"
+              hideNavBar
+            />
+            <Scene
+              key="ReportObservationScreen"
+              component={ReportObservationContainer}
+              hideNavBar
+            />
             <Scene
               key="scheduleMeetingMap"
               component={ScheduleMeetingMapContainer}
@@ -57,27 +80,6 @@ const Routes = () => ({
               key="scheduleMeeting"
               component={ScheduleMeetingContainer}
               type="reset"
-              hideNavBar
-            />
-            <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
-            <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
-            <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
-            <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
-            <Scene key="loginScreen" component={LoginContainer} hideNavBar />
-            <Scene key="profileInfoScreen" component={ProfileInfoScreenContainer} hideNavBar />
-            <Scene key="updateInfoScreen" component={UpdateInfoScreenContainer} hideNavBar />
-            <Scene
-              key="schedulingVisit"
-              component={SchedulingVisitContainer}
-              type="reset"
-              hideNavBar
-            />
-            <Scene key="mainReportsScreen" component={MainReportsScreen} type="reset" hideNavBar />
-            <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
-            <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
-            <Scene
-              key="ReportObservationScreen"
-              component={ReportObservationContainer}
               hideNavBar
             />
             <Scene
