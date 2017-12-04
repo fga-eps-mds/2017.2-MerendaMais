@@ -67,9 +67,8 @@ const styles = StyleSheet.create({
   },
 
   listSchools: {
-    flex: 2.5,
     justifyContent: 'center',
-    width: 320,
+    marginHorizontal: 5,
     marginTop: 60,
     borderColor: 'black',
     borderWidth: 1,
@@ -132,6 +131,14 @@ class SearchSchool extends React.Component {
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
   }
+  componentWillMount() {
+    const preUf = this.props.counselor.profile.CAE_UF;
+    const preMunicipalDistrict = this.props.counselor.profile.CAE_municipalDistrict.replace(/-/g, '').trim();
+
+    this.setState({ uf: preUf });
+    this.setState({ city: preMunicipalDistrict });
+  }
+
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
   }
@@ -243,7 +250,7 @@ class SearchSchool extends React.Component {
       if (this.state.isLoading) {
         return (
           <ActivityIndicator
-            style={{ paddingBottom: 10 }}
+            style={{ paddingVertical: 20 }}
             size="large"
             color="#FF9500"
           />
@@ -287,7 +294,7 @@ class SearchSchool extends React.Component {
         >
           <Picker.Item value="" label="Escolha o Municipio" color="#95a5a6" />
           {municipalDistricts[UfInitials].cidades.map(item =>
-            (<Picker.Item label={item} value={item} color="#000000" />))}
+            (<Picker.Item label={item} value={item} key={item} color="#000000" />))}
         </Picker>
       </View>
     ) : null;
@@ -323,6 +330,7 @@ class SearchSchool extends React.Component {
                       this.setState({
                         ...this.state,
                         uf,
+                        city: '',
                       })
                   )}
                   selectedValue={this.state.uf}
@@ -366,10 +374,29 @@ class SearchSchool extends React.Component {
   }
 }
 
+const { shape, string, number, bool, func } = PropTypes;
+
 SearchSchool.propTypes = {
-  setSchoolInfo: PropTypes.func.isRequired,
-  setCity: PropTypes.func.isRequired,
-  setUf: PropTypes.func.isRequired,
+  setSchoolInfo: func.isRequired,
+  setCity: func.isRequired,
+  setUf: func.isRequired,
+  counselor: shape({
+    name: string.isRequired,
+    nuvemCode: number.isRequired,
+    token: string.isRequired,
+    userName: string.isRequired,
+    profile: shape({
+      cpf: string.isRequired,
+      phone: string.isRequired,
+      isPresident: bool.isRequired,
+      counselorType: string.isRequired,
+      segment: string.isRequired,
+      CAE_Type: string.isRequired,
+      CAE_UF: string.isRequired,
+      CAE_municipalDistrict: string.isRequired,
+      CAE: string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default SearchSchool;
