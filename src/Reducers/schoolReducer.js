@@ -14,6 +14,7 @@ const schoolReducer = (state = initialState.school, action) => {
 
   switch (action.type) {
     case SET_SCHOOL_INFO:
+      console.log(action.payload);
       return {
         ...state,
         schoolCode: action.payload.schoolCode,
@@ -22,6 +23,7 @@ const schoolReducer = (state = initialState.school, action) => {
         schoolEmail: action.payload.schoolEmail,
         schoolLat: action.payload.schoolLat,
         schoolLong: action.payload.schoolLong,
+        schoolStudents: action.payload.schoolStudents,
         schoolSelected: action.payload.schoolSelected,
       };
     case SET_SCHOOL_UF:

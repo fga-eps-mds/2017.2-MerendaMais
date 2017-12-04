@@ -5,9 +5,14 @@ export const Actions = {
   profileInfoScreen: () => ({}),
   schedulingVisit: () => ({}),
   manageRegisters: () => ({}),
+  lesgislationScreen: () => ({}),
+  Resolution1Screen: jest.fn(),
   drawerOpen: jest.fn(),
   mainReportsScreen: jest.fn(),
   registerScreen: jest.fn(),
   refresh: jest.fn(),
   StartPendingInspection: jest.fn(),
+  scheduleMeeting: jest.fn(),
+  scheduleMeetingMap: jest.fn(),
+
 };

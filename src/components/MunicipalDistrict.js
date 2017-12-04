@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native-elements';
 import { View, Picker } from 'react-native';
-import municipalDistricts from '../municipalDistricts';
+import municipalDistricts from '../constants/municipalDistricts';
 import DropdownComponent from './DropdownComponent';
 
 const MunicipalDistrict = props => (

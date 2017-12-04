@@ -15,7 +15,7 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
-import { SCHOOL_ENDPOINT } from '../constants';
+import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 
 const FILE_NAME = 'VisitInvites.js';

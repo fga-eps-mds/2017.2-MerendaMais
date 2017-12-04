@@ -21,7 +21,7 @@ import {
   EDIT_SUCCEED,
   INTERNAL_ERROR,
   REGISTER_SUCCEED,
-  REGISTER_NUVEM_ERROR } from '../constants';
+  REGISTER_NUVEM_ERROR } from '../constants/generalConstants';
 import ShowToast from '../components/Toast';
 
 const FILE_NAME = 'counselorActions.js';
@@ -234,8 +234,6 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
     .catch((error) => {
       logWarn(FILE_NAME, 'addCounselorToGroup',
         `Request result in an ${error}`);
-      console.log(error.request);
-      console.log(error.message);
       dispatch(isNotLoading());
     });
 };

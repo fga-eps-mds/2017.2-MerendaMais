@@ -14,7 +14,7 @@ import {
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
   COUNSELOR_GROUP_DISABLED_SUCCESS,
   COUNSELOR_GROUP_DISABLED_FAILED,
-} from '../../src/constants';
+} from '../../src/constants/generalConstants';
 
 
 const middlewares = [thunk];

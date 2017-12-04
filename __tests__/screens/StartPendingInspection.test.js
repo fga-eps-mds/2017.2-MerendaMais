@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 // import configureStore from 'redux-mock-store';
-import StartPendingInspectionContainer from '../../src/Containers/StartPendingInspectionContainer';
+import StartPendingInspectionContainer from '../../src/Containers/startInspection/StartPendingInspectionContainer';
 
 Enzyme.configure({ adapter: new Adapter() });
 
