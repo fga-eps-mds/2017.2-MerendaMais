@@ -140,6 +140,7 @@ class VisitInvites extends React.Component {
       this.props.counselor.profile.cpf);
   }
 
+
   getSchoolLocalization() {
     axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
       params: {
@@ -160,37 +161,15 @@ class VisitInvites extends React.Component {
       })
       .catch((error) => {
         logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
+        this.popupDialog.show();
       });
   }
-
 
   seeVisitInfo(schedule) {
     this.setState({ schedule });
     console.log('o schedule do state');
     console.log(this.state);
-    // this.getSchoolLocalization();
-    // this.popupDialog.show();
-
-    axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
-      params: {
-        campos: 'latitude,longitude',
-      },
-    })
-      .then((response) => {
-        logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
-          `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
-
-        // Since we get the response in portuguese, we need to "translate" it so we
-        // can add it in the store.
-        this.setState({ visitLat: response.data.latitude });
-        this.setState({ visitLong: response.data.longitude });
-        console.log('O state depois das latitudes');
-        console.log(this.state);
-        this.popupDialog.show();
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
-      });
+    this.getSchoolLocalization();
   }
 
 
@@ -286,7 +265,7 @@ class VisitInvites extends React.Component {
   }
 
   showLocalizationButton() {
-    if (this.state.visitLat !== undefined) {
+    if (this.state.visitLat !== undefined && this.state.visitLat !== null) {
       return (
         <View key="renderButton">
           <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
