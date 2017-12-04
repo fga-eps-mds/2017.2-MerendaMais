@@ -1,14 +1,17 @@
 import axios from 'axios';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_NEW_LISTS,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
-  SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from './types';
-import { logInfo, logWarn } from '../../logConfig/loggers';
+  SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  SET_VISIT_NEW_LISTS,
+  SET_MEETING_NEW_LISTS,
+  SET_CHECKED_LIST,
+  SET_NOT_CHECKED_LIST } from './types';
+import { logWarn } from '../../logConfig/loggers';
 import { APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
-  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants';
+  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants/generalConstants';
 
 const FILE_NAME = 'listActions.js';
 
@@ -36,9 +39,24 @@ export const setList = counselorInformations => ({
   payload: counselorInformations,
 });
 
-export const setNewLists = newList => ({
-  type: SET_NEW_LISTS,
+export const setVisitNewLists = newList => ({
+  type: SET_VISIT_NEW_LISTS,
   payload: newList,
+});
+
+export const setMeetingNewLists = meetingNewList => ({
+  type: SET_MEETING_NEW_LISTS,
+  payload: meetingNewList,
+});
+
+export const setlistOfCheckedCounselors = checkedCounselor => ({
+  type: SET_CHECKED_LIST,
+  payload: checkedCounselor,
+});
+
+export const setlistOfNotCheckedCounselors = notCheckedCounselor => ({
+  type: SET_NOT_CHECKED_LIST,
+  payload: notCheckedCounselor,
 });
 
 // Used in Async Action to Login Counselor
@@ -63,32 +81,34 @@ const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) =>
       const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
       const completeCounselorInformations = counselorInformations;
 
-      completeCounselorInformations.cpf = profile.cpf;
-      completeCounselorInformations.phone = profile.phone;
+      completeCounselorInformations.profile = profile;
 
       if (profile.cpf !== CPF) {
-        dispatch(setList(counselorInformations));
+        dispatch(setList(completeCounselorInformations));
+
+        if (completeCounselorInformations.profile.presidentChecked) {
+          dispatch(setlistOfCheckedCounselors(completeCounselorInformations));
+        } else {
+          dispatch(setlistOfNotCheckedCounselors(completeCounselorInformations));
+        }
       }
     })
     .catch((error) => {
       logWarn(FILE_NAME, '',
-        `Request result in an ${error}`);
+        `Request result in an ${error} nuvem code ${nuvemCode}`);
     });
 };
 
 const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
   axios.get(counselorLink)
     .then((response) => {
-      logInfo(FILE_NAME, 'getCounselor',
-        `name of counselors: ${JSON.stringify(response.data.nomeCompleto, null, 2)}`);
       const auxCodMembro = linkWithCodMembro.substr(linkWithCodMembro.indexOf('membros/'));
       const codMembro = auxCodMembro.substr(8);
       const counselorInformations = {
         nuvemCode: response.data.cod,
         name: response.data.nomeCompleto,
         codMembro,
-        cpf: '',
-        phone: '',
+        profile: {},
       };
       getCounselorProfile(counselorInformations, response.data.cod, CPF, dispatch);
     })
@@ -101,8 +121,6 @@ const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
 const getCounselorFromGroup = (codGroup, CPF, dispatch) => {
   axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
     .then((response) => {
-      logInfo(FILE_NAME, 'getCounselorFromGroup',
-        `list of counselors: ${JSON.stringify(response.data, null, 2)}`);
       for (let i = 0; i < response.data.length; i += 1) {
         getCounselor(response.data[i].links[1].href, response.data[i].links[0].href, CPF, dispatch);
       }

@@ -1,16 +1,18 @@
 import initialState from './initialState';
 import { SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
-  SET_NEW_LISTS,
+  SET_VISIT_NEW_LISTS,
+  SET_MEETING_NEW_LISTS,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
-  SET_ALREADY_INPECTIONED_SCHEDULE_LIST } from '../actions/types';
+  SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  SET_CHECKED_LIST,
+  SET_NOT_CHECKED_LIST } from '../actions/types';
 
 const listReducer = (state = initialState.list, action) => {
   if (action === undefined) {
     return state;
   }
-
   switch (action.type) {
     case SET_LIST_COUNSELOR_GROUP:
       return {
@@ -21,17 +23,26 @@ const listReducer = (state = initialState.list, action) => {
       return {
         ...state,
         listOfCounselorsInAGroup: [],
+        listOfCheckedCounselors: [],
+        listOfNotCheckedCounselors: [],
         listOfInviteesWithCounselorInformations: {},
         listOfInvitees: {},
         listOfPendingScheduleInAGroup: [],
         listOfExpiredScheduleInAGroup: [],
         listOfAlreadyInpectionedSchedueInAGroup: [],
       };
-    case SET_NEW_LISTS:
+    case SET_VISIT_NEW_LISTS:
       return {
         ...state,
-        listOfInviteesWithCounselorInformations: action.payload.newListWithInformations,
-        listOfInvitees: action.payload.newList,
+        visitListOfInviteesWithCounselorInformations: action.payload.visitNewListWithInformations,
+        visitListOfInvitees: action.payload.visitNewList,
+      };
+    case SET_MEETING_NEW_LISTS:
+      return {
+        ...state,
+        meetingListOfInviteesWithCounselorInformations:
+          action.payload.meetingNewListWithInformations,
+        meetingListOfInvitees: action.payload.meetingNewList,
       };
     case SET_PENDING_SCHEDULE_LIST:
       return {
@@ -48,6 +59,17 @@ const listReducer = (state = initialState.list, action) => {
         ...state,
         listOfAlreadyInpectionedSchedueInAGroup:
          [...state.listOfAlreadyInpectionedSchedueInAGroup, action.payload],
+      };
+    case SET_CHECKED_LIST:
+      return {
+        ...state,
+        listOfCheckedCounselors: [...state.listOfCheckedCounselors, action.payload],
+      };
+
+    case SET_NOT_CHECKED_LIST:
+      return {
+        ...state,
+        listOfNotCheckedCounselors: [...state.listOfNotCheckedCounselors, action.payload],
       };
     default:
       return state;

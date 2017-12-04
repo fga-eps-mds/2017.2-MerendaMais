@@ -9,14 +9,13 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
-import { SCHOOL_ENDPOINT } from '../constants';
+import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 
 const FILE_NAME = 'VisitInvites.js';
