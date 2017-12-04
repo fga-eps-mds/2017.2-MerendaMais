@@ -9,7 +9,6 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import PopupDialog, {
   DialogTitle,
@@ -46,6 +45,7 @@ const styles = StyleSheet.create({
   },
 
   textBox: {
+    marginTop: 5,
     paddingLeft: 4,
     justifyContent: 'flex-start',
   },
@@ -61,9 +61,11 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     backgroundColor: '#4cd964',
     padding: 7,
+    marginTop: 10,
     marginBottom: 20,
     justifyContent: 'center',
-    marginRight: 20,
+    marginRight: 10,
+    marginLeft: 8,
   },
 
   buttonInvitees: {
@@ -74,6 +76,8 @@ const styles = StyleSheet.create({
     padding: 8,
     justifyContent: 'center',
     marginRight: 20,
+    marginTop: 68,
+    width: 120,
   },
 
   buttonText: {
@@ -116,7 +120,6 @@ const styles = StyleSheet.create({
 class VisitInvites extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       invitees: [],
       schedule: {
@@ -140,38 +143,39 @@ class VisitInvites extends React.Component {
       this.props.counselor.profile.cpf);
   }
 
+  async getSchoolLocalization() {
+    try {
+      const response = await
+        axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
+          params: {
+            campos: 'latitude,longitude',
+          },
+        });
 
-  getSchoolLocalization() {
-    axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
-      params: {
-        campos: 'latitude,longitude',
-      },
-    })
-      .then((response) => {
-        logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
-          `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
+      logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
+        `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
 
-        // Since we get the response in portuguese, we need to "translate" it so we
-        // can add it in the store.
-        this.setState({ visitLat: response.data.latitude });
-        this.setState({ visitLong: response.data.longitude });
-        console.log('O state depois das latitudes');
-        console.log(this.state);
-        this.popupDialog.show();
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
-        this.popupDialog.show();
-      });
+      // Since we get the response in portuguese, we need to "translate" it so we
+      // can add it in the store.
+
+      await this.setState({ visitLat: response.data.latitude });
+      console.log('Set state Lat');
+      await this.setState({ visitLong: response.data.longitude });
+      console.log('O state depois das latitudes');
+      console.log(this.state);
+      this.popupDialog.show();
+    } catch (error) {
+      logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
+      this.popupDialog.show();
+    }
   }
 
-  seeVisitInfo(schedule) {
-    this.setState({ schedule });
+  async seeVisitInfo(schedule) {
+    await this.setState({ schedule });
     console.log('o schedule do state');
     console.log(this.state);
-    this.getSchoolLocalization();
+    await this.getSchoolLocalization();
   }
-
 
   // Será usada para confirmar/cancelar a presença do conselheiro na visita
   verification(listOfInvitees) {
@@ -200,7 +204,7 @@ class VisitInvites extends React.Component {
       <View style={styles.buttonBox}>
         <TouchableOpacity>
           {/* onPress={() => Actions.mainReportsScreen()} */}
-          <Text style={styles.buttonText}>CONFIRMAR</Text>
+          <Text style={styles.buttonText}>CONFIRMAR PRESENÇA</Text>
         </TouchableOpacity>
       </View>
     );
@@ -228,30 +232,14 @@ class VisitInvites extends React.Component {
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
               {schedule.time}
             </Text>
-            {
-              schedule.invitedAgent ? (
-                <Text style={styles.text}>
-                  <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
-                </Text>
-              ) :
-                <Text style={styles.text}>
-                  <Text style={{ fontWeight: 'bold' }}>Agente não convidado</Text>
-                </Text>
-            }
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-              {Object.keys(schedule.listOfInvitees).length}
-            </Text>
-          </View>
-          <View>
             {this.verification(schedule.listOfInvitees)}
-            <View style={styles.buttonInvitees}>
-              <TouchableOpacity
-                onPress={() => this.seeVisitInfo(schedule)}
-              >
-                <Text style={styles.buttonText}>INFO</Text>
-              </TouchableOpacity>
-            </View>
+          </View>
+          <View style={styles.buttonInvitees}>
+            <TouchableOpacity
+              onPress={() => this.seeVisitInfo(schedule)}
+            >
+              <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
+            </TouchableOpacity>
           </View>
         </View>
       ))
@@ -273,7 +261,7 @@ class VisitInvites extends React.Component {
             onPress={() => this.goToMaps()}
             style={styles.buttonMap}
             activeOpacity={0.7}
-          // <Image source={Location} />
+            // <Image source={Location} />
           >
             <Text style={styles.buttonText}>Ver no Mapa</Text>
           </TouchableOpacity>
@@ -365,11 +353,6 @@ VisitInvites.propTypes = {
   })).isRequired,
   counselor: shape({
   }).isRequired,
-  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    cpf: PropTypes.string,
-    phone: PropTypes.string,
-  })).isRequired,
 };
 
 export default VisitInvites;
