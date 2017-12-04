@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import openMap from 'react-native-open-maps';
 import {
   StyleSheet,
   Text,
@@ -14,11 +16,8 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
-
-/* import { FULL_INFO_POSTS_LINK_NUVEM_CIVICA,
-  POSTING_TYPE_CODE,
-  APP_IDENTIFIER,
-} from '../constants'; */
+import { SCHOOL_ENDPOINT } from '../constants';
+import { logInfo, logWarn } from '../../logConfig/loggers';
 
 const FILE_NAME = 'VisitInvites.js';
 
@@ -102,6 +101,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
     justifyContent: 'space-between',
   },
+  buttonMap: {
+    paddingVertical: 10,
+    borderWidth: 1,
+    borderRadius: 7,
+    marginHorizontal: 15,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#FF9500',
+    justifyContent: 'flex-end',
+  },
 });
 
 class VisitInvites extends React.Component {
@@ -120,7 +129,8 @@ class VisitInvites extends React.Component {
         schoolName: '',
         time: '',
       },
-
+      visitLat: null,
+      visitLong: null,
     };
   }
 
@@ -130,16 +140,62 @@ class VisitInvites extends React.Component {
       this.props.counselor.profile.cpf);
   }
 
+  getSchoolLocalization() {
+    axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
+      params: {
+        campos: 'latitude,longitude',
+      },
+    })
+      .then((response) => {
+        logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
+          `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
+
+        // Since we get the response in portuguese, we need to "translate" it so we
+        // can add it in the store.
+        this.setState({ visitLat: response.data.latitude });
+        this.setState({ visitLong: response.data.longitude });
+        console.log('O state depois das latitudes');
+        console.log(this.state);
+        this.popupDialog.show();
+      })
+      .catch((error) => {
+        logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
+      });
+  }
+
+
   seeVisitInfo(schedule) {
-    // this.setState({ schedule: { ...this.state.schedule, schedule } });
     this.setState({ schedule });
     console.log('o schedule do state');
     console.log(this.state);
-    this.popupDialog.show();
+    // this.getSchoolLocalization();
+    // this.popupDialog.show();
+
+    axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
+      params: {
+        campos: 'latitude,longitude',
+      },
+    })
+      .then((response) => {
+        logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
+          `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
+
+        // Since we get the response in portuguese, we need to "translate" it so we
+        // can add it in the store.
+        this.setState({ visitLat: response.data.latitude });
+        this.setState({ visitLong: response.data.longitude });
+        console.log('O state depois das latitudes');
+        console.log(this.state);
+        this.popupDialog.show();
+      })
+      .catch((error) => {
+        logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
+      });
   }
 
+
+  // Será usada para confirmar/cancelar a presença do conselheiro na visita
   verification(listOfInvitees) {
-    // Será usada para confirmar/cancelar a presença do conselheiro na visita
     if (listOfInvitees[this.props.counselor.nuvemCode] === undefined) {
       return (
         <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
@@ -212,9 +268,7 @@ class VisitInvites extends React.Component {
             {this.verification(schedule.listOfInvitees)}
             <View style={styles.buttonInvitees}>
               <TouchableOpacity
-                // onPress={() => this.popupDialog.show()}
                 onPress={() => this.seeVisitInfo(schedule)}
-                // onPress={() => this.mountListOfInvitees(schedule.listOfInvitees)}
               >
                 <Text style={styles.buttonText}>INFO</Text>
               </TouchableOpacity>
@@ -225,29 +279,32 @@ class VisitInvites extends React.Component {
     );
   }
 
-  renderCounselorList() {
-    return (
-      this.state.invitees.map(counselor => (
-        <View style={styles.listRegisters} key={counselor.nuvemCode}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-              {counselor.name}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.cpf}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.phone}
-            </Text>
-          </View>
-        </View>
-      ))
-    );
+  goToMaps() {
+    // const url = `https://www.google.com/maps/?q=${this.props.school.schoolLat},${this.props.school.schoolLong}`;
+    // Linking.openURL(url);
+    openMap({ latitude: this.state.visitLat, longitude: this.state.visitLong });
   }
 
+  showLocalizationButton() {
+    if (this.state.visitLat !== undefined) {
+      return (
+        <View key="renderButton">
+          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
+          <TouchableOpacity
+            onPress={() => this.goToMaps()}
+            style={styles.buttonMap}
+            activeOpacity={0.7}
+          // <Image source={Location} />
+          >
+            <Text style={styles.buttonText}>Ver no Mapa</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    // If we can't return the button, return nothing.
+    return (null);
+  }
 
   render() {
     return (
@@ -305,6 +362,7 @@ class VisitInvites extends React.Component {
                 <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
                 {Object.keys(this.state.schedule.listOfInvitees).length}
               </Text>
+              {this.showLocalizationButton()}
             </View>
           </View>
         </PopupDialog>
