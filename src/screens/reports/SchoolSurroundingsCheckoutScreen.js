@@ -2,7 +2,8 @@ import React from 'react';
 import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
-import { StyleSheet,
+import {
+  StyleSheet,
   TouchableOpacity,
   Text,
   View,
@@ -13,6 +14,7 @@ import { StyleSheet,
   BackHandler,
 } from 'react-native';
 import Header from '../../components/Header';
+import { backHandlerPop } from '../../NavigationFunctions';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -83,8 +85,12 @@ const styles = StyleSheet.create({
 });
 
 export default class SchoolSurroundingsCheckoutScreen extends React.Component {
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
   }
 
   showPositiveCheckBox(item) {

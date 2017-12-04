@@ -84,20 +84,29 @@ export default class ScheduleMeetingMap extends React.Component {
     };
   }
 
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
-          region: { ...this.state.region, latitude: position.coords.latitude } });
+          region: { ...this.state.region, latitude: position.coords.latitude }
+        });
         this.setState({
-          region: { ...this.state.region, longitude: position.coords.longitude } });
+          region: { ...this.state.region, longitude: position.coords.longitude }
+        });
         this.setState({ meetingLocation: this.state.region });
         this.showPopUp();
       },
       error => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
   }
 
   showPopUp() {
@@ -144,7 +153,7 @@ export default class ScheduleMeetingMap extends React.Component {
           provider={MapView.PROVIDER_GOOGLE}
           style={{ flex: 1 }}
           region={this.state.region}
-          key = "mapChanging"
+          key="mapChanging"
           onRegionChange={region => this.setState({ region })}
         >
           <MapView.Marker

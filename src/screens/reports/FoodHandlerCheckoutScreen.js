@@ -13,6 +13,7 @@ import { StyleSheet,
   BackHandler,
 } from 'react-native';
 import Header from '../../components/Header';
+import { backHandlerPop } from '../../NavigationFunctions';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -82,6 +83,14 @@ const styles = StyleSheet.create({
 });
 
 export default class FoodHandlerCheckoutScreen extends React.Component {
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
+  }
+
   showPositiveCheckBox(item) {
     return (
       <View>

@@ -12,6 +12,7 @@ import Checkbox from 'react-native-checkbox';
 import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import store from '../../Reducers/store';
+import { backHandlerPopToMain } from '../../NavigationFunctions';
 
 const { width } = Dimensions.get('window');
 
@@ -85,6 +86,14 @@ export default class MainReportsScreen extends React.Component {
       anyReport: false,
       whatever: '',
     };
+  }
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
   checkingFoodQualityReport() {

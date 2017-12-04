@@ -5,6 +5,7 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
+  BackHandler,
 } from 'react-native';
 
 import Accordion from 'react-native-collapsible/Accordion';
@@ -14,7 +15,9 @@ import Header from '../../components/Header';
 import {
   CONTENT,
   SELECTORS,
-  LAW_12982_DATE } from '../../constants/legislation/lawNumber12.982';
+  LAW_12982_DATE,
+} from '../../constants/legislation/lawNumber12.982';
+import { backHandlerPop } from '../../NavigationFunctions';
 
 const styles = StyleSheet.create({
   title: {
@@ -47,6 +50,14 @@ export default class LawNumber12982Screen extends Component {
     activeSection: false,
     collapsed: true,
   };
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
+  }
 
   setSection(section) {
     this.setState({ activeSection: section });

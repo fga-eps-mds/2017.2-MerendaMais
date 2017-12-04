@@ -2,7 +2,8 @@ import React from 'react';
 import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
-import { StyleSheet,
+import {
+  StyleSheet,
   TouchableOpacity,
   Text,
   View,
@@ -10,8 +11,10 @@ import { StyleSheet,
   TextInput,
   Dimensions,
   KeyboardAvoidingView,
+  BackHandler,
 } from 'react-native';
 import Header from '../../components/Header';
+import { backHandlerPop } from '../../NavigationFunctions';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -81,6 +84,14 @@ const styles = StyleSheet.create({
 });
 
 export default class WaterSewerSupplyCheckoutScreen extends React.Component {
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
+  }
+
   showPositiveCheckBox(item) {
     return (
       <View>
