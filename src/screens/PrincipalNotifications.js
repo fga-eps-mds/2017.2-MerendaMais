@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   principal: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
 
   button: {
@@ -17,32 +18,34 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9500',
     borderRadius: 10,
     borderColor: 'black',
-    marginTop: 120,
+    borderWidth: 1,
+    marginBottom: 60,
   },
 });
 
 const PrincipalNotifications = () => (
   <View style={styles.principal}>
     <Header
-      title={'Acesar notificações'}
+      title={'Notificações'}
       backButton
     />
+    <View style={{ flex: 1, marginTop: 160 }}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
+        onPress={() => Actions.VisitInvites()}
+      >
+        <Text style={{ color: 'white', fontSize: 20 }}>Convites de Visita</Text>
+      </TouchableOpacity>
 
-    <TouchableOpacity
-      style={styles.button}
-      activeOpacity={0.7}
-      onPress={() => Actions.VisitInvites()}
-    >
-      <Text style={{ color: 'white', fontSize: 20 }}>Convites de visitas</Text>
-    </TouchableOpacity>
-
-    <TouchableOpacity
-      style={styles.button}
-      activeOpacity={0.7}
-      // onPress={() => Actions.meetingsInvites()}
-    >
-      <Text style={{ color: 'white', fontSize: 20 }}>Convites de reuniões</Text>
-    </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
+        // onPress={() => Actions.meetingsInvites()}
+      >
+        <Text style={{ color: 'white', fontSize: 20 }}>Convites de Reunião</Text>
+      </TouchableOpacity>
+    </View>
   </View>
 );
 
