@@ -20,9 +20,9 @@ export const CGU_WEB_SITE = 'http://www.cgu.gov.br/assuntos/ouvidoria/denuncias-
 export const MPF = 'Ministério Público Federal';
 export const MPF_ADDRESS = 'SAFS, Quadra 04, conjunto “C” Brasília-DF CEP: 70050-900';
 export const MPF_PHONE = '(61) 3031-5100';
-export const MPF_EMAIL = 'http://www.mpf.mp.br/para-o-cidadao/sac';
+export const MPF_WEB_SITE = 'http://www.mpf.mp.br/para-o-cidadao/sac';
 
 export const TCU = 'Tribunal de Contas da União';
 export const TCU_ADDRESS = 'SAFS - Quadra 04, Lote 01 Brasília-DF CEP: 70042-900';
 export const TCU_PHONE = '0800-6441500';
-export const TCU_EMAIL = 'www.tcu.gov.br/ouvidoria';
+export const TCU_WEB_SITE = 'www.tcu.gov.br/ouvidoria';
