@@ -7,6 +7,7 @@ const mapStateToProps = state => (
   {
     counselor: state.counselor,
     listOfScheduleMeetingInAGroup: state.list.listOfScheduleMeetingInAGroup,
+    listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
   }
 );
 

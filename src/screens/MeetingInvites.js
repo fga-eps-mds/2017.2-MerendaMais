@@ -14,6 +14,7 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
+import { resetList } from '../actions/listActions';
 
 const styles = StyleSheet.create({
   principal: {
@@ -139,10 +140,16 @@ class VisitInvites extends React.Component {
   async getSchoolLocalization() {
     await this.setState({ visitLat: this.state.schedule.lat });
     console.log('Set state Lat');
-    await this.setState({ visitLong: this.state.schedule.log });
+    await this.setState({ visitLong: this.state.schedule.long });
     console.log('O state depois das latitudes');
     console.log(this.state);
     this.popupDialog.show();
+  }
+
+  getInfo(schedule) {
+    this.setState({ invitees: [] });
+    this.mountListOfInvitees(this.state.schedule.meetingListOfInvitees);
+    this.seeMeetingInfo(schedule);
   }
 
   async seeMeetingInfo(schedule) {
@@ -197,7 +204,7 @@ class VisitInvites extends React.Component {
           </View>
           <View style={styles.buttonInvitees}>
             <TouchableOpacity
-              onPress={() => this.seeMeetingInfo(schedule)}
+              onPress={() => this.getInfo(schedule)}
             >
               <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
             </TouchableOpacity>
@@ -234,6 +241,49 @@ class VisitInvites extends React.Component {
     return (null);
   }
 
+  mountListOfInvitees(listOfInvitees) {
+    this.setState({ invitees: [] });
+    let list = this.state.invitees;
+
+    // Faz um map da list de conselheiros do CAE
+    this.props.listOfCounselorsInAGroup.map((counselor) => {
+      /* caso o conselheiro do CAE esteja na lista de convidados
+      ele será adicionado numa lista com suas informações
+      O conselheiro da cessão não será mostrado por que ele não é colocado em
+      listOfCounselorsInAGroup */
+      if (listOfInvitees[counselor.nuvemCode] !== undefined) {
+        list.push(counselor);
+        return this.setState({ invitees: list });
+      }
+
+      return null;
+    });
+    list = [];
+  }
+
+  renderCounselorList() {
+    return (
+      this.state.invitees.map(counselor => (
+        <View style={styles.listRegisters} key={counselor.nuvemCode}>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+              {counselor.name}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
+              {counselor.profile.cpf}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+              {counselor.profile.phone}
+            </Text>
+          </View>
+        </View>
+      ))
+    );
+  }
+
   render() {
     return (
       <View style={styles.principal}>
@@ -262,23 +312,26 @@ class VisitInvites extends React.Component {
             </View>,
           ]}
         >
-          <View style={styles.listSchedule}>
-            <View style={styles.textBox}>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-                {this.state.schedule.date}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-                {this.state.schedule.time}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-                {Object.keys(this.state.schedule.meetingListOfInvitees).length}
-              </Text>
-              {this.showLocalizationButton()}
+          <ScrollView>
+            <View style={styles.listSchedule}>
+              <View style={styles.textBox}>
+                <Text style={styles.text}>
+                  <Text style={{ fontWeight: 'bold' }}>Data: </Text>
+                  {this.state.schedule.date}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
+                  {this.state.schedule.time}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
+                  {Object.keys(this.state.schedule.meetingListOfInvitees).length}
+                </Text>
+                {this.showLocalizationButton()}
+                {this.renderCounselorList()}
+              </View>
             </View>
-          </View>
+          </ScrollView>
         </PopupDialog>
         <ScrollView style={styles.content}>
           {this.arrayScheduleMeetingList()}
