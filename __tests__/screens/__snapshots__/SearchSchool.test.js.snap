@@ -68,7 +68,7 @@ exports[`Testing SearchSchool it renders correctly 1`] = `
           <Picker
             mode="dialog"
             onValueChange={[Function]}
-            selectedValue=""
+            selectedValue="RO"
           >
             <PickerItem
               color="#95a5a6"
@@ -240,6 +240,342 @@ exports[`Testing SearchSchool it renders correctly 1`] = `
           </Picker>
         </View>
         <View
+          key="municipalDistrict"
+          style={
+            Object {
+              "borderColor": "gray",
+              "borderRadius": 7,
+              "borderWidth": 1,
+              "marginTop": 15,
+              "paddingLeft": 2,
+            }
+          }
+        >
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="Municipal"
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha o Municipio"
+              value=""
+            />
+            <PickerItem
+              color="#000000"
+              key="Alta Floresta d'Oeste"
+              label="Alta Floresta d'Oeste"
+              value="Alta Floresta d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Alto Alegre do Parecis"
+              label="Alto Alegre do Parecis"
+              value="Alto Alegre do Parecis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Alto Paraíso"
+              label="Alto Paraíso"
+              value="Alto Paraíso"
+            />
+            <PickerItem
+              color="#000000"
+              key="Alvorada d'Oeste"
+              label="Alvorada d'Oeste"
+              value="Alvorada d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ariquemes"
+              label="Ariquemes"
+              value="Ariquemes"
+            />
+            <PickerItem
+              color="#000000"
+              key="Buritis"
+              label="Buritis"
+              value="Buritis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cabixi"
+              label="Cabixi"
+              value="Cabixi"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cacaulândia"
+              label="Cacaulândia"
+              value="Cacaulândia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cacoal"
+              label="Cacoal"
+              value="Cacoal"
+            />
+            <PickerItem
+              color="#000000"
+              key="Campo Novo de Rondônia"
+              label="Campo Novo de Rondônia"
+              value="Campo Novo de Rondônia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Candeias do Jamari"
+              label="Candeias do Jamari"
+              value="Candeias do Jamari"
+            />
+            <PickerItem
+              color="#000000"
+              key="Castanheiras"
+              label="Castanheiras"
+              value="Castanheiras"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cerejeiras"
+              label="Cerejeiras"
+              value="Cerejeiras"
+            />
+            <PickerItem
+              color="#000000"
+              key="Chupinguaia"
+              label="Chupinguaia"
+              value="Chupinguaia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Colorado do Oeste"
+              label="Colorado do Oeste"
+              value="Colorado do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Corumbiara"
+              label="Corumbiara"
+              value="Corumbiara"
+            />
+            <PickerItem
+              color="#000000"
+              key="Costa Marques"
+              label="Costa Marques"
+              value="Costa Marques"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cujubim"
+              label="Cujubim"
+              value="Cujubim"
+            />
+            <PickerItem
+              color="#000000"
+              key="Espigão d'Oeste"
+              label="Espigão d'Oeste"
+              value="Espigão d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Governador Jorge Teixeira"
+              label="Governador Jorge Teixeira"
+              value="Governador Jorge Teixeira"
+            />
+            <PickerItem
+              color="#000000"
+              key="Guajará-Mirim"
+              label="Guajará-Mirim"
+              value="Guajará-Mirim"
+            />
+            <PickerItem
+              color="#000000"
+              key="Itapuã do Oeste"
+              label="Itapuã do Oeste"
+              value="Itapuã do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Jaru"
+              label="Jaru"
+              value="Jaru"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ji-Paraná"
+              label="Ji-Paraná"
+              value="Ji-Paraná"
+            />
+            <PickerItem
+              color="#000000"
+              key="Machadinho d'Oeste"
+              label="Machadinho d'Oeste"
+              value="Machadinho d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ministro Andreazza"
+              label="Ministro Andreazza"
+              value="Ministro Andreazza"
+            />
+            <PickerItem
+              color="#000000"
+              key="Mirante da Serra"
+              label="Mirante da Serra"
+              value="Mirante da Serra"
+            />
+            <PickerItem
+              color="#000000"
+              key="Monte Negro"
+              label="Monte Negro"
+              value="Monte Negro"
+            />
+            <PickerItem
+              color="#000000"
+              key="Nova Brasilândia d'Oeste"
+              label="Nova Brasilândia d'Oeste"
+              value="Nova Brasilândia d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Nova Mamoré"
+              label="Nova Mamoré"
+              value="Nova Mamoré"
+            />
+            <PickerItem
+              color="#000000"
+              key="Nova União"
+              label="Nova União"
+              value="Nova União"
+            />
+            <PickerItem
+              color="#000000"
+              key="Novo Horizonte do Oeste"
+              label="Novo Horizonte do Oeste"
+              value="Novo Horizonte do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ouro Preto do Oeste"
+              label="Ouro Preto do Oeste"
+              value="Ouro Preto do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Parecis"
+              label="Parecis"
+              value="Parecis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Pimenta Bueno"
+              label="Pimenta Bueno"
+              value="Pimenta Bueno"
+            />
+            <PickerItem
+              color="#000000"
+              key="Pimenteiras do Oeste"
+              label="Pimenteiras do Oeste"
+              value="Pimenteiras do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Porto Velho"
+              label="Porto Velho"
+              value="Porto Velho"
+            />
+            <PickerItem
+              color="#000000"
+              key="Presidente Médici"
+              label="Presidente Médici"
+              value="Presidente Médici"
+            />
+            <PickerItem
+              color="#000000"
+              key="Primavera de Rondônia"
+              label="Primavera de Rondônia"
+              value="Primavera de Rondônia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Rio Crespo"
+              label="Rio Crespo"
+              value="Rio Crespo"
+            />
+            <PickerItem
+              color="#000000"
+              key="Rolim de Moura"
+              label="Rolim de Moura"
+              value="Rolim de Moura"
+            />
+            <PickerItem
+              color="#000000"
+              key="Santa Luzia d'Oeste"
+              label="Santa Luzia d'Oeste"
+              value="Santa Luzia d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="São Felipe d'Oeste"
+              label="São Felipe d'Oeste"
+              value="São Felipe d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="São Francisco do Guaporé"
+              label="São Francisco do Guaporé"
+              value="São Francisco do Guaporé"
+            />
+            <PickerItem
+              color="#000000"
+              key="São Miguel do Guaporé"
+              label="São Miguel do Guaporé"
+              value="São Miguel do Guaporé"
+            />
+            <PickerItem
+              color="#000000"
+              key="Seringueiras"
+              label="Seringueiras"
+              value="Seringueiras"
+            />
+            <PickerItem
+              color="#000000"
+              key="Teixeirópolis"
+              label="Teixeirópolis"
+              value="Teixeirópolis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Theobroma"
+              label="Theobroma"
+              value="Theobroma"
+            />
+            <PickerItem
+              color="#000000"
+              key="Urupá"
+              label="Urupá"
+              value="Urupá"
+            />
+            <PickerItem
+              color="#000000"
+              key="Vale do Anari"
+              label="Vale do Anari"
+              value="Vale do Anari"
+            />
+            <PickerItem
+              color="#000000"
+              key="Vale do Paraíso"
+              label="Vale do Paraíso"
+              value="Vale do Paraíso"
+            />
+            <PickerItem
+              color="#000000"
+              key="Vilhena"
+              label="Vilhena"
+              value="Vilhena"
+            />
+          </Picker>
+        </View>
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -288,11 +624,12 @@ exports[`Testing SearchSchool it renders correctly 1`] = `
         }
       >
         <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={true}
+          activeOpacity={0.7}
+          key="activatedButton"
+          onPress={[Function]}
           style={
             Object {
-              "backgroundColor": "#DEDEDE",
+              "backgroundColor": "#FF9500",
               "borderRadius": 8,
               "borderWidth": 1,
               "marginBottom": 0,
@@ -391,7 +728,7 @@ exports[`Testing SearchSchool register method Testing school list rendering 1`] 
           <Picker
             mode="dialog"
             onValueChange={[Function]}
-            selectedValue=""
+            selectedValue="RO"
           >
             <PickerItem
               color="#95a5a6"
@@ -563,6 +900,342 @@ exports[`Testing SearchSchool register method Testing school list rendering 1`] 
           </Picker>
         </View>
         <View
+          key="municipalDistrict"
+          style={
+            Object {
+              "borderColor": "gray",
+              "borderRadius": 7,
+              "borderWidth": 1,
+              "marginTop": 15,
+              "paddingLeft": 2,
+            }
+          }
+        >
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="Municipal"
+          >
+            <PickerItem
+              color="#95a5a6"
+              label="Escolha o Municipio"
+              value=""
+            />
+            <PickerItem
+              color="#000000"
+              key="Alta Floresta d'Oeste"
+              label="Alta Floresta d'Oeste"
+              value="Alta Floresta d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Alto Alegre do Parecis"
+              label="Alto Alegre do Parecis"
+              value="Alto Alegre do Parecis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Alto Paraíso"
+              label="Alto Paraíso"
+              value="Alto Paraíso"
+            />
+            <PickerItem
+              color="#000000"
+              key="Alvorada d'Oeste"
+              label="Alvorada d'Oeste"
+              value="Alvorada d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ariquemes"
+              label="Ariquemes"
+              value="Ariquemes"
+            />
+            <PickerItem
+              color="#000000"
+              key="Buritis"
+              label="Buritis"
+              value="Buritis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cabixi"
+              label="Cabixi"
+              value="Cabixi"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cacaulândia"
+              label="Cacaulândia"
+              value="Cacaulândia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cacoal"
+              label="Cacoal"
+              value="Cacoal"
+            />
+            <PickerItem
+              color="#000000"
+              key="Campo Novo de Rondônia"
+              label="Campo Novo de Rondônia"
+              value="Campo Novo de Rondônia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Candeias do Jamari"
+              label="Candeias do Jamari"
+              value="Candeias do Jamari"
+            />
+            <PickerItem
+              color="#000000"
+              key="Castanheiras"
+              label="Castanheiras"
+              value="Castanheiras"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cerejeiras"
+              label="Cerejeiras"
+              value="Cerejeiras"
+            />
+            <PickerItem
+              color="#000000"
+              key="Chupinguaia"
+              label="Chupinguaia"
+              value="Chupinguaia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Colorado do Oeste"
+              label="Colorado do Oeste"
+              value="Colorado do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Corumbiara"
+              label="Corumbiara"
+              value="Corumbiara"
+            />
+            <PickerItem
+              color="#000000"
+              key="Costa Marques"
+              label="Costa Marques"
+              value="Costa Marques"
+            />
+            <PickerItem
+              color="#000000"
+              key="Cujubim"
+              label="Cujubim"
+              value="Cujubim"
+            />
+            <PickerItem
+              color="#000000"
+              key="Espigão d'Oeste"
+              label="Espigão d'Oeste"
+              value="Espigão d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Governador Jorge Teixeira"
+              label="Governador Jorge Teixeira"
+              value="Governador Jorge Teixeira"
+            />
+            <PickerItem
+              color="#000000"
+              key="Guajará-Mirim"
+              label="Guajará-Mirim"
+              value="Guajará-Mirim"
+            />
+            <PickerItem
+              color="#000000"
+              key="Itapuã do Oeste"
+              label="Itapuã do Oeste"
+              value="Itapuã do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Jaru"
+              label="Jaru"
+              value="Jaru"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ji-Paraná"
+              label="Ji-Paraná"
+              value="Ji-Paraná"
+            />
+            <PickerItem
+              color="#000000"
+              key="Machadinho d'Oeste"
+              label="Machadinho d'Oeste"
+              value="Machadinho d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ministro Andreazza"
+              label="Ministro Andreazza"
+              value="Ministro Andreazza"
+            />
+            <PickerItem
+              color="#000000"
+              key="Mirante da Serra"
+              label="Mirante da Serra"
+              value="Mirante da Serra"
+            />
+            <PickerItem
+              color="#000000"
+              key="Monte Negro"
+              label="Monte Negro"
+              value="Monte Negro"
+            />
+            <PickerItem
+              color="#000000"
+              key="Nova Brasilândia d'Oeste"
+              label="Nova Brasilândia d'Oeste"
+              value="Nova Brasilândia d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Nova Mamoré"
+              label="Nova Mamoré"
+              value="Nova Mamoré"
+            />
+            <PickerItem
+              color="#000000"
+              key="Nova União"
+              label="Nova União"
+              value="Nova União"
+            />
+            <PickerItem
+              color="#000000"
+              key="Novo Horizonte do Oeste"
+              label="Novo Horizonte do Oeste"
+              value="Novo Horizonte do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Ouro Preto do Oeste"
+              label="Ouro Preto do Oeste"
+              value="Ouro Preto do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Parecis"
+              label="Parecis"
+              value="Parecis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Pimenta Bueno"
+              label="Pimenta Bueno"
+              value="Pimenta Bueno"
+            />
+            <PickerItem
+              color="#000000"
+              key="Pimenteiras do Oeste"
+              label="Pimenteiras do Oeste"
+              value="Pimenteiras do Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="Porto Velho"
+              label="Porto Velho"
+              value="Porto Velho"
+            />
+            <PickerItem
+              color="#000000"
+              key="Presidente Médici"
+              label="Presidente Médici"
+              value="Presidente Médici"
+            />
+            <PickerItem
+              color="#000000"
+              key="Primavera de Rondônia"
+              label="Primavera de Rondônia"
+              value="Primavera de Rondônia"
+            />
+            <PickerItem
+              color="#000000"
+              key="Rio Crespo"
+              label="Rio Crespo"
+              value="Rio Crespo"
+            />
+            <PickerItem
+              color="#000000"
+              key="Rolim de Moura"
+              label="Rolim de Moura"
+              value="Rolim de Moura"
+            />
+            <PickerItem
+              color="#000000"
+              key="Santa Luzia d'Oeste"
+              label="Santa Luzia d'Oeste"
+              value="Santa Luzia d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="São Felipe d'Oeste"
+              label="São Felipe d'Oeste"
+              value="São Felipe d'Oeste"
+            />
+            <PickerItem
+              color="#000000"
+              key="São Francisco do Guaporé"
+              label="São Francisco do Guaporé"
+              value="São Francisco do Guaporé"
+            />
+            <PickerItem
+              color="#000000"
+              key="São Miguel do Guaporé"
+              label="São Miguel do Guaporé"
+              value="São Miguel do Guaporé"
+            />
+            <PickerItem
+              color="#000000"
+              key="Seringueiras"
+              label="Seringueiras"
+              value="Seringueiras"
+            />
+            <PickerItem
+              color="#000000"
+              key="Teixeirópolis"
+              label="Teixeirópolis"
+              value="Teixeirópolis"
+            />
+            <PickerItem
+              color="#000000"
+              key="Theobroma"
+              label="Theobroma"
+              value="Theobroma"
+            />
+            <PickerItem
+              color="#000000"
+              key="Urupá"
+              label="Urupá"
+              value="Urupá"
+            />
+            <PickerItem
+              color="#000000"
+              key="Vale do Anari"
+              label="Vale do Anari"
+              value="Vale do Anari"
+            />
+            <PickerItem
+              color="#000000"
+              key="Vale do Paraíso"
+              label="Vale do Paraíso"
+              value="Vale do Paraíso"
+            />
+            <PickerItem
+              color="#000000"
+              key="Vilhena"
+              label="Vilhena"
+              value="Vilhena"
+            />
+          </Picker>
+        </View>
+        <View
           style={
             Object {
               "alignItems": "center",
@@ -611,11 +1284,12 @@ exports[`Testing SearchSchool register method Testing school list rendering 1`] 
         }
       >
         <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={true}
+          activeOpacity={0.7}
+          key="activatedButton"
+          onPress={[Function]}
           style={
             Object {
-              "backgroundColor": "#DEDEDE",
+              "backgroundColor": "#FF9500",
               "borderRadius": 8,
               "borderWidth": 1,
               "marginBottom": 0,
