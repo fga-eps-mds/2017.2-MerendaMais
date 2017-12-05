@@ -118,7 +118,7 @@ class StartPendingInspection extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.asyncGetSchedule(this.props.counselor);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
