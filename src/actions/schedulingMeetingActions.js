@@ -13,6 +13,51 @@ import { resetList, setScheduleMeetingList } from './listActions';
 
 const FILE_NAME = 'schedulingMeetingActions.js';
 
+const convertingContentStringToJSON = (profileStringSingleQuote) => {
+  // Changing ' to " in string received from Nuvem Civica.
+  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
+
+  // Converting profile string to profile JSON.
+  const profileJSON = JSON.parse(profileStringDoubleQuote);
+
+  return profileJSON;
+};
+
+const verifyDate = (schedule) => {
+  const date = new Date();
+  const systemDay = date.getDate();
+  const systemMonth = date.getMonth() + 1;
+  const systemYear = date.getFullYear();
+
+  const daySchedule = schedule.date.substr(0, 2);
+  const monthSchedule = schedule.date.substr(3, 2);
+  const yearSchedule = schedule.date.substr(6);
+
+  if (yearSchedule < systemYear) {
+    return true;
+  } else if (yearSchedule > systemYear) {
+    return false;
+  }
+  if (monthSchedule < systemMonth) {
+    return true;
+  } else if (monthSchedule > systemMonth) {
+    return false;
+  }
+  if (daySchedule < systemDay) {
+    return true;
+  }
+  return false;
+};
+
+
+const defineScheduleStatus = (schedule, counselor, dispatch) => {
+  if (schedule.meetingListOfInvitees[counselor.nuvemCode] !== undefined) {
+    if (!verifyDate(schedule)) {
+      dispatch(setScheduleMeetingList(schedule));
+    }
+  }
+};
+
 // Treating request errors
 const treatingPostsError = (error) => {
   if (error.response.status === 401) {
@@ -40,8 +85,8 @@ const getContent = (contentLink, counselor, dispatch) => {
     .then((response) => {
       logInfo(FILE_NAME, 'asyncGetScheduleMeeting',
         `List of Schedules Meeting: ${JSON.stringify(response.data, null, 2)}`);
-      const content = convertingJSONToString(response.data.JSON);
-      dispatch(setScheduleMeetingList(content));
+      const content = convertingContentStringToJSON(response.data.JSON);
+      defineScheduleStatus(content, counselor, dispatch);
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingMeeting',
@@ -54,6 +99,8 @@ export const asyncGetScheduleMeeting = counselor => (dispatch) => {
 
   const getScheduleParamsAndHeader = {
     params: {
+      codAplicativo: APP_IDENTIFIER,
+      codTiposPostagem: MEETING_POSTING_TYPE_CODE,
       codGrupoDestino: counselor.profile.codGroup,
     },
     headers: {
@@ -64,13 +111,13 @@ export const asyncGetScheduleMeeting = counselor => (dispatch) => {
   axios.get(POSTS_LINK_NUVEM_CIVICA, getScheduleParamsAndHeader)
     .then((response) => {
       logInfo(FILE_NAME, 'asyncGetSchedule',
-        `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
+        `List of Schedules MEETING: ${JSON.stringify(response.data, null, 2)}`);
       for (let i = 0; i < response.data.length; i += 1) {
         getContent(response.data[i].conteudos[0].links[0].href, counselor, dispatch);
       }
     })
     .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingVisit',
+      logWarn(FILE_NAME, 'schedulingMeeting',
         `Request result in an ${error}`);
     });
 };
@@ -93,7 +140,6 @@ export const schedulingMeeting = (meetingData, dispatch) => {
   };
 
   const stringMeeting = convertingJSONToString(meetingData.meeting);
-
   const bodyToSchedulingMeeting = {
     conteudo: {
       JSON: stringMeeting,
@@ -106,6 +152,7 @@ export const schedulingMeeting = (meetingData, dispatch) => {
       tipo: {
         codTipoPostagem: MEETING_POSTING_TYPE_CODE,
       },
+      codGrupoDestino: meetingData.codGrupoDestino,
     },
   };
 

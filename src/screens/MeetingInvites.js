@@ -127,7 +127,7 @@ class VisitInvites extends React.Component {
         codSchool: 0,
         date: '',
         invitedAgent: false,
-        listOfInvitees: [{
+        meetingListOfInvitees: [{
         }],
         schoolName: '',
         time: '',
@@ -137,7 +137,7 @@ class VisitInvites extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.asyncGetScheduleMeeting(this.props.counselor);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
@@ -170,16 +170,16 @@ class VisitInvites extends React.Component {
     }
   }
 
-  async seeVisitInfo(schedule) {
+  async seeMeetingInfo(schedule) {
     await this.setState({ schedule });
     console.log('o schedule do state');
     console.log(this.state);
     await this.getSchoolLocalization();
   }
 
-  // Será usada para confirmar/cancelar a presença do conselheiro na visita
-  verification(listOfInvitees) {
-    if (!listOfInvitees[this.props.counselor.nuvemCode].confirmed) {
+  // Será usada para confirmar/cancelar a presença do conselheiro na reunião
+  verification(meetingListOfInvitees) {
+    if (!meetingListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
       return (
         <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
           <TouchableOpacity
@@ -211,10 +211,6 @@ class VisitInvites extends React.Component {
         <View style={styles.listSchedule}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Local: </Text>
-              {schedule.schoolName}
-            </Text>
-            <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Data: </Text>
               {schedule.date}
             </Text>
@@ -222,11 +218,11 @@ class VisitInvites extends React.Component {
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
               {schedule.time}
             </Text>
-            {this.verification(schedule.listOfInvitees)}
+            {this.verification(schedule.meetingListOfInvitees)}
           </View>
           <View style={styles.buttonInvitees}>
             <TouchableOpacity
-              onPress={() => this.seeVisitInfo(schedule)}
+              onPress={() => this.seeMeetingInfo(schedule)}
             >
               <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
             </TouchableOpacity>
@@ -268,15 +264,15 @@ class VisitInvites extends React.Component {
       <View style={styles.principal}>
         <Header
           title={'Notificações'}
-          subTitle={'Visita'}
+          subTitle={'Reunião'}
           backButton
         />
         <PopupDialog
-        /* Popup para mostrar as informações da visita */
+        /* Popup para mostrar as informações da reunião */
           ref={(popupDialog) => {
             this.popupDialog = popupDialog;
           }}
-          dialogTitle={<DialogTitle title="Informações sobre a visita" />}
+          dialogTitle={<DialogTitle title="Informações sobre a reunião" />}
           overlayPointerEvents="none"
           height="60%"
           width="85%"
@@ -294,10 +290,6 @@ class VisitInvites extends React.Component {
           <View style={styles.listSchedule}>
             <View style={styles.textBox}>
               <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-                {this.state.schedule.schoolName}
-              </Text>
-              <Text style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>Data: </Text>
                 {this.state.schedule.date}
               </Text>
@@ -305,19 +297,9 @@ class VisitInvites extends React.Component {
                 <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
                 {this.state.schedule.time}
               </Text>
-              {
-                this.state.schedule.invitedAgent ? (
-                  <Text style={styles.text}>
-                    <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
-                  </Text>
-                ) :
-                  <Text style={styles.text}>
-                    <Text style={{ fontWeight: 'bold' }}>Agente não convidado</Text>
-                  </Text>
-              }
               <Text style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-                {Object.keys(this.state.schedule.listOfInvitees).length}
+                {Object.keys(this.state.schedule.meetingListOfInvitees).length}
               </Text>
               {this.showLocalizationButton()}
             </View>
