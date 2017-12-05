@@ -43,14 +43,14 @@ const state = {
 
 const store = mockStore(initialState);
 
-describe('Testing SearchSchool', () => {
-  it('it renders correctly', () => {
+describe('Testing SearchSchool',  () => {
+  it('it renders correctly', async () => {
     const wrapper = shallow(
       <SearchSchoolContainer />,
       { context: { store } },
     ).dive();
 
-    wrapper.setState(state);
+    await wrapper.setState(state);
     expect(wrapper).toMatchSnapshot();
   });
 });
