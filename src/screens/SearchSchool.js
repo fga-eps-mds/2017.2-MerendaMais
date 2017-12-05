@@ -281,6 +281,7 @@ class SearchSchool extends React.Component {
     logInfo(FILE_NAME, 'render()',
       `State of search page: ${JSON.stringify(this.state, null, 2)}`);
 
+    console.log(this.state.uf);
     const UfInitials = this.state.uf.substr(0, 2);
 
     const municipalDistrict = this.state.uf !== '' && this.state.uf !== 'DF - Distrito Federal' ? (
