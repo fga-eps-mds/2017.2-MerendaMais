@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import openMap from 'react-native-open-maps';
 import {
   StyleSheet,
@@ -15,10 +14,6 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
-import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
-import { logInfo, logWarn } from '../../logConfig/loggers';
-
-const FILE_NAME = 'VisitInvites.js';
 
 const styles = StyleSheet.create({
   principal: {
@@ -124,12 +119,10 @@ class VisitInvites extends React.Component {
       invitees: [],
       schedule: {
         agentEmail: '',
-        codSchool: 0,
         date: '',
         invitedAgent: false,
         meetingListOfInvitees: [{
         }],
-        schoolName: '',
         time: '',
       },
       visitLat: null,
@@ -144,30 +137,12 @@ class VisitInvites extends React.Component {
   }
 
   async getSchoolLocalization() {
-    try {
-      const response = await
-        axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
-          params: {
-            campos: 'latitude,longitude',
-          },
-        });
-
-      logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
-        `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
-
-      // Since we get the response in portuguese, we need to "translate" it so we
-      // can add it in the store.
-
-      await this.setState({ visitLat: response.data.latitude });
-      console.log('Set state Lat');
-      await this.setState({ visitLong: response.data.longitude });
-      console.log('O state depois das latitudes');
-      console.log(this.state);
-      this.popupDialog.show();
-    } catch (error) {
-      logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
-      this.popupDialog.show();
-    }
+    await this.setState({ visitLat: this.state.schedule.lat });
+    console.log('Set state Lat');
+    await this.setState({ visitLong: this.state.schedule.log });
+    console.log('O state depois das latitudes');
+    console.log(this.state);
+    this.popupDialog.show();
   }
 
   async seeMeetingInfo(schedule) {
