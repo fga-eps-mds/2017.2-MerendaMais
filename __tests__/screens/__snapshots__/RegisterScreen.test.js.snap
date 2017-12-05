@@ -1,0 +1,500 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing RegisterScreen renders as expected 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backButton={false}
+    subTitle=""
+    title="Merenda +"
+  />
+  <KeyboardAvoidingView
+    behavior="padding"
+    keyboardVerticalOffset={0}
+    style={
+      Object {
+        "flex": 6,
+        "marginTop": 8,
+      }
+    }
+  >
+    <ScrollViewMock>
+      <View
+        style={
+          Object {
+            "paddingHorizontal": 15,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          CPF
+        </Text>
+        <CpfField
+          callback={[Function]}
+          value=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Nome
+        </Text>
+        <NameField
+          callback={[Function]}
+          value=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Email
+        </Text>
+        <EmailField
+          callback={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Digite o seu email"
+          size={26}
+          value=""
+          width={null}
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Senha
+        </Text>
+        <PasswordField
+          callback={[Function]}
+          focus={false}
+          isPassword={true}
+          password=""
+          passwordCompared=""
+          placeholder="Digite sua senha"
+          size={26}
+          width=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Confirmar Senha
+        </Text>
+        <PasswordField
+          callback={[Function]}
+          focus={false}
+          isPassword={false}
+          password=""
+          passwordCompared=""
+          placeholder="Digite sua senha novamente"
+          size={26}
+          width=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Telefone
+        </Text>
+        <PhoneField
+          callback={[Function]}
+          value=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Cargo
+        </Text>
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />,
+              <PickerItem
+                label="Presidente"
+                value={true}
+              />,
+              <PickerItem
+                label="Conselheiro"
+                value={false}
+              />,
+            ]
+          }
+          selectedValue=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Tipo de Conselheiro
+        </Text>
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />,
+              <PickerItem
+                label="Titular"
+                value="Titular"
+              />,
+              <PickerItem
+                label="Suplente"
+                value="Suplente"
+              />,
+            ]
+          }
+          selectedValue=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Segmento
+        </Text>
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu segmento"
+                value=""
+              />,
+              <PickerItem
+                label="Poder executivo"
+                value="Poder executivo"
+              />,
+              <PickerItem
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />,
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />,
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
+              />,
+            ]
+          }
+          selectedValue=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Tipo do CAE
+        </Text>
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o Tipo do seu CAE"
+                value=""
+              />,
+              <PickerItem
+                label="Municipal"
+                value="Municipal"
+              />,
+              <PickerItem
+                label="Estadual"
+                value="Estadual"
+              />,
+            ]
+          }
+          selectedValue=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          UF do CAE
+        </Text>
+        <DropdownComponent
+          callback={[Function]}
+          picker={
+            Array [
+              <PickerItem
+                color="#000000"
+                label="AC - Acre"
+                value="AC - Acre"
+              />,
+              <PickerItem
+                color="#000000"
+                label="AL - Alagoas"
+                value="AL - Alagoas"
+              />,
+              <PickerItem
+                color="#000000"
+                label="AP - Amapá"
+                value="AP - Amapá"
+              />,
+              <PickerItem
+                color="#000000"
+                label="AM - Amazonas"
+                value="AM - Amazonas"
+              />,
+              <PickerItem
+                color="#000000"
+                label="BA - Bahia"
+                value="BA - Bahia"
+              />,
+              <PickerItem
+                color="#000000"
+                label="CE - Ceará"
+                value="CE - Ceará"
+              />,
+              <PickerItem
+                color="#000000"
+                label="DF - Distrito Federal"
+                value="DF - Distrito Federal"
+              />,
+              <PickerItem
+                color="#000000"
+                label="ES - Espírito Santo"
+                value="ES - Espírito Santo"
+              />,
+              <PickerItem
+                color="#000000"
+                label="GO - Goiás"
+                value="GO - Goiás"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MA - Maranhão"
+                value="MA - Maranhão"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MT - Mato Grosso"
+                value="MT - Mato Grosso"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MS - Mato Grosso do Sul"
+                value="MS - Mato Grosso do Sul"
+              />,
+              <PickerItem
+                color="#000000"
+                label="MG - Minas Gerais"
+                value="MG - Minas Gerais"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PA - Pará"
+                value="PA - Pará"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PB - Paraíba"
+                value="PB - Paraíba"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PR - Paraná"
+                value="PR - Paraná"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PE - Pernambuco"
+                value="PE - Pernambuco"
+              />,
+              <PickerItem
+                color="#000000"
+                label="PI - Piauí"
+                value="PI - Piauí"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RJ - Rio de Janeiro"
+                value="RJ - Rio de Janeiro"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RN - Rio Grande do Norte"
+                value="RN - Rio Grande do Norte"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RS - Rio Grande do Sul"
+                value="RS - Rio Grande do Sul"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RO - Rondônia"
+                value="RO - Rondônia"
+              />,
+              <PickerItem
+                color="#000000"
+                label="RR - Roraima"
+                value="RR - Roraima"
+              />,
+              <PickerItem
+                color="#000000"
+                label="SC - Santa Catarina"
+                value="SC - Santa Catarina"
+              />,
+              <PickerItem
+                color="#000000"
+                label="SP - São Paulo"
+                value="SP - São Paulo"
+              />,
+              <PickerItem
+                color="#000000"
+                label="SE - Sergipe"
+                value="SE - Sergipe"
+              />,
+              <PickerItem
+                color="#000000"
+                label="TO - Tocantins"
+                value="TO - Tocantins"
+              />,
+            ]
+          }
+          selectedValue=""
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          CAE
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#FAFAFA",
+                "borderColor": "gray",
+                "borderRadius": 7,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "marginBottom": 10,
+                "marginTop": 1,
+                "padding": 8,
+              },
+              Object {
+                "justifyContent": "center",
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+          >
+             
+          </Text>
+        </View>
+        <ButtonWithActivityIndicator
+          activityIndicatorStyle={
+            Object {
+              "marginBottom": 15,
+              "marginTop": 15,
+            }
+          }
+          buttonKey="userCreation"
+          buttonStyle={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FF9500",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "marginVertical": 20,
+              "paddingVertical": 14,
+            }
+          }
+          buttonText="Concluir"
+          isLoading={false}
+          onPress={[Function]}
+        />
+      </View>
+    </ScrollViewMock>
+  </KeyboardAvoidingView>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "borderTopColor": "#a9a9a9",
+        "borderTopWidth": 1,
+        "flex": 0.5,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={[Function]}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+      >
+        Já tem um cadastro?
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "blue",
+            }
+          }
+        >
+           Entrar
+        </Text>
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;

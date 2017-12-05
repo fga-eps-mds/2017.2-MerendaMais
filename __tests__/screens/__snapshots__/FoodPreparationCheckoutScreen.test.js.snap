@@ -1,0 +1,626 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backButton={true}
+    subTitle="Preparação e Distribuição"
+    title="Relatório"
+  />
+  <KeyboardAvoidingView
+    behavior="padding"
+    keyboardVerticalOffset={0}
+    style={
+      Object {
+        "flex": 6,
+        "flexDirection": "column",
+        "marginBottom": 9,
+      }
+    }
+  >
+    <ScrollViewMock>
+      <View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "paddingLeft": 10,
+                "paddingTop": 5,
+              }
+            }
+          >
+            Sim
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "paddingLeft": 20,
+                "paddingTop": 5,
+              }
+            }
+          >
+            Nao
+          </Text>
+        </View>
+        <View
+          key="0"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            Higienização de frutas e verduras é realizada de maneira adequada
+          </Text>
+        </View>
+        <View
+          key="1"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            A água sanitária utilizada é própria para alimentos
+          </Text>
+        </View>
+        <View
+          key="2"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            O descongelamento dos alimentos é feito na geladeira
+          </Text>
+        </View>
+        <View
+          key="3"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            Uso de água potável no preparo de gelo e alimentos
+          </Text>
+        </View>
+        <View
+          key="4"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            Os alimentos preparados, que serão congelados ou refrigerados, são adequadamente acondicionados e identificados com: nome da preparação, data de preparo e prazo de validade após a abertura ou retirada da embalagem original
+          </Text>
+        </View>
+        <View
+          key="5"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            Caso as refeições aconteçam em sala de aula, a escola possui carrinho para transportar os alimentos?
+          </Text>
+        </View>
+        <View
+          key="6"
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#008000"
+            />
+          </View>
+          <View>
+            <Checkbox
+              checkboxStyle={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 2,
+                  "borderWidth": 2,
+                  "flexWrap": "wrap",
+                  "height": 25,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 10,
+                  "width": 25,
+                }
+              }
+              defaultColor="#fff"
+              disabled={false}
+              disabledColor={null}
+              onSelect={[Function]}
+              selected={false}
+              selectedColor="#B22222"
+            />
+          </View>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "flex": 1,
+                "fontSize": 15,
+                "paddingTop": 15,
+              }
+            }
+          >
+            Os carrinhos estão em boas condições e em quantidades suficientes
+          </Text>
+        </View>
+      </View>
+      <View
+        behavior="padding"
+      >
+        <View
+          style={
+            Object {
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "paddingTop": 30,
+            }
+          }
+        >
+          <TextInput
+            multiline={true}
+            onChangeText={[Function]}
+            placeholder="Observações (opcional)"
+            style={
+              Object {
+                "borderRadius": 12,
+                "borderWidth": 1,
+                "fontSize": 37.5,
+                "height": 333.5,
+                "paddingLeft": 10,
+                "paddingTop": 10,
+                "textAlignVertical": "top",
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>
+      </View>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        key="setObservation"
+        onPress={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#FF9500",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 20,
+            "marginHorizontal": 15,
+            "marginTop": 30,
+            "paddingVertical": 10,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#FFF",
+              "textAlign": "center",
+            }
+          }
+        >
+          Concluir
+        </Text>
+      </TouchableOpacity>
+    </ScrollViewMock>
+  </KeyboardAvoidingView>
+</View>
+`;
