@@ -11,7 +11,7 @@ const SchoolListButton = props => (
       style={styles.flatListButton}
       onPress={() => props.onPress()}
     >
-      <Text style={{ fontSize: 16 }}>{props.item.nome}</Text>
+      <Text style={{ fontSize: 16, width: '80%' }}>{props.item.nome}</Text>
       <Ionicons
         name="ios-arrow-forward-outline"
         style={styles.flatListIcon}
