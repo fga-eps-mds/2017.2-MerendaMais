@@ -131,6 +131,7 @@ class SearchSchool extends React.Component {
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
   }
+
   componentWillMount() {
     const preUf = this.props.counselor.profile.CAE_UF;
     const preMunicipalDistrict = this.props.counselor.profile.CAE_municipalDistrict.replace(/-/g, '').trim();

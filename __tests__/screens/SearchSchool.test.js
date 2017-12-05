@@ -29,6 +29,7 @@ const initialState = {
   counselor: {
     profile: {
       CAE_municipalDistrict: 'Municipal',
+      CAE_UF: 'RO',
     },
   },
   setUf: () => ({}),
@@ -43,14 +44,13 @@ const state = {
 
 const store = mockStore(initialState);
 
-describe('Testing SearchSchool',  () => {
+describe('Testing SearchSchool', () => {
   it('it renders correctly', async () => {
     const wrapper = shallow(
       <SearchSchoolContainer />,
       { context: { store } },
     ).dive();
 
-    await wrapper.setState(state);
     expect(wrapper).toMatchSnapshot();
   });
 });
