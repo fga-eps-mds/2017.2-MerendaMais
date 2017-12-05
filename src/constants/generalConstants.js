@@ -27,6 +27,9 @@ export const SCHOOL_ENDPOINT = 'http://mobile-aceite.tcu.gov.br:80/nossaEscolaRS
 // Default Link to manipulate a group at Nuvem Cívica.
 export const DEFAULT_GROUP_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/grupos/';
 
+// Link to get posts with full info at Nuvem Cívica.
+export const FULL_INFO_POSTS_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/postagens/timeline';
+
 // Counselor segment options.
 export const EXECUTIVE_POWER = 'Poder executivo';
 export const EDUCATION_WORKERS = 'Trabalhadores da educação';
