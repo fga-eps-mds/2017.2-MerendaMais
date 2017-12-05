@@ -9,6 +9,7 @@ import {
   POSTS_LINK_NUVEM_CIVICA,
   MEETING_POSTING_TYPE_CODE } from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
+import { resetList, setScheduleMeetingList } from './listActions';
 
 const FILE_NAME = 'schedulingMeetingActions.js';
 
@@ -27,6 +28,51 @@ const treatingPostsError = (error) => {
     logWarn(FILE_NAME, 'treatingPostsError',
       `Unknown error - Error code received in request - ${error.response.status}`);
   }
+};
+
+const getContent = (contentLink, counselor, dispatch) => {
+  const getContentHeader = {
+    headers: {
+      appToken: counselor.token,
+    },
+  };
+  axios.get(contentLink, getContentHeader)
+    .then((response) => {
+      logInfo(FILE_NAME, 'asyncGetScheduleMeeting',
+        `List of Schedules Meeting: ${JSON.stringify(response.data, null, 2)}`);
+      const content = convertingJSONToString(response.data.JSON);
+      dispatch(setScheduleMeetingList(content));
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'schedulingMeeting',
+        `Request result in an ${error}`);
+    });
+};
+
+export const asyncGetScheduleMeeting = counselor => (dispatch) => {
+  dispatch(resetList());
+
+  const getScheduleParamsAndHeader = {
+    params: {
+      codGrupoDestino: counselor.profile.codGroup,
+    },
+    headers: {
+      appToken: counselor.token,
+    },
+  };
+
+  axios.get(POSTS_LINK_NUVEM_CIVICA, getScheduleParamsAndHeader)
+    .then((response) => {
+      logInfo(FILE_NAME, 'asyncGetSchedule',
+        `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
+      for (let i = 0; i < response.data.length; i += 1) {
+        getContent(response.data[i].conteudos[0].links[0].href, counselor, dispatch);
+      }
+    })
+    .catch((error) => {
+      logWarn(FILE_NAME, 'schedulingVisit',
+        `Request result in an ${error}`);
+    });
 };
 
 export const schedulingMeeting = (meetingData, dispatch) => {

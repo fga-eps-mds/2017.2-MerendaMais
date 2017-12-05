@@ -6,6 +6,7 @@ import { SET_LIST_COUNSELOR_GROUP,
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
   SET_VISIT_NEW_LISTS,
   SET_MEETING_NEW_LISTS,
+  SET_SCHEDULE_MEETING_LIST,
   SET_CHECKED_LIST,
   SET_NOT_CHECKED_LIST } from './types';
 import { logWarn } from '../../logConfig/loggers';
@@ -18,6 +19,11 @@ const FILE_NAME = 'listActions.js';
 export const setPendingScheduleList = scheduleList => ({
   type: SET_PENDING_SCHEDULE_LIST,
   payload: scheduleList,
+});
+
+export const setScheduleMeetingList = scheduleMeetingList => ({
+  type: SET_SCHEDULE_MEETING_LIST,
+  payload: scheduleMeetingList,
 });
 
 export const setExpiredScheduleList = scheduleList => ({

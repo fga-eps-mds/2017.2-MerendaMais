@@ -33,6 +33,7 @@ import LawNumber11947Screen from './src/screens/legislation/LawNumber11947Screen
 import LawNumber12982Screen from './src/screens/legislation/LawNumber12982Screen';
 import PrincipalNotifications from './src/screens/PrincipalNotifications';
 import VisitInvitesContainer from './src/Containers/VisitInvitesContainer';
+import MeetingInvitesContainer from './src/Containers/MeetingInvitesContainer';
 
 const Routes = () => ({
   render() {
@@ -51,6 +52,7 @@ const Routes = () => ({
             <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
             <Scene key="PrincipalNotifications" component={PrincipalNotifications} hideNavBar />
             <Scene key="VisitInvites" component={VisitInvitesContainer} hideNavBar />
+            <Scene key="MeetingInvites" component={MeetingInvitesContainer} hideNavBar />
             <Scene
               key="scheduleMeetingMap"
               component={ScheduleMeetingMapContainer}
