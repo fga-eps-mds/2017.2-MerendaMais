@@ -14,7 +14,6 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
-import { resetList } from '../actions/listActions';
 
 const styles = StyleSheet.create({
   principal: {
@@ -147,9 +146,12 @@ class VisitInvites extends React.Component {
   }
 
   getInfo(schedule) {
-    this.setState({ invitees: [] });
     this.mountListOfInvitees(this.state.schedule.meetingListOfInvitees);
     this.seeMeetingInfo(schedule);
+  }
+
+  async setarInvitees(list) {
+    await this.setState({ invitees: list });
   }
 
   async seeMeetingInfo(schedule) {
@@ -241,10 +243,9 @@ class VisitInvites extends React.Component {
     return (null);
   }
 
-  mountListOfInvitees(listOfInvitees) {
-    this.setState({ invitees: [] });
-    let list = this.state.invitees;
-
+  async mountListOfInvitees(listOfInvitees) {
+    const list = [];
+    await this.setState({ invitees: [] });
     // Faz um map da list de conselheiros do CAE
     this.props.listOfCounselorsInAGroup.map((counselor) => {
       /* caso o conselheiro do CAE esteja na lista de convidados
@@ -253,12 +254,11 @@ class VisitInvites extends React.Component {
       listOfCounselorsInAGroup */
       if (listOfInvitees[counselor.nuvemCode] !== undefined) {
         list.push(counselor);
-        return this.setState({ invitees: list });
+        this.setarInvitees(list);
       }
 
       return null;
     });
-    list = [];
   }
 
   renderCounselorList() {
@@ -346,6 +346,7 @@ const { shape, func } = PropTypes;
 VisitInvites.propTypes = {
   asyncGetCounselorFromGroup: func.isRequired,
   asyncGetScheduleMeeting: func.isRequired,
+  listOfCounselorsInAGroup: func.isRequired,
   listOfScheduleMeetingInAGroup: PropTypes.arrayOf(PropTypes.shape({
     codSchool: PropTypes.number,
     date: PropTypes.string,
