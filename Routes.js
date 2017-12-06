@@ -31,6 +31,8 @@ import Resolution26Screen from './src/screens/legislation/Resolution26Screen';
 import Resolution1Screen from './src/screens/legislation/Resolution1Screen';
 import LawNumber11947Screen from './src/screens/legislation/LawNumber11947Screen';
 import LawNumber12982Screen from './src/screens/legislation/LawNumber12982Screen';
+import PrincipalNotifications from './src/screens/PrincipalNotifications';
+import VisitInvitesContainer from './src/Containers/VisitInvitesContainer';
 
 const Routes = () => ({
   render() {
@@ -47,6 +49,8 @@ const Routes = () => ({
           <Scene key="root">
             <Scene key="initialScreen" component={InitialScreen} type="reset" hideNavBar />
             <Scene key="StartPendingInspection" component={PrincipalStartInspection} hideNavBar />
+            <Scene key="PrincipalNotifications" component={PrincipalNotifications} hideNavBar />
+            <Scene key="VisitInvites" component={VisitInvitesContainer} hideNavBar />
             <Scene
               key="scheduleMeetingMap"
               component={ScheduleMeetingMapContainer}
