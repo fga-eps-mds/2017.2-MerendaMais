@@ -166,8 +166,8 @@ export default class SchedulingVisit extends React.Component {
       nuvemCode: this.props.counselor.nuvemCode,
       codGrupoDestino: this.props.counselor.profile.codGroup,
       visit: {
-        codSchool: 0,
-        schoolName: '',
+        codSchool: this.props.school.schoolCode,
+        schoolName: this.props.school.schoolName,
         date: '',
         time: '',
         invitedAgent: false,
@@ -181,20 +181,6 @@ export default class SchedulingVisit extends React.Component {
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
-  }
-
-  componentWillReceiveProps(newProps) {
-    const newVisit = {
-      codSchool: newProps.school.schoolCode,
-      schoolName: newProps.school.schoolName,
-      date: this.state.visit.date,
-      time: this.state.visit.time,
-      invitedAgent: this.state.visit.invitedAgent,
-      agentEmail: this.state.visit.agentEmail,
-      visitListOfInvitees: newProps.visitListOfInvitees,
-    };
-
-    this.setState({ visit: newVisit });
   }
 
   getCounselorFromGroup() {
