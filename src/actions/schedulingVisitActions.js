@@ -4,21 +4,29 @@ import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
+import { isLoading, isNotLoading } from './applicationActions';
+import ShowToast from '../components/Toast';
+import { SET_CURRENT_INSPECTION } from './types';
 import {
   APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
   VISIT_POSTING_TYPE_CODE,
   INTERNAL_ERROR } from '../constants/generalConstants';
-import { setPendingScheduleList,
+import {
+  setPendingScheduleList,
   setExpiredScheduleList,
   setAlreadyInspectionedScheduleList,
   resetList } from './listActions';
-import { isLoading, isNotLoading } from './applicationActions';
-import { GetVisitSchedulePostListError, GetVisitScheduleContentError } from '../Exceptions';
-import ShowToast from '../components/Toast';
+import {
+  GetVisitSchedulePostListError,
+  GetVisitScheduleContentError } from '../Exceptions';
 
 const FILE_NAME = 'schedulingVisitActions.js';
 
+export const setCurrentInspection = visitSchedule => ({
+  type: SET_CURRENT_INSPECTION,
+  payload: visitSchedule,
+});
 
 // Trating request errors
 const treatingGetVisitSchedulePostListError = (error) => {

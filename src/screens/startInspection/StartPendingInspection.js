@@ -168,7 +168,7 @@ class StartPendingInspection extends React.Component {
     this.popupDialog.show();
   }
 
-  verification(visitListOfInvitees) {
+  verification(visitListOfInvitees, visitSchedule) {
     if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
       return (
         <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
@@ -193,7 +193,10 @@ class StartPendingInspection extends React.Component {
     return (
       <View style={styles.buttonBox}>
         <TouchableOpacity
-          onPress={() => Actions.mainReportsScreen()}
+          onPress={() => {
+            this.props.setCurrentInspection(visitSchedule);
+            Actions.mainReportsScreen();
+          }}
         >
           <Text style={styles.buttonText}>FISCALIZAR</Text>
         </TouchableOpacity>
@@ -245,7 +248,7 @@ class StartPendingInspection extends React.Component {
             </Text>
           </View>
           <View style={{ flex: 3 }}>
-            {this.verification(visitSchedule.content.visitListOfInvitees)}
+            {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
             <View style={styles.buttonInvitees}>
               <TouchableOpacity
                 onPress={() =>
@@ -340,6 +343,7 @@ StartPendingInspection.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   asyncGetSchedule: func.isRequired,
+  setCurrentInspection: func.isRequired,
   listOfPendingScheduleInAGroup: PropTypes.arrayOf(PropTypes.shape({
     codSchool: PropTypes.number,
     date: PropTypes.string,
