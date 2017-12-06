@@ -430,6 +430,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.2}
+        onPress={[Function]}
         style={
           Object {
             "backgroundColor": "#FF9500",

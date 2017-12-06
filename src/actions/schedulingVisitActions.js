@@ -67,7 +67,7 @@ const treatingGetVisitScheduleContentError = (error) => {
 };
 
 // Used in Async Action to Get All Post Visit Schedules
-const convertingContentStringToJSON = (contentStringSingleQuote) => {
+export const convertingContentStringToJSON = (contentStringSingleQuote) => {
   // Changing ' to " in string received from Nuvem Civica.
   const contentStringDoubleQuote = contentStringSingleQuote.replace(/'/g, '"');
 

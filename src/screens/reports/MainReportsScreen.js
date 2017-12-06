@@ -7,10 +7,13 @@ import { StyleSheet,
   Dimensions,
   BackHandler,
 } from 'react-native';
+import axios from 'axios';
 import Checkbox from 'react-native-checkbox';
 import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import store from '../../Reducers/store';
+import { POSTS_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
+import { convertingJSONToString } from '../../actions/counselorActions';
 
 const { width } = Dimensions.get('window');
 
@@ -81,6 +84,7 @@ export default class MainReportsScreen extends React.Component {
     super(props);
 
     this.state = {
+      isLoading: false,
       anyReport: false,
       whatever: '',
     };
@@ -254,6 +258,45 @@ export default class MainReportsScreen extends React.Component {
     return (null);
   }
 
+  changeCounselorRealizedVisitStatus() {
+    const state = store.getState();
+    this.setState({ isLoading: true });
+
+    const newContentJSON = state.scheduleVisit.currentVisit.content;
+    newContentJSON.visitListOfInvitees[state.counselor.nuvemCode].realizedVisit = true;
+
+    const newContentString = convertingJSONToString(newContentJSON);
+
+    console.log('NOVOOOOO');
+    console.log(newContentString);
+
+    const putScheduleParamsAndHeader = {
+      params: {
+        JSON: newContentString,
+        texto: 'Agendamento',
+        valor: 0,
+      },
+      headers: {
+        appToken: state.counselor.token,
+      },
+    };
+    console.log(state.counselor.token);
+    axios.put(`${POSTS_LINK_NUVEM_CIVICA}${state.scheduleVisit.currentVisit.codPostagem}/conteudos/${state.scheduleVisit.currentVisit.codConteudoPost}`, putScheduleParamsAndHeader)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  finishVisit() {
+    /* Requisições para salvar a fiscalização na Nuvem Cívica */
+
+    /* Change the post at Nuvem Cívica to inform that this counselor realized this visit */
+    this.changeCounselorRealizedVisitStatus();
+  }
+
   render() {
     return (
       <View style={styles.content}>
@@ -374,6 +417,7 @@ export default class MainReportsScreen extends React.Component {
 
             <TouchableOpacity
               style={styles.buttonContainer}
+              onPress={() => this.finishVisit()}
             >
               <Text style={styles.buttonText}>Encerrar Fiscalização</Text>
             </TouchableOpacity>
