@@ -4,7 +4,7 @@ import { SET_MEETING_LOCATION_LATITUDE, SET_MEETING_LOCATION_LONGITUDE } from '.
 
 // const FILE_NAME = 'schoolReducer.js';
 
-const scheduleReducer = (state = initialState.schedule, action) => {
+const scheduleMeetingReducer = (state = initialState.scheduleMeeting, action) => {
   if (action === undefined) {
     // logWarn(FILE_NAME, 'schoolReducer',
     //   `ERROR: Action is undefined: ${JSON.stringify(action, null, 2)}`);
@@ -28,4 +28,4 @@ const scheduleReducer = (state = initialState.schedule, action) => {
   }
 };
 
-export default scheduleReducer;
+export default scheduleMeetingReducer;

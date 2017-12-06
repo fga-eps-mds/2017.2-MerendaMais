@@ -39,8 +39,10 @@ const styles = StyleSheet.create({
   },
 
   textBox: {
+    flex: 4,
     paddingLeft: 4,
     justifyContent: 'flex-start',
+    marginRight: 15,
   },
 
   text: {
@@ -53,10 +55,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
     borderRadius: 7,
     backgroundColor: '#4cd964',
-    padding: 7,
-    marginBottom: 20,
+    padding: 8,
     justifyContent: 'center',
-    marginRight: 20,
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: 5,
   },
 
   buttonInvitees: {
@@ -66,12 +69,24 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 8,
     justifyContent: 'center',
-    marginRight: 20,
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: 5,
   },
 
   buttonText: {
     fontSize: 12,
     textAlign: 'center',
+  },
+
+  popUp: {
+    marginBottom: 120,
+  },
+
+  popUpText: {
+    fontSize: 15,
+    textAlign: 'justify',
+    lineHeight: 20,
   },
 
   footerPopUp: {
@@ -94,6 +109,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
     justifyContent: 'space-between',
   },
+
+  noneScheduleTextBox: {
+    flex: 1,
+    marginHorizontal: 28,
+    marginVertical: 40,
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 5,
+    backgroundColor: '#FAFAFA',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 18,
+  },
+
+  noneScheduleText: {
+    fontSize: 18,
+  },
 });
 
 class StartPendingInspection extends React.Component {
@@ -105,35 +138,38 @@ class StartPendingInspection extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.asyncGetSchedule(this.props.counselor);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
   }
 
-  mountListOfInvitees(listOfInvitees) {
+  mountvisitListOfInvitees(visitListOfInvitees) {
+    const list = [];
     this.setState({ invitees: [] });
-    let list = this.state.invitees;
-
     // Faz um map da list de conselheiros do CAE
     this.props.listOfCounselorsInAGroup.map((counselor) => {
       /* caso o conselheiro do CAE esteja na lista de convidados
       ele será adicionado numa lista com suas informações
-      O conselheiro da cessão não será mostrado por que ele não é colocado em
+      O conselheiro da sessão não será mostrado por que ele não é colocado em
       listOfCounselorsInAGroup */
-      if (listOfInvitees[counselor.nuvemCode] !== undefined) {
-        list.push(counselor);
+      if (visitListOfInvitees[counselor.nuvemCode] !== undefined) {
+        const completeCounselor = {
+          ...counselor,
+          confirmed: visitListOfInvitees[counselor.nuvemCode].confirmed,
+          realizedVisit: visitListOfInvitees[counselor.nuvemCode].realizedVisit,
+        };
+        list.push(completeCounselor);
         return this.setState({ invitees: list });
       }
 
       return null;
     });
-    list = [];
     this.popupDialog.show();
   }
 
-  verification(listOfInvitees) {
-    if (listOfInvitees[this.props.counselor.nuvemCode] === undefined) {
+  verification(visitListOfInvitees, visitSchedule) {
+    if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
       return (
         <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
           <TouchableOpacity
@@ -143,7 +179,7 @@ class StartPendingInspection extends React.Component {
           </TouchableOpacity>
         </View>
       );
-    } else if (!listOfInvitees[this.props.counselor.nuvemCode].confirmed) {
+    } else if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
       return (
         <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
           <TouchableOpacity
@@ -157,7 +193,10 @@ class StartPendingInspection extends React.Component {
     return (
       <View style={styles.buttonBox}>
         <TouchableOpacity
-          onPress={() => Actions.mainReportsScreen()}
+          onPress={() => {
+            this.props.setCurrentInspection(visitSchedule);
+            Actions.mainReportsScreen();
+          }}
         >
           <Text style={styles.buttonText}>FISCALIZAR</Text>
         </TouchableOpacity>
@@ -166,29 +205,35 @@ class StartPendingInspection extends React.Component {
   }
 
   arrayScheduleList() {
-    if (this.props.listOfPendingScheduleInAGroup.length === 0) {
+    if (this.props.isLoading) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
+    } else if (this.props.listOfPendingScheduleInAGroup.length === 0) {
+      return (
+        <View style={styles.noneScheduleTextBox}>
+          <Text style={styles.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
+        </View>
+      );
     }
     return (
-      this.props.listOfPendingScheduleInAGroup.map(schedule => (
-        <View style={styles.listSchedule}>
+      this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
+        <View style={styles.listSchedule} key={`PE${visitSchedule.codPostagem}`}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {schedule.schoolName}
+              {visitSchedule.content.schoolName}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {schedule.date}
+              {visitSchedule.content.date}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {schedule.time}
+              {visitSchedule.content.time}
             </Text>
             {
-              schedule.invitedAgent ? (
+              visitSchedule.content.invitedAgent ? (
                 <Text style={styles.text}>
                   <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
                 </Text>
@@ -198,17 +243,18 @@ class StartPendingInspection extends React.Component {
                 </Text>
             }
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-              {Object.keys(schedule.listOfInvitees).length}
+              <Text style={{ fontWeight: 'bold' }}>Número de participantes: </Text>
+              {Object.keys(visitSchedule.content.visitListOfInvitees).length}
             </Text>
           </View>
-          <View>
-            {this.verification(schedule.listOfInvitees)}
+          <View style={{ flex: 3 }}>
+            {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
             <View style={styles.buttonInvitees}>
               <TouchableOpacity
-                onPress={() => this.mountListOfInvitees(schedule.listOfInvitees)}
+                onPress={() =>
+                  this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
               >
-                <Text style={styles.buttonText}>CONVIDADOS</Text>
+                <Text style={styles.buttonText}>PARTICIPANTES</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -227,12 +273,26 @@ class StartPendingInspection extends React.Component {
               {counselor.name}
             </Text>
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.cpf}
+              <Text style={{ fontWeight: 'bold' }}>Email: </Text>
+              {counselor.email}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.phone}
+              {counselor.profile.phone}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>
+              { counselor.confirmed ?
+                <Text> Confirmado </Text>
+                : <Text> Não Confirmado </Text>
+              }
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
+              { counselor.confirmed ?
+                <Text> Realizada </Text>
+                : <Text> Não Realizada </Text>
+              }
             </Text>
           </View>
         </View>
@@ -248,9 +308,10 @@ class StartPendingInspection extends React.Component {
           ref={(popupDialog) => {
             this.popupDialog = popupDialog;
           }}
-          dialogTitle={<DialogTitle title="Escolha quem deseja convidar" />}
+          dialogTitle={<DialogTitle title="Convidados" />}
+          dialogStyle={styles.popUp}
           overlayPointerEvents="none"
-          height="60%"
+          height="70%"
           width="85%"
           actions={[
             <View style={styles.footerPopUp}>
@@ -279,8 +340,10 @@ class StartPendingInspection extends React.Component {
 const { shape, func } = PropTypes;
 
 StartPendingInspection.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   asyncGetSchedule: func.isRequired,
+  setCurrentInspection: func.isRequired,
   listOfPendingScheduleInAGroup: PropTypes.arrayOf(PropTypes.shape({
     codSchool: PropTypes.number,
     date: PropTypes.string,

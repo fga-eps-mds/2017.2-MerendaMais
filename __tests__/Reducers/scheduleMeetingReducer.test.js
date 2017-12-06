@@ -1,8 +1,8 @@
-import scheduleReducer from '../../src/Reducers/scheduleReducer';
+import scheduleMeetingReducer from '../../src/Reducers/scheduleMeetingReducer';
 import initialState from '../../src/Reducers/initialState';
 import { SET_MEETING_LOCATION_LATITUDE, SET_MEETING_LOCATION_LONGITUDE } from '../../src/actions/types';
 
-describe('Testing scheduleReducer', () => {
+describe('Testing scheduleMeetingReducer', () => {
   it('sets Meeting Latitude', () => {
     let meeting = { ...initialState.schedule };
 
@@ -12,7 +12,7 @@ describe('Testing scheduleReducer', () => {
       latitude: -150000,
     };
 
-    meeting = scheduleReducer(meeting, {
+    meeting = scheduleMeetingReducer(meeting, {
       type: SET_MEETING_LOCATION_LATITUDE,
       payload: receivedMeeting,
     });
@@ -28,7 +28,7 @@ describe('Testing scheduleReducer', () => {
       longitude: -150000,
     };
 
-    meeting = scheduleReducer(meeting, {
+    meeting = scheduleMeetingReducer(meeting, {
       type: SET_MEETING_LOCATION_LONGITUDE,
       payload: receivedMeeting,
     });
@@ -36,7 +36,7 @@ describe('Testing scheduleReducer', () => {
     expect(meeting.meetingLongitude).toEqual(-150000);
   });
   it('Undefined action sended', () => {
-    let meeting = initialState.schedule;
+    let meeting = initialState.scheduleMeeting;
 
     expect(meeting.codSchool).toBe(0);
     expect(meeting.meetingLatitude).toBe(null);
@@ -48,7 +48,7 @@ describe('Testing scheduleReducer', () => {
 
     expect(action).toBeUndefined();
 
-    meeting = scheduleReducer(meeting, action);
+    meeting = scheduleMeetingReducer(meeting, action);
 
     expect(meeting).toEqual(sendedSchedule);
   });

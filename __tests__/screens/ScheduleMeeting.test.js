@@ -85,7 +85,7 @@ const initialStateToScreen = {
     },
   },
 
-  schedule: {
+  scheduleMeeting: {
     codSchool: 0,
     meetingLatitude: null,
     meetingLongitude: null,

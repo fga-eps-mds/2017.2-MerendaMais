@@ -3,5 +3,6 @@
 exports[`Testing StartPendingInspection Screen renders as expected 1`] = `
 <StartAlreadyInspectionedInspection
   dispatch={[Function]}
+  isLoading={false}
 />
 `;
