@@ -16,9 +16,15 @@ import { APP_IDENTIFIER,
 
 const FILE_NAME = 'listActions.js';
 
-export const setPendingScheduleList = scheduleList => ({
+export const setPendingScheduleList = visitScheduleList => ({
   type: SET_PENDING_SCHEDULE_LIST,
-  payload: scheduleList,
+  payload: visitScheduleList,
+});
+
+
+export const setExpiredScheduleList = visitScheduleList => ({
+  type: SET_EXPIRED_SCHEDULE_LIST,
+  payload: visitScheduleList,
 });
 
 export const setScheduleMeetingList = scheduleMeetingList => ({
@@ -26,14 +32,9 @@ export const setScheduleMeetingList = scheduleMeetingList => ({
   payload: scheduleMeetingList,
 });
 
-export const setExpiredScheduleList = scheduleList => ({
-  type: SET_EXPIRED_SCHEDULE_LIST,
-  payload: scheduleList,
-});
-
-export const setAlreadyInspectionedScheduleList = scheduleList => ({
+export const setAlreadyInspectionedScheduleList = visitScheduleList => ({
   type: SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
-  payload: scheduleList,
+  payload: visitScheduleList,
 });
 
 export const resetList = () => ({
@@ -112,6 +113,7 @@ const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
       const codMembro = auxCodMembro.substr(8);
       const counselorInformations = {
         nuvemCode: response.data.cod,
+        email: response.data.email,
         name: response.data.nomeCompleto,
         codMembro,
         profile: {},

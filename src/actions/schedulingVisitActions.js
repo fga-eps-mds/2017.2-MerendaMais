@@ -1,38 +1,92 @@
 import axios from 'axios';
+import { Alert } from 'react-native';
 import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
+import { isLoading, isNotLoading } from './applicationActions';
+import ShowToast from '../components/Toast';
+import { SET_CURRENT_INSPECTION } from './types';
 import {
   APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
-  VISIT_POSTING_TYPE_CODE } from '../constants/generalConstants';
-import { setPendingScheduleList,
+  VISIT_POSTING_TYPE_CODE,
+  INTERNAL_ERROR } from '../constants/generalConstants';
+import {
+  setPendingScheduleList,
   setExpiredScheduleList,
   setAlreadyInspectionedScheduleList,
   resetList } from './listActions';
+import {
+  GetVisitSchedulePostListError,
+  GetVisitScheduleContentError } from '../Exceptions';
 
 const FILE_NAME = 'schedulingVisitActions.js';
 
-const convertingContentStringToJSON = (profileStringSingleQuote) => {
-  // Changing ' to " in string received from Nuvem Civica.
-  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
+export const setCurrentInspection = visitSchedule => ({
+  type: SET_CURRENT_INSPECTION,
+  payload: visitSchedule,
+});
 
-  // Converting profile string to profile JSON.
-  const profileJSON = JSON.parse(profileStringDoubleQuote);
-
-  return profileJSON;
+// Trating request errors
+const treatingGetVisitSchedulePostListError = (error) => {
+  if (error.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+  } else {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
 };
 
-const verifyDate = (schedule) => {
+// Trating request errors
+const treatingGetVisitScheduleContentError = (error) => {
+  if (error.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 404) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
+      `Post or Content not found with this params - Error code received in request - ${error.response.status}`);
+  } else {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
+
+// Used in Async Action to Get All Post Visit Schedules
+export const convertingContentStringToJSON = (contentStringSingleQuote) => {
+  // Changing ' to " in string received from Nuvem Civica.
+  const contentStringDoubleQuote = contentStringSingleQuote.replace(/'/g, '"');
+
+  // Converting content string to content JSON.
+  const contentJSON = JSON.parse(contentStringDoubleQuote);
+
+  return contentJSON;
+};
+
+// Verify the date of the visit schedule to set expired or not.
+const verifyDate = (visitSchedule) => {
   const date = new Date();
   const systemDay = date.getDate();
   const systemMonth = date.getMonth() + 1;
   const systemYear = date.getFullYear();
 
-  const daySchedule = schedule.date.substr(0, 2);
-  const monthSchedule = schedule.date.substr(3, 2);
-  const yearSchedule = schedule.date.substr(6);
+  const daySchedule = visitSchedule.content.date.substr(0, 2);
+  const monthSchedule = visitSchedule.content.date.substr(3, 2);
+  const yearSchedule = visitSchedule.content.date.substr(6);
 
   if (yearSchedule < systemYear) {
     return true;
@@ -50,68 +104,129 @@ const verifyDate = (schedule) => {
   return false;
 };
 
-
-const defineScheduleStatus = (schedule, counselor, dispatch) => {
-  if (schedule.listOfInvitees[counselor.nuvemCode] !== undefined) {
-    if (schedule.listOfInvitees[counselor.nuvemCode].realizedVisit) {
-      dispatch(setAlreadyInspectionedScheduleList(schedule));
-    } else if (verifyDate(schedule)) {
-      dispatch(setExpiredScheduleList(schedule));
+// Put each visit schedule in its respective list (pending, expired or inspected).
+const defineScheduleStatus = (visitSchedule, counselor, dispatch) => {
+  if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode] !== undefined) {
+    if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode].realizedVisit) {
+      dispatch(setAlreadyInspectionedScheduleList(visitSchedule));
+    } else if (verifyDate(visitSchedule)) {
+      dispatch(setExpiredScheduleList(visitSchedule));
     } else {
-      dispatch(setPendingScheduleList(schedule));
+      dispatch(setPendingScheduleList(visitSchedule));
     }
-  } else if (schedule.listOfInvitees[counselor.nuvemCode] === undefined) {
-    if (verifyDate(schedule)) {
-      dispatch(setExpiredScheduleList(schedule));
+  } else if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode] === undefined) {
+    if (verifyDate(visitSchedule)) {
+      dispatch(setExpiredScheduleList(visitSchedule));
     } else {
-      dispatch(setPendingScheduleList(schedule));
+      dispatch(setPendingScheduleList(visitSchedule));
     }
   }
 };
 
-const getContent = (contentLink, counselor, dispatch) => {
+// Used in Async Action to Get All Post Visit Schedules
+export const getVisitScheduleContent = async (contentLink, counselor, dispatch) => {
   const getContentHeader = {
     headers: {
       appToken: counselor.token,
     },
   };
-  axios.get(contentLink, getContentHeader)
-    .then((response) => {
-      logInfo(FILE_NAME, 'asyncGetSchedule',
-        `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
-      const content = convertingContentStringToJSON(response.data.JSON);
-      defineScheduleStatus(content, counselor, dispatch);
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingVisit',
-        `Request result in an ${error}`);
-    });
+
+  try {
+    const response = await axios.get(contentLink, getContentHeader);
+
+    logInfo(FILE_NAME, 'getVisitScheduleContent',
+      `Content of one visit schedule post: ${JSON.stringify(response.data, null, 2)}`);
+
+    const visitSchedule = {
+      codPostagem: response.data.postagem.codPostagem,
+      codConteudoPost: response.data.codConteudoPost,
+      content: convertingContentStringToJSON(response.data.JSON),
+    };
+
+    defineScheduleStatus(visitSchedule, counselor, dispatch);
+
+    return visitSchedule;
+  } catch (error) {
+    logWarn(FILE_NAME, 'getVisitScheduleContent',
+      `Request result in an ${error}`);
+
+    throw new GetVisitScheduleContentError(error.response);
+  }
 };
 
-export const asyncGetSchedule = counselor => (dispatch) => {
+// Used in Async Action to Get All Post Visit Schedules
+export const getVisitSchedulePostList = async (getScheduleParamsAndHeader) => {
+  try {
+    const response = await axios.get(POSTS_LINK_NUVEM_CIVICA, getScheduleParamsAndHeader);
+
+    logInfo(FILE_NAME, 'getVisitSchedulePostList',
+      `List of Schedules without content: ${JSON.stringify(response.data, null, 2)}`);
+
+    return response;
+  } catch (error) {
+    logWarn(FILE_NAME, 'getVisitSchedulePostList',
+      `Request result in an ${error}`);
+
+    throw new GetVisitSchedulePostListError(error.response);
+  }
+};
+
+export const visitScheduleActionsAuxiliary = {
+  getVisitSchedulePostList,
+  getVisitScheduleContent,
+};
+
+// Assync action to get all post visit schedules
+export const asyncGetSchedule = counselor => async (dispatch) => {
+  // Setting state loading true, to activate the loading spin.
+  dispatch(isLoading());
+
   dispatch(resetList());
 
+  // Params to get all scheduling posts of current counselor group.
   const getScheduleParamsAndHeader = {
     params: {
       codGrupoDestino: counselor.profile.codGroup,
+      codTiposPostagem: VISIT_POSTING_TYPE_CODE,
     },
     headers: {
       appToken: counselor.token,
     },
   };
 
-  axios.get(POSTS_LINK_NUVEM_CIVICA, getScheduleParamsAndHeader)
-    .then((response) => {
-      logInfo(FILE_NAME, 'asyncGetSchedule',
-        `List of Schedules: ${JSON.stringify(response.data, null, 2)}`);
-      for (let i = 0; i < response.data.length; i += 1) {
-        getContent(response.data[i].conteudos[0].links[0].href, counselor, dispatch);
-      }
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingVisit',
-        `Request result in an ${error}`);
-    });
+  try {
+    const visitSchedulePostList =
+      await visitScheduleActionsAuxiliary.getVisitSchedulePostList(getScheduleParamsAndHeader);
+
+    const visitScheduleContentList = [];
+    // Get the content for each visit schedule post in list and organize then.
+    for (let i = 0; i < visitSchedulePostList.data.length; i += 1) {
+      visitScheduleContentList.push(
+        visitScheduleActionsAuxiliary.getVisitScheduleContent(
+          visitSchedulePostList.data[i].conteudos[0].links[0].href,
+          counselor,
+          dispatch),
+      );
+      console.log(`Dentro do For ${i}`);
+    }
+
+    console.log('Saiu do For');
+
+    // Wait all visit schedules are put on their respective lists.
+    await Promise.all(visitScheduleContentList);
+
+    console.log('Depois do Promise.all');
+
+    dispatch(isNotLoading());
+  } catch (error) {
+    if (error instanceof GetVisitSchedulePostListError) {
+      treatingGetVisitSchedulePostListError(error);
+    } else if (error instanceof GetVisitScheduleContentError) {
+      treatingGetVisitScheduleContentError(error);
+    }
+
+    dispatch(isNotLoading());
+  }
 };
 
 // Treating request errors
@@ -134,16 +249,14 @@ const treatingPostsError = (error) => {
 
 const sendEmailAlert = (visitData) => {
   const agentEmail = (visitData.visit.agentEmail);
-  if (visitData.visit.invitedAgent) {
-    Communications.email(
-    // To, cc, bcc, subject, email text
-      [agentEmail],
-      null,
-      null,
-      'Subject',
-      'Email Body text');
-  }
-  Actions.mainScreen();
+
+  Communications.email(
+  // To, cc, bcc, subject, email text
+    [agentEmail],
+    null,
+    null,
+    'Subject',
+    'Email Body text');
 };
 
 
@@ -187,7 +300,16 @@ const schedulingVisit = (visitData) => {
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
-      sendEmailAlert(visitData);
+      if (visitData.visit.invitedAgent) {
+        sendEmailAlert(visitData);
+      }
+      Alert.alert(
+        'Agendamento Realizado',
+        'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
+        [
+          { text: 'Ok', onPress: () => Actions.mainScreen(), style: 'cancel' },
+        ],
+        { cancelable: false });
     })
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',

@@ -50,19 +50,6 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
   },
 
-  buttonBox: {
-    borderColor: 'black',
-    borderWidth: 0.8,
-    borderRadius: 7,
-    backgroundColor: '#4cd964',
-    padding: 7,
-    marginTop: 10,
-    marginBottom: 20,
-    justifyContent: 'center',
-    marginRight: 10,
-    marginLeft: 8,
-  },
-
   buttonInvitees: {
     borderColor: 'black',
     borderWidth: 0.8,
@@ -180,8 +167,6 @@ class VisitInvites extends React.Component {
   }
 
   goToMaps() {
-    // const url = `https://www.google.com/maps/?q=${this.props.school.schoolLat},${this.props.school.schoolLong}`;
-    // Linking.openURL(url);
     openMap({ latitude: this.state.visitLat, longitude: this.state.visitLong });
   }
 
@@ -194,7 +179,6 @@ class VisitInvites extends React.Component {
             onPress={() => this.goToMaps()}
             style={styles.buttonMap}
             activeOpacity={0.7}
-            // <Image source={Location} />
           >
             <Text style={styles.buttonText}>Ver no Mapa</Text>
           </TouchableOpacity>
@@ -209,12 +193,11 @@ class VisitInvites extends React.Component {
   async mountListOfInvitees(listOfInvitees) {
     const list = [];
     await this.setState({ invitees: [] });
-    // Faz um map da list de conselheiros do CAE
+    // Do a map of the list of Counselors of CAE
     this.props.listOfCounselorsInAGroup.map((counselor) => {
-      /* caso o conselheiro do CAE esteja na lista de convidados
-      ele será adicionado numa lista com suas informações
-      O conselheiro da cessão não será mostrado por que ele não é colocado em
-      listOfCounselorsInAGroup */
+      /* If the Counselor of CAE is in the guest list it will be added to a
+      list with his information. The session Counselor will not
+      be shown because it is not placed in listOfCounselorsInAGroup */
       if (listOfInvitees[counselor.nuvemCode] !== undefined) {
         list.push(counselor);
         this.setState({ invitees: list });

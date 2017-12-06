@@ -82,7 +82,6 @@ const initialState = {
     listOfCheckedCounselors: [],
     listOfNotCheckedCounselors: [],
     listOfInviteesWithCounselorInformations: {},
-    listOfInvitees: {},
     listOfPendingScheduleInAGroup: [],
     listOfExpiredScheduleInAGroup: [],
     listOfScheduleMeetingInAGroup: [],
@@ -92,10 +91,13 @@ const initialState = {
     meetingListOfInviteesWithCounselorInformations: {},
     meetingListOfInvitees: {},
   },
-  schedule: {
+  scheduleMeeting: {
     codSchool: 0,
     meetingLatitude: null,
     meetingLongitude: null,
+  },
+  scheduleVisit: {
+    currentVisit: {},
   },
 };
 
