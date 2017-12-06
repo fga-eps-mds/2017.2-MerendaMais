@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DEDEDE',
     padding: 8,
     justifyContent: 'center',
-    marginRight: 13,
+    marginRight: 10,
   },
 
   buttonText: {

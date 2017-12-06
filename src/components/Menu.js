@@ -46,16 +46,16 @@ class Menu extends React.PureComponent {
           onPress={() => { Actions.schedulingVisit(); }}
         />
         <MenuButton
-          key="notifications"
-          text="Notificações"
-          iconName="notifications"
-          onPress={() => { Actions.PrincipalNotifications(); }}
-        />
-        <MenuButton
           key="scheduleMeeting"
           text="Agendar reunião"
           iconName="insert-invitation"
           onPress={() => { Actions.scheduleMeeting(); }}
+        />
+        <MenuButton
+          key="notifications"
+          text="Notificações"
+          iconName="notifications"
+          onPress={() => { Actions.PrincipalNotifications(); }}
         />
         {this.props.counselor.profile.isPresident && (
           <MenuButton

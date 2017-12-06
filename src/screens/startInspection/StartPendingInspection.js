@@ -83,12 +83,6 @@ const styles = StyleSheet.create({
     marginBottom: 120,
   },
 
-  popUpText: {
-    fontSize: 15,
-    textAlign: 'justify',
-    lineHeight: 20,
-  },
-
   footerPopUp: {
     backgroundColor: '#F9F9FB',
     borderColor: '#DAD9DC',
