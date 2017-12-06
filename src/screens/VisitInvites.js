@@ -191,7 +191,7 @@ class VisitInvites extends React.Component {
     );
   }
 
-  seeThisShit(visitListOfInvitees, schedule) {
+  filterByInvites(visitListOfInvitees, schedule) {
     if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
       return null;
     }
@@ -233,7 +233,7 @@ class VisitInvites extends React.Component {
     }
     return (
       this.props.listOfPendingScheduleInAGroup.map(schedule => (
-        this.seeThisShit(schedule.content.visitListOfInvitees, schedule)
+        this.filterByInvites(schedule.content.visitListOfInvitees, schedule)
       ))
     );
   }
