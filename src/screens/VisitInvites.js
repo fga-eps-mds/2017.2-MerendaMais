@@ -172,23 +172,11 @@ class VisitInvites extends React.Component {
 
   // Será usada para confirmar/cancelar a presença do conselheiro na visita
   verification(visitListOfInvitees) {
-    if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
+    if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
       return (
-        <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
-          <TouchableOpacity
-            disabled
-          >
-            <Text style={styles.buttonText}>NÃO CONVIDADO</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    } else if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
-      return (
-        <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
-          <TouchableOpacity
-            disabled
-          >
-            <Text style={styles.buttonText}>NÃO CONFIRMOU</Text>
+        <View style={[styles.buttonBox, { backgroundColor: 'red' }]}>
+          <TouchableOpacity>
+            <Text style={styles.buttonText}>CANCELAR PRESENÇA</Text>
           </TouchableOpacity>
         </View>
       );
@@ -203,6 +191,40 @@ class VisitInvites extends React.Component {
     );
   }
 
+  seeThisShit(visitListOfInvitees, schedule) {
+    if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
+      return null;
+    }
+    return (
+      <View style={styles.listSchedule}>
+        <View style={styles.textBox}>
+          <Text style={styles.text}>
+            <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
+            {schedule.content.schoolName}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={{ fontWeight: 'bold' }}>Data: </Text>
+            {schedule.content.date}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
+            {schedule.content.time}
+          </Text>
+        </View>
+        <View style={{ flex: 3 }}>
+          {this.verification(schedule.content.visitListOfInvitees)}
+          <View style={styles.buttonInvitees}>
+            <TouchableOpacity
+              onPress={() => this.seeVisitInfo(schedule)}
+            >
+              <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  }
+
   arrayScheduleList() {
     if (this.props.listOfPendingScheduleInAGroup.length === 0) {
       return (
@@ -211,32 +233,7 @@ class VisitInvites extends React.Component {
     }
     return (
       this.props.listOfPendingScheduleInAGroup.map(schedule => (
-        <View style={styles.listSchedule}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {schedule.content.schoolName}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {schedule.content.date}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {schedule.content.time}
-            </Text>
-          </View>
-          <View style={{ flex: 3 }}>
-            {this.verification(schedule.content.visitListOfInvitees)}
-            <View style={styles.buttonInvitees}>
-              <TouchableOpacity
-                onPress={() => this.seeVisitInfo(schedule)}
-              >
-                <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
+        this.seeThisShit(schedule.content.visitListOfInvitees, schedule)
       ))
     );
   }
