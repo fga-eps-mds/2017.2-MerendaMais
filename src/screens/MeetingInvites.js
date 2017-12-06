@@ -224,6 +224,18 @@ class VisitInvites extends React.Component {
     });
   }
 
+  verificationDescription() {
+    if (this.state.schedule.meetingDescription !== '') {
+      return (
+        <Text style={styles.text}>
+          <Text style={{ fontWeight: 'bold' }}>Descrição da reunião: </Text>
+          {this.state.schedule.meetingDescription}
+        </Text>
+      );
+    }
+    return null;
+  }
+
   renderCounselorList() {
     return (
       this.state.invitees.map(counselor => (
@@ -234,8 +246,8 @@ class VisitInvites extends React.Component {
               {counselor.name}
             </Text>
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.profile.cpf}
+              <Text style={{ fontWeight: 'bold' }}>E-mail: </Text>
+              {counselor.email}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
@@ -246,6 +258,7 @@ class VisitInvites extends React.Component {
       ))
     );
   }
+
 
   render() {
     return (
@@ -286,6 +299,7 @@ class VisitInvites extends React.Component {
                   <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
                   {this.state.schedule.time}
                 </Text>
+                {this.verificationDescription()}
                 <Text style={styles.text}>
                   <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
                   {Object.keys(this.state.schedule.meetingListOfInvitees).length}
