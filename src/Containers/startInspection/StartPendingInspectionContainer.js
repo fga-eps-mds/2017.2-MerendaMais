@@ -3,11 +3,14 @@ import StartPendingInspection from '../../screens/startInspection/StartPendingIn
 import { asyncGetSchedule } from '../../actions/schedulingVisitActions';
 import { asyncGetCounselorFromGroup } from '../../actions/listActions';
 
-const mapStateToProps = state => ({
-  counselor: state.counselor,
-  listOfPendingScheduleInAGroup: state.list.listOfPendingScheduleInAGroup,
-  listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
-});
+const mapStateToProps = state => (
+  {
+    isLoading: state.application.isLoading,
+    counselor: state.counselor,
+    listOfPendingScheduleInAGroup: state.list.listOfPendingScheduleInAGroup,
+    listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,
+  }
+);
 
 const mapDispatchToProps = dispatch => ({
   asyncGetSchedule: counselor => dispatch(asyncGetSchedule(counselor)),

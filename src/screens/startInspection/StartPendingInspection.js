@@ -39,8 +39,10 @@ const styles = StyleSheet.create({
   },
 
   textBox: {
+    flex: 4,
     paddingLeft: 4,
     justifyContent: 'flex-start',
+    marginRight: 15,
   },
 
   text: {
@@ -53,11 +55,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
     borderRadius: 7,
     backgroundColor: '#4cd964',
-    padding: 7,
-    marginBottom: 5,
+    padding: 8,
     justifyContent: 'center',
-    marginRight: 20,
+    marginRight: 15,
     marginTop: 5,
+    marginBottom: 5,
   },
 
   buttonInvitees: {
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 8,
     justifyContent: 'center',
-    marginRight: 20,
+    marginRight: 15,
     marginTop: 5,
     marginBottom: 5,
   },
@@ -106,6 +108,24 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     backgroundColor: '#FAFAFA',
     justifyContent: 'space-between',
+  },
+
+  noneScheduleTextBox: {
+    flex: 1,
+    marginHorizontal: 28,
+    marginVertical: 40,
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 5,
+    backgroundColor: '#FAFAFA',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 18,
+  },
+
+  noneScheduleText: {
+    fontSize: 18,
   },
 });
 
@@ -182,14 +202,20 @@ class StartPendingInspection extends React.Component {
   }
 
   arrayScheduleList() {
-    if (this.props.listOfPendingScheduleInAGroup.length === 0) {
+    if (this.props.isLoading) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
+      );
+    } else if (this.props.listOfPendingScheduleInAGroup.length === 0) {
+      return (
+        <View style={styles.noneScheduleTextBox}>
+          <Text style={styles.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
+        </View>
       );
     }
     return (
       this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
-        <View style={styles.listSchedule} key={visitSchedule.codPostagem}>
+        <View style={styles.listSchedule} key={`PE${visitSchedule.codPostagem}`}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
@@ -214,18 +240,18 @@ class StartPendingInspection extends React.Component {
                 </Text>
             }
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
+              <Text style={{ fontWeight: 'bold' }}>Número de participantes: </Text>
               {Object.keys(visitSchedule.content.visitListOfInvitees).length}
             </Text>
           </View>
-          <View>
+          <View style={{ flex: 3 }}>
             {this.verification(visitSchedule.content.visitListOfInvitees)}
             <View style={styles.buttonInvitees}>
               <TouchableOpacity
                 onPress={() =>
                   this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
               >
-                <Text style={styles.buttonText}>CONVIDADOS</Text>
+                <Text style={styles.buttonText}>PARTICIPANTES</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -311,6 +337,7 @@ class StartPendingInspection extends React.Component {
 const { shape, func } = PropTypes;
 
 StartPendingInspection.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   asyncGetSchedule: func.isRequired,
   listOfPendingScheduleInAGroup: PropTypes.arrayOf(PropTypes.shape({

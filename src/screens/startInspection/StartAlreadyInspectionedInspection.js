@@ -34,8 +34,10 @@ const styles = StyleSheet.create({
   },
 
   textBox: {
+    flex: 6,
     paddingLeft: 4,
     justifyContent: 'flex-start',
+    marginRight: 20,
   },
 
   text: {
@@ -50,10 +52,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#DEDEDE',
     padding: 8,
     justifyContent: 'center',
-    marginRight: 20,
+    marginRight: 15,
   },
+
   buttonText: {
     fontSize: 12,
+  },
+
+  noneScheduleTextBox: {
+    flex: 1,
+    marginHorizontal: 28,
+    marginVertical: 40,
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 5,
+    backgroundColor: '#FAFAFA',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 18,
+  },
+
+  noneScheduleText: {
+    fontSize: 18,
   },
 });
 
@@ -67,29 +88,35 @@ class StartAlreadyInspectionedInspection extends React.Component {
   }
 
   arrayScheduleList() {
-    if (this.props.listOfAlreadyInpectionedSchedueInAGroup.length === 0) {
+    if (this.props.isLoading) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
+    } else if (this.props.listOfAlreadyInpectionedSchedueInAGroup.length === 0) {
+      return (
+        <View style={styles.noneScheduleTextBox}>
+          <Text style={styles.noneScheduleText}>Nenhum Agendamento Fiscalizado!</Text>
+        </View>
+      );
     }
     return (
-      this.props.listOfAlreadyInpectionedSchedueInAGroup.map(schedule => (
-        <View style={styles.listSchedule}>
+      this.props.listOfAlreadyInpectionedSchedueInAGroup.map(visitSchedule => (
+        <View style={styles.listSchedule} key={`AL${visitSchedule.codPostagem}`}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {schedule.schoolName}
+              {visitSchedule.content.schoolName}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {schedule.date}
+              {visitSchedule.content.date}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {schedule.time}
+              {visitSchedule.content.time}
             </Text>
             {
-              schedule.invitedAgent ? (
+              visitSchedule.content.invitedAgent ? (
                 <Text style={styles.text}>
                   <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
                 </Text>
@@ -100,15 +127,17 @@ class StartAlreadyInspectionedInspection extends React.Component {
             }
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-              {Object.keys(schedule.visitListOfInvitees).length}
+              {Object.keys(visitSchedule.content.visitListOfInvitees).length}
             </Text>
           </View>
-          <View style={styles.buttonBox}>
-            <TouchableOpacity
-              disabled
-            >
-              <Text style={styles.buttonText}>FISCALIZADO</Text>
-            </TouchableOpacity>
+          <View style={{ flex: 3 }}>
+            <View style={styles.buttonBox}>
+              <TouchableOpacity
+                disabled
+              >
+                <Text style={styles.buttonText}>FISCALIZADO</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       ))
@@ -127,6 +156,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
 }
 
 StartAlreadyInspectionedInspection.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   listOfAlreadyInpectionedSchedueInAGroup: PropTypes.arrayOf(PropTypes.shape({
     codSchool: PropTypes.number,
     date: PropTypes.string,
