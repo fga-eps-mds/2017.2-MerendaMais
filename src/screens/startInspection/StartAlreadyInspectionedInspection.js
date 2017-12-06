@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 6,
     paddingLeft: 4,
     justifyContent: 'flex-start',
-    marginRight: 20,
+    marginRight: 18,
   },
 
   text: {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DEDEDE',
     padding: 8,
     justifyContent: 'center',
-    marginRight: 15,
+    marginRight: 13,
   },
 
   buttonText: {
@@ -126,7 +126,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
                 </Text>
             }
             <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
+              <Text style={{ fontWeight: 'bold' }}>Número de participantes: </Text>
               {Object.keys(visitSchedule.content.visitListOfInvitees).length}
             </Text>
           </View>

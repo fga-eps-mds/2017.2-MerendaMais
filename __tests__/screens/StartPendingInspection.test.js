@@ -10,6 +10,9 @@ Enzyme.configure({ adapter: new Adapter() });
 const mockStore = configureStore();
 
 const initialState = {
+  application: {
+    isLoading: false,
+  },
 
   list: {
     listOfPendingScheduleInAGroup: {
