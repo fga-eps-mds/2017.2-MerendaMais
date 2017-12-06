@@ -12,10 +12,13 @@ import Checkbox from 'react-native-checkbox';
 import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import store from '../../Reducers/store';
+import { logInfo, logWarn } from '../../../logConfig/loggers';
 import { POSTS_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
 
 const { width } = Dimensions.get('window');
+
+const FILE_NAME = 'MainReportsScreen.js';
 
 const styles = StyleSheet.create({
 
@@ -267,26 +270,24 @@ export default class MainReportsScreen extends React.Component {
 
     const newContentString = convertingJSONToString(newContentJSON);
 
-    console.log('NOVOOOOO');
-    console.log(newContentString);
-
-    const putScheduleParamsAndHeader = {
-      params: {
-        JSON: newContentString,
-        texto: 'Agendamento',
-        valor: 0,
-      },
+    const putScheduleHeader = {
       headers: {
         appToken: state.counselor.token,
       },
     };
-    console.log(state.counselor.token);
-    axios.put(`${POSTS_LINK_NUVEM_CIVICA}${state.scheduleVisit.currentVisit.codPostagem}/conteudos/${state.scheduleVisit.currentVisit.codConteudoPost}`, putScheduleParamsAndHeader)
+
+    const putScheduleBody = {
+      JSON: newContentString,
+      texto: 'Agendamento',
+      valor: 0,
+    };
+
+    axios.put(`${POSTS_LINK_NUVEM_CIVICA}${state.scheduleVisit.currentVisit.codPostagem}/conteudos/${state.scheduleVisit.currentVisit.codConteudoPost}`, putScheduleBody, putScheduleHeader)
       .then((response) => {
-        console.log(response.data);
+        logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
       })
       .catch((error) => {
-        console.log(error);
+        logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
       });
   }
 
