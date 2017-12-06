@@ -4,6 +4,7 @@ import MainReportsScreen from '../../screens/reports/MainReportsScreen';
 const mapStateToProps = state => (
   {
     scheduleVisit: state.scheduleVisit,
+    counselor: state.counselor,
   }
 );
 

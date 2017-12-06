@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet,
   TouchableOpacity,
   Text,
@@ -262,17 +263,14 @@ export default class MainReportsScreen extends React.Component {
   }
 
   changeCounselorRealizedVisitStatus() {
-    const state = store.getState();
-    this.setState({ isLoading: true });
-
-    const newContentJSON = state.scheduleVisit.currentVisit.content;
-    newContentJSON.visitListOfInvitees[state.counselor.nuvemCode].realizedVisit = true;
+    const newContentJSON = this.props.scheduleVisit.currentVisit.content;
+    newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
 
     const newContentString = convertingJSONToString(newContentJSON);
 
     const putScheduleHeader = {
       headers: {
-        appToken: state.counselor.token,
+        appToken: this.props.counselor.token,
       },
     };
 
@@ -282,7 +280,10 @@ export default class MainReportsScreen extends React.Component {
       valor: 0,
     };
 
-    axios.put(`${POSTS_LINK_NUVEM_CIVICA}${state.scheduleVisit.currentVisit.codPostagem}/conteudos/${state.scheduleVisit.currentVisit.codConteudoPost}`, putScheduleBody, putScheduleHeader)
+    axios.put(`${POSTS_LINK_NUVEM_CIVICA}
+    ${this.props.scheduleVisit.currentVisit.codPostagem}/conteudos/
+    ${this.props.scheduleVisit.currentVisit.codConteudoPost}`,
+    putScheduleBody, putScheduleHeader)
       .then((response) => {
         logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
       })
@@ -428,3 +429,16 @@ export default class MainReportsScreen extends React.Component {
     );
   }
 }
+
+const { shape, string, number } = PropTypes;
+
+MainReportsScreen.propTypes = {
+  counselor: shape({
+    token: string.isRequired,
+    nuvemCode: number.isRequired,
+  }).isRequired,
+  scheduleVisit: shape({
+    currentVisit: shape({
+    }).isRequired,
+  }).isRequired,
+};
