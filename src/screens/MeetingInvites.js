@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     padding: 8,
     justifyContent: 'center',
     marginRight: 20,
-    marginTop: 68,
+    marginTop: 5,
     width: 120,
   },
 
@@ -136,52 +136,16 @@ class VisitInvites extends React.Component {
       this.props.counselor.profile.cpf);
   }
 
-  async getSchoolLocalization() {
+  async getMeetingLocalization() {
     await this.setState({ visitLat: this.state.schedule.lat });
-    console.log('Set state Lat');
     await this.setState({ visitLong: this.state.schedule.long });
-    console.log('O state depois das latitudes');
-    console.log(this.state);
     this.popupDialog.show();
   }
 
-  getInfo(schedule) {
-    this.mountListOfInvitees(this.state.schedule.meetingListOfInvitees);
-    this.seeMeetingInfo(schedule);
-  }
-
-  async setarInvitees(list) {
-    await this.setState({ invitees: list });
-  }
-
-  async seeMeetingInfo(schedule) {
+  async getInfo(schedule) {
     await this.setState({ schedule });
-    console.log('o schedule do state');
-    console.log(this.state);
-    await this.getSchoolLocalization();
-  }
-
-  // Será usada para confirmar/cancelar a presença do conselheiro na reunião
-  verification(meetingListOfInvitees) {
-    if (!meetingListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
-      return (
-        <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
-          <TouchableOpacity
-            disabled
-          >
-            <Text style={styles.buttonText}>NÃO CONFIRMOU</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
-    return (
-      <View style={styles.buttonBox}>
-        <TouchableOpacity>
-          {/* onPress={() => Actions.mainReportsScreen()} */}
-          <Text style={styles.buttonText}>CONFIRMAR PRESENÇA</Text>
-        </TouchableOpacity>
-      </View>
-    );
+    await this.mountListOfInvitees(this.state.schedule.meetingListOfInvitees);
+    await this.getMeetingLocalization();
   }
 
   arrayScheduleMeetingList() {
@@ -202,7 +166,6 @@ class VisitInvites extends React.Component {
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
               {schedule.time}
             </Text>
-            {this.verification(schedule.meetingListOfInvitees)}
           </View>
           <View style={styles.buttonInvitees}>
             <TouchableOpacity
@@ -254,7 +217,7 @@ class VisitInvites extends React.Component {
       listOfCounselorsInAGroup */
       if (listOfInvitees[counselor.nuvemCode] !== undefined) {
         list.push(counselor);
-        this.setarInvitees(list);
+        this.setState({ invitees: list });
       }
 
       return null;
@@ -328,6 +291,9 @@ class VisitInvites extends React.Component {
                   {Object.keys(this.state.schedule.meetingListOfInvitees).length}
                 </Text>
                 {this.showLocalizationButton()}
+                <View>
+                  <Text style={{ color: '#95a5a6', fontSize: 20 }}>Convidados:</Text>
+                </View>
                 {this.renderCounselorList()}
               </View>
             </View>
