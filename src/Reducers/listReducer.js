@@ -1,5 +1,6 @@
 import initialState from './initialState';
-import { SET_LIST_COUNSELOR_GROUP,
+import {
+  SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
   SET_VISIT_NEW_LISTS,
   SET_MEETING_NEW_LISTS,
@@ -7,7 +8,9 @@ import { SET_LIST_COUNSELOR_GROUP,
   SET_EXPIRED_SCHEDULE_LIST,
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
   SET_CHECKED_LIST,
-  SET_NOT_CHECKED_LIST } from '../actions/types';
+  SET_NOT_CHECKED_LIST,
+  SET_PENDING_INVITED_SCHEDULE_LIST,
+} from '../actions/types';
 
 const listReducer = (state = initialState.list, action) => {
   if (action === undefined) {
@@ -41,13 +44,19 @@ const listReducer = (state = initialState.list, action) => {
       return {
         ...state,
         meetingListOfInviteesWithCounselorInformations:
-          action.payload.meetingNewListWithInformations,
+        action.payload.meetingNewListWithInformations,
         meetingListOfInvitees: action.payload.meetingNewList,
       };
     case SET_PENDING_SCHEDULE_LIST:
       return {
         ...state,
         listOfPendingScheduleInAGroup: [...state.listOfPendingScheduleInAGroup, action.payload],
+      };
+    case SET_PENDING_INVITED_SCHEDULE_LIST:
+      return {
+        ...state,
+        listOfPendingInvitedScheduleList: [...state.listOfPendingInvitedScheduleList,
+          action.payload],
       };
     case SET_EXPIRED_SCHEDULE_LIST:
       return {
@@ -58,7 +67,7 @@ const listReducer = (state = initialState.list, action) => {
       return {
         ...state,
         listOfAlreadyInpectionedSchedueInAGroup:
-         [...state.listOfAlreadyInpectionedSchedueInAGroup, action.payload],
+        [...state.listOfAlreadyInpectionedSchedueInAGroup, action.payload],
       };
     case SET_CHECKED_LIST:
       return {

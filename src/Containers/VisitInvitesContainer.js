@@ -6,13 +6,13 @@ import { asyncGetCounselorFromGroup } from '../actions/listActions';
 const mapStateToProps = state => (
   {
     counselor: state.counselor,
-    listOfPendingScheduleInAGroup: state.list.listOfPendingScheduleInAGroup,
+    listOfPendingInvitedScheduleList: state.list.listOfPendingInvitedScheduleList,
+    application: state.application.isLoading,
   }
 );
 
 const mapDispatchToProps = dispatch => ({
   asyncGetSchedule: counselor => dispatch(asyncGetSchedule(counselor)),
-  asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
 });
 
 const VisitInvitesContainer = connect(mapStateToProps,
