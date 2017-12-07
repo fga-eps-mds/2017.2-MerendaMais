@@ -10,6 +10,7 @@ import {
   getUserProfileInLogin,
   convertingJSONToString,
   asyncLoginCounselor,
+  errorGenerator,
 } from '../../src/actions/counselorActions';
 import {
   SET_COUNSELOR,
@@ -23,7 +24,11 @@ import {
   AUTHENTICATE_LINK_NUVEM_CIVICA,
   DEFAULT_USER_LINK_NUVEM_CIVICA,
 } from '../../src/constants/generalConstants';
-import { AuthError, ProfileError, GroupError } from '../../src/Exceptions';
+import {
+  AUTH_LOGIN_ERROR,
+  PROFILE_LOGIN_ERROR,
+  GROUP_LOGIN_ERROR,
+} from '../../src/constants/errorConstants';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -120,8 +125,6 @@ describe('Testing counselorActions async actions', () => {
     },
   };
 
-  const errorMessage = 'Error Message';
-
   const errorStatus = {
     response: {
       status: 400,
@@ -157,7 +160,9 @@ describe('Testing counselorActions async actions', () => {
     try {
       await authenticatingCounselorInLogin(authenticationHeader);
     } catch (e) {
-      expect(e.response.status).toBe(400);
+      const errorJson = JSON.parse(e.message);
+      expect(errorJson.name).toBe(AUTH_LOGIN_ERROR);
+      expect(errorJson.status).toBe(400);
     }
   });
 
@@ -183,7 +188,10 @@ describe('Testing counselorActions async actions', () => {
     try {
       await getUserProfileInLogin(counselor);
     } catch (e) {
-      expect(e.response.status).toBe(400);
+      console.log(e.message);
+      const errorJson = JSON.parse(e.message);
+      expect(errorJson.name).toBe(PROFILE_LOGIN_ERROR);
+      expect(errorJson.status).toBe(400);
     }
   });
 
@@ -217,17 +225,13 @@ describe('Testing counselorActions async actions', () => {
       .authenticatingCounselorInLogin = jest.fn(() => Promise.resolve());
     original.counselorActionsAuxiliary.getUserProfileInLogin = jest.fn(() => Promise.resolve());
     original.counselorActionsAuxiliary.getCodGroup =
-      jest.fn(() => Promise.reject(new GroupError(errorMessage)));
+      jest.fn(() => Promise.reject(errorGenerator(GROUP_LOGIN_ERROR, 400)));
 
     const store = mockStore({});
 
-    const expectedActions = [
-      { type: IS_NOT_LOADING },
-    ];
-
     return store.dispatch(asyncLoginCounselor(counselor)).catch((error) => {
-      expect(error).toEqual(errorMessage);
-      expect(store.getActions()).toEqual(expectedActions);
+      const errorJson = JSON.parse(error.message);
+      expect(errorJson.name).toBe(GROUP_LOGIN_ERROR);
     });
   });
 
@@ -238,7 +242,8 @@ describe('Testing counselorActions async actions', () => {
     original.counselorActionsAuxiliary
       .authenticatingCounselorInLogin = jest.fn(() => Promise.resolve());
     original.counselorActionsAuxiliary
-      .getUserProfileInLogin = jest.fn(() => Promise.reject(new ProfileError(errorStatus)));
+      .getUserProfileInLogin =
+      jest.fn(() => Promise.reject(errorGenerator(PROFILE_LOGIN_ERROR, 400)));
     original.counselorActionsAuxiliary.getCodGroup = jest.fn(() => Promise.resolve());
 
     const store = mockStore({});
@@ -258,7 +263,8 @@ describe('Testing counselorActions async actions', () => {
 
     const original = require.requireActual('../../src/actions/counselorActions');
     original.counselorActionsAuxiliary
-      .authenticatingCounselorInLogin = jest.fn(() => Promise.reject(new AuthError(errorStatus)));
+      .authenticatingCounselorInLogin =
+      jest.fn(() => Promise.reject(errorGenerator(AUTH_LOGIN_ERROR, 400)));
     original.counselorActionsAuxiliary
       .getUserProfileInLogin = jest.fn(() => Promise.resolve());
     original.counselorActionsAuxiliary.getCodGroup = jest.fn(() => Promise.resolve());

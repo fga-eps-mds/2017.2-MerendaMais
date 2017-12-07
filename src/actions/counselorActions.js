@@ -34,7 +34,7 @@ import {
 
 const FILE_NAME = 'counselorActions.js';
 
-const errorGenerator = (name, status) =>
+export const errorGenerator = (name, status) =>
   new Error(`{ "name": "${name}", "status": ${JSON.stringify(status)} }`);
 
 
