@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
 
-  listSchedule: {
+  listScheduleMeeting: {
     flex: 1,
     marginHorizontal: 15,
     marginVertical: 10,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
   },
 
-  buttonInvitees: {
+  buttonInformation: {
     borderColor: 'black',
     borderWidth: 0.8,
     borderRadius: 7,
@@ -99,21 +99,19 @@ const styles = StyleSheet.create({
   },
 });
 
-class VisitInvites extends React.Component {
+class MeetingInvites extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       invitees: [],
-      schedule: {
-        agentEmail: '',
+      meetingSchedule: {
         date: '',
-        invitedAgent: false,
+        time: '',
         meetingListOfInvitees: [{
         }],
-        time: '',
       },
-      visitLat: null,
-      visitLong: null,
+      meetingLat: null,
+      meetingLong: null,
     };
   }
 
@@ -124,39 +122,45 @@ class VisitInvites extends React.Component {
   }
 
   async getMeetingLocalization() {
-    await this.setState({ visitLat: this.state.schedule.lat });
-    await this.setState({ visitLong: this.state.schedule.long });
+    await this.setState({ meetingLat: this.state.meetingSchedule.lat });
+    await this.setState({ meetingLong: this.state.meetingSchedule.long });
     this.popupDialog.show();
   }
 
-  async getInfo(schedule) {
-    await this.setState({ schedule });
-    await this.mountListOfInvitees(this.state.schedule.meetingListOfInvitees);
+  async getInfo(meetingSchedule) {
+    await this.setState({ meetingSchedule });
+    await this.mountListOfInvitees(this.state.meetingSchedule.meetingListOfInvitees);
     await this.getMeetingLocalization();
   }
 
   arrayScheduleMeetingList() {
-    if (this.props.listOfScheduleMeetingInAGroup.length === 0) {
+    if (this.props.isLoading) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
+    } else if (this.props.listOfScheduleMeetingInAGroup.length === 0) {
+      return (
+        <View style={styles.noneScheduleTextBox}>
+          <Text style={styles.noneScheduleText}>Nenhuma Reunião Pendente!</Text>
+        </View>
+      );
     }
     return (
-      this.props.listOfScheduleMeetingInAGroup.map(schedule => (
-        <View style={styles.listSchedule}>
+      this.props.listOfScheduleMeetingInAGroup.map(meetingSchedule => (
+        <View style={styles.listScheduleMeeting}>
           <View style={styles.textBox}>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {schedule.date}
+              {meetingSchedule.content.date}
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {schedule.time}
+              {meetingSchedule.content.time}
             </Text>
           </View>
-          <View style={styles.buttonInvitees}>
+          <View style={styles.buttonInformation}>
             <TouchableOpacity
-              onPress={() => this.getInfo(schedule)}
+              onPress={() => this.getInfo(meetingSchedule.content)}
             >
               <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
             </TouchableOpacity>
@@ -167,13 +171,13 @@ class VisitInvites extends React.Component {
   }
 
   goToMaps() {
-    openMap({ latitude: this.state.visitLat, longitude: this.state.visitLong });
+    openMap({ latitude: this.state.meetingLat, longitude: this.state.meetingLong });
   }
 
   showLocalizationButton() {
-    if (this.state.visitLat !== undefined && this.state.visitLat !== null) {
+    if (this.state.meetingLat !== undefined && this.state.meetingLat !== null) {
       return (
-        <View key="renderButton">
+        <View key="renderMeetingButton">
           <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
           <TouchableOpacity
             onPress={() => this.goToMaps()}
@@ -190,7 +194,7 @@ class VisitInvites extends React.Component {
     return (null);
   }
 
-  async mountListOfInvitees(listOfInvitees) {
+  async mountListOfInvitees(meetingListOfInvitees) {
     const list = [];
     await this.setState({ invitees: [] });
     // Do a map of the list of Counselors of CAE
@@ -198,7 +202,7 @@ class VisitInvites extends React.Component {
       /* If the Counselor of CAE is in the guest list it will be added to a
       list with his information. The session Counselor will not
       be shown because it is not placed in listOfCounselorsInAGroup */
-      if (listOfInvitees[counselor.nuvemCode] !== undefined) {
+      if (meetingListOfInvitees[counselor.nuvemCode] !== undefined) {
         list.push(counselor);
         this.setState({ invitees: list });
       }
@@ -208,11 +212,11 @@ class VisitInvites extends React.Component {
   }
 
   verificationDescription() {
-    if (this.state.schedule.meetingDescription !== '') {
+    if (this.state.meetingSchedule.meetingDescription !== '') {
       return (
         <Text style={styles.text}>
           <Text style={{ fontWeight: 'bold' }}>Descrição da reunião: </Text>
-          {this.state.schedule.meetingDescription}
+          {this.state.meetingSchedule.meetingDescription}
         </Text>
       );
     }
@@ -272,20 +276,20 @@ class VisitInvites extends React.Component {
           ]}
         >
           <ScrollView>
-            <View style={styles.listSchedule}>
+            <View style={styles.listScheduleMeeting}>
               <View style={styles.textBox}>
                 <Text style={styles.text}>
                   <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-                  {this.state.schedule.date}
+                  {this.state.meetingSchedule.date}
                 </Text>
                 <Text style={styles.text}>
                   <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-                  {this.state.schedule.time}
+                  {this.state.meetingSchedule.time}
                 </Text>
                 {this.verificationDescription()}
                 <Text style={styles.text}>
                   <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-                  {Object.keys(this.state.schedule.meetingListOfInvitees).length}
+                  {Object.keys(this.state.meetingSchedule.meetingListOfInvitees).length}
                 </Text>
                 {this.showLocalizationButton()}
                 <View>
@@ -306,10 +310,15 @@ class VisitInvites extends React.Component {
 
 const { shape, func } = PropTypes;
 
-VisitInvites.propTypes = {
+MeetingInvites.propTypes = {
   asyncGetCounselorFromGroup: func.isRequired,
   asyncGetScheduleMeeting: func.isRequired,
-  listOfCounselorsInAGroup: func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  listOfCounselorsInAGroup: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    cpf: PropTypes.string,
+    phone: PropTypes.string,
+  })).isRequired,
   listOfScheduleMeetingInAGroup: PropTypes.arrayOf(PropTypes.shape({
     codSchool: PropTypes.number,
     date: PropTypes.string,
@@ -319,4 +328,4 @@ VisitInvites.propTypes = {
   }).isRequired,
 };
 
-export default VisitInvites;
+export default MeetingInvites;

@@ -5,6 +5,7 @@ import { asyncGetCounselorFromGroup } from '../actions/listActions';
 
 const mapStateToProps = state => (
   {
+    isLoading: state.application.isLoading,
     counselor: state.counselor,
     listOfScheduleMeetingInAGroup: state.list.listOfScheduleMeetingInAGroup,
     listOfCounselorsInAGroup: state.list.listOfCounselorsInAGroup,

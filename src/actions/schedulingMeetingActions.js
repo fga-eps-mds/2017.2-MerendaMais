@@ -4,12 +4,17 @@ import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
 import { isLoading, isNotLoading } from './applicationActions';
+import ShowToast from '../components/Toast';
 import {
   APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
-  MEETING_POSTING_TYPE_CODE } from '../constants/generalConstants';
+  MEETING_POSTING_TYPE_CODE,
+  INTERNAL_ERROR } from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 import { resetList, setScheduleMeetingList } from './listActions';
+import {
+  GetMeetingPostListError,
+  GetMeetingContentError } from '../Exceptions';
 
 const FILE_NAME = 'schedulingMeetingActions.js';
 
@@ -23,15 +28,53 @@ const convertingContentStringToJSON = (profileStringSingleQuote) => {
   return profileJSON;
 };
 
-const verifyDate = (schedule) => {
+// Treating request errors
+const treatingGetMeetingSchedulePostListError = (error) => {
+  if (error.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+  } else {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
+
+// Treating request errors
+const treatingGetMeetingScheduleContentError = (error) => {
+  if (error.response.status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+  } else if (error.response.status === 404) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
+      `Post or Content not found with this params - Error code received in request - ${error.response.status}`);
+  } else {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
+      `Unknown error - Error code received in request - ${error.response.status}`);
+  }
+};
+
+const verifyDate = (meetingSchedule) => {
   const date = new Date();
   const systemDay = date.getDate();
   const systemMonth = date.getMonth() + 1;
   const systemYear = date.getFullYear();
 
-  const daySchedule = schedule.date.substr(0, 2);
-  const monthSchedule = schedule.date.substr(3, 2);
-  const yearSchedule = schedule.date.substr(6);
+  const daySchedule = meetingSchedule.content.date.substr(0, 2);
+  const monthSchedule = meetingSchedule.content.date.substr(3, 2);
+  const yearSchedule = meetingSchedule.content.date.substr(6);
 
   if (yearSchedule < systemYear) {
     return true;
@@ -50,10 +93,10 @@ const verifyDate = (schedule) => {
 };
 
 
-const defineScheduleStatus = (schedule, counselor, dispatch) => {
-  if (schedule.meetingListOfInvitees[counselor.nuvemCode] !== undefined) {
-    if (!verifyDate(schedule)) {
-      dispatch(setScheduleMeetingList(schedule));
+const defineMeetingStatus = (meetingSchedule, counselor, dispatch) => {
+  if (meetingSchedule.content.meetingListOfInvitees[counselor.nuvemCode] !== undefined) {
+    if (!verifyDate(meetingSchedule)) {
+      dispatch(setScheduleMeetingList(meetingSchedule));
     }
   }
 };
@@ -75,51 +118,111 @@ const treatingPostsError = (error) => {
   }
 };
 
-const getContent = (contentLink, counselor, dispatch) => {
+// Used in Async Action to Get All Post Meeting Schedules
+export const getMeetingContent = async (contentLink, counselor, dispatch) => {
   const getContentHeader = {
     headers: {
       appToken: counselor.token,
     },
   };
-  axios.get(contentLink, getContentHeader)
-    .then((response) => {
-      logInfo(FILE_NAME, 'asyncGetScheduleMeeting',
-        `List of Schedules Meeting: ${JSON.stringify(response.data, null, 2)}`);
-      const content = convertingContentStringToJSON(response.data.JSON);
-      defineScheduleStatus(content, counselor, dispatch);
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingMeeting',
-        `Request result in an ${error}`);
-    });
+
+  try {
+    const response = await axios.get(contentLink, getContentHeader);
+
+    logInfo(FILE_NAME, 'getMeetingContent',
+      `Content of one meeting post: ${JSON.stringify(response.data, null, 2)}`);
+
+    const meetingSchedule = {
+      codPostagem: response.data.postagem.codPostagem,
+      codConteudoPost: response.data.codConteudoPost,
+      content: convertingContentStringToJSON(response.data.JSON),
+    };
+
+    defineMeetingStatus(meetingSchedule, counselor, dispatch);
+
+    return meetingSchedule;
+  } catch (error) {
+    logWarn(FILE_NAME, 'getMeetingContent',
+      `Request result in an ${error}`);
+
+    throw new GetMeetingContentError(error.response);
+  }
 };
 
-export const asyncGetScheduleMeeting = counselor => (dispatch) => {
+// Used in Async Action to Get All Post Meeting Schedules
+export const getMeetingPostList = async (getMeetingParamsAndHeader) => {
+  try {
+    const response = await axios.get(POSTS_LINK_NUVEM_CIVICA, getMeetingParamsAndHeader);
+
+    logInfo(FILE_NAME, 'getMeetingSchedulePostList',
+      `List of Meeting without content: ${JSON.stringify(response.data, null, 2)}`);
+
+    return response;
+  } catch (error) {
+    logWarn(FILE_NAME, 'getMeetingPostList',
+      `Request result in an ${error}`);
+
+    throw new GetMeetingPostListError(error.response);
+  }
+};
+
+export const meetingScheduleActionsAuxiliary = {
+  getMeetingPostList,
+  getMeetingContent,
+};
+
+// Assync action to get all post Meeting schedules
+export const asyncGetScheduleMeeting = counselor => async (dispatch) => {
+  // Setting state loading true, to activate the loading spin.
+  dispatch(isLoading());
+
   dispatch(resetList());
 
-  const getScheduleParamsAndHeader = {
+  // Params to get all scheduling posts of current counselor group.
+  const getScheduleMeetingParamsAndHeader = {
     params: {
-      codAplicativo: APP_IDENTIFIER,
-      codTiposPostagem: MEETING_POSTING_TYPE_CODE,
       codGrupoDestino: counselor.profile.codGroup,
+      codTiposPostagem: MEETING_POSTING_TYPE_CODE,
     },
     headers: {
       appToken: counselor.token,
     },
   };
 
-  axios.get(POSTS_LINK_NUVEM_CIVICA, getScheduleParamsAndHeader)
-    .then((response) => {
-      logInfo(FILE_NAME, 'asyncGetSchedule',
-        `List of Schedules MEETING: ${JSON.stringify(response.data, null, 2)}`);
-      for (let i = 0; i < response.data.length; i += 1) {
-        getContent(response.data[i].conteudos[0].links[0].href, counselor, dispatch);
-      }
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingMeeting',
-        `Request result in an ${error}`);
-    });
+  try {
+    const meetingSchedulePostList =
+      await meetingScheduleActionsAuxiliary.getMeetingPostList(
+        getScheduleMeetingParamsAndHeader);
+
+    const meetingScheduleContentList = [];
+    // Get the content for each meeting schedule post in list and organize then.
+    for (let i = 0; i < meetingSchedulePostList.data.length; i += 1) {
+      meetingScheduleContentList.push(
+        meetingScheduleActionsAuxiliary.getMeetingContent(
+          meetingSchedulePostList.data[i].conteudos[0].links[0].href,
+          counselor,
+          dispatch),
+      );
+      console.log(`Dentro do For ${i}`);
+    }
+
+    console.log('Saiu do For');
+
+    // Wait all meeting schedules are put on their respective lists.
+    await Promise.all(meetingScheduleContentList);
+
+    console.log('Depois do Promise.all');
+
+    dispatch(isNotLoading());
+  } catch (error) {
+    if (error instanceof GetMeetingPostListError) {
+      treatingGetMeetingSchedulePostListError(error);
+    } else if (error instanceof GetMeetingContentError) {
+      treatingGetMeetingScheduleContentError(error);
+    }
+
+    dispatch(isNotLoading());
+  }
 };
 
 export const schedulingMeeting = (meetingData, dispatch) => {
