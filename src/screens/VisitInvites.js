@@ -5,6 +5,11 @@ import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialo
 import VisitCard from '../components/VisitCard';
 import Header from '../components/Header';
 import VisitInfoPopUp from '../components/VisitInfoPopUp';
+import axios from 'axios';
+import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
+import { logInfo, logWarn } from '../../logConfig/loggers';
+
+const FILE_NAME = 'VisitInvites';
 
 const styles = StyleSheet.create({
   principal: {
@@ -100,6 +105,8 @@ class VisitInvites extends React.Component {
           schoolName: '',
           time: '',
         },
+        visitLat: 0,
+        visitLong: 0,
       },
     };
   }
@@ -110,6 +117,34 @@ class VisitInvites extends React.Component {
   */
   componentWillMount() {
     this.props.asyncGetSchedule(this.props.counselor);
+  }
+
+  async getLocalization() {
+    console.log(this.state.visit.content.codSchool);
+    try {
+      const response = await
+        axios.get(`${SCHOOL_ENDPOINT}/${this.state.visit.content.codSchool}`, {
+          params: {
+            campos: 'latitude,longitude',
+          },
+        });
+
+      logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
+        `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
+
+      // Since we get the response in portuguese, we need to "translate" it so we
+      // can add it in the store.
+
+      await this.setState({
+        visit: {
+          ...this.state.visit,
+          visitLat: response.data.latitude,
+          visitLong: response.data.longitude,
+        },
+      });
+    } catch (error) {
+      logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
+    }
   }
 
   render() {
@@ -128,9 +163,10 @@ class VisitInvites extends React.Component {
         <VisitCard
           visit={visit}
           counselor={this.props.counselor}
-          popUpCallBack={(selectedVisit) => {
+          popUpCallBack={async (selectedVisit) => {
+            await this.setState({ visit: selectedVisit });
+            await this.getLocalization();
             this.popupDialog.show();
-            this.setState({ visit: selectedVisit });
           }}
           key={visit.codConteudoPost}
         />

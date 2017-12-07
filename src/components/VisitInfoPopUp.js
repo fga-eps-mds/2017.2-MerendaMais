@@ -1,12 +1,7 @@
 import { Text, View, StyleSheet } from 'react-native';
 import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
-import { logWarn, logInfo } from '../../logConfig/loggers';
 import LocalizationButton from './LocalizationButton';
-
-const FILE_NAME = 'VisitInfoPopUp';
 
 const styles = StyleSheet.create({
   principal: {
@@ -98,47 +93,15 @@ const styles = StyleSheet.create({
   },
 });
 
-class VisitInfoPopUp extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      visitLat: null,
-      visitLong: null,
-    };
-  }
-
-  async componentWillReceiveProps() {
-    console.log(this.props.visit.content.codSchool);
-    try {
-      const response = await
-        axios.get(`${SCHOOL_ENDPOINT}/${this.props.visit.content.codSchool}`, {
-          params: {
-            campos: 'latitude,longitude',
-          },
-        });
-
-      logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
-        `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
-
-      // Since we get the response in portuguese, we need to "translate" it so we
-      // can add it in the store.
-
-      await this.setState({ visitLat: response.data.latitude });
-      await this.setState({ visitLong: response.data.longitude });
-    } catch (error) {
-      logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
-    }
-  }
-
+class VisitInfoPopUp extends React.PureComponent {
   render() {
     let localizationbutton = null;
 
-    if (this.state.visitLat !== null && this.state.visitLong !== null) {
+    if (this.props.visit.visitLat !== null && this.props.visit.visitLong !== null) {
       localizationbutton = (
         <LocalizationButton
-          visitLat={this.state.visitLat}
-          visitLong={this.state.visitLong}
+          visitLat={this.props.visit.visitLat}
+          visitLong={this.props.visit.visitLong}
         />
       );
     }
@@ -180,6 +143,8 @@ VisitInfoPopUp.propTypes = {
       time: PropTypes.string,
     },
     visitListOfInvitees: PropTypes.shape({}),
+    visitLat: PropTypes.number,
+    visitLong: PropTypes.number,
   }),
 };
 
@@ -196,6 +161,8 @@ VisitInfoPopUp.defaultProps = {
     visitListOfInvitees: {
       1: {},
     },
+    visitLat: 0,
+    visitLong: 0,
   },
 };
 
