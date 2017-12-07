@@ -26,9 +26,17 @@ import {
   REGISTER_NUVEM_ERROR,
 } from '../constants/generalConstants';
 import ShowToast from '../components/Toast';
-import { AuthError, ProfileError, GroupError } from '../Exceptions';
+import {
+  AUTH_LOGIN_ERROR,
+  PROFILE_LOGIN_ERROR,
+  GROUP_LOGIN_ERROR,
+} from '../constants/errorConstants';
 
 const FILE_NAME = 'counselorActions.js';
+
+const errorGenerator = (name, status) =>
+  new Error(`{ "name": "${name}", "status": ${JSON.stringify(status)} }`);
+
 
 // Action
 export const setCounselor = counselor => ({
@@ -154,44 +162,46 @@ const treatingVerifyUserInApplicationError = (error) => {
 };
 
 // Trating request errors
-const treatingAuthenticatingCounselorInLoginError = (erro) => {
-  if (erro.response.status === 401) {
+const treatingAuthenticatingCounselorInLoginError = (status) => {
+  logInfo(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
+    'treatingAuthenticatingCounselorInLoginError');
+  if (status === 401) {
     ShowToast.Toast(LOGIN_PASSWORD_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `User isn't register in application or Password didn't match - Error code received in request - ${erro.response.status}`);
-  } else if (erro.response.status === 500) {
+      `User isn't register in application or Password didn't match - Error code received in request - ${status}`);
+  } else if (status === 500) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${erro.response.status}`);
-  } else if (erro.response.status === 400) {
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
+  } else if (status === 400) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${erro.response.status}`);
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
   } else {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `Unknown error - Error code received in request - ${erro.response.status}`);
+      `Unknown error - Error code received in request - ${status}`);
   }
 };
 
 // Trating request errors
-const treatingGetUserProfileInLoginError = (error) => {
-  if (error.response.status === 404) {
+const treatingGetUserProfileInLoginError = (status) => {
+  if (status === 404) {
     ShowToast.Toast(LOGIN_PROFILE_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `User isn't register in application or Profile didn't find for this user - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 500) {
+      `User isn't register in application or Profile didn't find for this user - Error code received in request - ${status}`);
+  } else if (status === 500) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
+  } else if (status === 400) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
   } else {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
+      `Unknown error - Error code received in request - ${status}`);
   }
 };
 
@@ -596,7 +606,7 @@ const getCodGroup = async (counselorWithProfile) => {
 
     return counselorWithCodGroup;
   } catch (error) {
-    throw new GroupError(error.response);
+    throw errorGenerator(GROUP_LOGIN_ERROR, error.response.status);
   }
 };
 
@@ -637,7 +647,7 @@ export const getUserProfileInLogin = async (counselor) => {
     logWarn(FILE_NAME, 'gettingUserProfileInLogin',
       `Request result in an ${error}`);
 
-    throw new ProfileError(error.response);
+    throw errorGenerator(PROFILE_LOGIN_ERROR, error.response.status);
   }
 };
 
@@ -665,7 +675,7 @@ export const authenticatingCounselorInLogin = async (authenticationHeader) => {
   } catch (error) {
     logWarn(FILE_NAME, 'authenticatingCounselorInLogin',
       `Request result in an ${error}`);
-    throw new AuthError(error.response);
+    throw errorGenerator(AUTH_LOGIN_ERROR, error.response.status);
   }
 };
 
@@ -710,13 +720,25 @@ export const asyncLoginCounselor = userData => async (dispatch) => {
 
     Actions.mainScreen();
   } catch (error) {
-    if (error instanceof AuthError) {
-      treatingAuthenticatingCounselorInLoginError(error);
-    } else if (error instanceof ProfileError) {
-      treatingGetUserProfileInLoginError(error);
-    } else if (error instanceof GroupError) {
-      logWarn(FILE_NAME, 'searchAGroup',
-        `Request result in an ${error}`);
+    const errorJson = JSON.parse(error.message);
+    logWarn(FILE_NAME, 'asyncLoginCounselor', `${JSON.stringify(errorJson)}`);
+    console.log(errorJson.name);
+    console.log(errorJson.status);
+
+    switch (errorJson.name) {
+      case AUTH_LOGIN_ERROR:
+        logWarn(FILE_NAME, 'asyncLoginCounselor', 'AuthError');
+        treatingAuthenticatingCounselorInLoginError(errorJson.status);
+        break;
+      case PROFILE_LOGIN_ERROR:
+        logWarn(FILE_NAME, 'asyncLoginCounselor', 'ProfileError');
+        treatingGetUserProfileInLoginError(errorJson.status);
+        break;
+      case GROUP_LOGIN_ERROR:
+        logWarn(FILE_NAME, 'asyncLoginCounselor', 'GroupError');
+        break;
+      default:
+        break;
     }
 
     dispatch(isNotLoading());
