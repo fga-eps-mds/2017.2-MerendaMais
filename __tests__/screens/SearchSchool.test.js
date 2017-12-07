@@ -45,7 +45,7 @@ const state = {
 const store = mockStore(initialState);
 
 describe('Testing SearchSchool', () => {
-  it('it renders correctly', async () => {
+  it('it renders correctly', () => {
     const wrapper = shallow(
       <SearchSchoolContainer />,
       { context: { store } },
