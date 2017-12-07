@@ -11,7 +11,7 @@ import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContaine
 import StockFoodCheckoutScreenContainer from './src/Containers/reports/StockFoodCheckoutContainer';
 import SchedulingVisitContainer from './src/Containers/SchedulingVisitContainer';
 import SchoolInfoContainer from './src/Containers/SchoolInfoContainer';
-import MainReportsScreen from './src/screens/reports/MainReportsScreen';
+import MainReportsContainer from './src/Containers/reports/MainReportsContainer';
 import RefectoryCheckoutContainer from './src/Containers/reports/RefectoryCheckoutContainer';
 import MenuContainer from './src/Containers/MenuContainer';
 import KitchenCheckoutContainer from './src/Containers/reports/KitchenCheckoutContainer';
@@ -76,7 +76,7 @@ const Routes = () => ({
               type="reset"
               hideNavBar
             />
-            <Scene key="mainReportsScreen" component={MainReportsScreen} type="reset" hideNavBar />
+            <Scene key="mainReportsScreen" component={MainReportsContainer} type="reset" hideNavBar />
             <Scene key="kitchenCheckoutScreen" component={KitchenCheckoutContainer} hideNavBar />
             <Scene key="DocCheckoutScreen" component={DocCheckoutContainer} hideNavBar />
             <Scene

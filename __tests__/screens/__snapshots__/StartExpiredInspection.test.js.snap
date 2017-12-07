@@ -3,6 +3,7 @@
 exports[`Testing StartPendingInspection Screen renders as expected 1`] = `
 <StartExpiredInspection
   dispatch={[Function]}
+  isLoading={false}
   listOfExpiredScheduleInAGroup={
     Object {
       "codSchool": "",

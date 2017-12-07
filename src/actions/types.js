@@ -117,8 +117,12 @@ export const SET_CHECKED_LIST = 'SET_CHECKED_LIST';
 
 export const SET_NOT_CHECKED_LIST = 'SET_NOT_CHECKED_LIST';
 
-// Scheduling Action types
+// Scheduling Meeting Action types
 
 export const SET_MEETING_LOCATION_LATITUDE = 'SET_MEETING_LOCATION_LATITUDE';
 
 export const SET_MEETING_LOCATION_LONGITUDE = 'SET_MEETING_LOCATION_LONGITUDE';
+
+// Scheduling Visit Action PropTypes
+
+export const SET_CURRENT_INSPECTION = 'SET_CURRENT_INSPECTION';

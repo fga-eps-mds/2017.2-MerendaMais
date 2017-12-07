@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet,
   TouchableOpacity,
   Text,
@@ -7,12 +8,18 @@ import { StyleSheet,
   Dimensions,
   BackHandler,
 } from 'react-native';
+import axios from 'axios';
 import Checkbox from 'react-native-checkbox';
 import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import store from '../../Reducers/store';
+import { logInfo, logWarn } from '../../../logConfig/loggers';
+import { POSTS_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
+import { convertingJSONToString } from '../../actions/counselorActions';
 
 const { width } = Dimensions.get('window');
+
+const FILE_NAME = 'MainReportsScreen.js';
 
 const styles = StyleSheet.create({
 
@@ -21,8 +28,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
     marginHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -45,7 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     marginHorizontal: 15,
     marginTop: 30,
-    marginBottom: 20,
+    marginBottom: 10,
     backgroundColor: '#FF9500',
   },
 
@@ -81,6 +88,7 @@ export default class MainReportsScreen extends React.Component {
     super(props);
 
     this.state = {
+      isLoading: false,
       anyReport: false,
       whatever: '',
     };
@@ -254,6 +262,43 @@ export default class MainReportsScreen extends React.Component {
     return (null);
   }
 
+  changeCounselorRealizedVisitStatus() {
+    const newContentJSON = this.props.scheduleVisit.currentVisit.content;
+    newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
+
+    const newContentString = convertingJSONToString(newContentJSON);
+
+    const putScheduleHeader = {
+      headers: {
+        appToken: this.props.counselor.token,
+      },
+    };
+
+    const putScheduleBody = {
+      JSON: newContentString,
+      texto: 'Agendamento',
+      valor: 0,
+    };
+
+    axios.put(`${POSTS_LINK_NUVEM_CIVICA}
+    ${this.props.scheduleVisit.currentVisit.codPostagem}/conteudos/
+    ${this.props.scheduleVisit.currentVisit.codConteudoPost}`,
+    putScheduleBody, putScheduleHeader)
+      .then((response) => {
+        logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
+      })
+      .catch((error) => {
+        logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
+      });
+  }
+
+  finishVisit() {
+    /* Requisições para salvar a fiscalização na Nuvem Cívica */
+
+    /* Change the post at Nuvem Cívica to inform that this counselor realized this visit */
+    this.changeCounselorRealizedVisitStatus();
+  }
+
   render() {
     return (
       <View style={styles.content}>
@@ -371,9 +416,29 @@ export default class MainReportsScreen extends React.Component {
             >
               <Text style={styles.buttonText}>Gerar Relatório Final</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={() => this.finishVisit()}
+            >
+              <Text style={styles.buttonText}>Encerrar Fiscalização</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
     );
   }
 }
+
+const { shape, string, number } = PropTypes;
+
+MainReportsScreen.propTypes = {
+  counselor: shape({
+    token: string.isRequired,
+    nuvemCode: number.isRequired,
+  }).isRequired,
+  scheduleVisit: shape({
+    currentVisit: shape({
+    }).isRequired,
+  }).isRequired,
+};
