@@ -81,9 +81,8 @@ const CancelButton = () => (
 
 class VisitCard extends React.PureComponent {
   render() {
-    console.log('Visit Card!');
     let confirmOrCancelButton = null;
-    console.log(this.props);
+
     // If the counselor is confirmed, show cancel button.
     // If the counselor isn't confirmed, show confirm button.
     if (this.props.visit.content.visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
@@ -91,8 +90,6 @@ class VisitCard extends React.PureComponent {
     } else {
       confirmOrCancelButton = ConfirmButton();
     }
-
-    console.log('Visit Card 2');
 
     return (
       <View style={styles.listSchedule} >

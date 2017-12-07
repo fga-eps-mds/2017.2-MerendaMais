@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
 import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialog';
 import VisitCard from '../components/VisitCard';
-import LocalizationButton from '../components/LocalizationButton';
 import Header from '../components/Header';
+import VisitInfoPopUp from '../components/VisitInfoPopUp';
 
 const styles = StyleSheet.create({
   principal: {
@@ -85,30 +85,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const VisitInfoPopUp = props => (
-  <View style={styles.listSchedule}>
-    <View style={styles.textBox}>
-      <Text style={styles.text}>
-        <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-        {props.visit.content.schoolName}
-      </Text>
-      <Text style={styles.text}>
-        <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-        {props.visit.content.date}
-      </Text>
-      <Text style={styles.text}>
-        <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-        {props.visit.content.time}
-      </Text>
-      <Text style={styles.text}>
-        <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-        {Object.keys(props.visit.content.visitListOfInvitees).length}
-      </Text>
-      <LocalizationButton visit={props.visit} />
-    </View>
-  </View>
-);
-
 class VisitInvites extends React.Component {
   constructor(props) {
     super(props);
@@ -136,10 +112,6 @@ class VisitInvites extends React.Component {
     this.props.asyncGetSchedule(this.props.counselor);
   }
 
-  componentWillReceiveProps() {
-    console.log('ComponentWillReceiveProps');
-  }
-
   render() {
     let activityIndicatorOrCard = null;
 
@@ -159,7 +131,6 @@ class VisitInvites extends React.Component {
           popUpCallBack={(selectedVisit) => {
             this.popupDialog.show();
             this.setState({ visit: selectedVisit });
-            console.log(`Visit: ${this.state.visit}`);
           }}
           key={visit.codConteudoPost}
         />
@@ -198,7 +169,6 @@ class VisitInvites extends React.Component {
         <ScrollView style={styles.content}>
           {activityIndicatorOrCard}
         </ScrollView>
-        {console.log(this.props.application)}
       </View>
     );
   }
@@ -215,36 +185,5 @@ VisitInvites.propTypes = {
   application: PropTypes.bool.isRequired,
   listOfPendingInvitedScheduleList: PropTypes.shape([]).isRequired,
 };
-
-VisitInfoPopUp.propTypes = {
-  visit: PropTypes.shape({
-    content: {
-      agentEmail: PropTypes.string,
-      codSchool: PropTypes.number,
-      date: PropTypes.string,
-      invitedAgent: PropTypes.bool,
-      schoolName: PropTypes.string,
-      time: PropTypes.string,
-    },
-    visitListOfInvitees: PropTypes.shape({}),
-  }),
-};
-
-VisitInfoPopUp.defaultProps = {
-  visit: {
-    content: {
-      agentEmail: 'email@email.com',
-      codSchool: 0,
-      date: '10-10-2017',
-      invitedAgent: false,
-      schoolName: 'Escola',
-      time: '10:10',
-    },
-    visitListOfInvitees: {
-      1: {},
-    },
-  },
-};
-
 
 export default VisitInvites;
