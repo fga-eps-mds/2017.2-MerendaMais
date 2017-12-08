@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { logInfo } from '../../logConfig/loggers';
-
-const FILE_NAME = 'VisitCard';
 
 const styles = StyleSheet.create({
   content: {
@@ -65,23 +62,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const ConfirmButton = (props) => {
-  logInfo(FILE_NAME, 'ConfirmButton', `Received props: ${JSON.stringify(props)}`);
-  return (
-    <View style={styles.buttonBox}>
-      <TouchableOpacity
-        onPress={() => props.confirmButtonCallback()}
-      >
-        <Text style={styles.buttonText}>CONFIRMAR PRESENÇA</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const CancelButton = () => (
-  <View style={[styles.buttonBox, { backgroundColor: 'red' }]}>
-    <TouchableOpacity>
-      <Text style={styles.buttonText}>CANCELAR PRESENÇA</Text>
+const ConfirmAndCancelButtons = props => (
+  <View style={props.style}>
+    <TouchableOpacity
+      onPress={() => props.buttonCallback()}
+    >
+      <Text style={styles.buttonText}>{props.text}</Text>
     </TouchableOpacity>
   </View>
 );
@@ -97,6 +83,14 @@ class VisitCard extends React.Component {
     };
   }
 
+  async buttonCallBack(value) {
+    const updatedVisit = this.props.visit;
+    updatedVisit.content.visitListOfInvitees[this.props.counselor.nuvemCode]
+      .confirmed = value;
+    await this.setState({ visit: updatedVisit });
+    this.props.asyncUpdateSchedule(this.state);
+  }
+
   render() {
     console.log(`Visit Card props ${this.props}`);
 
@@ -105,19 +99,20 @@ class VisitCard extends React.Component {
     // If the counselor is confirmed, show cancel button.
     // If the counselor isn't confirmed, show confirm button.
     if (this.props.visit.content.visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
-      confirmOrCancelButton = CancelButton();
+      confirmOrCancelButton = (
+        <ConfirmAndCancelButtons
+          text="CANCELAR PRESENÇA"
+          buttonCallback={() => this.buttonCallBack(false)}
+          style={[styles.buttonBox, { backgroundColor: 'red' }]}
+        />
+      );
     } else {
       confirmOrCancelButton =
         (
-          <ConfirmButton
-            visit={this.props.visit}
-            confirmButtonCallback={async () => {
-              const updatedVisit = this.props.visit;
-              updatedVisit.content.visitListOfInvitees[this.props.counselor.nuvemCode]
-                .confirmed = true;
-              await this.setState({ visit: updatedVisit });
-              this.props.asyncUpdateSchedule(this.state);
-            }}
+          <ConfirmAndCancelButtons
+            text="CONFIRMAR PRESENÇA"
+            buttonCallback={() => this.buttonCallBack(true)}
+            style={styles.buttonBox}
           />
         );
     }
@@ -182,8 +177,10 @@ VisitCard.propTypes = {
   popUpCallBack: PropTypes.func.isRequired,
 };
 
-ConfirmButton.propTypes = {
-  confirmButtonCallback: PropTypes.func.isRequired,
+ConfirmAndCancelButtons.propTypes = {
+  buttonCallback: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  style: PropTypes.shape({}).isRequired,
 };
 
 export default VisitCard;

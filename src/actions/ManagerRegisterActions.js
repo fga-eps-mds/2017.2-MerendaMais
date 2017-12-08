@@ -30,20 +30,16 @@ export const authenticatingMasterCounselor = async () => {
     },
   };
 
-  return new Promise((resolve, reject) => {
-    axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader)
-      .then((response) => {
-        logInfo(FILE_NAME, 'authenticatingMasterCounselor',
-          `Master authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
+  try {
+    const response = await axios.get(AUTHENTICATE_LINK_NUVEM_CIVICA, authenticationHeader);
 
-        resolve(response.headers.apptoken);
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'authenticatingMasterCounselor',
-          `Request result in an ${error}`);
-        reject('Não foi possível adquirir token para desassociação.');
-      });
-  });
+    logInfo(FILE_NAME, 'authenticatingMasterCounselor',
+      `Master authenticated successfully, his token received from Nuvem Cívica is: ${response.headers.apptoken}`);
+
+    return response.headers.apptoken;
+  } catch (error) {
+    throw new Error('Não foi possível adquirir token para desassociação.');
+  }
 };
 
 export const convertingJSONToString = (profileJSON) => {
@@ -58,6 +54,7 @@ export const convertingJSONToString = (profileJSON) => {
 
 const acceptCounselor = async (counselorData) => {
   const MASTER_TOKEN = await authenticatingMasterCounselor();
+
 
   const headerToAcceptCounselor = {
     headers: {

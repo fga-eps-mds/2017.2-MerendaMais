@@ -24,6 +24,7 @@ import {
   GET_VISIT_SCHEDULE_CONTENT_ERROR,
   GET_VISIT_SCHEDULE_POST_LIST_ERROR,
 } from '../constants/errorConstants';
+import { authenticatingMasterCounselor } from './ManagerRegisterActions';
 
 const FILE_NAME = 'schedulingVisitActions.js';
 
@@ -344,32 +345,36 @@ export const asyncSchedulingVisit = visitData => () => {
   schedulingVisit(visitData);
 };
 
-export const asyncUpdateSchedule = visitData => async (dispatch) => {
+export const asyncUpdateSchedule = postData => async (dispatch) => {
   logInfo(FILE_NAME, 'asyncConfirmParticipationOnVisit',
-    `Scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
+    `Scheduling visit data: ${JSON.stringify(postData, null, 2)}`);
 
   dispatch(isLoading());
 
-  const newContentJSON = this.props.scheduleVisit.currentVisit.content;
+  const newContentJSON = postData.visit.content;
 
   const newContentString = convertingJSONToString(newContentJSON);
+
+  const MASTER_TOKEN = await authenticatingMasterCounselor();
 
   // Change this token to the master token.
   const putScheduleHeader = {
     headers: {
-      appToken: visitData.counselor.token,
+      appToken: MASTER_TOKEN,
     },
   };
 
   const putScheduleBody = {
     JSON: newContentString,
-    texto: visitData.text,
+    texto: postData.text,
     valor: 0,
   };
 
+  logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
+
   try {
     const response = await axios.put(
-      `${POSTS_LINK_NUVEM_CIVICA}${visitData.codPostagem}/conteudos/${visitData.codConteudoPost}`,
+      `${POSTS_LINK_NUVEM_CIVICA}${postData.visit.codPostagem}/conteudos/${postData.visit.codConteudoPost}`,
       putScheduleBody,
       putScheduleHeader);
 
