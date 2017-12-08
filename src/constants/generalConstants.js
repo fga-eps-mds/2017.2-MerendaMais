@@ -56,6 +56,7 @@ export const USER_JUST_ALREADY_REGISTER_IN_NUVEM = '\nUsuário já possui um cad
 export const SEND_EMAIL_ALERT_TITLE = 'Agendamento Realizado';
 export const SEND_EMAIL_ALERT_BODY = 'Deseja convidar um agente para essa visita? Se a resposta for sim, seu aplicativo de email padrão será aberto com as informações já preenchidas. Caso não tenha um aplicativo de email, será necessário baixar algum.';
 export const FINISH_INSPECTION = 'Realmente deseja encerrar sua fiscalização e submeter os dados registrados? Essa ação é irreversível.';
+export const LEAVING_INSPECTION = 'Caso saia da sessão de fiscalização atual, você perderá todos os dados já preenchidos e a fiscalização não será concluída. Realmente deseja sair da fiscalização?';
 
 // Toast messages
 export const LOGIN_PASSWORD_ERROR = 'Usuário não cadastrado na aplicação ou a senha está errada.';

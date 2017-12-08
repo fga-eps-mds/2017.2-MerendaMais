@@ -16,7 +16,8 @@ import { logInfo, logWarn } from '../../../logConfig/loggers';
 import { POSTS_LINK_NUVEM_CIVICA,
   APP_IDENTIFIER,
   INSPECTION_POSTING_TYPE_CODE,
-  FINISH_INSPECTION } from '../../constants/generalConstants';
+  FINISH_INSPECTION,
+  LEAVING_INSPECTION } from '../../constants/generalConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
 import Header from '../../components/Header';
 import ButtonWithActivityIndicator from '../../components/ButtonWithActivityIndicator';
@@ -184,7 +185,14 @@ export default class MainReportsScreen extends React.Component {
         <Header
           title={'Listas de verificação'}
           backButton
-          backTo={() => Actions.StartPendingInspection()}
+          backTo={() => Alert.alert(
+            'SAIR DA FISCALIZAÇÃO',
+            LEAVING_INSPECTION,
+            [
+              { text: 'Cancelar' },
+              { text: 'Voltar', onPress: () => Actions.StartPendingInspection() },
+            ],
+          )}
         />
         <ScrollView>
           <View pointerEvents={this.props.clickableView} >
