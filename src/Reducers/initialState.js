@@ -31,6 +31,7 @@ const initialState = {
   application: {
     isLoading: false,
     message_erro: '',
+    clickableView: 'auto',
   },
   report: {
     foodStock,

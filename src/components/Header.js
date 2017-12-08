@@ -74,10 +74,12 @@ Header.propTypes = {
   backButton: PropTypes.boolean,
   backTo: PropTypes.func,
 };
+
 Header.defaultProps = {
   title: 'Merenda +',
   subTitle: '',
   backButton: false,
   backTo: () => Actions.pop(),
 };
+
 export default Header;

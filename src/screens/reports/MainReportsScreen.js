@@ -7,14 +7,19 @@ import { StyleSheet,
   ScrollView,
   Dimensions,
   BackHandler,
+  Alert,
 } from 'react-native';
 import axios from 'axios';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
-import { POSTS_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
+import { POSTS_LINK_NUVEM_CIVICA,
+  APP_IDENTIFIER,
+  INSPECTION_POSTING_TYPE_CODE,
+  FINISH_INSPECTION } from '../../constants/generalConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
 import Header from '../../components/Header';
+import ButtonWithActivityIndicator from '../../components/ButtonWithActivityIndicator';
 
 const { width } = Dimensions.get('window');
 
@@ -56,8 +61,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+
+  loading: {
+    marginTop: 15,
+    marginBottom: 25,
+  },
 });
 
+// Component to each clickable text that goes to checklists.
 const GoToChecklistClickableText = props => (
   <View style={styles.statusView}>
     <TouchableOpacity
@@ -82,20 +93,48 @@ const GoToChecklistClickableText = props => (
 );
 
 export default class MainReportsScreen extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoading: false,
-      anyReport: false,
-      whatever: '',
-    };
-  }
-
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.StartPendingInspection());
   }
 
+  async createInspectionPostInNuvem(headerToInspection, bodyToInspection) {
+    console.log(`${this.props.isLoading} ${headerToInspection} ${bodyToInspection}`);
+  }
+
+  // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
+  async prepareAndSendInspectionResultsToNuvem() {
+    // Header to create a new inpection post.
+    const headerToInspection = {
+      headers: {
+        appIdentifier: APP_IDENTIFIER,
+        appToken: this.props.counselor.token,
+      },
+    };
+
+    // Body to create a new inpection post.
+    const bodyToInspection = {
+      autor: {
+        codPessoa: this.props.counselor.nuvemCode,
+      },
+      codGrupoDestino: this.props.counselor.codGrupoDestino,
+      postagemRelacionada: {
+        codPostagem: this.props.scheduleVisit.currentVisit.codPostagem,
+      },
+      tipo: {
+        codTipoPostagem: INSPECTION_POSTING_TYPE_CODE,
+      },
+    };
+
+    this.createInspectionPostInNuvem(headerToInspection, bodyToInspection);
+  }
+
+  // Get the most current version of the schedule being inspected.
+  updateCurrentVersionOfScheduleInspected() {
+    console.log(this.props.scheduleVisit);
+    // TODO(Allan Nobre).
+  }
+
+  // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
   changeCounselorRealizedVisitStatus() {
     const newContentJSON = this.props.scheduleVisit.currentVisit.content;
     newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
@@ -126,11 +165,17 @@ export default class MainReportsScreen extends React.Component {
       });
   }
 
-  finishVisit() {
-    /* Requisições para salvar a fiscalização na Nuvem Cívica */
+  // Make the final requests to finalize the inspect.
+  async finishVisit() {
+    this.props.syncIsLoading();
 
-    /* Change the post at Nuvem Cívica to inform that this counselor realized this visit */
-    this.changeCounselorRealizedVisitStatus();
+    await this.prepareAndSendInspectionResultsToNuvem();
+
+    // this.updateCurrentVersionOfScheduleInspected();
+
+    // this.changeCounselorRealizedVisitStatus();
+
+    this.props.syncIsNotLoading();
   }
 
   render() {
@@ -139,10 +184,10 @@ export default class MainReportsScreen extends React.Component {
         <Header
           title={'Listas de verificação'}
           backButton
-          backTo={() => Actions.mainScreen()}
+          backTo={() => Actions.StartPendingInspection()}
         />
         <ScrollView>
-          <View>
+          <View pointerEvents={this.props.clickableView} >
             <GoToChecklistClickableText
               goToChecklistKey="Arredores da Escola"
               goToChecklistText="Arredores da Escola"
@@ -214,23 +259,35 @@ export default class MainReportsScreen extends React.Component {
             />
 
             <TouchableOpacity
+              activeOpacity={0.7}
               style={styles.buttonContainer}
             >
               <Text style={styles.buttonText}>Anexar fotos</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
+              activeOpacity={0.7}
               style={styles.buttonContainer}
             >
               <Text style={styles.buttonText}>Gerar Relatório Final</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={() => this.finishVisit()}
-            >
-              <Text style={styles.buttonText}>Encerrar Fiscalização</Text>
-            </TouchableOpacity>
+            <ButtonWithActivityIndicator
+              activityIndicatorStyle={styles.loading}
+              onPress={() => Alert.alert(
+                'ENCERRAR FISCALIZAÇÃO',
+                FINISH_INSPECTION,
+                [
+                  { text: 'Cancelar' },
+                  { text: 'Finalizar', onPress: () => this.finishVisit() },
+                ],
+              )}
+              isLoading={this.props.isLoading}
+              buttonKey="FinishInspectionButton"
+              buttonText="Encerrar Fiscalização"
+              buttonStyle={styles.buttonContainer}
+            />
+
           </View>
         </ScrollView>
       </View>
@@ -241,6 +298,10 @@ export default class MainReportsScreen extends React.Component {
 const { shape, string, number, bool, func } = PropTypes;
 
 MainReportsScreen.propTypes = {
+  isLoading: bool.isRequired,
+  clickableView: string.isRequired,
+  syncIsLoading: func.isRequired,
+  syncIsNotLoading: func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
