@@ -344,5 +344,43 @@ export const asyncSchedulingVisit = visitData => () => {
   schedulingVisit(visitData);
 };
 
+export const asyncUpdateSchedule = visitData => async (dispatch) => {
+  logInfo(FILE_NAME, 'asyncConfirmParticipationOnVisit',
+    `Scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
+
+  dispatch(isLoading());
+
+  const newContentJSON = this.props.scheduleVisit.currentVisit.content;
+
+  const newContentString = convertingJSONToString(newContentJSON);
+
+  // Change this token to the master token.
+  const putScheduleHeader = {
+    headers: {
+      appToken: visitData.counselor.token,
+    },
+  };
+
+  const putScheduleBody = {
+    JSON: newContentString,
+    texto: visitData.text,
+    valor: 0,
+  };
+
+  try {
+    const response = await axios.put(
+      `${POSTS_LINK_NUVEM_CIVICA}${visitData.codPostagem}/conteudos/${visitData.codConteudoPost}`,
+      putScheduleBody,
+      putScheduleHeader);
+
+    logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
+  } catch (error) {
+    logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
+    // Dispatch error to the store;
+  }
+
+  dispatch(isNotLoading());
+};
+
 
 export default asyncSchedulingVisit;

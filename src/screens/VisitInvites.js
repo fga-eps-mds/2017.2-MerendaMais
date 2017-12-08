@@ -8,6 +8,7 @@ import VisitInfoPopUp from '../components/VisitInfoPopUp';
 import axios from 'axios';
 import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
+import { asyncUpdateSchedule } from '../actions/schedulingVisitActions';
 
 const FILE_NAME = 'VisitInvites';
 
@@ -169,6 +170,7 @@ class VisitInvites extends React.Component {
             this.popupDialog.show();
           }}
           key={visit.codConteudoPost}
+          asyncUpdateSchedule={this.props.asyncUpdateSchedule}
         />
       ));
     }
@@ -212,6 +214,7 @@ class VisitInvites extends React.Component {
 
 VisitInvites.propTypes = {
   asyncGetSchedule: PropTypes.func.isRequired,
+  asyncUpdateSchedule: PropTypes.func.isRequired,
   counselor: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,

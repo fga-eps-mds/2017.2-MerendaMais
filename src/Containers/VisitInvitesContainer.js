@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import VisitInvites from '../screens/VisitInvites';
-import { asyncGetSchedule } from '../actions/schedulingVisitActions';
-import { asyncGetCounselorFromGroup } from '../actions/listActions';
+import { asyncGetSchedule, asyncUpdateSchedule } from '../actions/schedulingVisitActions';
 
 const mapStateToProps = state => (
   {
@@ -13,6 +12,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => ({
   asyncGetSchedule: counselor => dispatch(asyncGetSchedule(counselor)),
+  asyncUpdateSchedule: visitData => dispatch(asyncUpdateSchedule(visitData)),
 });
 
 const VisitInvitesContainer = connect(mapStateToProps,

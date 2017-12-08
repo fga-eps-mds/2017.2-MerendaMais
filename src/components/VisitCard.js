@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { logInfo } from '../../logConfig/loggers';
+
+const FILE_NAME = 'VisitCard';
 
 const styles = StyleSheet.create({
   content: {
@@ -62,14 +65,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const ConfirmButton = () => (
-  <View style={styles.buttonBox}>
-    <TouchableOpacity>
-      {/* onPress={() => Actions.mainReportsScreen()} */}
-      <Text style={styles.buttonText}>CONFIRMAR PRESENÇA</Text>
-    </TouchableOpacity>
-  </View>
-);
+const ConfirmButton = (props) => {
+  logInfo(FILE_NAME, 'ConfirmButton', `Received props: ${JSON.stringify(props)}`);
+  return (
+    <View style={styles.buttonBox}>
+      <TouchableOpacity
+        onPress={() => props.confirmButtonCallback()}
+      >
+        <Text style={styles.buttonText}>CONFIRMAR PRESENÇA</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const CancelButton = () => (
   <View style={[styles.buttonBox, { backgroundColor: 'red' }]}>
@@ -79,8 +86,20 @@ const CancelButton = () => (
   </View>
 );
 
-class VisitCard extends React.PureComponent {
+class VisitCard extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visit: {},
+      text: 'Agendamento',
+      counselor: this.props.counselor,
+    };
+  }
+
   render() {
+    console.log(`Visit Card props ${this.props}`);
+
     let confirmOrCancelButton = null;
 
     // If the counselor is confirmed, show cancel button.
@@ -88,7 +107,19 @@ class VisitCard extends React.PureComponent {
     if (this.props.visit.content.visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
       confirmOrCancelButton = CancelButton();
     } else {
-      confirmOrCancelButton = ConfirmButton();
+      confirmOrCancelButton =
+        (
+          <ConfirmButton
+            visit={this.props.visit}
+            confirmButtonCallback={async () => {
+              const updatedVisit = this.props.visit;
+              updatedVisit.content.visitListOfInvitees[this.props.counselor.nuvemCode]
+                .confirmed = true;
+              await this.setState({ visit: updatedVisit });
+              this.props.asyncUpdateSchedule(this.state);
+            }}
+          />
+        );
     }
 
     return (
@@ -123,6 +154,7 @@ class VisitCard extends React.PureComponent {
 }
 
 VisitCard.propTypes = {
+  asyncUpdateSchedule: PropTypes.func.isRequired,
   visit: PropTypes.shape({
     content: {
       agentEmail: PropTypes.string.isRequired,
@@ -148,6 +180,10 @@ VisitCard.propTypes = {
     }).isRequired,
   }).isRequired,
   popUpCallBack: PropTypes.func.isRequired,
+};
+
+ConfirmButton.propTypes = {
+  confirmButtonCallback: PropTypes.func.isRequired,
 };
 
 export default VisitCard;
