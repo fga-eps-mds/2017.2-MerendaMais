@@ -11,17 +11,17 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
+    backTo={[Function]}
     subTitle="Manipuladores de Alimentos"
-    title="Relatório"
+    title="Lista de verificação"
   />
   <KeyboardAvoidingView
     behavior="padding"
     keyboardVerticalOffset={0}
     style={
       Object {
-        "flex": 6,
+        "flex": 1,
         "flexDirection": "column",
-        "marginBottom": 9,
       }
     }
   >
@@ -42,7 +42,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
             style={
               Object {
                 "fontWeight": "bold",
-                "paddingLeft": 10,
+                "paddingHorizontal": 9.25,
                 "paddingTop": 5,
               }
             }
@@ -57,7 +57,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
             style={
               Object {
                 "fontWeight": "bold",
-                "paddingLeft": 20,
+                "paddingHorizontal": 9.25,
                 "paddingTop": 5,
               }
             }
@@ -69,7 +69,11 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           key="0"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -82,9 +86,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -105,9 +107,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -128,18 +128,21 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Uniforme completo
+            Uniforme incompleto
           </Text>
         </View>
         <View
           key="1"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -152,9 +155,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -175,9 +176,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -198,7 +197,6 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -209,7 +207,11 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           key="2"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -222,9 +224,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -245,9 +245,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -268,7 +266,6 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -279,7 +276,11 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           key="3"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -292,9 +293,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -315,9 +314,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -338,7 +335,6 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -349,7 +345,11 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           key="4"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -362,9 +362,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -385,9 +383,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -408,7 +404,6 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -419,7 +414,11 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           key="5"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -432,9 +431,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -455,9 +452,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -478,7 +473,6 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -489,7 +483,11 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           key="6"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -502,9 +500,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -525,9 +521,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -548,7 +542,6 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -559,7 +552,11 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           key="7"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -572,9 +569,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -595,9 +590,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -618,7 +611,6 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -632,8 +624,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
         <View
           style={
             Object {
-              "paddingLeft": 10,
-              "paddingRight": 10,
+              "paddingHorizontal": 15,
               "paddingTop": 30,
             }
           }
@@ -664,14 +655,13 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
         onPress={[Function]}
         style={
           Object {
+            "alignItems": "center",
             "backgroundColor": "#FF9500",
             "borderRadius": 7,
             "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 20,
             "marginHorizontal": 15,
-            "marginTop": 30,
-            "paddingVertical": 10,
+            "marginVertical": 30,
+            "paddingVertical": 15,
           }
         }
       >
@@ -683,6 +673,7 @@ exports[`Testing FoodHandlerCheckout Screen renders as expected 1`] = `
           style={
             Object {
               "color": "#FFF",
+              "fontSize": 15,
               "textAlign": "center",
             }
           }

@@ -10,50 +10,31 @@ import { StyleSheet,
 } from 'react-native';
 import axios from 'axios';
 import Checkbox from 'react-native-checkbox';
-import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
-import store from '../../Reducers/store';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
 import { POSTS_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
+import Header from '../../components/Header';
 
 const { width } = Dimensions.get('window');
+
+const blackCheckedCheckbox = require('../../images/black-checked-checkbox.png');
+const blackUncheckedCheckbox = require('../../images/black-unchecked-checkbox.png');
+const greenCheckedCheckbox = require('../../images/green-checked-checkbox.png');
+const greenUncheckedCheckbox = require('../../images/green-unchecked-checkbox.png');
 
 const FILE_NAME = 'MainReportsScreen.js';
 
 const styles = StyleSheet.create({
 
   buttonContainer: {
-    paddingVertical: 10,
+    paddingVertical: 15,
     borderWidth: 1,
     borderRadius: 7,
     marginHorizontal: 15,
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 13,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
-  },
-  icon_header: {
-    marginLeft: 20,
-  },
-  wrapper: {
-    height: 100,
-    flexDirection: 'row',
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    alignItems: 'center',
-  },
-  buttonPhoto: {
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 10,
-    backgroundColor: '#FF9500',
   },
 
   buttonText: {
@@ -65,21 +46,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 1,
   },
-  textLogo: {
-    // Font size 30 looks nice on 360 width phone.
-    // (x * widthYourPhone = fontSize) where x is the proportion used in fontSize above.
-    fontSize: width * 0.08,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 10,
-    marginLeft: 100,
-  },
+
   text: {
-    paddingLeft: 20,
-    paddingTop: 5,
+    flex: 1,
+    width: width * 0.7,
+    paddingLeft: 10,
     color: 'blue',
     fontSize: 20,
-    paddingRight: 10,
+  },
+
+  statusView: {
+    flexDirection: 'row',
+    paddingVertical: 20,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 
@@ -99,167 +79,128 @@ export default class MainReportsScreen extends React.Component {
   }
 
   checkingFoodQualityReport() {
-    const newStateFoodQuality = store.getState();
-    if (newStateFoodQuality.report.statusFoodQuality) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusFoodQuality}
+          checkedImage={greenCheckedCheckbox}
+          uncheckedImage={greenUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
   checkingDocReport() {
-    const newStateDoc = store.getState();
-    if (newStateDoc.report.statusDoc) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusDoc}
+          checkedImage={greenCheckedCheckbox}
+          uncheckedImage={greenUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
   checkingRefectoryReport() {
-    const newStateRefectory = store.getState();
-    if (newStateRefectory.report.statusRefectory) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusRefectory}
+          checkedImage={greenCheckedCheckbox}
+          uncheckedImage={greenUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
   checkingKitchenReport() {
-    const newStateKitchen = store.getState();
-    if (newStateKitchen.report.statusKitchen) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusKitchen}
+          checkedImage={blackCheckedCheckbox}
+          uncheckedImage={blackUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
   checkingStockFoodReport() {
-    const newStateStockFood = store.getState();
-    if (newStateStockFood.report.statusFoodStock) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusFoodStock}
+          checkedImage={blackCheckedCheckbox}
+          uncheckedImage={blackUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
 
   checkingSchoolSurroundingsReport() {
-    const newStateSchoolSurroudingings = store.getState();
-    if (newStateSchoolSurroudingings.report.statusSchoolSurroundings) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusSchoolSurroundings}
+          checkedImage={blackCheckedCheckbox}
+          uncheckedImage={blackUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
+
   checkingFoodHandlerReport() {
-    const newStateFoodHandler = store.getState();
-    if (newStateFoodHandler.report.statusFoodHandler) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusFoodHandler}
+          checkedImage={blackCheckedCheckbox}
+          uncheckedImage={blackUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
   checkingReportObservation() {
-    const newStateReportObservation = store.getState();
-    if (newStateReportObservation.report.statusReportObservation) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusReportObservation}
+          checkedImage={blackCheckedCheckbox}
+          uncheckedImage={blackUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
 
   checkingWaterSewerSupplyReport() {
-    const newStateWaterSewerSupply = store.getState();
-    if (newStateWaterSewerSupply.report.statusWaterSewerSupply) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusWaterSewerSupply}
+          checkedImage={blackCheckedCheckbox}
+          uncheckedImage={blackUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
 
   checkingFoodPreparationReport() {
-    const newStateFoodPreparation = store.getState();
-    if (newStateFoodPreparation.report.statusFoodPreparation) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 5 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
+    return (
+      <View>
+        <Checkbox
+          checked={this.props.report.statusFoodPreparation}
+          checkedImage={blackCheckedCheckbox}
+          uncheckedImage={blackUncheckedCheckbox}
+          label=" "
+        />
+      </View>
+    );
   }
 
   changeCounselorRealizedVisitStatus() {
@@ -302,20 +243,14 @@ export default class MainReportsScreen extends React.Component {
   render() {
     return (
       <View style={styles.content}>
-        <View style={styles.wrapper}>
-          <TouchableOpacity onPress={() => Actions.mainScreen()} >
-            <Ionicons
-              name="ios-arrow-back-outline"
-              style={styles.icon_header}
-              size={45}
-              color="black"
-            />
-          </TouchableOpacity>
-          <Text style={styles.textLogo}>Relatórios</Text>
-        </View>
+        <Header
+          title={'Listas de verificação'}
+          backButton
+          backTo={() => Actions.mainScreen()}
+        />
         <ScrollView>
           <View>
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
               >
@@ -324,7 +259,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingSchoolSurroundingsReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.stockFoodCheckoutScreen()}
               >
@@ -333,7 +268,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingStockFoodReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.DocCheckoutScreen()}
               >
@@ -342,7 +277,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingDocReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.foodQualityCheckoutScreen()}
               >
@@ -351,7 +286,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingFoodQualityReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.foodHandlerCheckoutScreen()}
               >
@@ -360,7 +295,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingFoodHandlerReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.refectoryCheckoutScreen()}
               >
@@ -369,7 +304,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingRefectoryReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
               >
@@ -378,7 +313,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingWaterSewerSupplyReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.kitchenCheckoutScreen()}
               >
@@ -387,7 +322,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingKitchenReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.foodPreparationCheckoutScreen()}
               >
@@ -396,7 +331,7 @@ export default class MainReportsScreen extends React.Component {
               {this.checkingFoodPreparationReport()}
             </View>
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
+            <View style={styles.statusView}>
               <TouchableOpacity
                 onPress={() => Actions.ReportObservationScreen()}
               >
@@ -406,7 +341,7 @@ export default class MainReportsScreen extends React.Component {
             </View>
 
             <TouchableOpacity
-              style={styles.buttonPhoto}
+              style={styles.buttonContainer}
             >
               <Text style={styles.buttonText}>Anexar fotos</Text>
             </TouchableOpacity>
@@ -440,5 +375,8 @@ MainReportsScreen.propTypes = {
   scheduleVisit: shape({
     currentVisit: shape({
     }).isRequired,
+  }).isRequired,
+  report: shape({
+
   }).isRequired,
 };

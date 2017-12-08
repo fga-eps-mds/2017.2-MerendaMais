@@ -5,6 +5,7 @@ const mapStateToProps = state => (
   {
     scheduleVisit: state.scheduleVisit,
     counselor: state.counselor,
+    report: state.report,
   }
 );
 
