@@ -9,7 +9,7 @@ import { StyleSheet,
   BackHandler,
 } from 'react-native';
 import axios from 'axios';
-import Checkbox from 'react-native-checkbox';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
 import { POSTS_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
@@ -17,11 +17,6 @@ import { convertingJSONToString } from '../../actions/counselorActions';
 import Header from '../../components/Header';
 
 const { width } = Dimensions.get('window');
-
-const blackCheckedCheckbox = require('../../images/black-checked-checkbox.png');
-const blackUncheckedCheckbox = require('../../images/black-unchecked-checkbox.png');
-const greenCheckedCheckbox = require('../../images/green-checked-checkbox.png');
-const greenUncheckedCheckbox = require('../../images/green-unchecked-checkbox.png');
 
 const FILE_NAME = 'MainReportsScreen.js';
 
@@ -63,6 +58,20 @@ const styles = StyleSheet.create({
   },
 });
 
+const ChecklistCompletedCheck = props => (
+  <View>
+    {props.isCompleted ? (
+      <MaterialIcons
+        name="check"
+        size={28}
+        style={{ paddingRight: 23 }}
+        color="green"
+      />
+    ) : (<Text />)
+    }
+  </View>
+);
+
 export default class MainReportsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -76,131 +85,6 @@ export default class MainReportsScreen extends React.Component {
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
-  }
-
-  checkingFoodQualityReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusFoodQuality}
-          checkedImage={greenCheckedCheckbox}
-          uncheckedImage={greenUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-  checkingDocReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusDoc}
-          checkedImage={greenCheckedCheckbox}
-          uncheckedImage={greenUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-  checkingRefectoryReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusRefectory}
-          checkedImage={greenCheckedCheckbox}
-          uncheckedImage={greenUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-  checkingKitchenReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusKitchen}
-          checkedImage={blackCheckedCheckbox}
-          uncheckedImage={blackUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-  checkingStockFoodReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusFoodStock}
-          checkedImage={blackCheckedCheckbox}
-          uncheckedImage={blackUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-
-  checkingSchoolSurroundingsReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusSchoolSurroundings}
-          checkedImage={blackCheckedCheckbox}
-          uncheckedImage={blackUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-
-  checkingFoodHandlerReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusFoodHandler}
-          checkedImage={blackCheckedCheckbox}
-          uncheckedImage={blackUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-  checkingReportObservation() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusReportObservation}
-          checkedImage={blackCheckedCheckbox}
-          uncheckedImage={blackUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-
-  checkingWaterSewerSupplyReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusWaterSewerSupply}
-          checkedImage={blackCheckedCheckbox}
-          uncheckedImage={blackUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
-  }
-
-  checkingFoodPreparationReport() {
-    return (
-      <View>
-        <Checkbox
-          checked={this.props.report.statusFoodPreparation}
-          checkedImage={blackCheckedCheckbox}
-          uncheckedImage={blackUncheckedCheckbox}
-          label=" "
-        />
-      </View>
-    );
   }
 
   changeCounselorRealizedVisitStatus() {
@@ -256,7 +140,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Arredores da Escola</Text>
               </TouchableOpacity>
-              {this.checkingSchoolSurroundingsReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusSchoolSurroundings}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -265,7 +151,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Estoque de Alimentos</Text>
               </TouchableOpacity>
-              {this.checkingStockFoodReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusFoodStock}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -274,7 +162,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Documentação</Text>
               </TouchableOpacity>
-              {this.checkingDocReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusDoc}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -283,7 +173,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Qualidade da Alimentação</Text>
               </TouchableOpacity>
-              {this.checkingFoodQualityReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusFoodQuality}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -292,7 +184,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Manipuladores de Alimentos</Text>
               </TouchableOpacity>
-              {this.checkingFoodHandlerReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusFoodHandler}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -301,7 +195,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Refeitório</Text>
               </TouchableOpacity>
-              {this.checkingRefectoryReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusRefectory}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -310,7 +206,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Abastecimento de Água e Esgoto</Text>
               </TouchableOpacity>
-              {this.checkingWaterSewerSupplyReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusWaterSewerSupply}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -319,7 +217,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Cozinha</Text>
               </TouchableOpacity>
-              {this.checkingKitchenReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusKitchen}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -328,7 +228,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>Preparação e Distribuição de Alimentos</Text>
               </TouchableOpacity>
-              {this.checkingFoodPreparationReport()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusFoodPreparation}
+              />
             </View>
 
             <View style={styles.statusView}>
@@ -337,7 +239,9 @@ export default class MainReportsScreen extends React.Component {
               >
                 <Text style={styles.text}>+ Outras informações</Text>
               </TouchableOpacity>
-              {this.checkingReportObservation()}
+              <ChecklistCompletedCheck
+                isCompleted={this.props.report.statusReportObservation}
+              />
             </View>
 
             <TouchableOpacity
@@ -365,7 +269,7 @@ export default class MainReportsScreen extends React.Component {
   }
 }
 
-const { shape, string, number } = PropTypes;
+const { shape, string, number, bool } = PropTypes;
 
 MainReportsScreen.propTypes = {
   counselor: shape({
@@ -379,4 +283,8 @@ MainReportsScreen.propTypes = {
   report: shape({
 
   }).isRequired,
+};
+
+ChecklistCompletedCheck.propTypes = {
+  isCompleted: bool.isRequired,
 };
