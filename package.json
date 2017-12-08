@@ -34,7 +34,7 @@
     "test": "node_modules/.bin/jest --maxWorkers 2",
     "lint": "./node_modules/.bin/eslint src",
     "analyze": "./node_modules/.bin/plato -r -d report App.js src/",
-    "test-with-coverage": "jest --coverage --maxWorkers 2"
+    "test-with-coverage": "jest --coverage --maxWorkers 1"
   },
   "jest": {
     "preset": "jest-expo",
@@ -62,6 +62,7 @@
     "react-native-communications": "^2.2.1",
     "react-native-datepicker": "^1.6.0",
     "react-native-elements": "^0.17.0",
+    "react-native-hyperlink": "0.0.11",
     "react-native-maps": "^0.17.1",
     "react-native-modal-dropdown": "^0.5.0",
     "react-native-modal-picker": "0.0.16",
