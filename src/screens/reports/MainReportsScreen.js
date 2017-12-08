@@ -58,17 +58,26 @@ const styles = StyleSheet.create({
   },
 });
 
-const ChecklistCompletedCheck = props => (
-  <View>
-    {props.isCompleted ? (
-      <MaterialIcons
-        name="check"
-        size={28}
-        style={{ paddingRight: 23 }}
-        color="green"
-      />
-    ) : (<Text />)
-    }
+const GoToChecklistClickableText = props => (
+  <View style={styles.statusView}>
+    <TouchableOpacity
+      onPress={() => props.onPress()}
+      key={props.goToChecklistKey}
+    >
+      <Text style={styles.text}>{props.goToChecklistText}</Text>
+    </TouchableOpacity>
+
+    <View>
+      {props.isCompleted ? (
+        <MaterialIcons
+          name="check"
+          size={28}
+          style={{ paddingRight: 23 }}
+          color="green"
+        />
+      ) : (<Text />)
+      }
+    </View>
   </View>
 );
 
@@ -134,115 +143,75 @@ export default class MainReportsScreen extends React.Component {
         />
         <ScrollView>
           <View>
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
-              >
-                <Text style={styles.text}>Arredores da Escola</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusSchoolSurroundings}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Arredores da Escola"
+              goToChecklistText="Arredores da Escola"
+              onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
+              isCompleted={this.props.report.statusSchoolSurroundings}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.stockFoodCheckoutScreen()}
-              >
-                <Text style={styles.text}>Estoque de Alimentos</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusFoodStock}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Estoque de Alimentos"
+              goToChecklistText="Estoque de Alimentos"
+              onPress={() => Actions.stockFoodCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodStock}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.DocCheckoutScreen()}
-              >
-                <Text style={styles.text}>Documentação</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusDoc}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Documentação"
+              goToChecklistText="Documentação"
+              onPress={() => Actions.DocCheckoutScreen()}
+              isCompleted={this.props.report.statusDoc}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.foodQualityCheckoutScreen()}
-              >
-                <Text style={styles.text}>Qualidade da Alimentação</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusFoodQuality}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Qualidade da Alimentação"
+              goToChecklistText="Qualidade da Alimentação"
+              onPress={() => Actions.foodQualityCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodQuality}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.foodHandlerCheckoutScreen()}
-              >
-                <Text style={styles.text}>Manipuladores de Alimentos</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusFoodHandler}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Manipuladores de Alimentos"
+              goToChecklistText="Manipuladores de Alimentos"
+              onPress={() => Actions.foodHandlerCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodHandler}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.refectoryCheckoutScreen()}
-              >
-                <Text style={styles.text}>Refeitório</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusRefectory}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Refeitório"
+              goToChecklistText="Refeitório"
+              onPress={() => Actions.refectoryCheckoutScreen()}
+              isCompleted={this.props.report.statusRefectory}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
-              >
-                <Text style={styles.text}>Abastecimento de Água e Esgoto</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusWaterSewerSupply}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Abastecimento de Água e Esgoto"
+              goToChecklistText="Abastecimento de Água e Esgoto"
+              onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
+              isCompleted={this.props.report.statusWaterSewerSupply}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.kitchenCheckoutScreen()}
-              >
-                <Text style={styles.text}>Cozinha</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusKitchen}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Cozinha"
+              goToChecklistText="Cozinha"
+              onPress={() => Actions.kitchenCheckoutScreen()}
+              isCompleted={this.props.report.statusKitchen}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.foodPreparationCheckoutScreen()}
-              >
-                <Text style={styles.text}>Preparação e Distribuição de Alimentos</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusFoodPreparation}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="Preparação e Distribuição de Alimentos"
+              goToChecklistText="Preparação e Distribuição de Alimentos"
+              onPress={() => Actions.foodPreparationCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodPreparation}
+            />
 
-            <View style={styles.statusView}>
-              <TouchableOpacity
-                onPress={() => Actions.ReportObservationScreen()}
-              >
-                <Text style={styles.text}>+ Outras informações</Text>
-              </TouchableOpacity>
-              <ChecklistCompletedCheck
-                isCompleted={this.props.report.statusReportObservation}
-              />
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey="+ Outras informações"
+              goToChecklistText="+ Outras informações"
+              onPress={() => Actions.ReportObservationScreen()}
+              isCompleted={this.props.report.statusReportObservation}
+            />
 
             <TouchableOpacity
               style={styles.buttonContainer}
@@ -269,7 +238,7 @@ export default class MainReportsScreen extends React.Component {
   }
 }
 
-const { shape, string, number, bool } = PropTypes;
+const { shape, string, number, bool, func } = PropTypes;
 
 MainReportsScreen.propTypes = {
   counselor: shape({
@@ -285,6 +254,9 @@ MainReportsScreen.propTypes = {
   }).isRequired,
 };
 
-ChecklistCompletedCheck.propTypes = {
+GoToChecklistClickableText.propTypes = {
   isCompleted: bool.isRequired,
+  goToChecklistText: string.isRequired,
+  onPress: func.isRequired,
+  goToChecklistKey: string.isRequired,
 };
