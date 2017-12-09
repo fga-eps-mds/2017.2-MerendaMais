@@ -33,6 +33,7 @@ const listReducer = (state = initialState.list, action) => {
         listOfPendingScheduleInAGroup: [],
         listOfExpiredScheduleInAGroup: [],
         listOfAlreadyInpectionedSchedueInAGroup: [],
+        listOfPendingInvitedScheduleList: [],
       };
     case SET_VISIT_NEW_LISTS:
       return {

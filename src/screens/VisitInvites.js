@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { View, ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
 import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialog';
 import VisitCard from '../components/VisitCard';
 import Header from '../components/Header';
 import VisitInfoPopUp from '../components/VisitInfoPopUp';
-import axios from 'axios';
 import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { asyncUpdateSchedule } from '../actions/schedulingVisitActions';
 
 const FILE_NAME = 'VisitInvites';
 
@@ -160,6 +159,7 @@ class VisitInvites extends React.Component {
         />
       );
     } else {
+      console.log(JSON.stringify(this.props.listOfPendingInvitedScheduleList));
       activityIndicatorOrCard = this.props.listOfPendingInvitedScheduleList.map(visit => (
         <VisitCard
           visit={visit}
@@ -171,6 +171,9 @@ class VisitInvites extends React.Component {
           }}
           key={visit.codConteudoPost}
           asyncUpdateSchedule={this.props.asyncUpdateSchedule}
+          asyncGetCurrentSchedule={this.props.asyncGetCurrentSchedule}
+          currentSchedule={this.props.currentSchedule}
+          asyncGetSchedule={this.props.asyncGetSchedule}
         />
       ));
     }
@@ -215,6 +218,20 @@ class VisitInvites extends React.Component {
 VisitInvites.propTypes = {
   asyncGetSchedule: PropTypes.func.isRequired,
   asyncUpdateSchedule: PropTypes.func.isRequired,
+  asyncGetCurrentSchedule: PropTypes.func.isRequired,
+  currentSchedule: PropTypes.shape({
+    codConteudoPost: PropTypes.number.isRequired,
+    codPostagem: PropTypes.number.isRequired,
+    content: {
+      agentEmail: PropTypes.string.isRequired,
+      codSchool: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
+      invitedAgent: PropTypes.bool.isRequired,
+      schoolName: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      visitListOfInvitees: PropTypes.shape({}),
+    },
+  }),
   counselor: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -223,6 +240,22 @@ VisitInvites.propTypes = {
   }).isRequired,
   application: PropTypes.bool.isRequired,
   listOfPendingInvitedScheduleList: PropTypes.shape([]).isRequired,
+};
+
+VisitInvites.defaultProps = {
+  currentSchedule: PropTypes.shape({
+    codConteudoPost: 0,
+    codPostagem: 0,
+    content: {
+      agentEmail: 'email@email.com',
+      codSchool: 0,
+      date: '0-0-0000',
+      invitedAgent: false,
+      schoolName: 'Nome da escola',
+      time: '00:00',
+      visitListOfInvitees: PropTypes.shape({}),
+    },
+  }),
 };
 
 export default VisitInvites;

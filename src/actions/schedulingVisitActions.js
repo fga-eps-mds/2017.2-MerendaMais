@@ -351,7 +351,7 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
 
   dispatch(isLoading());
 
-  const newContentJSON = postData.visit.content;
+  const newContentJSON = postData.content;
 
   const newContentString = convertingJSONToString(newContentJSON);
 
@@ -366,15 +366,14 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
 
   const putScheduleBody = {
     JSON: newContentString,
-    texto: postData.text,
-    valor: 0,
+    texto: 'Agendamento',
   };
 
   logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
 
   try {
     const response = await axios.put(
-      `${POSTS_LINK_NUVEM_CIVICA}${postData.visit.codPostagem}/conteudos/${postData.visit.codConteudoPost}`,
+      `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
       putScheduleBody,
       putScheduleHeader);
 
@@ -387,5 +386,36 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
   dispatch(isNotLoading());
 };
 
+export const asyncGetCurrentSchedule = getData => async (dispatch) => {
+  logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `Received data: ${JSON.stringify(getData)}`);
+
+  const header = {
+    headers: {
+      appToken: getData.appToken,
+    },
+  };
+
+  const codPostagem = getData.codPostagem;
+  const codConteudoPost = getData.codConteudoPost;
+
+  console.log(`CodPostagem: ${codPostagem}, CodConteudo: ${codConteudoPost}`);
+
+  try {
+    const response = await axios.get(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos/${codConteudoPost}`, header);
+
+    logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `${JSON.stringify(response)}`);
+
+    const currentInspection = {
+      codPostagem: response.codPostagem,
+      codConteudoPost: response.codConteudo,
+      content: convertingContentStringToJSON(response.data.JSON),
+    };
+
+    dispatch(setCurrentInspection(currentInspection));
+  } catch (error) {
+    logWarn(FILE_NAME, 'GetCurrentSchedule', JSON.stringify(error.response));
+    throw errorGenerator('GetCurrentSchedule', error.response.status);
+  }
+};
 
 export default asyncSchedulingVisit;

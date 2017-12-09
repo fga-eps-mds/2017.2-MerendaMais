@@ -1,6 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
+import { logInfo } from '../../logConfig/loggers';
+
+const FILE_NAME = 'VisitCard';
 
 const styles = StyleSheet.create({
   content: {
@@ -84,11 +88,30 @@ class VisitCard extends React.Component {
   }
 
   async buttonCallBack(value) {
-    const updatedVisit = this.props.visit;
+    const getData = {
+      appToken: this.props.counselor.token,
+      codConteudoPost: this.props.visit.codConteudoPost,
+      codPostagem: this.props.visit.codPostagem,
+    };
+
+
+    logInfo(FILE_NAME, 'buttonCallback', `GetData sent to asyncGetCurrentSchedule: ${JSON.stringify(getData)}`);
+
+    await this.props.asyncGetCurrentSchedule(getData);
+    const updatedVisit = this.props.currentSchedule;
     updatedVisit.content.visitListOfInvitees[this.props.counselor.nuvemCode]
       .confirmed = value;
-    await this.setState({ visit: updatedVisit });
-    this.props.asyncUpdateSchedule(this.state);
+
+    console.log(JSON.stringify(updatedVisit));
+
+    const postData = {
+      content: { ...updatedVisit.content },
+      codConteudoPost: this.props.visit.codConteudoPost,
+      codPostagem: this.props.visit.codPostagem,
+    };
+
+    await this.props.asyncUpdateSchedule(postData);
+    await this.props.asyncGetSchedule(this.props.counselor);
   }
 
   render() {
@@ -150,7 +173,24 @@ class VisitCard extends React.Component {
 
 VisitCard.propTypes = {
   asyncUpdateSchedule: PropTypes.func.isRequired,
+  asyncGetCurrentSchedule: PropTypes.func.isRequired,
+  asyncGetSchedule: PropTypes.func.isRequired,
+  currentSchedule: PropTypes.shape({
+    codConteudoPost: PropTypes.number.isRequired,
+    codPostagem: PropTypes.number.isRequired,
+    content: {
+      agentEmail: PropTypes.string.isRequired,
+      codSchool: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
+      invitedAgent: PropTypes.bool.isRequired,
+      schoolName: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      visitListOfInvitees: PropTypes.shape({}),
+    },
+  }).isRequired,
   visit: PropTypes.shape({
+    codConteudoPost: PropTypes.number.isRequired,
+    codPostagem: PropTypes.number.isRequired,
     content: {
       agentEmail: PropTypes.string.isRequired,
       codSchool: PropTypes.number.isRequired,
@@ -164,6 +204,7 @@ VisitCard.propTypes = {
   counselor: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
     nuvemCode: PropTypes.number.isRequired,
     profile: PropTypes.shape({
       cpf: PropTypes.string.isRequired,
