@@ -203,15 +203,10 @@ export const asyncGetScheduleMeeting = counselor => async (dispatch) => {
           counselor,
           dispatch),
       );
-      console.log(`Dentro do For ${i}`);
     }
-
-    console.log('Saiu do For');
 
     // Wait all meeting schedules are put on their respective lists.
     await Promise.all(meetingScheduleContentList);
-
-    console.log('Depois do Promise.all');
 
     dispatch(isNotLoading());
   } catch (error) {

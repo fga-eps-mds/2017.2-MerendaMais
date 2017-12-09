@@ -136,15 +136,54 @@ describe('Testing MeetingInvites', () => {
   });
 });
 
-// describe('Testing Meeting buttons', () => {
-//   it('Test if goToMaps Button is rendered', () => {
-//     jest.mock('react-native-router-flux');
-//     const wrapper = shallow(<MeetingInvites {...initialStateToScreen} />).dive();
-//     console.log(wrapper.debug());
-//     const button = wrapper.findWhere(c => c.key() === 'renderMeetingButton');
-//     console.log('wrapper.debug() depois do button');
-//     console.log(wrapper.debug());
-//     expect(button.length).toEqual(1);
-//     button.simulate('press');
-//   });
-// });
+describe('Testing Meeting buttons', () => {
+  it('Test if getMeetingLocalization is called', async () => {
+    const wrapper = shallow(<MeetingInvites {...initialStateToScreen} />);
+    const spy = jest.spyOn(MeetingInvites.prototype, 'getMeetingLocalization');
+
+    await wrapper.setState({ meetingLat: -15.943174451901015 });
+    wrapper.instance().getMeetingLocalization();
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
+
+  it('Test if getInfo is called', async () => {
+    const wrapper = shallow(<MeetingInvites {...initialStateToScreen} />);
+    const spy = jest.spyOn(MeetingInvites.prototype, 'getInfo');
+
+    await wrapper.setState({ date: '13-06-2019', time: '21:56' });
+    wrapper.instance().getInfo();
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
+
+  it('Test if mountListOfInvitees is called', async () => {
+    const wrapper = shallow(<MeetingInvites {...initialStateToScreen} />);
+    const spy = jest.spyOn(MeetingInvites.prototype, 'mountListOfInvitees');
+
+    await wrapper.setState({ invitees: [] });
+    wrapper.instance().mountListOfInvitees();
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
+
+  it('Test if mountListOfInvitees is called', async () => {
+    const wrapper = shallow(<MeetingInvites {...initialStateToScreen} />);
+    const spy = jest.spyOn(MeetingInvites.prototype, 'arrayScheduleMeetingList');
+
+    await wrapper.setState({ invitees: [] });
+    wrapper.instance().arrayScheduleMeetingList();
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
+  it('Test onPress +InfoButton', () => {
+    const wrapper = shallow(<MeetingInvites {...initialStateToScreen} />, { context: { store } });
+    const button = wrapper.findWhere(c => c.key() === '+MeetingInfo');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
+});

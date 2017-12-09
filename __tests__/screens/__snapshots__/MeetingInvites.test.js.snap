@@ -308,6 +308,7 @@ exports[`Testing MeetingInvites renders meeting as expected 1`] = `
       >
         <TouchableOpacity
           activeOpacity={0.2}
+          key="+MeetingInfo"
           onPress={[Function]}
         >
           <Text
