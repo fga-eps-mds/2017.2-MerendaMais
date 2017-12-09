@@ -168,7 +168,6 @@ describe('Testing Visit Card conditinal rendering', () => {
       wrapper.find(ConfirmAndCancelButtons).at(0).dive()
         .find(TouchableOpacity)
         .at(0);
-    console.log(confirmAndCancel.debug());
     confirmAndCancel.simulate('press');
     expect(spy).toHaveBeenCalled();
     spy.mockClear();

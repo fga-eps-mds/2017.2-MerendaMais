@@ -121,7 +121,6 @@ class VisitInvites extends React.Component {
   }
 
   async getLocalization() {
-    console.log(this.state.visit.content.codSchool);
     try {
       const response = await
         axios.get(`${SCHOOL_ENDPOINT}/${this.state.visit.content.codSchool}`, {
@@ -152,8 +151,6 @@ class VisitInvites extends React.Component {
   render() {
     let activityIndicatorOrCard = null;
 
-    console.log(`APPLICATION: ${JSON.stringify(this.props)}`);
-
     if (this.props.application === true) {
       activityIndicatorOrCard = (
         <ActivityIndicator
@@ -163,7 +160,6 @@ class VisitInvites extends React.Component {
         />
       );
     } else {
-      console.log(JSON.stringify(this.props.listOfPendingInvitedScheduleList));
       activityIndicatorOrCard = this.props.listOfPendingInvitedScheduleList.map(visit => (
         <VisitCard
           visit={visit}

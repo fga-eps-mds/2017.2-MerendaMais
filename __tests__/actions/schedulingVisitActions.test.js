@@ -32,34 +32,30 @@ const postData = {
 };
 
 describe('Testing schedulingVisit updateSchedule', () => {
-  const putScheduleHeader = {
-    headers: {
-      appToken: MASTER_TOKEN,
-    },
-  };
+  let putScheduleHeader = null;
+  let putScheduleBody = null;
 
-  const putScheduleBody = {
-    JSON: convertingJSONToString(postData.content),
-    texto: 'Agendamento',
-  };
+  beforeAll(() => {
+    putScheduleHeader = {
+      headers: {
+        appToken: MASTER_TOKEN,
+      },
+    };
 
-  const store = mockStore({});
-
-  mockActions.authenticatingMasterCounselor = jest.fn(() => 1);
+    putScheduleBody = {
+      JSON: convertingJSONToString(postData.content),
+      texto: 'Agendamento',
+    };
+  });
 
   it('Test async updateSchedule succes', async () => {
     const mock = new MockAdapter(axios);
+    const store = mockStore({});
+    mockActions.authenticatingMasterCounselor = jest.fn(() => 1);
 
     mock.onPut(
       `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
       putScheduleBody).reply(200);
-
-
-    console.log('THere');
-    console.log(`${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`);
-    console.log(`${JSON.stringify(putScheduleHeader)}`);
-
-    console.log(`${JSON.stringify(putScheduleBody)}`);
 
     await store.dispatch(actions.asyncUpdateSchedule(postData));
 
@@ -69,52 +65,65 @@ describe('Testing schedulingVisit updateSchedule', () => {
     ];
 
     expect(store.getActions()).toEqual(expectedPayload);
+
+    mock.reset();
+    mock.restore();
   });
 
   it('Test async updateSchedule failure', async () => {
     const mock = new MockAdapter(axios);
+    const store = mockStore({});
+    mockActions.authenticatingMasterCounselor = jest.fn(() => 1);
 
     mock.onPut(
       `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
       putScheduleBody,
-      putScheduleHeader).reply(400);
+      putScheduleHeader).reply(404);
 
     try {
       await store.dispatch(actions.asyncUpdateSchedule(postData));
     } catch (error) {
       const errorJson = JSON.parse(error.message);
       expect(errorJson.name).toBe(UPDATE_CURRENT_SCHEDULE_ERROR);
-      expect(errorJson.status).toBe(400);
+      expect(errorJson.status).toBe(404);
     }
+
+    mock.reset();
+    mock.restore();
   });
 });
 
 describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
-  const getData = {
-    appToken: 1,
-    codPostagem: 2,
-    codConteudoPost: 3,
-  };
+  let getData = null;
+  let header = null;
+  let response = null;
 
-  const header = {
-    headers: {
-      appToken: getData.appToken,
-    },
-  };
+  beforeAll(() => {
+    getData = {
+      appToken: 1,
+      codPostagem: 2,
+      codConteudoPost: 3,
+    };
 
+    header = {
+      headers: {
+        appToken: getData.appToken,
+      },
+    };
 
-  const response = {
-    postagem: {
-      codPostagem: getData.codPostagem,
-    },
-    codConteudoPost: getData.codConteudoPost,
-    JSON: "{'chave': 'valor'}",
-  };
+    response = {
+      postagem: {
+        codPostagem: getData.codPostagem,
+      },
+      codConteudoPost: getData.codConteudoPost,
+      JSON: "{'chave': 'valor'}",
+    };
+  });
 
-  const store = mockStore({});
 
   it('Testing asyncGetCurrentSchedule sucess', async () => {
     const mock = new MockAdapter(axios);
+    const store = mockStore({});
 
     mock
       .onGet(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
@@ -136,9 +145,12 @@ describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
     };
 
     expect(store.getActions()).toEqual([expectedPayload]);
+    mock.reset();
+    mock.restore();
   });
   it('Testing asyncGetCurrentSchedule failure', async () => {
     const mock = new MockAdapter(axios);
+    const store = mockStore({});
 
     mock
       .onGet(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
@@ -151,5 +163,7 @@ describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
       expect(errorJson.name).toBe(GET_CURRENT_SCHEDULE_ERROR);
       expect(errorJson.status).toBe(400);
     }
+    mock.reset();
+    mock.restore();
   });
 });

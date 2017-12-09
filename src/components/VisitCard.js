@@ -69,7 +69,6 @@ export const ConfirmAndCancelButtons = props => (
   <View style={props.style}>
     <TouchableOpacity
       onPress={() => {
-        console.log(props.buttonCallBack);
         props.buttonCallBack();
       }}
     >
@@ -114,8 +113,6 @@ class VisitCard extends React.Component {
     const updatedVisit = this.props.currentSchedule;
     updatedVisit.content.visitListOfInvitees[this.props.counselor.nuvemCode]
       .confirmed = value;
-
-    console.log(JSON.stringify(updatedVisit));
 
     const postData = {
       content: { ...updatedVisit.content },

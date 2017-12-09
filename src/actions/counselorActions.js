@@ -725,8 +725,6 @@ export const asyncLoginCounselor = userData => async (dispatch) => {
   } catch (error) {
     const errorJson = JSON.parse(error.message);
     logWarn(FILE_NAME, 'asyncLoginCounselor', `${JSON.stringify(errorJson)}`);
-    console.log(errorJson.name);
-    console.log(errorJson.status);
 
     switch (errorJson.name) {
       case AUTH_LOGIN_ERROR:

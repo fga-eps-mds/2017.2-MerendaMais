@@ -188,7 +188,6 @@ describe('Testing counselorActions async actions', () => {
     try {
       await getUserProfileInLogin(counselor);
     } catch (e) {
-      console.log(e.message);
       const errorJson = JSON.parse(e.message);
       expect(errorJson.name).toBe(PROFILE_LOGIN_ERROR);
       expect(errorJson.status).toBe(400);

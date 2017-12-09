@@ -219,15 +219,11 @@ export const asyncGetSchedule = counselor => async (dispatch) => {
           counselor,
           dispatch),
       );
-      console.log(`Dentro do For ${i}`);
     }
 
-    console.log('Saiu do For');
 
     // Wait all visit schedules are put on their respective lists.
     await Promise.all(visitScheduleContentList);
-
-    console.log('Depois do Promise.all');
   } catch (error) {
     logInfo(FILE_NAME, 'asyncGetSchedule',
       `Error while getting schedules: ${error}`);
@@ -246,7 +242,6 @@ export const asyncGetSchedule = counselor => async (dispatch) => {
   }
 
   dispatch(isNotLoading());
-  console.log('After is loading');
   Actions.refresh();
 };
 
@@ -371,22 +366,17 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
     texto: 'Agendamento',
   };
 
-  // logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
+  logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
 
-  console.log('Here');
-  console.log(`${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`);
-  console.log(`${JSON.stringify(putScheduleHeader)}`);
-  
-  console.log(`${JSON.stringify(putScheduleBody)}`);
   try {
     const response = await axios.put(
       `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
       putScheduleBody,
       putScheduleHeader);
 
-    logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
+    logInfo(FILE_NAME, 'asyncUpdateSchedule', response.data);
   } catch (error) {
-    logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
+    logWarn(FILE_NAME, 'asyncUpdateSchedule', error.stack);
     throw errorGenerator(UPDATE_CURRENT_SCHEDULE_ERROR, error.response.status);
   }
 

@@ -85,7 +85,6 @@ describe('Testing VisitInvites', () => {
     const newInitialState = initialState;
     newInitialState.application.isLoading = true;
     const newStore = mockStore(newInitialState);
-    console.log(newInitialState);
     const wrapper = shallow(
       <VisitInvitesContainer />,
       { context: { store: { ...newStore } } },
