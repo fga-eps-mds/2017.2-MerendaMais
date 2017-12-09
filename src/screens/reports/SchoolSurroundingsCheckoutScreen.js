@@ -76,7 +76,10 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
             </View>
 
             <View>
-              <View style={styles.checklist.textBox}>
+              <Text
+                style={styles.checklist.observationText}
+              >Alguma observação adicional? Insira aqui. (Opcional)</Text>
+              <View style={styles.checklist.observationBox}>
                 <TextInput
                   onChangeText={text => this.props.setSchoolSurroundingsObservation(text)}
                   style={styles.checklist.textInput}

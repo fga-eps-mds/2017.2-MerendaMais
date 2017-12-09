@@ -108,7 +108,10 @@ export default class FoodQualityCheckoutScreen extends React.Component {
             </View>
 
             <View behavior="padding">
-              <View style={styles.checklist.textBox}>
+              <Text
+                style={styles.checklist.observationText}
+              >Alguma observação adicional? Insira aqui. (Opcional)</Text>
+              <View style={styles.checklist.observationBox}>
                 <TextInput
                   onChangeText={text => this.props.setFoodQualityObservation(text)}
                   style={styles.checklist.textInput}

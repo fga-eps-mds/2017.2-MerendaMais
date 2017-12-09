@@ -28,7 +28,10 @@ export default class ReportObservationScreen extends React.Component {
         <KeyboardAvoidingView style={styles.checklist.content} behavior="padding">
           <ScrollView>
             <View behavior="padding">
-              <View style={styles.checklist.textBox}>
+              <Text
+                style={styles.checklist.observationText}
+              >Alguma observação adicional? Insira aqui. (Opcional)</Text>
+              <View style={styles.checklist.observationBox}>
                 <TextInput
                   onChangeText={text => this.props.setReportObservation(text)}
                   style={styles.checklist.textInput}
