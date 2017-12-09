@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class LocalizationButton extends React.PureComponent {
+class LocalizationMapButton extends React.PureComponent {
   goToMaps() {
     openMap({ latitude: this.props.Latitude, longitude: this.props.Longitude });
   }
@@ -54,9 +54,9 @@ class LocalizationButton extends React.PureComponent {
   }
 }
 
-LocalizationButton.propTypes = {
+LocalizationMapButton.propTypes = {
   Latitude: PropTypes.number.isRequired,
   Longitude: PropTypes.number.isRequired,
 };
 
-export default LocalizationButton;
+export default LocalizationMapButton;

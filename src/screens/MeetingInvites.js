@@ -13,7 +13,7 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
-import LocalizationButton from '../components/LocalizationButton';
+import LocalizationMapButton from '../components/LocalizationMapButton';
 
 const styles = StyleSheet.create({
   principal: {
@@ -228,7 +228,7 @@ class MeetingInvites extends React.Component {
     let localizationButton = null;
     if (this.state.meetingLat !== null && this.state.meetingLong !== null) {
       localizationButton = (
-        <LocalizationButton
+        <LocalizationMapButton
           Latitude={this.state.meetingLat}
           Longitude={this.state.meetingLong}
         />

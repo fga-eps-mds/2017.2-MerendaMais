@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing LocalizationButton Component Test LocalizationButton Rendering 1`] = `
+<View
+  key="localizationButton"
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#95a5a6",
+        "fontSize": 20,
+      }
+    }
+  >
+    Localização: 
+  </Text>
+  <TouchableOpacity
+    activeOpacity={0.7}
+    key="LocalizationButton"
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FF9500",
+        "borderRadius": 7,
+        "borderWidth": 1,
+        "justifyContent": "flex-end",
+        "marginBottom": 10,
+        "marginHorizontal": 15,
+        "marginTop": 10,
+        "paddingVertical": 10,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 12,
+          "textAlign": "center",
+        }
+      }
+    >
+      Ver no Mapa
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Testing LocalizationMapButton Component Test LocalizationButton Rendering 1`] = `
+<View
+  key="localizationButton"
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#95a5a6",
+        "fontSize": 20,
+      }
+    }
+  >
+    Localização: 
+  </Text>
+  <TouchableOpacity
+    activeOpacity={0.7}
+    key="LocalizationButton"
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FF9500",
+        "borderRadius": 7,
+        "borderWidth": 1,
+        "justifyContent": "flex-end",
+        "marginBottom": 10,
+        "marginHorizontal": 15,
+        "marginTop": 10,
+        "paddingVertical": 10,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 12,
+          "textAlign": "center",
+        }
+      }
+    >
+      Ver no Mapa
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
