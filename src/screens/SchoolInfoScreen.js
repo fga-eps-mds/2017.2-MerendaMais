@@ -82,8 +82,6 @@ class SchoolInfoScreen extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
   }
 
-
-
   componentDidMount() {
     logInfo(FILE_NAME, 'componentWillMount',
       `URL:${SCHOOL_ENDPOINT}/${this.props.school.schoolCode}`);

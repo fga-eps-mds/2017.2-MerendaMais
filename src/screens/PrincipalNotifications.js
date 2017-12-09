@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
+import { backHandlerPopToMain } from '../NavigationFunctions';
 
 const styles = StyleSheet.create({
   principal: {
@@ -23,30 +24,41 @@ const styles = StyleSheet.create({
   },
 });
 
-const PrincipalNotifications = () => (
-  <View style={styles.principal}>
-    <Header
-      title={'Notificações'}
-      backButton
-    />
-    <View style={{ flex: 1, marginTop: 160 }}>
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.7}
-        onPress={() => Actions.VisitInvites()}
-      >
-        <Text style={{ color: 'white', fontSize: 20 }}>Convites de Visita</Text>
-      </TouchableOpacity>
+class PrincipalNotifications extends React.PureComponent {
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
 
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.7}
-        // onPress={() => Actions.meetingsInvites()}
-      >
-        <Text style={{ color: 'white', fontSize: 20 }}>Convites de Reunião</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-);
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
+  }
+
+  render() {
+    return (
+      <View style={styles.principal}>
+        <Header
+          title={'Notificações'}
+        />
+        <View style={{ flex: 1, marginTop: 160 }}>
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.7}
+            onPress={() => Actions.VisitInvites()}
+          >
+            <Text style={{ color: 'white', fontSize: 20 }}>Convites de Visita</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.7}
+          // onPress={() => Actions.meetingsInvites()}
+          >
+            <Text style={{ color: 'white', fontSize: 20 }}>Convites de Reunião</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+}
 
 export default PrincipalNotifications;

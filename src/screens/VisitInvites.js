@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  BackHandler,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import PopupDialog, {
@@ -17,6 +18,7 @@ import PopupDialog, {
 import Header from '../components/Header';
 import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
+import { backHandlerPop } from '../NavigationFunctions';
 
 const FILE_NAME = 'VisitInvites.js';
 
@@ -131,10 +133,17 @@ class VisitInvites extends React.Component {
   }
 
   componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+
     this.props.asyncGetSchedule(this.props.counselor);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
   }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
+  }
+
 
   async getSchoolLocalization() {
     try {
@@ -256,7 +265,7 @@ class VisitInvites extends React.Component {
             onPress={() => this.goToMaps()}
             style={styles.buttonMap}
             activeOpacity={0.7}
-            // <Image source={Location} />
+          // <Image source={Location} />
           >
             <Text style={styles.buttonText}>Ver no Mapa</Text>
           </TouchableOpacity>
@@ -305,14 +314,11 @@ class VisitInvites extends React.Component {
   }
 
   render() {
-    console.log('lista pendente');
-    console.log(this.props.listOfPendingScheduleInAGroup);
     return (
       <View style={styles.principal}>
         <Header
           title={'Notificações'}
           subTitle={'Visita'}
-          backButton
         />
         <PopupDialog
           /* Popup para mostrar as informações da visita */

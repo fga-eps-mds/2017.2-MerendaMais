@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
 import {
-    StyleSheet,
-    TouchableOpacity,
-    Text,
-    View,
-    Alert,
-    Picker,
-    ScrollView,
-    BackHandler
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  Alert,
+  Picker,
+  ScrollView,
+  BackHandler,
 } from 'react-native';
 import {
   TITULAR_COUNSELOR,
@@ -15,7 +15,8 @@ import {
   EXECUTIVE_POWER,
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
-  CIVILIAN_ENTITIES } from '../constants/generalConstants';
+  CIVILIAN_ENTITIES,
+} from '../constants/generalConstants';
 import Header from '../components/Header';
 import { logInfo } from '../../logConfig/loggers';
 import DropdownComponent from '../components/DropdownComponent';

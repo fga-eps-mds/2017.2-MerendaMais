@@ -5,7 +5,7 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import { EvilIcons, Ionicons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import SchoolData from '../components/SchoolData';
