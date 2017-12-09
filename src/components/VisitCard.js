@@ -127,6 +127,7 @@ class VisitCard extends React.Component {
           text="CANCELAR PRESENÇA"
           buttonCallback={() => this.buttonCallBack(false)}
           style={[styles.buttonBox, { backgroundColor: 'red' }]}
+          key="CancelPresenceButton"
         />
       );
     } else {
@@ -136,6 +137,7 @@ class VisitCard extends React.Component {
             text="CONFIRMAR PRESENÇA"
             buttonCallback={() => this.buttonCallBack(true)}
             style={styles.buttonBox}
+            key="confirmPresenceButton"
           />
         );
     }
@@ -161,6 +163,7 @@ class VisitCard extends React.Component {
           <View style={styles.buttonInvitees}>
             <TouchableOpacity
               onPress={() => this.props.popUpCallBack(this.props.visit)}
+              key="+InfoButton"
             >
               <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
             </TouchableOpacity>

@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FAFAFA",
+      "borderColor": "black",
+      "borderRadius": 3,
+      "borderWidth": 1,
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginHorizontal": 15,
+      "marginVertical": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 4,
+        "justifyContent": "flex-start",
+        "marginRight": 15,
+        "paddingLeft": 4,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 15,
+          "paddingVertical": 2,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Escola: 
+      </Text>
+      testSchool
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 15,
+          "paddingVertical": 2,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Data: 
+      </Text>
+      0-0-0000
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 15,
+          "paddingVertical": 2,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Horário: 
+      </Text>
+      00:00
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 3,
+      }
+    }
+  >
+    <ConfirmAndCancelButtons
+      buttonCallback={[Function]}
+      key="confirmPresenceButton"
+      style={
+        Object {
+          "backgroundColor": "#4cd964",
+          "borderColor": "black",
+          "borderRadius": 7,
+          "borderWidth": 0.8,
+          "justifyContent": "center",
+          "marginRight": 15,
+          "marginVertical": 5,
+          "padding": 8,
+        }
+      }
+      text="CONFIRMAR PRESENÇA"
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderColor": "black",
+          "borderRadius": 7,
+          "borderWidth": 0.8,
+          "justifyContent": "center",
+          "marginRight": 15,
+          "marginVertical": 5,
+          "padding": 8,
+        }
+      }
+    >
+      <TouchableOpacity
+        activeOpacity={0.2}
+        key="+InfoButton"
+        onPress={[Function]}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 12,
+              "textAlign": "center",
+            }
+          }
+        >
+           + INFORMAÇÕES
+        </Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</View>
+`;
