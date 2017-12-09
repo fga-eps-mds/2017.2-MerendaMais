@@ -92,8 +92,6 @@ class SchoolInfoScreen extends React.Component {
         let schoolPhone = '';
         let schoolEmail = '';
         let schoolStudents = '';
-        console.log('telefone');
-
 
         if (response.data.telefone !== undefined && response.data.telefone !== ' ') {
           schoolPhone = response.data.telefone;

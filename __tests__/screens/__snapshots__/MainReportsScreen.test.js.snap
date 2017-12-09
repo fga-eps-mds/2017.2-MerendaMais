@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing DocCheckout Screen renders as expected 1`] = `
+exports[`Testing MainReports Screen renders as expected 1`] = `
 <View
   style={
     Object {
@@ -17,448 +17,58 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
   />
   <ScrollViewMock>
     <View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Arredores da Escola
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Estoque de Alimentos
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Documentação
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Qualidade da Alimentação
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Manipuladores de Alimentos
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Refeitório
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Abastecimento de Água e Esgoto
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Cozinha
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            Preparação e Distribuição de Alimentos
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingVertical": 20,
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "blue",
-                "flex": 1,
-                "fontSize": 20,
-                "paddingLeft": 10,
-                "width": 525,
-              }
-            }
-          >
-            + Outras informações
-          </Text>
-        </TouchableOpacity>
-        <View>
-          <CheckBox
-            checked={null}
-            checkedImage={1}
-            label=" "
-            labelBefore={false}
-            labelLines={1}
-            uncheckedImage={1}
-            underlayColor="white"
-          />
-        </View>
-      </View>
+      <GoToChecklistClickableText
+        goToChecklistKey="Arredores da Escola"
+        goToChecklistText="Arredores da Escola"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Estoque de Alimentos"
+        goToChecklistText="Estoque de Alimentos"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Documentação"
+        goToChecklistText="Documentação"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Qualidade da Alimentação"
+        goToChecklistText="Qualidade da Alimentação"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Manipuladores de Alimentos"
+        goToChecklistText="Manipuladores de Alimentos"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Refeitório"
+        goToChecklistText="Refeitório"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Abastecimento de Água e Esgoto"
+        goToChecklistText="Abastecimento de Água e Esgoto"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Cozinha"
+        goToChecklistText="Cozinha"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="Preparação e Distribuição de Alimentos"
+        goToChecklistText="Preparação e Distribuição de Alimentos"
+        onPress={[Function]}
+      />
+      <GoToChecklistClickableText
+        goToChecklistKey="+ Outras informações"
+        goToChecklistText="+ Outras informações"
+        onPress={[Function]}
+      />
       <TouchableOpacity
-        activeOpacity={0.2}
+        activeOpacity={0.7}
         style={
           Object {
             "backgroundColor": "#FF9500",
@@ -487,7 +97,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        activeOpacity={0.2}
+        activeOpacity={0.7}
         style={
           Object {
             "backgroundColor": "#FF9500",
@@ -515,10 +125,15 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           Gerar Relatório Final
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.2}
-        onPress={[Function]}
-        style={
+      <ButtonWithActivityIndicator
+        activityIndicatorStyle={
+          Object {
+            "marginBottom": 25,
+            "marginTop": 15,
+          }
+        }
+        buttonKey="FinishInspectionButton"
+        buttonStyle={
           Object {
             "backgroundColor": "#FF9500",
             "borderRadius": 7,
@@ -529,22 +144,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             "paddingVertical": 15,
           }
         }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#FFF",
-              "textAlign": "center",
-            }
-          }
-        >
-          Encerrar Fiscalização
-        </Text>
-      </TouchableOpacity>
+        buttonText="Encerrar Fiscalização"
+        isLoading={false}
+        onPress={[Function]}
+      />
     </View>
   </ScrollViewMock>
 </View>
