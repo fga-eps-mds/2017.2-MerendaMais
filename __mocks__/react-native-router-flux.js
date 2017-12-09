@@ -15,4 +15,5 @@ export const Actions = {
   scheduleMeeting: jest.fn(),
   scheduleMeetingMap: jest.fn(),
   mainScreen: jest.fn(),
+  VisitInvites: jest.fn(),
 };
