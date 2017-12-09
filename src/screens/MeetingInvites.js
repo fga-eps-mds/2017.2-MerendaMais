@@ -1,5 +1,4 @@
 import React from 'react';
-import openMap from 'react-native-open-maps';
 import {
   StyleSheet,
   Text,
@@ -14,6 +13,7 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../components/Header';
+import LocalizationMapButton from '../components/LocalizationMapButton';
 
 const styles = StyleSheet.create({
   principal: {
@@ -161,6 +161,7 @@ class MeetingInvites extends React.Component {
           <View style={styles.buttonInformation}>
             <TouchableOpacity
               onPress={() => this.getInfo(meetingSchedule.content)}
+              key="+MeetingInfo"
             >
               <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
             </TouchableOpacity>
@@ -168,30 +169,6 @@ class MeetingInvites extends React.Component {
         </View>
       ))
     );
-  }
-
-  goToMaps() {
-    openMap({ latitude: this.state.meetingLat, longitude: this.state.meetingLong });
-  }
-
-  showLocalizationButton() {
-    if (this.state.meetingLat !== undefined && this.state.meetingLat !== null) {
-      return (
-        <View key="renderMeetingButton">
-          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
-          <TouchableOpacity
-            onPress={() => this.goToMaps()}
-            style={styles.buttonMap}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.buttonText}>Ver no Mapa</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
-
-    // If we can't return the button, return nothing.
-    return (null);
   }
 
   async mountListOfInvitees(meetingListOfInvitees) {
@@ -248,6 +225,16 @@ class MeetingInvites extends React.Component {
 
 
   render() {
+    let localizationButton = null;
+    if (this.state.meetingLat !== null && this.state.meetingLong !== null) {
+      localizationButton = (
+        <LocalizationMapButton
+          Latitude={this.state.meetingLat}
+          Longitude={this.state.meetingLong}
+        />
+      );
+    }
+
     return (
       <View style={styles.principal}>
         <Header
@@ -291,7 +278,7 @@ class MeetingInvites extends React.Component {
                   <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
                   {Object.keys(this.state.meetingSchedule.meetingListOfInvitees).length}
                 </Text>
-                {this.showLocalizationButton()}
+                {localizationButton}
                 <View>
                   <Text style={{ color: '#95a5a6', fontSize: 20 }}>Convidados:</Text>
                 </View>
@@ -320,7 +307,6 @@ MeetingInvites.propTypes = {
     phone: PropTypes.string,
   })).isRequired,
   listOfScheduleMeetingInAGroup: PropTypes.arrayOf(PropTypes.shape({
-    codSchool: PropTypes.number,
     date: PropTypes.string,
     time: PropTypes.string,
   })).isRequired,
