@@ -19,7 +19,10 @@ import { POSTS_LINK_NUVEM_CIVICA,
   INSPECTION_POSTING_TYPE_CODE,
   FINISH_INSPECTION,
   LEAVING_INSPECTION,
-  INTERNAL_ERROR } from '../../constants/generalConstants';
+  INTERNAL_ERROR,
+  UNAUDITED,
+  YES,
+  NO } from '../../constants/generalConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
 import { errorGenerator } from '../../actions/schedulingVisitActions';
 import Header from '../../components/Header';
@@ -96,9 +99,46 @@ const GoToChecklistClickableText = props => (
   </View>
 );
 
+// Used to return a readable response for the questions.
+const getResponseOfQuestion = (item) => {
+  // Verify if the item was marked to return if the check was Yes or No.
+  if (item.status) {
+    if (item.markedYes) {
+      return YES;
+    } else if (item.markedNo) {
+      return NO;
+    }
+  }
+
+  // If the item wasn't marked it means that it was unaudited.
+  return UNAUDITED;
+};
+
 export default class MainReportsScreen extends React.Component {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.StartPendingInspection());
+  }
+
+  generateInspectionResultListOfContents() {
+    const inspectionResultListOfContents = [];
+
+    // Used to mount the list of responses to school surroundings checklists.
+    const schoolSurroundingsJsonContent = {
+      binaryQuestions: {},
+      textQuestions: {},
+    };
+    this.props.report.schoolSurroundings.forEach((item) => {
+      schoolSurroundingsJsonContent.binaryQuestions[item.question] =
+        {
+          question: item.question,
+          answer: getResponseOfQuestion(item),
+        };
+    });
+
+    // Put the school surroundings checklist in the contents array that will be send to Nuvem.
+    inspectionResultListOfContents.push(schoolSurroundingsJsonContent);
+
+    return inspectionResultListOfContents;
   }
 
   async createInspectionPostInNuvem() {
@@ -148,8 +188,12 @@ export default class MainReportsScreen extends React.Component {
   // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
   async prepareAndSendInspectionResultsToNuvem() {
     try {
-      const codPostagem = await this.createInspectionPostInNuvem();
-      console.log(codPostagem);
+      // const codPostagem = await this.createInspectionPostInNuvem();
+
+      const inspectionResultListOfContents = this.generateInspectionResultListOfContents();
+
+      logInfo(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
+        `List of JSONs with checklist contents: ${JSON.stringify(inspectionResultListOfContents, null, 2)}`);
     } catch (error) {
       const errorJson = JSON.parse(error.message);
 
@@ -168,42 +212,42 @@ export default class MainReportsScreen extends React.Component {
     }
   }
 
-  // Get the most current version of the schedule being inspected.
-  updateCurrentVersionOfScheduleInspected() {
-    console.log(this.props.scheduleVisit);
-    // TODO(Allan Nobre).
-  }
-
-  // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
-  changeCounselorRealizedVisitStatus() {
-    const newContentJSON = this.props.scheduleVisit.currentVisit.content;
-    newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
-
-    const newContentString = convertingJSONToString(newContentJSON);
-
-    const putScheduleHeader = {
-      headers: {
-        appToken: this.props.counselor.token,
-      },
-    };
-
-    const putScheduleBody = {
-      JSON: newContentString,
-      texto: 'Agendamento',
-      valor: 0,
-    };
-
-    axios.put(`${POSTS_LINK_NUVEM_CIVICA}
-    ${this.props.scheduleVisit.currentVisit.codPostagem}/conteudos/
-    ${this.props.scheduleVisit.currentVisit.codConteudoPost}`,
-    putScheduleBody, putScheduleHeader)
-      .then((response) => {
-        logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
-      });
-  }
+  // // Get the most current version of the schedule being inspected.
+  // updateCurrentVersionOfScheduleInspected() {
+  //   console.log(this.props.scheduleVisit);
+  //   // TODO(Allan Nobre).
+  // }
+  //
+  // // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
+  // changeCounselorRealizedVisitStatus() {
+  //   const newContentJSON = this.props.scheduleVisit.currentVisit.content;
+  //   newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
+  //
+  //   const newContentString = convertingJSONToString(newContentJSON);
+  //
+  //   const putScheduleHeader = {
+  //     headers: {
+  //       appToken: this.props.counselor.token,
+  //     },
+  //   };
+  //
+  //   const putScheduleBody = {
+  //     JSON: newContentString,
+  //     texto: 'Agendamento',
+  //     valor: 0,
+  //   };
+  //
+  //   axios.put(`${POSTS_LINK_NUVEM_CIVICA}
+  //   ${this.props.scheduleVisit.currentVisit.codPostagem}/conteudos/
+  //   ${this.props.scheduleVisit.currentVisit.codConteudoPost}`,
+  //   putScheduleBody, putScheduleHeader)
+  //     .then((response) => {
+  //       logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
+  //     })
+  //     .catch((error) => {
+  //       logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
+  //     });
+  // }
 
   // Make the final requests to finalize the inspect.
   async finishVisit() {

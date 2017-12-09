@@ -49,6 +49,11 @@ export const STATE_COUNSELOR_CAE = 'Estadual';
 export const PRESIDENT_COUNSELOR = 'Presidente';
 export const COMMON_COUNSELOR = 'Conselheiro';
 
+// Responses to checklists in Nuvem.
+export const UNAUDITED = 'Não fiscalizado';
+export const YES = 'Sim';
+export const NO = 'Não';
+
 // Alert messages and titles
 export const REGISTER_FAIL_TITLE = 'FALHA NO CADASTRO';
 export const USER_ALREADY_REGISTER_IN_APPLICATION = '\nUsuário já cadastrado na Aplicação.';
