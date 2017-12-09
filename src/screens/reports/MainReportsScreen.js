@@ -13,12 +13,15 @@ import axios from 'axios';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
+import ShowToast from '../../components/Toast';
 import { POSTS_LINK_NUVEM_CIVICA,
   APP_IDENTIFIER,
   INSPECTION_POSTING_TYPE_CODE,
   FINISH_INSPECTION,
-  LEAVING_INSPECTION } from '../../constants/generalConstants';
+  LEAVING_INSPECTION,
+  INTERNAL_ERROR } from '../../constants/generalConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
+import { errorGenerator } from '../../actions/schedulingVisitActions';
 import Header from '../../components/Header';
 import ButtonWithActivityIndicator from '../../components/ButtonWithActivityIndicator';
 
@@ -98,12 +101,7 @@ export default class MainReportsScreen extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.StartPendingInspection());
   }
 
-  async createInspectionPostInNuvem(headerToInspection, bodyToInspection) {
-    console.log(`${this.props.isLoading} ${headerToInspection} ${bodyToInspection}`);
-  }
-
-  // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
-  async prepareAndSendInspectionResultsToNuvem() {
+  async createInspectionPostInNuvem() {
     // Header to create a new inpection post.
     const headerToInspection = {
       headers: {
@@ -126,7 +124,48 @@ export default class MainReportsScreen extends React.Component {
       },
     };
 
-    this.createInspectionPostInNuvem(headerToInspection, bodyToInspection);
+    try {
+      const response = await axios.post(POSTS_LINK_NUVEM_CIVICA,
+        bodyToInspection,
+        headerToInspection);
+
+      logInfo(FILE_NAME, 'createInspectionPostInNuvem', `${JSON.stringify(response.data)}`);
+
+      // Getting codPostagem returned in a link inside headers.
+      const auxCodPostagem = response.headers.location.substr(response.headers.location.indexOf('postagens/'));
+      const codPostagem = auxCodPostagem.substr(10);
+
+      logInfo(FILE_NAME, 'createInspectionPostInNuvem', `Post code of inspection created: ${codPostagem}`);
+
+      return codPostagem;
+    } catch (error) {
+      logWarn(FILE_NAME, 'createInspectionPostInNuvem', `Request result in an ${error}`);
+
+      throw errorGenerator('createInspectionPostInNuvem', error.response.status);
+    }
+  }
+
+  // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
+  async prepareAndSendInspectionResultsToNuvem() {
+    try {
+      const codPostagem = await this.createInspectionPostInNuvem();
+      console.log(codPostagem);
+    } catch (error) {
+      const errorJson = JSON.parse(error.message);
+
+      switch (errorJson.name) {
+        case 'createInspectionPostInNuvem':
+          ShowToast.Toast(INTERNAL_ERROR);
+          logWarn(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
+            `Error with status: ${errorJson.status}`);
+          break;
+        default:
+          ShowToast.Toast(INTERNAL_ERROR);
+          logWarn(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
+            `Unknown Error -> status: ${errorJson.status}`);
+          break;
+      }
+    }
   }
 
   // Get the most current version of the schedule being inspected.

@@ -23,6 +23,9 @@ import {
 
 const FILE_NAME = 'schedulingVisitActions.js';
 
+export const errorGenerator = (name, status) =>
+  new Error(`{ "name": "${name}", "status": ${JSON.stringify(status)} }`);
+
 export const setCurrentInspection = visitSchedule => ({
   type: SET_CURRENT_INSPECTION,
   payload: visitSchedule,
