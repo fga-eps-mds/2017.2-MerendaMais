@@ -37,7 +37,7 @@ export default class Principal extends Component {
 
   renderFooter = props => <TabBar style={{ backgroundColor: '#FF9500', borderTopWidth: 1, borderBottomColor: 'black' }} tabStyle={{ paddingHorizontal: -0 }} {...props} />;
 
-  renderHeader = props => <Header title={'Gerenciar Registro'} backButton {...props} />
+  renderHeader = props => <Header title={'Gerenciar Registro'} {...props} />
 
   renderScene = SceneMap({
     first: ManageNotAcceptedRegistersScreenContainer,

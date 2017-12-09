@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text,
-  StyleSheet,
-  ScrollView,
-  View,
-  TouchableOpacity,
-  Picker,
-  Alert,
-  KeyboardAvoidingView,
+    Text,
+    StyleSheet,
+    ScrollView,
+    View,
+    TouchableOpacity,
+    Picker,
+    Alert,
+    KeyboardAvoidingView,
+    BackHandler
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
@@ -35,6 +36,7 @@ import PhoneField from '../components/PhoneField';
 import DropdownComponent from '../components/DropdownComponent';
 import MunicipalDistrict from '../components/MunicipalDistrict';
 import ButtonWithActivityIndicator from '../components/ButtonWithActivityIndicator';
+import { backHandlerPop } from '../NavigationFunctions';
 
 const FILE_NAME = 'RegisterScreen.js';
 
@@ -136,6 +138,15 @@ export default class RegisterScreen extends React.Component {
 
     this.register = this.register.bind(this);
   }
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
+  }
+
 
   // Verify if there's a error in some field form.
   register() {

@@ -144,7 +144,6 @@ export default class FoodQualityCheckoutScreen extends React.Component {
         <Header
           title={'Relatório'}
           subTitle={'Qualidade de Alimento'}
-          backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>

@@ -102,7 +102,6 @@ export default class ReportObservationScreen extends React.Component {
         <Header
           title={'Relatório'}
           subTitle={'Observações adicionais'}
-          backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>

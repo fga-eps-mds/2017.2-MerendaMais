@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   View,
+  BackHandler,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
@@ -12,6 +13,7 @@ import Header from '../components/Header';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
 import ButtonWithActivityIndicator from '../components/ButtonWithActivityIndicator';
+import { backHandlerPop } from '../NavigationFunctions';
 
 const styles = StyleSheet.create({
   principal: {
@@ -87,6 +89,15 @@ export default class LoginScreen extends React.Component {
       focus: false,
     };
   }
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
+  }
+
 
   render() {
     return (

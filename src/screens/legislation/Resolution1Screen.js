@@ -78,7 +78,6 @@ export default class Resolution1Screen extends Component {
         <Header
           title={'Legislação'}
           subTitle={'Resolução Nº 1'}
-          backButton
         />
         <ScrollView
           horizontal

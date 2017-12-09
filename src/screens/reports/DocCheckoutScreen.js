@@ -134,7 +134,6 @@ export default class DocCheckoutScreen extends React.Component {
         <Header
           title={'Relatório'}
           subTitle={'Documentação'}
-          backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>

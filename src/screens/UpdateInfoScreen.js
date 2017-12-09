@@ -172,7 +172,6 @@ export default class UpdateInfoScreen extends React.Component {
       <View style={styles.principal}>
         <Header
           title={'Editar Informações'}
-          backButton
         />
 
         <ScrollView>

@@ -72,7 +72,6 @@ export default class MainLegislationScreen extends React.PureComponent {
       <View style={styles.legislationScreen}>
         <Header
           title={'Legislação'}
-          backButton
         />
         <ScrollView>
           <View style={{ padding: 10 }}>

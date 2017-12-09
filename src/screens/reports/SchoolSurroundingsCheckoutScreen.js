@@ -134,7 +134,6 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
         <Header
           title={'Relatório'}
           subTitle={'Arredores da Escola'}
-          backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>

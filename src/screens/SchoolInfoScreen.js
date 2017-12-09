@@ -7,6 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
+import { backHandlerPop } from '../NavigationFunctions';
 
 const FILE_NAME = 'SchoolInfoScreen.js';
 
@@ -77,6 +78,12 @@ class SchoolInfoScreen extends React.Component {
     };
   }
 
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+
+
   componentDidMount() {
     logInfo(FILE_NAME, 'componentWillMount',
       `URL:${SCHOOL_ENDPOINT}/${this.props.school.schoolCode}`);
@@ -127,8 +134,10 @@ class SchoolInfoScreen extends React.Component {
       .catch((error) => {
         logWarn(FILE_NAME, 'componentWillMount', error);
       });
+  }
 
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
   }
 
   selectSchoolForSchedule() {
@@ -170,7 +179,7 @@ class SchoolInfoScreen extends React.Component {
 
   showScheduleVisitButton() {
     if (this.props.school.uf === this.props.counselor.profile.CAE ||
-       `${this.props.school.city} - ${this.props.school.uf}` === this.props.counselor.profile.CAE) {
+      `${this.props.school.city} - ${this.props.school.uf}` === this.props.counselor.profile.CAE) {
       return (
         <View>
           <TouchableOpacity
@@ -203,7 +212,6 @@ class SchoolInfoScreen extends React.Component {
       <View style={styles.schoolInfoScreen}>
         <Header
           title={'Informações da Escola'}
-          backButton
         />
         <ScrollView>
           <Text style={styles.text}>Infomações</Text>

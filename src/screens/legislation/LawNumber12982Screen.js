@@ -74,7 +74,6 @@ export default class LawNumber12982Screen extends Component {
         <Header
           title={'Legislação'}
           subTitle={'Lei Nº 12.982'}
-          backButton
         />
 
         <View style={styles.selectors}>

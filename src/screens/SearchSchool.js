@@ -303,7 +303,6 @@ class SearchSchool extends React.Component {
       <View style={styles.searchSchoolScreen}>
         <Header
           title={'Pesquisar Escola'}
-          backButton
         />
         <ScrollView
           /* This make the nested ScrollView works. */

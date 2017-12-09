@@ -125,7 +125,6 @@ export default class ScheduleMeetingMap extends React.Component {
         <Header
           title={'AGENDAR REUNIÃO'}
           subTitle={'ESCOLHA O LOCAL'}
-          backButton
         />
 
         <PopupDialog

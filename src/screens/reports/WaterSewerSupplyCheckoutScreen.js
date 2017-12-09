@@ -133,7 +133,6 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
         <Header
           title={'Relatório'}
           subTitle={'Abastecimento de Água e Esgoto'}
-          backButton
         />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>

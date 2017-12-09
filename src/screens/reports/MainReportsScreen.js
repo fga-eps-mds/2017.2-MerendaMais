@@ -13,6 +13,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import store from '../../Reducers/store';
 import { backHandlerPopToMain } from '../../NavigationFunctions';
+import Header from '../../components/Header';
 
 const { width } = Dimensions.get('window');
 
@@ -263,17 +264,11 @@ export default class MainReportsScreen extends React.Component {
   render() {
     return (
       <View style={styles.content}>
-        <View style={styles.wrapper}>
-          <TouchableOpacity onPress={() => Actions.mainScreen()} >
-            <Ionicons
-              name="ios-arrow-back-outline"
-              style={styles.icon_header}
-              size={45}
-              color="black"
-            />
-          </TouchableOpacity>
-          <Text style={styles.textLogo}>Relatórios</Text>
-        </View>
+        <Header
+          title={'Relatórios'}
+          onPress={() => Actions.popTo('mainScreen')}
+        />
+        <Text style={styles.textLogo}>Relatórios</Text>
         <ScrollView>
           <View>
             <View style={{ flexDirection: 'row', paddingTop: 40 }}>

@@ -78,7 +78,6 @@ export default class Resolution26Screen extends Component {
         <Header
           title={'Legislação'}
           subTitle={'Resolução Nº 26'}
-          backButton
         />
         <ScrollView
           horizontal

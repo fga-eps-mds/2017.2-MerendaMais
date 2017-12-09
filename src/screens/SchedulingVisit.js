@@ -12,6 +12,7 @@ import SchoolData from '../components/SchoolData';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
 import { backHandlerPopToMain } from '../NavigationFunctions';
+import Header from '../components/Header';
 
 const { width } = Dimensions.get('window');
 
@@ -373,18 +374,10 @@ export default class SchedulingVisit extends React.Component {
   render() {
     return (
       <View style={styles.principal}>
-        <View style={styles.wrapper}>
-          <TouchableOpacity onPress={() => Actions.mainScreen()} >
-            <Ionicons
-              name="ios-arrow-back-outline"
-              style={styles.icon_header}
-              size={45}
-              color="black"
-            />
-          </TouchableOpacity>
-          <Text style={styles.textLogo}>Agendar Visita</Text>
-        </View>
-
+        <Header
+          title={'Agendar Visita'}
+          onPress={() => Actions.popTo('mainScreen')}
+        />
         <PopupDialog
           ref={(popupDialogAgent) => { this.popupDialogAgent = popupDialogAgent; }}
           height="70%"
