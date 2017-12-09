@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Picker, TouchableOpacity, Alert, ScrollView, Dimensions, BackHandler, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Picker, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -168,8 +168,8 @@ export default class SchedulingVisit extends React.Component {
       nuvemCode: this.props.counselor.nuvemCode,
       codGrupoDestino: this.props.counselor.profile.codGroup,
       visit: {
-        codSchool: 0,
-        schoolName: '',
+        codSchool: this.props.school.schoolCode,
+        schoolName: this.props.school.schoolName,
         date: '',
         time: '',
         invitedAgent: false,
@@ -185,24 +185,9 @@ export default class SchedulingVisit extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
-  componentWillReceiveProps(newProps) {
-    const newVisit = {
-      codSchool: newProps.school.schoolCode,
-      schoolName: newProps.school.schoolName,
-      date: this.state.visit.date,
-      time: this.state.visit.time,
-      invitedAgent: this.state.visit.invitedAgent,
-      agentEmail: this.state.visit.agentEmail,
-      visitListOfInvitees: newProps.visitListOfInvitees,
-    };
-
-    this.setState({ visit: newVisit });
-  }
-
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
   }
-
 
   getCounselorFromGroup() {
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
@@ -416,7 +401,7 @@ export default class SchedulingVisit extends React.Component {
           height="80%"
           width="85%"
           actions={[
-            <View style={styles.footerPopUp}>
+            <View style={styles.footerPopUp} key="buttonsDialog">
               <DialogButton
                 buttonStyle={styles.dialogButtonStyle}
                 text="ACEITAR"
@@ -523,15 +508,7 @@ export default class SchedulingVisit extends React.Component {
                     enabled
                     key="scheduleButton"
                     text="Agendar"
-                    onPress={() => {
-                      Alert.alert(
-                        'Agendamento Realizado',
-                        'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',
-                        [
-                          { text: 'Ok', onPress: () => this.props.asyncSchedulingVisit(this.state), style: 'cancel' },
-                        ],
-                        { cancelable: false });
-                    }}
+                    onPress={() => this.props.asyncSchedulingVisit(this.state)}
                   />
                 )}
               <Button

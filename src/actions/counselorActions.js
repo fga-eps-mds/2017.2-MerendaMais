@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { authenticatingMasterCounselor } from './ManagerRegisterActions';
 import { SET_COUNSELOR,
   SET_TOKEN,
   SET_COUNSELOR_EDITED } from './types';
@@ -238,10 +239,12 @@ const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch)
     });
 };
 
-const createCAEGroup = (counselor, appToken, nuvemCode, dispatch) => {
+const createCAEGroup = async (counselor, appToken, nuvemCode, dispatch) => {
+  const MASTER_TOKEN = await authenticatingMasterCounselor();
+
   const headerCreateGroup = {
     headers: {
-      appToken,
+      appToken: MASTER_TOKEN,
     },
   };
 

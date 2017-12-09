@@ -1,8 +1,8 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import { FlatList } from 'react-native';
-import renderer from 'react-test-renderer';
 import axios from 'axios';
+import thunk from 'redux-thunk';
 import MockAdapter from 'axios-mock-adapter';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
@@ -10,9 +10,11 @@ import SearchSchoolContainer from '../../src/Containers/SearchSchoolContainer';
 import SearchSchool from '../../src/screens/SearchSchool';
 import { SCHOOL_ENDPOINT } from '../../src/constants/generalConstants';
 
+const middlewares = [thunk];
+
 Enzyme.configure({ adapter: new Adapter() });
 
-const mockStore = configureStore();
+const mockStore = configureStore(middlewares);
 
 const initialState = {
   application: {
@@ -23,6 +25,12 @@ const initialState = {
     uf: 'MG - Minas Gerais',
     city: 'Ouro Preto',
     name: 'Benedito Xavier',
+  },
+  counselor: {
+    profile: {
+      CAE_municipalDistrict: 'Municipal',
+      CAE_UF: 'RO',
+    },
   },
   setUf: () => ({}),
   setCity: () => ({}),
@@ -37,13 +45,12 @@ const state = {
 const store = mockStore(initialState);
 
 describe('Testing SearchSchool', () => {
-  it('renders as expected', () => {
+  it('it renders correctly', () => {
     const wrapper = shallow(
       <SearchSchoolContainer />,
       { context: { store } },
     ).dive();
 
-    wrapper.setState(state);
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -80,12 +87,7 @@ describe('Testing SearchSchool button', () => {
   });
 
   it('Test if Searchbutton works when the fields are correct', () => {
-    const wrapper = shallow(<SearchSchool
-      setSchoolInfo={() => ({})}
-      setUf={() => ({})}
-      setCity={() => ({})}
-    />,
-    );
+    const wrapper = shallow(<SearchSchoolContainer />, { context: { store } }).dive();
     wrapper.setState({ name: 'Alvarães', uf: 'AM' });
     const button = wrapper.findWhere(c => c.key() === 'activatedButton');
 
@@ -128,39 +130,6 @@ describe('Testing SearchSchool register method', () => {
     spy.mockClear();
   });
 
-  // /* eslint-disable no-param-reassign */
-  it('Test if wrong input is validated', () => {
-    let error = false;
-    let errorMessage = '';
-    const wrapper = shallow(<SearchSchool {...initialState} />);
-
-    const spy = jest.spyOn(SearchSchool.prototype, 'register').mockImplementation(
-      () => {
-        const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]/g;
-        const cityRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
-
-        if (!cityRegex.test(wrapper.state('city') && !nameRegex.test(wrapper.state('name')) && !(wrapper.state('uf') > ''))) {
-          error = true;
-          errorMessage += 'Estado/Município e Escola com dados inválidos.';
-        }
-        if (wrapper.state('city').trim() === '' && wrapper.state('name').trim() === '' && wrapper.state('uf').trim() === '') {
-          error = true;
-          errorMessage += 'Estado/Município e Escola não preenchidos. Preencha no mínimo um dos campos.\n';
-        }
-      });
-
-
-    wrapper.setState({ name: '#' });
-
-    wrapper.instance().register();
-
-    expect(spy).toHaveBeenCalled();
-    expect(error).toBe(true);
-    expect(errorMessage).toBe('Estado/Município e Escola com dados inválidos.');
-    spy.mockClear();
-  });
-  // /* eslint no-param-reassign: 0 */
-
   it('Test searchSchool method', async () => {
     const mock = new MockAdapter(axios);
 
@@ -173,7 +142,7 @@ describe('Testing SearchSchool register method', () => {
       },
     }).reply(200, [{ nome: 'BOM JESUS' }]);
 
-    const wrapper = shallow(<SearchSchool />);
+    const wrapper = shallow(<SearchSchoolContainer />, { context: { store } }).dive();
     wrapper.setState(state);
 
     await wrapper.instance().searchSchools();
@@ -184,22 +153,23 @@ describe('Testing SearchSchool register method', () => {
 
   it('Test validateCity method', () => {
     const spy = jest.spyOn(SearchSchool.prototype, 'validateCity');
-    const wrapper = shallow(<SearchSchool />);
+    const wrapper = shallow(<SearchSchoolContainer />, { context: { store } }).dive();
     wrapper.instance().validateCity(initialState.school.city);
     expect(spy).toHaveBeenCalled();
     spy.mockClear();
   });
 
   it('Testing school list rendering', () => {
-    const wrapper = renderer.create(<SearchSchool />);
-    wrapper.getInstance().setState({ schoolList: [{ nome: 'Nome', codEscola: 1 }] });
-    wrapper.toJSON();
+    const wrapper = shallow(<SearchSchoolContainer />, { context: { store } }).dive();
+    wrapper.instance().setState({ schoolList: [{ nome: 'Nome', codEscola: 1 }] });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('Testing school list button', () => {
-    const wrapper = shallow(<SearchSchool setSchoolInfo={jest.fn(() => true)} />);
+    const wrapper = shallow(<SearchSchoolContainer />, { context: { store } }).dive();
+    console.log(wrapper.debug());
     wrapper.setState({ schoolList: [{ nome: 'Nome', codEscola: 1 }] });
+    wrapper.setProps({ setSchoolInfo: () => true });
     const component = wrapper.findWhere(c => c.key() === 'schoolListView');
     const item = {
       item: {

@@ -51,6 +51,12 @@ class Menu extends React.PureComponent {
           iconName="insert-invitation"
           onPress={() => { Actions.scheduleMeeting(); }}
         />
+        <MenuButton
+          key="notifications"
+          text="Notificações"
+          iconName="notifications"
+          onPress={() => { Actions.PrincipalNotifications(); }}
+        />
         {this.props.counselor.profile.isPresident && (
           <MenuButton
             key="manageRegisters"
@@ -64,6 +70,12 @@ class Menu extends React.PureComponent {
           text="Consultar Legislação"
           iconName="gavel"
           onPress={() => { Actions.lesgislationScreen(); }}
+        />
+        <MenuButton
+          key="doComplaint"
+          text="Denunciar"
+          iconName="report-problem"
+          onPress={() => { Actions.complaintScreen(); }}
         />
         <MenuButton
           key="logout"

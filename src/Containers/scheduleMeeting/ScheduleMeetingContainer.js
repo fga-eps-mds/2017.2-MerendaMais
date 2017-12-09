@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
     state.list.meetingListOfInviteesWithCounselorInformations,
   meetingListOfInvitees: state.list.meetingListOfInvitees,
   counselor: state.counselor,
-  schedule: state.schedule,
+  scheduleMeeting: state.scheduleMeeting,
 });
 
 const mapDispatchToProps = dispatch => ({

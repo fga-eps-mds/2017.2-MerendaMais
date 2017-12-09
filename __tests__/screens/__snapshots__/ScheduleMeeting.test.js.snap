@@ -51,13 +51,6 @@ exports[`Testing ScheduleMeeting Screen renders as expected 1`] = `
       },
     }
   }
-  schedule={
-    Object {
-      "codSchool": 0,
-      "meetingLatitude": null,
-      "meetingLongitude": null,
-    }
-  }
   setMeetingNewLists={[Function]}
 />
 `;

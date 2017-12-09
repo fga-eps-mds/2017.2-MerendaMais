@@ -12,16 +12,36 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
   <Header
     backButton={true}
     subTitle=""
-    title="Pesquisar Escola"
+    title="Informações da Escola"
   />
-  <ScrollViewMock
-    scrollEnabled={true}
-  >
+  <ScrollViewMock>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#95a5a6",
+          "fontSize": 20,
+          "paddingBottom": 5,
+          "paddingLeft": 10,
+          "paddingTop": 10,
+        }
+      }
+    >
+      Infomações
+    </Text>
     <View
       style={
         Object {
-          "marginLeft": 5,
-          "marginTop": 10,
+          "borderColor": "black",
+          "borderRadius": 7,
+          "borderWidth": 1,
+          "flex": 4,
+          "marginHorizontal": 10,
+          "padding": 10,
+          "width": 340,
         }
       }
     >
@@ -32,273 +52,142 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "color": "#585858",
+            "color": "#95a5a6",
+            "fontSize": 20,
+            "paddingVertical": 2,
           }
         }
       >
-        Para realizar a pesquisa é necessário inserir os campos abaixo
+        Nome:
       </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "flex": 10,
-        }
-      }
-    >
-      <View
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
         style={
           Object {
-            "flex": 3,
+            "fontSize": 19,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "marginTop": 15,
-              "paddingLeft": 2,
-            }
+        Teste
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#95a5a6",
+            "fontSize": 20,
+            "paddingVertical": 2,
           }
-        >
-          <Picker
-            mode="dialog"
-            onValueChange={[Function]}
-            selectedValue=""
-          >
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha a sua UF "
-              value=""
-            />
-            <PickerItem
-              color="#000000"
-              key="AC - Acre"
-              label="AC - Acre"
-              value="AC - Acre"
-            />
-            <PickerItem
-              color="#000000"
-              key="AL - Alagoas"
-              label="AL - Alagoas"
-              value="AL - Alagoas"
-            />
-            <PickerItem
-              color="#000000"
-              key="AP - Amapá"
-              label="AP - Amapá"
-              value="AP - Amapá"
-            />
-            <PickerItem
-              color="#000000"
-              key="AM - Amazonas"
-              label="AM - Amazonas"
-              value="AM - Amazonas"
-            />
-            <PickerItem
-              color="#000000"
-              key="BA - Bahia"
-              label="BA - Bahia"
-              value="BA - Bahia"
-            />
-            <PickerItem
-              color="#000000"
-              key="CE - Ceará"
-              label="CE - Ceará"
-              value="CE - Ceará"
-            />
-            <PickerItem
-              color="#000000"
-              key="DF - Distrito Federal"
-              label="DF - Distrito Federal"
-              value="DF - Distrito Federal"
-            />
-            <PickerItem
-              color="#000000"
-              key="ES - Espírito Santo"
-              label="ES - Espírito Santo"
-              value="ES - Espírito Santo"
-            />
-            <PickerItem
-              color="#000000"
-              key="GO - Goiás"
-              label="GO - Goiás"
-              value="GO - Goiás"
-            />
-            <PickerItem
-              color="#000000"
-              key="MA - Maranhão"
-              label="MA - Maranhão"
-              value="MA - Maranhão"
-            />
-            <PickerItem
-              color="#000000"
-              key="MT - Mato Grosso"
-              label="MT - Mato Grosso"
-              value="MT - Mato Grosso"
-            />
-            <PickerItem
-              color="#000000"
-              key="MS - Mato Grosso do Sul"
-              label="MS - Mato Grosso do Sul"
-              value="MS - Mato Grosso do Sul"
-            />
-            <PickerItem
-              color="#000000"
-              key="MG - Minas Gerais"
-              label="MG - Minas Gerais"
-              value="MG - Minas Gerais"
-            />
-            <PickerItem
-              color="#000000"
-              key="PA - Pará"
-              label="PA - Pará"
-              value="PA - Pará"
-            />
-            <PickerItem
-              color="#000000"
-              key="PB - Paraíba"
-              label="PB - Paraíba"
-              value="PB - Paraíba"
-            />
-            <PickerItem
-              color="#000000"
-              key="PR - Paraná"
-              label="PR - Paraná"
-              value="PR - Paraná"
-            />
-            <PickerItem
-              color="#000000"
-              key="PE - Pernambuco"
-              label="PE - Pernambuco"
-              value="PE - Pernambuco"
-            />
-            <PickerItem
-              color="#000000"
-              key="PI - Piauí"
-              label="PI - Piauí"
-              value="PI - Piauí"
-            />
-            <PickerItem
-              color="#000000"
-              key="RJ - Rio de Janeiro"
-              label="RJ - Rio de Janeiro"
-              value="RJ - Rio de Janeiro"
-            />
-            <PickerItem
-              color="#000000"
-              key="RN - Rio Grande do Norte"
-              label="RN - Rio Grande do Norte"
-              value="RN - Rio Grande do Norte"
-            />
-            <PickerItem
-              color="#000000"
-              key="RS - Rio Grande do Sul"
-              label="RS - Rio Grande do Sul"
-              value="RS - Rio Grande do Sul"
-            />
-            <PickerItem
-              color="#000000"
-              key="RO - Rondônia"
-              label="RO - Rondônia"
-              value="RO - Rondônia"
-            />
-            <PickerItem
-              color="#000000"
-              key="RR - Roraima"
-              label="RR - Roraima"
-              value="RR - Roraima"
-            />
-            <PickerItem
-              color="#000000"
-              key="SC - Santa Catarina"
-              label="SC - Santa Catarina"
-              value="SC - Santa Catarina"
-            />
-            <PickerItem
-              color="#000000"
-              key="SP - São Paulo"
-              label="SP - São Paulo"
-              value="SP - São Paulo"
-            />
-            <PickerItem
-              color="#000000"
-              key="SE - Sergipe"
-              label="SE - Sergipe"
-              value="SE - Sergipe"
-            />
-            <PickerItem
-              color="#000000"
-              key="TO - Tocantins"
-              label="TO - Tocantins"
-              value="TO - Tocantins"
-            />
-          </Picker>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#FAFAFA",
-              "borderColor": "gray",
-              "borderRadius": 7,
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "marginTop": 20,
-              "paddingLeft": 2,
-            }
+        }
+      >
+        Email:
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontSize": 19,
           }
-        >
-          <Icon
-            allowFontScaling={false}
-            color="black"
-            name="search"
-            size={30}
-            style={
-              Object {
-                "margin": 8,
-              }
-            }
-          />
-          <TextInput
-            keyboardType="default"
-            maxLength={50}
-            onChangeText={[Function]}
-            placeholder="Escola a pesquisar"
-            returnKeyType="go"
-            underlineColorAndroid="transparent"
-            value=""
-            width={280}
-          />
-        </View>
-      </View>
+        }
+      >
+        teste@teste.com
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#95a5a6",
+            "fontSize": 20,
+            "paddingVertical": 2,
+          }
+        }
+      >
+        Telefone:
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontSize": 19,
+          }
+        }
+      >
+        11111111111
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#95a5a6",
+            "fontSize": 20,
+            "paddingVertical": 2,
+          }
+        }
+      >
+        Quantidade de Alunos:
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontSize": 19,
+          }
+        }
+      >
+        1000
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#95a5a6",
+            "fontSize": 20,
+            "paddingVertical": 2,
+          }
+        }
+      >
+        Localização:
+      </Text>
       <View
         key="renderButton"
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "flex-end",
-            "paddingBottom": 20,
-          }
-        }
       >
         <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={true}
+          activeOpacity={0.7}
+          onPress={[Function]}
           style={
             Object {
-              "backgroundColor": "#DEDEDE",
+              "backgroundColor": "#FF9500",
               "borderRadius": 8,
               "borderWidth": 1,
-              "marginBottom": 0,
-              "marginTop": 50,
-              "paddingHorizontal": 117,
-              "paddingVertical": 15,
+              "justifyContent": "flex-end",
+              "marginBottom": 15,
+              "marginHorizontal": 15,
+              "marginTop": 10,
+              "paddingVertical": 16,
             }
           }
         >
@@ -309,16 +198,46 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "white",
-                "fontSize": 20,
+                "color": "#FFF",
+                "textAlign": "center",
               }
             }
           >
-            Pesquisar
+            Ver no Mapa
           </Text>
         </TouchableOpacity>
       </View>
     </View>
   </ScrollViewMock>
+  <TouchableOpacity
+    activeOpacity={0.7}
+    style={
+      Object {
+        "backgroundColor": "#FF9500",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "justifyContent": "flex-end",
+        "marginBottom": 15,
+        "marginHorizontal": 15,
+        "marginTop": 10,
+        "paddingVertical": 16,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#FFF",
+          "textAlign": "center",
+        }
+      }
+    >
+      Acessar Visitas
+    </Text>
+  </TouchableOpacity>
 </View>
 `;

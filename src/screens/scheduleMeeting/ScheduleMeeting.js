@@ -192,8 +192,8 @@ export default class ScheduleMeeting extends React.Component {
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
       meeting: {
-        lat: this.props.schedule.meetingLatitude,
-        long: this.props.schedule.meetingLongitude,
+        lat: this.props.scheduleMeeting.meetingLatitude,
+        long: this.props.scheduleMeeting.meetingLongitude,
         date: '',
         time: '',
         meetingListOfInvitees: this.props.meetingListOfInvitees,
@@ -529,7 +529,7 @@ ScheduleMeeting.propTypes = {
   asyncSchedulingMeeting: func.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   setMeetingNewLists: func.isRequired,
-  schedule: shape({
+  scheduleMeeting: shape({
     meetingLatitude: number.isRequired,
     meetingLongitude: number.isRequired,
   }).isRequired,

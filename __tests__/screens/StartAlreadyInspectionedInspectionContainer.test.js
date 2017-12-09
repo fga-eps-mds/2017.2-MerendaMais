@@ -11,6 +11,10 @@ const mockStore = configureStore();
 
 const initialState = {
 
+  application: {
+    isLoading: false,
+  },
+
   list: {
     listOfExpiredScheduleInAGroup: {
       codSchool: '',

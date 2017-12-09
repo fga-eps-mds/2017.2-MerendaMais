@@ -13,7 +13,7 @@ describe('Testing listActions', () => {
         schoolName: 'FGA',
         date: '13-12-2017',
         time: '16:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           1010: {
             confirmed: true,
             nuvemCode: 1010,
@@ -42,7 +42,7 @@ describe('Testing listActions', () => {
         schoolName: 'FGA',
         date: '13-12-2017',
         time: '16:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           1010: {
             confirmed: true,
             nuvemCode: 1010,
@@ -71,7 +71,7 @@ describe('Testing listActions', () => {
         schoolName: 'FGA',
         date: '13-12-2017',
         time: '16:00',
-        listOfInvitees: {
+        visitListOfInvitees: {
           1010: {
             confirmed: true,
             nuvemCode: 1010,
