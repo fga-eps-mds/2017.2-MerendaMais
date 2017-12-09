@@ -23,6 +23,8 @@ import {
 import {
   GET_VISIT_SCHEDULE_CONTENT_ERROR,
   GET_VISIT_SCHEDULE_POST_LIST_ERROR,
+  GET_CURRENT_SCHEDULE_ERROR,
+  UPDATE_CURRENT_SCHEDULE_ERROR,
 } from '../constants/errorConstants';
 import { authenticatingMasterCounselor } from './ManagerRegisterActions';
 
@@ -346,7 +348,7 @@ export const asyncSchedulingVisit = visitData => () => {
 };
 
 export const asyncUpdateSchedule = postData => async (dispatch) => {
-  logInfo(FILE_NAME, 'asyncConfirmParticipationOnVisit',
+  logInfo(FILE_NAME, 'asyncUpdateSchedule',
     `Scheduling visit data: ${JSON.stringify(postData, null, 2)}`);
 
   dispatch(isLoading());
@@ -369,8 +371,13 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
     texto: 'Agendamento',
   };
 
-  logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
+  // logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
 
+  console.log('Here');
+  console.log(`${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`);
+  console.log(`${JSON.stringify(putScheduleHeader)}`);
+  
+  console.log(`${JSON.stringify(putScheduleBody)}`);
   try {
     const response = await axios.put(
       `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
@@ -380,7 +387,7 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
     logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
   } catch (error) {
     logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
-    // Dispatch error to the store;
+    throw errorGenerator(UPDATE_CURRENT_SCHEDULE_ERROR, error.response.status);
   }
 
   dispatch(isNotLoading());
@@ -398,23 +405,23 @@ export const asyncGetCurrentSchedule = getData => async (dispatch) => {
   const codPostagem = getData.codPostagem;
   const codConteudoPost = getData.codConteudoPost;
 
-  console.log(`CodPostagem: ${codPostagem}, CodConteudo: ${codConteudoPost}`);
-
   try {
     const response = await axios.get(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos/${codConteudoPost}`, header);
 
-    logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `${JSON.stringify(response)}`);
+    logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `Response data: ${JSON.stringify(response.data)}`);
 
     const currentInspection = {
-      codPostagem: response.codPostagem,
-      codConteudoPost: response.codConteudo,
+      codPostagem: response.data.postagem.codPostagem,
+      codConteudoPost: response.data.codConteudoPost,
       content: convertingContentStringToJSON(response.data.JSON),
     };
+
+    logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `Current inspection ${JSON.stringify(currentInspection)}`);
 
     dispatch(setCurrentInspection(currentInspection));
   } catch (error) {
     logWarn(FILE_NAME, 'GetCurrentSchedule', JSON.stringify(error.response));
-    throw errorGenerator('GetCurrentSchedule', error.response.status);
+    throw errorGenerator(GET_CURRENT_SCHEDULE_ERROR, error.response.status);
   }
 };
 
