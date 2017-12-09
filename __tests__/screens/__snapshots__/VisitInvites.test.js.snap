@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing VisitInvites it renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backButton={true}
+    subTitle="Visita"
+    title="Notificações"
+  />
+  <PopupDialog
+    actions={
+      Array [
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#F9F9FB",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#DAD9DC",
+              "borderTopWidth": 0.5,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <DialogButton
+            align="center"
+            buttonStyle={
+              Object {
+                "marginVertical": -10,
+              }
+            }
+            disabled={false}
+            onPress={[Function]}
+            text="OK"
+          />
+        </View>,
+      ]
+    }
+    dialogTitle={
+      <DialogTitle
+        haveTitleBar={true}
+        title="Informações sobre a visita"
+        titleAlign="center"
+      />
+    }
+    height="60%"
+    overlayPointerEvents="none"
+    width="85%"
+  >
+    <VisitInfoPopUp
+      visit={
+        Object {
+          "content": Object {
+            "agentEmail": "",
+            "codSchool": 0,
+            "date": "",
+            "invitedAgent": false,
+            "schoolName": "",
+            "time": "",
+            "visitListOfInvitees": Object {},
+          },
+          "visitLat": 0,
+          "visitLong": 0,
+        }
+      }
+    />
+  </PopupDialog>
+  <ScrollViewMock
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 1,
+        "paddingTop": 6,
+      }
+    }
+  >
+    <VisitCard
+      asyncGetCurrentSchedule={[Function]}
+      asyncGetSchedule={[Function]}
+      asyncUpdateSchedule={[Function]}
+      counselor={
+        Object {
+          "email": "test@test.com",
+          "name": "testCounselor",
+          "nuvemCode": 123,
+          "token": "abc",
+        }
+      }
+      currentSchedule={Object {}}
+      popUpCallBack={[Function]}
+      visit={
+        Object {
+          "agentEmail": "",
+          "codSchool": 53007654,
+          "date": "30-12-2017",
+          "invitedAgent": false,
+          "schoolName": "EC 02 DE CEILANDIA",
+          "time": "20:36",
+          "visitListOfInvitees": Object {
+            "123": Object {
+              "confirmed": false,
+              "nuvemCode": 123,
+              "realizedVisit": false,
+            },
+            "6407": Object {
+              "confirmed": true,
+              "nuvemCode": 6407,
+              "realizedVisit": false,
+            },
+          },
+        }
+      }
+    />
+  </ScrollViewMock>
+</View>
+`;
