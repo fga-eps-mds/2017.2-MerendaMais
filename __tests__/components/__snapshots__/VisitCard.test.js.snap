@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`1 1`] = `1`;
+
+exports[`1 2`] = `1`;
+
 exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
 <View
   style={
@@ -117,7 +121,7 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
     }
   >
     <ConfirmAndCancelButtons
-      buttonCallback={[Function]}
+      buttonCallBack={[Function]}
       key="confirmPresenceButton"
       style={
         Object {
@@ -133,41 +137,69 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
       }
       text="CONFIRMAR PRESENÇA"
     />
-    <View
+    <MoreInfoCard
+      infoCardCallBack={[Function]}
+    />
+  </View>
+</View>
+`;
+
+exports[`Testing Visitcard internal componentes Testing ConfirmAndCancelButtons rendering 1`] = `
+<View>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
       style={
         Object {
-          "backgroundColor": "white",
-          "borderColor": "black",
-          "borderRadius": 7,
-          "borderWidth": 0.8,
-          "justifyContent": "center",
-          "marginRight": 15,
-          "marginVertical": 5,
-          "padding": 8,
+          "fontSize": 12,
+          "textAlign": "center",
+        }
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Testing Visitcard internal componentes Testing MoreInfoCard rendering 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "borderColor": "black",
+      "borderRadius": 7,
+      "borderWidth": 0.8,
+      "justifyContent": "center",
+      "marginRight": 15,
+      "marginVertical": 5,
+      "padding": 8,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    key="+InfoButton"
+    onPress={[Function]}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 12,
+          "textAlign": "center",
         }
       }
     >
-      <TouchableOpacity
-        activeOpacity={0.2}
-        key="+InfoButton"
-        onPress={[Function]}
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "fontSize": 12,
-              "textAlign": "center",
-            }
-          }
-        >
-           + INFORMAÇÕES
-        </Text>
-      </TouchableOpacity>
-    </View>
-  </View>
+       + INFORMAÇÕES
+    </Text>
+  </TouchableOpacity>
 </View>
 `;

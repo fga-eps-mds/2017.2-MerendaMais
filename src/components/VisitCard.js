@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { logInfo } from '../../logConfig/loggers';
 
@@ -66,12 +65,26 @@ const styles = StyleSheet.create({
   },
 });
 
-const ConfirmAndCancelButtons = props => (
+export const ConfirmAndCancelButtons = props => (
   <View style={props.style}>
     <TouchableOpacity
-      onPress={() => props.buttonCallback()}
+      onPress={() => {
+        console.log(props.buttonCallBack);
+        props.buttonCallBack();
+      }}
     >
       <Text style={styles.buttonText}>{props.text}</Text>
+    </TouchableOpacity>
+  </View>
+);
+
+export const MoreInfoCard = props => (
+  <View style={styles.buttonInvitees}>
+    <TouchableOpacity
+      onPress={() => props.infoCardCallBack()}
+      key="+InfoButton"
+    >
+      <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
     </TouchableOpacity>
   </View>
 );
@@ -95,7 +108,7 @@ class VisitCard extends React.Component {
     };
 
 
-    logInfo(FILE_NAME, 'buttonCallback', `GetData sent to asyncGetCurrentSchedule: ${JSON.stringify(getData)}`);
+    logInfo(FILE_NAME, 'buttonCallBack', `GetData sent to asyncGetCurrentSchedule: ${JSON.stringify(getData)}`);
 
     await this.props.asyncGetCurrentSchedule(getData);
     const updatedVisit = this.props.currentSchedule;
@@ -115,8 +128,6 @@ class VisitCard extends React.Component {
   }
 
   render() {
-    console.log(`Visit Card props ${this.props}`);
-
     let confirmOrCancelButton = null;
 
     // If the counselor is confirmed, show cancel button.
@@ -125,7 +136,7 @@ class VisitCard extends React.Component {
       confirmOrCancelButton = (
         <ConfirmAndCancelButtons
           text="CANCELAR PRESENÇA"
-          buttonCallback={() => this.buttonCallBack(false)}
+          buttonCallBack={() => this.buttonCallBack(false)}
           style={[styles.buttonBox, { backgroundColor: 'red' }]}
           key="CancelPresenceButton"
         />
@@ -135,7 +146,7 @@ class VisitCard extends React.Component {
         (
           <ConfirmAndCancelButtons
             text="CONFIRMAR PRESENÇA"
-            buttonCallback={() => this.buttonCallBack(true)}
+            buttonCallBack={() => this.buttonCallBack(true)}
             style={styles.buttonBox}
             key="confirmPresenceButton"
           />
@@ -160,14 +171,9 @@ class VisitCard extends React.Component {
         </View>
         <View style={{ flex: 3 }}>
           {confirmOrCancelButton}
-          <View style={styles.buttonInvitees}>
-            <TouchableOpacity
-              onPress={() => this.props.popUpCallBack(this.props.visit)}
-              key="+InfoButton"
-            >
-              <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
-            </TouchableOpacity>
-          </View>
+          <MoreInfoCard
+            infoCardCallBack={() => this.props.popUpCallBack(this.props.visit)}
+          />
         </View>
       </View>
     );
@@ -222,9 +228,13 @@ VisitCard.propTypes = {
 };
 
 ConfirmAndCancelButtons.propTypes = {
-  buttonCallback: PropTypes.func.isRequired,
+  buttonCallBack: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   style: PropTypes.shape({}).isRequired,
+};
+
+MoreInfoCard.propTypes = {
+  infoCardCallBack: PropTypes.func.isRequired,
 };
 
 export default VisitCard;
