@@ -138,8 +138,8 @@ describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
     expect(store.getActions()).toEqual([expectedPayload]);
   });
   it('Testing asyncGetCurrentSchedule failure', async () => {
-  const mock = new MockAdapter(axios);
-  
+    const mock = new MockAdapter(axios);
+
     mock
       .onGet(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
       .reply(400, { ...response });

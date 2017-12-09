@@ -6,8 +6,9 @@ import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialo
 import VisitCard from '../components/VisitCard';
 import Header from '../components/Header';
 import VisitInfoPopUp from '../components/VisitInfoPopUp';
-import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
+import { SCHOOL_ENDPOINT, UNABLE_TO_FIND_SCHOOL } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
+import ShowToast from '../components/Toast';
 
 const FILE_NAME = 'VisitInvites';
 
@@ -144,11 +145,14 @@ class VisitInvites extends React.Component {
       });
     } catch (error) {
       logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
+      ShowToast.Toast(UNABLE_TO_FIND_SCHOOL);
     }
   }
 
   render() {
     let activityIndicatorOrCard = null;
+
+    console.log(`APPLICATION: ${JSON.stringify(this.props)}`);
 
     if (this.props.application === true) {
       activityIndicatorOrCard = (

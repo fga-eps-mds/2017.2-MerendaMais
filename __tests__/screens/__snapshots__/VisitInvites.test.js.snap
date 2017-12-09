@@ -122,3 +122,101 @@ exports[`Testing VisitInvites it renders correctly 1`] = `
   </ScrollViewMock>
 </View>
 `;
+
+exports[`Testing VisitInvites it renders correctly with application loading 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backButton={true}
+    subTitle="Visita"
+    title="Notificações"
+  />
+  <PopupDialog
+    actions={
+      Array [
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#F9F9FB",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#DAD9DC",
+              "borderTopWidth": 0.5,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <DialogButton
+            align="center"
+            buttonStyle={
+              Object {
+                "marginVertical": -10,
+              }
+            }
+            disabled={false}
+            onPress={[Function]}
+            text="OK"
+          />
+        </View>,
+      ]
+    }
+    dialogTitle={
+      <DialogTitle
+        haveTitleBar={true}
+        title="Informações sobre a visita"
+        titleAlign="center"
+      />
+    }
+    height="60%"
+    overlayPointerEvents="none"
+    width="85%"
+  >
+    <VisitInfoPopUp
+      visit={
+        Object {
+          "content": Object {
+            "agentEmail": "",
+            "codSchool": 0,
+            "date": "",
+            "invitedAgent": false,
+            "schoolName": "",
+            "time": "",
+            "visitListOfInvitees": Object {},
+          },
+          "visitLat": 0,
+          "visitLong": 0,
+        }
+      }
+    />
+  </PopupDialog>
+  <ScrollViewMock
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 1,
+        "paddingTop": 6,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#FF9500"
+      hidesWhenStopped={true}
+      size="large"
+      style={
+        Object {
+          "justifyContent": "center",
+          "marginTop": 50,
+        }
+      }
+    />
+  </ScrollViewMock>
+</View>
+`;
