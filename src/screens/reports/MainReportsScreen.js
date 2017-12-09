@@ -114,6 +114,28 @@ const getResponseOfQuestion = (item) => {
   return UNAUDITED;
 };
 
+// Used to return the checklist response in JSON formart for Nuvem.
+const mountDefaultContentJSON = (
+  defaultChecklist,
+  defaultTextObservation,
+  defaultConcludedStatus) => {
+  const defaultContentJSON = {
+    binaryQuestions: {},
+    textObservation: defaultTextObservation,
+    wasConcluded: defaultConcludedStatus,
+  };
+
+  defaultChecklist.forEach((item) => {
+    defaultContentJSON.binaryQuestions[item.question] =
+      {
+        question: item.question,
+        answer: getResponseOfQuestion(item),
+      };
+  });
+
+  return defaultContentJSON;
+};
+
 export default class MainReportsScreen extends React.Component {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.StartPendingInspection());
@@ -123,17 +145,12 @@ export default class MainReportsScreen extends React.Component {
     const inspectionResultListOfContents = [];
 
     // Used to mount the list of responses to school surroundings checklists.
-    const schoolSurroundingsJsonContent = {
-      binaryQuestions: {},
-      textQuestions: {},
-    };
-    this.props.report.schoolSurroundings.forEach((item) => {
-      schoolSurroundingsJsonContent.binaryQuestions[item.question] =
-        {
-          question: item.question,
-          answer: getResponseOfQuestion(item),
-        };
-    });
+    const schoolSurroundingsJsonContent =
+      mountDefaultContentJSON(
+        this.props.report.schoolSurroundings,
+        this.props.report.schoolSurroundingsObservation,
+        this.props.report.statusSchoolSurroundings,
+      );
 
     // Put the school surroundings checklist in the contents array that will be send to Nuvem.
     inspectionResultListOfContents.push(schoolSurroundingsJsonContent);
