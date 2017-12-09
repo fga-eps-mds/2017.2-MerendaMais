@@ -83,6 +83,7 @@ const initialState = {
     listOfNotCheckedCounselors: [],
     listOfInviteesWithCounselorInformations: {},
     listOfPendingScheduleInAGroup: [],
+    listOfPendingInvitedScheduleList: [],
     listOfExpiredScheduleInAGroup: [],
     listOfAlreadyInpectionedSchedueInAGroup: [],
     visitListOfInviteesWithCounselorInformations: {},

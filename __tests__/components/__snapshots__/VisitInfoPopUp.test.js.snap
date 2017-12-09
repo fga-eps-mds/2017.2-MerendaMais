@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing VisitInfoPopUp Component Test VisitInfoPopUp Rendering 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FAFAFA",
+      "borderColor": "black",
+      "borderRadius": 3,
+      "borderWidth": 1,
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginHorizontal": 15,
+      "marginVertical": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 4,
+        "justifyContent": "flex-start",
+        "marginRight": 15,
+        "paddingLeft": 4,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 15,
+          "paddingVertical": 2,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Escola: 
+      </Text>
+      testSchool
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 15,
+          "paddingVertical": 2,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Data: 
+      </Text>
+      0-0-0000
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 15,
+          "paddingVertical": 2,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Horário: 
+      </Text>
+      00:00
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 15,
+          "paddingVertical": 2,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Número de convidados: 
+      </Text>
+      0
+    </Text>
+    <LocalizationButton
+      key="VisitLocalizationButtonOnPopUp"
+      visitLat={0}
+      visitLong={0}
+    />
+  </View>
+</View>
+`;
