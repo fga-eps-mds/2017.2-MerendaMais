@@ -100,6 +100,7 @@ class VisitInfoPopUp extends React.PureComponent {
     if (this.props.visit.visitLat !== null && this.props.visit.visitLong !== null) {
       localizationbutton = (
         <LocalizationButton
+          key="VisitLocalizationButtonOnPopUp"
           visitLat={this.props.visit.visitLat}
           visitLong={this.props.visit.visitLong}
         />

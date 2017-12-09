@@ -45,6 +45,7 @@ class LocalizationButton extends React.PureComponent {
           onPress={() => this.goToMaps()}
           style={styles.buttonMap}
           activeOpacity={0.7}
+          key="VisitLocalizationButton"
         // <Image source={Location} />
         >
           <Text style={styles.buttonText}>Ver no Mapa</Text>
