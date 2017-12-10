@@ -19,6 +19,7 @@ import { POSTS_LINK_NUVEM_CIVICA,
   INSPECTION_POSTING_TYPE_CODE,
   FINISH_INSPECTION,
   LEAVING_INSPECTION,
+  INPECTION_ERROR,
   INTERNAL_ERROR,
   UNAUDITED,
   YES,
@@ -164,28 +165,33 @@ export default class MainReportsScreen extends React.Component {
     };
 
     // Used to await all promises return after proceed with the function.
-    const allLinksOfContents = [];
+    const allContentsResponse = [];
 
     try {
-      contentsListOfInspectionResults.forEach((content) => {
+      for (let i = 0; i < contentsListOfInspectionResults.length; i += 1) {
+        logInfo(FILE_NAME, 'addContentsOnInspectionPostInNuvem',
+          `Creating content for verification list: ${contentsListOfInspectionResults[i].nameOfVerificationList}`);
+
         // Body to create a new content in inpection post.
         const bodyToInspectionContent = {
-          JSON: convertingJSONToString(content),
-          texto: 'Nome da Lista de Verificação',
+          JSON: convertingJSONToString(contentsListOfInspectionResults[i]),
+          texto: contentsListOfInspectionResults[i].nameOfVerificationList,
         };
 
-        console.log(bodyToInspectionContent.JSON);
+        // Creating content in Inspection post.
+        allContentsResponse.push(
+          axios.post(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos`,
+            bodyToInspectionContent,
+            headerToInspectionContent,
+          ),
+        );
+      }
 
-        const response = axios.post(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos`,
-          bodyToInspectionContent,
-          headerToInspectionContent);
+      // Wait all contents be put successfully in inspection post.
+      await Promise.all(allContentsResponse);
 
-        allLinksOfContents.push(response.headers.location);
-
-        logInfo(FILE_NAME, 'addContentsOnInspectionPostInNuvem', `${JSON.stringify(response.data)}`);
-      });
-
-      await Promise.all(allLinksOfContents);
+      logInfo(FILE_NAME, 'addContentsOnInspectionPostInNuvem',
+        `After promise.all, ${allContentsResponse.length} contents were successfully put in inspection post.`);
     } catch (error) {
       logWarn(FILE_NAME, 'addContentsOnInspectionPostInNuvem', `Request result in an ${error}`);
 
@@ -369,36 +375,14 @@ export default class MainReportsScreen extends React.Component {
 
   // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
   async prepareAndSendInspectionResultsToNuvem() {
-    try {
-      // const codPostagem = await this.createInspectionPostInNuvem();
+    const codPostagem = await this.createInspectionPostInNuvem();
 
-      const contentsListOfInspectionResults = this.generateContentsListOfInspectionResults();
-      /*
-      await this.addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults);
-      */
-      logInfo(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
-        `List of JSONs with checklist contents: ${JSON.stringify(contentsListOfInspectionResults, null, 2)}`);
-    } catch (error) {
-      const errorJson = JSON.parse(error.message);
+    const contentsListOfInspectionResults = this.generateContentsListOfInspectionResults();
 
-      switch (errorJson.name) {
-        case 'createInspectionPostInNuvem':
-          ShowToast.Toast(INTERNAL_ERROR);
-          logWarn(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
-            `Error with status: ${errorJson.status}`);
-          break;
-        case 'addContentsOnInspectionPostInNuvem':
-          ShowToast.Toast(INTERNAL_ERROR);
-          logWarn(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
-            `Error with status: ${errorJson.status}`);
-          break;
-        default:
-          ShowToast.Toast(INTERNAL_ERROR);
-          logWarn(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
-            `Unknown Error -> status: ${errorJson.status}`);
-          break;
-      }
-    }
+    logInfo(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
+      `List of JSONs with checklist contents: ${JSON.stringify(contentsListOfInspectionResults, null, 2)}`);
+
+    await this.addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults);
   }
 
   // // Get the most current version of the schedule being inspected.
@@ -439,14 +423,37 @@ export default class MainReportsScreen extends React.Component {
   // }
 
   // Make the final requests to finalize the inspect.
-  async finishVisit() {
+  async finishInspection() {
     this.props.syncIsLoading();
 
-    await this.prepareAndSendInspectionResultsToNuvem();
+    try {
+      await this.prepareAndSendInspectionResultsToNuvem();
 
-    // this.updateCurrentVersionOfScheduleInspected();
+      // this.updateCurrentVersionOfScheduleInspected();
 
-    // this.changeCounselorRealizedVisitStatus();
+      // this.changeCounselorRealizedVisitStatus();
+    } catch (error) {
+      const errorJson = JSON.parse(error.message);
+
+      switch (errorJson.name) {
+        case 'createInspectionPostInNuvem':
+          ShowToast.Toast(INPECTION_ERROR);
+          logWarn(FILE_NAME, 'finishInspection',
+            `Error with status: ${errorJson.status}`);
+          break;
+        case 'addContentsOnInspectionPostInNuvem':
+          // TODO(Here is needed delete the inspection post created)
+          ShowToast.Toast(INPECTION_ERROR);
+          logWarn(FILE_NAME, 'finishInspection',
+            `Error with status: ${errorJson.status}`);
+          break;
+        default:
+          ShowToast.Toast(INTERNAL_ERROR);
+          logWarn(FILE_NAME, 'finishInspection',
+            `Unknown Error -> status: ${errorJson.status}`);
+          break;
+      }
+    }
 
     this.props.syncIsNotLoading();
   }
@@ -559,7 +566,7 @@ export default class MainReportsScreen extends React.Component {
                 FINISH_INSPECTION,
                 [
                   { text: 'Cancelar' },
-                  { text: 'Finalizar', onPress: () => this.finishVisit() },
+                  { text: 'Finalizar', onPress: () => this.finishInspection() },
                 ],
               )}
               isLoading={this.props.isLoading}
