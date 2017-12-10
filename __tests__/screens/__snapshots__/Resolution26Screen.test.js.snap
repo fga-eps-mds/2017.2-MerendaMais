@@ -1593,6 +1593,7 @@ JOSÉ HENRIQUE PAIM FERNANDES
         </Text>
         <TouchableOpacity
           activeOpacity={0.2}
+          key="openLink"
           onPress={[Function]}
           style={
             Object {

@@ -85,7 +85,7 @@ export default class Resolution26Screen extends Component {
     this.setState({ activeSection: section });
   }
 
-  toggleExpanded = () => {
+  toggleExpanded() {
     this.setState({ collapsed: !this.state.collapsed });
   }
 
@@ -134,6 +134,7 @@ export default class Resolution26Screen extends Component {
               <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 17 }}>Anexos: </Text>
               <Text>{ANEXOS}</Text>
               <TouchableOpacity
+                key="openLink"
                 style={styles.fieldStyle}
                 onPress={() => Linking.openURL('https://www.fnde.gov.br/fndelegis/action/UrlPublicasAction.php?acao=abrirAtoPublico&sgl_tipo=RES&num_ato=00000026&seq_ato=000&vlr_ano=2013&sgl_orgao=FNDE/MEC')}
               >
