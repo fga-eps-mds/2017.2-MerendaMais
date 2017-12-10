@@ -12,6 +12,7 @@ import SchoolData from '../components/SchoolData';
 import EmailField from '../components/EmailField';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
+import * as constant from '../constants/sendAgentEmail';
 
 const { width } = Dimensions.get('window');
 
@@ -196,27 +197,27 @@ export default class SchedulingVisit extends React.Component {
 
   notInvitingAgent() {
     this.setState({ visit: { ...this.state.visit, invitedAgent: false } });
+    this.setState({ visit: { ...this.state.visit, agentEmail: '' } });
     this.popupDialogAgent.dismiss();
   }
 
   buttonActivation() {
-    if (this.state.visit.agentEmail > '') {
-      return (
+    return (
+      <View>
         <DialogButton
           enabled
           key="invitingButton"
           text="Convidar"
           onPress={() => { this.invitingAgent(); }}
         />
-      );
-    }
-    return (
-      <DialogButton
-        enabled
-        key="notInvitingButton"
-        text="Cancelar"
-        onPress={() => { this.notInvitingAgent(); }}
-      />
+
+        <DialogButton
+          enabled
+          key="notInvitingButton"
+          text="Cancelar"
+          onPress={() => { this.notInvitingAgent(); }}
+        />
+      </View>
     );
   }
 
@@ -376,13 +377,10 @@ export default class SchedulingVisit extends React.Component {
           actions={[this.buttonActivation()]}
         >
           <View style={styles.popUp}>
-            <Text style={styles.popUpText}>Digite o email do agente para poder convidá-lo.
-            Para isso, é necessário possuir um aplicativo de email instalado
-            no seu celular. Caso não possua ou não deseje convidar um agente,
-            não selecione nenhum agente e clique em cancelar.</Text>
+            <Text style={styles.popUpText}>{constant.POPUP_MESSAGE}</Text>
 
             <EmailField
-              style={{ paddingTop: 10 }}
+              style={{ paddingTop: 30, justifyContent: 'center', flex: 0.1 }}
               value={this.state.agentEmail}
               callback={validEmail => this.setState({ agentEmail: validEmail })}
               placeholder="Digite o email"
