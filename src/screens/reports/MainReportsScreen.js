@@ -147,7 +147,7 @@ export default class MainReportsScreen extends React.Component {
     const contentsListOfInspectionResults = [];
 
     // Used to mount the JSON result to school surroundings inspection.
-    const resultOfschoolSurroundingsInspection =
+    const resultOfSchoolSurroundingsInspection =
       mountDefaultJsonOfInspectionResult(
         this.props.report.schoolSurroundings,
         this.props.report.schoolSurroundingsObservation,
@@ -155,7 +155,110 @@ export default class MainReportsScreen extends React.Component {
       );
 
     // Put the school surroundings JSON result in the contents array that will be send to Nuvem.
-    contentsListOfInspectionResults.push(resultOfschoolSurroundingsInspection);
+    contentsListOfInspectionResults.push(resultOfSchoolSurroundingsInspection);
+
+    // Used to mount the JSON result to Food Stock inspection.
+    const resultOfFoodStock =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.foodStock,
+        this.props.report.foodStockObservation,
+        this.props.report.statusFoodStock,
+      );
+
+    // Put the Food Stock JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodStock);
+
+    // Used to mount the JSON result to Documentation inspection.
+    const resultOfDocumentation =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.doc,
+        this.props.report.docObservation,
+        this.props.report.statusDoc,
+      );
+
+    // Put the Documentation JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfDocumentation);
+
+    // Used to mount the JSON result to Food Quality inspection.
+    const resultOfFoodQuality =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.foodQuality,
+        this.props.report.foodQualityObservation,
+        this.props.report.statusFoodQuality,
+      );
+
+    // Adding additional information in this inspection result that isn't in a default form.
+    resultOfFoodQuality.additionalData = {
+      acceptedMenu: this.props.report.acceptedMenu,
+      refusedMenu: this.props.report.refusedMenu,
+    };
+
+    // Put the Food Quality JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodQuality);
+
+    // Used to mount the JSON result to Food Handler inspection.
+    const resultOfFoodHandler =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.foodHandler,
+        this.props.report.foodHandlerObservation,
+        this.props.report.statusFoodHandler,
+      );
+
+    // Put the Food Handler JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodHandler);
+
+    // Used to mount the JSON result to refectory inspection.
+    const resultOfRefectory =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.refectory,
+        this.props.report.refectoryObservation,
+        this.props.report.statusRefectory,
+      );
+
+    // Put the refectory JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfRefectory);
+
+    // Used to mount the JSON result to water Sewer Supply inspection.
+    const resultOfWaterSewerSupply =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.waterSewerSupply,
+        this.props.report.waterSewerSupplyObservation,
+        this.props.report.statuSwaterSewerSupply,
+      );
+
+    // Put the water Sewer Supply JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfWaterSewerSupply);
+
+    // Used to mount the JSON result to kitchen inspection.
+    const resultOfKitchen =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.kitchen,
+        this.props.report.kitchenObservation,
+        this.props.report.statusKitchen,
+      );
+
+    // Put the kitchen JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfKitchen);
+
+    // Used to mount the JSON result to food Preparation inspection.
+    const resultOfFoodPreparation =
+      mountDefaultJsonOfInspectionResult(
+        this.props.report.foodPreparation,
+        this.props.report.foodPreparationObservation,
+        this.props.report.statusFoodPreparation,
+      );
+
+    // Put the food Preparation JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodPreparation);
+
+    // Mounting the JSON result to other Observations of inspection. That one isn't in default form.
+    const resultOfOtherObservation = {
+      textObservation: this.props.report.otherObservation,
+      wasConcluded: this.props.report.statusReportObservation,
+    };
+
+    // Put the other Observations JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfOtherObservation);
 
     return contentsListOfInspectionResults;
   }
