@@ -114,8 +114,10 @@ const getResponseOfQuestion = (item) => {
   return UNAUDITED;
 };
 
-// Used to return the checklist response in JSON formart for Nuvem.
-const mountDefaultContentJSON = (
+/* Used to return the inspection result for default inspection results in JSON formart for
+Nuvem. The default format is: Array of question itens in JSON format, a Observation Text
+and a status tha indicate if it was concluded. */
+const mountDefaultJsonOfInspectionResult = (
   defaultChecklist,
   defaultTextObservation,
   defaultConcludedStatus) => {
@@ -141,21 +143,21 @@ export default class MainReportsScreen extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.StartPendingInspection());
   }
 
-  generateInspectionResultListOfContents() {
-    const inspectionResultListOfContents = [];
+  generateContentsListOfInspectionResults() {
+    const contentsListOfInspectionResults = [];
 
-    // Used to mount the list of responses to school surroundings checklists.
-    const schoolSurroundingsJsonContent =
-      mountDefaultContentJSON(
+    // Used to mount the JSON result to school surroundings inspection.
+    const resultOfschoolSurroundingsInspection =
+      mountDefaultJsonOfInspectionResult(
         this.props.report.schoolSurroundings,
         this.props.report.schoolSurroundingsObservation,
         this.props.report.statusSchoolSurroundings,
       );
 
-    // Put the school surroundings checklist in the contents array that will be send to Nuvem.
-    inspectionResultListOfContents.push(schoolSurroundingsJsonContent);
+    // Put the school surroundings JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfschoolSurroundingsInspection);
 
-    return inspectionResultListOfContents;
+    return contentsListOfInspectionResults;
   }
 
   async createInspectionPostInNuvem() {
@@ -207,10 +209,10 @@ export default class MainReportsScreen extends React.Component {
     try {
       // const codPostagem = await this.createInspectionPostInNuvem();
 
-      const inspectionResultListOfContents = this.generateInspectionResultListOfContents();
+      const contentsListOfInspectionResults = this.generateContentsListOfInspectionResults();
 
       logInfo(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
-        `List of JSONs with checklist contents: ${JSON.stringify(inspectionResultListOfContents, null, 2)}`);
+        `List of JSONs with checklist contents: ${JSON.stringify(contentsListOfInspectionResults, null, 2)}`);
     } catch (error) {
       const errorJson = JSON.parse(error.message);
 
