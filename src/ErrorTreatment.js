@@ -1,11 +1,11 @@
 import ShowToast from './components/Toast';
-import { INTERNAL_ERROR } from './constants/generalConstants';
+import { INTERNAL_ERROR, LOGIN_PROFILE_ERROR } from './constants/generalConstants';
 import { logWarn } from '../logConfig/loggers';
 
 const FILE_NAME = 'ErrorTreatment';
 
 // Trating request errors
-const treatingEditCounselorError = (status) => {
+export const treatingEditCounselorError = (status) => {
   if (status === 401) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingEditCounselorError',
@@ -25,4 +25,26 @@ const treatingEditCounselorError = (status) => {
   }
 };
 
-export default treatingEditCounselorError;
+
+// Trating request errors
+export const treatingGetUserProfileInLoginError = (status) => {
+  if (status === 404) {
+    ShowToast.Toast(LOGIN_PROFILE_ERROR);
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `User isn't register in application or Profile didn't find for this user - Error code received in request - ${status}`);
+  } else if (status === 500) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
+  } else if (status === 400) {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
+  } else {
+    ShowToast.Toast(INTERNAL_ERROR);
+    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
+      `Unknown error - Error code received in request - ${status}`);
+  }
+};
+
+

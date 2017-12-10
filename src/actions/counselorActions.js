@@ -20,7 +20,6 @@ import {
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
   LOGIN_SUCCEED,
   LOGIN_PASSWORD_ERROR,
-  LOGIN_PROFILE_ERROR,
   INTERNAL_ERROR,
   REGISTER_SUCCEED,
   REGISTER_NUVEM_ERROR,
@@ -33,6 +32,7 @@ import {
 } from '../constants/errorConstants';
 import { errorGenerator } from './schedulingVisitActions';
 import { editAccountData, editCounselorProfile } from './auxiliary/editCounselorAuxiliary';
+import { treatingGetUserProfileInLoginError } from '../ErrorTreatment';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -157,27 +157,6 @@ const treatingAuthenticatingCounselorInLoginError = (status) => {
   } else {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingAuthenticatingCounselorInLoginError',
-      `Unknown error - Error code received in request - ${status}`);
-  }
-};
-
-// Trating request errors
-const treatingGetUserProfileInLoginError = (status) => {
-  if (status === 404) {
-    ShowToast.Toast(LOGIN_PROFILE_ERROR);
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `User isn't register in application or Profile didn't find for this user - Error code received in request - ${status}`);
-  } else if (status === 500) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
-  } else if (status === 400) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetUserProfileInLoginError',
       `Unknown error - Error code received in request - ${status}`);
   }
 };
