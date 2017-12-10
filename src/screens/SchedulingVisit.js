@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator, Alert } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -191,8 +191,22 @@ export default class SchedulingVisit extends React.Component {
   }
 
   invitingAgent() {
-    this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
-    this.popupDialogAgent.dismiss();
+    const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    console.log('EMAIL DO AGENTES');
+    console.log(this.state.visit.agentEmail);
+
+    if (!emailRegex.test(this.state.visit.agentEmail)) {
+      Alert.alert(
+        'Email Incorreto!',
+        'O email digitado é inválido! ',
+        [
+          { text: 'Ok', onPress: () => { }, style: 'cancel' },
+        ],
+        { cancelable: false });
+    } else {
+      this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
+      this.popupDialogAgent.dismiss();
+    }
   }
 
   notInvitingAgent() {
@@ -380,11 +394,12 @@ export default class SchedulingVisit extends React.Component {
             <Text style={styles.popUpText}>{constant.POPUP_MESSAGE}</Text>
 
             <EmailField
-              style={{ paddingTop: 30, justifyContent: 'center', flex: 0.1 }}
-              value={this.state.agentEmail}
-              callback={validEmail => this.setState({ agentEmail: validEmail })}
-              placeholder="Digite o email"
-              size={26}
+              callback={emailInput => this.setState(
+                { visit: { ...this.state.visit, agentEmail: emailInput } })}
+              placeholder="Email"
+              onSubmitEditing={() => this.setState({ focus: true })}
+              value={this.state.email}
+              size={28}
             />
 
           </View>
