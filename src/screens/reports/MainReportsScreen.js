@@ -21,6 +21,7 @@ import { POSTS_LINK_NUVEM_CIVICA,
   LEAVING_INSPECTION,
   INPECTION_ERROR,
   INTERNAL_ERROR,
+  INSPECTION_SUCCEED,
   UNAUDITED,
   YES,
   NO,
@@ -109,6 +110,19 @@ const GoToChecklistClickableText = props => (
     </View>
   </View>
 );
+
+const treatingGenericInspectionError = (statusError) => {
+  Alert.alert(
+    'Ops, algo deu errado!',
+    INPECTION_ERROR,
+    [
+      { text: 'Ok' },
+    ],
+  );
+
+  logWarn(FILE_NAME, 'finishInspection',
+    `Error with status: ${statusError}`);
+};
 
 // Used to return a readable response for the questions.
 const getResponseOfQuestion = (item) => {
@@ -390,13 +404,12 @@ export default class MainReportsScreen extends React.Component {
   }
 
   // // Get the most current version of the schedule being inspected.
-  // updateCurrentVersionOfScheduleInspected() {
-  //   console.log(this.props.scheduleVisit);
+  // async updateCurrentVersionOfScheduleInspected() {
   //   // TODO(Allan Nobre).
   // }
-  //
+
   // // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
-  // changeCounselorRealizedVisitStatus() {
+  // async changeCounselorRealizedVisitStatus() {
   //   const newContentJSON = this.props.scheduleVisit.currentVisit.content;
   //   newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
   //
@@ -433,35 +446,22 @@ export default class MainReportsScreen extends React.Component {
     try {
       await this.prepareAndSendInspectionResultsToNuvem();
 
-      // this.updateCurrentVersionOfScheduleInspected();
+      // await this.updateCurrentVersionOfScheduleInspected();
 
-      // this.changeCounselorRealizedVisitStatus();
+      // await this.changeCounselorRealizedVisitStatus();
+
+      ShowToast.Toast(INSPECTION_SUCCEED);
+      Actions.mainScreen();
     } catch (error) {
       const errorJson = JSON.parse(error.message);
 
       switch (errorJson.name) {
         case 'createInspectionPostInNuvem':
-          Alert.alert(
-            'Ops, algo deu errado!',
-            INPECTION_ERROR,
-            [
-              { text: 'Ok' },
-            ],
-          );
-          logWarn(FILE_NAME, 'finishInspection',
-            `Error with status: ${errorJson.status}`);
+          treatingGenericInspectionError(errorJson.status);
           break;
         case 'addContentsOnInspectionPostInNuvem':
           // TODO(Here is needed delete the inspection post created)
-          Alert.alert(
-            'Ops, algo deu errado!',
-            INPECTION_ERROR,
-            [
-              { text: 'Ok' },
-            ],
-          );
-          logWarn(FILE_NAME, 'finishInspection',
-            `Error with status: ${errorJson.status}`);
+          treatingGenericInspectionError(errorJson.status);
           break;
         default:
           ShowToast.Toast(INTERNAL_ERROR);
