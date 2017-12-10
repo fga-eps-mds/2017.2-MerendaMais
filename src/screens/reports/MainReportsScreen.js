@@ -200,6 +200,8 @@ export default class MainReportsScreen extends React.Component {
   }
 
   generateContentsListOfInspectionResults() {
+    logInfo(FILE_NAME, 'generateContentsListOfInspectionResults', 'Generating contents list of inspection results.');
+
     const contentsListOfInspectionResults = [];
 
     // Used to mount the JSON result to school surroundings inspection.
@@ -326,6 +328,8 @@ export default class MainReportsScreen extends React.Component {
     // Put the other Observations JSON result in the contents array that will be send to Nuvem.
     contentsListOfInspectionResults.push(resultOfOtherObservation);
 
+    logInfo(FILE_NAME, 'generateContentsListOfInspectionResults', 'Contents list of inspection results were generated.');
+
     return contentsListOfInspectionResults;
   }
 
@@ -437,13 +441,25 @@ export default class MainReportsScreen extends React.Component {
 
       switch (errorJson.name) {
         case 'createInspectionPostInNuvem':
-          ShowToast.Toast(INPECTION_ERROR);
+          Alert.alert(
+            'Ops, algo deu errado!',
+            INPECTION_ERROR,
+            [
+              { text: 'Ok' },
+            ],
+          );
           logWarn(FILE_NAME, 'finishInspection',
             `Error with status: ${errorJson.status}`);
           break;
         case 'addContentsOnInspectionPostInNuvem':
           // TODO(Here is needed delete the inspection post created)
-          ShowToast.Toast(INPECTION_ERROR);
+          Alert.alert(
+            'Ops, algo deu errado!',
+            INPECTION_ERROR,
+            [
+              { text: 'Ok' },
+            ],
+          );
           logWarn(FILE_NAME, 'finishInspection',
             `Error with status: ${errorJson.status}`);
           break;
