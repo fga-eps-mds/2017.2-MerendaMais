@@ -9,6 +9,7 @@ import { TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
 } from 'react-native';
+import { FOOD_PREPARATION } from '../../constants/generalConstants';
 import Header from '../../components/Header';
 import styles from '../../Styles';
 
@@ -53,7 +54,7 @@ export default class FoodPreparationCheckoutScreen extends React.Component {
       <View style={styles.checklist.principal}>
         <Header
           title={'Lista de verificação'}
-          subTitle={'Preparação e Distribuição'}
+          subTitle={FOOD_PREPARATION}
           backButton
         />
         <KeyboardAvoidingView style={styles.checklist.content} behavior="padding">

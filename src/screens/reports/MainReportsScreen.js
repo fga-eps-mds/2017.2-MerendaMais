@@ -22,7 +22,17 @@ import { POSTS_LINK_NUVEM_CIVICA,
   INTERNAL_ERROR,
   UNAUDITED,
   YES,
-  NO } from '../../constants/generalConstants';
+  NO,
+  SCHOOL_SURROUNDINGS,
+  FOOD_STOCK,
+  DOCUMENTATION,
+  FOOD_QUALITY,
+  FOOD_HANDLER,
+  REFECTORY,
+  WATER_SEWER_SUPPLY,
+  KITCHEN,
+  FOOD_PREPARATION,
+  OTHER_OBSERVATION } from '../../constants/generalConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
 import { errorGenerator } from '../../actions/schedulingVisitActions';
 import Header from '../../components/Header';
@@ -118,10 +128,12 @@ const getResponseOfQuestion = (item) => {
 Nuvem. The default format is: Array of question itens in JSON format, a Observation Text
 and a status tha indicate if it was concluded. */
 const mountDefaultJsonOfInspectionResult = (
+  defaultNameOfVerificationList,
   defaultChecklist,
   defaultTextObservation,
   defaultConcludedStatus) => {
   const defaultContentJSON = {
+    nameOfVerificationList: defaultNameOfVerificationList,
     binaryQuestions: {},
     textObservation: defaultTextObservation,
     wasConcluded: defaultConcludedStatus,
@@ -187,6 +199,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to school surroundings inspection.
     const resultOfSchoolSurroundingsInspection =
       mountDefaultJsonOfInspectionResult(
+        SCHOOL_SURROUNDINGS,
         this.props.report.schoolSurroundings,
         this.props.report.schoolSurroundingsObservation,
         this.props.report.statusSchoolSurroundings,
@@ -198,6 +211,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to Food Stock inspection.
     const resultOfFoodStock =
       mountDefaultJsonOfInspectionResult(
+        FOOD_STOCK,
         this.props.report.foodStock,
         this.props.report.foodStockObservation,
         this.props.report.statusFoodStock,
@@ -209,6 +223,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to Documentation inspection.
     const resultOfDocumentation =
       mountDefaultJsonOfInspectionResult(
+        DOCUMENTATION,
         this.props.report.doc,
         this.props.report.docObservation,
         this.props.report.statusDoc,
@@ -220,6 +235,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to Food Quality inspection.
     const resultOfFoodQuality =
       mountDefaultJsonOfInspectionResult(
+        FOOD_QUALITY,
         this.props.report.foodQuality,
         this.props.report.foodQualityObservation,
         this.props.report.statusFoodQuality,
@@ -237,6 +253,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to Food Handler inspection.
     const resultOfFoodHandler =
       mountDefaultJsonOfInspectionResult(
+        FOOD_HANDLER,
         this.props.report.foodHandler,
         this.props.report.foodHandlerObservation,
         this.props.report.statusFoodHandler,
@@ -248,6 +265,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to refectory inspection.
     const resultOfRefectory =
       mountDefaultJsonOfInspectionResult(
+        REFECTORY,
         this.props.report.refectory,
         this.props.report.refectoryObservation,
         this.props.report.statusRefectory,
@@ -259,6 +277,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to water Sewer Supply inspection.
     const resultOfWaterSewerSupply =
       mountDefaultJsonOfInspectionResult(
+        WATER_SEWER_SUPPLY,
         this.props.report.waterSewerSupply,
         this.props.report.waterSewerSupplyObservation,
         this.props.report.statuSwaterSewerSupply,
@@ -270,6 +289,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to kitchen inspection.
     const resultOfKitchen =
       mountDefaultJsonOfInspectionResult(
+        KITCHEN,
         this.props.report.kitchen,
         this.props.report.kitchenObservation,
         this.props.report.statusKitchen,
@@ -281,6 +301,7 @@ export default class MainReportsScreen extends React.Component {
     // Used to mount the JSON result to food Preparation inspection.
     const resultOfFoodPreparation =
       mountDefaultJsonOfInspectionResult(
+        FOOD_PREPARATION,
         this.props.report.foodPreparation,
         this.props.report.foodPreparationObservation,
         this.props.report.statusFoodPreparation,
@@ -291,6 +312,7 @@ export default class MainReportsScreen extends React.Component {
 
     // Mounting the JSON result to other Observations of inspection. That one isn't in default form.
     const resultOfOtherObservation = {
+      nameOfVerificationList: OTHER_OBSERVATION,
       textObservation: this.props.report.otherObservation,
       wasConcluded: this.props.report.statusReportObservation,
     };
@@ -348,12 +370,12 @@ export default class MainReportsScreen extends React.Component {
   // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
   async prepareAndSendInspectionResultsToNuvem() {
     try {
-      const codPostagem = await this.createInspectionPostInNuvem();
+      // const codPostagem = await this.createInspectionPostInNuvem();
 
       const contentsListOfInspectionResults = this.generateContentsListOfInspectionResults();
-
+      /*
       await this.addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults);
-
+      */
       logInfo(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
         `List of JSONs with checklist contents: ${JSON.stringify(contentsListOfInspectionResults, null, 2)}`);
     } catch (error) {
@@ -447,71 +469,71 @@ export default class MainReportsScreen extends React.Component {
         <ScrollView>
           <View pointerEvents={this.props.clickableView} >
             <GoToChecklistClickableText
-              goToChecklistKey="Arredores da Escola"
-              goToChecklistText="Arredores da Escola"
+              goToChecklistKey={SCHOOL_SURROUNDINGS}
+              goToChecklistText={SCHOOL_SURROUNDINGS}
               onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
               isCompleted={this.props.report.statusSchoolSurroundings}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Estoque de Alimentos"
-              goToChecklistText="Estoque de Alimentos"
+              goToChecklistKey={FOOD_STOCK}
+              goToChecklistText={FOOD_STOCK}
               onPress={() => Actions.stockFoodCheckoutScreen()}
               isCompleted={this.props.report.statusFoodStock}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Documentação"
-              goToChecklistText="Documentação"
+              goToChecklistKey={DOCUMENTATION}
+              goToChecklistText={DOCUMENTATION}
               onPress={() => Actions.DocCheckoutScreen()}
               isCompleted={this.props.report.statusDoc}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Qualidade da Alimentação"
-              goToChecklistText="Qualidade da Alimentação"
+              goToChecklistKey={FOOD_QUALITY}
+              goToChecklistText={FOOD_QUALITY}
               onPress={() => Actions.foodQualityCheckoutScreen()}
               isCompleted={this.props.report.statusFoodQuality}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Manipuladores de Alimentos"
-              goToChecklistText="Manipuladores de Alimentos"
+              goToChecklistKey={FOOD_HANDLER}
+              goToChecklistText={FOOD_HANDLER}
               onPress={() => Actions.foodHandlerCheckoutScreen()}
               isCompleted={this.props.report.statusFoodHandler}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Refeitório"
-              goToChecklistText="Refeitório"
+              goToChecklistKey={REFECTORY}
+              goToChecklistText={REFECTORY}
               onPress={() => Actions.refectoryCheckoutScreen()}
               isCompleted={this.props.report.statusRefectory}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Abastecimento de Água e Esgoto"
-              goToChecklistText="Abastecimento de Água e Esgoto"
+              goToChecklistKey={WATER_SEWER_SUPPLY}
+              goToChecklistText={WATER_SEWER_SUPPLY}
               onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
               isCompleted={this.props.report.statusWaterSewerSupply}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Cozinha"
-              goToChecklistText="Cozinha"
+              goToChecklistKey={KITCHEN}
+              goToChecklistText={KITCHEN}
               onPress={() => Actions.kitchenCheckoutScreen()}
               isCompleted={this.props.report.statusKitchen}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="Preparação e Distribuição de Alimentos"
-              goToChecklistText="Preparação e Distribuição de Alimentos"
+              goToChecklistKey={FOOD_PREPARATION}
+              goToChecklistText={FOOD_PREPARATION}
               onPress={() => Actions.foodPreparationCheckoutScreen()}
               isCompleted={this.props.report.statusFoodPreparation}
             />
 
             <GoToChecklistClickableText
-              goToChecklistKey="+ Outras informações"
-              goToChecklistText="+ Outras informações"
+              goToChecklistKey={`+ ${OTHER_OBSERVATION}`}
+              goToChecklistText={`+ ${OTHER_OBSERVATION}`}
               onPress={() => Actions.ReportObservationScreen()}
               isCompleted={this.props.report.statusReportObservation}
             />

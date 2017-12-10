@@ -46,7 +46,7 @@ const initialState = {
     doc,
     docObservation: '',
     statusDoc: false,
-    // 4 - Qualidade de Alimentação.
+    // 4 - Qualidade de Alimento.
     foodQuality,
     foodQualityObservation: '',
     acceptedMenu: '',

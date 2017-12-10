@@ -9,6 +9,7 @@ import { TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
 } from 'react-native';
+import { DOCUMENTATION } from '../../constants/generalConstants';
 import Header from '../../components/Header';
 import styles from '../../Styles';
 
@@ -53,7 +54,7 @@ export default class DocCheckoutScreen extends React.Component {
       <View style={styles.checklist.principal}>
         <Header
           title={'Lista de verificação'}
-          subTitle={'Documentação'}
+          subTitle={DOCUMENTATION}
           backButton
         />
         <KeyboardAvoidingView style={styles.checklist.content} behavior="padding">

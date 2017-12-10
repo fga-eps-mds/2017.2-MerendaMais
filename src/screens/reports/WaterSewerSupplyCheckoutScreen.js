@@ -9,6 +9,7 @@ import { TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
 } from 'react-native';
+import { WATER_SEWER_SUPPLY } from '../../constants/generalConstants';
 import Header from '../../components/Header';
 import styles from '../../Styles';
 
@@ -53,7 +54,7 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
       <View style={styles.checklist.principal}>
         <Header
           title={'Lista de verificação'}
-          subTitle={'Abastecimento de Água e Esgoto'}
+          subTitle={WATER_SEWER_SUPPLY}
           backButton
         />
         <KeyboardAvoidingView style={styles.checklist.content} behavior="padding">
