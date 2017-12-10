@@ -1,13 +1,17 @@
 import initialState from './initialState';
-import { SET_LIST_COUNSELOR_GROUP,
+import {
+  SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
   SET_VISIT_NEW_LISTS,
   SET_MEETING_NEW_LISTS,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  SET_SCHEDULE_MEETING_LIST,
   SET_CHECKED_LIST,
-  SET_NOT_CHECKED_LIST } from '../actions/types';
+  SET_NOT_CHECKED_LIST,
+  SET_PENDING_INVITED_SCHEDULE_LIST,
+} from '../actions/types';
 
 const listReducer = (state = initialState.list, action) => {
   if (action === undefined) {
@@ -25,12 +29,14 @@ const listReducer = (state = initialState.list, action) => {
         listOfCheckedCounselors: [],
         listOfNotCheckedCounselors: [],
         listOfPendingScheduleInAGroup: [],
+        listOfScheduleMeetingInAGroup: [],
         listOfExpiredScheduleInAGroup: [],
         listOfAlreadyInpectionedSchedueInAGroup: [],
         visitListOfInviteesWithCounselorInformations: {},
         visitListOfInvitees: {},
         meetingListOfInviteesWithCounselorInformations: {},
         meetingListOfInvitees: {},
+        listOfPendingInvitedScheduleList: [],
       };
     case SET_VISIT_NEW_LISTS:
       return {
@@ -42,7 +48,7 @@ const listReducer = (state = initialState.list, action) => {
       return {
         ...state,
         meetingListOfInviteesWithCounselorInformations:
-          action.payload.meetingNewListWithInformations,
+        action.payload.meetingNewListWithInformations,
         meetingListOfInvitees: action.payload.meetingNewList,
       };
     case SET_PENDING_SCHEDULE_LIST:
@@ -50,16 +56,27 @@ const listReducer = (state = initialState.list, action) => {
         ...state,
         listOfPendingScheduleInAGroup: [...state.listOfPendingScheduleInAGroup, action.payload],
       };
+    case SET_PENDING_INVITED_SCHEDULE_LIST:
+      return {
+        ...state,
+        listOfPendingInvitedScheduleList: [...state.listOfPendingInvitedScheduleList,
+          action.payload],
+      };
     case SET_EXPIRED_SCHEDULE_LIST:
       return {
         ...state,
         listOfExpiredScheduleInAGroup: [...state.listOfExpiredScheduleInAGroup, action.payload],
       };
+    case SET_SCHEDULE_MEETING_LIST:
+      return {
+        ...state,
+        listOfScheduleMeetingInAGroup: [...state.listOfScheduleMeetingInAGroup, action.payload],
+      };
     case SET_ALREADY_INPECTIONED_SCHEDULE_LIST:
       return {
         ...state,
         listOfAlreadyInpectionedSchedueInAGroup:
-         [...state.listOfAlreadyInpectionedSchedueInAGroup, action.payload],
+        [...state.listOfAlreadyInpectionedSchedueInAGroup, action.payload],
       };
     case SET_CHECKED_LIST:
       return {

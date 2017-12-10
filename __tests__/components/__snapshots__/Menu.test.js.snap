@@ -63,6 +63,13 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
     text="Consultar Legislação"
   />
   <MenuButton
+    iconName="report-problem"
+    isLogout={false}
+    key="doComplaint"
+    onPress={[Function]}
+    text="Denunciar"
+  />
+  <MenuButton
     iconName="logout"
     isLogout={true}
     key="logout"

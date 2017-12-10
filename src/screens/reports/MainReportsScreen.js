@@ -403,10 +403,16 @@ export default class MainReportsScreen extends React.Component {
     await this.addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults);
   }
 
-  // // Get the most current version of the schedule being inspected.
-  // async updateCurrentVersionOfScheduleInspected() {
-  //   // TODO(Allan Nobre).
-  // }
+  // Get the most current version of the schedule being inspected.
+  async updateCurrentVersionOfScheduleInspected() {
+    const getData = {
+      appToken: this.props.counselor.token,
+      codConteudoPost: this.props.scheduleVisit.codConteudoPost,
+      codPostagem: this.props.scheduleVisit.codPostagem,
+    };
+
+    await this.props.asyncGetCurrentSchedule(getData);
+  }
 
   // // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
   // async changeCounselorRealizedVisitStatus() {
@@ -604,6 +610,7 @@ MainReportsScreen.propTypes = {
   isLoading: bool.isRequired,
   clickableView: string.isRequired,
   syncIsLoading: func.isRequired,
+  asyncGetCurrentSchedule: func.isRequired,
   syncIsNotLoading: func.isRequired,
   counselor: shape({
     token: string.isRequired,

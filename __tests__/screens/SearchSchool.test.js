@@ -45,7 +45,7 @@ const state = {
 const store = mockStore(initialState);
 
 describe('Testing SearchSchool', () => {
-  it('it renders correctly', async () => {
+  it('it renders correctly', () => {
     const wrapper = shallow(
       <SearchSchoolContainer />,
       { context: { store } },
@@ -167,7 +167,6 @@ describe('Testing SearchSchool register method', () => {
 
   it('Testing school list button', () => {
     const wrapper = shallow(<SearchSchoolContainer />, { context: { store } }).dive();
-    console.log(wrapper.debug());
     wrapper.setState({ schoolList: [{ nome: 'Nome', codEscola: 1 }] });
     wrapper.setProps({ setSchoolInfo: () => true });
     const component = wrapper.findWhere(c => c.key() === 'schoolListView');

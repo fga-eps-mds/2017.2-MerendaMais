@@ -122,22 +122,14 @@ class SearchSchool extends React.Component {
       enabled: true,
       isOpen: false,
       isLoading: false,
-      uf: '',
-      city: '',
+      uf: this.props.counselor.profile.CAE_UF,
+      city: this.props.counselor.profile.CAE_municipalDistrict.replace(/-/g, '').trim(),
       name: '',
       schoolList: [],
     };
 
     this.validateName = this.validateName.bind(this);
     this.validateCity = this.validateCity.bind(this);
-  }
-
-  componentWillMount() {
-    const preUf = this.props.counselor.profile.CAE_UF;
-    const preMunicipalDistrict = this.props.counselor.profile.CAE_municipalDistrict.replace(/-/g, '').trim();
-
-    this.setState({ uf: preUf });
-    this.setState({ city: preMunicipalDistrict });
   }
 
   componentDidMount() {
@@ -282,7 +274,6 @@ class SearchSchool extends React.Component {
     logInfo(FILE_NAME, 'render()',
       `State of search page: ${JSON.stringify(this.state, null, 2)}`);
 
-    console.log(this.state);
     const UfInitials = this.state.uf.substr(0, 2);
 
     const municipalDistrict = this.state.uf !== '' && this.state.uf !== 'DF - Distrito Federal' ? (
