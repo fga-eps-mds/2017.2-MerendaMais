@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Picker, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -9,6 +9,7 @@ import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import SchoolData from '../components/SchoolData';
+import EmailField from '../components/EmailField';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
 
@@ -375,21 +376,18 @@ export default class SchedulingVisit extends React.Component {
           actions={[this.buttonActivation()]}
         >
           <View style={styles.popUp}>
-            <Text style={styles.popUpText}>Escolha algum dos agentes abaixo para poder convidá-lo.
+            <Text style={styles.popUpText}>Digite o email do agente para poder convidá-lo.
             Para isso, é necessário possuir um aplicativo de email instalado
             no seu celular. Caso não possua ou não deseje convidar um agente,
             não selecione nenhum agente e clique em cancelar.</Text>
 
-            <Picker
-              style={styles.Picker}
-              selectedValue={this.state.visit.agentEmail}
-              onValueChange={
-                value => this.setState({ visit: { ...this.state.visit, agentEmail: value } })}
-            >
-              <Picker.Item value="" label="Escolha o agente" color="#95a5a6" />
-              <Picker.Item value={'outroemail@email.com'} label={'Agente Sanitário'} />
-              <Picker.Item value={'email@email.com'} label={'Poder Executivo'} />
-            </Picker>
+            <EmailField
+              style={{ paddingTop: 10 }}
+              value={this.state.agentEmail}
+              callback={validEmail => this.setState({ agentEmail: validEmail })}
+              placeholder="Digite o email"
+              size={26}
+            />
 
           </View>
         </PopupDialog>
