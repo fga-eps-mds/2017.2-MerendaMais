@@ -1,24 +1,16 @@
 import React from 'react';
-import axios from 'axios';
-import openMap from 'react-native-open-maps';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  ActivityIndicator,
-} from 'react-native';
 import PropTypes from 'prop-types';
-import PopupDialog, {
-  DialogTitle,
-  DialogButton,
-} from 'react-native-popup-dialog';
+import axios from 'axios';
+import { View, ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
+import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialog';
+import VisitCard from '../components/VisitCard';
 import Header from '../components/Header';
-import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
+import VisitInfoPopUp from '../components/VisitInfoPopUp';
+import { SCHOOL_ENDPOINT, UNABLE_TO_FIND_SCHOOL } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
+import ShowToast from '../components/Toast';
 
-const FILE_NAME = 'VisitInvites.js';
+const FILE_NAME = 'VisitInvites';
 
 const styles = StyleSheet.create({
   principal: {
@@ -97,49 +89,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  buttonMap: {
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 15,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#FF9500',
-    justifyContent: 'flex-end',
-  },
 });
 
 class VisitInvites extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      invitees: [],
-      schedule: {
-        agentEmail: '',
-        codSchool: 0,
-        date: '',
-        invitedAgent: false,
-        visitListOfInvitees: [{
-        }],
-        schoolName: '',
-        time: '',
+      visit: {
+        content: {
+          agentEmail: '',
+          codSchool: 0,
+          date: '',
+          invitedAgent: false,
+          visitListOfInvitees: {},
+          schoolName: '',
+          time: '',
+        },
+        visitLat: 0,
+        visitLong: 0,
       },
-      visitLat: null,
-      visitLong: null,
     };
   }
 
+  /* When the screen is Mounting, asynchronously calls for
+    the list of all visits for which our logged counselor was
+    invited.
+  */
   componentWillMount() {
     this.props.asyncGetSchedule(this.props.counselor);
-    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
-      this.props.counselor.profile.cpf);
   }
 
-  async getSchoolLocalization() {
+  async getLocalization() {
     try {
       const response = await
-        axios.get(`${SCHOOL_ENDPOINT}/${this.state.schedule.codSchool}`, {
+        axios.get(`${SCHOOL_ENDPOINT}/${this.state.visit.content.codSchool}`, {
           params: {
             campos: 'latitude,longitude',
           },
@@ -151,162 +135,49 @@ class VisitInvites extends React.Component {
       // Since we get the response in portuguese, we need to "translate" it so we
       // can add it in the store.
 
-      await this.setState({ visitLat: response.data.latitude });
-      console.log('Set state Lat');
-      await this.setState({ visitLong: response.data.longitude });
-      console.log('O state depois das latitudes');
-      console.log(this.state);
-      this.popupDialog.show();
+      await this.setState({
+        visit: {
+          ...this.state.visit,
+          visitLat: response.data.latitude,
+          visitLong: response.data.longitude,
+        },
+      });
     } catch (error) {
       logWarn(FILE_NAME, 'getSchoolLocalization in visits Notifications', error);
-      this.popupDialog.show();
+      ShowToast.Toast(UNABLE_TO_FIND_SCHOOL);
     }
-  }
-
-  async seeVisitInfo(schedule) {
-    await this.setState({ schedule: schedule.content });
-    console.log('o schedule do state');
-    console.log(this.state);
-    await this.getSchoolLocalization();
-  }
-
-  // Será usada para confirmar/cancelar a presença do conselheiro na visita
-  verification(visitListOfInvitees) {
-    if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
-      return (
-        <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
-          <TouchableOpacity
-            disabled
-          >
-            <Text style={styles.buttonText}>NÃO CONVIDADO</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    } else if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
-      return (
-        <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
-          <TouchableOpacity
-            disabled
-          >
-            <Text style={styles.buttonText}>NÃO CONFIRMOU</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
-    return (
-      <View style={styles.buttonBox}>
-        <TouchableOpacity>
-          {/* onPress={() => Actions.mainReportsScreen()} */}
-          <Text style={styles.buttonText}>CONFIRMAR PRESENÇA</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  arrayScheduleList() {
-    if (this.props.listOfPendingScheduleInAGroup.length === 0) {
-      return (
-        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
-      );
-    }
-    return (
-      this.props.listOfPendingScheduleInAGroup.map(schedule => (
-        <View style={styles.listSchedule}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {schedule.content.schoolName}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {schedule.content.date}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {schedule.content.time}
-            </Text>
-          </View>
-          <View style={{ flex: 3 }}>
-            {this.verification(schedule.content.visitListOfInvitees)}
-            <View style={styles.buttonInvitees}>
-              <TouchableOpacity
-                onPress={() => this.seeVisitInfo(schedule)}
-              >
-                <Text style={styles.buttonText}> + INFORMAÇÕES</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      ))
-    );
-  }
-
-  goToMaps() {
-    // const url = `https://www.google.com/maps/?q=${this.props.school.schoolLat},${this.props.school.schoolLong}`;
-    // Linking.openURL(url);
-    openMap({ latitude: this.state.visitLat, longitude: this.state.visitLong });
-  }
-
-  showLocalizationButton() {
-    if (this.state.visitLat !== undefined && this.state.visitLat !== null) {
-      return (
-        <View key="renderButton">
-          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
-          <TouchableOpacity
-            onPress={() => this.goToMaps()}
-            style={styles.buttonMap}
-            activeOpacity={0.7}
-            // <Image source={Location} />
-          >
-            <Text style={styles.buttonText}>Ver no Mapa</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
-
-    // If we can't return the button, return nothing.
-    return (null);
-  }
-
-  showScheduleInformations() {
-    return (
-      <View style={styles.listSchedule}>
-        <View style={styles.textBox}>
-          <Text style={styles.text}>
-            <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-            {this.state.schedule.schoolName}
-          </Text>
-          <Text style={styles.text}>
-            <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-            {this.state.schedule.date}
-          </Text>
-          <Text style={styles.text}>
-            <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-            {this.state.schedule.time}
-          </Text>
-          {
-            this.state.schedule.invitedAgent ? (
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
-              </Text>
-            ) :
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Agente não convidado</Text>
-              </Text>
-          }
-          <Text style={styles.text}>
-            <Text style={{ fontWeight: 'bold' }}>Número de convidados: </Text>
-            {Object.keys(this.state.schedule.visitListOfInvitees).length}
-          </Text>
-          {this.showLocalizationButton()}
-        </View>
-      </View>
-    );
   }
 
   render() {
-    console.log('lista pendente');
-    console.log(this.props.listOfPendingScheduleInAGroup);
+    let activityIndicatorOrCard = null;
+
+    if (this.props.application === true) {
+      activityIndicatorOrCard = (
+        <ActivityIndicator
+          style={{ marginTop: 50, justifyContent: 'center' }}
+          size="large"
+          color="#FF9500"
+        />
+      );
+    } else {
+      activityIndicatorOrCard = this.props.listOfPendingInvitedScheduleList.map(visit => (
+        <VisitCard
+          visit={visit}
+          counselor={this.props.counselor}
+          popUpCallBack={async (selectedVisit) => {
+            await this.setState({ visit: selectedVisit });
+            await this.getLocalization();
+            this.popupDialog.show();
+          }}
+          key={visit.codConteudoPost}
+          asyncUpdateSchedule={this.props.asyncUpdateSchedule}
+          asyncGetCurrentSchedule={this.props.asyncGetCurrentSchedule}
+          currentSchedule={this.props.currentSchedule}
+          asyncGetSchedule={this.props.asyncGetSchedule}
+        />
+      ));
+    }
+
     return (
       <View style={styles.principal}>
         <Header
@@ -334,28 +205,57 @@ class VisitInvites extends React.Component {
             </View>,
           ]}
         >
-          {this.showScheduleInformations()}
+          <VisitInfoPopUp visit={this.state.visit} />
         </PopupDialog>
         <ScrollView style={styles.content}>
-          {this.arrayScheduleList()}
+          {activityIndicatorOrCard}
         </ScrollView>
       </View>
     );
   }
 }
 
-const { shape, func } = PropTypes;
-
 VisitInvites.propTypes = {
-  asyncGetCounselorFromGroup: func.isRequired,
-  asyncGetSchedule: func.isRequired,
-  listOfPendingScheduleInAGroup: PropTypes.arrayOf(PropTypes.shape({
-    codSchool: PropTypes.number,
-    date: PropTypes.string,
-    time: PropTypes.string,
-  })).isRequired,
-  counselor: shape({
+  asyncGetSchedule: PropTypes.func.isRequired,
+  asyncUpdateSchedule: PropTypes.func.isRequired,
+  asyncGetCurrentSchedule: PropTypes.func.isRequired,
+  currentSchedule: PropTypes.shape({
+    codConteudoPost: PropTypes.number.isRequired,
+    codPostagem: PropTypes.number.isRequired,
+    content: {
+      agentEmail: PropTypes.string.isRequired,
+      codSchool: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
+      invitedAgent: PropTypes.bool.isRequired,
+      schoolName: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      visitListOfInvitees: PropTypes.shape({}),
+    },
+  }),
+  counselor: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
+    nuvemCode: PropTypes.number.isRequired,
   }).isRequired,
+  application: PropTypes.bool.isRequired,
+  listOfPendingInvitedScheduleList: PropTypes.shape([]).isRequired,
+};
+
+VisitInvites.defaultProps = {
+  currentSchedule: PropTypes.shape({
+    codConteudoPost: 0,
+    codPostagem: 0,
+    content: {
+      agentEmail: 'email@email.com',
+      codSchool: 0,
+      date: '0-0-0000',
+      invitedAgent: false,
+      schoolName: 'Nome da escola',
+      time: '00:00',
+      visitListOfInvitees: PropTypes.shape({}),
+    },
+  }),
 };
 
 export default VisitInvites;

@@ -77,6 +77,10 @@ const styles = {
   InputStyle: {
     flex: 1,
   },
+  text: {
+    fontSize: 15,
+    paddingVertical: 2,
+  },
 
 };
 
