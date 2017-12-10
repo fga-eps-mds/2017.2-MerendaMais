@@ -57,6 +57,7 @@ exports[`Testing PrincipalNotification rendering PrincipalNotification renders c
     </TouchableOpacity>
     <TouchableOpacity
       activeOpacity={0.7}
+      onPress={[Function]}
       style={
         Object {
           "alignItems": "center",

@@ -41,7 +41,7 @@ const PrincipalNotifications = () => (
       <TouchableOpacity
         style={styles.button}
         activeOpacity={0.7}
-        // onPress={() => Actions.meetingsInvites()}
+        onPress={() => Actions.MeetingInvites()}
       >
         <Text style={{ color: 'white', fontSize: 20 }}>Convites de Reunião</Text>
       </TouchableOpacity>
