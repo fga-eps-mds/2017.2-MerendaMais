@@ -21,7 +21,6 @@ import {
   LOGIN_SUCCEED,
   LOGIN_PASSWORD_ERROR,
   LOGIN_PROFILE_ERROR,
-  EDIT_SUCCEED,
   INTERNAL_ERROR,
   REGISTER_SUCCEED,
   REGISTER_NUVEM_ERROR,
@@ -31,13 +30,12 @@ import {
   AUTH_LOGIN_ERROR,
   PROFILE_LOGIN_ERROR,
   GROUP_LOGIN_ERROR,
+  EDIT_ACCOUNT_ERROR,
+  EDIT_PROFILE_ERROR,
 } from '../constants/errorConstants';
+import { errorGenerator } from './schedulingVisitActions';
 
 const FILE_NAME = 'counselorActions.js';
-
-export const errorGenerator = (name, status) =>
-  new Error(`{ "name": "${name}", "status": ${JSON.stringify(status)} }`);
-
 
 // Action
 export const setCounselor = counselor => ({
@@ -59,27 +57,6 @@ export const setCounselorEdited = counselor => ({
     profile: counselor.profile,
   },
 });
-
-// Trating request errors
-const treatingEditCounselorError = (error) => {
-  if (error.response.status === 401) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingEditCounselorError',
-      `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 403) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingEditCounselorError',
-      `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 404) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingEditCounselorError',
-      `Not Found according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingEditCounselorError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
-  }
-};
 
 // Trating request errors
 const treatingAuthenticatingCounselorInRegisterError = (error) => {
@@ -508,7 +485,7 @@ export const asyncRegisterCounselor = userData => (dispatch) => {
 // Functions focused in Edit Couselor Data
 
 // Edit Counselors Profile
-const editCounselorProfile = (counselorData, dispatch) => {
+const editCounselorProfile = async (counselorData) => {
   const headerToEditCounselor = {
     headers: {
       appToken: counselorData.token,
@@ -525,25 +502,21 @@ const editCounselorProfile = (counselorData, dispatch) => {
     },
   };
 
-  axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile, headerToEditCounselor)
-    .then(() => {
-      logInfo(FILE_NAME, 'editCounselorProfile',
-        `Counselor Profile edited. Sending to Store: ${counselorData.name} and ${JSON.stringify(counselorData.profile, null, 2)}`);
+  try {
+    await axios.put(
+      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile, headerToEditCounselor);
 
-      dispatch(setCounselorEdited(counselorData));
-      Actions.mainScreen();
-      ShowToast.Toast(EDIT_SUCCEED);
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'editCounselorProfile',
-        `Request result in an ${error}`);
-
-      treatingEditCounselorError(error);
-    });
+    logInfo(FILE_NAME, 'editCounselorProfile',
+      `Counselor Profile edited. Sending to Store: ${counselorData.name} and ${JSON.stringify(counselorData.profile, null, 2)}`);
+  } catch (error) {
+    logWarn(FILE_NAME, 'editCounselorProfile',
+      `Request result in an ${error}`);
+    throw errorGenerator(EDIT_PROFILE_ERROR, error.response.status);
+  }
 };
 
 // Edit Counselor
-const editCounselor = (counselorData, dispatch) => {
+const editAccountData = async (counselorData) => {
   const headerToEditCounselor = {
     headers: {
       appToken: counselorData.token,
@@ -555,29 +528,32 @@ const editCounselor = (counselorData, dispatch) => {
     nomeUsuario: counselorData.userName,
   };
 
-  axios.put(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor, headerToEditCounselor)
-    .then((response) => {
-      logInfo(FILE_NAME, 'editCounselor',
-        `User data of Counselor edited: ${JSON.stringify(response.data, null, 2)}`);
+  try {
+    const response = await axios.put(
+      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor, headerToEditCounselor);
 
-      editCounselorProfile(counselorData, dispatch);
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'editCounselor',
-        `Request result in an ${error}`);
-
-      treatingEditCounselorError(error);
-    });
+    logInfo(FILE_NAME, 'editCounselor',
+      `User data of Counselor edited: ${JSON.stringify(response.data, null, 2)}`);
+  } catch (error) {
+    logWarn(FILE_NAME, 'editCounselor',
+      `Request result in an ${error.stack}`);
+    throw errorGenerator(EDIT_ACCOUNT_ERROR, error.response.status);
+  }
 };
 
 
 // Async Action to Edit Couselor Data
-export const asyncEditCounselor = counselorData => (dispatch) => {
+export const asyncEditCounselor = counselorData => async (dispatch) => {
   logInfo(FILE_NAME, 'asyncEditCounselor',
     `counselor data to edit: ${JSON.stringify(counselorData, null, 2)}`);
 
-
-  editCounselor(counselorData, dispatch);
+  try {
+    await editAccountData(counselorData);
+    await editCounselorProfile(counselorData);
+    dispatch(setCounselorEdited(counselorData));
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Functions focused in Counselor Login

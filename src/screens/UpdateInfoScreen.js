@@ -6,19 +6,26 @@ import {
   View,
   Alert,
   Picker,
-  ScrollView } from 'react-native';
+  ScrollView
+} from 'react-native';
 import {
   TITULAR_COUNSELOR,
   SURROGATE_COUNSELOR,
   EXECUTIVE_POWER,
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
-  CIVILIAN_ENTITIES } from '../constants/generalConstants';
+  CIVILIAN_ENTITIES,
+  EDIT_SUCCEED
+} from '../constants/generalConstants';
 import Header from '../components/Header';
 import { logInfo } from '../../logConfig/loggers';
 import DropdownComponent from '../components/DropdownComponent';
 import NameField from '../components/NameField';
 import PhoneField from '../components/PhoneField';
+import { Actions } from 'react-native-router-flux';
+import ShowToast from '../components/Toast';
+import { EDIT_ACCOUNT_ERROR, EDIT_PROFILE_ERROR } from '../constants/errorConstants';
+import treatingEditCounselorError from '../ErrorTreatment';
 
 const FILE_NAME = 'UpdateInfoScreen.js';
 
@@ -93,7 +100,7 @@ export default class UpdateInfoScreen extends React.Component {
     };
   }
 
-  updateInformation() {
+  async updateInformation() {
     const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const phoneRegex1 = /[0-9]{11}/g;
     const phoneRegex2 = /[0-9]{10}/g;
@@ -126,7 +133,23 @@ export default class UpdateInfoScreen extends React.Component {
 
     // Checking if was found a irregularity in updateInformation fields.
     if (this.state.error === false) {
-      this.props.asyncEditCounselor(this.fetchCounselorData());
+      try {
+        await this.props.asyncEditCounselor(this.fetchCounselorData());
+        Actions.mainScreen();
+        ShowToast.Toast(EDIT_SUCCEED);
+      } catch (error) {
+        const errorJson = JSON.parse(error.message);
+        switch (errorJson.name) {
+          case EDIT_ACCOUNT_ERROR:
+            treatingEditCounselorError(errorJson.status);
+            break;
+          case EDIT_PROFILE_ERROR:
+            treatingEditCounselorError(errorJson.status);
+            break;
+          default:
+            break;
+        }
+      }
     } else {
       Alert.alert('FALHA AO EDITAR DADOS', errorMessage);
     }

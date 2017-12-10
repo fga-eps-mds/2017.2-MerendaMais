@@ -10,7 +10,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    asyncEditCounselor: userData => dispatch(asyncEditCounselor(userData)),
+    asyncEditCounselor: async userData => dispatch(await asyncEditCounselor(userData)),
   }
 );
 
