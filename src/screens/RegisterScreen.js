@@ -9,6 +9,7 @@ import {
   Picker,
   Alert,
   KeyboardAvoidingView,
+  Keyboard,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../components/Header';
@@ -404,7 +405,10 @@ export default class RegisterScreen extends React.Component {
 
               <ButtonWithActivityIndicator
                 activityIndicatorStyle={{ marginTop: 15, marginBottom: 15 }}
-                onPress={() => this.register()}
+                onPress={() => {
+                  Keyboard.dismiss();
+                  this.register();
+                }}
                 isLoading={this.props.isLoading}
                 buttonKey="userCreation"
                 buttonText="Concluir"

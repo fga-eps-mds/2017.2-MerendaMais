@@ -4,9 +4,11 @@ import {
   Text,
   View,
   TouchableHighlight,
+  TouchableOpacity,
   ScrollView,
+  Linking,
 } from 'react-native';
-
+import Hyperlink from 'react-native-hyperlink';
 import Accordion from 'react-native-collapsible/Accordion';
 import RenderContent from '../../components/AccordionContent';
 import RenderHeader from '../../components/AccordionHeader';
@@ -14,7 +16,8 @@ import Header from '../../components/Header';
 import {
   CONTENT,
   SELECTORS,
-  RESOLUTION_26_DATE } from '../../constants/legislation/resolutionNumber26';
+  RESOLUTION_26_DATE,
+  ANEXOS } from '../../constants/legislation/resolutionNumber26';
 
 const styles = StyleSheet.create({
   title: {
@@ -43,6 +46,32 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     padding: 10,
     justifyContent: 'center',
+  },
+  field: {
+    backgroundColor: '#FAFAFA',
+    padding: 6,
+    borderWidth: 1,
+    borderRadius: 7,
+    borderColor: 'gray',
+    marginHorizontal: 15,
+    marginBottom: 15,
+    marginTop: 15,
+    justifyContent: 'flex-start',
+  },
+  buttonTexts: {
+    padding: 5,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  fieldStyle: {
+    paddingHorizontal: 50,
+    paddingVertical: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FF9500',
+    borderRadius: 8,
+    borderWidth: 1,
   },
 });
 
@@ -100,6 +129,18 @@ export default class Resolution26Screen extends Component {
             duration={400}
             onChange={section => this.setSection(section)}
           />
+          <Hyperlink linkDefault linkStyle={{ color: '#2980b9' }}>
+            <View style={styles.field}>
+              <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 17 }}>Anexos: </Text>
+              <Text>{ANEXOS}</Text>
+              <TouchableOpacity
+                style={styles.fieldStyle}
+                onPress={() => Linking.openURL('https://www.fnde.gov.br/fndelegis/action/UrlPublicasAction.php?acao=abrirAtoPublico&sgl_tipo=RES&num_ato=00000026&seq_ato=000&vlr_ano=2013&sgl_orgao=FNDE/MEC')}
+              >
+                <Text style={styles.buttonTexts}>Anexos</Text>
+              </TouchableOpacity>
+            </View>
+          </Hyperlink>
         </ScrollView>
       </View>
     );

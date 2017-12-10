@@ -13,6 +13,7 @@ import {
   ActivityIndicator,
   Alert,
   Picker,
+  Keyboard,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
@@ -254,7 +255,10 @@ class SearchSchool extends React.Component {
           key="activatedButton"
           style={styles.buttonSearchAnabled}
           activeOpacity={0.7}
-          onPress={() => this.register()}
+          onPress={() => {
+            Keyboard.dismiss();
+            this.register();
+          }}
         >
           <Text style={{ color: 'white', fontSize: 20 }}>Pesquisar</Text>
         </TouchableOpacity>
