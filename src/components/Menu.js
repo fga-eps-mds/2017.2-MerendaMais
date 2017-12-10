@@ -28,12 +28,6 @@ class Menu extends React.PureComponent {
           onPress={() => { Actions.searchSchool(); }}
         />
         <MenuButton
-          key="updateInfoScreen"
-          text="Editar Dados"
-          iconName="settings"
-          onPress={() => { Actions.updateInfoScreen(); }}
-        />
-        <MenuButton
           key="profileInfoScreen"
           text="Perfil"
           iconName="account-box"

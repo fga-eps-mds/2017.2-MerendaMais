@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
 import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View,
-  Alert,
-  Picker,
-  ScrollView
+    StyleSheet,
+    TouchableOpacity,
+    Text,
+    View,
+    Alert,
+    Picker,
+    ScrollView,
+    BackHandler
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import {
   TITULAR_COUNSELOR,
   SURROGATE_COUNSELOR,
@@ -15,17 +17,17 @@ import {
   EDUCATION_WORKERS,
   STUDENT_PARENTS,
   CIVILIAN_ENTITIES,
-  EDIT_SUCCEED
+  EDIT_SUCCEED,
 } from '../constants/generalConstants';
 import Header from '../components/Header';
 import { logInfo } from '../../logConfig/loggers';
 import DropdownComponent from '../components/DropdownComponent';
 import NameField from '../components/NameField';
 import PhoneField from '../components/PhoneField';
-import { Actions } from 'react-native-router-flux';
 import ShowToast from '../components/Toast';
 import { EDIT_ACCOUNT_ERROR, EDIT_PROFILE_ERROR } from '../constants/errorConstants';
 import treatingEditCounselorError from '../ErrorTreatment';
+import { backHandlerPop } from '../NavigationFunctions';
 
 const FILE_NAME = 'UpdateInfoScreen.js';
 
@@ -100,6 +102,14 @@ export default class UpdateInfoScreen extends React.Component {
     };
   }
 
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', backHandlerPop);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', backHandlerPop);
+  }
+
   async updateInformation() {
     const nameRegex = /[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g;
     const phoneRegex1 = /[0-9]{11}/g;
@@ -133,9 +143,11 @@ export default class UpdateInfoScreen extends React.Component {
 
     // Checking if was found a irregularity in updateInformation fields.
     if (this.state.error === false) {
+      logInfo(FILE_NAME, 'updateInformation', 'Trying to update counselor data.');
       try {
         await this.props.asyncEditCounselor(this.fetchCounselorData());
-        Actions.mainScreen();
+        logInfo(FILE_NAME, 'updateInformation', 'Successfully updated counselor data.');
+        Actions.popTo('profileInfoScreen');
         ShowToast.Toast(EDIT_SUCCEED);
       } catch (error) {
         const errorJson = JSON.parse(error.message);
