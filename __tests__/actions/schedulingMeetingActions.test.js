@@ -52,7 +52,7 @@ describe('Testing scheduleMeetingActions', () => {
     expect(actionReturn.status).toBe(200);
   });
 
-  it('Test async meeting', async () => {
+  it('Test getMeetingContent', async () => {
     const mock = new MockAdapter(axios);
 
     const getContentHeader = {
@@ -68,12 +68,19 @@ describe('Testing scheduleMeetingActions', () => {
           codPostagem: 1,
         },
         codConteudoPost: 2,
-        JSON: "{'lat':-15.87237528448729,'long':-47.870096152813}",
+        JSON: "{'lat':-15.87238105340287,'long':-47.869909234769715,'date':'12-12-9999','time':'17:29','meetingListOfInvitees':{'5888':{'nuvemCode':5888,'confirmed':true},'6121':{'nuvemCode':6121,'confirmed':false}},'meetingDescription':''}",
       });
 
-    const actionReturn = await actions.getMeetingContent(contentLink, {}, jest.fn());
+    const counselor = {
+      name: 'testCounselor',
+      email: 'test@test.com',
+      token: 'abc',
+      nuvemCode: 5888,
+    };
 
-    expect(actionReturn.status).toBe(200);
+    const dispatch = jest.fn();
+    await actions.getMeetingContent(contentLink, counselor, dispatch);
+    expect(dispatch.mock.calls.length).toBe(1);
   });
 
   // Need promise to work

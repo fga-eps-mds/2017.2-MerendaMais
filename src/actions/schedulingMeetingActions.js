@@ -94,6 +94,7 @@ const verifyDate = (meetingSchedule) => {
 
 
 const defineMeetingStatus = (meetingSchedule, counselor, dispatch) => {
+  logInfo(FILE_NAME, 'defineMeetingStatus', `${JSON.stringify(meetingSchedule)}`);
   if (meetingSchedule.content.meetingListOfInvitees[counselor.nuvemCode] !== undefined) {
     if (!verifyDate(meetingSchedule)) {
       dispatch(setScheduleMeetingList(meetingSchedule));
@@ -139,11 +140,9 @@ export const getMeetingContent = async (contentLink, counselor, dispatch) => {
     };
 
     defineMeetingStatus(meetingSchedule, counselor, dispatch);
-
-    return meetingSchedule;
   } catch (error) {
     logWarn(FILE_NAME, 'getMeetingContent',
-      `Request result in an ${error}`);
+      `Request result in an ${error.stack}`);
 
     throw new GetMeetingContentError(error.response);
   }
@@ -169,6 +168,7 @@ export const getMeetingPostList = async (getMeetingParamsAndHeader) => {
 export const meetingScheduleActionsAuxiliary = {
   getMeetingPostList,
   getMeetingContent,
+  defineMeetingStatus,
 };
 
 // Assync action to get all post Meeting schedules
