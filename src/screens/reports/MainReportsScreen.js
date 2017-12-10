@@ -143,6 +143,44 @@ export default class MainReportsScreen extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.StartPendingInspection());
   }
 
+  async addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults) {
+    // Header to create a new content in inpection post.
+    const headerToInspectionContent = {
+      headers: {
+        appToken: this.props.counselor.token,
+      },
+    };
+
+    // Used to await all promises return after proceed with the function.
+    const allLinksOfContents = [];
+
+    try {
+      contentsListOfInspectionResults.forEach((content) => {
+        // Body to create a new content in inpection post.
+        const bodyToInspectionContent = {
+          JSON: convertingJSONToString(content),
+          texto: 'Nome da Lista de Verificação',
+        };
+
+        console.log(bodyToInspectionContent.JSON);
+
+        const response = axios.post(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos`,
+          bodyToInspectionContent,
+          headerToInspectionContent);
+
+        allLinksOfContents.push(response.headers.location);
+
+        logInfo(FILE_NAME, 'addContentsOnInspectionPostInNuvem', `${JSON.stringify(response.data)}`);
+      });
+
+      await Promise.all(allLinksOfContents);
+    } catch (error) {
+      logWarn(FILE_NAME, 'addContentsOnInspectionPostInNuvem', `Request result in an ${error}`);
+
+      throw errorGenerator('addContentsOnInspectionPostInNuvem', error.response.status);
+    }
+  }
+
   generateContentsListOfInspectionResults() {
     const contentsListOfInspectionResults = [];
 
@@ -310,9 +348,11 @@ export default class MainReportsScreen extends React.Component {
   // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
   async prepareAndSendInspectionResultsToNuvem() {
     try {
-      // const codPostagem = await this.createInspectionPostInNuvem();
+      const codPostagem = await this.createInspectionPostInNuvem();
 
       const contentsListOfInspectionResults = this.generateContentsListOfInspectionResults();
+
+      await this.addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults);
 
       logInfo(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
         `List of JSONs with checklist contents: ${JSON.stringify(contentsListOfInspectionResults, null, 2)}`);
@@ -321,6 +361,11 @@ export default class MainReportsScreen extends React.Component {
 
       switch (errorJson.name) {
         case 'createInspectionPostInNuvem':
+          ShowToast.Toast(INTERNAL_ERROR);
+          logWarn(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
+            `Error with status: ${errorJson.status}`);
+          break;
+        case 'addContentsOnInspectionPostInNuvem':
           ShowToast.Toast(INTERNAL_ERROR);
           logWarn(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
             `Error with status: ${errorJson.status}`);
