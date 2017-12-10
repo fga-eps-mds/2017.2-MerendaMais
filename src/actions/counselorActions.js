@@ -30,10 +30,9 @@ import {
   AUTH_LOGIN_ERROR,
   PROFILE_LOGIN_ERROR,
   GROUP_LOGIN_ERROR,
-  EDIT_ACCOUNT_ERROR,
-  EDIT_PROFILE_ERROR,
 } from '../constants/errorConstants';
 import { errorGenerator } from './schedulingVisitActions';
+import { editAccountData, editCounselorProfile } from './auxiliary/editCounselorAuxiliary';
 
 const FILE_NAME = 'counselorActions.js';
 
@@ -482,74 +481,16 @@ export const asyncRegisterCounselor = userData => (dispatch) => {
   registerCounselorAtNuvemCivica(registerBody, dispatch, userData);
 };
 
-// Functions focused in Edit Couselor Data
-
-// Edit Counselors Profile
-const editCounselorProfile = async (counselorData) => {
-  const headerToEditCounselor = {
-    headers: {
-      appToken: counselorData.token,
-    },
-  };
-
-  const stringProfile = convertingJSONToString(counselorData.profile);
-
-  // Creating body of PUT method.
-  const bodyToEditCounselorProfile = {
-    camposAdicionais: stringProfile,
-    tipoPerfil: {
-      codTipoPerfil: 239,
-    },
-  };
-
-  try {
-    await axios.put(
-      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile, headerToEditCounselor);
-
-    logInfo(FILE_NAME, 'editCounselorProfile',
-      `Counselor Profile edited. Sending to Store: ${counselorData.name} and ${JSON.stringify(counselorData.profile, null, 2)}`);
-  } catch (error) {
-    logWarn(FILE_NAME, 'editCounselorProfile',
-      `Request result in an ${error}`);
-    throw errorGenerator(EDIT_PROFILE_ERROR, error.response.status);
-  }
-};
-
-// Edit Counselor
-const editAccountData = async (counselorData) => {
-  const headerToEditCounselor = {
-    headers: {
-      appToken: counselorData.token,
-    },
-  };
-
-  const bodyToEditCounselor = {
-    nomeCompleto: counselorData.name,
-    nomeUsuario: counselorData.userName,
-  };
-
-  try {
-    const response = await axios.put(
-      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor, headerToEditCounselor);
-
-    logInfo(FILE_NAME, 'editCounselor',
-      `User data of Counselor edited: ${JSON.stringify(response.data, null, 2)}`);
-  } catch (error) {
-    logWarn(FILE_NAME, 'editCounselor',
-      `Request result in an ${error.stack}`);
-    throw errorGenerator(EDIT_ACCOUNT_ERROR, error.response.status);
-  }
-};
-
-
 // Async Action to Edit Couselor Data
 export const asyncEditCounselor = counselorData => async (dispatch) => {
   logInfo(FILE_NAME, 'asyncEditCounselor',
     `counselor data to edit: ${JSON.stringify(counselorData, null, 2)}`);
-
   try {
     await editAccountData(counselorData);
+    console.log('One');
     await editCounselorProfile(counselorData);
+    console.log('Two');
+    console.log(editCounselorProfile);
     dispatch(setCounselorEdited(counselorData));
   } catch (error) {
     throw error;

@@ -21,13 +21,6 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
     text="Pesquisar Escola"
   />
   <MenuButton
-    iconName="settings"
-    isLogout={false}
-    key="updateInfoScreen"
-    onPress={[Function]}
-    text="Editar Dados"
-  />
-  <MenuButton
     iconName="account-box"
     isLogout={false}
     key="profileInfoScreen"
