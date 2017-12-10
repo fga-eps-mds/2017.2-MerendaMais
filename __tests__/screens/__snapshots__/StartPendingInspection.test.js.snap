@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing StartPendingInspection Screen renders as expected 1`] = `
+<StartPendingInspection
+  asyncGetCounselorFromGroup={[Function]}
+  asyncGetSchedule={[Function]}
+  counselor={Object {}}
+  isLoading={false}
+  listOfCounselorsInAGroup={Object {}}
+  listOfPendingScheduleInAGroup={
+    Object {
+      "codSchool": "",
+      "date": "",
+      "time": "",
+    }
+  }
+  setCurrentInspection={[Function]}
+/>
+`;

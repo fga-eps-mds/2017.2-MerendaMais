@@ -22,6 +22,7 @@ const schoolReducer = (state = initialState.school, action) => {
         schoolEmail: action.payload.schoolEmail,
         schoolLat: action.payload.schoolLat,
         schoolLong: action.payload.schoolLong,
+        schoolStudents: action.payload.schoolStudents,
         schoolSelected: action.payload.schoolSelected,
       };
     case SET_SCHOOL_UF:

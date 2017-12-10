@@ -4,7 +4,7 @@ jobs:
     environment:
         CC_TEST_REPORTER_ID: ${CODE_CLIMATE_TOKEN}
     docker:
-      - image: circleci/node:6.11.3
+      - image: circleci/node:6.11.5
     steps:
       - checkout
       - restore_cache:
@@ -19,6 +19,9 @@ jobs:
       - run:
           name: Style
           command: npm run lint
+      - run:
+          name: Env variables
+          command: echo $'REACT_NATIVE_EMAIL=${REACT_NATIVE_EMAIL}\nREACT_NATIVE_PASS=${REACT_NATIVE_PASS}' > .env
       - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
       - run: chmod +x ./cc-test-reporter
       - run: ./cc-test-reporter before-build      

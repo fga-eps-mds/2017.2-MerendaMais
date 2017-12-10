@@ -6,7 +6,7 @@ import styles from '../Styles';
 
 const MenuButton = props => (
   <TouchableOpacity
-    key={props.key}
+    key="menuButton"
     activeOpacity={0.7}
     onPress={() => props.onPress()}
   >
@@ -36,7 +36,6 @@ MenuButton.propTypes = {
   text: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
   isLogout: PropTypes.bool,
-  key: PropTypes.string.isRequired,
 };
 
 MenuButton.defaultProps = {

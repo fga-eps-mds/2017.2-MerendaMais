@@ -76,10 +76,12 @@ describe('Testing counselorReducer', () => {
         cpf: '',
         phone: '',
         isPresident: false,
+        presidentChecked: false,
         counselorType: '',
         segment: '',
         CAE_Type: '',
         CAE: '',
+        codGroup: '',
       },
     };
 

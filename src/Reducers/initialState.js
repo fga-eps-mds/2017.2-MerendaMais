@@ -1,12 +1,12 @@
-import foodStock from './Reports/foodStock';
-import refectory from './Reports/refectory';
-import kitchen from './Reports/kitchen';
-import foodQuality from './Reports/foodQuality';
-import foodHandler from './Reports/foodHandler';
-import waterSewerSupply from './Reports/waterSewerSupply';
-import foodPreparation from './Reports/foodPreparation';
-import doc from './Reports/doc';
-import schoolSurroundings from './Reports/schoolSurroundings';
+import foodStock from '../constants/reports/foodStock';
+import refectory from '../constants/reports/refectory';
+import kitchen from '../constants/reports/kitchen';
+import foodQuality from '../constants/reports/foodQuality';
+import foodHandler from '../constants/reports/foodHandler';
+import waterSewerSupply from '../constants/reports/waterSewerSupply';
+import foodPreparation from '../constants/reports/foodPreparation';
+import doc from '../constants/reports/doc';
+import schoolSurroundings from '../constants/reports/schoolSurroundings';
 
 const initialState = {
   counselor: {
@@ -24,6 +24,8 @@ const initialState = {
       segment: '',
       CAE_Type: '',
       CAE: '',
+      codGroup: '',
+      presidentChecked: false,
     },
   },
   application: {
@@ -70,20 +72,34 @@ const initialState = {
     schoolEmail: '',
     schoolLat: '',
     schoolLong: '',
+    schoolStudents: '',
     schoolSelected: false,
     uf: '',
     city: '',
   },
   list: {
     listOfCounselorsInAGroup: [],
+    listOfCheckedCounselors: [],
+    listOfNotCheckedCounselors: [],
     listOfInviteesWithCounselorInformations: {},
-    listOfInvitees: {},
+    listOfPendingScheduleInAGroup: [],
+    listOfPendingInvitedScheduleList: [],
+    listOfExpiredScheduleInAGroup: [],
+    listOfAlreadyInpectionedSchedueInAGroup: [],
+    visitListOfInviteesWithCounselorInformations: {},
+    visitListOfInvitees: {},
+    meetingListOfInviteesWithCounselorInformations: {},
+    meetingListOfInvitees: {},
   },
-  schedule: {
+  scheduleMeeting: {
     codSchool: 0,
-    date: '',
-    time: '',
+    meetingLatitude: null,
+    meetingLongitude: null,
+  },
+  scheduleVisit: {
+    currentVisit: {},
   },
 };
+
 
 export default initialState;

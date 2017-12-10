@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
-import SchoolInfoContainer from '../../src/Containers/SearchSchoolContainer';
+import SchoolInfoContainer from '../../src/Containers/SchoolInfoContainer';
 import SchoolInfoScreen from '../../src/screens/SchoolInfoScreen';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -21,6 +21,7 @@ const initialState = {
     schoolEmail: 'teste@teste.com',
     schoolLat: '',
     schoolLong: '',
+    schoolStudents: '1000',
   },
   counselor: {
     profile: {

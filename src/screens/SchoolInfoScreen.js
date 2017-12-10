@@ -2,42 +2,29 @@ import React from 'react';
 import axios from 'axios';
 import openMap from 'react-native-open-maps';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, BackHandler } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { SCHOOL_ENDPOINT } from '../constants';
+import { SCHOOL_ENDPOINT } from '../constants/generalConstants';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import Header from '../components/Header';
 
 const FILE_NAME = 'SchoolInfoScreen.js';
 
 const styles = StyleSheet.create({
-  headerBox: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 5,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 
-  textLogo: {
+  schoolInfoScreen: {
     flex: 1,
-    fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+
+    backgroundColor: 'white',
   },
 
   buttonContainer: {
-    paddingVertical: 10,
+    paddingVertical: 16,
     borderWidth: 1,
-    borderRadius: 7,
+    borderRadius: 8,
     marginHorizontal: 15,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 15,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -58,11 +45,21 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    flexDirection: 'row',
     color: '#95a5a6',
     fontSize: 20,
     paddingTop: 10,
+    paddingLeft: 10,
     paddingBottom: 5,
+  },
+
+  textInfotmation: {
+    paddingVertical: 2,
+    color: '#95a5a6',
+    fontSize: 20,
+  },
+
+  textResponse: {
+    fontSize: 19,
   },
 
 });
@@ -80,18 +77,37 @@ class SchoolInfoScreen extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     logInfo(FILE_NAME, 'componentWillMount',
       `URL:${SCHOOL_ENDPOINT}/${this.props.school.schoolCode}`);
 
     axios.get(`${SCHOOL_ENDPOINT}/${this.props.school.schoolCode}`, {
       params: {
-        campos: 'nome,email,telefone,latitude,longitude',
+        campos: 'nome,email,telefone,latitude,longitude,qtdAlunos',
       },
     })
       .then((response) => {
         logInfo(FILE_NAME, 'componentWillMount',
           `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
+        let schoolPhone = '';
+        let schoolEmail = '';
+        let schoolStudents = '';
+
+        if (response.data.telefone !== undefined && response.data.telefone !== ' ') {
+          schoolPhone = response.data.telefone;
+        } else {
+          schoolPhone = 'Informação não disponível';
+        }
+        if (response.data.email !== undefined && response.data.email !== ' ') {
+          schoolEmail = response.data.email;
+        } else {
+          schoolEmail = 'Informação não disponível';
+        }
+        if (response.data.qtdAlunos !== undefined && response.data.qtdAlunos !== 0) {
+          schoolStudents = response.data.qtdAlunos;
+        } else {
+          schoolStudents = 'Informação não disponível';
+        }
 
         // Since we get the response in portuguese, we need to "translate" it so we
         // can add it in the store.
@@ -99,15 +115,18 @@ class SchoolInfoScreen extends React.Component {
           {
             schoolCode: response.data.codEscola,
             schoolName: response.data.nome,
-            schoolPhone: response.data.telefone,
-            schoolEmail: response.data.email,
+            schoolPhone,
+            schoolEmail,
             schoolLat: response.data.latitude,
             schoolLong: response.data.longitude,
+            schoolStudents,
           });
       })
       .catch((error) => {
         logWarn(FILE_NAME, 'componentWillMount', error);
       });
+
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
   }
 
   selectSchoolForSchedule() {
@@ -129,7 +148,6 @@ class SchoolInfoScreen extends React.Component {
     if (this.props.school.schoolLat !== undefined) {
       return (
         <View key="renderButton">
-          <Text style={{ color: '#95a5a6', fontSize: 20 }}>Localização: </Text>
           <TouchableOpacity
             onPress={() => this.goToMaps()}
             style={styles.buttonContainer}
@@ -143,7 +161,9 @@ class SchoolInfoScreen extends React.Component {
     }
 
     // If we can't return the button, return nothing.
-    return (null);
+    return (
+      <Text style={styles.textResponse}>Localização não disponível</Text>
+    );
   }
 
   showScheduleVisitButton() {
@@ -178,20 +198,27 @@ class SchoolInfoScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={styles.schoolInfoScreen}>
         <Header
           title={'Informações da Escola'}
           backButton
         />
         <ScrollView>
-          <Text style={styles.text}>  Infomações</Text>
+          <Text style={styles.text}>Infomações</Text>
           <View style={styles.listInfo}>
-            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Nome: </Text>
-            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolName}</Text>
-            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Email: </Text>
-            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolEmail}</Text>
-            <Text style={{ color: '#95a5a6', fontSize: 20 }}>Telefone: </Text>
-            <Text style={{ color: 'black', fontSize: 19 }}>{this.props.school.schoolPhone}</Text>
+            <Text style={styles.textInfotmation}>Nome:</Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolName}</Text>
+
+            <Text style={styles.textInfotmation}>Email:</Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolEmail}</Text>
+
+            <Text style={styles.textInfotmation}>Telefone:</Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolPhone}</Text>
+
+            <Text style={styles.textInfotmation}>Quantidade de Alunos:</Text>
+            <Text style={styles.textResponse}>{this.props.school.schoolStudents}</Text>
+
+            <Text style={styles.textInfotmation}>Localização:</Text>
             {this.showLocalizationButton()}
           </View>
         </ScrollView>

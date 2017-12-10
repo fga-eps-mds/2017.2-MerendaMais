@@ -1,16 +1,17 @@
 import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
 import {
-  ActivityIndicator,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
-  View } from 'react-native';
+  View,
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import EmailField from '../components/EmailField';
+import PasswordField from '../components/PasswordField';
+import ButtonWithActivityIndicator from '../components/ButtonWithActivityIndicator';
 
 const styles = StyleSheet.create({
   principal: {
@@ -83,25 +84,8 @@ export default class LoginScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
+      focus: false,
     };
-  }
-
-  renderBtnLogin() {
-    if (this.props.isLoading) {
-      return (
-        <ActivityIndicator style={styles.loading} size="large" color="#FF9500" />
-      );
-    }
-    return (
-      <TouchableOpacity
-        style={styles.buttonLogin}
-        activeOpacity={0.7}
-        key="LoginCounselor"
-        onPress={() => this.props.asyncLoginCounselor(this.state)}
-      >
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
-    );
   }
 
   render() {
@@ -109,36 +93,31 @@ export default class LoginScreen extends React.Component {
       <View style={styles.principal}>
         <Header />
         <KeyboardAvoidingView style={styles.content} behavior="padding">
-          <View style={styles.Inputemail}>
-            <MaterialIcons name="email" style={styles.icon} size={28} color="black" />
-            <TextInput
-              width={300}
-              returnKeyType="next"
-              onChangeText={email => this.setState({ email })}
-              value={this.email}
-              underlineColorAndroid="transparent"
-              placeholder="Email"
-              keyboardType={'email-address'}
-              autoCapitalize={'none'}
-              onSubmitEditing={() => this.passwordInput.focus()}
-            />
-          </View>
+          <EmailField
+            callback={emailInput => this.setState({ email: emailInput })}
+            placeholder="Email"
+            onSubmitEditing={() => this.setState({ focus: true })}
+            value={this.state.email}
+            size={28}
+          />
 
-          <View style={styles.InputPassword}>
-            <MaterialIcons name="lock" style={styles.icon} size={28} color="black" />
-            <TextInput
-              width={300}
-              underlineColorAndroid="transparent"
-              returnKeyType="go"
-              value={this.password}
-              secureTextEntry
-              onChangeText={password => this.setState({ password })}
-              placeholder="Senha"
-              ref={(passwordInput) => { this.passwordInput = passwordInput; }}
-            />
-          </View>
+          <PasswordField
+            callback={passwordInput => this.setState({ password: passwordInput })}
+            password={this.state.password}
+            placeholder="Digite sua senha"
+            isPassword
+            size={28}
+            focus={this.state.focus}
+          />
 
-          {this.renderBtnLogin()}
+          <ButtonWithActivityIndicator
+            activityIndicatorStyle={styles.loading}
+            onPress={() => this.props.asyncLoginCounselor(this.state)}
+            isLoading={this.props.isLoading}
+            buttonKey="LoginCounselor"
+            buttonText="Entrar"
+            buttonStyle={styles.buttonLogin}
+          />
 
         </KeyboardAvoidingView>
 
