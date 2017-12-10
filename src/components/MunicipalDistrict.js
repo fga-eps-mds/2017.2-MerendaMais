@@ -12,9 +12,11 @@ const MunicipalDistrict = props => (
     <DropdownComponent
       selectedValue={props.selectedValue}
       callback={checkedValue => props.callback(checkedValue)}
-      picker={[
+      picker1={[
         <Picker.Item value="" label="Escolha o Municipio do seu CAE" color="#95a5a6" />,
-      ] && municipalDistricts[props.UfInitials].cidades.map(item =>
+      ]}
+      picker2={
+        municipalDistricts[props.UfInitials].cidades.map(item =>
           (<Picker.Item label={item} value={`${item} -`} color="#000000" />))}
     />
 
