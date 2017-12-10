@@ -85,6 +85,7 @@ const initialState = {
     listOfPendingScheduleInAGroup: [],
     listOfPendingInvitedScheduleList: [],
     listOfExpiredScheduleInAGroup: [],
+    listOfScheduleMeetingInAGroup: [],
     listOfAlreadyInpectionedSchedueInAGroup: [],
     visitListOfInviteesWithCounselorInformations: {},
     visitListOfInvitees: {},
