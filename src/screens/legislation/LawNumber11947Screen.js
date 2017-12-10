@@ -55,7 +55,7 @@ export default class LawNumber11947Screen extends Component {
     this.setState({ activeSection: section });
   }
 
-  toggleExpanded = () => {
+  toggleExpanded() {
     this.setState({ collapsed: !this.state.collapsed });
   }
 

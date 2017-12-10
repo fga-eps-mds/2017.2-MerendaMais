@@ -1,28 +1,45 @@
 import axios from 'axios';
-import { SET_LIST_COUNSELOR_GROUP,
+import {
+  SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
   SET_VISIT_NEW_LISTS,
   SET_MEETING_NEW_LISTS,
+  SET_SCHEDULE_MEETING_LIST,
   SET_CHECKED_LIST,
-  SET_NOT_CHECKED_LIST } from './types';
+  SET_NOT_CHECKED_LIST,
+  SET_PENDING_INVITED_SCHEDULE_LIST,
+} from './types';
 import { logWarn } from '../../logConfig/loggers';
-import { APP_IDENTIFIER,
+import {
+  APP_IDENTIFIER,
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
-  DEFAULT_USER_LINK_NUVEM_CIVICA } from '../constants/generalConstants';
+  DEFAULT_USER_LINK_NUVEM_CIVICA,
+} from '../constants/generalConstants';
 
 const FILE_NAME = 'listActions.js';
+
+export const setPendingInvitedScheduleList = visitScheduleList => ({
+  type: SET_PENDING_INVITED_SCHEDULE_LIST,
+  payload: visitScheduleList,
+});
 
 export const setPendingScheduleList = visitScheduleList => ({
   type: SET_PENDING_SCHEDULE_LIST,
   payload: visitScheduleList,
 });
 
+
 export const setExpiredScheduleList = visitScheduleList => ({
   type: SET_EXPIRED_SCHEDULE_LIST,
   payload: visitScheduleList,
+});
+
+export const setScheduleMeetingList = scheduleMeetingList => ({
+  type: SET_SCHEDULE_MEETING_LIST,
+  payload: scheduleMeetingList,
 });
 
 export const setAlreadyInspectionedScheduleList = visitScheduleList => ({

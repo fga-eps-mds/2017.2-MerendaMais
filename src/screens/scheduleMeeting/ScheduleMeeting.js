@@ -189,6 +189,7 @@ export default class ScheduleMeeting extends React.Component {
       enabled: true,
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
+      codGrupoDestino: this.props.counselor.profile.codGroup,
       meeting: {
         lat: this.props.scheduleMeeting.meetingLatitude,
         long: this.props.scheduleMeeting.meetingLongitude,

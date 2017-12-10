@@ -1,18 +1,26 @@
 import { connect } from 'react-redux';
 import VisitInvites from '../screens/VisitInvites';
-import { asyncGetSchedule } from '../actions/schedulingVisitActions';
-import { asyncGetCounselorFromGroup } from '../actions/listActions';
+import {
+  asyncGetSchedule,
+  asyncUpdateSchedule,
+  setCurrentInspection,
+  asyncGetCurrentSchedule,
+} from '../actions/schedulingVisitActions';
 
 const mapStateToProps = state => (
   {
     counselor: state.counselor,
-    listOfPendingScheduleInAGroup: state.list.listOfPendingScheduleInAGroup,
+    listOfPendingInvitedScheduleList: state.list.listOfPendingInvitedScheduleList,
+    application: state.application.isLoading,
+    currentSchedule: state.scheduleVisit.currentVisit,
   }
 );
 
 const mapDispatchToProps = dispatch => ({
   asyncGetSchedule: counselor => dispatch(asyncGetSchedule(counselor)),
-  asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
+  asyncUpdateSchedule: visitData => dispatch(asyncUpdateSchedule(visitData)),
+  setCurrentInspection: visitSchedule => dispatch(setCurrentInspection(visitSchedule)),
+  asyncGetCurrentSchedule: getData => dispatch(asyncGetCurrentSchedule(getData)),
 });
 
 const VisitInvitesContainer = connect(mapStateToProps,

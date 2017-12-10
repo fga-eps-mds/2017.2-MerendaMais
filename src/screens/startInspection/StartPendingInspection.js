@@ -283,7 +283,7 @@ class StartPendingInspection extends React.Component {
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
-              { counselor.confirmed ?
+              { counselor.realizedVisit ?
                 <Text> Realizada </Text>
                 : <Text> Não Realizada </Text>
               }

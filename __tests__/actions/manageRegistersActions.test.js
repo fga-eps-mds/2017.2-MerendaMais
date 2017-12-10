@@ -77,7 +77,7 @@ describe('Testing manage registers actions', () => {
     try {
       await actions.authenticatingMasterCounselor();
     } catch (e) {
-      expect(e).toEqual('Não foi possível adquirir token para desassociação.');
+      expect(e.message).toEqual('Não foi possível adquirir token para desassociação.');
     }
   });
 

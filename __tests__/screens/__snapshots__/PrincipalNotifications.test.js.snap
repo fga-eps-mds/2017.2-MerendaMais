@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing PrincipalNotification rendering PrincipalNotification renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backButton={true}
+    subTitle=""
+    title="Notificações"
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginTop": 160,
+      }
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FF9500",
+          "borderColor": "black",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "height": 65,
+          "justifyContent": "center",
+          "marginBottom": 60,
+          "width": 320,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 20,
+          }
+        }
+      >
+        Convites de Visita
+      </Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FF9500",
+          "borderColor": "black",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "height": 65,
+          "justifyContent": "center",
+          "marginBottom": 60,
+          "width": 320,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 20,
+          }
+        }
+      >
+        Convites de Reunião
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;

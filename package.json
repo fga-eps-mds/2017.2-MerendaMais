@@ -31,10 +31,10 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node_modules/.bin/jest --maxWorkers 2",
+    "test": "node_modules/.bin/jest --maxWorkers 1",
     "lint": "./node_modules/.bin/eslint src",
     "analyze": "./node_modules/.bin/plato -r -d report App.js src/",
-    "test-with-coverage": "jest --coverage --maxWorkers 1"
+    "test-with-coverage": "node_modules/.bin/jest --maxWorkers --coverage --maxWorkers 1"
   },
   "jest": {
     "preset": "jest-expo",
