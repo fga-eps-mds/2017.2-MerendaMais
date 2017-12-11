@@ -11,7 +11,8 @@ const DropdownComponent = props => (
       onValueChange={checkedAttribute => props.callback(checkedAttribute)}
       selectedValue={props.selectedValue}
     >
-      {props.picker}
+      {props.pickerTitle}
+      {props.pickerBody}
 
     </Picker>
   </View>
@@ -20,7 +21,8 @@ const DropdownComponent = props => (
 DropdownComponent.propTypes = {
   selectedValue: PropTypes.string.isRequired,
   callback: PropTypes.func.isRequired,
-  picker: PropTypes.element.isRequired,
+  pickerTitle: PropTypes.element.isRequired,
+  pickerBody: PropTypes.element.isRequired,
 };
 
 export default DropdownComponent;
