@@ -1794,11 +1794,26 @@ exports[`Testing KitchenCheckoutScreen renders as expected 1`] = `
       <View
         behavior="padding"
       >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Alguma observação adicional? Insira aqui. (Opcional)
+        </Text>
         <View
           style={
             Object {
-              "paddingHorizontal": 15,
-              "paddingTop": 30,
+              "marginHorizontal": 10,
+              "marginTop": 5,
             }
           }
         >

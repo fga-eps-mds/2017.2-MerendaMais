@@ -12,6 +12,7 @@ exports[`Testing PrincipalNotification rendering PrincipalNotification renders c
 >
   <Header
     backButton={true}
+    backTo={[Function]}
     subTitle=""
     title="Notificações"
   />

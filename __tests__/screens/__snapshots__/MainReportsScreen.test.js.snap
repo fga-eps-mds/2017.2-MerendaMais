@@ -33,8 +33,8 @@ exports[`Testing MainReports Screen renders as expected 1`] = `
         onPress={[Function]}
       />
       <GoToChecklistClickableText
-        goToChecklistKey="Qualidade da Alimentação"
-        goToChecklistText="Qualidade da Alimentação"
+        goToChecklistKey="Qualidade de Alimento"
+        goToChecklistText="Qualidade de Alimento"
         onPress={[Function]}
       />
       <GoToChecklistClickableText
@@ -63,8 +63,8 @@ exports[`Testing MainReports Screen renders as expected 1`] = `
         onPress={[Function]}
       />
       <GoToChecklistClickableText
-        goToChecklistKey="+ Outras informações"
-        goToChecklistText="+ Outras informações"
+        goToChecklistKey="+ Outras observações"
+        goToChecklistText="+ Outras observações"
         onPress={[Function]}
       />
       <TouchableOpacity
