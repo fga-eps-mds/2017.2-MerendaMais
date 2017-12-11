@@ -380,6 +380,7 @@ export default class RegisterScreen extends React.Component {
                   profile: {
                     ...this.state.profile,
                     CAE_UF: checkedUf,
+                    CAE_municipalDistrict: '',
                     CAE: `${this.state.profile.CAE_municipalDistrict} ${checkedUf.substr(0, 2)}`.trim(),
                   },
                 })}
