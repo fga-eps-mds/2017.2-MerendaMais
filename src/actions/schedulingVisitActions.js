@@ -366,7 +366,7 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
     texto: 'Agendamento',
   };
 
-  logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
+  logInfo(FILE_NAME, 'asyncUpdateSchedule', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
 
   try {
     const response = await axios.put(

@@ -35,6 +35,11 @@ import { POSTS_LINK_NUVEM_CIVICA,
   KITCHEN,
   FOOD_PREPARATION,
   OTHER_OBSERVATION } from '../../constants/generalConstants';
+import {
+  GET_CURRENT_SCHEDULE_ERROR,
+  AFTER_INPECTION_POST_ERROR,
+  UPDATE_CURRENT_SCHEDULE_ERROR,
+  BEFORE_INPECTION_POST_ERROR } from '../../constants/errorConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
 import { errorGenerator } from '../../actions/schedulingVisitActions';
 import Header from '../../components/Header';
@@ -209,7 +214,7 @@ export default class MainReportsScreen extends React.Component {
     } catch (error) {
       logWarn(FILE_NAME, 'addContentsOnInspectionPostInNuvem', `Request result in an ${error}`);
 
-      throw errorGenerator('addContentsOnInspectionPostInNuvem', error.response.status);
+      throw errorGenerator(AFTER_INPECTION_POST_ERROR, error.response.status);
     }
   }
 
@@ -387,7 +392,7 @@ export default class MainReportsScreen extends React.Component {
     } catch (error) {
       logWarn(FILE_NAME, 'createInspectionPostInNuvem', `Request result in an ${error}`);
 
-      throw errorGenerator('createInspectionPostInNuvem', error.response.status);
+      throw errorGenerator(BEFORE_INPECTION_POST_ERROR, error.response.status);
     }
   }
 
@@ -405,45 +410,40 @@ export default class MainReportsScreen extends React.Component {
 
   // Get the most current version of the schedule being inspected.
   async updateCurrentVersionOfScheduleInspected() {
+    logInfo(FILE_NAME, 'updateCurrentVersionOfScheduleInspected',
+      `Getting current version of schedule inspected. CodPostagem: ${this.props.scheduleVisit.currentVisit.codPostagem} CodConteudo: ${this.props.scheduleVisit.currentVisit.codConteudoPost}`);
+
     const getData = {
       appToken: this.props.counselor.token,
-      codConteudoPost: this.props.scheduleVisit.codConteudoPost,
-      codPostagem: this.props.scheduleVisit.codPostagem,
+      codConteudoPost: this.props.scheduleVisit.currentVisit.codConteudoPost,
+      codPostagem: this.props.scheduleVisit.currentVisit.codPostagem,
     };
 
     await this.props.asyncGetCurrentSchedule(getData);
+
+    logInfo(FILE_NAME, 'updateCurrentVersionOfScheduleInspected',
+      'Current version of schedule inspected updated in store.');
   }
 
-  // // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
-  // async changeCounselorRealizedVisitStatus() {
-  //   const newContentJSON = this.props.scheduleVisit.currentVisit.content;
-  //   newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
-  //
-  //   const newContentString = convertingJSONToString(newContentJSON);
-  //
-  //   const putScheduleHeader = {
-  //     headers: {
-  //       appToken: this.props.counselor.token,
-  //     },
-  //   };
-  //
-  //   const putScheduleBody = {
-  //     JSON: newContentString,
-  //     texto: 'Agendamento',
-  //     valor: 0,
-  //   };
-  //
-  //   axios.put(`${POSTS_LINK_NUVEM_CIVICA}
-  //   ${this.props.scheduleVisit.currentVisit.codPostagem}/conteudos/
-  //   ${this.props.scheduleVisit.currentVisit.codConteudoPost}`,
-  //   putScheduleBody, putScheduleHeader)
-  //     .then((response) => {
-  //       logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
-  //     })
-  //     .catch((error) => {
-  //       logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
-  //     });
-  // }
+  // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
+  async changeCounselorRealizedVisitStatus() {
+    logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus',
+      'Updating counselor realized inspection status in visit data.');
+
+    const newContentJSON = this.props.scheduleVisit.currentVisit.content;
+    newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
+
+    const postData = {
+      content: { ...newContentJSON },
+      codConteudoPost: this.props.scheduleVisit.currentVisit.codConteudoPost,
+      codPostagem: this.props.scheduleVisit.currentVisit.codPostagem,
+    };
+
+    await this.props.asyncUpdateSchedule(postData);
+
+    logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus',
+      'Counselor realized inspection status in visit data updated.');
+  }
 
   // Make the final requests to finalize the inspect.
   async finishInspection() {
@@ -452,20 +452,28 @@ export default class MainReportsScreen extends React.Component {
     try {
       await this.prepareAndSendInspectionResultsToNuvem();
 
-      // await this.updateCurrentVersionOfScheduleInspected();
+      await this.updateCurrentVersionOfScheduleInspected();
 
-      // await this.changeCounselorRealizedVisitStatus();
+      await this.changeCounselorRealizedVisitStatus();
 
-      ShowToast.Toast(INSPECTION_SUCCEED);
+      Alert.alert(
+        'FISCALIZAÇÃO ENCERRADA',
+        INSPECTION_SUCCEED,
+        [
+          { text: 'OK' },
+        ],
+      );
       Actions.mainScreen();
     } catch (error) {
       const errorJson = JSON.parse(error.message);
 
       switch (errorJson.name) {
-        case 'createInspectionPostInNuvem':
+        case BEFORE_INPECTION_POST_ERROR:
           treatingGenericInspectionError(errorJson.status);
           break;
-        case 'addContentsOnInspectionPostInNuvem':
+        case AFTER_INPECTION_POST_ERROR:
+        case GET_CURRENT_SCHEDULE_ERROR:
+        case UPDATE_CURRENT_SCHEDULE_ERROR:
           // TODO(Here is needed delete the inspection post created)
           treatingGenericInspectionError(errorJson.status);
           break;
@@ -611,6 +619,7 @@ MainReportsScreen.propTypes = {
   clickableView: string.isRequired,
   syncIsLoading: func.isRequired,
   asyncGetCurrentSchedule: func.isRequired,
+  asyncUpdateSchedule: func.isRequired,
   syncIsNotLoading: func.isRequired,
   counselor: shape({
     token: string.isRequired,
