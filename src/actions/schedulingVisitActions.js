@@ -26,6 +26,7 @@ import {
   GET_CURRENT_SCHEDULE_ERROR,
   UPDATE_CURRENT_SCHEDULE_ERROR,
 } from '../constants/errorConstants';
+import * as constant from '../constants/sendAgentEmail';
 import { authenticatingMasterCounselor } from './ManagerRegisterActions';
 
 const FILE_NAME = 'schedulingVisitActions.js';
@@ -262,21 +263,27 @@ const treatingPostsError = (error) => {
   }
 };
 
-
-const sendEmailAlert = (visitData) => {
+const sendEmailAlert = (visitData, counselor) => {
   const agentEmail = (visitData.visit.agentEmail);
+  const CAEUf = counselor.profile.CAE_UF.substr(0, 2);
+  const emailBody = `Prezado (a) Senhor(a),\n
+Trata-se da solicitação de um Auditor da Vigilância Sanitária, a fim de acompanhar os Conselheiros do Conselho de Alimentação Escolar do(a) ${counselor.profile.CAE}, em visita técnica a realizar-se em ${visitData.visit.date}, na instituição escolar ${visitData.visit.schoolName}, em cumprimento à Lei nº 11.947, de 16 de junho de 2009 - que dispõe sobre o atendimento da alimentação escolar.\n
+Atenciosamente,
+${counselor.name}
+Representando ${counselor.profile.segment} do CAE – ${counselor.profile.CAE}\n
+Conselho de Alimentação Escolar do Estado – CAE/${CAEUf}`;
 
   Communications.email(
     // To, cc, bcc, subject, email text
     [agentEmail],
     null,
     null,
-    'Subject',
-    'Email Body text');
+    constant.EMAIL_SUBJECT,
+    emailBody);
 };
 
 
-const schedulingVisit = (visitData) => {
+const schedulingVisit = (visitData, counselor) => {
   const headerToSchedulingVisit = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
@@ -317,7 +324,7 @@ const schedulingVisit = (visitData) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
       if (visitData.visit.invitedAgent) {
-        sendEmailAlert(visitData);
+        sendEmailAlert(visitData, counselor);
       }
       Alert.alert(
         'Agendamento Realizado',
@@ -335,11 +342,13 @@ const schedulingVisit = (visitData) => {
     });
 };
 
-export const asyncSchedulingVisit = visitData => () => {
+export const asyncSchedulingVisit = (visitData, counselor) => () => {
   logInfo(FILE_NAME, 'asyncSchedulingVisit',
     `Scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
+  logInfo(FILE_NAME, 'asyncSchedulingVisit',
+    `Scheduling counselor data: ${JSON.stringify(counselor, null, 2)}`);
 
-  schedulingVisit(visitData);
+  schedulingVisit(visitData, counselor);
 };
 
 export const asyncUpdateSchedule = postData => async (dispatch) => {

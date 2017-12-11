@@ -521,7 +521,8 @@ export default class SchedulingVisit extends React.Component {
                     enabled
                     key="scheduleButton"
                     text="Agendar"
-                    onPress={() => this.props.asyncSchedulingVisit(this.state)}
+                    onPress={() => this.props.asyncSchedulingVisit(this.state,
+                      this.props.counselor)}
                   />
                 )}
               <Button
