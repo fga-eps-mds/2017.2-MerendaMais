@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ActivityIndicator, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, ScrollView, BackHandler } from 'react-native';
+import openMap from 'react-native-open-maps';
+import { Alert, StyleSheet, ActivityIndicator, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, ScrollView, BackHandler } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -333,16 +334,31 @@ export default class ScheduleMeeting extends React.Component {
     );
   }
 
+  openLocationChoosen() {
+    openMap({ latitude: this.state.meeting.lat, longitude: this.state.meeting.long });
+  }
+
   showLocation() {
     if (this.state.meeting.lat !== null && this.state.meeting.long !== null) {
       return (
-        <View>
-          <Text style={styles.textDescription}>Localização</Text>
-          <View style={[styles.InputFieldStyle]}>
-            <Text>Lat: {this.state.meeting.lat.toFixed(7)},
-                  Long: {this.state.meeting.long.toFixed(7)}
-            </Text>
-          </View>
+        <View style={styles.Container}>
+          <TouchableOpacity
+            key="openMeetingLocation"
+            style={styles.button}
+            // onPress={() => this.openLocationChoosen()}
+            onPress={() => Alert.alert(
+              'Ver Localização',
+              'Abriremos a localização selecionada no aplicativo de mapas escolhido em seu aparelho',
+              [
+                { text: 'OK', onPress: () => this.openLocationChoosen(), style: 'cancel' },
+                { text: 'Cancelar', style: 'cancel' },
+
+              ],
+              { cancelable: false },
+            )}
+          >
+            <Text style={styles.buttonText}>Ver Localização</Text>
+          </TouchableOpacity>
         </View>
       );
     }
