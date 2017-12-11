@@ -179,13 +179,13 @@ export default class SchedulingVisit extends React.Component {
     };
   }
 
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
+  componentWillMount() {
+    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+      this.props.counselor.profile.cpf);
   }
 
-  async getCounselorFromGroup() {
-    await this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
-      this.props.counselor.profile.cpf);
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
   }
 
   invitingAgent() {
@@ -319,7 +319,7 @@ export default class SchedulingVisit extends React.Component {
   }
 
   renderCounselorList() {
-    if (this.props.listOfCounselorsInAGroup.length === 0) {
+    if (this.props.application === true) {
       return (
         <ActivityIndicator style={{ marginTop: 50, justifyContent: 'center' }} size="large" color="#FF9500" />
       );
@@ -484,7 +484,6 @@ export default class SchedulingVisit extends React.Component {
                 style={styles.button}
                 onPress={() => {
                   this.popupDialogCounselor.show();
-                  this.getCounselorFromGroup();
                 }}
               >
                 <Text style={styles.buttonText}>Adicionar Conselheiro</Text>
@@ -535,6 +534,7 @@ SchedulingVisit.propTypes = {
   asyncSchedulingVisit: func.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   setVisitNewLists: func.isRequired,
+  application: PropTypes.bool.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
