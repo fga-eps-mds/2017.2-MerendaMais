@@ -183,8 +183,8 @@ export default class SchedulingVisit extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.mainScreen());
   }
 
-  getCounselorFromGroup() {
-    this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
+  async getCounselorFromGroup() {
+    await this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
   }
 
