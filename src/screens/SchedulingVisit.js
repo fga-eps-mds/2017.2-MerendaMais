@@ -215,26 +215,6 @@ export default class SchedulingVisit extends React.Component {
     this.popupDialogAgent.dismiss();
   }
 
-  buttonActivation() {
-    return (
-      <View>
-        <DialogButton
-          enabled
-          key="invitingButton"
-          text="Convidar"
-          onPress={() => { this.invitingAgent(); }}
-        />
-
-        <DialogButton
-          enabled
-          key="notInvitingButton"
-          text="Cancelar"
-          onPress={() => { this.notInvitingAgent(); }}
-        />
-      </View>
-    );
-  }
-
   manageInvitedListState(counselor) {
     const visitNewLists = {
       visitNewListWithInformations: this.props.visitListOfInviteesWithCounselorInformations,
@@ -383,12 +363,30 @@ export default class SchedulingVisit extends React.Component {
 
         <PopupDialog
           ref={(popupDialogAgent) => { this.popupDialogAgent = popupDialogAgent; }}
-          height="70%"
+          height="45%"
           width="90%"
           dialogTitle={<DialogTitle
             title="Convidar um Agente?"
           />}
-          actions={[this.buttonActivation()]}
+          actions={[
+            <View style={styles.footerPopUp}>
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                enabled
+                key="invitingButton"
+                text="Convidar"
+                onPress={() => { this.invitingAgent(); }}
+              />
+
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                enabled
+                key="notInvitingButton"
+                text="Cancelar"
+                onPress={() => { this.notInvitingAgent(); }}
+              />
+            </View>,
+          ]}
         >
           <View style={styles.popUp}>
             <Text style={styles.popUpText}>{constant.POPUP_MESSAGE}</Text>
