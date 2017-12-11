@@ -5,7 +5,7 @@ import InitialScreen from './src/screens/InitialScreen';
 import LoginContainer from './src/Containers/LoginContainer';
 import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContainer';
 import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
-import MainScreen from './src/screens/MainScreen';
+import MainScreenContainer from './src/Containers/MainScreenContainer';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 import StockFoodCheckoutScreenContainer from './src/Containers/reports/StockFoodCheckoutContainer';
@@ -68,7 +68,7 @@ const Routes = () => ({
               hideNavBar
             />
             <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
-            <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
+            <Scene key="mainScreen" component={MainScreenContainer} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
             <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
             <Scene key="loginScreen" component={LoginContainer} hideNavBar />

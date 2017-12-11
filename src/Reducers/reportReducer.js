@@ -38,7 +38,17 @@ import { SET_STOCKFOODREPORT_POSITIVE,
   SET_FOODPREPARATIONREPORT_POSITIVE,
   SET_FOODPREPARATIONREPORT_NEGATIVE,
   SET_STATUSFOODPREPARATION,
+  RESET_REPORT,
 } from '../actions/types';
+import foodStock from '../constants/reports/foodStock';
+import refectory from '../constants/reports/refectory';
+import kitchen from '../constants/reports/kitchen';
+import foodQuality from '../constants/reports/foodQuality';
+import foodHandler from '../constants/reports/foodHandler';
+import waterSewerSupply from '../constants/reports/waterSewerSupply';
+import foodPreparation from '../constants/reports/foodPreparation';
+import doc from '../constants/reports/doc';
+import schoolSurroundings from '../constants/reports/schoolSurroundings';
 import initialState from './initialState';
 // import { logTrace, logWarn } from '../../logConfig/loggers';
 
@@ -354,6 +364,40 @@ const reportReducer = (state = initialState.report, action) => {
       return {
         ...state,
         schoolSurroundingsObservation: action.payload,
+      };
+    case RESET_REPORT:
+      return {
+        foodStock,
+        foodStockObservation: '',
+        refectory,
+        refectoryObservation: '',
+        kitchen,
+        kitchenObservation: '',
+        doc,
+        docObservation: '',
+        otherObservation: '',
+        foodQuality,
+        foodQualityObservation: '',
+        acceptedMenu: '',
+        refusedMenu: '',
+        foodHandler,
+        foodHandlerObservation: '',
+        statusFoodHandler: false,
+        foodPreparation,
+        foodPreparationObservation: '',
+        statusFoodPreparation: false,
+        waterSewerSupply,
+        waterSewerSupplyObservation: '',
+        statuSwaterSewerSupply: false,
+        statusFoodQuality: false,
+        statusFoodStock: false,
+        statusDoc: false,
+        statusKitchen: false,
+        statusRefectory: false,
+        statusSchoolSurroundings: false,
+        statusReportObservation: false,
+        schoolSurroundings,
+        schoolSurroundingsObservation: '',
       };
     default:
       return state;

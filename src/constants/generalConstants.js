@@ -1,8 +1,6 @@
 // appIdentifier number to use in Nuvem Cívica.
 export const APP_IDENTIFIER = 463;
 
-export const APP_TOKEN = 'v1_8841323707E44F8131B11AF90E417AA5732CACA7AD8A8842D3492C6C76F9DEAF7CCC9398BDE13AD7CE493A87821514E64B8E43DF383711C4B61165B7CD867C5314764244486CBF5BEFC37F2A73822583904BE3615B6CE11AD56192C83965F1E0EA45E94B32B0176B57705CFDC21DBDF677C05B583F5D6883501605CE45C66AEB30FD7FBB65BADF6B7E5B595753E8836C894FCE8184739D9EC3EE889CFBA4E039223A30AFEC658C9A6E0EE6966142F52C5AE3F9746B4258FE78ABD518EA28F5387746F6166D3CE302C5A6667335FF269E997A106B2C93110146F624B279EBFBA00F51D91F868CF095DE2FA73730845D285B8701EAD7D4366F81040E89D14B71821E6C967BF843F245E8425C382F7D6571840E69985B4CAED67E5B595753E8836C';
-
 // Visit posting type code to use in Nuvem Cívica.
 export const VISIT_POSTING_TYPE_CODE = 381;
 
@@ -51,17 +49,38 @@ export const STATE_COUNSELOR_CAE = 'Estadual';
 export const PRESIDENT_COUNSELOR = 'Presidente';
 export const COMMON_COUNSELOR = 'Conselheiro';
 
+// Responses to checklists in Nuvem.
+export const UNAUDITED = 'Não fiscalizado';
+export const YES = 'Sim';
+export const NO = 'Não';
+
+// Verification lists names
+export const SCHOOL_SURROUNDINGS = 'Arredores da Escola';
+export const FOOD_STOCK = 'Estoque de Alimentos';
+export const DOCUMENTATION = 'Documentação';
+export const FOOD_QUALITY = 'Qualidade de Alimento';
+export const FOOD_HANDLER = 'Manipuladores de Alimentos';
+export const REFECTORY = 'Refeitório';
+export const WATER_SEWER_SUPPLY = 'Abastecimento de Água e Esgoto';
+export const KITCHEN = 'Cozinha';
+export const FOOD_PREPARATION = 'Preparação e Distribuição de Alimentos';
+export const OTHER_OBSERVATION = 'Outras observações';
+
 // Alert messages and titles
 export const REGISTER_FAIL_TITLE = 'FALHA NO CADASTRO';
 export const USER_ALREADY_REGISTER_IN_APPLICATION = '\nUsuário já cadastrado na Aplicação.';
 export const USER_JUST_ALREADY_REGISTER_IN_NUVEM = '\nUsuário já possui um cadastro na Nuvem Cívica ou em alguma aplicação que a utiliza.\n\nCaso queira utilizar esse e-mail, insira a senha utilizada para realizar o Login na Nuvem Cívica com o e-mail informado.\n\nCaso contrário cadastre-se com o outro e-mail não vinculado a Nuvem Cívica ainda.';
 export const SEND_EMAIL_ALERT_TITLE = 'Agendamento Realizado';
 export const SEND_EMAIL_ALERT_BODY = 'Deseja convidar um agente para essa visita? Se a resposta for sim, seu aplicativo de email padrão será aberto com as informações já preenchidas. Caso não tenha um aplicativo de email, será necessário baixar algum.';
+export const FINISH_INSPECTION = 'Realmente deseja encerrar sua fiscalização e submeter os dados registrados?\nEssa ação é irreversível.\n\nOBS: Evite encerrar sua fiscalização ao mesmo tempo que os outros conselheiros o fazem, isso ajuda a impedir possíveis erros.';
+export const LEAVING_INSPECTION = 'Caso saia da sessão de fiscalização atual, você perderá todos os dados já preenchidos e a fiscalização não será concluída. Realmente deseja sair da fiscalização?';
+export const INPECTION_ERROR = 'Tivemos um problema ao enviar sua fiscalização. Tente novamente em alguns segundos!';
 
 // Toast messages
 export const LOGIN_PASSWORD_ERROR = 'Usuário não cadastrado na aplicação ou a senha está errada.';
 export const LOGIN_PROFILE_ERROR = 'Usuário não cadastrado na aplicação ou perfil não encontrado.';
 export const LOGIN_SUCCEED = 'Login realizado com sucesso!';
+export const INSPECTION_SUCCEED = 'Fiscalização realizada com sucesso!';
 export const REGISTER_SUCCEED = 'Cadastro realizado com sucesso!';
 export const REGISTER_NUVEM_ERROR = 'Usuário não cadastrado na Nuvem ou perfil não existe.';
 export const EDIT_SUCCEED = 'Dados alterados com sucesso!';

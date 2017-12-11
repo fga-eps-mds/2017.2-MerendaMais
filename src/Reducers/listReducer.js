@@ -25,16 +25,17 @@ const listReducer = (state = initialState.list, action) => {
       };
     case RESET_LIST:
       return {
-        ...state,
         listOfCounselorsInAGroup: [],
         listOfCheckedCounselors: [],
         listOfNotCheckedCounselors: [],
-        listOfInviteesWithCounselorInformations: {},
-        visitListOfInvitees: {},
         listOfPendingScheduleInAGroup: [],
         listOfScheduleMeetingInAGroup: [],
         listOfExpiredScheduleInAGroup: [],
         listOfAlreadyInpectionedSchedueInAGroup: [],
+        visitListOfInviteesWithCounselorInformations: {},
+        visitListOfInvitees: {},
+        meetingListOfInviteesWithCounselorInformations: {},
+        meetingListOfInvitees: {},
         listOfPendingInvitedScheduleList: [],
       };
     case SET_VISIT_NEW_LISTS:

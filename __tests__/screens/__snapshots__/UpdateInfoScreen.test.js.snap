@@ -11,6 +11,7 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
 >
   <Header
     backButton={true}
+    backTo={[Function]}
     subTitle=""
     title="Editar Informações"
   />

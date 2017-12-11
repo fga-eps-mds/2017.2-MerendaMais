@@ -31,39 +31,50 @@ const initialState = {
   application: {
     isLoading: false,
     message_erro: '',
+    clickableView: 'auto',
   },
   report: {
+    // 1 - Arredores da Escola.
+    schoolSurroundings,
+    schoolSurroundingsObservation: '',
+    statusSchoolSurroundings: false,
+    // 2 - Estoque de Alimentos.
     foodStock,
     foodStockObservation: '',
-    refectory,
-    refectoryObservation: '',
-    kitchen,
-    kitchenObservation: '',
+    statusFoodStock: false,
+    // 3 - Documentação.
     doc,
     docObservation: '',
-    otherObservation: '',
+    statusDoc: false,
+    // 4 - Qualidade de Alimento.
     foodQuality,
     foodQualityObservation: '',
     acceptedMenu: '',
     refusedMenu: '',
+    statusFoodQuality: false,
+    // 5 - Manipuladores de Alimentos.
     foodHandler,
     foodHandlerObservation: '',
     statusFoodHandler: false,
-    foodPreparation,
-    foodPreparationObservation: '',
-    statusFoodPreparation: false,
+    // 6 - Refeitório.
+    refectory,
+    refectoryObservation: '',
+    statusRefectory: false,
+    // 7 - Abastecimento de Água e Esgoto.
     waterSewerSupply,
     waterSewerSupplyObservation: '',
     statuSwaterSewerSupply: false,
-    statusFoodQuality: false,
-    statusFoodStock: false,
-    statusDoc: false,
+    // 8 - Cozinha.
+    kitchen,
+    kitchenObservation: '',
     statusKitchen: false,
-    statusRefectory: false,
-    statusSchoolSurroundings: false,
+    // 9 - Preparação e Distribuição.
+    foodPreparation,
+    foodPreparationObservation: '',
+    statusFoodPreparation: false,
+    // 10 - Outras observações.
     statusReportObservation: false,
-    schoolSurroundings,
-    schoolSurroundingsObservation: '',
+    otherObservation: '',
   },
   school: {
     schoolCode: 0,
@@ -81,7 +92,6 @@ const initialState = {
     listOfCounselorsInAGroup: [],
     listOfCheckedCounselors: [],
     listOfNotCheckedCounselors: [],
-    listOfInviteesWithCounselorInformations: {},
     listOfPendingScheduleInAGroup: [],
     listOfPendingInvitedScheduleList: [],
     listOfExpiredScheduleInAGroup: [],

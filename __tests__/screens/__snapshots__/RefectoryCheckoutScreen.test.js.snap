@@ -11,17 +11,17 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
+    backTo={[Function]}
     subTitle="Refeitório"
-    title="Relatório"
+    title="Lista de verificação"
   />
   <KeyboardAvoidingView
     behavior="padding"
     keyboardVerticalOffset={0}
     style={
       Object {
-        "flex": 6,
+        "flex": 1,
         "flexDirection": "column",
-        "marginBottom": 9,
       }
     }
   >
@@ -69,7 +69,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="0"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -82,9 +86,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -105,9 +107,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -128,18 +128,21 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Escola possui Refeitório
+            Escola não possui refeitório
           </Text>
         </View>
         <View
           key="1"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -152,9 +155,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -175,9 +176,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -198,7 +197,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -209,7 +207,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="2"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -222,9 +224,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -245,9 +245,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -268,7 +266,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -279,7 +276,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="3"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -292,9 +293,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -315,9 +314,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -338,7 +335,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -349,7 +345,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="4"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -362,9 +362,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -385,9 +383,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -408,7 +404,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -419,7 +414,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="5"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -432,9 +431,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -455,9 +452,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -478,7 +473,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -489,7 +483,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="6"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -502,9 +500,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -525,9 +521,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -548,7 +542,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -559,7 +552,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="7"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -572,9 +569,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -595,9 +590,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -618,7 +611,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -629,7 +621,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="8"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -642,9 +638,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -665,9 +659,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -688,7 +680,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -699,7 +690,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="9"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -712,9 +707,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -735,9 +728,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -758,7 +749,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -769,7 +759,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="10"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -782,9 +776,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -805,9 +797,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -828,7 +818,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -839,7 +828,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="11"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -852,9 +845,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -875,9 +866,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -898,7 +887,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -909,7 +897,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="12"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -922,9 +914,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -945,9 +935,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -968,7 +956,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -979,7 +966,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="13"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -992,9 +983,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1015,9 +1004,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1038,7 +1025,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -1049,7 +1035,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="14"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -1062,9 +1052,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1085,9 +1073,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1108,7 +1094,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -1119,7 +1104,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="15"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -1132,9 +1121,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1155,9 +1142,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1178,7 +1163,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -1189,7 +1173,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="16"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -1202,9 +1190,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1225,9 +1211,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1248,7 +1232,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -1259,7 +1242,11 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           key="17"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -1272,9 +1259,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1295,9 +1280,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1318,7 +1301,6 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -1329,12 +1311,26 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
       <View
         behavior="padding"
       >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Alguma observação adicional? Insira aqui. (Opcional)
+        </Text>
         <View
           style={
             Object {
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 30,
+              "marginHorizontal": 10,
+              "marginTop": 5,
             }
           }
         >
@@ -1363,14 +1359,13 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
         onPress={[Function]}
         style={
           Object {
+            "alignItems": "center",
             "backgroundColor": "#FF9500",
             "borderRadius": 7,
             "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 20,
             "marginHorizontal": 15,
-            "marginTop": 30,
-            "paddingVertical": 10,
+            "marginVertical": 30,
+            "paddingVertical": 15,
           }
         }
       >
@@ -1382,6 +1377,7 @@ exports[`Testing RefectoryCheckout Screen renders as expected 1`] = `
           style={
             Object {
               "color": "#FFF",
+              "fontSize": 15,
               "textAlign": "center",
             }
           }

@@ -11,17 +11,17 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
-    subTitle="Preparação e Distribuição"
-    title="Relatório"
+    backTo={[Function]}
+    subTitle="Preparação e Distribuição de Alimentos"
+    title="Lista de verificação"
   />
   <KeyboardAvoidingView
     behavior="padding"
     keyboardVerticalOffset={0}
     style={
       Object {
-        "flex": 6,
+        "flex": 1,
         "flexDirection": "column",
-        "marginBottom": 9,
       }
     }
   >
@@ -69,7 +69,11 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           key="0"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -82,9 +86,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -105,9 +107,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -128,18 +128,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Higienização de frutas e verduras é realizada de maneira adequada
+            Higienização de frutas e verduras é realizada de maneira inadequada
           </Text>
         </View>
         <View
           key="1"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -152,9 +155,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -175,9 +176,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -198,18 +197,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            A água sanitária utilizada é própria para alimentos
+            A água sanitária utilizada é imprópria para alimentos
           </Text>
         </View>
         <View
           key="2"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -222,9 +224,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -245,9 +245,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -268,18 +266,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            O descongelamento dos alimentos é feito na geladeira
+            O descongelamento dos alimentos é feito fora da geladeira
           </Text>
         </View>
         <View
           key="3"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -292,9 +293,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -315,9 +314,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -338,18 +335,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Uso de água potável no preparo de gelo e alimentos
+            Não uso de água potável no preparo de gelo e alimentos
           </Text>
         </View>
         <View
           key="4"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -362,9 +362,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -385,9 +383,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -408,18 +404,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Os alimentos preparados, que serão congelados ou refrigerados, são adequadamente acondicionados e identificados com: nome da preparação, data de preparo e prazo de validade após a abertura ou retirada da embalagem original
+            Os alimentos preparados, que serão congelados ou refrigerados, não são adequadamente acondicionados e identificados com: nome da preparação, data de preparo e prazo de validade após a abertura ou retirada da embalagem original
           </Text>
         </View>
         <View
           key="5"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -432,9 +431,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -455,9 +452,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -478,18 +473,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Caso as refeições aconteçam em sala de aula, a escola possui carrinho para transportar os alimentos?
+            Caso as refeições aconteçam em sala de aula, a escola carece de carrinho para transportar os alimentos
           </Text>
         </View>
         <View
           key="6"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -502,9 +500,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -525,9 +521,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -548,23 +542,36 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Os carrinhos estão em boas condições e em quantidades suficientes
+            Os carrinhos não estão em boas condições e em quantidades suficientes
           </Text>
         </View>
       </View>
       <View
         behavior="padding"
       >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Alguma observação adicional? Insira aqui. (Opcional)
+        </Text>
         <View
           style={
             Object {
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 30,
+              "marginHorizontal": 10,
+              "marginTop": 5,
             }
           }
         >
@@ -594,14 +601,13 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
         onPress={[Function]}
         style={
           Object {
+            "alignItems": "center",
             "backgroundColor": "#FF9500",
             "borderRadius": 7,
             "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 20,
             "marginHorizontal": 15,
-            "marginTop": 30,
-            "paddingVertical": 10,
+            "marginVertical": 30,
+            "paddingVertical": 15,
           }
         }
       >
@@ -613,6 +619,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           style={
             Object {
               "color": "#FFF",
+              "fontSize": 15,
               "textAlign": "center",
             }
           }
