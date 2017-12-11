@@ -10,6 +10,9 @@ Enzyme.configure({ adapter: new Adapter() });
 const mockStore = configureStore();
 
 const initialStateToScreen = {
+  application: {
+    isLoading: false,
+  },
   counselor: {
     token: 'genericalToken',
 
@@ -62,6 +65,9 @@ const initialStateToScreen = {
 };
 
 const initialState = {
+  application: {
+    isLoading: false,
+  },
   list: {
     listOfCounselorsInAGroup: [
       {

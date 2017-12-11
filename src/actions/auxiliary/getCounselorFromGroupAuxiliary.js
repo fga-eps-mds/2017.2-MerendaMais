@@ -14,7 +14,7 @@ import {
 
 export const getCounselorFromGroup = async (codGroup) => {
   try {
-    const response = await axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
+    const response = await axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`);
     const counselorLinks = [];
     const linksWithCodMembro = [];
 
