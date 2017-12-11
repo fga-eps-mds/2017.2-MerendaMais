@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Picker, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator, Alert } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -9,8 +9,10 @@ import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import SchoolData from '../components/SchoolData';
+import EmailField from '../components/EmailField';
 import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
+import * as constant from '../constants/sendAgentEmail';
 
 const { width } = Dimensions.get('window');
 
@@ -189,34 +191,28 @@ export default class SchedulingVisit extends React.Component {
   }
 
   invitingAgent() {
-    this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
-    this.popupDialogAgent.dismiss();
+    const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    console.log('EMAIL DO AGENTES');
+    console.log(this.state.visit.agentEmail);
+
+    if (!emailRegex.test(this.state.visit.agentEmail)) {
+      Alert.alert(
+        'Email Incorreto!',
+        'O email digitado é inválido! ',
+        [
+          { text: 'Ok', onPress: () => { }, style: 'cancel' },
+        ],
+        { cancelable: false });
+    } else {
+      this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
+      this.popupDialogAgent.dismiss();
+    }
   }
 
   notInvitingAgent() {
     this.setState({ visit: { ...this.state.visit, invitedAgent: false } });
+    this.setState({ visit: { ...this.state.visit, agentEmail: '' } });
     this.popupDialogAgent.dismiss();
-  }
-
-  buttonActivation() {
-    if (this.state.visit.agentEmail > '') {
-      return (
-        <DialogButton
-          enabled
-          key="invitingButton"
-          text="Convidar"
-          onPress={() => { this.invitingAgent(); }}
-        />
-      );
-    }
-    return (
-      <DialogButton
-        enabled
-        key="notInvitingButton"
-        text="Cancelar"
-        onPress={() => { this.notInvitingAgent(); }}
-      />
-    );
   }
 
   manageInvitedListState(counselor) {
@@ -367,29 +363,42 @@ export default class SchedulingVisit extends React.Component {
 
         <PopupDialog
           ref={(popupDialogAgent) => { this.popupDialogAgent = popupDialogAgent; }}
-          height="70%"
+          height="45%"
           width="90%"
           dialogTitle={<DialogTitle
             title="Convidar um Agente?"
           />}
-          actions={[this.buttonActivation()]}
+          actions={[
+            <View style={styles.footerPopUp}>
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                enabled
+                key="invitingButton"
+                text="Convidar"
+                onPress={() => { this.invitingAgent(); }}
+              />
+
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                enabled
+                key="notInvitingButton"
+                text="Cancelar"
+                onPress={() => { this.notInvitingAgent(); }}
+              />
+            </View>,
+          ]}
         >
           <View style={styles.popUp}>
-            <Text style={styles.popUpText}>Escolha algum dos agentes abaixo para poder convidá-lo.
-            Para isso, é necessário possuir um aplicativo de email instalado
-            no seu celular. Caso não possua ou não deseje convidar um agente,
-            não selecione nenhum agente e clique em cancelar.</Text>
+            <Text style={styles.popUpText}>{constant.POPUP_MESSAGE}</Text>
 
-            <Picker
-              style={styles.Picker}
-              selectedValue={this.state.visit.agentEmail}
-              onValueChange={
-                value => this.setState({ visit: { ...this.state.visit, agentEmail: value } })}
-            >
-              <Picker.Item value="" label="Escolha o agente" color="#95a5a6" />
-              <Picker.Item value={'outroemail@email.com'} label={'Agente Sanitário'} />
-              <Picker.Item value={'email@email.com'} label={'Poder Executivo'} />
-            </Picker>
+            <EmailField
+              callback={emailInput => this.setState(
+                { visit: { ...this.state.visit, agentEmail: emailInput } })}
+              placeholder="Email"
+              onSubmitEditing={() => this.setState({ focus: true })}
+              value={this.state.email}
+              size={28}
+            />
 
           </View>
         </PopupDialog>
@@ -510,7 +519,8 @@ export default class SchedulingVisit extends React.Component {
                     enabled
                     key="scheduleButton"
                     text="Agendar"
-                    onPress={() => this.props.asyncSchedulingVisit(this.state)}
+                    onPress={() => this.props.asyncSchedulingVisit(this.state,
+                      this.props.counselor)}
                   />
                 )}
               <Button
