@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   SET_LIST_COUNSELOR_GROUP,
   RESET_LIST,
@@ -12,12 +11,13 @@ import {
   SET_NOT_CHECKED_LIST,
   SET_PENDING_INVITED_SCHEDULE_LIST,
 } from './types';
-import { logWarn } from '../../logConfig/loggers';
 import {
-  APP_IDENTIFIER,
-  DEFAULT_GROUP_LINK_NUVEM_CIVICA,
-  DEFAULT_USER_LINK_NUVEM_CIVICA,
-} from '../constants/generalConstants';
+  getGroup,
+  getCounselorFromGroup,
+  getCounselor,
+  getCounselorProfile,
+} from './auxiliary/getCounselorFromGroupAuxiliary';
+import { logInfo } from '../../logConfig/loggers';
 
 const FILE_NAME = 'listActions.js';
 
@@ -76,95 +76,53 @@ export const setlistOfNotCheckedCounselors = notCheckedCounselor => ({
   payload: notCheckedCounselor,
 });
 
-// Used in Async Action to Login Counselor
-const convertingProfileStringToJSON = (profileStringSingleQuote) => {
-  // Changing ' to " in string received from Nuvem Civica.
-  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
-
-  // Converting profile string to profile JSON.
-  const profileJSON = JSON.parse(profileStringDoubleQuote);
-
-  return profileJSON;
-};
-
-const getCounselorProfile = (counselorInformations, nuvemCode, CPF, dispatch) => {
-  const getProfileHeader = {
-    headers: {
-      appIdentifier: APP_IDENTIFIER,
-    },
-  };
-  axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${nuvemCode}/perfil`, getProfileHeader)
-    .then((response) => {
-      const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
-      const completeCounselorInformations = counselorInformations;
-
-      completeCounselorInformations.profile = profile;
-
-      if (profile.cpf !== CPF) {
-        dispatch(setList(completeCounselorInformations));
-
-        if (completeCounselorInformations.profile.presidentChecked) {
-          dispatch(setlistOfCheckedCounselors(completeCounselorInformations));
-        } else {
-          dispatch(setlistOfNotCheckedCounselors(completeCounselorInformations));
-        }
-      }
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, '',
-        `Request result in an ${error} nuvem code ${nuvemCode}`);
-    });
-};
-
-const getCounselor = (counselorLink, linkWithCodMembro, CPF, dispatch) => {
-  axios.get(counselorLink)
-    .then((response) => {
-      const auxCodMembro = linkWithCodMembro.substr(linkWithCodMembro.indexOf('membros/'));
-      const codMembro = auxCodMembro.substr(8);
-      const counselorInformations = {
-        nuvemCode: response.data.cod,
-        email: response.data.email,
-        name: response.data.nomeCompleto,
-        codMembro,
-        profile: {},
-      };
-      getCounselorProfile(counselorInformations, response.data.cod, CPF, dispatch);
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'getCounselor',
-        `Request result in an ${error}`);
-    });
-};
-
-const getCounselorFromGroup = (codGroup, CPF, dispatch) => {
-  axios.get(`${DEFAULT_GROUP_LINK_NUVEM_CIVICA}${codGroup}/membros`)
-    .then((response) => {
-      for (let i = 0; i < response.data.length; i += 1) {
-        getCounselor(response.data[i].links[1].href, response.data[i].links[0].href, CPF, dispatch);
-      }
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'getCounselorFromGroup',
-        `Request result in an ${error}`);
-    });
-};
-
-export const asyncGetCounselorFromGroup = (CAE, CPF) => (dispatch) => {
+export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
   dispatch(resetList());
 
-  const paramsToNuvem = {
-    params: {
-      codAplicativo: APP_IDENTIFIER,
-      descricao: CAE,
-    },
-  };
-  axios.get(DEFAULT_GROUP_LINK_NUVEM_CIVICA, paramsToNuvem)
-    .then((response) => {
-      const codGroup = response.data[0].codGrupo;
-      getCounselorFromGroup(codGroup, CPF, dispatch);
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'asyncGetCounselorFromGroup',
-        `Request result in an ${error}`);
-    });
+  console.log(getGroup);
+  const codGroup = await getGroup(CAE);
+  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Received codGroup: ${codGroup}`);
+  // Returns an array of arrays. The 0 element of the array contains all counselor links,
+  // while the 1 containers all codMembro links.
+  const listOfLinks = await getCounselorFromGroup(codGroup);
+  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `ListOfLinks: ${listOfLinks}`);
+  const counselorLinks = listOfLinks[0];
+  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `counselorLinks: ${counselorLinks}`);
+  const linksWithCodMembro = listOfLinks[1];
+  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `LinksWithCodMembro ${linksWithCodMembro}`);
+
+
+  const promisesInformationWithNuvemCode = [];
+
+  for (let i = 0; i < listOfLinks.length; i += 1) {
+    promisesInformationWithNuvemCode.push(getCounselor(counselorLinks[i], linksWithCodMembro[i]));
+  }
+
+  // Return a array of arrays.
+  // For each element, position 0 is the counselor information, and position 1 is the nuvem code.
+  const counselorsInformationWithNuvemCode = await Promise.all(promisesInformationWithNuvemCode);
+
+  const promisesCompleteCounselors = [];
+
+  for (let i = 0; i < counselorsInformationWithNuvemCode.length; i += 1) {
+    promisesCompleteCounselors.push(
+      getCounselorProfile(
+        counselorsInformationWithNuvemCode[i][0],
+        counselorsInformationWithNuvemCode[i][1]));
+  }
+
+  const completeCounselors = await Promise.all(promisesCompleteCounselors);
+
+  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `CompleteCounselors: ${JSON.stringify(completeCounselors)}`);
+  for (let i = 0; i < completeCounselors.length; i += 1) {
+    if (completeCounselors[i].profile.cpf !== CPF) {
+      dispatch(setList(completeCounselors[i]));
+      logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Counselors sent to store ${JSON.stringify(completeCounselors[i])}`);
+      if (completeCounselors[i].profile.presidentChecked) {
+        dispatch(setlistOfCheckedCounselors(completeCounselors[i]));
+      } else {
+        dispatch(setlistOfNotCheckedCounselors(completeCounselors[i]));
+      }
+    }
+  }
 };
