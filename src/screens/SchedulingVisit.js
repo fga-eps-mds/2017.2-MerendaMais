@@ -158,6 +158,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
+  InputFieldStyle: {
+    marginHorizontal: 65,
+    marginLeft: 30,
+    marginRight: 30,
+    paddingVertical: 8,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 7,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
+
 });
 
 export default class SchedulingVisit extends React.Component {
@@ -192,8 +208,6 @@ export default class SchedulingVisit extends React.Component {
 
   invitingAgent() {
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    console.log('EMAIL DO AGENTES');
-    console.log(this.state.visit.agentEmail);
 
     if (!emailRegex.test(this.state.visit.agentEmail)) {
       Alert.alert(
@@ -213,6 +227,27 @@ export default class SchedulingVisit extends React.Component {
     this.setState({ visit: { ...this.state.visit, invitedAgent: false } });
     this.setState({ visit: { ...this.state.visit, agentEmail: '' } });
     this.popupDialogAgent.dismiss();
+  }
+
+  showAgentEmail() {
+    if (this.state.visit.agentEmail !== '') {
+      return (
+        <View>
+          <Text style={styles.TopListText}>Agente Convidado</Text>
+          <View style={styles.InputFieldStyle}>
+            <Text>{this.state.visit.agentEmail}</Text>
+          </View>
+        </View>
+      );
+    }
+    return (
+      <View>
+        <Text style={styles.TopListText}>Agente Convidado</Text>
+        <View style={styles.InputFieldStyle}>
+          <Text style={{ color: '#bababa' }}>Nenhum agente convidado</Text>
+        </View>
+      </View>
+    );
   }
 
   manageInvitedListState(counselor) {
@@ -428,6 +463,7 @@ export default class SchedulingVisit extends React.Component {
             </View>,
           ]}
         >
+
           <ScrollView key="showInviteCounselorList">
             {this.renderCounselorList()}
           </ScrollView>
@@ -437,6 +473,7 @@ export default class SchedulingVisit extends React.Component {
           /* This make the nested ScrollView works. */
           scrollEnabled={this.state.enabled}
         >
+
           <View>
             <View style={styles.Container}>
               <TouchableOpacity
@@ -511,6 +548,8 @@ export default class SchedulingVisit extends React.Component {
                 <Text style={styles.buttonText}>Convidar Agente</Text>
               </TouchableOpacity>
             </View>
+
+            {this.showAgentEmail()}
 
             <View>
               {this.props.school.schoolSelected &&
