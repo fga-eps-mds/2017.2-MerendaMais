@@ -31,13 +31,6 @@ describe('Testing Menu Side Bar', () => {
     button.simulate('press');
   });
 
-  it('Test onPress updateInfoScreen', () => {
-    const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
-    const button = wrapper.findWhere(c => c.key() === 'updateInfoScreen');
-    expect(button.length).toEqual(1);
-    button.simulate('press');
-  });
-
   it('Test onPress profileInfoScreen', () => {
     const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
     const button = wrapper.findWhere(c => c.key() === 'profileInfoScreen');
@@ -55,6 +48,27 @@ describe('Testing Menu Side Bar', () => {
   it('Test onPress seeLegislation', () => {
     const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
     const button = wrapper.findWhere(c => c.key() === 'seeLegislation');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
+
+  it('Test onPress scheduleMeeting', () => {
+    const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
+    const button = wrapper.findWhere(c => c.key() === 'scheduleMeeting');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
+
+  it('Test onPress notifications', () => {
+    const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
+    const button = wrapper.findWhere(c => c.key() === 'notifications');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
+
+  it('Test onPress doComplaint', () => {
+    const wrapper = shallow(<Menu {...initialState} />, { context: { store } });
+    const button = wrapper.findWhere(c => c.key() === 'doComplaint');
     expect(button.length).toEqual(1);
     button.simulate('press');
   });

@@ -5,12 +5,13 @@ import UpdateInfoScreen from '../screens/UpdateInfoScreen';
 const mapStateToProps = state => (
   {
     counselor: state.counselor,
+    application: state.application.isLoading,
   }
 );
 
 const mapDispatchToProps = dispatch => (
   {
-    asyncEditCounselor: userData => dispatch(asyncEditCounselor(userData)),
+    asyncEditCounselor: async userData => dispatch(await asyncEditCounselor(userData)),
   }
 );
 

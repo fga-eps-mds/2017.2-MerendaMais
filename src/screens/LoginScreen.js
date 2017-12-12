@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   View,
+  Keyboard,
   BackHandler,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -123,7 +124,10 @@ export default class LoginScreen extends React.Component {
 
           <ButtonWithActivityIndicator
             activityIndicatorStyle={styles.loading}
-            onPress={() => this.props.asyncLoginCounselor(this.state)}
+            onPress={() => {
+              Keyboard.dismiss();
+              this.props.asyncLoginCounselor(this.state);
+            }}
             isLoading={this.props.isLoading}
             buttonKey="LoginCounselor"
             buttonText="Entrar"

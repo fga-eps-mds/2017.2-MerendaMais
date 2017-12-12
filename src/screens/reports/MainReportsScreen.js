@@ -1,22 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet,
+import {
+  StyleSheet,
   TouchableOpacity,
   Text,
   View,
   ScrollView,
   Dimensions,
   BackHandler,
+  Alert,
 } from 'react-native';
 import axios from 'axios';
-import Checkbox from 'react-native-checkbox';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
-import store from '../../Reducers/store';
-import { backHandlerPopToMain } from '../../NavigationFunctions';
-import Header from '../../components/Header';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
-import { POSTS_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
+import ShowToast from '../../components/Toast';
+import {
+  POSTS_LINK_NUVEM_CIVICA,
+  APP_IDENTIFIER,
+  INSPECTION_POSTING_TYPE_CODE,
+  FINISH_INSPECTION,
+  LEAVING_INSPECTION,
+  INPECTION_ERROR,
+  INTERNAL_ERROR,
+  INSPECTION_SUCCEED,
+  UNAUDITED,
+  YES,
+  NO,
+  SCHOOL_SURROUNDINGS,
+  FOOD_STOCK,
+  DOCUMENTATION,
+  FOOD_QUALITY,
+  FOOD_HANDLER,
+  REFECTORY,
+  WATER_SEWER_SUPPLY,
+  KITCHEN,
+  FOOD_PREPARATION,
+  OTHER_OBSERVATION,
+} from '../../constants/generalConstants';
+import {
+  GET_CURRENT_SCHEDULE_ERROR,
+  AFTER_INPECTION_POST_ERROR,
+  UPDATE_CURRENT_SCHEDULE_ERROR,
+  BEFORE_INPECTION_POST_ERROR,
+} from '../../constants/errorConstants';
 import { convertingJSONToString } from '../../actions/counselorActions';
+import { errorGenerator } from '../../actions/schedulingVisitActions';
+import Header from '../../components/Header';
+import ButtonWithActivityIndicator from '../../components/ButtonWithActivityIndicator';
 
 const { width } = Dimensions.get('window');
 
@@ -25,36 +56,13 @@ const FILE_NAME = 'MainReportsScreen.js';
 const styles = StyleSheet.create({
 
   buttonContainer: {
-    paddingVertical: 10,
+    paddingVertical: 15,
     borderWidth: 1,
     borderRadius: 7,
     marginHorizontal: 15,
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 13,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
-  },
-  icon_header: {
-    marginLeft: 20,
-  },
-  wrapper: {
-    height: 100,
-    flexDirection: 'row',
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#FF9500',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    alignItems: 'center',
-  },
-  buttonPhoto: {
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 10,
-    backgroundColor: '#FF9500',
   },
 
   buttonText: {
@@ -66,362 +74,550 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 1,
   },
-  textLogo: {
-    // Font size 30 looks nice on 360 width phone.
-    // (x * widthYourPhone = fontSize) where x is the proportion used in fontSize above.
-    fontSize: width * 0.08,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: 10,
-    marginLeft: 100,
-  },
+
   text: {
-    paddingLeft: 20,
-    paddingTop: 5,
+    flex: 1,
+    width: width * 0.7,
+    paddingLeft: 10,
     color: 'blue',
     fontSize: 20,
-    paddingRight: 10,
+  },
+
+  statusView: {
+    flexDirection: 'row',
+    paddingVertical: 20,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
+  loading: {
+    marginTop: 15,
+    marginBottom: 25,
   },
 });
 
-export default class MainReportsScreen extends React.Component {
-  constructor(props) {
-    super(props);
+// Component to each clickable text that goes to checklists.
+const GoToChecklistClickableText = props => (
+  <View style={styles.statusView}>
+    <TouchableOpacity
+      onPress={() => props.onPress()}
+      key={props.goToChecklistKey}
+    >
+      <Text style={styles.text}>{props.goToChecklistText}</Text>
+    </TouchableOpacity>
 
-    this.state = {
-      isLoading: false,
-      anyReport: false,
-      whatever: '',
-    };
+    <View>
+      {props.isCompleted ? (
+        <MaterialIcons
+          name="check"
+          size={28}
+          style={{ paddingRight: 23 }}
+          color="green"
+        />
+      ) : (<Text />)
+      }
+    </View>
+  </View>
+);
+
+const treatingGenericInspectionError = (statusError) => {
+  Alert.alert(
+    'Ops, algo deu errado!',
+    INPECTION_ERROR,
+    [
+      { text: 'Ok' },
+    ],
+  );
+
+  logWarn(FILE_NAME, 'finishInspection',
+    `Error with status: ${statusError}`);
+};
+
+// Used to return a readable response for the questions.
+const getResponseOfQuestion = (item) => {
+  // Verify if the item was marked to return if the check was Yes or No.
+  if (item.status) {
+    if (item.markedYes) {
+      return YES;
+    } else if (item.markedNo) {
+      return NO;
+    }
   }
 
+  // If the item wasn't marked it means that it was unaudited.
+  return UNAUDITED;
+};
+
+/* Used to return the inspection result for default inspection results in JSON formart for
+Nuvem. The default format is: Array of question itens in JSON format, a Observation Text
+and a status tha indicate if it was concluded. */
+const mountDefaultJsonOfInspectionResult = (
+  defaultNameOfVerificationList,
+  defaultChecklist,
+  defaultTextObservation,
+  defaultConcludedStatus) => {
+  const defaultContentJSON = {
+    nameOfVerificationList: defaultNameOfVerificationList,
+    binaryQuestions: {},
+    textObservation: defaultTextObservation,
+    wasConcluded: defaultConcludedStatus,
+  };
+
+  defaultChecklist.forEach((item) => {
+    defaultContentJSON.binaryQuestions[item.question] =
+      {
+        question: item.question,
+        answer: getResponseOfQuestion(item),
+      };
+  });
+
+  return defaultContentJSON;
+};
+
+// Since this screen has a special navigation logic, we made method here to control it.
+const backNavigation = () => {
+  Alert.alert(
+    'SAIR DA FISCALIZAÇÃO',
+    LEAVING_INSPECTION,
+    [
+      { text: 'Cancelar' },
+      { text: 'Voltar', onPress: () => Actions.popTo('StartPendingInspection') },
+    ],
+  );
+  return true;
+};
+
+export default class MainReportsScreen extends React.Component {
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
+    BackHandler.addEventListener('hardwareBackPress', backNavigation);
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
+    BackHandler.removeEventListener('hardwareBackPress', backNavigation);
   }
 
-  checkingFoodQualityReport() {
-    const newStateFoodQuality = store.getState();
-    if (newStateFoodQuality.report.statusFoodQuality) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-  checkingDocReport() {
-    const newStateDoc = store.getState();
-    if (newStateDoc.report.statusDoc) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-  checkingRefectoryReport() {
-    const newStateRefectory = store.getState();
-    if (newStateRefectory.report.statusRefectory) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-  checkingKitchenReport() {
-    const newStateKitchen = store.getState();
-    if (newStateKitchen.report.statusKitchen) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-  checkingStockFoodReport() {
-    const newStateStockFood = store.getState();
-    if (newStateStockFood.report.statusFoodStock) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-
-  checkingSchoolSurroundingsReport() {
-    const newStateSchoolSurroudingings = store.getState();
-    if (newStateSchoolSurroudingings.report.statusSchoolSurroundings) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-  checkingFoodHandlerReport() {
-    const newStateFoodHandler = store.getState();
-    if (newStateFoodHandler.report.statusFoodHandler) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-  checkingReportObservation() {
-    const newStateReportObservation = store.getState();
-    if (newStateReportObservation.report.statusReportObservation) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-
-  checkingWaterSewerSupplyReport() {
-    const newStateWaterSewerSupply = store.getState();
-    if (newStateWaterSewerSupply.report.statusWaterSewerSupply) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 10 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-
-  checkingFoodPreparationReport() {
-    const newStateFoodPreparation = store.getState();
-    if (newStateFoodPreparation.report.statusFoodPreparation) {
-      this.state.anyReport = true;
-      return (
-        <View style={{ marginLeft: 5 }}>
-          <Checkbox
-            checked={this.state.anyReport}
-            label=" "
-            checkedColor="green"
-          />
-        </View>
-      );
-    }
-    return (null);
-  }
-
-  changeCounselorRealizedVisitStatus() {
-    const newContentJSON = this.props.scheduleVisit.currentVisit.content;
-    newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
-
-    const newContentString = convertingJSONToString(newContentJSON);
-
-    const putScheduleHeader = {
+  async addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults) {
+    // Header to create a new content in inpection post.
+    const headerToInspectionContent = {
       headers: {
         appToken: this.props.counselor.token,
       },
     };
 
-    const putScheduleBody = {
-      JSON: newContentString,
-      texto: 'Agendamento',
-      valor: 0,
-    };
+    // Used to await all promises return after proceed with the function.
+    const allContentsResponse = [];
 
-    axios.put(`${POSTS_LINK_NUVEM_CIVICA}
-    ${this.props.scheduleVisit.currentVisit.codPostagem}/conteudos/
-    ${this.props.scheduleVisit.currentVisit.codConteudoPost}`,
-    putScheduleBody, putScheduleHeader)
-      .then((response) => {
-        logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus', response.data);
-      })
-      .catch((error) => {
-        logWarn(FILE_NAME, 'changeCounselorRealizedVisitStatus', error);
-      });
+    try {
+      for (let i = 0; i < contentsListOfInspectionResults.length; i += 1) {
+        logInfo(FILE_NAME, 'addContentsOnInspectionPostInNuvem',
+          `Creating content for verification list: ${contentsListOfInspectionResults[i].nameOfVerificationList}`);
+
+        // Body to create a new content in inpection post.
+        const bodyToInspectionContent = {
+          JSON: convertingJSONToString(contentsListOfInspectionResults[i]),
+          texto: contentsListOfInspectionResults[i].nameOfVerificationList,
+        };
+
+        // Creating content in Inspection post.
+        allContentsResponse.push(
+          axios.post(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos`,
+            bodyToInspectionContent,
+            headerToInspectionContent,
+          ),
+        );
+      }
+
+      // Wait all contents be put successfully in inspection post.
+      await Promise.all(allContentsResponse);
+
+      logInfo(FILE_NAME, 'addContentsOnInspectionPostInNuvem',
+        `After promise.all, ${allContentsResponse.length} contents were successfully put in inspection post.`);
+    } catch (error) {
+      logWarn(FILE_NAME, 'addContentsOnInspectionPostInNuvem', `Request result in an ${error}`);
+
+      throw errorGenerator(AFTER_INPECTION_POST_ERROR, error.response.status);
+    }
   }
 
-  finishVisit() {
-    /* Requisições para salvar a fiscalização na Nuvem Cívica */
+  generateContentsListOfInspectionResults() {
+    logInfo(FILE_NAME, 'generateContentsListOfInspectionResults', 'Generating contents list of inspection results.');
 
-    /* Change the post at Nuvem Cívica to inform that this counselor realized this visit */
-    this.changeCounselorRealizedVisitStatus();
+    const contentsListOfInspectionResults = [];
+
+    // Used to mount the JSON result to school surroundings inspection.
+    const resultOfSchoolSurroundingsInspection =
+      mountDefaultJsonOfInspectionResult(
+        SCHOOL_SURROUNDINGS,
+        this.props.report.schoolSurroundings,
+        this.props.report.schoolSurroundingsObservation,
+        this.props.report.statusSchoolSurroundings,
+      );
+
+    // Put the school surroundings JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfSchoolSurroundingsInspection);
+
+    // Used to mount the JSON result to Food Stock inspection.
+    const resultOfFoodStock =
+      mountDefaultJsonOfInspectionResult(
+        FOOD_STOCK,
+        this.props.report.foodStock,
+        this.props.report.foodStockObservation,
+        this.props.report.statusFoodStock,
+      );
+
+    // Put the Food Stock JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodStock);
+
+    // Used to mount the JSON result to Documentation inspection.
+    const resultOfDocumentation =
+      mountDefaultJsonOfInspectionResult(
+        DOCUMENTATION,
+        this.props.report.doc,
+        this.props.report.docObservation,
+        this.props.report.statusDoc,
+      );
+
+    // Put the Documentation JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfDocumentation);
+
+    // Used to mount the JSON result to Food Quality inspection.
+    const resultOfFoodQuality =
+      mountDefaultJsonOfInspectionResult(
+        FOOD_QUALITY,
+        this.props.report.foodQuality,
+        this.props.report.foodQualityObservation,
+        this.props.report.statusFoodQuality,
+      );
+
+    // Adding additional information in this inspection result that isn't in a default form.
+    resultOfFoodQuality.additionalData = {
+      acceptedMenu: this.props.report.acceptedMenu,
+      refusedMenu: this.props.report.refusedMenu,
+    };
+
+    // Put the Food Quality JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodQuality);
+
+    // Used to mount the JSON result to Food Handler inspection.
+    const resultOfFoodHandler =
+      mountDefaultJsonOfInspectionResult(
+        FOOD_HANDLER,
+        this.props.report.foodHandler,
+        this.props.report.foodHandlerObservation,
+        this.props.report.statusFoodHandler,
+      );
+
+    // Put the Food Handler JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodHandler);
+
+    // Used to mount the JSON result to refectory inspection.
+    const resultOfRefectory =
+      mountDefaultJsonOfInspectionResult(
+        REFECTORY,
+        this.props.report.refectory,
+        this.props.report.refectoryObservation,
+        this.props.report.statusRefectory,
+      );
+
+    // Put the refectory JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfRefectory);
+
+    // Used to mount the JSON result to water Sewer Supply inspection.
+    const resultOfWaterSewerSupply =
+      mountDefaultJsonOfInspectionResult(
+        WATER_SEWER_SUPPLY,
+        this.props.report.waterSewerSupply,
+        this.props.report.waterSewerSupplyObservation,
+        this.props.report.statuSwaterSewerSupply,
+      );
+
+    // Put the water Sewer Supply JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfWaterSewerSupply);
+
+    // Used to mount the JSON result to kitchen inspection.
+    const resultOfKitchen =
+      mountDefaultJsonOfInspectionResult(
+        KITCHEN,
+        this.props.report.kitchen,
+        this.props.report.kitchenObservation,
+        this.props.report.statusKitchen,
+      );
+
+    // Put the kitchen JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfKitchen);
+
+    // Used to mount the JSON result to food Preparation inspection.
+    const resultOfFoodPreparation =
+      mountDefaultJsonOfInspectionResult(
+        FOOD_PREPARATION,
+        this.props.report.foodPreparation,
+        this.props.report.foodPreparationObservation,
+        this.props.report.statusFoodPreparation,
+      );
+
+    // Put the food Preparation JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfFoodPreparation);
+
+    // Mounting the JSON result to other Observations of inspection. That one isn't in default form.
+    const resultOfOtherObservation = {
+      nameOfVerificationList: OTHER_OBSERVATION,
+      textObservation: this.props.report.otherObservation,
+      wasConcluded: this.props.report.statusReportObservation,
+    };
+
+    // Put the other Observations JSON result in the contents array that will be send to Nuvem.
+    contentsListOfInspectionResults.push(resultOfOtherObservation);
+
+    logInfo(FILE_NAME, 'generateContentsListOfInspectionResults', 'Contents list of inspection results were generated.');
+
+    return contentsListOfInspectionResults;
+  }
+
+  async createInspectionPostInNuvem() {
+    // Header to create a new inpection post.
+    const headerToInspection = {
+      headers: {
+        appIdentifier: APP_IDENTIFIER,
+        appToken: this.props.counselor.token,
+      },
+    };
+
+    // Body to create a new inpection post.
+    const bodyToInspection = {
+      autor: {
+        codPessoa: this.props.counselor.nuvemCode,
+      },
+      codGrupoDestino: this.props.counselor.codGrupoDestino,
+      postagemRelacionada: {
+        codPostagem: this.props.scheduleVisit.currentVisit.codPostagem,
+      },
+      tipo: {
+        codTipoPostagem: INSPECTION_POSTING_TYPE_CODE,
+      },
+    };
+
+    try {
+      const response = await axios.post(POSTS_LINK_NUVEM_CIVICA,
+        bodyToInspection,
+        headerToInspection);
+
+      logInfo(FILE_NAME, 'createInspectionPostInNuvem', `${JSON.stringify(response.data)}`);
+
+      // Getting codPostagem returned in a link inside headers.
+      const auxCodPostagem = response.headers.location.substr(response.headers.location.indexOf('postagens/'));
+      const codPostagem = auxCodPostagem.substr(10);
+
+      logInfo(FILE_NAME, 'createInspectionPostInNuvem', `Post code of inspection created: ${codPostagem}`);
+
+      return codPostagem;
+    } catch (error) {
+      logWarn(FILE_NAME, 'createInspectionPostInNuvem', `Request result in an ${error}`);
+
+      throw errorGenerator(BEFORE_INPECTION_POST_ERROR, error.response.status);
+    }
+  }
+
+  // Prepare the results of inspection in blocks of information to send in post contents to Nuvem.
+  async prepareAndSendInspectionResultsToNuvem() {
+    const codPostagem = await this.createInspectionPostInNuvem();
+
+    const contentsListOfInspectionResults = this.generateContentsListOfInspectionResults();
+
+    logInfo(FILE_NAME, 'prepareAndSendInspectionResultsToNuvem',
+      `List of JSONs with checklist contents: ${JSON.stringify(contentsListOfInspectionResults, null, 2)}`);
+
+    await this.addContentsOnInspectionPostInNuvem(codPostagem, contentsListOfInspectionResults);
+  }
+
+  // Get the most current version of the schedule being inspected.
+  async updateCurrentVersionOfScheduleInspected() {
+    logInfo(FILE_NAME, 'updateCurrentVersionOfScheduleInspected',
+      `Getting current version of schedule inspected. CodPostagem: ${this.props.scheduleVisit.currentVisit.codPostagem} CodConteudo: ${this.props.scheduleVisit.currentVisit.codConteudoPost}`);
+
+    const getData = {
+      appToken: this.props.counselor.token,
+      codConteudoPost: this.props.scheduleVisit.currentVisit.codConteudoPost,
+      codPostagem: this.props.scheduleVisit.currentVisit.codPostagem,
+    };
+
+    await this.props.asyncGetCurrentSchedule(getData);
+
+    logInfo(FILE_NAME, 'updateCurrentVersionOfScheduleInspected',
+      'Current version of schedule inspected updated in store.');
+  }
+
+  // Change the post at Nuvem Cívica to inform that this counselor realized this visit.
+  async changeCounselorRealizedVisitStatus() {
+    logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus',
+      'Updating counselor realized inspection status in visit data.');
+
+    const newContentJSON = this.props.scheduleVisit.currentVisit.content;
+    newContentJSON.visitListOfInvitees[this.props.counselor.nuvemCode].realizedVisit = true;
+
+    const postData = {
+      content: { ...newContentJSON },
+      codConteudoPost: this.props.scheduleVisit.currentVisit.codConteudoPost,
+      codPostagem: this.props.scheduleVisit.currentVisit.codPostagem,
+    };
+
+    await this.props.asyncUpdateSchedule(postData);
+
+    logInfo(FILE_NAME, 'changeCounselorRealizedVisitStatus',
+      'Counselor realized inspection status in visit data updated.');
+  }
+
+  // Make the final requests to finalize the inspect.
+  async finishInspection() {
+    this.props.syncIsLoading();
+
+    try {
+      await this.prepareAndSendInspectionResultsToNuvem();
+
+      await this.updateCurrentVersionOfScheduleInspected();
+
+      await this.changeCounselorRealizedVisitStatus();
+
+      Alert.alert(
+        'FISCALIZAÇÃO ENCERRADA',
+        INSPECTION_SUCCEED,
+        [
+          { text: 'OK' },
+        ],
+      );
+      Actions.mainScreen();
+    } catch (error) {
+      const errorJson = JSON.parse(error.message);
+
+      switch (errorJson.name) {
+        case BEFORE_INPECTION_POST_ERROR:
+          treatingGenericInspectionError(errorJson.status);
+          break;
+        case AFTER_INPECTION_POST_ERROR:
+        case GET_CURRENT_SCHEDULE_ERROR:
+        case UPDATE_CURRENT_SCHEDULE_ERROR:
+          // TODO(Here is needed delete the inspection post created)
+          treatingGenericInspectionError(errorJson.status);
+          break;
+        default:
+          ShowToast.Toast(INTERNAL_ERROR);
+          logWarn(FILE_NAME, 'finishInspection',
+            `Unknown Error -> status: ${errorJson.status}`);
+          break;
+      }
+    }
+
+    this.props.syncIsNotLoading();
   }
 
   render() {
     return (
       <View style={styles.content}>
         <Header
-          title={'Relatórios'}
-          onPress={() => Actions.popTo('mainScreen')}
+          title={'Listas de verificação'}
+          onPress={() => backNavigation()}
         />
-        <Text style={styles.textLogo}>Relatórios</Text>
         <ScrollView>
-          <View>
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
-              >
-                <Text style={styles.text}>Arredores da Escola</Text>
-              </TouchableOpacity>
-              {this.checkingSchoolSurroundingsReport()}
-            </View>
+          <View pointerEvents={this.props.clickableView} >
+            <GoToChecklistClickableText
+              goToChecklistKey={SCHOOL_SURROUNDINGS}
+              goToChecklistText={SCHOOL_SURROUNDINGS}
+              onPress={() => Actions.schoolSurroundingsCheckoutScreen()}
+              isCompleted={this.props.report.statusSchoolSurroundings}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.stockFoodCheckoutScreen()}
-              >
-                <Text style={styles.text}>Estoque de Alimentos</Text>
-              </TouchableOpacity>
-              {this.checkingStockFoodReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={FOOD_STOCK}
+              goToChecklistText={FOOD_STOCK}
+              onPress={() => Actions.stockFoodCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodStock}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.DocCheckoutScreen()}
-              >
-                <Text style={styles.text}>Documentação</Text>
-              </TouchableOpacity>
-              {this.checkingDocReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={DOCUMENTATION}
+              goToChecklistText={DOCUMENTATION}
+              onPress={() => Actions.DocCheckoutScreen()}
+              isCompleted={this.props.report.statusDoc}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.foodQualityCheckoutScreen()}
-              >
-                <Text style={styles.text}>Qualidade da Alimentação</Text>
-              </TouchableOpacity>
-              {this.checkingFoodQualityReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={FOOD_QUALITY}
+              goToChecklistText={FOOD_QUALITY}
+              onPress={() => Actions.foodQualityCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodQuality}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.foodHandlerCheckoutScreen()}
-              >
-                <Text style={styles.text}>Manipuladores de Alimentos</Text>
-              </TouchableOpacity>
-              {this.checkingFoodHandlerReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={FOOD_HANDLER}
+              goToChecklistText={FOOD_HANDLER}
+              onPress={() => Actions.foodHandlerCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodHandler}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.refectoryCheckoutScreen()}
-              >
-                <Text style={styles.text}>Refeitório</Text>
-              </TouchableOpacity>
-              {this.checkingRefectoryReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={REFECTORY}
+              goToChecklistText={REFECTORY}
+              onPress={() => Actions.refectoryCheckoutScreen()}
+              isCompleted={this.props.report.statusRefectory}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
-              >
-                <Text style={styles.text}>Abastecimento de Água e Esgoto</Text>
-              </TouchableOpacity>
-              {this.checkingWaterSewerSupplyReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={WATER_SEWER_SUPPLY}
+              goToChecklistText={WATER_SEWER_SUPPLY}
+              onPress={() => Actions.waterSewerSupplyCheckoutScreen()}
+              isCompleted={this.props.report.statusWaterSewerSupply}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.kitchenCheckoutScreen()}
-              >
-                <Text style={styles.text}>Cozinha</Text>
-              </TouchableOpacity>
-              {this.checkingKitchenReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={KITCHEN}
+              goToChecklistText={KITCHEN}
+              onPress={() => Actions.kitchenCheckoutScreen()}
+              isCompleted={this.props.report.statusKitchen}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.foodPreparationCheckoutScreen()}
-              >
-                <Text style={styles.text}>Preparação e Distribuição de Alimentos</Text>
-              </TouchableOpacity>
-              {this.checkingFoodPreparationReport()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={FOOD_PREPARATION}
+              goToChecklistText={FOOD_PREPARATION}
+              onPress={() => Actions.foodPreparationCheckoutScreen()}
+              isCompleted={this.props.report.statusFoodPreparation}
+            />
 
-            <View style={{ flexDirection: 'row', paddingTop: 40 }}>
-              <TouchableOpacity
-                onPress={() => Actions.ReportObservationScreen()}
-              >
-                <Text style={styles.text}>+ Outras informações</Text>
-              </TouchableOpacity>
-              {this.checkingReportObservation()}
-            </View>
+            <GoToChecklistClickableText
+              goToChecklistKey={`+ ${OTHER_OBSERVATION}`}
+              goToChecklistText={`+ ${OTHER_OBSERVATION}`}
+              onPress={() => Actions.ReportObservationScreen()}
+              isCompleted={this.props.report.statusReportObservation}
+            />
 
             <TouchableOpacity
-              style={styles.buttonPhoto}
+              activeOpacity={0.7}
+              style={styles.buttonContainer}
             >
               <Text style={styles.buttonText}>Anexar fotos</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
+              activeOpacity={0.7}
               style={styles.buttonContainer}
             >
               <Text style={styles.buttonText}>Gerar Relatório Final</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={() => this.finishVisit()}
-            >
-              <Text style={styles.buttonText}>Encerrar Fiscalização</Text>
-            </TouchableOpacity>
+            <ButtonWithActivityIndicator
+              activityIndicatorStyle={styles.loading}
+              onPress={() => Alert.alert(
+                'ENCERRAR FISCALIZAÇÃO',
+                FINISH_INSPECTION,
+                [
+                  { text: 'Cancelar' },
+                  { text: 'Finalizar', onPress: () => this.finishInspection() },
+                ],
+              )}
+              isLoading={this.props.isLoading}
+              buttonKey="FinishInspectionButton"
+              buttonText="Encerrar Fiscalização"
+              buttonStyle={styles.buttonContainer}
+            />
+
           </View>
         </ScrollView>
       </View>
@@ -429,9 +625,15 @@ export default class MainReportsScreen extends React.Component {
   }
 }
 
-const { shape, string, number } = PropTypes;
+const { shape, string, number, bool, func } = PropTypes;
 
 MainReportsScreen.propTypes = {
+  isLoading: bool.isRequired,
+  clickableView: string.isRequired,
+  syncIsLoading: func.isRequired,
+  asyncGetCurrentSchedule: func.isRequired,
+  asyncUpdateSchedule: func.isRequired,
+  syncIsNotLoading: func.isRequired,
   counselor: shape({
     token: string.isRequired,
     nuvemCode: number.isRequired,
@@ -440,4 +642,14 @@ MainReportsScreen.propTypes = {
     currentVisit: shape({
     }).isRequired,
   }).isRequired,
+  report: shape({
+
+  }).isRequired,
+};
+
+GoToChecklistClickableText.propTypes = {
+  isCompleted: bool.isRequired,
+  goToChecklistText: string.isRequired,
+  onPress: func.isRequired,
+  goToChecklistKey: string.isRequired,
 };

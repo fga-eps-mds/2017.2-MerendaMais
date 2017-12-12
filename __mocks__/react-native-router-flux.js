@@ -6,6 +6,9 @@ export const Actions = {
   schedulingVisit: () => ({}),
   manageRegisters: () => ({}),
   lesgislationScreen: () => ({}),
+  scheduleMeeting: () => ({}),
+  PrincipalNotifications: () => ({}),
+  complaintScreen: () => ({}),
   Resolution1Screen: jest.fn(),
   drawerOpen: jest.fn(),
   mainReportsScreen: jest.fn(),
@@ -14,5 +17,6 @@ export const Actions = {
   StartPendingInspection: jest.fn(),
   scheduleMeeting: jest.fn(),
   scheduleMeetingMap: jest.fn(),
-
+  mainScreen: jest.fn(),
+  VisitInvites: jest.fn(),
 };

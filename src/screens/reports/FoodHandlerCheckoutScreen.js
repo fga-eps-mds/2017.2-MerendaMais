@@ -2,85 +2,18 @@ import React from 'react';
 import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
-import { StyleSheet,
-  TouchableOpacity,
+import { TouchableOpacity,
   Text,
   View,
   ScrollView,
   TextInput,
-  Dimensions,
   KeyboardAvoidingView,
   BackHandler,
 } from 'react-native';
+import { FOOD_HANDLER } from '../../constants/generalConstants';
 import Header from '../../components/Header';
+import styles from '../../Styles';
 import { backHandlerPop } from '../../NavigationFunctions';
-
-const { height } = Dimensions.get('window');
-const { width } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  principal: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-
-  buttonContainer: {
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderRadius: 7,
-    marginHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 20,
-    backgroundColor: '#FF9500',
-    justifyContent: 'flex-end',
-  },
-
-  buttonText: {
-    textAlign: 'center',
-    color: '#FFF',
-  },
-
-  content: {
-    marginBottom: 9,
-    flex: 6,
-    flexDirection: 'column',
-  },
-
-  checkbox: {
-    height: 25,
-    borderWidth: 2,
-    width: 25,
-    marginLeft: 10,
-    marginTop: 10,
-    marginRight: 10,
-    borderColor: 'black',
-    borderRadius: 2,
-    flexWrap: 'wrap',
-  },
-  text: {
-    flexDirection: 'row',
-  },
-  label: {
-    paddingTop: 15,
-    fontSize: 15,
-    flex: 1,
-  },
-
-  textInput: {
-    borderWidth: 1,
-    borderRadius: 12,
-    height: height * 0.25,
-    paddingLeft: 10,
-    paddingTop: 10,
-    fontSize: width * 0.05,
-    textAlignVertical: 'top',
-  },
-  textBox: {
-    paddingLeft: 10,
-    paddingTop: 30,
-    paddingRight: 10,
-  },
-});
 
 export default class FoodHandlerCheckoutScreen extends React.Component {
   componentWillMount() {
@@ -95,11 +28,26 @@ export default class FoodHandlerCheckoutScreen extends React.Component {
     return (
       <View>
         <Checkbox
-          checkboxStyle={styles.checkbox}
+          checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedYes}
           selectedColor={'#008000'}
           onSelect={() => this.props.setFoodHandlerReportPositive(item.key)}
           disabled={item.markedNo}
+          disabledColor={null}
+        />
+      </View>
+    );
+  }
+
+  showNegativeCheckBox(item) {
+    return (
+      <View>
+        <Checkbox
+          checkboxStyle={styles.checklist.checkBoxStyle}
+          selected={item.markedNo}
+          selectedColor={'#B22222'}
+          onSelect={() => this.props.setFoodHandlerReportNegative(item.key)}
+          disabled={item.markedYes}
           disabledColor={null}
         />
       </View>
@@ -111,41 +59,26 @@ export default class FoodHandlerCheckoutScreen extends React.Component {
     Actions.mainReportsScreen();
   }
 
-  showNegativeCheckBox(item) {
-    return (
-      <View>
-        <Checkbox
-          checkboxStyle={styles.checkbox}
-          selected={item.markedNo}
-          selectedColor={'#B22222'}
-          onSelect={() => this.props.setFoodHandlerReportNegative(item.key)}
-          disabled={item.markedYes}
-          disabledColor={null}
-        />
-      </View>
-    );
-  }
-
   render() {
     return (
-      <View style={styles.principal}>
+      <View style={styles.checklist.principal}>
         <Header
-          title={'Relatório'}
-          subTitle={'Manipuladores de Alimentos'}
+          title={'Lista de verificação'}
+          subTitle={FOOD_HANDLER}
         />
-        <KeyboardAvoidingView style={styles.content} behavior="padding">
+        <KeyboardAvoidingView style={styles.checklist.content} behavior="padding">
           <ScrollView>
             <View>
               <View style={{ flexDirection: 'row' }}>
-                <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 10 }}>Sim</Text>
-                <Text style={{ fontWeight: 'bold', paddingTop: 5, paddingLeft: 20 }}>Nao</Text>
+                <Text style={styles.checklist.optionStyle}>Sim</Text>
+                <Text style={styles.checklist.optionStyle}>Nao</Text>
               </View>
               {
                 this.props.report.map(item => (
-                  <View style={styles.text} key={item.key}>
+                  <View style={styles.checklist.text} key={item.key}>
                     {this.showPositiveCheckBox(item)}
                     {this.showNegativeCheckBox(item)}
-                    <Text style={styles.label}>{item.label}</Text>
+                    <Text style={styles.checklist.label}>{item.label}</Text>
                   </View>
                 ),
                 )
@@ -153,10 +86,13 @@ export default class FoodHandlerCheckoutScreen extends React.Component {
             </View>
 
             <View behavior="padding">
-              <View style={styles.textBox}>
+              <Text
+                style={styles.checklist.observationText}
+              >Alguma observação adicional? Insira aqui. (Opcional)</Text>
+              <View style={styles.checklist.observationBox}>
                 <TextInput
                   onChangeText={text => this.props.setFoodHandlerObservation(text)}
-                  style={styles.textInput}
+                  style={styles.checklist.textInput}
                   multiline
                   value={this.props.observation}
                   underlineColorAndroid="transparent"
@@ -166,11 +102,11 @@ export default class FoodHandlerCheckoutScreen extends React.Component {
             </View>
 
             <TouchableOpacity
-              style={styles.buttonContainer}
+              style={styles.checklist.buttonContainer}
               onPress={() => this.concludeReport()}
               key="setObservation"
             >
-              <Text style={styles.buttonText}>Concluir</Text>
+              <Text style={styles.checklist.buttonText}>Concluir</Text>
             </TouchableOpacity>
           </ScrollView>
         </KeyboardAvoidingView>

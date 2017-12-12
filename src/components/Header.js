@@ -71,10 +71,12 @@ Header.propTypes = {
   subTitle: PropTypes.string,
   onPress: PropTypes.func,
 };
+
 Header.defaultProps = {
   title: 'Merenda +',
   subTitle: '',
   backButton: false,
   onPress: () => Actions.pop(),
 };
+
 export default Header;

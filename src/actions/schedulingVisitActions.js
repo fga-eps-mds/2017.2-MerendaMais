@@ -11,17 +11,28 @@ import {
   APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
   VISIT_POSTING_TYPE_CODE,
-  INTERNAL_ERROR } from '../constants/generalConstants';
+  INTERNAL_ERROR,
+} from '../constants/generalConstants';
 import {
   setPendingScheduleList,
   setExpiredScheduleList,
   setAlreadyInspectionedScheduleList,
-  resetList } from './listActions';
+  resetList,
+  setPendingInvitedScheduleList,
+} from './listActions';
 import {
-  GetVisitSchedulePostListError,
-  GetVisitScheduleContentError } from '../Exceptions';
+  GET_VISIT_SCHEDULE_CONTENT_ERROR,
+  GET_VISIT_SCHEDULE_POST_LIST_ERROR,
+  GET_CURRENT_SCHEDULE_ERROR,
+  UPDATE_CURRENT_SCHEDULE_ERROR,
+} from '../constants/errorConstants';
+import * as constant from '../constants/sendAgentEmail';
+import { authenticatingMasterCounselor } from './ManagerRegisterActions';
 
 const FILE_NAME = 'schedulingVisitActions.js';
+
+export const errorGenerator = (name, status) =>
+  new Error(`{ "name": "${name}", "status": ${JSON.stringify(status)} }`);
 
 export const setCurrentInspection = visitSchedule => ({
   type: SET_CURRENT_INSPECTION,
@@ -29,40 +40,40 @@ export const setCurrentInspection = visitSchedule => ({
 });
 
 // Trating request errors
-const treatingGetVisitSchedulePostListError = (error) => {
-  if (error.response.status === 500) {
+const treatingGetVisitSchedulePostListError = (status) => {
+  if (status === 500) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
+  } else if (status === 400) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
   } else {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
+      `Unknown error - Error code received in request - ${status}`);
   }
 };
 
 // Trating request errors
-const treatingGetVisitScheduleContentError = (error) => {
-  if (error.response.status === 500) {
+const treatingGetVisitScheduleContentError = (status) => {
+  if (status === 500) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
+      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
+  } else if (status === 400) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 404) {
+      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
+  } else if (status === 404) {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Post or Content not found with this params - Error code received in request - ${error.response.status}`);
+      `Post or Content not found with this params - Error code received in request - ${status}`);
   } else {
     ShowToast.Toast(INTERNAL_ERROR);
     logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
+      `Unknown error - Error code received in request - ${status}`);
   }
 };
 
@@ -113,6 +124,7 @@ const defineScheduleStatus = (visitSchedule, counselor, dispatch) => {
       dispatch(setExpiredScheduleList(visitSchedule));
     } else {
       dispatch(setPendingScheduleList(visitSchedule));
+      dispatch(setPendingInvitedScheduleList(visitSchedule));
     }
   } else if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode] === undefined) {
     if (verifyDate(visitSchedule)) {
@@ -125,6 +137,7 @@ const defineScheduleStatus = (visitSchedule, counselor, dispatch) => {
 
 // Used in Async Action to Get All Post Visit Schedules
 export const getVisitScheduleContent = async (contentLink, counselor, dispatch) => {
+  logInfo(FILE_NAME, 'getVisitScheduleContent', `${counselor}`);
   const getContentHeader = {
     headers: {
       appToken: counselor.token,
@@ -150,7 +163,7 @@ export const getVisitScheduleContent = async (contentLink, counselor, dispatch) 
     logWarn(FILE_NAME, 'getVisitScheduleContent',
       `Request result in an ${error}`);
 
-    throw new GetVisitScheduleContentError(error.response);
+    throw errorGenerator(GET_VISIT_SCHEDULE_CONTENT_ERROR, error.response.status);
   }
 };
 
@@ -167,7 +180,7 @@ export const getVisitSchedulePostList = async (getScheduleParamsAndHeader) => {
     logWarn(FILE_NAME, 'getVisitSchedulePostList',
       `Request result in an ${error}`);
 
-    throw new GetVisitSchedulePostListError(error.response);
+    throw errorGenerator(GET_VISIT_SCHEDULE_POST_LIST_ERROR, error.response.status);
   }
 };
 
@@ -207,26 +220,30 @@ export const asyncGetSchedule = counselor => async (dispatch) => {
           counselor,
           dispatch),
       );
-      console.log(`Dentro do For ${i}`);
     }
 
-    console.log('Saiu do For');
 
     // Wait all visit schedules are put on their respective lists.
     await Promise.all(visitScheduleContentList);
-
-    console.log('Depois do Promise.all');
-
-    dispatch(isNotLoading());
   } catch (error) {
-    if (error instanceof GetVisitSchedulePostListError) {
-      treatingGetVisitSchedulePostListError(error);
-    } else if (error instanceof GetVisitScheduleContentError) {
-      treatingGetVisitScheduleContentError(error);
+    logInfo(FILE_NAME, 'asyncGetSchedule',
+      `Error while getting schedules: ${error}`);
+    const errorJson = JSON.parse(error.message);
+    switch (errorJson.name) {
+      case GET_VISIT_SCHEDULE_CONTENT_ERROR:
+        treatingGetVisitScheduleContentError(error);
+        break;
+      case GET_VISIT_SCHEDULE_POST_LIST_ERROR:
+        treatingGetVisitSchedulePostListError(error);
+        break;
+      default:
+        dispatch(isNotLoading());
+        break;
     }
-
-    dispatch(isNotLoading());
   }
+
+  dispatch(isNotLoading());
+  Actions.refresh();
 };
 
 // Treating request errors
@@ -246,21 +263,27 @@ const treatingPostsError = (error) => {
   }
 };
 
-
-const sendEmailAlert = (visitData) => {
+const sendEmailAlert = (visitData, counselor) => {
   const agentEmail = (visitData.visit.agentEmail);
+  const CAEUf = counselor.profile.CAE_UF.substr(0, 2);
+  const emailBody = `Prezado (a) Senhor(a),\n
+Trata-se da solicitação de um Auditor da Vigilância Sanitária, a fim de acompanhar os Conselheiros do Conselho de Alimentação Escolar pertencente ao(à) ${counselor.profile.CAE}, em visita técnica a realizar-se em ${visitData.visit.date}, na instituição escolar ${visitData.visit.schoolName}, em cumprimento à Lei nº 11.947, de 16 de junho de 2009 - que dispõe sobre o atendimento da alimentação escolar.\n
+Atenciosamente,
+${counselor.name}
+Representando ${counselor.profile.segment} do CAE – ${counselor.profile.CAE}\n
+Conselho de Alimentação Escolar do Estado – CAE/${CAEUf}`;
 
   Communications.email(
-  // To, cc, bcc, subject, email text
+    // To, cc, bcc, subject, email text
     [agentEmail],
     null,
     null,
-    'Subject',
-    'Email Body text');
+    constant.EMAIL_SUBJECT,
+    emailBody);
 };
 
 
-const schedulingVisit = (visitData) => {
+const schedulingVisit = (visitData, counselor) => {
   const headerToSchedulingVisit = {
     headers: {
       appIdentifier: APP_IDENTIFIER,
@@ -301,7 +324,7 @@ const schedulingVisit = (visitData) => {
       logInfo(FILE_NAME, 'schedulingVisit',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);
       if (visitData.visit.invitedAgent) {
-        sendEmailAlert(visitData);
+        sendEmailAlert(visitData, counselor);
       }
       Alert.alert(
         'Agendamento Realizado',
@@ -319,12 +342,86 @@ const schedulingVisit = (visitData) => {
     });
 };
 
-export const asyncSchedulingVisit = visitData => () => {
+export const asyncSchedulingVisit = (visitData, counselor) => () => {
   logInfo(FILE_NAME, 'asyncSchedulingVisit',
     `Scheduling visit data: ${JSON.stringify(visitData, null, 2)}`);
+  logInfo(FILE_NAME, 'asyncSchedulingVisit',
+    `Scheduling counselor data: ${JSON.stringify(counselor, null, 2)}`);
 
-  schedulingVisit(visitData);
+  schedulingVisit(visitData, counselor);
 };
 
+export const asyncUpdateSchedule = postData => async (dispatch) => {
+  logInfo(FILE_NAME, 'asyncUpdateSchedule',
+    `Scheduling visit data: ${JSON.stringify(postData, null, 2)}`);
+
+  dispatch(isLoading());
+
+  const newContentJSON = postData.content;
+
+  const newContentString = convertingJSONToString(newContentJSON);
+
+  const MASTER_TOKEN = await authenticatingMasterCounselor();
+
+  // Change this token to the master token.
+  const putScheduleHeader = {
+    headers: {
+      appToken: MASTER_TOKEN,
+    },
+  };
+
+  const putScheduleBody = {
+    JSON: newContentString,
+    texto: 'Agendamento',
+  };
+
+  logInfo(FILE_NAME, 'asyncUpdateSchedule', `JSON sent to update schedule ${JSON.stringify(putScheduleBody)}`);
+
+  try {
+    const response = await axios.put(
+      `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
+      putScheduleBody,
+      putScheduleHeader);
+
+    logInfo(FILE_NAME, 'asyncUpdateSchedule', response.data);
+  } catch (error) {
+    logWarn(FILE_NAME, 'asyncUpdateSchedule', error.stack);
+    throw errorGenerator(UPDATE_CURRENT_SCHEDULE_ERROR, error.response.status);
+  }
+
+  dispatch(isNotLoading());
+};
+
+export const asyncGetCurrentSchedule = getData => async (dispatch) => {
+  logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `Received data: ${JSON.stringify(getData)}`);
+
+  const header = {
+    headers: {
+      appToken: getData.appToken,
+    },
+  };
+
+  const codPostagem = getData.codPostagem;
+  const codConteudoPost = getData.codConteudoPost;
+
+  try {
+    const response = await axios.get(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos/${codConteudoPost}`, header);
+
+    logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `Response data: ${JSON.stringify(response.data)}`);
+
+    const currentInspection = {
+      codPostagem: response.data.postagem.codPostagem,
+      codConteudoPost: response.data.codConteudoPost,
+      content: convertingContentStringToJSON(response.data.JSON),
+    };
+
+    logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `Current inspection ${JSON.stringify(currentInspection)}`);
+
+    dispatch(setCurrentInspection(currentInspection));
+  } catch (error) {
+    logWarn(FILE_NAME, 'GetCurrentSchedule', JSON.stringify(error.response));
+    throw errorGenerator(GET_CURRENT_SCHEDULE_ERROR, error.response.status);
+  }
+};
 
 export default asyncSchedulingVisit;

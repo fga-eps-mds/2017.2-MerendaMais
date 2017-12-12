@@ -11,12 +11,15 @@ const mapStateToProps = state => ({
   visitListOfInvitees: state.list.visitListOfInvitees,
   counselor: state.counselor,
   school: state.school,
+  application: state.application.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
+  asyncGetCounselorFromGroup: async (CAE, CPF) =>
+    dispatch(await asyncGetCounselorFromGroup(CAE, CPF)),
 
-  asyncSchedulingVisit: visitData => dispatch(asyncSchedulingVisit(visitData)),
+  asyncSchedulingVisit: (visitData, counselor) =>
+    dispatch(asyncSchedulingVisit(visitData, counselor)),
 
   setVisitNewLists: visitNewListWithInformations =>
     dispatch(setVisitNewLists(visitNewListWithInformations)),

@@ -133,6 +133,7 @@ class StartPendingInspection extends React.Component {
   }
 
   componentDidMount() {
+    this.props.resetStore('report');
     this.props.asyncGetSchedule(this.props.counselor);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
@@ -283,7 +284,7 @@ class StartPendingInspection extends React.Component {
             </Text>
             <Text style={styles.text}>
               <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
-              { counselor.confirmed ?
+              { counselor.realizedVisit ?
                 <Text> Realizada </Text>
                 : <Text> Não Realizada </Text>
               }
@@ -334,6 +335,7 @@ class StartPendingInspection extends React.Component {
 const { shape, func } = PropTypes;
 
 StartPendingInspection.propTypes = {
+  resetStore: func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   asyncGetCounselorFromGroup: func.isRequired,
   asyncGetSchedule: func.isRequired,

@@ -9,6 +9,7 @@ import {
   Picker,
   Alert,
   KeyboardAvoidingView,
+  Keyboard,
   BackHandler,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -308,8 +309,10 @@ export default class RegisterScreen extends React.Component {
                   this.setState(
                     { profile: { ...this.state.profile, isPresident: isPresidentChecked } },
                   )}
-                picker={[
+                pickerTitle={[
                   <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
+                ]}
+                pickerBody={[
                   <Picker.Item value label={PRESIDENT_COUNSELOR} />,
                   <Picker.Item value={false} label={COMMON_COUNSELOR} />,
                 ]}
@@ -321,8 +324,11 @@ export default class RegisterScreen extends React.Component {
                 callback={counselorTypeChecked => this.setState(
                   { profile: { ...this.state.profile, counselorType: counselorTypeChecked } },
                 )}
-                picker={[
+                pickerTitle={[
                   <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
+                ]}
+                pickerBody={[
+
                   <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />,
                   <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />,
                 ]}
@@ -337,8 +343,10 @@ export default class RegisterScreen extends React.Component {
                     segment: segmentChecked,
                   },
                 })}
-                picker={[
+                pickerTitle={[
                   <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />,
+                ]}
+                pickerBody={[
                   <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />,
                   <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />,
                   <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />,
@@ -368,8 +376,10 @@ export default class RegisterScreen extends React.Component {
                       },
                     })
                 )}
-                picker={[
+                pickerTitle={[
                   <Picker.Item value="" label="Escolha o Tipo do seu CAE" color="#95a5a6" />,
+                ]}
+                pickerBody={[
                   <Picker.Item value={MUNICIPAL_COUNSELOR_CAE} label={MUNICIPAL_COUNSELOR_CAE} />,
                   <Picker.Item value={STATE_COUNSELOR_CAE} label={STATE_COUNSELOR_CAE} />,
                 ]}
@@ -382,12 +392,14 @@ export default class RegisterScreen extends React.Component {
                   profile: {
                     ...this.state.profile,
                     CAE_UF: checkedUf,
+                    CAE_municipalDistrict: '',
                     CAE: `${this.state.profile.CAE_municipalDistrict} ${checkedUf.substr(0, 2)}`.trim(),
                   },
                 })}
-                picker={[
+                pickerTitle={[
                   <Picker.Item value="" label="Escolha a UF do seu CAE" color="#95a5a6" />,
-                ] &&
+                ]}
+                pickerBody={
                   brazilianStates.estados.map(
                     item => (<Picker.Item label={item} value={item} color="#000000" />))}
               />
@@ -415,7 +427,10 @@ export default class RegisterScreen extends React.Component {
 
               <ButtonWithActivityIndicator
                 activityIndicatorStyle={{ marginTop: 15, marginBottom: 15 }}
-                onPress={() => this.register()}
+                onPress={() => {
+                  Keyboard.dismiss();
+                  this.register();
+                }}
                 isLoading={this.props.isLoading}
                 buttonKey="userCreation"
                 buttonText="Concluir"

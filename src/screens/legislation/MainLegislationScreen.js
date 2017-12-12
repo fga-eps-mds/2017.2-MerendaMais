@@ -164,8 +164,8 @@ export default class MainLegislationScreen extends React.PureComponent {
               style={styles.fieldStyle}
               onPress={() => Alert.alert(
                 'Consultar Legislação e Manuais',
-                'Para consultar toda a legislação e manuais do PNAE, ' +
-                'Clique em Sim para ser redirecionado para o site do FDNE, deseja continuar?',
+                'Ao clicar em Sim, você será redirecionado para o site do PNAE, onde será ' +
+                'possível consultar todos os manuais e legislações disponíveis, deseja continuar?',
                 [
                   { text: 'Não', style: 'cancel' },
                   { text: 'Sim', onPress: () => Linking.openURL('http://www.fnde.gov.br/programas/pnae') },
@@ -180,4 +180,4 @@ export default class MainLegislationScreen extends React.PureComponent {
       </View>
     );
   }
-};
+}

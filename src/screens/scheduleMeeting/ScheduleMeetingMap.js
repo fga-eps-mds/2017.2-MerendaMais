@@ -8,6 +8,7 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 import Header from '../../components/Header';
+import { backHandlerPop } from '../../NavigationFunctions';
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');

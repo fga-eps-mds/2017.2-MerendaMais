@@ -38,6 +38,7 @@ class PrincipalNotifications extends React.PureComponent {
       <View style={styles.principal}>
         <Header
           title={'Notificações'}
+          onPress={() => Actions.popTo('mainScreen')}
         />
         <View style={{ flex: 1, marginTop: 160 }}>
           <TouchableOpacity
@@ -51,7 +52,7 @@ class PrincipalNotifications extends React.PureComponent {
           <TouchableOpacity
             style={styles.button}
             activeOpacity={0.7}
-          // onPress={() => Actions.meetingsInvites()}
+            onPress={() => Actions.MeetingInvites()}
           >
             <Text style={{ color: 'white', fontSize: 20 }}>Convites de Reunião</Text>
           </TouchableOpacity>

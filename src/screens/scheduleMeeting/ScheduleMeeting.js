@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ActivityIndicator, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, ScrollView, BackHandler } from 'react-native';
+import openMap from 'react-native-open-maps';
+import { Alert, StyleSheet, ActivityIndicator, Text, TextInput, View, TouchableOpacity, Dimensions, KeyboardAvoidingView, ScrollView, BackHandler } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import { EvilIcons, Ionicons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import InvitedCounselorsData from '../../components/InvitedCounselorsData';
 import Button from '../../components/Button';
 import { backHandlerPopToMain } from '../../NavigationFunctions';
-import { Header } from 'react-native-elements';
+import Header from '../../components/Header';
+
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
@@ -191,6 +193,7 @@ export default class ScheduleMeeting extends React.Component {
       enabled: true,
       appToken: this.props.counselor.token,
       nuvemCode: this.props.counselor.nuvemCode,
+      codGrupoDestino: this.props.counselor.profile.codGroup,
       meeting: {
         lat: this.props.scheduleMeeting.meetingLatitude,
         long: this.props.scheduleMeeting.meetingLongitude,
@@ -338,16 +341,31 @@ export default class ScheduleMeeting extends React.Component {
     );
   }
 
+  openLocationChoosen() {
+    openMap({ latitude: this.state.meeting.lat, longitude: this.state.meeting.long });
+  }
+
   showLocation() {
     if (this.state.meeting.lat !== null && this.state.meeting.long !== null) {
       return (
-        <View>
-          <Text style={styles.textDescription}>Localização</Text>
-          <View style={[styles.InputFieldStyle]}>
-            <Text>Lat: {this.state.meeting.lat.toFixed(7)},
-                  Long: {this.state.meeting.long.toFixed(7)}
-            </Text>
-          </View>
+        <View style={styles.Container}>
+          <TouchableOpacity
+            key="openMeetingLocation"
+            style={styles.button}
+            // onPress={() => this.openLocationChoosen()}
+            onPress={() => Alert.alert(
+              'Ver Localização',
+              'Abriremos a localização selecionada no aplicativo de mapas escolhido em seu aparelho',
+              [
+                { text: 'OK', onPress: () => this.openLocationChoosen(), style: 'cancel' },
+                { text: 'Cancelar', style: 'cancel' },
+
+              ],
+              { cancelable: false },
+            )}
+          >
+            <Text style={styles.buttonText}>Ver Localização</Text>
+          </TouchableOpacity>
         </View>
       );
     }

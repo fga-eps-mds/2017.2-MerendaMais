@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
 
   buttonText: {
     fontSize: 12,
+    textAlign: 'center',
   },
 
   noneScheduleTextBox: {

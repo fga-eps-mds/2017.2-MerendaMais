@@ -8,20 +8,21 @@ describe('Testing applicationReducer', () => {
 
     expect(application.isLoading).toBe(false);
     expect(application.message_erro).toBe('');
+    expect(application.clickableView).toBe('auto');
 
-    const sendedApplication = {
+    const compareValues = {
       isLoading: true,
       message_erro: '',
+      clickableView: 'none',
     };
 
     const action = {
       type: IS_LOADING,
-      payload: sendedApplication,
     };
 
     application = applicationReducer(application, action);
 
-    expect(application).toEqual(sendedApplication);
+    expect(application).toEqual(compareValues);
   });
 
   it('Is not Loading', () => {
@@ -32,20 +33,21 @@ describe('Testing applicationReducer', () => {
 
     expect(application.isLoading).toBe(true);
     expect(application.message_erro).toBe('');
+    expect(application.clickableView).toBe('auto');
 
-    const sendedApplication = {
+    const compareValues = {
       isLoading: false,
       message_erro: '',
+      clickableView: 'auto',
     };
 
     const action = {
       type: IS_NOT_LOADING,
-      payload: sendedApplication,
     };
 
     application = applicationReducer(application, action);
 
-    expect(application).toEqual(sendedApplication);
+    expect(application).toEqual(compareValues);
   });
 
 
@@ -54,6 +56,7 @@ describe('Testing applicationReducer', () => {
 
     expect(application.isLoading).toBe(false);
     expect(application.message_erro).toBe('');
+    expect(application.clickableView).toBe('auto');
 
     const sendedApplication = application;
 
@@ -72,6 +75,7 @@ describe('Testing applicationReducer', () => {
 
     expect(application.isLoading).toBe(false);
     expect(application.message_erro).toBe('');
+    expect(application.clickableView).toBe('auto');
 
     const sendedApplication = application;
 

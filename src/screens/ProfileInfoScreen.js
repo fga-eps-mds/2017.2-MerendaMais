@@ -1,8 +1,10 @@
 import React from 'react';
+import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, ScrollView, View, BackHandler } from 'react-native';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import Header from '../components/Header';
+import Button from '../components/Button';
 import { backHandlerPopToMain } from '../NavigationFunctions';
 
 const styles = StyleSheet.create({
@@ -85,6 +87,7 @@ export default class ProfileInfoScreen extends React.Component {
       <View style={styles.profileInfoScreen}>
         <Header
           title={'PERFIL'}
+          onPress={() => Actions.popTo('mainScreen')}
         />
         <View style={styles.infoProfileBox}>
           <ScrollView>
@@ -127,6 +130,12 @@ export default class ProfileInfoScreen extends React.Component {
               <Text>Tipo do CAE: {this.props.counselor.profile.CAE_Type}</Text>
             </View>
           </ScrollView>
+          <Button
+            key="updateInfoButton"
+            text="Editar Dados de Cadastro"
+            enabled
+            onPress={() => Actions.updateInfoScreen()}
+          />
         </View>
       </View>
     );

@@ -13,68 +13,63 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
     }
   }
 >
-  <MenuButton
-    iconName="search"
-    isLogout={false}
-    key="searchSchool"
-    onPress={[Function]}
-    text="Pesquisar Escola"
-  />
-  <MenuButton
-    iconName="settings"
-    isLogout={false}
-    key="updateInfoScreen"
-    onPress={[Function]}
-    text="Editar Dados"
-  />
-  <MenuButton
-    iconName="account-box"
-    isLogout={false}
-    key="profileInfoScreen"
-    onPress={[Function]}
-    text="Perfil"
-  />
-  <MenuButton
-    iconName="access-time"
-    isLogout={false}
-    key="schedulingVisit"
-    onPress={[Function]}
-    text="Agendar visita"
-  />
-  <MenuButton
-    iconName="insert-invitation"
-    isLogout={false}
-    key="scheduleMeeting"
-    onPress={[Function]}
-    text="Agendar reunião"
-  />
-  <MenuButton
-    iconName="notifications"
-    isLogout={false}
-    key="notifications"
-    onPress={[Function]}
-    text="Notificações"
-  />
-  <MenuButton
-    iconName="gavel"
-    isLogout={false}
-    key="seeLegislation"
-    onPress={[Function]}
-    text="Consultar Legislação"
-  />
-  <MenuButton
-    iconName="report-problem"
-    isLogout={false}
-    key="doComplaint"
-    onPress={[Function]}
-    text="Denunciar"
-  />
-  <MenuButton
-    iconName="logout"
-    isLogout={true}
-    key="logout"
-    onPress={[Function]}
-    text="Sair"
-  />
+  <ScrollViewMock>
+    <MenuButton
+      iconName="search"
+      isLogout={false}
+      key="searchSchool"
+      onPress={[Function]}
+      text="Pesquisar Escola"
+    />
+    <MenuButton
+      iconName="account-box"
+      isLogout={false}
+      key="profileInfoScreen"
+      onPress={[Function]}
+      text="Perfil"
+    />
+    <MenuButton
+      iconName="access-time"
+      isLogout={false}
+      key="schedulingVisit"
+      onPress={[Function]}
+      text="Agendar visita"
+    />
+    <MenuButton
+      iconName="insert-invitation"
+      isLogout={false}
+      key="scheduleMeeting"
+      onPress={[Function]}
+      text="Agendar reunião"
+    />
+    <MenuButton
+      iconName="notifications"
+      isLogout={false}
+      key="notifications"
+      onPress={[Function]}
+      text="Notificações"
+    />
+    <MenuButton
+      iconName="gavel"
+      isLogout={false}
+      key="seeLegislation"
+      onPress={[Function]}
+      text="Consultar Legislação"
+    />
+    <MenuButton
+      iconName="report-problem"
+      isLogout={false}
+      key="doComplaint"
+      onPress={[Function]}
+      text="Denunciar"
+    />
+    <MenuButton
+      iconName="logout"
+      isLogout={true}
+      key="logout"
+      onPress={[Function]}
+      text="Sair"
+    />
+  </ScrollViewMock>
 </View>
 `;

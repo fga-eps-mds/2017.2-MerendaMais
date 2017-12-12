@@ -2,6 +2,7 @@
 
 exports[`Testing SchedulingVisit renders as expected 1`] = `
 <SchedulingVisit
+  application={false}
   asyncGetCounselorFromGroup={[Function]}
   asyncSchedulingVisit={[Function]}
   counselor={
