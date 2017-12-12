@@ -15,13 +15,131 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
     subTitle=""
     title="Editar Informações"
   />
-  <ScrollViewMock>
-    <View
+  <View>
+    <ScrollViewMock>
+      <View
+        style={
+          Object {
+            "flex": 6,
+            "marginTop": 8,
+            "paddingHorizontal": 15,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Nome
+        </Text>
+        <NameField
+          callback={[Function]}
+          value="Rodolfo"
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Telefone
+        </Text>
+        <PhoneField
+          callback={[Function]}
+          value="61991234567"
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Tipo de Conselheiro
+        </Text>
+        <DropdownComponent
+          callback={[Function]}
+          pickerBody={
+            Array [
+              <PickerItem
+                label="Titular"
+                value="Titular"
+              />,
+              <PickerItem
+                label="Suplente"
+                value="Suplente"
+              />,
+            ]
+          }
+          pickerTitle={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
+              />,
+            ]
+          }
+          selectedValue="Titular"
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Segmento
+        </Text>
+        <DropdownComponent
+          callback={[Function]}
+          pickerBody={
+            Array [
+              <PickerItem
+                label="Poder executivo"
+                value="Poder executivo"
+              />,
+              <PickerItem
+                label="Trabalhadores da educação"
+                value="Trabalhadores da educação"
+              />,
+              <PickerItem
+                label="Pais de alunos"
+                value="Pais de alunos"
+              />,
+              <PickerItem
+                label="Entidades civis"
+                value="Entidades civis"
+              />,
+            ]
+          }
+          pickerTitle={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu segmento"
+                value=""
+              />,
+            ]
+          }
+          selectedValue="Poder executivo"
+        />
+      </View>
+    </ScrollViewMock>
+    <TouchableOpacity
+      activeOpacity={0.2}
+      key="infoUpdate"
+      onPress={[Function]}
       style={
         Object {
-          "flex": 6,
-          "marginTop": 8,
-          "paddingHorizontal": 15,
+          "backgroundColor": "#FF9500",
+          "borderRadius": 7,
+          "borderWidth": 1,
+          "justifyContent": "flex-end",
+          "marginBottom": 20,
+          "marginHorizontal": 15,
+          "marginTop": 30,
+          "paddingVertical": 10,
         }
       }
     >
@@ -30,124 +148,46 @@ exports[`Testing UpdateInfoScreen renders as expected 1`] = `
         allowFontScaling={true}
         disabled={false}
         ellipsizeMode="tail"
-      >
-        Nome
-      </Text>
-      <NameField
-        callback={[Function]}
-        value="Rodolfo"
-      />
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-      >
-        Telefone
-      </Text>
-      <PhoneField
-        callback={[Function]}
-        value="61991234567"
-      />
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-      >
-        Tipo de Conselheiro
-      </Text>
-      <DropdownComponent
-        callback={[Function]}
-        picker={
-          Array [
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu cargo"
-              value=""
-            />,
-            <PickerItem
-              label="Titular"
-              value="Titular"
-            />,
-            <PickerItem
-              label="Suplente"
-              value="Suplente"
-            />,
-          ]
+        style={
+          Object {
+            "color": "#FFF",
+            "textAlign": "center",
+          }
         }
-        selectedValue="Titular"
-      />
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
       >
-        Segmento
+        Concluir
       </Text>
-      <DropdownComponent
-        callback={[Function]}
-        picker={
-          Array [
-            <PickerItem
-              color="#95a5a6"
-              label="Escolha seu segmento"
-              value=""
-            />,
-            <PickerItem
-              label="Poder executivo"
-              value="Poder executivo"
-            />,
-            <PickerItem
-              label="Trabalhadores da educação"
-              value="Trabalhadores da educação"
-            />,
-            <PickerItem
-              label="Pais de alunos"
-              value="Pais de alunos"
-            />,
-            <PickerItem
-              label="Entidades civis"
-              value="Entidades civis"
-            />,
-          ]
-        }
-        selectedValue="Poder executivo"
-      />
-    </View>
-  </ScrollViewMock>
-  <TouchableOpacity
-    activeOpacity={0.2}
-    key="infoUpdate"
-    onPress={[Function]}
+    </TouchableOpacity>
+  </View>
+</View>
+`;
+
+exports[`Testing UpdateInfoScreen renders as expected with activity Indicator 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backButton={true}
+    backTo={[Function]}
+    subTitle=""
+    title="Editar Informações"
+  />
+  <ActivityIndicator
+    animating={true}
+    color="#FF9500"
+    hidesWhenStopped={true}
+    size="large"
     style={
       Object {
-        "backgroundColor": "#FF9500",
-        "borderRadius": 7,
-        "borderWidth": 1,
-        "justifyContent": "flex-end",
-        "marginBottom": 20,
-        "marginHorizontal": 15,
-        "marginTop": 30,
-        "paddingVertical": 10,
+        "justifyContent": "center",
+        "marginTop": 50,
       }
     }
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#FFF",
-          "textAlign": "center",
-        }
-      }
-    >
-      Concluir
-    </Text>
-  </TouchableOpacity>
+  />
 </View>
 `;
