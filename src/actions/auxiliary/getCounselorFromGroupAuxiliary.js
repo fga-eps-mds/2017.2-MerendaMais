@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { errorGenerator, convertingProfileStringToJSON } from '../counselorActions';
+import { convertingProfileStringToJSON } from '../counselorActions';
 import {
   GET_COUNSELORS_GROUP_LINKS_ERROR,
   GET_COUNSELORS_FROM_CAE_ACCOUNT_ERROR,
@@ -11,6 +11,8 @@ import {
   APP_IDENTIFIER,
   DEFAULT_USER_LINK_NUVEM_CIVICA,
 } from '../../constants/generalConstants';
+import { errorGenerator } from '../schedulingVisitActions';
+
 
 export const getCounselorFromGroup = async (codGroup) => {
   try {

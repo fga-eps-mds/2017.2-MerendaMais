@@ -74,8 +74,9 @@ describe('Testing editCounselorAuxiliary functions', () => {
 
   it('Testing editAccountData', async () => {
     mock.onPut(
-      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor, headerToEditCounselor)
+      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor)
       .reply((config) => {
+        console.log(JSON.stringify(config));
         const data = convertingContentStringToJSON(config.data);
         const response = {
           nomeCompleto: data.nomeCompleto,
@@ -89,7 +90,7 @@ describe('Testing editCounselorAuxiliary functions', () => {
 
   it('Testing editAccountData on failure', async () => {
     mock.onPut(
-      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor, headerToEditCounselor)
+      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}`, bodyToEditCounselor)
       .reply(400);
 
     try {
@@ -102,8 +103,9 @@ describe('Testing editCounselorAuxiliary functions', () => {
 
   it('Testing editCounselorProfile', async () => {
     mock.onPut(
-      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile, headerToEditCounselor)
+      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile)
       .reply((config) => {
+        console.log(JSON.stringify(config));
         let data = config.data.replace(/\\\//g, '/');
         data = JSON.parse(data);
         expect(data).toEqual(bodyToEditCounselorProfile);
@@ -114,7 +116,7 @@ describe('Testing editCounselorAuxiliary functions', () => {
 
   it('Testing editCounselorProfile failure', async () => {
     mock.onPut(
-      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile, headerToEditCounselor)
+      `${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselorData.nuvemCode}/perfil`, bodyToEditCounselorProfile)
       .reply(400);
 
     try {

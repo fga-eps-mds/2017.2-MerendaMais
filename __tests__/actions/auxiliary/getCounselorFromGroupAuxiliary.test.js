@@ -3,19 +3,19 @@ import MockAdapter from 'axios-mock-adapter';
 import {
   DEFAULT_GROUP_LINK_NUVEM_CIVICA,
   APP_IDENTIFIER,
-  DEFAULT_USER_LINK_NUVEM_CIVICA
+  DEFAULT_USER_LINK_NUVEM_CIVICA,
 } from '../../../src/constants/generalConstants';
 import {
   getCounselorFromGroup,
   getCounselor,
   getCounselorProfile,
-  getGroup
+  getGroup,
 } from '../../../src/actions/auxiliary/getCounselorFromGroupAuxiliary';
 import {
-    GET_COUNSELORS_GROUP_LINKS_ERROR,
-    GET_COUNSELORS_FROM_CAE_ACCOUNT_ERROR,
-    GET_COUNSELORS_FROM_CAE_PROFILE_ERROR,
-    GET_GROUP_ERROR
+  GET_COUNSELORS_GROUP_LINKS_ERROR,
+  GET_COUNSELORS_FROM_CAE_ACCOUNT_ERROR,
+  GET_COUNSELORS_FROM_CAE_PROFILE_ERROR,
+  GET_GROUP_ERROR,
 } from '../../../src/constants/errorConstants';
 import { convertingContentStringToJSON } from '../../../src/actions/schedulingVisitActions';
 
@@ -88,6 +88,7 @@ describe('Testing getCounselorFromGroupAuxiliary functions', () => {
     try {
       await await getCounselorFromGroup(codGroup);
     } catch (error) {
+      console.log(error.stack);
       const errorJson = JSON.parse(error.message);
       expect(errorJson.name).toBe(GET_COUNSELORS_GROUP_LINKS_ERROR);
     }
