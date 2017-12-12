@@ -459,9 +459,9 @@ export const asyncRegisterCounselor = userData => (dispatch) => {
   // Request to register a counselor at Nuvem Cívica, but not in application yet.
   registerCounselorAtNuvemCivica(registerBody, dispatch, userData);
 };
-
 // Async Action to Edit Couselor Data
 export const asyncEditCounselor = counselorData => async (dispatch) => {
+  dispatch(isLoading());
   logInfo(FILE_NAME, 'asyncEditCounselor',
     `counselor data to edit: ${JSON.stringify(counselorData, null, 2)}`);
   try {
@@ -474,6 +474,7 @@ export const asyncEditCounselor = counselorData => async (dispatch) => {
   } catch (error) {
     throw error;
   }
+  dispatch(isNotLoading());
 };
 
 // Functions focused in Counselor Login

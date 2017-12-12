@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { SET_CURRENT_INSPECTION } from '../actions/types';
+import { SET_CURRENT_INSPECTION, RESET_SCHEDULE_VISIT } from '../actions/types';
 // import { logInfo } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'schoolReducer.js';
@@ -17,6 +17,10 @@ const scheduleVisitReducer = (state = initialState.scheduleVisit, action) => {
       return {
         ...state,
         currentVisit: action.payload,
+      };
+    case RESET_SCHEDULE_VISIT:
+      return {
+        currentVisit: {},
       };
     default:
       return state;

@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
 import {
-    StyleSheet,
-    TouchableOpacity,
-    Text,
-    View,
-    Alert,
-    Picker,
-    ScrollView,
-    BackHandler
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  Alert,
+  Picker,
+  ScrollView,
+  BackHandler,
+  ActivityIndicator,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
@@ -190,7 +191,75 @@ export default class UpdateInfoScreen extends React.Component {
   render() {
     logInfo(FILE_NAME, 'render()',
       `State of update info page: ${JSON.stringify(this.state, null, 2)}`);
+    let activityIndicatorOrScreen = null;
+    if (this.props.application === true) {
+      activityIndicatorOrScreen = (
+        <ActivityIndicator
+          style={{ marginTop: 50, justifyContent: 'center' }}
+          size="large"
+          color="#FF9500"
+        />
+      );
+    } else {
+      activityIndicatorOrScreen = (
+        <View>
+          <ScrollView>
+            <View style={styles.content}>
 
+              <Text>Nome</Text>
+              <NameField
+                value={this.state.name}
+                callback={validName => this.setState({ name: validName })}
+              />
+
+              <Text>Telefone</Text>
+              <PhoneField
+                value={this.state.phone}
+                callback={validPhone =>
+                  this.setState({ phone: validPhone })}
+              />
+
+              <Text>Tipo de Conselheiro</Text>
+              <DropdownComponent
+                selectedValue={this.state.counselorType}
+                callback={counselorTypeChecked =>
+                  this.setState({ counselorType: counselorTypeChecked })}
+                pickerTitle={[
+                  <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
+                ]}
+                pickerBody={[
+                  <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />,
+                  <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />,
+                ]}
+              />
+
+              <Text>Segmento</Text>
+              <DropdownComponent
+                selectedValue={this.state.segment}
+                callback={segmentChecked => this.setState({ segment: segmentChecked })}
+                pickerTitle={[
+                  <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />,
+                ]}
+                pickerBody={[
+                  <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />,
+                  <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />,
+                  <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />,
+                  <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />,
+                ]}
+              />
+
+            </View>
+          </ScrollView>
+          <TouchableOpacity
+            key="infoUpdate"
+            style={styles.buttonContainer}
+            onPress={() => this.updateInformation()}
+          >
+            <Text style={styles.buttonText}>Concluir</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
     return (
 
       <View style={styles.principal}>
@@ -199,56 +268,8 @@ export default class UpdateInfoScreen extends React.Component {
           backButton
         />
 
-        <ScrollView>
-          <View style={styles.content}>
+        {activityIndicatorOrScreen}
 
-            <Text>Nome</Text>
-            <NameField
-              value={this.state.name}
-              callback={validName => this.setState({ name: validName })}
-            />
-
-            <Text>Telefone</Text>
-            <PhoneField
-              value={this.state.phone}
-              callback={validPhone =>
-                this.setState({ phone: validPhone })}
-            />
-
-            <Text>Tipo de Conselheiro</Text>
-            <DropdownComponent
-              selectedValue={this.state.counselorType}
-              callback={counselorTypeChecked =>
-                this.setState({ counselorType: counselorTypeChecked })}
-              picker={[
-                <Picker.Item value="" label="Escolha seu cargo" color="#95a5a6" />,
-                <Picker.Item value={TITULAR_COUNSELOR} label={TITULAR_COUNSELOR} />,
-                <Picker.Item value={SURROGATE_COUNSELOR} label={SURROGATE_COUNSELOR} />,
-              ]}
-            />
-
-            <Text>Segmento</Text>
-            <DropdownComponent
-              selectedValue={this.state.segment}
-              callback={segmentChecked => this.setState({ segment: segmentChecked })}
-              picker={[
-                <Picker.Item value="" label="Escolha seu segmento" color="#95a5a6" />,
-                <Picker.Item value={EXECUTIVE_POWER} label={EXECUTIVE_POWER} />,
-                <Picker.Item value={EDUCATION_WORKERS} label={EDUCATION_WORKERS} />,
-                <Picker.Item value={STUDENT_PARENTS} label={STUDENT_PARENTS} />,
-                <Picker.Item value={CIVILIAN_ENTITIES} label={CIVILIAN_ENTITIES} />,
-              ]}
-            />
-
-          </View>
-        </ScrollView>
-        <TouchableOpacity
-          key="infoUpdate"
-          style={styles.buttonContainer}
-          onPress={() => this.updateInformation()}
-        >
-          <Text style={styles.buttonText}>Concluir</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -258,6 +279,7 @@ const { shape, string, number, bool } = PropTypes;
 
 UpdateInfoScreen.propTypes = {
   asyncEditCounselor: PropTypes.func.isRequired,
+  application: PropTypes.bool.isRequired,
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,

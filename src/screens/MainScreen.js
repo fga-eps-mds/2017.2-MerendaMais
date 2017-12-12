@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { FontAwesome } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   headerBox: {
@@ -42,30 +43,42 @@ const styles = StyleSheet.create({
 });
 
 
-const MainScreen = () => (
-  <View style={{ flex: 1, backgroundColor: 'white' }}>
+class MainScreen extends React.Component {
+  componentWillMount() {
+    this.props.resetStore('list', 'report', 'school');
+  }
+  render() {
+    return (
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
 
-    <View style={styles.headerBox}>
-      <Text style={styles.textLogo}>Merenda +</Text>
+        <View style={styles.headerBox}>
+          <Text style={styles.textLogo}>Merenda +</Text>
 
-      <TouchableOpacity
-        onPress={() => Actions.drawerOpen()}
-      >
-        <FontAwesome name="navicon" size={32} />
-      </TouchableOpacity>
-    </View>
+          <TouchableOpacity
+            onPress={() => Actions.drawerOpen()}
+          >
+            <FontAwesome name="navicon" size={32} />
+          </TouchableOpacity>
+        </View>
 
-    <View style={styles.bodyBox}>
-      <TouchableOpacity
-        style={styles.buttonInspect}
-        activeOpacity={0.7}
-        onPress={() => Actions.StartPendingInspection()}
-      >
-        <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
+        <View style={styles.bodyBox}>
+          <TouchableOpacity
+            style={styles.buttonInspect}
+            activeOpacity={0.7}
+            onPress={() => Actions.StartPendingInspection()}
+          >
+            <Text style={{ color: 'white', fontSize: 20 }}>Fiscalizar</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+}
 
-);
+const { func } = PropTypes;
+
+MainScreen.propTypes = {
+  resetStore: func.isRequired,
+};
 
 export default MainScreen;

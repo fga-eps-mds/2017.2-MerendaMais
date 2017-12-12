@@ -11,6 +11,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
 >
   <Header
     backButton={false}
+    backTo={[Function]}
     subTitle=""
     title="Merenda +"
   />
@@ -130,13 +131,8 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         </Text>
         <DropdownComponent
           callback={[Function]}
-          picker={
+          pickerBody={
             Array [
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu cargo"
-                value=""
-              />,
               <PickerItem
                 label="Presidente"
                 value={true}
@@ -144,6 +140,15 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               <PickerItem
                 label="Conselheiro"
                 value={false}
+              />,
+            ]
+          }
+          pickerTitle={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
               />,
             ]
           }
@@ -159,13 +164,8 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         </Text>
         <DropdownComponent
           callback={[Function]}
-          picker={
+          pickerBody={
             Array [
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu cargo"
-                value=""
-              />,
               <PickerItem
                 label="Titular"
                 value="Titular"
@@ -173,6 +173,15 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               <PickerItem
                 label="Suplente"
                 value="Suplente"
+              />,
+            ]
+          }
+          pickerTitle={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu cargo"
+                value=""
               />,
             ]
           }
@@ -188,13 +197,8 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         </Text>
         <DropdownComponent
           callback={[Function]}
-          picker={
+          pickerBody={
             Array [
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha seu segmento"
-                value=""
-              />,
               <PickerItem
                 label="Poder executivo"
                 value="Poder executivo"
@@ -213,6 +217,15 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               />,
             ]
           }
+          pickerTitle={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha seu segmento"
+                value=""
+              />,
+            ]
+          }
           selectedValue=""
         />
         <Text
@@ -225,13 +238,8 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         </Text>
         <DropdownComponent
           callback={[Function]}
-          picker={
+          pickerBody={
             Array [
-              <PickerItem
-                color="#95a5a6"
-                label="Escolha o Tipo do seu CAE"
-                value=""
-              />,
               <PickerItem
                 label="Municipal"
                 value="Municipal"
@@ -239,6 +247,15 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
               <PickerItem
                 label="Estadual"
                 value="Estadual"
+              />,
+            ]
+          }
+          pickerTitle={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha o Tipo do seu CAE"
+                value=""
               />,
             ]
           }
@@ -254,7 +271,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
         </Text>
         <DropdownComponent
           callback={[Function]}
-          picker={
+          pickerBody={
             Array [
               <PickerItem
                 color="#000000"
@@ -390,6 +407,15 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
                 color="#000000"
                 label="TO - Tocantins"
                 value="TO - Tocantins"
+              />,
+            ]
+          }
+          pickerTitle={
+            Array [
+              <PickerItem
+                color="#95a5a6"
+                label="Escolha a UF do seu CAE"
+                value=""
               />,
             ]
           }

@@ -12,6 +12,7 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
+    backTo={[Function]}
     subTitle="Resolução Nº 26"
     title="Legislação"
   />
@@ -460,34 +461,6 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
             style={false}
           >
             Capitulo XIV
-          </Text>
-        </View>
-      </TouchableHighlight>
-      <TouchableHighlight
-        activeOpacity={0.85}
-        key="Anexos"
-        onPress={[Function]}
-        underlayColor="black"
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#F5FCFF",
-              "paddingBottom": 20,
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 10,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={false}
-          >
-            Anexos
           </Text>
         </View>
       </TouchableHighlight>
@@ -1566,17 +1539,94 @@ JOSÉ HENRIQUE PAIM FERNANDES
  ",
             "title": "Capitulo XIV",
           },
-          Object {
-            "content": "Os Anexos, assim como a legislação, podem ser encontrados no seguinte link:
-
- https://www.fnde.gov.br/fndelegis/action/UrlPublicasAction.php?acao=abrirAtoPublico&sgl_tipo=RES&num_ato=00000026&seq_ato=000&vlr_ano=2013&sgl_orgao=FNDE/MEC",
-            "title": "Anexos",
-          },
         ]
       }
       touchableComponent={[Function]}
       underlayColor="black"
     />
+    <_class
+      linkDefault={true}
+      linkStyle={
+        Object {
+          "color": "#2980b9",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FAFAFA",
+            "borderColor": "gray",
+            "borderRadius": 7,
+            "borderWidth": 1,
+            "justifyContent": "flex-start",
+            "marginBottom": 15,
+            "marginHorizontal": 15,
+            "marginTop": 15,
+            "padding": 6,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 17,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            }
+          }
+        >
+          Anexos: 
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+        >
+          Ao clicar no botão abaixo, você será redirecionado para um site externo, onde é possivel acessar os Anexos, assim como a toda a legislação:
+
+
+        </Text>
+        <TouchableOpacity
+          activeOpacity={0.2}
+          key="openLink"
+          onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FF9500",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 50,
+              "paddingVertical": 20,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            disabled={false}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "white",
+                "fontSize": 20,
+                "fontWeight": "bold",
+                "padding": 5,
+              }
+            }
+          >
+            Anexos
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </_class>
   </ScrollViewMock>
 </View>
 `;

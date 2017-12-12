@@ -46,5 +46,3 @@ export const treatingGetUserProfileInLoginError = (status) => {
       `Unknown error - Error code received in request - ${status}`);
   }
 };
-
-

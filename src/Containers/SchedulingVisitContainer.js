@@ -16,7 +16,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
 
-  asyncSchedulingVisit: visitData => dispatch(asyncSchedulingVisit(visitData)),
+  asyncSchedulingVisit: (visitData, counselor) =>
+    dispatch(asyncSchedulingVisit(visitData, counselor)),
 
   setVisitNewLists: visitNewListWithInformations =>
     dispatch(setVisitNewLists(visitNewListWithInformations)),

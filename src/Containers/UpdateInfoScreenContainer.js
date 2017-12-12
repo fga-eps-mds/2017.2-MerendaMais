@@ -5,6 +5,7 @@ import UpdateInfoScreen from '../screens/UpdateInfoScreen';
 const mapStateToProps = state => (
   {
     counselor: state.counselor,
+    application: state.application.isLoading,
   }
 );
 

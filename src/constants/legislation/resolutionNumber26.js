@@ -520,7 +520,7 @@ export const CHAPTER_XIV = 'DAS DISPOSIÇÕES GERAIS\n ' +
                            '\nArt. 72 Esta Resolução entrará em vigor na data de sua publicação, revogando-se a Resolução CD/FNDE nº 38, de 16 de julho de 2009, e outras disposições em contrário.\n ' +
                            '\nJOSÉ HENRIQUE PAIM FERNANDES\n ';
 
-export const ANEXOS = 'Os Anexos, assim como a legislação, podem ser encontrados no seguinte link:\n\n https://www.fnde.gov.br/fndelegis/action/UrlPublicasAction.php?acao=abrirAtoPublico&sgl_tipo=RES&num_ato=00000026&seq_ato=000&vlr_ano=2013&sgl_orgao=FNDE/MEC';
+export const ANEXOS = 'Ao clicar no botão abaixo, você será redirecionado para um site externo, onde é possivel acessar os Anexos, assim como a toda a legislação:\n\n';
 
 export const CONTENT = [
   {
@@ -582,10 +582,6 @@ export const CONTENT = [
   {
     title: 'Capitulo XIV',
     content: CHAPTER_XIV,
-  },
-  {
-    title: 'Anexos',
-    content: ANEXOS,
   },
 ];
 
@@ -649,9 +645,5 @@ export const SELECTORS = [
   {
     title: 'Capitulo XIV',
     value: 14,
-  },
-  {
-    title: 'Anexos',
-    value: 15,
   },
 ];

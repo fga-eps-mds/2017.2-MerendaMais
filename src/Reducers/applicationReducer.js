@@ -22,11 +22,13 @@ const applicationReducer = (state = initialState.application, action) => {
       return {
         ...state,
         isLoading: true,
+        clickableView: 'none',
       };
     case IS_NOT_LOADING:
       return {
         ...state,
         isLoading: false,
+        clickableView: 'auto',
       };
     default:
       return state;

@@ -1,5 +1,7 @@
 import initialState from './initialState';
-import { SET_MEETING_LOCATION_LATITUDE, SET_MEETING_LOCATION_LONGITUDE } from '../actions/types';
+import { SET_MEETING_LOCATION_LATITUDE,
+  SET_MEETING_LOCATION_LONGITUDE,
+  RESET_SCHEDULE_MEETING } from '../actions/types';
 // import { logInfo } from '../../logConfig/loggers';
 
 // const FILE_NAME = 'schoolReducer.js';
@@ -22,6 +24,12 @@ const scheduleMeetingReducer = (state = initialState.scheduleMeeting, action) =>
       return {
         ...state,
         meetingLongitude: action.payload.longitude,
+      };
+    case RESET_SCHEDULE_MEETING:
+      return {
+        codSchool: 0,
+        meetingLatitude: null,
+        meetingLongitude: null,
       };
     default:
       return state;
