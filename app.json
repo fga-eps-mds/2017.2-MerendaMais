@@ -1,5 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "21.0.0"
+    "sdkVersion": "21.0.0",
+    "name": "Merenda Mais",
+    "version": "1.0.0",
+    "icon": "./src/images/icone.png",
+    "slug": "merendamais",
+    "ios": {
+      "bundleIdentifier": "com.merendamais.merendamais"
+    },
+    "android": {
+      "package": "com.merendamais.merendamais"
+    }
   }
 }
