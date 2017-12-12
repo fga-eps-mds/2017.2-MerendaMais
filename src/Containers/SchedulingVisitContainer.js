@@ -18,7 +18,8 @@ const mapDispatchToProps = dispatch => ({
   asyncGetCounselorFromGroup: async (CAE, CPF) =>
     dispatch(await asyncGetCounselorFromGroup(CAE, CPF)),
 
-  asyncSchedulingVisit: visitData => dispatch(asyncSchedulingVisit(visitData)),
+  asyncSchedulingVisit: (visitData, counselor) =>
+    dispatch(asyncSchedulingVisit(visitData, counselor)),
 
   setVisitNewLists: visitNewListWithInformations =>
     dispatch(setVisitNewLists(visitNewListWithInformations)),

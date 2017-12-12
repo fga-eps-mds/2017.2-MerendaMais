@@ -16,6 +16,9 @@ Enzyme.configure({ adapter: new Adapter() });
 const mockStore = configureStore();
 
 const initialState = {
+  application: {
+    isLoading: false,
+  },
   counselor: {
     nuvemCode: 1,
     email: 'rodolfo@gmail.com',
@@ -66,6 +69,16 @@ describe('Testing UpdateInfoScreen', () => {
     const wrapper = shallow(
       <UpdateInfoScreenContainer />,
       { context: { store } },
+    ).dive();
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('renders as expected with activity Indicator', () => {
+    const newInitialState = initialState;
+    newInitialState.application.isLoading = true;
+    const newStore = mockStore(newInitialState);
+    const wrapper = shallow(
+      <UpdateInfoScreenContainer />,
+      { context: { store: { ...newStore } } },
     ).dive();
     expect(wrapper).toMatchSnapshot();
   });

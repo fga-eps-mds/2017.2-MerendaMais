@@ -7,6 +7,8 @@ import { SET_LIST_COUNSELOR_GROUP,
   SET_VISIT_NEW_LISTS,
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
   SET_CHECKED_LIST,
+  SET_MEETING_NEW_LISTS,
+  SET_SCHEDULE_MEETING_LIST,
   SET_NOT_CHECKED_LIST } from '../../src/actions/types';
 
 describe('Testing listReducer', () => {
@@ -101,6 +103,53 @@ describe('Testing listReducer', () => {
     expect(list.visitListOfInviteesWithCounselorInformations)
       .toEqual(newLists.visitNewListWithInformations);
     expect(list.visitListOfInvitees).toEqual(newLists.visitNewList);
+    expect(list.listOfCounselorsInAGroup).toEqual([]);
+  });
+
+  it('Set new Lists of invitees', () => {
+    let list = initialState.list;
+
+    expect(list.meetingListOfInviteesWithCounselorInformations).toEqual({});
+    expect(list.meetingListOfInvitees).toEqual({});
+    expect(list.listOfCounselorsInAGroup).toEqual([]);
+
+    const newLists = {
+      meetingNewListWithInformations: {
+        6122: {
+          cpf: 11111111111,
+          name: 'Lucas Penido Antunes',
+          nuvemCode: 6122,
+          phone: 11111111111,
+        },
+        6201: {
+          cpf: '00000000000',
+          name: 'Kamilla Costa Souzaa',
+          nuvemCode: 6201,
+          phone: 99999999999,
+        },
+      },
+      meetingNewList: {
+        6122: {
+          confirmed: false,
+          nuvemCode: 6122,
+        },
+        6201: {
+          confirmed: false,
+          nuvemCode: 6201,
+        },
+      },
+    };
+
+    const action = {
+      type: SET_MEETING_NEW_LISTS,
+      payload: newLists,
+    };
+
+    list = listReducer(list, action);
+
+    expect(list.meetingListOfInviteesWithCounselorInformations)
+      .toEqual(newLists.meetingNewListWithInformations);
+    expect(list.meetingListOfInvitees).toEqual(newLists.meetingNewList);
     expect(list.listOfCounselorsInAGroup).toEqual([]);
   });
 
@@ -226,6 +275,68 @@ describe('Testing listReducer', () => {
       .toEqual(firstExpiredSchedule);
     expect(list.listOfExpiredScheduleInAGroup[1])
       .toEqual(secondExpiredSchedule);
+  });
+
+  it('Set new List of meeting schedules', () => {
+    let list = initialState.list;
+
+    expect(list.listOfScheduleMeetingInAGroup).toEqual([]);
+
+    const firstMeetingSchedule = {
+      firstSchedule: {
+        invitedAgent: false,
+        agentEmail: '',
+        codSchool: 10101010,
+        schoolName: 'FGA',
+        date: '13-12-2017',
+        time: '16:00',
+        visitListOfInvitees: {
+          1010: {
+            confirmed: true,
+            nuvemCode: 1010,
+          },
+        },
+      },
+    };
+
+    const secondMeetingSchedule = {
+      secondSchedule: {
+        invitedAgent: true,
+        agentEmail: 'agent@agent.com',
+        codSchool: 121211220,
+        schoolName: 'FGA',
+        date: '11-12-2017',
+        time: '15:00',
+        visitListOfInvitees: {
+          2017: {
+            confirmed: true,
+            nuvemCode: 2017,
+          },
+        },
+      },
+    };
+
+    const actionOne = {
+      type: SET_SCHEDULE_MEETING_LIST,
+      payload: firstMeetingSchedule,
+    };
+
+    const actionTwo = {
+      type: SET_SCHEDULE_MEETING_LIST,
+      payload: secondMeetingSchedule,
+    };
+
+    list = listReducer(list, actionOne);
+
+    expect(list.listOfScheduleMeetingInAGroup)
+      .toEqual([firstMeetingSchedule]);
+
+    list = listReducer(list, actionTwo);
+
+    expect(list.listOfScheduleMeetingInAGroup[0])
+      .toEqual(firstMeetingSchedule);
+    expect(list.listOfScheduleMeetingInAGroup[1])
+      .toEqual(secondMeetingSchedule);
   });
 
   it('Set new List of already inspectioned schedules', () => {

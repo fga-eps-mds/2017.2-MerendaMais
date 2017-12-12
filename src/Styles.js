@@ -1,3 +1,8 @@
+import { Dimensions } from 'react-native';
+
+const { height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
+
 const styles = {
   bigButton: {
     paddingVertical: 20,
@@ -81,7 +86,77 @@ const styles = {
     fontSize: 15,
     paddingVertical: 2,
   },
-
+  checklist: {
+    principal: {
+      flex: 1,
+      backgroundColor: 'white',
+    },
+    buttonContainer: {
+      paddingVertical: 15,
+      borderWidth: 1,
+      borderRadius: 7,
+      marginHorizontal: 15,
+      marginVertical: 30,
+      backgroundColor: '#FF9500',
+      alignItems: 'center',
+    },
+    buttonText: {
+      textAlign: 'center',
+      color: '#FFF',
+      fontSize: 15,
+    },
+    content: {
+      flex: 1,
+      flexDirection: 'column',
+    },
+    checkBoxStyle: {
+      height: 25,
+      width: 25,
+      borderWidth: 2,
+      margin: 10,
+      borderColor: 'black',
+      borderRadius: 2,
+      flexWrap: 'wrap',
+    },
+    text: {
+      paddingVertical: 5,
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderBottomWidth: 1,
+      borderBottomColor: 'darkgrey',
+    },
+    label: {
+      fontSize: 15,
+      flex: 1,
+    },
+    textInput: {
+      borderWidth: 1,
+      borderRadius: 12,
+      height: height * 0.25,
+      paddingLeft: 10,
+      paddingTop: 10,
+      fontSize: width * 0.05,
+      textAlignVertical: 'top',
+    },
+    textBox: {
+      paddingTop: 30,
+      paddingHorizontal: 15,
+    },
+    optionStyle: {
+      fontWeight: 'bold',
+      paddingTop: 5,
+      paddingHorizontal: 9.25,
+    },
+    observationText: {
+      marginTop: 15,
+      marginLeft: 15,
+      fontSize: 15,
+    },
+    observationBox: {
+      marginTop: 5,
+      marginHorizontal: 10,
+    },
+  },
 };
 
 export default styles;

@@ -7,6 +7,7 @@ import {
   SET_PENDING_SCHEDULE_LIST,
   SET_EXPIRED_SCHEDULE_LIST,
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
+  SET_SCHEDULE_MEETING_LIST,
   SET_CHECKED_LIST,
   SET_NOT_CHECKED_LIST,
   SET_PENDING_INVITED_SCHEDULE_LIST,
@@ -24,15 +25,17 @@ const listReducer = (state = initialState.list, action) => {
       };
     case RESET_LIST:
       return {
-        ...state,
         listOfCounselorsInAGroup: [],
         listOfCheckedCounselors: [],
         listOfNotCheckedCounselors: [],
-        listOfInviteesWithCounselorInformations: {},
-        visitListOfInvitees: {},
         listOfPendingScheduleInAGroup: [],
+        listOfScheduleMeetingInAGroup: [],
         listOfExpiredScheduleInAGroup: [],
         listOfAlreadyInpectionedSchedueInAGroup: [],
+        visitListOfInviteesWithCounselorInformations: {},
+        visitListOfInvitees: {},
+        meetingListOfInviteesWithCounselorInformations: {},
+        meetingListOfInvitees: {},
         listOfPendingInvitedScheduleList: [],
       };
     case SET_VISIT_NEW_LISTS:
@@ -63,6 +66,11 @@ const listReducer = (state = initialState.list, action) => {
       return {
         ...state,
         listOfExpiredScheduleInAGroup: [...state.listOfExpiredScheduleInAGroup, action.payload],
+      };
+    case SET_SCHEDULE_MEETING_LIST:
+      return {
+        ...state,
+        listOfScheduleMeetingInAGroup: [...state.listOfScheduleMeetingInAGroup, action.payload],
       };
     case SET_ALREADY_INPECTIONED_SCHEDULE_LIST:
       return {

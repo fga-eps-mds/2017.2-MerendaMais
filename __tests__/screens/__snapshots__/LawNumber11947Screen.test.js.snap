@@ -11,6 +11,7 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
+    backTo={[Function]}
     subTitle="Lei Nº 11.947"
     title="Legislação"
   />

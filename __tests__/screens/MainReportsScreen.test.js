@@ -12,11 +12,14 @@ const mockStore = configureStore();
 const initialState = {
   report: {
   },
+  application: {
+    isLoading: false,
+  },
 };
 
 const store = mockStore(initialState);
 
-describe('Testing DocCheckout Screen', () => {
+describe('Testing MainReports Screen', () => {
   it('renders as expected', () => {
     const wrapper = shallow(
       <MainReportsContainer />,

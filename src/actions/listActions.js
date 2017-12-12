@@ -6,6 +6,7 @@ import {
   SET_ALREADY_INPECTIONED_SCHEDULE_LIST,
   SET_VISIT_NEW_LISTS,
   SET_MEETING_NEW_LISTS,
+  SET_SCHEDULE_MEETING_LIST,
   SET_CHECKED_LIST,
   SET_NOT_CHECKED_LIST,
   SET_PENDING_INVITED_SCHEDULE_LIST,
@@ -30,9 +31,15 @@ export const setPendingScheduleList = visitScheduleList => ({
   payload: visitScheduleList,
 });
 
+
 export const setExpiredScheduleList = visitScheduleList => ({
   type: SET_EXPIRED_SCHEDULE_LIST,
   payload: visitScheduleList,
+});
+
+export const setScheduleMeetingList = scheduleMeetingList => ({
+  type: SET_SCHEDULE_MEETING_LIST,
+  payload: scheduleMeetingList,
 });
 
 export const setAlreadyInspectionedScheduleList = visitScheduleList => ({

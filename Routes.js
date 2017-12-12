@@ -5,7 +5,7 @@ import InitialScreen from './src/screens/InitialScreen';
 import LoginContainer from './src/Containers/LoginContainer';
 import ProfileInfoScreenContainer from './src/Containers/ProfileInfoScreenContainer';
 import RegisterScreenContainer from './src/Containers/RegisterScreenContainer';
-import MainScreen from './src/screens/MainScreen';
+import MainScreenContainer from './src/Containers/MainScreenContainer';
 import SearchSchoolContainer from './src/Containers/SearchSchoolContainer';
 import UpdateInfoScreenContainer from './src/Containers/UpdateInfoScreenContainer';
 import StockFoodCheckoutScreenContainer from './src/Containers/reports/StockFoodCheckoutContainer';
@@ -34,6 +34,7 @@ import LawNumber12982Screen from './src/screens/legislation/LawNumber12982Screen
 import ComplaintScreen from './src/screens/complaintScreen';
 import PrincipalNotifications from './src/screens/PrincipalNotifications';
 import VisitInvitesContainer from './src/Containers/VisitInvitesContainer';
+import MeetingInvitesContainer from './src/Containers/MeetingInvitesContainer';
 
 const Routes = () => ({
   render() {
@@ -53,6 +54,7 @@ const Routes = () => ({
             <Scene key="complaintScreen" component={ComplaintScreen} hideNavBar />
             <Scene key="PrincipalNotifications" component={PrincipalNotifications} hideNavBar />
             <Scene key="VisitInvites" component={VisitInvitesContainer} hideNavBar />
+            <Scene key="MeetingInvites" component={MeetingInvitesContainer} hideNavBar />
             <Scene
               key="scheduleMeetingMap"
               component={ScheduleMeetingMapContainer}
@@ -66,7 +68,7 @@ const Routes = () => ({
               hideNavBar
             />
             <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
-            <Scene key="mainScreen" component={MainScreen} type="reset" hideNavBar />
+            <Scene key="mainScreen" component={MainScreenContainer} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
             <Scene key="registerScreen" component={RegisterScreenContainer} hideNavBar />
             <Scene key="loginScreen" component={LoginContainer} hideNavBar />

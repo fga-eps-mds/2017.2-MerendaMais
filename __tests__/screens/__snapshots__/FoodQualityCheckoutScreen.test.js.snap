@@ -11,17 +11,17 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
 >
   <Header
     backButton={true}
+    backTo={[Function]}
     subTitle="Qualidade de Alimento"
-    title="Relatório"
+    title="Lista de verificação"
   />
   <KeyboardAvoidingView
     behavior="padding"
     keyboardVerticalOffset={0}
     style={
       Object {
-        "flex": 6,
+        "flex": 1,
         "flexDirection": "column",
-        "marginBottom": 9,
       }
     }
   >
@@ -42,7 +42,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
             style={
               Object {
                 "fontWeight": "bold",
-                "paddingLeft": 10,
+                "paddingHorizontal": 9.25,
                 "paddingTop": 5,
               }
             }
@@ -57,7 +57,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
             style={
               Object {
                 "fontWeight": "bold",
-                "paddingLeft": 20,
+                "paddingHorizontal": 9.25,
                 "paddingTop": 5,
               }
             }
@@ -69,7 +69,11 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           key="0"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -82,9 +86,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -105,9 +107,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -128,18 +128,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            As refeições são frescas
+            As refeições não são frescas
           </Text>
         </View>
         <View
           key="1"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -152,9 +155,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -175,9 +176,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -198,18 +197,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            As refeições são saudáveis
+            As refeições não são saudáveis
           </Text>
         </View>
         <View
           key="2"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -222,9 +224,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -245,9 +245,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -268,18 +266,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Há variedade de alimentos
+            Não há variedade de alimentos
           </Text>
         </View>
         <View
           key="3"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -292,9 +293,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -315,9 +314,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -338,18 +335,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            O cardápio está sendo seguido
+            O cardápio não está sendo seguido
           </Text>
         </View>
         <View
           key="4"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -362,9 +362,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -385,9 +383,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -408,18 +404,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            As refeições têm boa aparência
+            As refeições possuem má aparência
           </Text>
         </View>
         <View
           key="5"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -432,9 +431,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -455,9 +452,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -478,7 +473,6 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -489,7 +483,11 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           key="6"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -502,9 +500,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -525,9 +521,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -548,18 +542,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Foi fornecida alimentação escolar na data da visita
+            A alimentação escolar deixou de ser servida na data da visita
           </Text>
         </View>
         <View
           key="7"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -572,9 +569,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -595,9 +590,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -618,7 +611,6 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -629,7 +621,11 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           key="8"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -642,9 +638,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -665,9 +659,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -688,18 +680,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            São realizados testes de aceitabilidade entre os alunos
+            Ausência de testes de aceitabilidade entre os alunos
           </Text>
         </View>
         <View
           key="9"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -712,9 +707,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -735,9 +728,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -758,18 +749,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            O cardápio é acompanhado de fichas técnicas de preparo
+            O cardápio não acompanha fichas técnicas de preparo
           </Text>
         </View>
         <View
           key="10"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -782,9 +776,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -805,9 +797,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -828,7 +818,6 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
@@ -839,7 +828,11 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           key="11"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -852,9 +845,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -875,9 +866,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -898,18 +887,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            O cardápio prevê a oferta de, no mínimo, três porções de frutas e hortaliças por semana
+            O cardápio não prevê a oferta de, no mínimo, três porções de frutas e hortaliças por semana
           </Text>
         </View>
         <View
           key="12"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -922,9 +914,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -945,9 +935,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -968,18 +956,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            A alimentação escolar tem paladar saboroso e gostoso
+            A alimentação escolar não tem paladar saboroso e gostoso
           </Text>
         </View>
         <View
           key="13"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -992,9 +983,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1015,9 +1004,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1038,18 +1025,21 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Os cardápios são variados
+            Não há variedade nos cardápios
           </Text>
         </View>
         <View
           key="14"
           style={
             Object {
+              "alignItems": "center",
+              "borderBottomColor": "darkgrey",
+              "borderBottomWidth": 1,
               "flexDirection": "row",
+              "paddingVertical": 5,
             }
           }
         >
@@ -1062,9 +1052,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1085,9 +1073,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
                   "borderWidth": 2,
                   "flexWrap": "wrap",
                   "height": 25,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                  "marginTop": 10,
+                  "margin": 10,
                   "width": 25,
                 }
               }
@@ -1108,11 +1094,10 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
               Object {
                 "flex": 1,
                 "fontSize": 15,
-                "paddingTop": 15,
               }
             }
           >
-            Os cardápios estão afixados para visualização dos alunos e comunidade escolar
+            Os cardápios não estão afixados para visualização dos alunos e comunidade escolar
           </Text>
         </View>
       </View>
@@ -1135,8 +1120,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
         <View
           style={
             Object {
-              "marginLeft": 10,
-              "marginRight": 10,
+              "marginHorizontal": 10,
               "marginTop": 5,
             }
           }
@@ -1147,10 +1131,10 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
             placeholder="Observação sobre o cardápio"
             style={
               Object {
-                "borderRadius": 8,
+                "borderRadius": 12,
                 "borderWidth": 1,
-                "fontSize": 30,
-                "height": 133.4,
+                "fontSize": 37.5,
+                "height": 333.5,
                 "paddingLeft": 10,
                 "paddingTop": 10,
                 "textAlignVertical": "top",
@@ -1179,8 +1163,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
         <View
           style={
             Object {
-              "marginLeft": 10,
-              "marginRight": 10,
+              "marginHorizontal": 10,
               "marginTop": 5,
             }
           }
@@ -1191,10 +1174,10 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
             placeholder="Observação sobre o cardápio"
             style={
               Object {
-                "borderRadius": 8,
+                "borderRadius": 12,
                 "borderWidth": 1,
-                "fontSize": 30,
-                "height": 133.4,
+                "fontSize": 37.5,
+                "height": 333.5,
                 "paddingLeft": 10,
                 "paddingTop": 10,
                 "textAlignVertical": "top",
@@ -1207,12 +1190,26 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
       <View
         behavior="padding"
       >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "marginLeft": 15,
+              "marginTop": 15,
+            }
+          }
+        >
+          Alguma observação adicional? Insira aqui. (Opcional)
+        </Text>
         <View
           style={
             Object {
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 30,
+              "marginHorizontal": 10,
+              "marginTop": 5,
             }
           }
         >
@@ -1242,14 +1239,13 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
         onPress={[Function]}
         style={
           Object {
+            "alignItems": "center",
             "backgroundColor": "#FF9500",
             "borderRadius": 7,
             "borderWidth": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 20,
             "marginHorizontal": 15,
-            "marginTop": 30,
-            "paddingVertical": 10,
+            "marginVertical": 30,
+            "paddingVertical": 15,
           }
         }
       >
@@ -1261,6 +1257,7 @@ exports[`Testing FoodQualityCheckout Screen renders as expected 1`] = `
           style={
             Object {
               "color": "#FFF",
+              "fontSize": 15,
               "textAlign": "center",
             }
           }

@@ -56,7 +56,7 @@ export default class Resolution1Screen extends Component {
     this.setState({ activeSection: section });
   }
 
-  toggleExpanded = () => {
+  toggleExpanded() {
     this.setState({ collapsed: !this.state.collapsed });
   }
 

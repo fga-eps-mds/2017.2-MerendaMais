@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import StartPendingInspection from '../../screens/startInspection/StartPendingInspection';
+import { resetStore } from '../../actions/applicationActions';
 import { asyncGetCounselorFromGroup } from '../../actions/listActions';
 import {
   asyncGetSchedule,
@@ -18,6 +19,7 @@ const mapDispatchToProps = dispatch => ({
   asyncGetSchedule: counselor => dispatch(asyncGetSchedule(counselor)),
   asyncGetCounselorFromGroup: (CAE, CPF) => dispatch(asyncGetCounselorFromGroup(CAE, CPF)),
   setCurrentInspection: visitSchedule => dispatch(setCurrentInspection(visitSchedule)),
+  resetStore: (...states) => dispatch(resetStore(...states)),
 });
 
 const StartPendingInspectionContainer = connect(mapStateToProps,

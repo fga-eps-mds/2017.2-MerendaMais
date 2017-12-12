@@ -10,7 +10,7 @@ import {
   getUserProfileInLogin,
   convertingJSONToString,
   asyncLoginCounselor,
-  errorGenerator,
+  asyncEditCounselor,
 } from '../../src/actions/counselorActions';
 import {
   SET_COUNSELOR,
@@ -28,7 +28,11 @@ import {
   AUTH_LOGIN_ERROR,
   PROFILE_LOGIN_ERROR,
   GROUP_LOGIN_ERROR,
+  EDIT_ACCOUNT_ERROR,
+  EDIT_PROFILE_ERROR,
 } from '../../src/constants/errorConstants';
+import * as auxiliary from '../../src/actions/auxiliary/editCounselorAuxiliary';
+import { errorGenerator } from '../../src/actions/schedulingVisitActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -105,7 +109,7 @@ describe('Testing counselorActions', () => {
   });
 });
 
-describe('Testing counselorActions async actions', () => {
+describe('Testing counselorActions login async actions', () => {
   const mock = new MockAdapter(axios);
   const counselor = {
     nuvemCode: 1,
@@ -278,5 +282,76 @@ describe('Testing counselorActions async actions', () => {
       expect(error).toEqual(errorStatus);
       expect(store.getActions()).toEqual(expectedActions);
     });
+  });
+});
+
+describe('Testing asyncEditCounselor action', () => {
+  let counselorData = null;
+
+  beforeAll(() => {
+    counselorData = {
+      nuvemCode: 1,
+      email: 'user@user.com',
+      name: 'User',
+      userName: 'username',
+      password: 'password',
+      token: 1,
+      profile: {
+        cpf: '11111111111',
+        phone: '1111111111',
+        isPresident: false,
+        counselorType: 'Titular',
+        segment: 'Pais de alunos',
+        CAE_Type: 'Municipal',
+        CAE: 'CAE',
+        codGroup: 123,
+        presidentChecked: false,
+      },
+    };
+  });
+
+  afterEach(() => {
+    auxiliary.editAccountData.mockClear();
+    auxiliary.editCounselorProfile.mockClear();
+  });
+
+  it('On Success', async () => {
+    auxiliary.editAccountData = jest.fn(() => Promise.resolve());
+    auxiliary.editCounselorProfile = jest.fn(() => Promise.resolve());
+
+    const store = mockStore({});
+    await store.dispatch(await asyncEditCounselor(counselorData));
+    expect(auxiliary.editAccountData.mock.calls.length).toBe(1);
+    expect(auxiliary.editCounselorProfile.mock.calls.length).toBe(1);
+  });
+
+  it('On Failure Account Error', async () => {
+    auxiliary.editAccountData =
+      jest.fn(() => Promise.reject(errorGenerator(EDIT_ACCOUNT_ERROR, 400)));
+    auxiliary.editCounselorProfile =
+      jest.fn(() => Promise.resolve());
+
+    const store = mockStore({});
+    try {
+      await store.dispatch(await asyncEditCounselor(counselorData));
+    } catch (error) {
+      const errorJson = JSON.parse(error.message);
+      expect(errorJson.name).toBe(EDIT_ACCOUNT_ERROR);
+    }
+  });
+
+  it('On Failure Profile Error', async () => {
+    auxiliary.editAccountData = jest.fn(() => Promise.resolve());
+    auxiliary.editCounselorProfile =
+      jest.fn(() => Promise.reject(errorGenerator(EDIT_PROFILE_ERROR, 400)));
+
+    const store = mockStore({});
+    try {
+      await store.dispatch(await asyncEditCounselor(counselorData));
+    } catch (error) {
+      console.log(error);
+      const errorJson = JSON.parse(error.message);
+      expect(errorJson.name).toBe(EDIT_PROFILE_ERROR);
+    }
   });
 });
