@@ -87,8 +87,8 @@ const initialStateToScreen = {
 
   scheduleMeeting: {
     codSchool: 0,
-    meetingLatitude: null,
-    meetingLongitude: null,
+    meetingLatitude: 0.0,
+    meetingLongitude: 0.0,
   },
   appToken: 'genericalToken',
   nuvemCode: 1,
@@ -157,10 +157,19 @@ describe('Testing ScheduleMeeting buttons', () => {
   it('Test if goToMeetingMaps Button is rendered', () => {
     jest.mock('react-native-router-flux');
     const wrapper = shallow(<ScheduleMeeting {...initialStateToScreen} />);
+    console.log(initialStateToScreen);
     const button = wrapper.findWhere(c => c.key() === 'openMeetingMap');
     expect(button.length).toEqual(1);
     button.simulate('press');
   });
+
+  it('Test if openMeetingLocation Button is rendered', () => {
+    const wrapper = shallow(<ScheduleMeeting {...initialStateToScreen} />);
+    const button = wrapper.findWhere(c => c.key() === 'openMeetingLocation');
+    expect(button.length).toEqual(1);
+    button.simulate('press');
+  });
+
   it('Test if inviteCounselors Button is rendered', () => {
     const wrapper = shallow(<ScheduleMeeting {...initialStateToScreen} />);
     const button = wrapper.findWhere(c => c.key() === 'searchCounselorButton');
