@@ -34,7 +34,10 @@
    * QRCode:
 <p align="center"><img src="https://raw.githubusercontent.com/wiki/fga-gpp-mds/2017.2-MerendaMais/Imagens/Application_QRCode.PNG"></p>
 
-3. Desfrute, se você for um Conselheiro :wink:;
+3. Caso queira, veja um vídeo da aplicação no YouTube
+   * <a href="https://youtu.be/hTZtxCQACKY">Clique aqui para ver o vídeo</a>
+
+4. Desfrute, se você for um Conselheiro :wink:;
 
 ### Resumo Arquitetural
 
