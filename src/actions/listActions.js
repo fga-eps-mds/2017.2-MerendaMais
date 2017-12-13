@@ -93,13 +93,14 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
 
   const promisesInformationWithNuvemCode = [];
 
-  for (let i = 0; i < listOfLinks.length; i += 1) {
+  for (let i = 0; i < listOfLinks[0].length; i += 1) {
     promisesInformationWithNuvemCode.push(getCounselor(counselorLinks[i], linksWithCodMembro[i]));
   }
 
   // Return a array of arrays.
   // For each element, position 0 is the counselor information, and position 1 is the nuvem code.
   const counselorsInformationWithNuvemCode = await Promise.all(promisesInformationWithNuvemCode);
+  console.log(counselorsInformationWithNuvemCode);
 
   const promisesCompleteCounselors = [];
 
