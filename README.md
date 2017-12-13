@@ -38,12 +38,10 @@
 
 ### Resumo Arquitetural
 
-<p align="justify">A aplicação é formada por 3 camadas principais: </p>
+<p align="justify">A aplicação é formada por 2 camadas principais: </p>
 
-* <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais">React Native - Front-end </a> (Template);
-* <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais-Backend">Python DjangoRest - Back-end </a> (View - Model);
-   * <a href="http://merenda-mais.herokuapp.com/">Hospedagem</a>;
-* <a href="https://github.com/AppCivicoPlataforma/AppCivico">Nuvem Cívica - Armazenamento </a> (Model - Data Base);
+* <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais">React Native - Front-end;
+* <a href="https://github.com/AppCivicoPlataforma/AppCivico">Nuvem Cívica - Armazenamento </a>;  
 
 <p align="justify">Para entender a arquitetura com mais detalhes acesse o <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais/wiki/Documento-de-Arquitetura">Documento de Arquitetura </a> do projeto e os repositórios de cada camada. </p>
 
