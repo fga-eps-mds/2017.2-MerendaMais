@@ -13,7 +13,7 @@
 
 <p align="justify">O Merenda+ é uma aplicação mobile, que auxilia o conselheiro nas tarefas pertinentes a assuntos sobre a fiscalização da merenda escolar de determinada escola da sua região de atuação, de modo que as atividades realizadas - desde o planejamento da visita até a consolidação dos dados - possam ser executadas de forma mais ágil e intuitiva do que como é efetuada atualmente - a mão, através de “caneta e papel” -.</p>
 
-<p align="justify">Outro olhar também se aplica a esse projeto ao analisar o fato de que este oferece informações relevantes a respeito das fiscalizações ao Tribunal de Contas da União (TCU), que por sua vez analisará estes dados a fim de encontrar anomalias que possam prejudicar de qualquer forma a distibuição da merenda escolar ao alunos da rede pública de ensino.</p> 
+<p align="justify">Outro olhar também se aplica a esse projeto ao analisar o fato de que este oferece informações relevantes a respeito das fiscalizações ao Tribunal de Contas da União (TCU), que por sua vez analisará estes dados a fim de encontrar anomalias que possam prejudicar de qualquer forma a distibuição da merenda escolar ao alunos da rede pública de ensino.</p>
 
 <p align="justify">O sistema foi inicialmente desenvolvido por estudantes do curso de Engenharia de Software da UnB-Gama como projeto das disciplinas Método de Desenvolvimento de Software e Gerência de Gestão de Portifólios e Projetos de Software.</p>
 
@@ -28,10 +28,10 @@
    *  <a href="https://itunes.apple.com/us/app/expo-client/id982107779?mt=8">IOS - Apple Store</a>
 
 2. Acessar o link da aplicação na barra de pesquisa ou ler o QRCode abaixo:
-   * Link da Aplicação: 
+   * Link da Aplicação:
 ```https://expo.io/@rogerlenke/merendamais```
 
-   * QRCode: 
+   * QRCode:
 <p align="center"><img src="https://raw.githubusercontent.com/wiki/fga-gpp-mds/2017.2-MerendaMais/Imagens/Application_QRCode.PNG"></p>
 
 3. Desfrute, se você for um Conselheiro :wink:;
@@ -42,7 +42,7 @@
 
 * <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais">React Native - Front-end </a> (Template);
 * <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais-Backend">Python DjangoRest - Back-end </a> (View - Model);
-   * <a href="http://merenda-mais.herokuapp.com/">Hospedagem</a>; 
+   * <a href="http://merenda-mais.herokuapp.com/">Hospedagem</a>;
 * <a href="https://github.com/AppCivicoPlataforma/AppCivico">Nuvem Cívica - Armazenamento </a> (Model - Data Base);
 
 <p align="justify">Para entender a arquitetura com mais detalhes acesse o <a href="https://github.com/fga-gpp-mds/2017.2-MerendaMais/wiki/Documento-de-Arquitetura">Documento de Arquitetura </a> do projeto e os repositórios de cada camada. </p>
@@ -64,6 +64,39 @@
 * Para gerar o QRCode de feedback instantâneo do React Native e ver as mudanças do código em tempo real:
 
 ```npm start```
+
+### Docker
+
+<p align="justify">A equipe não utilizou Docker durante o desenvolvimento, pois como os membros já estavam com o ambiente configurado não houve necessecidade de utilizá-lo. Porém caso não deseje configurar o ambiente, recomenda-se utilizar o Docker pois ele faz toda a configuração de ambiente automáticamente. Para utilizá-lo deve-se ter o  <a href="https://www.docker.com/community-edition#/download">Docker</a> e o <a href="https://docs.docker.com/compose/install/">Docker-compose</a> instalados.</p>
+
+<p align="justify">Após instalar o Docker e o Docker-compose, entre na pasta do projeto e rode o seguinte comando no terminal e o projeto já estará funcionado:</p>
+
+* Para subir o ambiente do projeto:
+
+ ```Docker-compose up```
+
+* Para parar o docker de rodar:
+
+ ```Ctrl+c```
+
+<p align="justify">Caso deseje instalar alguma dependência no package.json ou acessar o container via bash, rode os seguintes comandos no terminal, depois de ter seguido o passo anterior:</p>
+
+* Para iniciar o container:
+
+ ```docker start 20172merendamais_merenda_mais_1```
+
+* Para executar o docker via bash:
+
+ ```docker exec -it 20172merendamais_merenda_mais_1 bash```
+
+* Para sair do bash do container:
+
+ ```Ctrl+d```
+
+* Para parar a execução do container:
+
+ ```docker stop 20172merendamais_merenda_mais_1```
+
 
 ### Principais funcionalidades
 
