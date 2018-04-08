@@ -244,6 +244,8 @@ class StartPendingInspection extends React.Component {
           </View>
           <View style={{ flex: 3 }}>
             {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
+            {
+              Object.keys(visitSchedule.content.visitListOfInvitees).length > 1 ?
             <View style={styles.buttonInvitees}>
               <TouchableOpacity
                 onPress={() =>
@@ -252,6 +254,8 @@ class StartPendingInspection extends React.Component {
                 <Text style={styles.buttonText}>PARTICIPANTES</Text>
               </TouchableOpacity>
             </View>
+            : undefined
+            }
           </View>
         </View>
       ))
@@ -260,7 +264,6 @@ class StartPendingInspection extends React.Component {
 
 
   renderCounselorList() {
-    if(this.state.invitees.length){
       return (
         this.state.invitees.map(counselor => (
           <View style={styles.listRegisters} key={counselor.nuvemCode}>
@@ -295,16 +298,6 @@ class StartPendingInspection extends React.Component {
           </View>
         ))
       );
-    } else {
-      return (
-          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ justifyContent: 'center', textAlign: 'center' }}>
-                Não existem participantes além de você. 
-              </Text>
-          </View>
-      );
-    }
-
   }
 
   render() {
