@@ -18,6 +18,7 @@ import {
   getCounselorProfile,
 } from './auxiliary/getCounselorFromGroupAuxiliary';
 import { logInfo } from '../../logConfig/loggers';
+import { isLoading, isNotLoading } from './applicationActions';
 
 const FILE_NAME = 'listActions.js';
 
@@ -77,6 +78,7 @@ export const setlistOfNotCheckedCounselors = notCheckedCounselor => ({
 });
 
 export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
+  dispatch(isLoading());
   dispatch(resetList());
 
   const codGroup = await getGroup(CAE);
@@ -124,4 +126,5 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
       }
     }
   }
+  dispatch(isNotLoading());
 };

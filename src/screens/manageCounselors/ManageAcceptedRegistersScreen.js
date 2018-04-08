@@ -83,10 +83,13 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
 
 
   arrayRegistersList() {
-    if (this.props.listOfCheckedCounselors.length === 0) {
+    if (this.props.isLoading === true) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
+    }
+    if (this.props.listOfCheckedCounselors.length === 0){
+      return (<View><Text> Não Existem </Text></View>)
     }
     return (
       this.props.listOfCheckedCounselors.map(counselor => (
@@ -134,6 +137,7 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
 const { shape, string, number, bool } = PropTypes;
 
 ManageAcceptedRegistersScreen.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,

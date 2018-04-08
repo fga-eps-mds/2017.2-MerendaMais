@@ -95,10 +95,14 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
 
 
   arrayRegistersList() {
-    if (this.props.listOfNotCheckedCounselors.length === 0) {
+    if (this.props.isLoading === true) {
       return (
         <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
       );
+    }
+    
+    if (this.props.listOfNotCheckedCounselors.length === 0){
+      return (<View><Text> Não Existem </Text></View>)
     }
     return (
       this.props.listOfNotCheckedCounselors.map(counselor => (
@@ -154,6 +158,7 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
 const { shape, string, number, bool } = PropTypes;
 
 ManageNotAcceptedRegistersScreen.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,
