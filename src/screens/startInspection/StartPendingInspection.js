@@ -258,41 +258,53 @@ class StartPendingInspection extends React.Component {
     );
   }
 
+
   renderCounselorList() {
-    return (
-      this.state.invitees.map(counselor => (
-        <View style={styles.listRegisters} key={counselor.nuvemCode}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-              {counselor.name}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Email: </Text>
-              {counselor.email}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.profile.phone}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>
-              { counselor.confirmed ?
-                <Text> Confirmado </Text>
-                : <Text> Não Confirmado </Text>
-              }
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
-              { counselor.realizedVisit ?
-                <Text> Realizada </Text>
-                : <Text> Não Realizada </Text>
-              }
-            </Text>
+    if(this.state.invitees.length){
+      return (
+        this.state.invitees.map(counselor => (
+          <View style={styles.listRegisters} key={counselor.nuvemCode}>
+            <View style={styles.textBox}>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+                {counselor.name}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Email: </Text>
+                {counselor.email}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+                {counselor.profile.phone}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>
+                { counselor.confirmed ?
+                  <Text> Confirmado </Text>
+                  : <Text> Não Confirmado </Text>
+                }
+              </Text>
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
+                { counselor.realizedVisit ?
+                  <Text> Realizada </Text>
+                  : <Text> Não Realizada </Text>
+                }
+              </Text>
+            </View>
           </View>
-        </View>
-      ))
-    );
+        ))
+      );
+    } else {
+      return (
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <Text style={{ justifyContent: 'center', textAlign: 'center' }}>
+                Não existem participantes além de você. 
+              </Text>
+          </View>
+      );
+    }
+
   }
 
   render() {
