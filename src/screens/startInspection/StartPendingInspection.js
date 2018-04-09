@@ -246,19 +246,25 @@ class StartPendingInspection extends React.Component {
             {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
             {
               Object.keys(visitSchedule.content.visitListOfInvitees).length > 1 ?
-            <View style={styles.buttonInvitees}>
-              <TouchableOpacity
-                onPress={() =>
-                  this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
-              >
-                <Text style={styles.buttonText}>PARTICIPANTES</Text>
-              </TouchableOpacity>
-            </View>
-            : undefined
+              this.renderPaticipantsButton(visitSchedule) : undefined
             }
           </View>
         </View>
       ))
+    );
+  }
+
+
+  renderPaticipantsButton(visitSchedule){
+    return (
+      <View style={styles.buttonInvitees}>
+        <TouchableOpacity
+          onPress={() =>
+            this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
+        >
+          <Text style={styles.buttonText}>PARTICIPANTES</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 
