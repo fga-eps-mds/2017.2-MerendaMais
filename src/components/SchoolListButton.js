@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import styles from '../Styles';
+import styles from '../Styles/GeneralStyles';
 
 const SchoolListButton = props => (
   <View style={styles.flatListItem}>

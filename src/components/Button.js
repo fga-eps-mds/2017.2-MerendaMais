@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Text, View } from 'react-native';
-import styles from '../Styles';
+import styles from '../Styles/GeneralStyles';
 
 
 class Button extends React.Component {

@@ -14,6 +14,9 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 
+import stylesList from '../../Styles/ListStyles';
+
+
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
@@ -103,24 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
     justifyContent: 'space-between',
   },
-
-  noneScheduleTextBox: {
-    flex: 1,
-    marginHorizontal: 28,
-    marginVertical: 40,
-    borderColor: 'black',
-    borderWidth: 2,
-    borderRadius: 5,
-    backgroundColor: '#FAFAFA',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 18,
-  },
-
-  noneScheduleText: {
-    fontSize: 18,
-  },
 });
 
 class StartPendingInspection extends React.Component {
@@ -137,6 +122,7 @@ class StartPendingInspection extends React.Component {
     this.props.asyncGetSchedule(this.props.counselor);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
+    
   }
 
   mountvisitListOfInvitees(visitListOfInvitees) {
@@ -206,8 +192,8 @@ class StartPendingInspection extends React.Component {
       );
     } else if (this.props.listOfPendingScheduleInAGroup.length === 0) {
       return (
-        <View style={styles.noneScheduleTextBox}>
-          <Text style={styles.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
+        <View style={stylesList.noneScheduleTextBox}>
+          <Text style={stylesList.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
         </View>
       );
     }
@@ -254,8 +240,7 @@ class StartPendingInspection extends React.Component {
     );
   }
 
-
-  renderPaticipantsButton(visitSchedule){
+  renderPaticipantsButton(visitSchedule) {
     return (
       <View style={styles.buttonInvitees}>
         <TouchableOpacity
@@ -270,40 +255,40 @@ class StartPendingInspection extends React.Component {
 
 
   renderCounselorList() {
-      return (
-        this.state.invitees.map(counselor => (
-          <View style={styles.listRegisters} key={counselor.nuvemCode}>
-            <View style={styles.textBox}>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-                {counselor.name}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Email: </Text>
-                {counselor.email}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-                {counselor.profile.phone}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>
-                { counselor.confirmed ?
-                  <Text> Confirmado </Text>
-                  : <Text> Não Confirmado </Text>
-                }
-              </Text>
-              <Text style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
-                { counselor.realizedVisit ?
-                  <Text> Realizada </Text>
-                  : <Text> Não Realizada </Text>
-                }
-              </Text>
-            </View>
+    return (
+      this.state.invitees.map(counselor => (
+        <View style={styles.listRegisters} key={counselor.nuvemCode}>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
+              {counselor.name}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Email: </Text>
+              {counselor.email}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
+              {counselor.profile.phone}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>
+              { counselor.confirmed ?
+                <Text> Confirmado </Text>
+                : <Text> Não Confirmado </Text>
+              }
+            </Text>
+            <Text style={styles.text}>
+              <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
+              { counselor.realizedVisit ?
+                <Text> Realizada </Text>
+                : <Text> Não Realizada </Text>
+              }
+            </Text>
           </View>
-        ))
-      );
+        </View>
+      ))
+    );
   }
 
   render() {

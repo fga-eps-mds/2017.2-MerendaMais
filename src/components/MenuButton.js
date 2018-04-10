@@ -2,7 +2,7 @@ import React from 'react';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Text, View } from 'react-native';
-import styles from '../Styles';
+import styles from '../Styles/GeneralStyles';
 
 const MenuButton = props => (
   <TouchableOpacity
