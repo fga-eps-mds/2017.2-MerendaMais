@@ -33,6 +33,7 @@ import CpfField from '../components/CpfField';
 import NameField from '../components/NameField';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
+import GenericField from '../components/GenericField';
 import PhoneField from '../components/PhoneField';
 import DropdownComponent from '../components/DropdownComponent';
 import MunicipalDistrict from '../components/MunicipalDistrict';
@@ -252,6 +253,13 @@ export default class RegisterScreen extends React.Component {
         <KeyboardAvoidingView style={styles.content} behavior="padding">
           <ScrollView>
             <View style={{ paddingHorizontal: 15 }}>
+
+
+              <GenericField
+                header="Genérico"
+                message="Componente de Input"
+                icon="chevrons-up"
+              />
 
               <Text>CPF</Text>
               <CpfField
