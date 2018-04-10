@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { backHandlerPop } from '../../NavigationFunctions';
+import stylesList from '../../Styles/ListStyles';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -48,22 +49,6 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 3,
     marginRight: 10,
-  },
-  noneScheduleTextBox: {
-    flex: 1,
-    marginHorizontal: 28,
-    marginVertical: 40,
-    borderColor: 'black',
-    borderWidth: 2,
-    borderRadius: 5,
-    backgroundColor: '#FAFAFA',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 18,
-  },
-  noneScheduleText: {
-    fontSize: 18,
   },
 });
 
@@ -109,7 +94,6 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
       ]);
   }
 
-
   arrayRegistersList() {
     if (this.props.isLoading === true) {
       return (
@@ -117,10 +101,10 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
       );
     }
     
-    if (this.props.listOfNotCheckedCounselors.length === 0){
+    if (this.props.listOfNotCheckedCounselors.length === 0) {
       return (
-        <View style={styles.noneScheduleTextBox}>
-          <Text style={styles.noneScheduleText}>Nenhum Conselheiro Não Validado!</Text>
+        <View style={stylesList.noneScheduleTextBox}>
+          <Text style={stylesList.noneScheduleText}>Nenhum Conselheiro Não Validado!</Text>
         </View>
       );
     }

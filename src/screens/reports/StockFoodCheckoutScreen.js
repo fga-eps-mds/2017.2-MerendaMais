@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Checkbox } from 'react-native-checkbox-field'; // Checkbox only
 import PropTypes from 'prop-types';
@@ -12,7 +13,7 @@ import { TouchableOpacity,
 } from 'react-native';
 import { FOOD_STOCK } from '../../constants/generalConstants';
 import Header from '../../components/Header';
-import styles from '../../Styles';
+import styles from '../../Styles/GeneralStyles';
 import { backHandlerPop } from '../../NavigationFunctions';
 
 export default class StockFoodCheckoutScreen extends React.Component {

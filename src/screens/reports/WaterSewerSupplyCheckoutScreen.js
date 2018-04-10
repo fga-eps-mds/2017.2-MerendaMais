@@ -12,7 +12,7 @@ import { TouchableOpacity,
 } from 'react-native';
 import { WATER_SEWER_SUPPLY } from '../../constants/generalConstants';
 import Header from '../../components/Header';
-import styles from '../../Styles';
+import styles from '../../Styles/GeneralStyles';
 import { backHandlerPop } from '../../NavigationFunctions';
 
 export default class WaterSewerSupplyCheckoutScreen extends React.Component {

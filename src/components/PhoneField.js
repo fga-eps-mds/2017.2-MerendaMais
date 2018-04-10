@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import styles from '../Styles';
+import styles from '../Styles/GeneralStyles';
 
 const validatePhone = (phone, callback) => {
   const validPhone = phone.replace(/[^0-9]/g, '');
