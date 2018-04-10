@@ -1,0 +1,11 @@
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        javascript:
+          mass_threshold: 120
+
+exclude_paths:
+- "**/__tests__/"
+- "**/__mocks__/"

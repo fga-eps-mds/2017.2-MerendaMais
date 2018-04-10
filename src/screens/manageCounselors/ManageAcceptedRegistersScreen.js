@@ -4,7 +4,6 @@ import {
   Text,
   View,
   ScrollView,
-  ActivityIndicator,
   TouchableOpacity,
   Alert,
   BackHandler,
@@ -12,6 +11,7 @@ import {
 import PropTypes from 'prop-types';
 import { backHandlerPop } from '../../NavigationFunctions';
 import stylesList from '../../Styles/ListStyles';
+import LoadingIndicator from '../../components/LoadingIndicator';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -86,18 +86,15 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
   arrayRegistersList() {
     if (this.props.isLoading === true) {
       return (
-        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
+        LoadingIndicator
       );
-    }
-
-    if (this.props.listOfCheckedCounselors.length === 0) {
+    } else if (this.props.listOfCheckedCounselors.length === 0) {
       return (
         <View style={stylesList.noneScheduleTextBox}>
           <Text style={stylesList.noneScheduleText}>Nenhum Conselheiro Validado!</Text>
         </View>
       );
     }
-
     return (
       this.props.listOfCheckedCounselors.map(counselor => (
         <View style={styles.listRegisters} key={(counselor.nuvemCode).toString()}>
