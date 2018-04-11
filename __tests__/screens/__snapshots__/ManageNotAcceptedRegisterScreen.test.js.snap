@@ -2,6 +2,7 @@
 
 exports[`Testing ManagerNotAcceptedRegistersScreen renders as expected 1`] = `
 <ManageNotAcceptedRegistersScreen
+  application={false}
   asyncAcceptCounselor={[Function]}
   asyncGetCounselorFromGroup={[Function]}
   counselor={

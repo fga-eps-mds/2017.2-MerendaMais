@@ -84,7 +84,7 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
 
 
   arrayRegistersList() {
-    if (this.props.isLoading === true) {
+    if (this.props.application === true) {
       return (
         LoadingIndicator
       );
@@ -141,7 +141,7 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
 const { shape, string, number, bool } = PropTypes;
 
 ManageAcceptedRegistersScreen.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
+  application: PropTypes.bool.isRequired,
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,
