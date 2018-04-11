@@ -247,6 +247,8 @@ export default class RegisterScreen extends React.Component {
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
 
+    // const passwordRegex1 = /^.{6,20}$/g;
+    const passwordRegex1 = /\w+/g;
     return (
       <View style={styles.principal}>
         <Header />
@@ -259,6 +261,8 @@ export default class RegisterScreen extends React.Component {
                 header="Genérico"
                 message="Componente de Input"
                 icon="chevrons-up"
+                validorRegex={passwordRegex1}
+                errorMessage="Senha inválida"
               />
 
               <Text>CPF</Text>

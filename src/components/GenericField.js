@@ -6,7 +6,6 @@ import styles from '../Styles';
 
 
 export default class GenericField extends Component {
-
   constructor(props) {
     super(props);
 
@@ -17,35 +16,38 @@ export default class GenericField extends Component {
 
   verificaTexto(texto) {
     // arrumar essa validação para receber um Regex
-
-    if (texto === 'texto') {
-      console.warn('Texto correto');
+    console.log(JSON.stringify(this.props.validorRegex));
+    console.warn(texto);
+    if (this.props.validorRegex.test(texto.trim())) {
+      console.warn('Valido');
       this.setState({ validateMessage: true });
     } else {
-      console.warn('Texto Incorreto');
+      console.warn('Invalido');
       this.setState({ validateMessage: false });
     }
+    return texto;
   }
 
   render() {
     // Provavelmente mudar isso para um Style diferente. User uma linha vermelha, nao sei.
     // Não usar uma msg.
     let p;
-    if (!this.state.validateMessage) {
-      p = 'Erro';
+    if (this.state.validateMessage === false) {
+      p = <Text>{this.props.errorMessage}</Text>;
     } else {
-      p = 'Correto';
+      p = <Text />;
     }
+
     return (
       <View>
         <Text> {this.props.header.toUpperCase()} </Text>
         <FontAwesome name={this.props.icon} style={styles.icon} size={26} color="black" />
-        <Text>{p}</Text>
         <TextInput
           style={styles.InputFieldStyle}
           placeholder={this.props.message}
           onChangeText={text => this.verificaTexto(text)}
         />
+        {p}
 
       </View>
     );
@@ -55,6 +57,8 @@ GenericField.propTypes = {
   header: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
+  validorRegex: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string.isRequired,
 };
 
 
