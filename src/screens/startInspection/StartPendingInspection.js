@@ -231,7 +231,7 @@ class StartPendingInspection extends React.Component {
             {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
             {
               Object.keys(visitSchedule.content.visitListOfInvitees).length > 1 ?
-              this.renderPaticipantsButton(visitSchedule) : undefined
+                this.renderPaticipantsButton(visitSchedule) : undefined
             }
           </View>
         </View>
