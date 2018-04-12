@@ -8,18 +8,27 @@ export default class GenericField extends Component {
     super(props);
 
     this.state = {
+      styleInUse: styles.InputFieldStyle,
+      errorTextArea: <Text />,
       text: '',
-      validateMessage: -1,
+      validValue: -1,
     };
   }
 
   handleInput(newText) {
-    this.setState({
-      text: newText.trim(),
-    },
-    // Callback from setState
-    () => { this.validateText(this.state.text, this.props.validorRegex); },
-    );
+    this.setState({ text: newText.trim() }, () => {
+      this.validateText(this.state.text, this.props.validorRegex);
+    });
+  }
+
+  handleUpdate() {
+    if (this.state.validValue) {
+      this.setState({ errorTextArea: <Text /> });
+      this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }] });
+    } else {
+      this.setState({ errorTextArea: <Text>{this.props.errorMessage}</Text> });
+      this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }] });
+    }
   }
 
   validateText(text, regexTest) {
@@ -33,38 +42,35 @@ export default class GenericField extends Component {
 
     if (isValid) {
       console.warn('Valido');
-      this.setState({ validateMessage: true });
+      this.setState({ validValue: true }, () => {
+        this.handleUpdate();
+      });
     } else {
       console.warn('Invalido');
-      this.setState({ validateMessage: false });
+      this.setState({ validValue: false }, () => {
+        this.handleUpdate();
+      });
     }
   }
 
   render() {
-    // Provavelmente mudar isso para um Style diferente. User uma linha vermelha, nao sei.
-    // Não usar uma msg.
-    let p;
-    if (this.state.validateMessage || this.state.validateMessage === -1) {
-      p = <Text />;
-    } else {
-      p = <Text>{this.props.errorMessage}</Text>;
-    }
-
     return (
       <View>
-        {p}
         <Text> {this.props.header.toUpperCase()} </Text>
         <TextInput
-          style={styles.InputFieldStyle}
+          style={this.state.styleInUse}
           placeholder={this.props.message}
           value={this.state.test}
           onChangeText={text => this.handleInput(text)}
         />
 
+        {this.state.errorTextArea}
+
       </View>
     );
   }
 }
+
 GenericField.propTypes = {
   header: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
