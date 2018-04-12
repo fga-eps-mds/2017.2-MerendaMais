@@ -32,7 +32,10 @@ export default class DocCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setDocReportPositive(item.key)}
+          onSelect={() => {
+            this.props.setDocReportPositive(item.key),
+            this.props.setStatusDoc(false)
+          }}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -47,7 +50,10 @@ export default class DocCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setDocReportNegative(item.key)}
+          onSelect={() => { 
+            this.props.setDocReportNegative(item.key),
+            this.props.setStatusDoc(false)
+          }}
           disabled={item.markedYes}
           disabledColor={null}
         />

@@ -31,7 +31,7 @@ export default class KitchenCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setKitchenReportPositive(item.key)}
+          onSelect={() => {this.props.setKitchenReportPositive(item.key)}}
           disabled={item.markedNo}
           disabledColor={null}
         />
