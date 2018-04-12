@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:latest
+FROM ubuntu:14.04
 
 # Install base software packages
 RUN apt-get update && \
@@ -11,8 +11,7 @@ RUN apt-get update && \
     unzip -y && \
     apt-get clean
 
-RUN mkdir /app
-ADD . /app
+
 # ——————————
 # Install Node and global packages
 # ——————————
@@ -29,5 +28,3 @@ ENV PATH ${PATH}:/opt/node/bin
 # Install Basic React-Native packages
 # ——————————
 RUN npm install -g create-react-native-app
-RUN npm install -g react-redux
-RUN npm start
