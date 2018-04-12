@@ -14,6 +14,9 @@ import PopupDialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 
+import stylesList from '../../Styles/ListStyles';
+
+
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
@@ -103,24 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
     justifyContent: 'space-between',
   },
-
-  noneScheduleTextBox: {
-    flex: 1,
-    marginHorizontal: 28,
-    marginVertical: 40,
-    borderColor: 'black',
-    borderWidth: 2,
-    borderRadius: 5,
-    backgroundColor: '#FAFAFA',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 18,
-  },
-
-  noneScheduleText: {
-    fontSize: 18,
-  },
 });
 
 class StartPendingInspection extends React.Component {
@@ -206,8 +191,8 @@ class StartPendingInspection extends React.Component {
       );
     } else if (this.props.listOfPendingScheduleInAGroup.length === 0) {
       return (
-        <View style={styles.noneScheduleTextBox}>
-          <Text style={styles.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
+        <View style={stylesList.noneScheduleTextBox}>
+          <Text style={stylesList.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
         </View>
       );
     }
@@ -244,19 +229,29 @@ class StartPendingInspection extends React.Component {
           </View>
           <View style={{ flex: 3 }}>
             {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
-            <View style={styles.buttonInvitees}>
-              <TouchableOpacity
-                onPress={() =>
-                  this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
-              >
-                <Text style={styles.buttonText}>PARTICIPANTES</Text>
-              </TouchableOpacity>
-            </View>
+            {
+              Object.keys(visitSchedule.content.visitListOfInvitees).length > 1 ?
+                this.renderPaticipantsButton(visitSchedule) : undefined
+            }
           </View>
         </View>
       ))
     );
   }
+
+  renderPaticipantsButton(visitSchedule) {
+    return (
+      <View style={styles.buttonInvitees}>
+        <TouchableOpacity
+          onPress={() =>
+            this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
+        >
+          <Text style={styles.buttonText}>PARTICIPANTES</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
 
   renderCounselorList() {
     return (

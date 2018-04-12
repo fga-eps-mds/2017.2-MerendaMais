@@ -12,7 +12,7 @@ import { TouchableOpacity,
 } from 'react-native';
 import { KITCHEN } from '../../constants/generalConstants';
 import Header from '../../components/Header';
-import styles from '../../Styles';
+import styles from '../../Styles/GeneralStyles';
 import { backHandlerPop } from '../../NavigationFunctions';
 
 export default class KitchenCheckoutScreen extends React.Component {

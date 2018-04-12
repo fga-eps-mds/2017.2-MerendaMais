@@ -4,13 +4,14 @@ import {
   Text,
   View,
   ScrollView,
-  ActivityIndicator,
   TouchableOpacity,
   Alert,
   BackHandler,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { backHandlerPop } from '../../NavigationFunctions';
+import stylesList from '../../Styles/ListStyles';
+import LoadingIndicator from '../../components/LoadingIndicator';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -93,11 +94,16 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
       ]);
   }
 
-
   arrayRegistersList() {
-    if (this.props.listOfNotCheckedCounselors.length === 0) {
+    if (this.props.application === true) {
       return (
-        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
+        LoadingIndicator
+      );
+    } else if (this.props.listOfNotCheckedCounselors.length === 0) {
+      return (
+        <View style={stylesList.noneScheduleTextBox}>
+          <Text style={stylesList.noneScheduleText}>Nenhum Conselheiro Não Validado!</Text>
+        </View>
       );
     }
     return (
@@ -125,7 +131,6 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
                 <Text>VALIDAR</Text>
               </View>
             </TouchableOpacity>
-
             <TouchableOpacity
               onPress={() => this.disableCounselor(counselor,
                 this.props.counselor.profile.codGroup)}
@@ -154,6 +159,7 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
 const { shape, string, number, bool } = PropTypes;
 
 ManageNotAcceptedRegistersScreen.propTypes = {
+  application: PropTypes.bool.isRequired,
   counselor: shape({
     name: string.isRequired,
     nuvemCode: number.isRequired,

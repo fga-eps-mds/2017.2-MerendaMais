@@ -131,11 +131,11 @@ class VisitInvites extends React.Component {
   async getLocalization() {
     try {
       const response = await
-        axios.get(`${SCHOOL_ENDPOINT}/${this.state.visit.content.codSchool}`, {
-          params: {
-            campos: 'latitude,longitude',
-          },
-        });
+      axios.get(`${SCHOOL_ENDPOINT}/${this.state.visit.content.codSchool}`, {
+        params: {
+          campos: 'latitude,longitude',
+        },
+      });
 
       logInfo(FILE_NAME, 'getSchoolLocalization in visits Notifications',
         `Successfully got school data: ${JSON.stringify(response.data, null, 2)}`);
