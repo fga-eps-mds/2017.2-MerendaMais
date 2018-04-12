@@ -15,14 +15,11 @@ export default class GenericField extends Component {
   }
 
   handleInput(newText) {
-    // const regexTest = /\w+/g;
-    console.warn('handleInput', newText);
-
     this.setState({
       text: newText.trim(),
     },
     // Callback from setState
-    () => { this.verificaTexto(newText, this.props.validorRegex); },
+    () => { this.verificaTexto(this.state.text, this.props.validorRegex); },
     );
   }
 
