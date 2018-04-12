@@ -31,7 +31,10 @@ export default class RefectoryCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setRefectoryReportPositive(item.key)}
+          onSelect={() => {
+            this.props.setRefectoryReportPositive(item.key),
+            this.props.setStatusRefectory(false)
+          }}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -46,7 +49,10 @@ export default class RefectoryCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setRefectoryReportNegative(item.key)}
+          onSelect={() => {
+            this.props.setRefectoryReportNegative(item.key),
+            this.props.setStatusRefectory(false)
+          }}
           disabled={item.markedYes}
           disabledColor={null}
         />
