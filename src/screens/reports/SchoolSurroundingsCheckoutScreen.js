@@ -32,8 +32,8 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
           selected={item.markedYes}
           selectedColor={'#008000'}
           onSelect={() => {
-            this.props.setSchoolSurroundingsReportPositive(item.key),
-            this.props.setStatusSchoolSurroundings(false)
+            this.props.setSchoolSurroundingsReportPositive(item.key);
+            this.props.setStatusSchoolSurroundings(false);
           }}
           disabled={item.markedNo}
           disabledColor={null}
@@ -50,8 +50,8 @@ export default class SchoolSurroundingsCheckoutScreen extends React.Component {
           selected={item.markedNo}
           selectedColor={'#B22222'}
           onSelect={() => {
-            this.props.setSchoolSurroundingsReportNegative(item.key),
-            this.props.setStatusSchoolSurroundings(false)
+            this.props.setSchoolSurroundingsReportNegative(item.key);
+            this.props.setStatusSchoolSurroundings(false);
           }}
           disabled={item.markedYes}
           disabledColor={null}

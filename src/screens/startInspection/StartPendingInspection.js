@@ -230,7 +230,9 @@ class StartPendingInspection extends React.Component {
           <View style={{ flex: 3 }}>
             {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
             {
-              this.renderPaticipantsButton(visitSchedule, Object.keys(visitSchedule.content.visitListOfInvitees).length)
+              this.renderPaticipantsButton(
+                visitSchedule,
+                Object.keys(visitSchedule.content.visitListOfInvitees).length)
             }
           </View>
         </View>
@@ -239,8 +241,9 @@ class StartPendingInspection extends React.Component {
   }
 
   renderPaticipantsButton(visitSchedule, numberOfParticipants) {
+    let participantsButton;
     if (numberOfParticipants > 1) {
-      return (
+      participantsButton = (
         <View style={styles.buttonInvitees}>
           <TouchableOpacity
             onPress={() =>
@@ -251,6 +254,7 @@ class StartPendingInspection extends React.Component {
         </View>
       );
     }
+    return participantsButton;
   }
 
   renderCounselorList() {

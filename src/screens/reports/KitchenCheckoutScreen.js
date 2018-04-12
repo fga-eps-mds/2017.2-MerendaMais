@@ -32,8 +32,8 @@ export default class KitchenCheckoutScreen extends React.Component {
           selected={item.markedYes}
           selectedColor={'#008000'}
           onSelect={() => {
-            this.props.setKitchenReportPositive(item.key),
-            this.props.setStatusKitchen(false)
+            this.props.setKitchenReportPositive(item.key);
+            this.props.setStatusKitchen(false);
           }}
           disabled={item.markedNo}
           disabledColor={null}
@@ -55,8 +55,8 @@ export default class KitchenCheckoutScreen extends React.Component {
           selected={item.markedNo}
           selectedColor={'#B22222'}
           onSelect={() => {
-            this.props.setKitchenReportNegative(item.key),
-            this.props.setStatusKitchen(false)
+            this.props.setKitchenReportNegative(item.key);
+            this.props.setStatusKitchen(false);
           }}
           disabled={item.markedYes}
           disabledColor={null}

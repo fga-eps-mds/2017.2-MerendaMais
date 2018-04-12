@@ -32,8 +32,8 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
           selected={item.markedYes}
           selectedColor={'#008000'}
           onSelect={() => {
-            this.props.setWaterSewerSupplyReportPositive(item.key),
-            this.props.setStatusWaterSewerSupply(false)
+            this.props.setWaterSewerSupplyReportPositive(item.key);
+            this.props.setStatusWaterSewerSupply(false);
           }}
           disabled={item.markedNo}
           disabledColor={null}
@@ -50,8 +50,8 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
           selected={item.markedNo}
           selectedColor={'#B22222'}
           onSelect={() => {
-            this.props.setWaterSewerSupplyReportNegative(item.key),
-            this.props.setStatusWaterSewerSupply(false)
+            this.props.setWaterSewerSupplyReportNegative(item.key);
+            this.props.setStatusWaterSewerSupply(false);
           }}
           disabled={item.markedYes}
           disabledColor={null}

@@ -33,8 +33,8 @@ export default class StockFoodCheckoutScreen extends React.Component {
           selected={item.markedYes}
           selectedColor={'#008000'}
           onSelect={() => {
-            this.props.setStockFoodReportPositive(item.key),
-            this.props.setStatusFoodStock(false)
+            this.props.setStockFoodReportPositive(item.key);
+            this.props.setStatusFoodStock(false);
           }}
           disabled={item.markedNo}
           disabledColor={null}
@@ -51,8 +51,8 @@ export default class StockFoodCheckoutScreen extends React.Component {
           selected={item.markedNo}
           selectedColor={'#B22222'}
           onSelect={() => {
-            this.props.setStockFoodReportNegative(item.key),
-            this.props.setStatusFoodStock(false)
+            this.props.setStockFoodReportNegative(item.key);
+            this.props.setStatusFoodStock(false);
           }}
           disabled={item.markedYes}
           disabledColor={null}

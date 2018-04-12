@@ -32,8 +32,8 @@ export default class FoodHandlerCheckoutScreen extends React.Component {
           selected={item.markedYes}
           selectedColor={'#008000'}
           onSelect={() => {
-            this.props.setFoodHandlerReportPositive(item.key),
-            this.props.setStatusFoodHandler(false)
+            this.props.setFoodHandlerReportPositive(item.key);
+            this.props.setStatusFoodHandler(false);
           }}
           disabled={item.markedNo}
           disabledColor={null}
@@ -50,8 +50,8 @@ export default class FoodHandlerCheckoutScreen extends React.Component {
           selected={item.markedNo}
           selectedColor={'#B22222'}
           onSelect={() => {
-            this.props.setFoodHandlerReportNegative(item.key),
-            this.props.setStatusFoodHandler(false)
+            this.props.setFoodHandlerReportNegative(item.key);
+            this.props.setStatusFoodHandler(false);
           }}
           disabled={item.markedYes}
           disabledColor={null}
