@@ -11,5 +11,5 @@ services:
     command: |
      bash -c "
      npm install
-     npm start
+     npm start 
      "

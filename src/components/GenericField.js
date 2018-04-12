@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
 import styles from '../Styles';
 
 
@@ -10,20 +9,25 @@ export default class GenericField extends Component {
     super(props);
 
     this.state = {
-      validateMessage: '',
+      validateMessage: true,
+      input: '',
     };
   }
 
   verificaTexto(texto) {
     // arrumar essa validação para receber um Regex
-    console.log(JSON.stringify(this.props.validorRegex));
+    const patt = RegExp(this.props.validorRegex);
     console.warn(texto);
-    if (this.props.validorRegex.test(texto.trim())) {
+    console.log('Resultado da regex: ', patt.test(texto));
+    if (patt.test(texto)) {
       console.warn('Valido');
+      this.setState({ input: texto });
       this.setState({ validateMessage: true });
+      console.warn('Resultado do validateMessage: ', this.state.validateMessage);
     } else {
       console.warn('Invalido');
       this.setState({ validateMessage: false });
+      console.warn('Resultado do validateMessage: ', this.state.validateMessage);
     }
     return texto;
   }
@@ -32,7 +36,7 @@ export default class GenericField extends Component {
     // Provavelmente mudar isso para um Style diferente. User uma linha vermelha, nao sei.
     // Não usar uma msg.
     let p;
-    if (this.state.validateMessage === false) {
+    if (!this.state.validateMessage) {
       p = <Text>{this.props.errorMessage}</Text>;
     } else {
       p = <Text />;
@@ -40,14 +44,13 @@ export default class GenericField extends Component {
 
     return (
       <View>
+        {p}
         <Text> {this.props.header.toUpperCase()} </Text>
-        <FontAwesome name={this.props.icon} style={styles.icon} size={26} color="black" />
         <TextInput
           style={styles.InputFieldStyle}
           placeholder={this.props.message}
           onChangeText={text => this.verificaTexto(text)}
         />
-        {p}
 
       </View>
     );
