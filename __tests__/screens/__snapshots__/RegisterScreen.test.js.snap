@@ -33,6 +33,14 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
           }
         }
       >
+        <GenericField
+          errorMessage="Está errado!"
+          header="Genérico"
+          icon="chevrons-up"
+          message="Componente de Input"
+          validorRegex={/\\\\w\\{6,\\}/}
+          value=""
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
