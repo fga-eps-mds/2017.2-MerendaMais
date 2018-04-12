@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Text, View, TextInput } from 'react-native';
 import styles from '../Styles';
 
-
 export default class GenericField extends Component {
   constructor(props) {
     super(props);
@@ -19,23 +18,25 @@ export default class GenericField extends Component {
       text: newText.trim(),
     },
     // Callback from setState
-    () => { this.verificaTexto(this.state.text, this.props.validorRegex); },
+    () => { this.validateText(this.state.text, this.props.validorRegex); },
     );
   }
 
-  verificaTexto(text, regexTest) {
-    const isValid = regexTest.test(text);
+  validateText(text, regexTest) {
+    if (regexTest.global) {
+      console.warn('validateText()', 'Regexp using global flag! The results may be wrong.');
+    } else {
+      // Do nothing
+    }
 
-    // This is a needed workarround to make sure that 'isValid' has its true value
-    // DO NOT ERASE IF YOU DON'T KNOW A BETTER SOLUTION
-    console.debug(regexTest.test(text));
+    const isValid = regexTest.test(text);
 
     if (isValid) {
       console.warn('Valido');
-      this.setState({ validateMessage: 1 });
+      this.setState({ validateMessage: true });
     } else {
       console.warn('Invalido');
-      this.setState({ validateMessage: 0 });
+      this.setState({ validateMessage: false });
     }
   }
 
@@ -43,10 +44,10 @@ export default class GenericField extends Component {
     // Provavelmente mudar isso para um Style diferente. User uma linha vermelha, nao sei.
     // Não usar uma msg.
     let p;
-    if (this.state.validateMessage === 0) {
-      p = <Text>{this.props.errorMessage}</Text>;
-    } else {
+    if (this.state.validateMessage || this.state.validateMessage === -1) {
       p = <Text />;
+    } else {
+      p = <Text>{this.props.errorMessage}</Text>;
     }
 
     return (

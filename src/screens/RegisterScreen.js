@@ -248,7 +248,7 @@ export default class RegisterScreen extends React.Component {
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
 
     // Testing regex list
-    const sixMoreWordCharRegex = /\w{6,}/g;
+    const sixMoreWordCharRegex = /\w{6,}/;
 
     return (
       <View style={styles.principal}>
