@@ -56,6 +56,41 @@ const styles = StyleSheet.create({
   },
 });
 
+const profileInformations = {
+  icons: [
+    'face',
+    'person',
+    'phone',
+    'email',
+    'card-travel',
+    'supervisor-account',
+    'people',
+    'location-city',
+    'domain',
+  ],
+  labels: [
+   'Nome:',
+   'CPF:',
+   'Telefone:',
+   'Email:',
+   'Cargo:',
+   'Tipo de Conselheiro:',
+   'Segmento:',
+   'CAE:',
+   'Tipo do CAE:',
+  ],
+  informations: [
+    this.props.counselor.name,
+    this.props.counselor.profile.cpf,
+    this.props.counselor.profile.phone,
+    this.props.counselor.email,
+    'Cargo',
+    this.props.counselor.profile.segment,
+    this.props.counselor.profile.CAE,
+    this.props.counselor.profile.CAE_Type,
+  ]
+}
+
 export default class ProfileInfoScreen extends React.Component {
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);
