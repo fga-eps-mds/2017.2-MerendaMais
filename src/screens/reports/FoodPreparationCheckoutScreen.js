@@ -31,7 +31,10 @@ export default class FoodPreparationCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setFoodPreparationReportPositive(item.key)}
+          onSelect={() => {
+            this.props.setFoodPreparationReportPositive(item.key);
+            this.props.setStatusFoodPreparation(false);
+          }}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -46,7 +49,10 @@ export default class FoodPreparationCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setFoodPreparationReportNegative(item.key)}
+          onSelect={() => {
+            this.props.setFoodPreparationReportNegative(item.key);
+            this.props.setStatusFoodPreparation(false);
+          }}
           disabled={item.markedYes}
           disabledColor={null}
         />

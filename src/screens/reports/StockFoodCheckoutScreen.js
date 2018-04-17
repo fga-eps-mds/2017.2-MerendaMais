@@ -32,7 +32,10 @@ export default class StockFoodCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setStockFoodReportPositive(item.key)}
+          onSelect={() => {
+            this.props.setStockFoodReportPositive(item.key);
+            this.props.setStatusFoodStock(false);
+          }}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -47,7 +50,10 @@ export default class StockFoodCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setStockFoodReportNegative(item.key)}
+          onSelect={() => {
+            this.props.setStockFoodReportNegative(item.key);
+            this.props.setStatusFoodStock(false);
+          }}
           disabled={item.markedYes}
           disabledColor={null}
         />
