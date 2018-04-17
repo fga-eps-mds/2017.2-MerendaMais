@@ -23,6 +23,9 @@ const initialState = {
     listOfCounselorsInAGroup: [{ nome: 'Joao' }],
   },
   asyncGetCounselorFromGroup: 12312321,
+  application: {
+    isLoading: false,
+  },
 };
 
 const store = mockStore(initialState);

@@ -7,6 +7,7 @@ const mapStateToProps = state => (
   {
     listOfCheckedCounselors: state.list.listOfCheckedCounselors,
     counselor: state.counselor,
+    application: state.application.isLoading,
   }
 );
 

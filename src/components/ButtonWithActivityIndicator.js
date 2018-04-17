@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
-import styles from '../Styles';
+import styles from '../Styles/GeneralStyles';
 
 const ButtonWithActivityIndicator = props => (
   <View>

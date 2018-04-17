@@ -23,7 +23,7 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
         titleAlign="center"
       />
     }
-    height="30%"
+    height="33%"
     overlayPointerEvents="none"
     width="85%"
   >
@@ -35,7 +35,7 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       style={
         Object {
           "fontSize": 15,
-          "paddingVertical": 3,
+          "padding": 12,
         }
       }
     >
@@ -107,10 +107,8 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
     style={
       Object {
         "backgroundColor": "#FF9500",
-        "borderRadius": 7,
-        "borderWidth": 3,
+        "borderWidth": 0.5,
         "justifyContent": "flex-end",
-        "marginBottom": 1,
         "paddingVertical": 15,
       }
     }

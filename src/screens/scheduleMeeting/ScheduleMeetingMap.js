@@ -20,9 +20,7 @@ const styles = StyleSheet.create({
   },
   button: {
     paddingVertical: 15,
-    borderWidth: 3,
-    borderRadius: 7,
-    marginBottom: 1,
+    borderWidth: 0.5,
     backgroundColor: '#FF9500',
     justifyContent: 'flex-end',
   },
@@ -47,7 +45,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 15,
-    paddingVertical: 3,
+    padding: 12,
   },
   dialogButtonStyle: {
     marginVertical: -16,
@@ -134,7 +132,7 @@ export default class ScheduleMeetingMap extends React.Component {
           }}
           dialogTitle={<DialogTitle title="Escolhendo local para Reunião" />}
           overlayPointerEvents="none"
-          height="30%"
+          height="33%"
           width="85%"
         >
           <Text style={styles.text}> Para escolher o local da Reunião, segure e arraste
