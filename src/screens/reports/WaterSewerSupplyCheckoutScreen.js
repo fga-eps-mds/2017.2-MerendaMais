@@ -31,7 +31,10 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedYes}
           selectedColor={'#008000'}
-          onSelect={() => this.props.setWaterSewerSupplyReportPositive(item.key)}
+          onSelect={() => {
+            this.props.setWaterSewerSupplyReportPositive(item.key);
+            this.props.setStatusWaterSewerSupply(false);
+          }}
           disabled={item.markedNo}
           disabledColor={null}
         />
@@ -46,7 +49,10 @@ export default class WaterSewerSupplyCheckoutScreen extends React.Component {
           checkboxStyle={styles.checklist.checkBoxStyle}
           selected={item.markedNo}
           selectedColor={'#B22222'}
-          onSelect={() => this.props.setWaterSewerSupplyReportNegative(item.key)}
+          onSelect={() => {
+            this.props.setWaterSewerSupplyReportNegative(item.key);
+            this.props.setStatusWaterSewerSupply(false);
+          }}
           disabled={item.markedYes}
           disabledColor={null}
         />

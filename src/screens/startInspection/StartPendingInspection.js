@@ -230,8 +230,9 @@ class StartPendingInspection extends React.Component {
           <View style={{ flex: 3 }}>
             {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
             {
-              Object.keys(visitSchedule.content.visitListOfInvitees).length > 1 ?
-                this.renderPaticipantsButton(visitSchedule) : undefined
+              this.renderPaticipantsButton(
+                visitSchedule,
+                Object.keys(visitSchedule.content.visitListOfInvitees).length)
             }
           </View>
         </View>
@@ -239,19 +240,22 @@ class StartPendingInspection extends React.Component {
     );
   }
 
-  renderPaticipantsButton(visitSchedule) {
-    return (
-      <View style={styles.buttonInvitees}>
-        <TouchableOpacity
-          onPress={() =>
-            this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
-        >
-          <Text style={styles.buttonText}>PARTICIPANTES</Text>
-        </TouchableOpacity>
-      </View>
-    );
+  renderPaticipantsButton(visitSchedule, numberOfParticipants) {
+    let participantsButton;
+    if (numberOfParticipants > 1) {
+      participantsButton = (
+        <View style={styles.buttonInvitees}>
+          <TouchableOpacity
+            onPress={() =>
+              this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
+          >
+            <Text style={styles.buttonText}>PARTICIPANTES</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+    return participantsButton;
   }
-
 
   renderCounselorList() {
     return (
