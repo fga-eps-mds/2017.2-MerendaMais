@@ -38,8 +38,8 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
           header="Genérico"
           icon="chevrons-up"
           message="Componente de Input"
+          setStateValue={[Function]}
           validorRegex={/\\\\w\\{6,\\}/}
-          value=""
         />
         <Text
           accessible={true}
