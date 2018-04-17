@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput } from 'react-native';
-import styles from '../Styles';
+import styles from '../Styles/GeneralStyles';
 
 export default class GenericField extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ export default class GenericField extends Component {
     });
   }
 
-  handleUpdate() {
+  updateStyles() {
     if (this.state.validValue) {
       this.setState({ errorTextArea: <Text /> });
       this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }] });
@@ -43,12 +43,15 @@ export default class GenericField extends Component {
     if (isValid) {
       console.warn('Valido');
       this.setState({ validValue: true }, () => {
-        this.handleUpdate();
+        // This uses the function passed in the component creation
+        this.props.setStateValue(this.state.text);
+
+        this.updateStyles();
       });
     } else {
       console.warn('Invalido');
       this.setState({ validValue: false }, () => {
-        this.handleUpdate();
+        this.updateStyles();
       });
     }
   }
@@ -74,6 +77,7 @@ export default class GenericField extends Component {
 GenericField.propTypes = {
   header: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  setStateValue: PropTypes.func.isRequired,
   validorRegex: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
 };

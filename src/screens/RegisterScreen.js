@@ -120,6 +120,7 @@ export default class RegisterScreen extends React.Component {
     super(props);
 
     this.state = {
+      teste: '',
       email: '',
       name: '',
       password: '',
@@ -261,7 +262,8 @@ export default class RegisterScreen extends React.Component {
                 header="Genérico"
                 message="Componente de Input"
                 icon="chevrons-up"
-                value=""
+                setStateValue={newValue => this.setState({ teste: newValue })}
+                onChange={console.warn('OnChange', this.state.teste)}
                 validorRegex={sixMoreWordCharRegex}
                 errorMessage="Está errado!"
               />

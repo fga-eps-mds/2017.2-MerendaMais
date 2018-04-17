@@ -1,9 +1,8 @@
-version: '3'
+# version: '3'
 
-services:
-  merenda_mais:
+merenda_mais:
     build: .
-    network_mode: host
+    net: host
     working_dir: /app
     privileged: true
     volumes:
@@ -11,5 +10,10 @@ services:
     command: |
      bash -c "
      npm install
-     npm start 
+     adb kill-server
+     adb reverse tcp:8081 tcp:8081
+     echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances
+     echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events
+     echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+     npm start
      "
