@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 import styles from '../Styles/GeneralStyles';
 
 export default class GenericField extends Component {
@@ -8,7 +9,7 @@ export default class GenericField extends Component {
     super(props);
 
     this.state = {
-      styleInUse: styles.InputFieldStyle,
+      styleInUse: styles.genericViewSection,
       errorTextArea: <Text />,
       text: '',
     };
@@ -22,12 +23,12 @@ export default class GenericField extends Component {
 
   handleValidText() {
     this.setState({ errorTextArea: <Text /> });
-    this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }] });
+    this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#80FF80', backgroundColor: '#d1ffd1', borderWidth: 2 }] });
   }
 
   handleInvalidText() {
     this.setState({ errorTextArea: <Text>{this.props.errorMessage}</Text> });
-    this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }] });
+    this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#FF9999', backgroundColor: '#ffd6d6', borderWidth: 2 }] });
   }
 
   validateText(text, regexTest) {
@@ -45,6 +46,9 @@ export default class GenericField extends Component {
       // setStateValue is the function in props at the component creation
       this.props.setStateValue(this.state.text);
       this.handleValidText();
+    } else if (!isTextValid && text === '') {
+      // This case is for empty text
+      this.setState({ styleInUse: styles.genericViewSection });
     } else {
       console.warn('Invalido');
       this.handleInvalidText();
@@ -55,15 +59,19 @@ export default class GenericField extends Component {
     return (
       <View>
         <Text> {this.props.header.toUpperCase().trim()} </Text>
-        <TextInput
-          style={this.state.styleInUse}
-          placeholder={this.props.placeholderMessage.trim()}
-          value={this.state.test}
-          onChangeText={text => this.handleInput(text)}
-        />
+        <View style={this.state.styleInUse}>
+          <FontAwesome name="user-circle" style={styles.icon} size={26} color="black" />
+          <TextInput
+            style={styles.InputStyle}
+            placeholder={this.props.placeholderMessage.trim()}
+            placeholderTextColor="#565454"
+            value={this.state.test}
+            underlineColorAndroid="transparent"
+            onChangeText={text => this.handleInput(text)}
+          />
+        </View>
 
         {this.state.errorTextArea}
-
       </View>
     );
   }

@@ -4,6 +4,23 @@ const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
 
 const styles = {
+
+  genericViewSection: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 10,
+    marginTop: 1,
+    backgroundColor: '#FAFAFA',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderRadius: 7,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
+  genericInputBox: {
+    marginBotom: 10,
+  },
   bigButton: {
     paddingVertical: 20,
     borderWidth: 1,
