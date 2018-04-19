@@ -37,9 +37,9 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
           errorMessage="Está errado!"
           header="Genérico"
           icon="chevrons-up"
-          message="Componente de Input"
+          placeholderMessage="Componente de Input"
+          regexInput={/\\\\w\\{6,\\}/}
           setStateValue={[Function]}
-          validorRegex={/\\\\w\\{6,\\}/}
         />
         <Text
           accessible={true}

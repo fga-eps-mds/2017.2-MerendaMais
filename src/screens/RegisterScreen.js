@@ -260,11 +260,11 @@ export default class RegisterScreen extends React.Component {
 
               <GenericField
                 header="Genérico"
-                message="Componente de Input"
+                placeholderMessage="Componente de Input"
                 icon="chevrons-up"
                 setStateValue={newValue => this.setState({ teste: newValue })}
                 onChange={console.warn('OnChange', this.state.teste)}
-                validorRegex={sixMoreWordCharRegex}
+                regexInput={sixMoreWordCharRegex}
                 errorMessage="Está errado!"
               />
 
