@@ -6,7 +6,7 @@ import styles from '../Styles/GeneralStyles';
 
 class Button extends React.Component {
   defineStyle() {
-    if(this.props.style === undefined){
+    if (this.props.style === undefined) {
       this.props.style.text = styles.buttonText;
       if (this.props.enabled) {
         return (
@@ -20,7 +20,6 @@ class Button extends React.Component {
     return (
       this.props.style.design
     );
-    
   }
 
   render() {
@@ -39,13 +38,14 @@ class Button extends React.Component {
   }
 }
 
-const { string, bool, func } = PropTypes;
+const { string, bool, func, element } = PropTypes;
 
 Button.propTypes = {
   key: string.isRequired,
   text: string.isRequired,
   enabled: bool.isRequired,
   onPress: func.isRequired,
+  style: element.isRequired,
 };
 
 export default Button;

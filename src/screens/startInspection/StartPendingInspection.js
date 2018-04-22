@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
 });
 
 
-buttonInviteesStyle = StyleSheet.create({
+const buttonInviteesStyle = StyleSheet.create({
   design: {
     borderColor: 'black',
     borderWidth: 0.8,
@@ -127,10 +126,10 @@ buttonInviteesStyle = StyleSheet.create({
   text: {
     fontSize: 12,
     textAlign: 'center',
-  }
+  },
 });
 
-buttonBoxStyle = StyleSheet.create({
+const buttonBoxStyle = StyleSheet.create({
   design: {
     borderColor: 'black',
     borderWidth: 0.8,
@@ -146,29 +145,29 @@ buttonBoxStyle = StyleSheet.create({
   text: {
     fontSize: 12,
     textAlign: 'center',
-  }
+  },
 });
 
-buttonBoxStyleNotInvitee = StyleSheet.create({
+const buttonBoxStyleNotInvitee = StyleSheet.create({
   design: {
-  borderColor: 'black',
-  borderWidth: 0.8,
-  borderRadius: 7,
-  backgroundColor: '#ff3b30',
-  padding: 8,
-  justifyContent: 'center',
-  marginRight: 15,
-  marginTop: 5,
-  marginBottom: 5,
-},
+    borderColor: 'black',
+    borderWidth: 0.8,
+    borderRadius: 7,
+    backgroundColor: '#ff3b30',
+    padding: 8,
+    justifyContent: 'center',
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: 5,
+  },
 
-text: {
-  fontSize: 12,
-  textAlign: 'center',
-}
+  text: {
+    fontSize: 12,
+    textAlign: 'center',
+  },
 });
 
-buttonBoxStyleNotConfirm = StyleSheet.create({
+const buttonBoxStyleNotConfirm = StyleSheet.create({
   design: {
     borderColor: 'black',
     borderWidth: 0.8,
@@ -183,7 +182,7 @@ buttonBoxStyleNotConfirm = StyleSheet.create({
   text: {
     fontSize: 12,
     textAlign: 'center',
-  }
+  },
 });
 
 class StartPendingInspection extends React.Component {
@@ -199,6 +198,139 @@ class StartPendingInspection extends React.Component {
     this.props.asyncGetSchedule(this.props.counselor);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
+  }
+
+  getVisitData(visitSchedule) {
+    const data = [
+      {
+        label: 'Escola:',
+        value: visitSchedule.content.schoolName,
+      },
+      {
+        label: 'Data:',
+        value: visitSchedule.content.date,
+      },
+      {
+        label: 'Horário:',
+        value: visitSchedule.content.time,
+      },
+      {
+        label: this.verifyAgentInvited(visitSchedule),
+        value: '',
+      },
+      {
+        label: 'Número de participantes:',
+        value: Object.keys(visitSchedule.content.visitListOfInvitees).length,
+      },
+    ];
+    return data;
+  }
+
+  getCounselorData(counselor) {
+    const data = [
+      {
+        label: 'Nome:',
+        value: counselor.name,
+      },
+      {
+        label: 'Email:',
+        value: counselor.email,
+      },
+      {
+        label: 'Telefone:',
+        value: counselor.profile.phone,
+      },
+      {
+        label: 'Status da Visita:',
+        value: this.verifyStatus(counselor.confirmed, 'Confirmado'),
+      },
+      {
+        label: 'Status da Fiscalização:',
+        value: this.verifyStatus(counselor.realizedVisit, 'Realizada'),
+      },
+    ];
+
+    return data;
+  }
+
+  verifyStatus(isConfirmed, text) {
+    if (isConfirmed === true) {
+      return text;
+    }
+    return `Não , ${text}!`;
+  }
+
+  arrayScheduleList() {
+    if (this.props.isLoading) {
+      return (
+        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
+      );
+    } else if (this.props.listOfPendingScheduleInAGroup.length === 0) {
+      return (
+        <View style={stylesList.noneScheduleTextBox}>
+          <Text style={stylesList.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
+        </View>
+      );
+    }
+
+    return (
+      this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
+        <ScheduleCard
+          data={this.getVisitData(visitSchedule)}
+          keyProp={`PE${visitSchedule.codPostagem}`}
+        >
+          <View style={{ flex: 3 }}>
+            {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
+            {
+              this.renderPaticipantsButton(
+                visitSchedule,
+                Object.keys(visitSchedule.content.visitListOfInvitees).length)
+            }
+          </View>
+        </ScheduleCard>
+      ))
+    );
+  }
+
+  verifyAgentInvited(visitSchedule) {
+    if (visitSchedule.content.invitedAgent) {
+      return 'Um agente foi convidado';
+    }
+    return 'Agente não convidado';
+  }
+
+  verification(visitListOfInvitees, visitSchedule) {
+    if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
+      return (
+        <Button
+          style={buttonBoxStyleNotInvitee}
+          enabled={false}
+          text="NÃO CONVIDADO"
+          onPress={() => { }}
+        />
+      );
+    } else if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
+      return (
+        <Button
+          style={buttonBoxStyleNotConfirm}
+          enabled={false}
+          text="NÃO CONFIRMOU"
+          onPress={() => { }}
+        />
+      );
+    }
+    return (
+      <Button
+        style={buttonBoxStyle}
+        enabled
+        text="FISCALIZAR"
+        onPress={() => {
+          this.props.setCurrentInspection(visitSchedule);
+          Actions.mainReportsScreen();
+        }}
+      />
+
+    );
   }
 
   mountvisitListOfInvitees(visitListOfInvitees) {
@@ -224,117 +356,15 @@ class StartPendingInspection extends React.Component {
     this.popupDialog.show();
   }
 
-
-  verification(visitListOfInvitees, visitSchedule) {
-    if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
-      return (
-        <Button
-          style={buttonBoxStyleNotInvitee}
-          enabled={false}
-          text="NÃO CONVIDADO"
-          onPress={()=>{}}
-        />
-      );
-    } else if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
-      return (
-        <Button
-          style={buttonBoxStyleNotConfirm}
-          enabled={false}
-          text="NÃO CONFIRMOU"
-          onPress={()=>{}}
-        />
-      );
-    }
-    return (
-      <Button
-        style={buttonBoxStyle}
-        enabled={true}
-        text="FISCALIZAR"
-        onPress={() => {
-          this.props.setCurrentInspection(visitSchedule);
-          Actions.mainReportsScreen();
-        }}
-      />
-
-    );
-  }
-
-  verifyAgentInvited(visitSchedule) {
-    if(visitSchedule.content.invitedAgent) { 
-      return "Um agente foi convidado";
-    }else {
-      return "Agente não convidado";
-    }
-  }
-
-  getVisitData(visitSchedule) {
-    let data = [
-      {
-        label: 'Escola:',
-        value: visitSchedule.content.schoolName
-      },
-      {
-        label: 'Data:',
-        value: visitSchedule.content.date
-      },
-      {
-        label: 'Horário:',
-        value: visitSchedule.content.time
-      },
-      {
-        label: this.verifyAgentInvited(visitSchedule),
-        value: ''
-      },
-      {
-        label: 'Número de participantes:',
-        value: Object.keys(visitSchedule.content.visitListOfInvitees).length,
-      },
-    ];
-    return data;
-  }
-
-  arrayScheduleList() {
-    if (this.props.isLoading) {
-      return (
-        <ActivityIndicator style={{ marginTop: 50 }} size="large" color="#FF9500" />
-      );
-    } else if (this.props.listOfPendingScheduleInAGroup.length === 0) {
-      return (
-        <View style={stylesList.noneScheduleTextBox}>
-          <Text style={stylesList.noneScheduleText}>Nenhum Agendamento Pendente!</Text>
-        </View>
-      );
-    }
-
-    return (
-      this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
-        <ScheduleCard
-          counselor={this.props.counselor}
-          data={this.getVisitData(visitSchedule)}
-          keyProp={`PE${visitSchedule.codPostagem}`}
-        >
-          <View style={{ flex: 3 }}>
-            {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
-          {
-              this.renderPaticipantsButton(
-                visitSchedule,
-                Object.keys(visitSchedule.content.visitListOfInvitees).length)
-          }
-          </View>
-        </ScheduleCard>
-      ))
-    );
-  }
-
   renderPaticipantsButton(visitSchedule, numberOfParticipants) {
     let participantsButton;
-    if (numberOfParticipants > 1 || 
-        !visitSchedule.content.visitListOfInvitees[this.props.counselor.nuvemCode] !== undefined) {
+    if (numberOfParticipants > 1 ||
+      !visitSchedule.content.visitListOfInvitees[this.props.counselor.nuvemCode] !== undefined) {
       participantsButton = (
         <Button
           style={buttonInviteesStyle}
-          enabled={true}
           text="PARTICIPANTES"
+          enabled
           onPress={() =>
             this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
         />
@@ -342,50 +372,14 @@ class StartPendingInspection extends React.Component {
     }
     return participantsButton;
   }
-  
-  verifyStatus(isConfirmed, text) {
-    if(isConfirmed === true){
-      return text;
-    }else {
-      return "Não " + text;
-    }
-  }
-
-  getCounselorData(counselor){
-    let data = [
-      {
-        label: "Nome:",
-        value: counselor.name
-      },
-      {
-        label: "Email:",
-        value: counselor.email
-      },
-      {
-        label: "Telefone:",
-        value: counselor.profile.phone
-      },
-      {
-        label: "Status da Visita:",
-        value: this.verifyStatus(counselor.confirmed, "Confirmado")
-      },
-      {
-        label: "Status da Fiscalização:",
-        value: this.verifyStatus(counselor.realizedVisit, "Realizada")
-      },
-    ];
-
-    return data;
-  }
 
   renderCounselorList() {
     return (
       this.state.invitees.map(counselor => (
         <ScheduleCard
-        counselor={this.props.counselor}
-        data={this.getCounselorData(counselor)}
-        keyProp={`${counselor.nuvemCode}`}
-      />
+          data={this.getCounselorData(counselor)}
+          keyProp={`${counselor.nuvemCode}`}
+        />
       ))
     );
   }

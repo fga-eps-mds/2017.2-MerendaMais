@@ -1,8 +1,8 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, ScrollView, View, BackHandler } from 'react-native';
-import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import { Text, ScrollView, View, BackHandler } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import { backHandlerPopToMain } from '../NavigationFunctions';
@@ -21,13 +21,13 @@ export default class ProfileInfoScreen extends React.Component {
 
   verifyCharge() {
     if (this.props.counselor.profile.isPresident) {
-      return "Presidente";
+      return 'Presidente';
     }
-      return "Conselheiro";
+    return 'Conselheiro';
   }
 
   render() {
-    informations = [
+    const informations = [
       this.props.counselor.name,
       this.props.counselor.profile.cpf,
       this.props.counselor.profile.phone,
@@ -36,8 +36,8 @@ export default class ProfileInfoScreen extends React.Component {
       this.props.counselor.profile.counselorType,
       this.props.counselor.profile.segment,
       this.props.counselor.profile.CAE,
-      this.props.counselor.profile.CAE_Type
-    ]
+      this.props.counselor.profile.CAE_Type,
+    ];
 
     return (
       <View style={styles.profileInfoScreen}>
@@ -49,12 +49,12 @@ export default class ProfileInfoScreen extends React.Component {
           <ScrollView>
             {
               PROFILE_FIELDS.map((item, index) => (
-              <View style={styles.field}>
-                <MaterialIcons name={item.icon} style={styles.icon} size={32} color="black" />
-                <Text>{item.label} {informations[index]}</Text>
-              </View>
+                <View style={styles.field}>
+                  <MaterialIcons name={item.icon} style={styles.icon} size={32} color="black" />
+                  <Text>{item.label} {informations[index]}</Text>
+                </View>
+              ),
               )
-            )
             }
           </ScrollView>
           <Button

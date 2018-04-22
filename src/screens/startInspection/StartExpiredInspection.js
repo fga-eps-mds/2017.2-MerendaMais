@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
@@ -20,10 +19,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 6,
     backgroundColor: 'white',
-  }
+  },
 });
 
-buttonBox = StyleSheet.create({
+const buttonBox = StyleSheet.create({
   design: {
     borderColor: 'black',
     borderWidth: 1,
@@ -46,6 +45,39 @@ class StartExpiredInspection extends React.Component {
     };
   }
 
+  getVisitData(visitSchedule) {
+    const data = [
+      {
+        label: 'Escola:',
+        value: visitSchedule.content.schoolName,
+      },
+      {
+        label: 'Data:',
+        value: visitSchedule.content.date,
+      },
+      {
+        label: 'Horário:',
+        value: visitSchedule.content.time,
+      },
+      {
+        label: this.verifyAgentInvited(visitSchedule),
+        value: '',
+      },
+      {
+        label: 'Número de participantes:',
+        value: Object.keys(visitSchedule.content.visitListOfInvitees).length,
+      },
+    ];
+    return data;
+  }
+
+  verifyAgentInvited(visitSchedule) {
+    if (visitSchedule.content.invitedAgent) {
+      return 'Um agente foi convidado';
+    }
+    return 'Agente não convidado';
+  }
+
   arrayScheduleList() {
     if (this.props.isLoading) {
       return (
@@ -61,56 +93,21 @@ class StartExpiredInspection extends React.Component {
     return (
       this.props.listOfExpiredScheduleInAGroup.map(visitSchedule => (
         <ScheduleCard
-        visitSchedule={visitSchedule}
-        counselor={this.props.counselor}
-        data={this.getVisitData(visitSchedule)}
-        keyProp={`EX${visitSchedule.codPostagem}`}
-      >
-        <View style={{ flex: 2 }}>
-        <Button
-          style={buttonBox}
-          enabled={false}
-          text="EXPIRADO"
-          onPress={()=>{}}
-        />
-        </View>
-      </ScheduleCard>
+          visitSchedule={visitSchedule}
+          data={this.getVisitData(visitSchedule)}
+          keyProp={`EX${visitSchedule.codPostagem}`}
+        >
+          <View style={{ flex: 2 }}>
+            <Button
+              style={buttonBox}
+              enabled={false}
+              text="EXPIRADO"
+              onPress={() => { }}
+            />
+          </View>
+        </ScheduleCard>
       ))
     );
-  }
-  
-  verifyAgentInvited(visitSchedule) {
-    if(visitSchedule.content.invitedAgent) { 
-      return "Um agente foi convidado";
-    }else {
-      return "Agente não convidado";
-    }
-  }
-
-  getVisitData(visitSchedule) {
-    let data = [
-      {
-        label: 'Escola:',
-        value: visitSchedule.content.schoolName
-      },
-      {
-        label: 'Data:',
-        value: visitSchedule.content.date
-      },
-      {
-        label: 'Horário:',
-        value: visitSchedule.content.time
-      },
-      {
-        label: this.verifyAgentInvited(visitSchedule),
-        value: ''
-      },
-      {
-        label: 'Número de participantes:',
-        value: Object.keys(visitSchedule.content.visitListOfInvitees).length,
-      },
-    ];
-    return data;
   }
 
   render() {

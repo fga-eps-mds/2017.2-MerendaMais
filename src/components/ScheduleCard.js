@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Text, View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
@@ -33,51 +32,36 @@ const styles = StyleSheet.create({
 class ScheduleCard extends React.Component {
   constructor(props) {
     super(props);
-      this.state = {
-        data: {},
-        counselor: this.props.counselor,
-      };
+    this.state = {
+      data: {},
+    };
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <View style={styles.listSchedule} key={this.props.keyProp}>
         <View style={styles.textBox}>
-        {
-          this.props.data.map( (item) =>(
-            <Text style={styles.text}>
-            <Text style={{ fontWeight: 'bold' }}>{item.label} </Text>
-            {item.value}
-          </Text>
-          ) 
-        )}
+          {
+            this.props.data.map(item => (
+              <Text style={styles.text}>
+                <Text style={{ fontWeight: 'bold' }}>{item.label} </Text>
+                {item.value}
+              </Text>
+            ))}
         </View>
-          {this.props.children}
+        {this.props.children ? this.props.children : undefined}
       </View>
     );
   }
 }
 
 ScheduleCard.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
-    })).isRequired,
-    keyProp: PropTypes.string.isRequired,
-    counselor: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      token: PropTypes.string.isRequired,
-      nuvemCode: PropTypes.number.isRequired,
-      profile: PropTypes.shape({
-        cpf: PropTypes.string.isRequired,
-        phone: PropTypes.string.isRequired,
-        isPresident: PropTypes.bool.isRequired,
-        segment: PropTypes.string.isRequired,
-        CAE: PropTypes.string.isRequired,
-        CAE_Type: PropTypes.string,
-      }).isRequired,
-    }).isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  })).isRequired,
+  keyProp: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default ScheduleCard;
