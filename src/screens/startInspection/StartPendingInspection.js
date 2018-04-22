@@ -15,6 +15,8 @@ import PopupDialog, {
 } from 'react-native-popup-dialog';
 
 import stylesList from '../../Styles/ListStyles';
+import ScheduleCard from '../../components/ScheduleCard';
+import Button from '../../components/Button';
 
 
 const styles = StyleSheet.create({
@@ -108,10 +110,85 @@ const styles = StyleSheet.create({
   },
 });
 
+
+buttonInviteesStyle = StyleSheet.create({
+  design: {
+    borderColor: 'black',
+    borderWidth: 0.8,
+    borderRadius: 7,
+    backgroundColor: 'white',
+    padding: 8,
+    justifyContent: 'center',
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+
+  text: {
+    fontSize: 12,
+    textAlign: 'center',
+  }
+});
+
+buttonBoxStyle = StyleSheet.create({
+  design: {
+    borderColor: 'black',
+    borderWidth: 0.8,
+    borderRadius: 7,
+    backgroundColor: '#4cd964',
+    padding: 8,
+    justifyContent: 'center',
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+
+  text: {
+    fontSize: 12,
+    textAlign: 'center',
+  }
+});
+
+buttonBoxStyleNotInvitee = StyleSheet.create({
+  design: {
+  borderColor: 'black',
+  borderWidth: 0.8,
+  borderRadius: 7,
+  backgroundColor: '#ff3b30',
+  padding: 8,
+  justifyContent: 'center',
+  marginRight: 15,
+  marginTop: 5,
+  marginBottom: 5,
+},
+
+text: {
+  fontSize: 12,
+  textAlign: 'center',
+}
+});
+
+buttonBoxStyleNotConfirm = StyleSheet.create({
+  design: {
+    borderColor: 'black',
+    borderWidth: 0.8,
+    borderRadius: 7,
+    backgroundColor: '#ffcc00',
+    padding: 8,
+    justifyContent: 'center',
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  text: {
+    fontSize: 12,
+    textAlign: 'center',
+  }
+});
+
 class StartPendingInspection extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       invitees: [],
     };
@@ -142,46 +219,78 @@ class StartPendingInspection extends React.Component {
         list.push(completeCounselor);
         return this.setState({ invitees: list });
       }
-
       return null;
     });
     this.popupDialog.show();
   }
 
+
   verification(visitListOfInvitees, visitSchedule) {
     if (visitListOfInvitees[this.props.counselor.nuvemCode] === undefined) {
       return (
-        <View style={[styles.buttonBox, { backgroundColor: '#ff3b30' }]}>
-          <TouchableOpacity
-            disabled
-          >
-            <Text style={styles.buttonText}>NÃO CONVIDADO</Text>
-          </TouchableOpacity>
-        </View>
+        <Button
+          style={buttonBoxStyleNotInvitee}
+          enabled={false}
+          text="NÃO CONVIDADO"
+          onPress={()=>{}}
+        />
       );
     } else if (!visitListOfInvitees[this.props.counselor.nuvemCode].confirmed) {
       return (
-        <View style={[styles.buttonBox, { backgroundColor: '#ffcc00' }]}>
-          <TouchableOpacity
-            disabled
-          >
-            <Text style={styles.buttonText}>NÃO CONFIRMOU</Text>
-          </TouchableOpacity>
-        </View>
+        <Button
+          style={buttonBoxStyleNotConfirm}
+          enabled={false}
+          text="NÃO CONFIRMOU"
+          onPress={()=>{}}
+        />
       );
     }
     return (
-      <View style={styles.buttonBox}>
-        <TouchableOpacity
-          onPress={() => {
-            this.props.setCurrentInspection(visitSchedule);
-            Actions.mainReportsScreen();
-          }}
-        >
-          <Text style={styles.buttonText}>FISCALIZAR</Text>
-        </TouchableOpacity>
-      </View>
+      <Button
+        style={buttonBoxStyle}
+        enabled={true}
+        text="FISCALIZAR"
+        onPress={() => {
+          this.props.setCurrentInspection(visitSchedule);
+          Actions.mainReportsScreen();
+        }}
+      />
+
     );
+  }
+
+  verifyAgentInvited(visitSchedule) {
+    if(visitSchedule.content.invitedAgent) { 
+      return "Um agente foi convidado";
+    }else {
+      return "Agente não convidado";
+    }
+  }
+
+  getData(visitSchedule) {
+    let data = [
+      {
+        label: 'Escola:',
+        value: visitSchedule.content.schoolName
+      },
+      {
+        label: 'Data:',
+        value: visitSchedule.content.date
+      },
+      {
+        label: 'Horário:',
+        value: visitSchedule.content.time
+      },
+      {
+        label: this.verifyAgentInvited(visitSchedule),
+        value: ''
+      },
+      {
+        label: 'Número de participantes:',
+        value: Object.keys(visitSchedule.content.visitListOfInvitees).length,
+      },
+    ];
+    return data;
   }
 
   arrayScheduleList() {
@@ -196,100 +305,87 @@ class StartPendingInspection extends React.Component {
         </View>
       );
     }
+
     return (
       this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
-        <View style={styles.listSchedule} key={`PE${visitSchedule.codPostagem}`}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {visitSchedule.content.schoolName}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {visitSchedule.content.date}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {visitSchedule.content.time}
-            </Text>
-            {
-              visitSchedule.content.invitedAgent ? (
-                <Text style={styles.text}>
-                  <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
-                </Text>
-              ) :
-                <Text style={styles.text}>
-                  <Text style={{ fontWeight: 'bold' }}>Agente não convidado</Text>
-                </Text>
-            }
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Número de participantes: </Text>
-              {Object.keys(visitSchedule.content.visitListOfInvitees).length}
-            </Text>
-          </View>
+        <ScheduleCard
+          counselor={this.props.counselor}
+          data={this.getData(visitSchedule)}
+          keyProp={`PE${visitSchedule.codPostagem}`}
+        >
           <View style={{ flex: 3 }}>
             {this.verification(visitSchedule.content.visitListOfInvitees, visitSchedule)}
-            {
+          {
               this.renderPaticipantsButton(
                 visitSchedule,
                 Object.keys(visitSchedule.content.visitListOfInvitees).length)
-            }
+          }
           </View>
-        </View>
+        </ScheduleCard>
       ))
     );
   }
 
   renderPaticipantsButton(visitSchedule, numberOfParticipants) {
     let participantsButton;
-    if (numberOfParticipants > 1) {
+    if (numberOfParticipants > 1 || 
+        !visitSchedule.content.visitListOfInvitees[this.props.counselor.nuvemCode] !== undefined) {
       participantsButton = (
-        <View style={styles.buttonInvitees}>
-          <TouchableOpacity
-            onPress={() =>
-              this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
-          >
-            <Text style={styles.buttonText}>PARTICIPANTES</Text>
-          </TouchableOpacity>
-        </View>
+        <Button
+          style={buttonInviteesStyle}
+          enabled={true}
+          text="PARTICIPANTES"
+          onPress={() =>
+            this.mountvisitListOfInvitees(visitSchedule.content.visitListOfInvitees)}
+        />
       );
     }
     return participantsButton;
+  }
+  
+  verifyStatus(isConfirmed, text) {
+    if(isConfirmed === true){
+      return text;
+    }else {
+      return "Não " + text;
+    }
+  }
+
+  getDataCounselor(counselor){
+    let data = [
+      {
+        label: "Nome:",
+        value: counselor.name
+      },
+      {
+        label: "Email:",
+        value: counselor.email
+      },
+      {
+        label: "Telefone:",
+        value: counselor.profile.phone
+      },
+      {
+        label: "Status da Visita:",
+        value: this.verifyStatus(counselor.confirmed, "Confirmado")
+      },
+      {
+        label: "Status da Fiscalização:",
+        value: this.verifyStatus(counselor.realizedVisit, "Realizada")
+      },
+    ];
+
+    return data;
   }
 
   renderCounselorList() {
     return (
       this.state.invitees.map(counselor => (
-        <View style={styles.listRegisters} key={counselor.nuvemCode}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-              {counselor.name}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Email: </Text>
-              {counselor.email}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.profile.phone}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Status da Visita: </Text>
-              { counselor.confirmed ?
-                <Text> Confirmado </Text>
-                : <Text> Não Confirmado </Text>
-              }
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Status da Fiscalização: </Text>
-              { counselor.realizedVisit ?
-                <Text> Realizada </Text>
-                : <Text> Não Realizada </Text>
-              }
-            </Text>
-          </View>
-        </View>
+        <ScheduleCard
+        counselor={this.props.counselor}
+        data={this.getDataCounselor(counselor)}
+        keyProp={`${counselor.nuvemCode}`}
+      />
       ))
     );
   }

@@ -9,44 +9,22 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import stylesList from '../../Styles/ListStyles';
+import ScheduleCard from '../../components/ScheduleCard';
+import Button from '../../components/Button';
 
 const styles = StyleSheet.create({
   principal: {
     flex: 1,
   },
-
   content: {
     flex: 1,
     paddingTop: 6,
     backgroundColor: 'white',
-  },
+  }
+});
 
-  listSchedule: {
-    flex: 1,
-    marginHorizontal: 15,
-    marginVertical: 10,
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 3,
-    backgroundColor: '#FAFAFA',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  textBox: {
-    flex: 6,
-    paddingLeft: 4,
-    justifyContent: 'flex-start',
-    marginRight: 18,
-  },
-
-  text: {
-    fontSize: 15,
-    paddingVertical: 2,
-  },
-
-  buttonBox: {
+buttonBox = StyleSheet.create({
+  design: {
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 7,
@@ -55,8 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 13,
   },
-
-  buttonText: {
+  text: {
     fontSize: 12,
     textAlign: 'center',
   },
@@ -65,9 +42,7 @@ const styles = StyleSheet.create({
 class StartExpiredInspection extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-
     };
   }
 
@@ -85,48 +60,59 @@ class StartExpiredInspection extends React.Component {
     }
     return (
       this.props.listOfExpiredScheduleInAGroup.map(visitSchedule => (
-        <View style={styles.listSchedule} key={`EX${visitSchedule.codPostagem}`}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Escola: </Text>
-              {visitSchedule.content.schoolName}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Data: </Text>
-              {visitSchedule.content.date}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Horário: </Text>
-              {visitSchedule.content.time}
-            </Text>
-            {
-              visitSchedule.content.invitedAgent ? (
-                <Text style={styles.text}>
-                  <Text style={{ fontWeight: 'bold' }}>Um agente foi convidado</Text>
-                </Text>
-              ) :
-                <Text style={styles.text}>
-                  <Text style={{ fontWeight: 'bold' }}>Agente não convidado</Text>
-                </Text>
-            }
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Número de participantes: </Text>
-              {Object.keys(visitSchedule.content.visitListOfInvitees).length}
-            </Text>
-          </View>
-          <View style={{ flex: 3 }}>
-            <View style={styles.buttonBox}>
-              <TouchableOpacity
-                disabled
-              >
-                <Text style={styles.buttonText}>EXPIRADO</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+        <ScheduleCard
+        visitSchedule={visitSchedule}
+        counselor={this.props.counselor}
+        data={this.getData(visitSchedule)}
+        keyProp={`EX${visitSchedule.codPostagem}`}
+      >
+        <View style={{ flex: 2 }}>
+        <Button
+          style={buttonBox}
+          enabled={false}
+          text="EXPIRADO"
+          onPress={()=>{}}
+        />
         </View>
+      </ScheduleCard>
       ))
     );
   }
+  
+  verifyAgentInvited(visitSchedule) {
+    if(visitSchedule.content.invitedAgent) { 
+      return "Um agente foi convidado";
+    }else {
+      return "Agente não convidado";
+    }
+  }
+
+  getData(visitSchedule) {
+    let data = [
+      {
+        label: 'Escola:',
+        value: visitSchedule.content.schoolName
+      },
+      {
+        label: 'Data:',
+        value: visitSchedule.content.date
+      },
+      {
+        label: 'Horário:',
+        value: visitSchedule.content.time
+      },
+      {
+        label: this.verifyAgentInvited(visitSchedule),
+        value: ''
+      },
+      {
+        label: 'Número de participantes:',
+        value: Object.keys(visitSchedule.content.visitListOfInvitees).length,
+      },
+    ];
+    return data;
+  }
+
   render() {
     return (
       <View style={styles.principal}>
