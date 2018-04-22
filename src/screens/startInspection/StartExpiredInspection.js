@@ -63,7 +63,7 @@ class StartExpiredInspection extends React.Component {
         <ScheduleCard
         visitSchedule={visitSchedule}
         counselor={this.props.counselor}
-        data={this.getData(visitSchedule)}
+        data={this.getVisitData(visitSchedule)}
         keyProp={`EX${visitSchedule.codPostagem}`}
       >
         <View style={{ flex: 2 }}>
@@ -87,7 +87,7 @@ class StartExpiredInspection extends React.Component {
     }
   }
 
-  getData(visitSchedule) {
+  getVisitData(visitSchedule) {
     let data = [
       {
         label: 'Escola:',

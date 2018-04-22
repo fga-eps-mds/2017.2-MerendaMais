@@ -267,7 +267,7 @@ class StartPendingInspection extends React.Component {
     }
   }
 
-  getData(visitSchedule) {
+  getVisitData(visitSchedule) {
     let data = [
       {
         label: 'Escola:',
@@ -310,7 +310,7 @@ class StartPendingInspection extends React.Component {
       this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
         <ScheduleCard
           counselor={this.props.counselor}
-          data={this.getData(visitSchedule)}
+          data={this.getVisitData(visitSchedule)}
           keyProp={`PE${visitSchedule.codPostagem}`}
         >
           <View style={{ flex: 3 }}>
@@ -351,7 +351,7 @@ class StartPendingInspection extends React.Component {
     }
   }
 
-  getDataCounselor(counselor){
+  getCounselorData(counselor){
     let data = [
       {
         label: "Nome:",
@@ -383,7 +383,7 @@ class StartPendingInspection extends React.Component {
       this.state.invitees.map(counselor => (
         <ScheduleCard
         counselor={this.props.counselor}
-        data={this.getDataCounselor(counselor)}
+        data={this.getCounselorData(counselor)}
         keyProp={`${counselor.nuvemCode}`}
       />
       ))
