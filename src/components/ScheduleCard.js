@@ -61,7 +61,11 @@ ScheduleCard.propTypes = {
     value: PropTypes.string.isRequired,
   })).isRequired,
   keyProp: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
+};
+
+ScheduleCard.defaultProps = {
+  children: undefined,
 };
 
 export default ScheduleCard;

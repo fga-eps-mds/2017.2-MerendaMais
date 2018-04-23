@@ -6,8 +6,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import { backHandlerPopToMain } from '../NavigationFunctions';
-import { PROFILE_FIELDS } from '../constants/profileInformations';
-import { styles } from '../Styles/ProfileStyles';
+import PROFILE_FIELDS from '../constants/profileInformations';
+import styles from '../Styles/ProfileStyles';
 
 
 export default class ProfileInfoScreen extends React.Component {

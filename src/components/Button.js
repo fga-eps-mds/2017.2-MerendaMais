@@ -6,8 +6,7 @@ import styles from '../Styles/GeneralStyles';
 
 class Button extends React.Component {
   defineStyle() {
-    if (this.props.style === undefined) {
-      this.props.style.text = styles.buttonText;
+    if (!this.props.style) {
       if (this.props.enabled) {
         return (
           styles.bigButton
@@ -22,6 +21,13 @@ class Button extends React.Component {
     );
   }
 
+  defineTextStyle() {
+    if (!this.props.style) {
+      return styles.buttonText;
+    }
+    return this.props.style.text;
+  }
+
   render() {
     return (
       <View>
@@ -31,7 +37,7 @@ class Button extends React.Component {
           disabled={!this.props.enabled}
           onPress={() => this.props.onPress()}
         >
-          <Text style={this.props.style.text}>{this.props.text}</Text>
+          <Text style={this.defineTextStyle()}>{this.props.text}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -45,7 +51,11 @@ Button.propTypes = {
   text: string.isRequired,
   enabled: bool.isRequired,
   onPress: func.isRequired,
-  style: element.isRequired,
+  style: element,
+};
+
+Button.defaultProps = {
+  style: undefined,
 };
 
 export default Button;
