@@ -16,6 +16,7 @@ import PopupDialog, {
 import stylesList from '../../Styles/ListStyles';
 import ScheduleCard from '../../components/ScheduleCard';
 import Button from '../../components/Button';
+import { getVisitData, getCounselorData } from '../../services/extractData';
 
 
 const styles = StyleSheet.create({
@@ -200,66 +201,6 @@ class StartPendingInspection extends React.Component {
       this.props.counselor.profile.cpf);
   }
 
-  getVisitData(visitSchedule) {
-    const data = [
-      {
-        label: 'Escola:',
-        value: visitSchedule.content.schoolName,
-      },
-      {
-        label: 'Data:',
-        value: visitSchedule.content.date,
-      },
-      {
-        label: 'Horário:',
-        value: visitSchedule.content.time,
-      },
-      {
-        label: this.verifyAgentInvited(visitSchedule),
-        value: '',
-      },
-      {
-        label: 'Número de participantes:',
-        value: Object.keys(visitSchedule.content.visitListOfInvitees).length,
-      },
-    ];
-    return data;
-  }
-
-  getCounselorData(counselor) {
-    const data = [
-      {
-        label: 'Nome:',
-        value: counselor.name,
-      },
-      {
-        label: 'Email:',
-        value: counselor.email,
-      },
-      {
-        label: 'Telefone:',
-        value: counselor.profile.phone,
-      },
-      {
-        label: 'Status da Visita:',
-        value: this.verifyStatus(counselor.confirmed, 'Confirmado'),
-      },
-      {
-        label: 'Status da Fiscalização:',
-        value: this.verifyStatus(counselor.realizedVisit, 'Realizada'),
-      },
-    ];
-
-    return data;
-  }
-
-  verifyStatus(isConfirmed, text) {
-    if (isConfirmed === true) {
-      return text;
-    }
-    return `Não , ${text}!`;
-  }
-
   arrayScheduleList() {
     if (this.props.isLoading) {
       return (
@@ -276,7 +217,7 @@ class StartPendingInspection extends React.Component {
     return (
       this.props.listOfPendingScheduleInAGroup.map(visitSchedule => (
         <ScheduleCard
-          data={this.getVisitData(visitSchedule)}
+          data={getVisitData(visitSchedule)}
           keyProp={`PE${visitSchedule.codPostagem}`}
         >
           <View style={{ flex: 3 }}>
@@ -290,13 +231,6 @@ class StartPendingInspection extends React.Component {
         </ScheduleCard>
       ))
     );
-  }
-
-  verifyAgentInvited(visitSchedule) {
-    if (visitSchedule.content.invitedAgent) {
-      return 'Um agente foi convidado';
-    }
-    return 'Agente não convidado';
   }
 
   verification(visitListOfInvitees, visitSchedule) {
@@ -377,7 +311,7 @@ class StartPendingInspection extends React.Component {
     return (
       this.state.invitees.map(counselor => (
         <ScheduleCard
-          data={this.getCounselorData(counselor)}
+          data={getCounselorData(counselor)}
           keyProp={`${counselor.nuvemCode}`}
         />
       ))
