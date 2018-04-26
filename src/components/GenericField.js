@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
 import styles from '../Styles/GeneralStyles';
 
 export default class GenericField extends Component {
@@ -9,69 +8,64 @@ export default class GenericField extends Component {
     super(props);
 
     this.state = {
-      styleInUse: styles.genericViewSection,
+      styleInUse: styles.InputFieldStyle,
       errorTextArea: <Text />,
       text: '',
+      validValue: -1,
     };
   }
 
   handleInput(newText) {
     this.setState({ text: newText.trim() }, () => {
-      this.validateText(this.state.text, this.props.regexInput);
+      this.validateText(this.state.text, this.props.validorRegex);
     });
   }
 
-  handleValidText() {
-    this.setState({ errorTextArea: <Text /> });
-    this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#80FF80', backgroundColor: '#d1ffd1', borderWidth: 2 }] });
-  }
-
-  handleInvalidText() {
-    this.setState({ errorTextArea: <Text>{this.props.errorMessage}</Text> });
-    this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#FF9999', backgroundColor: '#ffd6d6', borderWidth: 2 }] });
+  handleUpdate() {
+    if (this.state.validValue) {
+      this.setState({ errorTextArea: <Text /> });
+      this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#80FF80', borderWidth: 2 }] });
+    } else {
+      this.setState({ errorTextArea: <Text>{this.props.errorMessage}</Text> });
+      this.setState({ styleInUse: [styles.InputFieldStyle, { borderColor: '#FF9999', borderWidth: 2 }] });
+    }
   }
 
   validateText(text, regexTest) {
     if (regexTest.global) {
-      console.warn('validateText()', 'RegExp using global flag! The results may be wrong.');
+      console.warn('validateText()', 'Regexp using global flag! The results may be wrong.');
     } else {
       // Do nothing
     }
 
-    const isTextValid = regexTest.test(text);
+    const isValid = regexTest.test(text);
 
-    if (isTextValid) {
+    if (isValid) {
       console.warn('Valido');
-
-      // setStateValue is the function in props at the component creation
-      this.props.setStateValue(this.state.text);
-      this.handleValidText();
-    } else if (!isTextValid && text === '') {
-      // This case is for empty text
-      this.setState({ styleInUse: styles.genericViewSection });
+      this.setState({ validValue: true }, () => {
+        this.handleUpdate();
+      });
     } else {
       console.warn('Invalido');
-      this.handleInvalidText();
+      this.setState({ validValue: false }, () => {
+        this.handleUpdate();
+      });
     }
   }
 
   render() {
     return (
       <View>
-        <Text> {this.props.header.toUpperCase().trim()} </Text>
-        <View style={this.state.styleInUse}>
-          <FontAwesome name="user-circle" style={styles.icon} size={26} color="black" />
-          <TextInput
-            style={styles.InputStyle}
-            placeholder={this.props.placeholderMessage.trim()}
-            placeholderTextColor="#565454"
-            value={this.state.test}
-            underlineColorAndroid="transparent"
-            onChangeText={text => this.handleInput(text)}
-          />
-        </View>
+        <Text> {this.props.header.toUpperCase()} </Text>
+        <TextInput
+          style={this.state.styleInUse}
+          placeholder={this.props.message}
+          value={this.state.test}
+          onChangeText={text => this.handleInput(text)}
+        />
 
         {this.state.errorTextArea}
+
       </View>
     );
   }
@@ -79,9 +73,8 @@ export default class GenericField extends Component {
 
 GenericField.propTypes = {
   header: PropTypes.string.isRequired,
-  placeholderMessage: PropTypes.string.isRequired,
-  setStateValue: PropTypes.func.isRequired,
-  regexInput: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  validorRegex: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
 };
 
