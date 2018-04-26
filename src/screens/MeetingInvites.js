@@ -190,6 +190,7 @@ class MeetingInvites extends React.Component {
               style={buttonBoxStyle}
               enabled
               text="+ INFORMAÇÕES"
+              key="+MeetingInfo"
               onPress={() => this.getInfo(meetingSchedule.content)}
             />
           </View>
