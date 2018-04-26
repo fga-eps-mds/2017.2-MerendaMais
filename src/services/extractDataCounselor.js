@@ -1,4 +1,4 @@
-const getManagerCounselorData = (counselor) => {
+export const getManagerCounselorData = (counselor) => {
   const data = [
     {
       label: 'Nome:',
@@ -16,4 +16,20 @@ const getManagerCounselorData = (counselor) => {
   return data;
 };
 
-export default getManagerCounselorData;
+export const getCounselorDataWithEmail = (counselor) => {
+  const data = [
+    {
+      label: 'Nome:',
+      value: counselor.name,
+    },
+    {
+      label: 'E-mail:',
+      value: counselor.email,
+    },
+    {
+      label: 'Telefone:',
+      value: counselor.profile.phone,
+    },
+  ];
+  return data;
+};

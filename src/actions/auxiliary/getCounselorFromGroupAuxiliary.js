@@ -33,7 +33,6 @@ export const getCounselorFromGroup = async (codGroup) => {
 
 export const getCounselor = async (counselorLink, linkWithCodMembro) => {
   try {
-    console.log(counselorLink);
     const response = await axios.get(counselorLink);
     const auxCodMembro = linkWithCodMembro.substr(linkWithCodMembro.indexOf('membros/'));
     const codMembro = auxCodMembro.substr(8);
