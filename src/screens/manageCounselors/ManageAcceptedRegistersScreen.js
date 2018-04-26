@@ -12,6 +12,9 @@ import PropTypes from 'prop-types';
 import { backHandlerPop } from '../../NavigationFunctions';
 import stylesList from '../../Styles/ListStyles';
 import LoadingIndicator from '../../components/LoadingIndicator';
+import { getManagerCounselorData } from '../../services/extractDataCounselor';
+import ScheduleCard from '../../components/ScheduleCard';
+import Button from '../../components/Button';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -32,23 +35,22 @@ const styles = StyleSheet.create({
     fontSize: 15,
     paddingVertical: 5,
   },
-  buttonBox: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    margin: 10,
-  },
-  greenBox: {
-    backgroundColor: '#4CD964',
-    padding: 8,
-    borderRadius: 3,
-    marginRight: 20,
+});
 
-  },
-  redBox: {
+
+const buttonBox = StyleSheet.create({
+  design: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 7,
     backgroundColor: '#FF3B30',
     padding: 8,
-    borderRadius: 3,
-    marginRight: 10,
+    justifyContent: 'center',
+    marginRight: 13,
+  },
+  text: {
+    fontSize: 12,
+    textAlign: 'center',
   },
 });
 
@@ -97,32 +99,18 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
     }
     return (
       this.props.listOfCheckedCounselors.map(counselor => (
-        <View style={styles.listRegisters} key={(counselor.nuvemCode).toString()}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-              {counselor.name}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.profile.cpf}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.profile.phone}
-            </Text>
-          </View>
-          <View style={styles.buttonBox}>
-            <TouchableOpacity
-              onPress={() => this.disableCounselor(counselor,
-                this.props.counselor.profile.codGroup)}
-            >
-              <View style={styles.redBox}>
-                <Text>EXCLUIR</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <ScheduleCard
+          data={getManagerCounselorData(counselor)}
+          keyProp={`${counselor.nuvemCode}`}
+        >
+        <Button
+          style={buttonBox}
+          text="EXCLUIR"
+          enabled
+          onPress={() => this.disableCounselor(counselor,
+            this.props.counselor.profile.codGroup)}
+        />
+        </ScheduleCard>
       ))
     );
   }

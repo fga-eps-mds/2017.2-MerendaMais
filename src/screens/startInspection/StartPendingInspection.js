@@ -16,7 +16,7 @@ import PopupDialog, {
 import stylesList from '../../Styles/ListStyles';
 import ScheduleCard from '../../components/ScheduleCard';
 import Button from '../../components/Button';
-import { getVisitData, getCounselorData } from '../../services/extractData';
+import { getVisitData, getCounselorData } from '../../services/extractDataInspection';
 
 
 const styles = StyleSheet.create({

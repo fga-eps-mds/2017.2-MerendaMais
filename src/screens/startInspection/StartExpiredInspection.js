@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import stylesList from '../../Styles/ListStyles';
 import ScheduleCard from '../../components/ScheduleCard';
 import Button from '../../components/Button';
-import { getVisitData } from '../../services/extractData';
+import { getVisitData } from '../../services/extractDataInspection';
 
 
 const styles = StyleSheet.create({

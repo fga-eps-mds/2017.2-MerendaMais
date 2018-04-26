@@ -12,6 +12,9 @@ import PropTypes from 'prop-types';
 import { backHandlerPop } from '../../NavigationFunctions';
 import stylesList from '../../Styles/ListStyles';
 import LoadingIndicator from '../../components/LoadingIndicator';
+import Button from '../../components/Button';
+import { getManagerCounselorData } from '../../services/extractDataCounselor';
+import ScheduleCard from '../../components/ScheduleCard';
 
 const styles = StyleSheet.create({
   listRegisters: {
@@ -66,6 +69,7 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
   }
 
   getCounselorFromGroup() {
+    console.log(this.props.counselor.profile.CAE);
     this.props.asyncGetCounselorFromGroup(this.props.counselor.profile.CAE,
       this.props.counselor.profile.cpf);
   }
@@ -108,39 +112,24 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
     }
     return (
       this.props.listOfNotCheckedCounselors.map(counselor => (
-        <View style={styles.listRegisters} key={(counselor.nuvemCode).toString()}>
-          <View style={styles.textBox}>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Nome: </Text>
-              {counselor.name}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>CPF: </Text>
-              {counselor.profile.cpf}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={{ fontWeight: 'bold' }}>Telefone: </Text>
-              {counselor.profile.phone}
-            </Text>
-          </View>
-          <View style={styles.buttonBox}>
-            <TouchableOpacity
-              onPress={() => this.acceptCounselor(counselor)}
-            >
-              <View style={styles.greenBox}>
-                <Text>VALIDAR</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.disableCounselor(counselor,
-                this.props.counselor.profile.codGroup)}
-            >
-              <View style={styles.redBox}>
-                <Text>EXCLUIR</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <ScheduleCard
+        data={getManagerCounselorData(counselor)}
+        keyProp={`${counselor.nuvemCode}`}
+        >
+          <Button
+            style={buttonBox}
+            text="VALIDAR"
+            enabled
+            onPress={() => this.acceptCounselor(counselor)}
+          />
+          <Button
+            style={buttonBox}
+            text="EXCLUIR"
+            enabled
+            onPress={() => this.disableCounselor(counselor,
+              this.props.counselor.profile.codGroup)}
+          />
+      </ScheduleCard>
       ))
     );
   }
