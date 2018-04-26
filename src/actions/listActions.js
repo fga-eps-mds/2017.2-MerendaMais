@@ -82,7 +82,6 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
   dispatch(resetList());
 
   const codGroup = await getGroup(CAE);
-  console.log("COD: " + codGroup);
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Received codGroup: ${codGroup}`);
   // Returns an array of arrays. The 0 element of the array contains all counselor links,
   // while the 1 containers all codMembro links.
@@ -122,10 +121,8 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
       logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Counselors sent to store ${JSON.stringify(completeCounselors[i])}`);
       if (completeCounselors[i].profile.presidentChecked) {
         dispatch(setlistOfCheckedCounselors(completeCounselors[i]));
-        console.log(completeCounselors[i]+"---");
       } else {
         dispatch(setlistOfNotCheckedCounselors(completeCounselors[i]));
-        console.log(completeCounselors[i]+"===");
       }
     }
   }

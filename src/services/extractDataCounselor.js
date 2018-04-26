@@ -1,4 +1,4 @@
-export const getManagerCounselorData = (counselor) => {
+const getManagerCounselorData = (counselor) => {
   const data = [
     {
       label: 'Nome:',
@@ -15,3 +15,5 @@ export const getManagerCounselorData = (counselor) => {
   ];
   return data;
 };
+
+export default getManagerCounselorData;

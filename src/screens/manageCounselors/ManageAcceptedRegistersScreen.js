@@ -4,7 +4,6 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableOpacity,
   Alert,
   BackHandler,
 } from 'react-native';
@@ -12,31 +11,9 @@ import PropTypes from 'prop-types';
 import { backHandlerPop } from '../../NavigationFunctions';
 import stylesList from '../../Styles/ListStyles';
 import LoadingIndicator from '../../components/LoadingIndicator';
-import { getManagerCounselorData } from '../../services/extractDataCounselor';
+import getManagerCounselorData from '../../services/extractDataCounselor';
 import ScheduleCard from '../../components/ScheduleCard';
 import Button from '../../components/Button';
-
-const styles = StyleSheet.create({
-  listRegisters: {
-    flex: 1,
-    marginHorizontal: 15,
-    marginVertical: 10,
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 3,
-    backgroundColor: '#FAFAFA',
-    justifyContent: 'space-between',
-  },
-  textBox: {
-    paddingLeft: 2,
-    justifyContent: 'flex-start',
-  },
-  text: {
-    fontSize: 15,
-    paddingVertical: 5,
-  },
-});
-
 
 const buttonBox = StyleSheet.create({
   design: {
@@ -103,13 +80,13 @@ export default class ManageAcceptedRegistersScreen extends React.Component {
           data={getManagerCounselorData(counselor)}
           keyProp={`${counselor.nuvemCode}`}
         >
-        <Button
-          style={buttonBox}
-          text="EXCLUIR"
-          enabled
-          onPress={() => this.disableCounselor(counselor,
-            this.props.counselor.profile.codGroup)}
-        />
+          <Button
+            style={buttonBox}
+            text="EXCLUIR"
+            enabled
+            onPress={() => this.disableCounselor(counselor,
+              this.props.counselor.profile.codGroup)}
+          />
         </ScheduleCard>
       ))
     );

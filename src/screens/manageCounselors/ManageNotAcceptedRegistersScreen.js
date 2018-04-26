@@ -4,7 +4,6 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableOpacity,
   Alert,
   BackHandler,
 } from 'react-native';
@@ -13,45 +12,38 @@ import { backHandlerPop } from '../../NavigationFunctions';
 import stylesList from '../../Styles/ListStyles';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import Button from '../../components/Button';
-import { getManagerCounselorData } from '../../services/extractDataCounselor';
+import getManagerCounselorData from '../../services/extractDataCounselor';
 import ScheduleCard from '../../components/ScheduleCard';
 
-const styles = StyleSheet.create({
-  listRegisters: {
-    flex: 1,
-    marginHorizontal: 15,
-    marginVertical: 10,
+const buttonBoxGreen = StyleSheet.create({
+  design: {
     borderColor: 'black',
     borderWidth: 1,
-    borderRadius: 3,
-    backgroundColor: '#FAFAFA',
-    justifyContent: 'space-between',
-  },
-  textBox: {
-    paddingLeft: 2,
-    justifyContent: 'flex-start',
-  },
-  text: {
-    fontSize: 15,
-    paddingVertical: 5,
-  },
-  buttonBox: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    margin: 10,
-  },
-  greenBox: {
+    borderRadius: 7,
     backgroundColor: '#4CD964',
     padding: 8,
-    borderRadius: 3,
-    marginRight: 20,
-
+    justifyContent: 'center',
+    marginRight: 13,
   },
-  redBox: {
+  text: {
+    fontSize: 12,
+    textAlign: 'center',
+  },
+});
+
+const buttonBoxRed = StyleSheet.create({
+  design: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 7,
     backgroundColor: '#FF3B30',
     padding: 8,
-    borderRadius: 3,
-    marginRight: 10,
+    justifyContent: 'center',
+    marginRight: 13,
+  },
+  text: {
+    fontSize: 12,
+    textAlign: 'center',
   },
 });
 
@@ -113,23 +105,23 @@ export default class ManageNotAcceptedRegistersScreen extends React.Component {
     return (
       this.props.listOfNotCheckedCounselors.map(counselor => (
         <ScheduleCard
-        data={getManagerCounselorData(counselor)}
-        keyProp={`${counselor.nuvemCode}`}
+          data={getManagerCounselorData(counselor)}
+          keyProp={`${counselor.nuvemCode}`}
         >
           <Button
-            style={buttonBox}
+            style={buttonBoxGreen}
             text="VALIDAR"
             enabled
             onPress={() => this.acceptCounselor(counselor)}
           />
           <Button
-            style={buttonBox}
+            style={buttonBoxRed}
             text="EXCLUIR"
             enabled
             onPress={() => this.disableCounselor(counselor,
               this.props.counselor.profile.codGroup)}
           />
-      </ScheduleCard>
+        </ScheduleCard>
       ))
     );
   }
