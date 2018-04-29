@@ -4,7 +4,7 @@ engines:
     config:
       languages:
         javascript:
-          mass_threshold: 120
+          mass_threshold: 200
 
 exclude_paths:
 - "**/__tests__/"
