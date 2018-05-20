@@ -1,15 +1,17 @@
-android-emulator-merenda:
+merenda-merenda:
   build: .
   volumes:
     - .:/code
   privileged: true
+  working_dir: /code
   net: host
   environment:
    - DISPLAY=$DISPLAY 
   command: |
     bash -c "
-    cd /code/ && npm install
+    npm install --loglevel verbose
+    adb reverse tcp:8081 tcp:8081
     /app/android-sdk-linux/tools/android list avd
-    /app/android-sdk-linux/tools/emulator  -avd android-emulator & .
-    sleep 2m && npm run android
+    react-native run-android & .
+    /app/android-sdk-linux/tools/emulator -avd emulator-android
     "

@@ -2,8 +2,39 @@ FROM java:8
 
 #In Host-Terminal exec this command: sudo xhost +local:docker
 
-# Intall unzip
-RUN apt-get install unzip
+# Install base software packages
+RUN dpkg --add-architecture i386
+
+RUN apt-get update && \
+    apt-get install software-properties-common \
+    python-software-properties \
+    wget \
+    curl \
+    git \
+    libncurses5:i386 \ 
+    libstdc++6:i386 \ 
+    zlib1g:i386 \
+    unzip -y && \
+    apt-get clean
+
+
+# ——————————
+# Install Node and global packages
+# ——————————
+ENV NODE_VERSION 6.11.2
+RUN cd && \
+    wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz && \
+    tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz && \
+    mv node-v${NODE_VERSION}-linux-x64 /opt/node && \
+    rm node-v${NODE_VERSION}-linux-x64.tar.gz
+ENV PATH ${PATH}:/opt/node/bin
+
+
+# ——————————
+# Install Basic React-Native packages
+# ——————————
+RUN npm install -g create-react-native-app
+RUN npm install -g react-native-cli
 
 # Install SDK
 RUN mkdir /app/
@@ -25,42 +56,21 @@ RUN yes | $ANDROID_HOME/tools/bin/sdkmanager "tools"
 
 RUN echo "y" | android update sdk
 
-
+RUN $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-23"
 RUN $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-25"
 RUN $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-25;google_apis;x86"
 
+ENV ANDROID_COMPONENTS platform-tools,build-tools-25.0.1,android-25,build-tools-21.0.0,android-21
+ENV GOOGLE_COMPONENTS extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services,extra-google-gcm
+
+RUN echo y | android update sdk --no-ui --all --filter "${ANDROID_COMPONENTS}" ; \
+    echo y | android update sdk --no-ui --all --filter "${GOOGLE_COMPONENTS}"
+
+ENV QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
+
 # Create AVD
 RUN $ANDROID_HOME/tools/bin/avdmanager create avd\
- -n android-emulator\
+ -n emulator-android\
  -k "system-images;android-25;google_apis;x86"\
  --device "Nexus 5"\
- --sdcard 100M
-
-
-# Install base software packages
-RUN apt-get update && \
-    apt-get install software-properties-common \
-    python-software-properties \
-    wget \
-    curl \
-    git \
-    unzip -y && \
-    apt-get clean
-
-
-# ——————————
-# Install Node and global packages
-# ——————————
-ENV NODE_VERSION 6.11.2
-RUN cd && \
-    wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz && \
-    tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz && \
-    mv node-v${NODE_VERSION}-linux-x64 /opt/node && \
-    rm node-v${NODE_VERSION}-linux-x64.tar.gz
-ENV PATH ${PATH}:/opt/node/bin
-
-
-# ——————————
-# Install Basic React-Native packages
-# ——————————
-RUN npm install -g create-react-native-app
+ --sdcard 700M
