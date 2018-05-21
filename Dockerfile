@@ -60,7 +60,7 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-23"
 RUN $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-25"
 RUN $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-25;google_apis;x86"
 
-ENV ANDROID_COMPONENTS platform-tools,build-tools-25.0.1,android-25,build-tools-21.0.0,android-21
+ENV ANDROID_COMPONENTS platform-tools,build-tools-25.0.2,android-25,build-tools-21.0.0,android-21
 ENV GOOGLE_COMPONENTS extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services,extra-google-gcm
 
 RUN echo y | android update sdk --no-ui --all --filter "${ANDROID_COMPONENTS}" ; \
@@ -74,3 +74,7 @@ RUN $ANDROID_HOME/tools/bin/avdmanager create avd\
  -k "system-images;android-25;google_apis;x86"\
  --device "Nexus 5"\
  --sdcard 700M
+
+ RUN npm install -g exp && \
+     exp path
+ 

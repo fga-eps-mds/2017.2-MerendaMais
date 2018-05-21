@@ -9,9 +9,5 @@ merenda-merenda:
    - DISPLAY=$DISPLAY 
   command: |
     bash -c "
-    npm install --loglevel verbose
-    adb reverse tcp:8081 tcp:8081
-    /app/android-sdk-linux/tools/android list avd
-    react-native run-android & .
-    /app/android-sdk-linux/tools/emulator -avd emulator-android
+    react-native run-android
     "

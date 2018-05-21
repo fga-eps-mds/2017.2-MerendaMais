@@ -9,7 +9,15 @@
       "bundleIdentifier": "com.merendamais.merendamais"
     },
     "android": {
-      "package": "com.merendamais.merendamais"
-    }
+      "package": "com.merendamais.merendamais",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    },
+    "isDetached": true,
+    "detach": {
+      "scheme": "exp481e43dd5de34cc583fe217621217495",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v1.20.0-sdk21.0.0-38791499-fe99-4600-950d-cf7e2e85cea9.tar.gz"
+    },
+    "scheme": "exp481e43dd5de34cc583fe217621217495"
   }
 }
