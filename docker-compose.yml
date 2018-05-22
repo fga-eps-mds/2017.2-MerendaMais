@@ -2,13 +2,18 @@ merenda-merenda:
   build: .
   volumes:
     - .:/code
+    - /dev/bus/usb:/dev/bus/usb
   privileged: true
   working_dir: /code
   net: host
+  ports:
+    - "8081:8081"
   environment:
-   - DISPLAY=$DISPLAY 
+    - DISPLAY=$DISPLAY 
   command: |
     bash -c "
+    lsusb
     npm install --loglevel verbose
     adb reverse tcp:8081 tcp:8081
+    react-native run-android
     "
