@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing SchoolInfoScreen renders as expected 1`] = `
-<View
+<Component
   style={
     Object {
       "backgroundColor": "white",
@@ -15,11 +15,10 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
     subTitle=""
     title="Informações da Escola"
   />
-  <ScrollViewMock>
+  <ScrollView>
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -33,7 +32,7 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
     >
       Infomações
     </Text>
-    <View
+    <Component
       style={
         Object {
           "borderColor": "black",
@@ -49,7 +48,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -64,7 +62,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -77,7 +74,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -92,7 +88,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -105,7 +100,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -120,7 +114,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -133,7 +126,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -148,7 +140,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -161,7 +152,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -173,7 +163,7 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       >
         Localização:
       </Text>
-      <View
+      <Component
         key="renderButton"
       >
         <TouchableOpacity
@@ -195,7 +185,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -207,9 +196,9 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
             Ver no Mapa
           </Text>
         </TouchableOpacity>
-      </View>
-    </View>
-  </ScrollViewMock>
+      </Component>
+    </Component>
+  </ScrollView>
   <TouchableOpacity
     activeOpacity={0.7}
     style={
@@ -228,7 +217,6 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -240,5 +228,5 @@ exports[`Testing SchoolInfoScreen renders as expected 1`] = `
       Acessar Visitas
     </Text>
   </TouchableOpacity>
-</View>
+</Component>
 `;

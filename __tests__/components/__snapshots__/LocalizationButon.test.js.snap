@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing LocalizationButton Component Test LocalizationButton Rendering 1`] = `
-<View
+<Component
   key="localizationButton"
 >
   <Text
     accessible={true}
     allowFontScaling={true}
-    disabled={false}
     ellipsizeMode="tail"
     style={
       Object {
@@ -38,7 +37,6 @@ exports[`Testing LocalizationButton Component Test LocalizationButton Rendering 
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -50,5 +48,5 @@ exports[`Testing LocalizationButton Component Test LocalizationButton Rendering 
       Ver no Mapa
     </Text>
   </TouchableOpacity>
-</View>
+</Component>
 `;

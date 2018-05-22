@@ -15,10 +15,10 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
     subTitle="Resolução Nº 1"
     title="Legislação"
   />
-  <ScrollViewMock
+  <ScrollView
     horizontal={true}
   >
-    <View
+    <Component
       style={
         Object {
           "flexDirection": "row",
@@ -30,7 +30,6 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -45,11 +44,12 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
       </Text>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="FUNDAMENTAÇÃO LEGAL:"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -63,21 +63,21 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             FUNDAMENTAÇÃO LEGAL:
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Artigo 1º"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -91,21 +91,21 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Artigo 1º
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Artigo 2º"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -119,21 +119,19 @@ exports[`Testing Resolution1Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Artigo 2º
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
-    </View>
-  </ScrollViewMock>
-  <ScrollViewMock>
+    </Component>
+  </ScrollView>
+  <ScrollView>
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -230,6 +228,6 @@ D.O.U., 09/02/2017 - Seção 1
       touchableComponent={[Function]}
       underlayColor="black"
     />
-  </ScrollViewMock>
+  </ScrollView>
 </View>
 `;

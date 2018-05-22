@@ -16,10 +16,10 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
     subTitle="Resolução Nº 26"
     title="Legislação"
   />
-  <ScrollViewMock
+  <ScrollView
     horizontal={true}
   >
-    <View
+    <Component
       style={
         Object {
           "flexDirection": "row",
@@ -31,7 +31,6 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -46,11 +45,12 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
       </Text>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Fundamentação Legal"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -64,21 +64,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Fundamentação Legal
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo I"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -92,21 +92,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo I
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo II"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -120,21 +120,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo II
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo III"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -148,21 +148,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo III
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo IV"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -176,21 +176,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo IV
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo V"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -204,21 +204,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo V
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo VI"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -232,21 +232,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo VI
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo VII"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -260,21 +260,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo VII
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo VIII"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -288,21 +288,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo VIII
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo IX"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -316,21 +316,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo IX
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo X"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -344,21 +344,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo X
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo XI"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -372,21 +372,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo XI
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo XII"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -400,21 +400,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo XII
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo XIII"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -428,21 +428,21 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo XIII
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo XIV"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -456,21 +456,19 @@ exports[`Testing Resolution26Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo XIV
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
-    </View>
-  </ScrollViewMock>
-  <ScrollViewMock>
+    </Component>
+  </ScrollView>
+  <ScrollView>
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -1552,7 +1550,7 @@ JOSÉ HENRIQUE PAIM FERNANDES
         }
       }
     >
-      <View
+      <Component
         style={
           Object {
             "backgroundColor": "#FAFAFA",
@@ -1570,7 +1568,6 @@ JOSÉ HENRIQUE PAIM FERNANDES
         <Text
           accessible={true}
           allowFontScaling={true}
-          disabled={false}
           ellipsizeMode="tail"
           style={
             Object {
@@ -1585,7 +1582,6 @@ JOSÉ HENRIQUE PAIM FERNANDES
         <Text
           accessible={true}
           allowFontScaling={true}
-          disabled={false}
           ellipsizeMode="tail"
         >
           Ao clicar no botão abaixo, você será redirecionado para um site externo, onde é possivel acessar os Anexos, assim como a toda a legislação:
@@ -1611,7 +1607,6 @@ JOSÉ HENRIQUE PAIM FERNANDES
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -1625,8 +1620,8 @@ JOSÉ HENRIQUE PAIM FERNANDES
             Anexos
           </Text>
         </TouchableOpacity>
-      </View>
+      </Component>
     </_class>
-  </ScrollViewMock>
+  </ScrollView>
 </View>
 `;

@@ -5,7 +5,7 @@ exports[`1 1`] = `1`;
 exports[`1 2`] = `1`;
 
 exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
-<View
+<Component
   style={
     Object {
       "alignItems": "center",
@@ -21,7 +21,7 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
     }
   }
 >
-  <View
+  <Component
     style={
       Object {
         "flex": 4,
@@ -34,7 +34,6 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -46,7 +45,6 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -61,7 +59,6 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -73,7 +70,6 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -88,7 +84,6 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -100,7 +95,6 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -112,8 +106,8 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
       </Text>
       00:00
     </Text>
-  </View>
-  <View
+  </Component>
+  <Component
     style={
       Object {
         "flex": 3,
@@ -140,8 +134,8 @@ exports[`Testing VisitCard Component Test VisitCard Rendering 1`] = `
     <MoreInfoCard
       infoCardCallBack={[Function]}
     />
-  </View>
-</View>
+  </Component>
+</Component>
 `;
 
 exports[`Testing Visitcard internal componentes Testing ConfirmAndCancelButtons rendering 1`] = `
@@ -153,7 +147,6 @@ exports[`Testing Visitcard internal componentes Testing ConfirmAndCancelButtons 
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -189,7 +182,6 @@ exports[`Testing Visitcard internal componentes Testing MoreInfoCard rendering 1
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {

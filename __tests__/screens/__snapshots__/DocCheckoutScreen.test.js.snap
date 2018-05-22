@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing DocCheckout Screen renders as expected 1`] = `
-<View
+<Component
   style={
     Object {
       "backgroundColor": "white",
@@ -17,6 +17,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
   />
   <KeyboardAvoidingView
     behavior="padding"
+    enabled={true}
     keyboardVerticalOffset={0}
     style={
       Object {
@@ -25,9 +26,9 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
       }
     }
   >
-    <ScrollViewMock>
-      <View>
-        <View
+    <ScrollView>
+      <Component>
+        <Component
           style={
             Object {
               "flexDirection": "row",
@@ -37,7 +38,6 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -52,7 +52,6 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -64,8 +63,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Nao
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="0"
           style={
             Object {
@@ -77,7 +76,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -97,8 +96,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -118,11 +117,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -133,8 +131,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de registros de imunização
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="1"
           style={
             Object {
@@ -146,7 +144,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -166,8 +164,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -187,11 +185,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -202,8 +199,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de registro de higienização dos utensílios
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="2"
           style={
             Object {
@@ -215,7 +212,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -235,8 +232,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -256,11 +253,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -271,8 +267,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de registro de capacitação ou treinamento de Merendeiras
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="3"
           style={
             Object {
@@ -284,7 +280,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -304,8 +300,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -325,11 +321,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -340,8 +335,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de registro de portabilidade da água
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="4"
           style={
             Object {
@@ -353,7 +348,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -373,8 +368,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -394,11 +389,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -409,8 +403,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de registro de exames periódicos dos manipuladores
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="5"
           style={
             Object {
@@ -422,7 +416,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -442,8 +436,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -463,11 +457,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -478,8 +471,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de comprovante de limpeza da caixa d’água potável (semestral)
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="6"
           style={
             Object {
@@ -491,7 +484,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -511,8 +504,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -532,11 +525,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -547,8 +539,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de comprovante de limpeza do reservatório de água subterrâneo (semestral)
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="7"
           style={
             Object {
@@ -560,7 +552,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -580,8 +572,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -601,11 +593,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -616,8 +607,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de comprovante de limpeza da caixa de gordura (quinzenal)
           </Text>
-        </View>
-        <View
+        </Component>
+        <Component
           key="8"
           style={
             Object {
@@ -629,7 +620,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             }
           }
         >
-          <View>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -649,8 +640,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#008000"
             />
-          </View>
-          <View>
+          </Component>
+          <Component>
             <Checkbox
               checkboxStyle={
                 Object {
@@ -670,11 +661,10 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
               selected={false}
               selectedColor="#B22222"
             />
-          </View>
+          </Component>
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -685,15 +675,14 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           >
             Ausência de comprovante de desinsetização e desratização (semestral)
           </Text>
-        </View>
-      </View>
-      <View
+        </Component>
+      </Component>
+      <Component
         behavior="padding"
       >
         <Text
           accessible={true}
           allowFontScaling={true}
-          disabled={false}
           ellipsizeMode="tail"
           style={
             Object {
@@ -705,7 +694,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
         >
           Alguma observação adicional? Insira aqui. (Opcional)
         </Text>
-        <View
+        <Component
           style={
             Object {
               "marginHorizontal": 10,
@@ -714,6 +703,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           }
         >
           <TextInput
+            allowFontScaling={true}
             multiline={true}
             onChangeText={[Function]}
             placeholder="Observações (opcional)"
@@ -731,8 +721,8 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
             underlineColorAndroid="transparent"
             value=""
           />
-        </View>
-      </View>
+        </Component>
+      </Component>
       <TouchableOpacity
         activeOpacity={0.2}
         key="setObservation"
@@ -752,7 +742,6 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
         <Text
           accessible={true}
           allowFontScaling={true}
-          disabled={false}
           ellipsizeMode="tail"
           style={
             Object {
@@ -765,7 +754,7 @@ exports[`Testing DocCheckout Screen renders as expected 1`] = `
           Concluir
         </Text>
       </TouchableOpacity>
-    </ScrollViewMock>
+    </ScrollView>
   </KeyboardAvoidingView>
-</View>
+</Component>
 `;
