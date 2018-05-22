@@ -1,4 +1,6 @@
 {
   "name": "MerendaMais",
-  "displayName": "Merenda Mais"
+  "displayName": "Merenda Mais",
+  "icon": "./src/images/icone.png",
+  "slug": "merendamais"
 }
