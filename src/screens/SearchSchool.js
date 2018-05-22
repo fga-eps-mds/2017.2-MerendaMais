@@ -1,6 +1,5 @@
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
-import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import {
   StyleSheet,
@@ -355,7 +354,6 @@ class SearchSchool extends React.Component {
                 {municipalDistrict}
 
                 <View style={styles.Input}>
-                  <FontAwesome name="search" style={styles.icon} size={30} color="black" />
                   <TextInput
                     width={280}
                     returnKeyType="go"

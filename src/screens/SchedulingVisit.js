@@ -5,7 +5,6 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import { EvilIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import SchoolData from '../components/SchoolData';
@@ -341,7 +340,6 @@ export default class SchedulingVisit extends React.Component {
                       <TouchableOpacity
                         onPress={() => this.deleteSpecificCounselor(counselor[0])}
                       >
-                        <EvilIcons name="close" style={styles.icon} size={26} color="red" />
                       </TouchableOpacity>
                     </View>
                   ))

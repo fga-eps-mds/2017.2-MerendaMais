@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
 import styles from '../Styles/GeneralStyles';
 
 const validatePhone = (phone, callback) => {
@@ -12,7 +11,6 @@ const validatePhone = (phone, callback) => {
 
 const PhoneField = props => (
   <View style={styles.InputFieldStyle}>
-    <MaterialIcons name="phone" style={styles.icon} size={26} color="black" />
     <TextInput
       style={styles.InputStyle}
       placeholder="Digite o seu telefone"

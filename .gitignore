@@ -8,3 +8,4 @@ coverage
 react-native-packager-cache*
 haste-map-react-native-packager*
 .env
+android/build/

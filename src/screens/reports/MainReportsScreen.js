@@ -11,7 +11,6 @@ import {
   Alert,
 } from 'react-native';
 import axios from 'axios';
-import { MaterialIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
 import ShowToast from '../../components/Toast';
@@ -108,12 +107,7 @@ const GoToChecklistClickableText = props => (
 
     <View>
       {props.isCompleted ? (
-        <MaterialIcons
-          name="check"
-          size={28}
-          style={{ paddingRight: 23 }}
-          color="green"
-        />
+        <Text />
       ) : (<Text />)
       }
     </View>

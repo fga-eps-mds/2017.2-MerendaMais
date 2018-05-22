@@ -10,7 +10,6 @@ import {
   BackHandler,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { FontAwesome } from '@expo/vector-icons';
 import Header from '../../components/Header';
 import { backHandlerPopToMain } from '../../NavigationFunctions';
 
@@ -88,7 +87,6 @@ export default class MainLegislationScreen extends React.PureComponent {
                   'Resolução CD/FNDE/MEC Nº 1, de 8 de fevereiro de 2017 - Altera o valor per capita para oferta da alimentação escolar do Programa de Alimentação Escolar - PNAE.',
                 )}
               >
-                <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
 
             </TouchableOpacity>
@@ -105,7 +103,6 @@ export default class MainLegislationScreen extends React.PureComponent {
                   'Resolução/CD/FNDE nº 26, de 17 de junho de 2013 - Dispõe sobre o atendimento da alimentação escolar aos alunos da educação básica no âmbito do Programa Nacional de Alimentação Escolar –PNAE.',
                 )}
               >
-                <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
 
             </TouchableOpacity>
@@ -122,7 +119,6 @@ export default class MainLegislationScreen extends React.PureComponent {
                   'Dispõe sobre o atendimento da alimentação escolar e do Programa Dinheiro Direto na Escola aos alunos da educação básica;',
                 )}
               >
-                <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
 
             </TouchableOpacity>
@@ -139,7 +135,6 @@ export default class MainLegislationScreen extends React.PureComponent {
                   'Altera a Lei nº 11.947, de 16 de junho de 2009, para determinar o provimento de alimentação escolar adequada aos alunos portadores de estado ou de condição de saúde específica.',
                 )}
               >
-                <FontAwesome name="question-circle-o" style={styles.icon} size={32} color="black" />
               </TouchableOpacity>
 
             </TouchableOpacity>

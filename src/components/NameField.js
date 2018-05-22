@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
 import styles from '../Styles/GeneralStyles';
 
 const validateName = (name, callback) => {
@@ -11,7 +10,6 @@ const validateName = (name, callback) => {
 
 const NameField = props => (
   <View style={styles.InputFieldStyle}>
-    <MaterialIcons name="face" style={styles.icon} size={26} color="black" />
     <TextInput
       style={styles.InputStyle}
       placeholder="Digite o seu nome completo"

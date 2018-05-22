@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import styles from '../Styles/GeneralStyles';
 
 const EmailField = props => (
   <View style={styles.InputFieldStyle}>
-    <MaterialIcons name="email" style={styles.icon} size={props.size} color="black" />
+    <Icon name="email" style={styles.icon} size={props.size} color="black" />
     <TextInput
       width={300}
       style={styles.InputStyle}

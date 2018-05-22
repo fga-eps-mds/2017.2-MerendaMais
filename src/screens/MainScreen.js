@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
@@ -57,7 +56,6 @@ class MainScreen extends React.Component {
           <TouchableOpacity
             onPress={() => Actions.drawerOpen()}
           >
-            <FontAwesome name="navicon" size={32} />
           </TouchableOpacity>
         </View>
 

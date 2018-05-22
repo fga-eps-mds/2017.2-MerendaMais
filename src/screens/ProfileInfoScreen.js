@@ -2,7 +2,6 @@ import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { Text, ScrollView, View, BackHandler } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import { backHandlerPopToMain } from '../NavigationFunctions';
@@ -50,7 +49,6 @@ export default class ProfileInfoScreen extends React.Component {
             {
               PROFILE_FIELDS.map((item, index) => (
                 <View style={styles.field}>
-                  <MaterialIcons name={item.icon} style={styles.icon} size={32} color="black" />
                   <Text>{item.label} {informations[index]}</Text>
                 </View>
               ),
