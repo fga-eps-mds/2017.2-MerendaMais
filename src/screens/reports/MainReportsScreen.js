@@ -47,6 +47,7 @@ import { convertingJSONToString } from '../../actions/counselorActions';
 import { errorGenerator } from '../../actions/schedulingVisitActions';
 import Header from '../../components/Header';
 import ButtonWithActivityIndicator from '../../components/ButtonWithActivityIndicator';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const { width } = Dimensions.get('window');
 
@@ -107,7 +108,12 @@ const GoToChecklistClickableText = props => (
 
     <View>
       {props.isCompleted ? (
-        <Text />
+        <MaterialIcons
+          name="check"
+          size={28}
+          style={{ paddingRight: 23 }}
+          color="green"
+        />
       ) : (<Text />)
       }
     </View>

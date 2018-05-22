@@ -1,4 +1,6 @@
 import React from 'react';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Text, View } from 'react-native';
 import styles from '../Styles/GeneralStyles';
@@ -12,9 +14,14 @@ const MenuButton = props => (
 
     <View style={styles.fieldStyle}>
       {props.isLogout &&
-        (<Text />)}
+        (<MaterialCommunityIcons
+          name={props.iconName}
+          style={styles.icon}
+          size={32}
+          color="black"
+        />)}
       {!props.isLogout &&
-        (<Text />)}
+        (<MaterialIcons name={props.iconName} style={styles.icon} size={32} color="black" />)}
       <Text
         style={styles.item}
       >

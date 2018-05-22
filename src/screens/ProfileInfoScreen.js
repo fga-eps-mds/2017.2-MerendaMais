@@ -9,7 +9,6 @@ import { backHandlerPopToMain } from '../NavigationFunctions';
 import PROFILE_FIELDS from '../constants/profileInformations';
 import styles from '../Styles/ProfileStyles';
 
-
 export default class ProfileInfoScreen extends React.Component {
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', backHandlerPopToMain);

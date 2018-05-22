@@ -16,6 +16,7 @@ import { backHandlerPopToMain } from '../NavigationFunctions';
 import Header from '../components/Header';
 import ShowToast from '../components/Toast';
 import { NO_OTHER_COUNSELORS } from '../constants/generalConstants';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const { width } = Dimensions.get('window');
 
@@ -340,6 +341,7 @@ export default class SchedulingVisit extends React.Component {
                       <TouchableOpacity
                         onPress={() => this.deleteSpecificCounselor(counselor[0])}
                       >
+                        <EvilIcons name="close" style={styles.icon} size={26} color="red" />
                       </TouchableOpacity>
                     </View>
                   ))

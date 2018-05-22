@@ -23,6 +23,7 @@ import ShowToast from '../components/Toast';
 import SchoolListButton from '../components/SchoolListButton';
 import brazilianStates from '../constants/brazilianStates';
 import municipalDistricts from '../constants/municipalDistricts';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import {
   SCHOOL_ENDPOINT,
@@ -354,6 +355,7 @@ class SearchSchool extends React.Component {
                 {municipalDistrict}
 
                 <View style={styles.Input}>
+                  <FontAwesome name="search" style={styles.icon} size={30} color="black" />
                   <TextInput
                     width={280}
                     returnKeyType="go"

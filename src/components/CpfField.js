@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from '../Styles/GeneralStyles';
 
 const validateCpf = (cpf, callback) => {
@@ -10,6 +11,7 @@ const validateCpf = (cpf, callback) => {
 
 const CpfField = props => (
   <View style={styles.InputFieldStyle}>
+    <FontAwesome name="user-circle" style={styles.icon} size={26} color="black" />
     <TextInput
       style={styles.InputStyle}
       placeholder="Digite o seu CPF"

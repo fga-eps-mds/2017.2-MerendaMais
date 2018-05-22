@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
 import styles from '../Styles/GeneralStyles';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const changePasswordStyleAccordingToInput = (password) => {
   const passwordRegex = /^(?=.{6,})(?!.*\s).*$/g;
@@ -31,6 +32,7 @@ const PasswordField = props => (
         changePasswordStyleAccordingToInput(props.password) :
         changeStyleIfPasswordsMatch(props.password, props.passwordCompared)}
   >
+    <MaterialIcons name="lock" style={styles.icon} size={props.size} color="black" />
     <TextInput
       style={styles.InputStyle}
       placeholder={props.placeholder}
