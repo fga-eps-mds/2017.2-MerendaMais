@@ -1,8 +1,8 @@
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
 import styles from '../Styles/GeneralStyles';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const validatePhone = (phone, callback) => {
   const validPhone = phone.replace(/[^0-9]/g, '');

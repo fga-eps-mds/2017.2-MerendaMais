@@ -1,3 +1,4 @@
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator, Alert } from 'react-native';
@@ -16,7 +17,6 @@ import { backHandlerPopToMain } from '../NavigationFunctions';
 import Header from '../components/Header';
 import ShowToast from '../components/Toast';
 import { NO_OTHER_COUNSELORS } from '../constants/generalConstants';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const { width } = Dimensions.get('window');
 

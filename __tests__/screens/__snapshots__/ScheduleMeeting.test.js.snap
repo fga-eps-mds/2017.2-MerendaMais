@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing ScheduleMeeting Screen renders as expected 1`] = `
+<ScheduleMeeting
+  asyncGetCounselorFromGroup={[Function]}
+  asyncSchedulingMeeting={[Function]}
+  counselor={
+    Object {
+      "profile": Object {
+        "CAE": "Distrito Federal",
+      },
+    }
+  }
+  isLoading={false}
+  listOfCounselorsInAGroup={
+    Array [
+      Object {
+        "name": "Lucas Penido Antunes",
+        "profile": Object {
+          "cpf": "11111111111",
+          "phone": "11111111111",
+        },
+      },
+    ]
+  }
+  meetingListOfInvitees={
+    Object {
+      "6122": Object {
+        "confirmed": false,
+        "nuvemCode": 6122,
+      },
+      "6201": Object {
+        "confirmed": false,
+        "nuvemCode": 6201,
+      },
+    }
+  }
+  meetingListOfInviteesWithCounselorInformations={
+    Object {
+      "6122": Object {
+        "cpf": "11111111111",
+        "name": "Lucas Penido Antunes",
+        "nuvemCode": 6122,
+        "phone": "11111111111",
+      },
+      "6201": Object {
+        "cpf": "00000000000",
+        "name": "Kamilla Costa Souzaa",
+        "nuvemCode": 6201,
+        "phone": "99999999999",
+      },
+    }
+  }
+  setMeetingNewLists={[Function]}
+/>
+`;

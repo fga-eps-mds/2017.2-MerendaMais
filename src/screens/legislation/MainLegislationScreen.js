@@ -1,3 +1,4 @@
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import {
   StyleSheet,
@@ -12,7 +13,6 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Header from '../../components/Header';
 import { backHandlerPopToMain } from '../../NavigationFunctions';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
   legislationScreen: {

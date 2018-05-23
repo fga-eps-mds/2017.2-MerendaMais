@@ -12,7 +12,7 @@ import { backHandlerPop } from '../../NavigationFunctions';
 import stylesList from '../../Styles/ListStyles';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import Button from '../../components/Button';
-import getManagerCounselorData from '../../services/extractDataCounselor';
+import { getManagerCounselorData } from '../../services/extractDataCounselor';
 import ScheduleCard from '../../components/ScheduleCard';
 
 const buttonBoxGreen = StyleSheet.create({

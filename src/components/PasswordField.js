@@ -1,8 +1,8 @@
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
 import styles from '../Styles/GeneralStyles';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const changePasswordStyleAccordingToInput = (password) => {
   const passwordRegex = /^(?=.{6,})(?!.*\s).*$/g;

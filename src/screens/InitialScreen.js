@@ -3,7 +3,6 @@ import { Actions } from 'react-native-router-flux';
 import { StyleSheet,
   Text,
   View,
-  Image,
   ImageBackground,
   TouchableOpacity } from 'react-native';
 

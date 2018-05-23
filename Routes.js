@@ -22,7 +22,7 @@ import FoodHandlerCheckoutContainer from './src/Containers/reports/FoodHandlerCh
 import WaterSewerSupplyCheckoutContainer from './src/Containers/reports/WaterSewerSupplyCheckoutContainer';
 import FoodPreparationCheckoutContainer from './src/Containers/reports/FoodPreparationCheckoutContainer';
 import PrincipalStartInspection from './src/screens/startInspection/PrincipalStartInspection';
-// import ScheduleMeetingContainer from './src/Containers/scheduleMeeting/ScheduleMeetingContainer';;;
+import ScheduleMeetingContainer from './src/Containers/scheduleMeeting/ScheduleMeetingContainer';;;
 // import ScheduleMeetingMapContainer from './src/Containers/scheduleMeeting/ScheduleMeetingMapContainer';
 import PrincipalManageRegister from './src/screens/manageCounselors/PrincipalManageRegister';
 import MainLegislationScreen from './src/screens/legislation/MainLegislationScreen';
@@ -60,11 +60,11 @@ const Routes = () => ({
               hideNavBar
             /> */}
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
-            {/* <Scene
+            <Scene
               key="scheduleMeeting"
               component={ScheduleMeetingContainer}
               hideNavBar
-            /> */}
+            />
             <Scene key="manageRegisters" component={PrincipalManageRegister} hideNavBar />
             <Scene key="mainScreen" component={MainScreenContainer} type="reset" hideNavBar />
             <Scene key="searchSchool" component={SearchSchoolContainer} hideNavBar />
@@ -92,12 +92,12 @@ const Routes = () => ({
               hideNavBar
             /> */}
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
-            {/* <Scene
+            <Scene
               key="scheduleMeeting"
               component={ScheduleMeetingContainer}
               type="reset"
               hideNavBar
-            /> */}
+            />
             <Scene
               key="stockFoodCheckoutScreen"
               component={StockFoodCheckoutScreenContainer}

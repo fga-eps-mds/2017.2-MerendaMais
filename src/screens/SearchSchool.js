@@ -1,3 +1,4 @@
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 import React from 'react';
@@ -23,7 +24,6 @@ import ShowToast from '../components/Toast';
 import SchoolListButton from '../components/SchoolListButton';
 import brazilianStates from '../constants/brazilianStates';
 import municipalDistricts from '../constants/municipalDistricts';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import {
   SCHOOL_ENDPOINT,
