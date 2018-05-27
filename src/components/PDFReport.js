@@ -8,7 +8,7 @@ import {
 
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
-class FilePDF extends Component {
+class PDFReport extends Component {
   async createPDF() {
     let options = {
       html: `<h1>PDF TEST</h1>
@@ -54,4 +54,4 @@ class FilePDF extends Component {
   }
 }
 
-export default FilePDF;
+export default PDFReport;
