@@ -6,6 +6,8 @@ import { StyleSheet,
   ImageBackground,
   TouchableOpacity } from 'react-native';
 
+import FilePDF from '../components/FilePDF';
+
 
 const initialBackgroundImage = require('../images/initial_background.jpg');
 
@@ -62,7 +64,9 @@ const InitialScreen = () => ({
           <View style={{ flex: 1, alignItems: 'center' }}>
             <Text style={styles.titleText}>MERENDA +</Text>
           </View>
-
+          <View>
+            <FilePDF />
+          </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity
               style={styles.loginButton}
