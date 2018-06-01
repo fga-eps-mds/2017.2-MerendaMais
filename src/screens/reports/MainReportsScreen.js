@@ -220,7 +220,7 @@ export default class MainReportsScreen extends React.Component {
 
         // Creating content in Inspection post.
         allContentsResponse.push(
-          axios.post(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos`,
+          axios.post(`${POSTS_LINK_NUVEM_CIVICA}/${codPostagem}/conteudos`,
             bodyToInspectionContent,
             headerToInspectionContent,
           ),

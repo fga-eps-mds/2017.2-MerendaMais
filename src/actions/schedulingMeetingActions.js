@@ -254,7 +254,7 @@ export const schedulingMeeting = (meetingData, dispatch) => {
     },
   };
 
-  axios.post(`${POSTS_LINK_NUVEM_CIVICA}conteudos`, bodyToSchedulingMeeting, headerToSchedulingMeeting)
+  axios.post(`${POSTS_LINK_NUVEM_CIVICA}/conteudos`, bodyToSchedulingMeeting, headerToSchedulingMeeting)
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingMeeting',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);

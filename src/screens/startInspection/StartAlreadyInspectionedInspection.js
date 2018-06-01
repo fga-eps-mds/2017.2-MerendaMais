@@ -117,7 +117,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
           <View style={{ flex: 3 }}>
             <View style={styles.buttonBox}>
               <TouchableOpacity
-                disabled
+                onPress={() => this.testVisit(visitSchedule)}
               >
                 <Text style={styles.buttonText}>FISCALIZADO</Text>
               </TouchableOpacity>
@@ -126,6 +126,17 @@ class StartAlreadyInspectionedInspection extends React.Component {
         </View>
       ))
     );
+  }
+
+  testVisit(visitSchedule) {
+    console.log("++++++++++++++++++++++++++++++++++++++++=");
+    console.log(visitSchedule);
+    let getData = {
+      appToken : this.props.counselor.token,
+      codPostagem : visitSchedule.codPostagem
+    }
+    this.props.asyncGetCurrentPost(getData);
+
   }
 
   render() {
@@ -141,11 +152,14 @@ class StartAlreadyInspectionedInspection extends React.Component {
 
 StartAlreadyInspectionedInspection.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  counselor: PropTypes.shape({
+  }).isRequired,
   listOfAlreadyInpectionedSchedueInAGroup: PropTypes.arrayOf(PropTypes.shape({
     codSchool: PropTypes.number,
     date: PropTypes.string,
     time: PropTypes.string,
   })).isRequired,
+  asyncGetCurrentPost: PropTypes.func.isRequired,
 };
 
 export default StartAlreadyInspectionedInspection;
