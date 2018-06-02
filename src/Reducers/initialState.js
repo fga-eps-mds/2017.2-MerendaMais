@@ -110,6 +110,48 @@ const initialState = {
   scheduleVisit: {
     currentVisit: {},
   },
+  currentReportResult: {
+    schoolSurroundings: {
+      questions: [],
+      loading: false,
+    },
+    foodStock: {
+      questions: [],
+      loading: false,
+    },
+    doc: {
+      questions: [],
+      loading: false,
+    },
+    foodQuality: {
+      questions: [],
+      loading: false,
+    },
+    foodHandler: {
+      questions: [],
+      loading: false,
+    },
+    refectory: {
+      questions: [],
+      loading: false,
+    },
+    waterSewerSupply: {
+      questions: [],
+      loading: false,
+    },
+    kitchen: {
+      questions: [],
+      loading: false,
+    },
+    foodPreparation: {
+      questions: [],
+      loading: false,
+    },
+    otherObservation: {
+      questions: [],
+      loading: false,
+    },
+  },
 };
 
 

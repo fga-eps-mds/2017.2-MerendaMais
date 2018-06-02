@@ -9,6 +9,7 @@ import schoolReducer from './schoolReducer';
 import listReducer from './listReducer';
 import scheduleMeetingReducer from './scheduleMeetingReducer';
 import scheduleVisitReducer from './scheduleVisitReducer';
+import reportResultReducer from './reportResultReducer';
 
 
 const reducers = combineReducers({
@@ -19,6 +20,7 @@ const reducers = combineReducers({
   list: listReducer,
   scheduleMeeting: scheduleMeetingReducer,
   scheduleVisit: scheduleVisitReducer,
+  reportResult: reportResultReducer,
 });
 
 const store = createStore(reducers, initialState, applyMiddleware(thunk));
