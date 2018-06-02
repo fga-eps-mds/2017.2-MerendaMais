@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import StartAlreadyInspectionedInspection from '../../screens/startInspection/StartAlreadyInspectionedInspection';
-import { asyncGetCurrentPost } from '../../actions/schedulingVisitActions';
 import { resetStore } from '../../actions/applicationActions';
+import { asyncGetCurrentPost } from '../../actions/reportResultActions';
 
 const mapStateToProps = state => (
   {

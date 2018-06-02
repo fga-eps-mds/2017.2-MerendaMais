@@ -127,6 +127,7 @@ export default class LoginScreen extends React.Component {
             onPress={() => {
               Keyboard.dismiss();
               this.props.asyncLoginCounselor(this.state);
+              console.log(this.state);
             }}
             isLoading={this.props.isLoading}
             buttonKey="LoginCounselor"

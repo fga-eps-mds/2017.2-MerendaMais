@@ -43,10 +43,6 @@ export const setCurrentInspection = visitSchedule => ({
   payload: visitSchedule,
 });
 
-export const setCurrentReportResult = reportResult => ({
-  type: SET_CURRENT_REPORT_RESULT,
-  payload: reportResult,
-});
 
 // Trating request errors
 const treatingGetVisitSchedulePostListError = (status) => {
@@ -405,63 +401,6 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
   dispatch(isNotLoading());
 };
 
-
-export const asyncGetCurrentPost = getData => async (dispatch) => {
-  const header = {
-    headers: {
-      appToken: getData.appToken
-    },
-    params: {
-      codPostagemRelacionada: getData.codPostagem,
-      codTiposPostagem: INSPECTION_POSTING_TYPE_CODE,
-      appIdentifier: APP_IDENTIFIER,
-    }
-  };
-  
-  console.log(header);
-  
-  axios.get(POSTS_LINK_NUVEM_CIVICA, header)
-  .then((response) => {
-
-    console.log(response);
-    response.data[0].conteudos.map((item) => {
-      console.log("............................................");
-      console.log(item);
-      console.log("----------------------------------------");
-      getContentInPost(getData ,item, dispatch);
-    })
-  })
-  .catch((error) => {
-    logWarn(FILE_NAME, 'schedulingVisit',
-      `Request result in an ${error}`);
-      treatingPostsError(error);
-  });
-}
-
-export const getContentInPost = (getData, item, dispatch) => {
-  const header = {
-    headers: {
-      appToken: getData.appToken
-    }
-  };
-
-  // console.log(item.content.links.first().href);
-  console.log(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${item.codConteudoPostagem}`);
-  console.log(item.links[0].href)
-
-  axios.get(item.links[0].href, header)
-  .then((response) => {
-    console.log(";;;;;;;;;;;;;;;;;;");
-    console.log(response.data.JSON);
-    console.log("////////////////");
-  })
-  .catch((error) => {
-    logWarn(FILE_NAME, 'schedulingVisit',
-      `Request result in an ${error}`);
-
-    treatingPostsError(error);
-  });
-}
 
 export const asyncGetCurrentSchedule = getData => async (dispatch) => {
   logInfo(FILE_NAME, 'asyncGetCurrentSchedule', `Received data: ${JSON.stringify(getData)}`);
