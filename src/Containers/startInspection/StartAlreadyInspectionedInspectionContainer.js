@@ -7,6 +7,7 @@ const mapStateToProps = state => (
   {
     isLoading: state.application.isLoading,
     counselor: state.counselor,
+    reportResult: state.reportResult,
     listOfAlreadyInpectionedSchedueInAGroup:
       state.list.listOfAlreadyInpectionedSchedueInAGroup,
   }

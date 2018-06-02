@@ -79,42 +79,37 @@ export const asyncGetCurrentPost = (getData) => async (dispatch) => {
         appIdentifier: APP_IDENTIFIER,
       }
     };
-    
-    console.log(header);
-    
-    axios.get(POSTS_LINK_NUVEM_CIVICA, header)
-    .then((response) => {
-      response.data[0].conteudos.map((item) => {
-        getContentInPost(getData ,item, dispatch);
-      })
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingVisit',
-        `Request result in an ${error}`);
-        // treatingPostsError(error);
-    });
+    try{
+      const response = await axios.get(POSTS_LINK_NUVEM_CIVICA, header);
+        return Promise.all (
+          (response.data[0].conteudos.map((item) => {
+            return (getContentInPost(getData ,item, dispatch));
+          }))
+        );
+    } catch (error) {
+      logWarn(FILE_NAME, 'reportResult',
+      `Request result in an ${error}`);
+      treatingPostsError(error);
+    }
   }
   
-export const getContentInPost = (getData, item, dispatch) => {
+export const getContentInPost = async (getData, item, dispatch)  => {
   const header = {
     headers: {
       appToken: getData.appToken
     }
   };
-
-  axios.get(item.links[0].href, header)
-  .then((response) => {
-    extractJson(convertingContentStringToJSON(response.data.JSON),dispatch);
-  })
-  .catch((error) => {
-    logWarn(FILE_NAME, 'schedulingVisit',
+  try{
+    const response = await axios.get(item.links[0].href, header);
+    return extractJson(convertingContentStringToJSON(response.data.JSON), dispatch);
+  } catch (error) {
+    logWarn(FILE_NAME, 'reportResult',
       `Request result in an ${error}`);
-    console.log(error);
-    // treatingPostsError(error);
-  });
+    treatingPostsError(error);
+  }
 }
 
-export const extractJson = (json, dispatch) => {
+export const extractJson = async (json, dispatch) => {
   switch(json.nameOfVerificationList) {
     case 'Refeitório': {
       const reportResultRefectory = {
@@ -122,7 +117,6 @@ export const extractJson = (json, dispatch) => {
         status: json.wasConcluded,
         textObservation: json.textObservation,
       }
-      console.log(reportResultRefectory);
       dispatch(setCurrentReportResultRefectory(reportResultRefectory));
       break;
     }
@@ -218,7 +212,6 @@ export const getQuestions = (json, baseQuestions) => {
     };
     return question;
   })
-
   return questions;
 }
 

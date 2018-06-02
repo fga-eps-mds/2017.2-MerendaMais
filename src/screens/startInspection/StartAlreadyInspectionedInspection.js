@@ -128,15 +128,13 @@ class StartAlreadyInspectionedInspection extends React.Component {
     );
   }
 
-  testVisit(visitSchedule) {
-    console.log("++++++++++++++++++++++++++++++++++++++++=");
-    console.log(visitSchedule);
+  async testVisit(visitSchedule) {
     let getData = {
       appToken : this.props.counselor.token,
       codPostagem : visitSchedule.codPostagem
     }
-    this.props.asyncGetCurrentPost(getData);
-
+    await this.props.asyncGetCurrentPost(getData);
+    console.log(this.props.reportResult);
   }
 
   render() {
@@ -160,6 +158,11 @@ StartAlreadyInspectionedInspection.propTypes = {
     time: PropTypes.string,
   })).isRequired,
   asyncGetCurrentPost: PropTypes.func.isRequired,
+  reportResult: PropTypes.shape({    
+  }).isRequired,
+  resetStore: PropTypes.func.isRequired,
+  storeAll: PropTypes.shape({
+  })
 };
 
 export default StartAlreadyInspectionedInspection;

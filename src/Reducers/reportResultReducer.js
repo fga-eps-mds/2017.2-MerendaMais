@@ -14,14 +14,14 @@ import {
 } from "../actions/types";
 
 const reportResultReducer = (state = initialState.reportResult, action) => {
-  console.log(state);
-
   if (action === undefined) {
     return state;
   }
+  console.log(action.type);
+  console.log("/*/*/*/*/*/*");
 
   switch (action.type) {
-    case SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS: {
+    case SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS: 
       return {
         ...state,
         schoolSurroundings: {
@@ -30,9 +30,19 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_FOOD_STOCKS: 
+    const a ={
+      ...state,
+      foodStocks: {
+        questions: action.payload.questions,
+        status: action.payload.status,
+        textObservation: action.payload.textObservation, 
+        loading: false,
       }
     }
-    case SET_CURRENT_REPORT_RESULT_FOOD_STOCKS: {
+    console.log(a)
       return {
         ...state,
         foodStocks: {
@@ -41,9 +51,9 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_DOC: {
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_DOC: 
       return {
         ...state,
         doc: {
@@ -52,9 +62,9 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_FOOD_QUALITY: {
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_FOOD_QUALITY: 
       return {
         ...state,
         foodQuality: {
@@ -63,9 +73,9 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           additionalData: action.payload.additionalData, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_FOOD_HANDLER: {
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_FOOD_HANDLER: 
       return {
         ...state,
         foodHandler: {
@@ -74,9 +84,9 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_REFECTORY: {
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_REFECTORY: 
       return {
         ...state,
         refectory: {
@@ -85,9 +95,9 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY: {
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY: 
       return {
         ...state,
         waterSewerSupply: {
@@ -96,18 +106,20 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_KITCHEN: {
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_KITCHEN: 
       return {
         ...state,
-        schoolSurroundings: {
-          kitchen: action.payload,
+        kitchen: {
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION: {
+      };
+    
+    case SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION: 
       return {
         ...state,
         foodPreparation: {
@@ -116,9 +128,8 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION: {
+      };
+    case SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION: 
       return {
         ...state,
         otherObservation: {
@@ -127,14 +138,11 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation, 
           loading: false,
         }
-      }
-    }
-    case RESET_CURRENT_REPORT_RESULT: {
+      };
+    case RESET_CURRENT_REPORT_RESULT: 
       return initialState.currentReportResult;
-    }
-    default: {
+    default: 
       return state;
-    }
   }
 }
 
