@@ -8,7 +8,7 @@ const mapStateToProps = state => (
     isLoading: state.application.isLoading,
     counselor: state.counselor,
     listOfAlreadyInpectionedSchedueInAGroup:
-   state.list.listOfAlreadyInpectionedSchedueInAGroup,
+      state.list.listOfAlreadyInpectionedSchedueInAGroup,
   }
 );
 

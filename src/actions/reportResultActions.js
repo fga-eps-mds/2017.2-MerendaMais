@@ -1,9 +1,27 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
-import { POSTS_LINK_NUVEM_CIVICA, INSPECTION_POSTING_TYPE_CODE, APP_IDENTIFIER } from '../constants/generalConstants';
-import { SET_CURRENT_REPORT_RESULT, SET_CURRENT_REPORT_RESULT_FOOD_STOCKS, SET_CURRENT_REPORT_RESULT_DOC, SET_CURRENT_REPORT_RESULT_FOOD_QUALITY, SET_CURRENT_REPORT_RESULT_FOOD_HANDLER, SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY, SET_CURRENT_REPORT_RESULT_KITCHEN, SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION, SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION } from './types';
+import { POSTS_LINK_NUVEM_CIVICA, INSPECTION_POSTING_TYPE_CODE, APP_IDENTIFIER, COMMON_COUNSELOR } from '../constants/generalConstants';
+import { SET_CURRENT_REPORT_RESULT, SET_CURRENT_REPORT_RESULT_FOOD_STOCKS, SET_CURRENT_REPORT_RESULT_DOC, SET_CURRENT_REPORT_RESULT_FOOD_QUALITY, SET_CURRENT_REPORT_RESULT_FOOD_HANDLER, SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY, SET_CURRENT_REPORT_RESULT_KITCHEN, SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION, SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION, SET_CURRENT_REPORT_RESULT_REFECTORY, SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS } from './types';
+import { convertingContentStringToJSON } from './schedulingVisitActions';
+
+import foodStock from '../constants/reports/foodStock';
+import refectory from '../constants/reports/refectory';
+import kitchen from '../constants/reports/kitchen';
+import foodQuality from '../constants/reports/foodQuality';
+import foodHandler from '../constants/reports/foodHandler';
+import waterSewerSupply from '../constants/reports/waterSewerSupply';
+import foodPreparation from '../constants/reports/foodPreparation';
+import doc from '../constants/reports/doc';
+import schoolSurroundings from '../constants/reports/schoolSurroundings';
+import { logWarn } from '../../logConfig/loggers';
+import { treatingPostsError } from './schedulingMeetingActions';
 
 const FILE_NAME = 'reportResultActions.js';
+
+export const setCurrentReportResultRefectory = reportResult => ({
+  type: SET_CURRENT_REPORT_RESULT_REFECTORY,
+  payload: reportResult,
+});  
 
 export const setCurrentReportResultSchoolSurroundings = reportResult => ({
     type: SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS,
@@ -50,7 +68,7 @@ export const setCurrentReportResultOtherObservation = reportResult => ({
     payload: reportResult,
 }); 
 
-export const asyncGetCurrentPost = getData => async (dispatch) => {
+export const asyncGetCurrentPost = (getData) => async (dispatch) => {
     const header = {
       headers: {
         appToken: getData.appToken
@@ -66,8 +84,6 @@ export const asyncGetCurrentPost = getData => async (dispatch) => {
     
     axios.get(POSTS_LINK_NUVEM_CIVICA, header)
     .then((response) => {
-  
-      console.log(response.data[0].conteudos.length);
       response.data[0].conteudos.map((item) => {
         getContentInPost(getData ,item, dispatch);
       })
@@ -75,32 +91,134 @@ export const asyncGetCurrentPost = getData => async (dispatch) => {
     .catch((error) => {
       logWarn(FILE_NAME, 'schedulingVisit',
         `Request result in an ${error}`);
-        treatingPostsError(error);
+        // treatingPostsError(error);
     });
   }
   
-  export const getContentInPost = (getData, item, dispatch) => {
-    const header = {
-      headers: {
-        appToken: getData.appToken
+export const getContentInPost = (getData, item, dispatch) => {
+  const header = {
+    headers: {
+      appToken: getData.appToken
+    }
+  };
+
+  axios.get(item.links[0].href, header)
+  .then((response) => {
+    extractJson(convertingContentStringToJSON(response.data.JSON),dispatch);
+  })
+  .catch((error) => {
+    logWarn(FILE_NAME, 'schedulingVisit',
+      `Request result in an ${error}`);
+    console.log(error);
+    // treatingPostsError(error);
+  });
+}
+
+export const extractJson = (json, dispatch) => {
+  switch(json.nameOfVerificationList) {
+    case 'Refeitório': {
+      const reportResultRefectory = {
+        questions: getQuestions(json, refectory),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
       }
-    };
-  
-    // console.log(item.content.links.first().href);
-    console.log(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${item.codConteudoPostagem}`);
-    console.log(item.links[0].href)
-  
-    axios.get(item.links[0].href, header)
-    .then((response) => {
-      console.log(";;;;;;;;;;;;;;;;;;");
-      console.log(response.data.JSON);
-      console.log("////////////////");
-    })
-    .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingVisit',
-        `Request result in an ${error}`);
-  
-      treatingPostsError(error);
-    });
+      console.log(reportResultRefectory);
+      dispatch(setCurrentReportResultRefectory(reportResultRefectory));
+      break;
+    }
+    case 'Arredores da Escola': {
+      const reportResultSchoolSurroundings = {
+        questions: getQuestions(json, schoolSurroundings),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultSchoolSurroundings(reportResultSchoolSurroundings));
+      break;
+    }
+    case 'Abastecimento de Água e Esgoto': {
+      const reportResultWaterSewerSupply = {
+        questions: getQuestions(json, waterSewerSupply),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultWaterSewerSupply(reportResultWaterSewerSupply));
+      break;
+    }
+    case 'Manipuladores de Alimentos': {
+      const reportResultFoodHandler = {
+        questions: getQuestions(json, foodHandler),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultFoodHandler(reportResultFoodHandler));
+      break;
+    }
+    case 'Documentação': {
+      const reportResultDoc = {
+        questions: getQuestions(json, doc),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultDoc(reportResultDoc));
+      break;
+    }
+    case 'Preparação e Distribuição de Alimentos': {
+      const reportResultFoodPreparation = {
+        questions: getQuestions(json, foodPreparation),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultFoodPreparation(reportResultFoodPreparation));
+      break;
+    }
+    case 'Estoque de Alimentos': {
+      const reportResultFoodStock = {
+        questions: getQuestions(json, foodStock),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultFoodStocks(reportResultFoodStock));
+      break;
+    }
+    case 'Cozinha': {
+      const reportResultKitchen = {
+        questions: getQuestions(json, kitchen),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultKitchen(reportResultKitchen));
+      break;
+    }
+    case 'Qualidade de Alimento': {
+      const reportResultFoodQuality = {
+        questions: getQuestions(json, foodQuality),
+        status: json.wasConcluded,
+        additionalData: json.additionalData,
+      }
+      dispatch(setCurrentReportResultFoodQuality(reportResultFoodQuality));
+      break;
+    }
+    case 'Outras observações': {
+      const reportResultObservation = {
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      }
+      dispatch(setCurrentReportResultOtherObservation(reportResultObservation));
+      break;
+    }
   }
+} 
+
+export const getQuestions = (json, baseQuestions) => {
+  const questions = baseQuestions.map((item) => {
+    const questionBody = json.binaryQuestions[item.question];
+    const question = {
+      ...questionBody,
+      label: item.label,
+    };
+    return question;
+  })
+
+  return questions;
+}
 

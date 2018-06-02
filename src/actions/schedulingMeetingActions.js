@@ -103,7 +103,7 @@ const defineMeetingStatus = (meetingSchedule, counselor, dispatch) => {
 };
 
 // Treating request errors
-const treatingPostsError = (error) => {
+export const treatingPostsError = (error) => {
   if (error.response.status === 401) {
     logWarn(FILE_NAME, 'treatingPostsError',
       `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);

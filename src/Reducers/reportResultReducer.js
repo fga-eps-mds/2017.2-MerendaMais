@@ -13,7 +13,9 @@ import {
   SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION 
 } from "../actions/types";
 
-const reportResultReducer = (state = initialState.currentReportResult, action) => {
+const reportResultReducer = (state = initialState.reportResult, action) => {
+  console.log(state);
+
   if (action === undefined) {
     return state;
   }
@@ -23,8 +25,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         schoolSurroundings: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
@@ -32,8 +36,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         foodStocks: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
@@ -41,8 +47,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         doc: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
@@ -50,8 +58,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         foodQuality: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          additionalData: action.payload.additionalData, 
+          loading: false,
         }
       }
     }
@@ -59,8 +69,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         foodHandler: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
@@ -68,8 +80,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         refectory: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
@@ -77,8 +91,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         waterSewerSupply: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
@@ -87,7 +103,7 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
         ...state,
         schoolSurroundings: {
           kitchen: action.payload,
-          loading: true,
+          loading: false,
         }
       }
     }
@@ -95,8 +111,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         foodPreparation: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
@@ -104,8 +122,10 @@ const reportResultReducer = (state = initialState.currentReportResult, action) =
       return {
         ...state,
         otherObservation: {
-          questions: action.payload,
-          loading: true,
+          questions: action.payload.questions,
+          status: action.payload.status,
+          textObservation: action.payload.textObservation, 
+          loading: false,
         }
       }
     }
