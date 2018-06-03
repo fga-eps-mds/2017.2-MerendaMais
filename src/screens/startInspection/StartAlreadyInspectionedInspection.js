@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import stylesList from '../../Styles/ListStyles';
+import PDFReport from '../../components/PDFReport';
 
 const styles = StyleSheet.create({
   principal: {
@@ -117,11 +118,17 @@ class StartAlreadyInspectionedInspection extends React.Component {
           <View style={{ flex: 3 }}>
             <View style={styles.buttonBox}>
               <TouchableOpacity
-                onPress={() => this.testVisit(visitSchedule)}
+                disabled
               >
                 <Text style={styles.buttonText}>FISCALIZADO</Text>
               </TouchableOpacity>
             </View>
+            <PDFReport
+              reportResult={this.props.reportResult}
+              asyncGetCurrentPost={this.props.asyncGetCurrentPost}
+              visitSchedule={visitSchedule}
+              counselor={this.props.counselor}
+            />
           </View>
         </View>
       ))
@@ -134,6 +141,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
       codPostagem : visitSchedule.codPostagem
     }
     await this.props.asyncGetCurrentPost(getData);
+    <PDFReport />
     console.log(this.props.reportResult);
   }
 

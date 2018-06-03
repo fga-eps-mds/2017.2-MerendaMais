@@ -33,19 +33,9 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
       };
     
     case SET_CURRENT_REPORT_RESULT_FOOD_STOCKS: 
-    const a ={
-      ...state,
-      foodStocks: {
-        questions: action.payload.questions,
-        status: action.payload.status,
-        textObservation: action.payload.textObservation, 
-        loading: false,
-      }
-    }
-    console.log(a)
       return {
         ...state,
-        foodStocks: {
+        foodStock: {
           questions: action.payload.questions,
           status: action.payload.status,
           textObservation: action.payload.textObservation, 

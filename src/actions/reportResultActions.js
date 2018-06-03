@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
-import { POSTS_LINK_NUVEM_CIVICA, INSPECTION_POSTING_TYPE_CODE, APP_IDENTIFIER, COMMON_COUNSELOR } from '../constants/generalConstants';
+import { POSTS_LINK_NUVEM_CIVICA, INSPECTION_POSTING_TYPE_CODE, APP_IDENTIFIER, COMMON_COUNSELOR, DOCUMENTATION, SCHOOL_SURROUNDINGS, FOOD_STOCK, FOOD_QUALITY, FOOD_HANDLER, REFECTORY, WATER_SEWER_SUPPLY, KITCHEN, FOOD_PREPARATION, OTHER_OBSERVATION } from '../constants/generalConstants';
 import { SET_CURRENT_REPORT_RESULT, SET_CURRENT_REPORT_RESULT_FOOD_STOCKS, SET_CURRENT_REPORT_RESULT_DOC, SET_CURRENT_REPORT_RESULT_FOOD_QUALITY, SET_CURRENT_REPORT_RESULT_FOOD_HANDLER, SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY, SET_CURRENT_REPORT_RESULT_KITCHEN, SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION, SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION, SET_CURRENT_REPORT_RESULT_REFECTORY, SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS } from './types';
 import { convertingContentStringToJSON } from './schedulingVisitActions';
 
@@ -111,7 +111,7 @@ export const getContentInPost = async (getData, item, dispatch)  => {
 
 export const extractJson = async (json, dispatch) => {
   switch(json.nameOfVerificationList) {
-    case 'Refeitório': {
+    case REFECTORY: {
       const reportResultRefectory = {
         questions: getQuestions(json, refectory),
         status: json.wasConcluded,
@@ -120,7 +120,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultRefectory(reportResultRefectory));
       break;
     }
-    case 'Arredores da Escola': {
+    case SCHOOL_SURROUNDINGS: {
       const reportResultSchoolSurroundings = {
         questions: getQuestions(json, schoolSurroundings),
         status: json.wasConcluded,
@@ -129,7 +129,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultSchoolSurroundings(reportResultSchoolSurroundings));
       break;
     }
-    case 'Abastecimento de Água e Esgoto': {
+    case WATER_SEWER_SUPPLY: {
       const reportResultWaterSewerSupply = {
         questions: getQuestions(json, waterSewerSupply),
         status: json.wasConcluded,
@@ -138,7 +138,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultWaterSewerSupply(reportResultWaterSewerSupply));
       break;
     }
-    case 'Manipuladores de Alimentos': {
+    case FOOD_HANDLER: {
       const reportResultFoodHandler = {
         questions: getQuestions(json, foodHandler),
         status: json.wasConcluded,
@@ -147,7 +147,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultFoodHandler(reportResultFoodHandler));
       break;
     }
-    case 'Documentação': {
+    case DOCUMENTATION: {
       const reportResultDoc = {
         questions: getQuestions(json, doc),
         status: json.wasConcluded,
@@ -156,7 +156,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultDoc(reportResultDoc));
       break;
     }
-    case 'Preparação e Distribuição de Alimentos': {
+    case FOOD_PREPARATION: {
       const reportResultFoodPreparation = {
         questions: getQuestions(json, foodPreparation),
         status: json.wasConcluded,
@@ -165,7 +165,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultFoodPreparation(reportResultFoodPreparation));
       break;
     }
-    case 'Estoque de Alimentos': {
+    case FOOD_STOCK: {
       const reportResultFoodStock = {
         questions: getQuestions(json, foodStock),
         status: json.wasConcluded,
@@ -174,7 +174,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultFoodStocks(reportResultFoodStock));
       break;
     }
-    case 'Cozinha': {
+    case KITCHEN: {
       const reportResultKitchen = {
         questions: getQuestions(json, kitchen),
         status: json.wasConcluded,
@@ -183,7 +183,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultKitchen(reportResultKitchen));
       break;
     }
-    case 'Qualidade de Alimento': {
+    case FOOD_QUALITY: {
       const reportResultFoodQuality = {
         questions: getQuestions(json, foodQuality),
         status: json.wasConcluded,
@@ -192,7 +192,7 @@ export const extractJson = async (json, dispatch) => {
       dispatch(setCurrentReportResultFoodQuality(reportResultFoodQuality));
       break;
     }
-    case 'Outras observações': {
+    case OTHER_OBSERVATION: {
       const reportResultObservation = {
         status: json.wasConcluded,
         textObservation: json.textObservation,

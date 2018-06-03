@@ -6,9 +6,6 @@ import { StyleSheet,
   ImageBackground,
   TouchableOpacity } from 'react-native';
 
-import PDFReport from '../components/PDFReport';
-
-
 const initialBackgroundImage = require('../images/initial_background.jpg');
 
 const styles = StyleSheet.create({
@@ -63,9 +60,6 @@ const InitialScreen = () => ({
         <View style={styles.initialScreen}>
           <View style={{ flex: 1, alignItems: 'center' }}>
             <Text style={styles.titleText}>MERENDA +</Text>
-          </View>
-          <View>
-            <PDFReport />
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity
