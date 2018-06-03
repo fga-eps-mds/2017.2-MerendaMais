@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity, Text, View } from 'react-native';
 import styles from '../Styles/GeneralStyles';
 
-
 class Button extends React.Component {
   defineStyle() {
     if (!this.props.style) {

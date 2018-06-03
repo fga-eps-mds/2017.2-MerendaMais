@@ -17,8 +17,6 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
   if (action === undefined) {
     return state;
   }
-  console.log(action.type);
-  console.log("/*/*/*/*/*/*");
 
   switch (action.type) {
     case SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS: 

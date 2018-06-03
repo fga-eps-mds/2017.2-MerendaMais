@@ -2,18 +2,31 @@ import { SCHOOL_SURROUNDINGS, WATER_SEWER_SUPPLY, FOOD_STOCK, DOCUMENTATION, FOO
 
 export const STYLE = `
     <style type="text/css" >
-    table {
-    border-collapse: collapse;
-    }
     th {
-    background-color: #C7C7C7;
-    color: black;
+        background-color: #C7C7C7;
+        color: black;
+    }
+    tr { 
+        page-break-inside: avoid !important; 
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
     }
     </style>`;
 
 export const HEADER_DOC = `<!DOCTYPE html><head>${STYLE}</head>`;
 
-export const OPEN_TABLE = `<table style="width:100%;" border="1 solid">`;
+export const OPEN_TABLE = `<table>`
 
 export const CLOSE_TABLE = `</table>`;
 
