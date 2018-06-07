@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View, TouchableOpacity, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import styles from '../Styles/GeneralStyles';
 
 const SchoolListButton = props => (

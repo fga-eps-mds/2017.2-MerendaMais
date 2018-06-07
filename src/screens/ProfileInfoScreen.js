@@ -1,14 +1,13 @@
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { Text, ScrollView, View, BackHandler } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import { backHandlerPopToMain } from '../NavigationFunctions';
 import PROFILE_FIELDS from '../constants/profileInformations';
 import styles from '../Styles/ProfileStyles';
-
 
 export default class ProfileInfoScreen extends React.Component {
   componentWillMount() {

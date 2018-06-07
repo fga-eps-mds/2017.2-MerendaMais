@@ -11,7 +11,7 @@ import {
   Alert,
 } from 'react-native';
 import axios from 'axios';
-import { MaterialIcons } from '@expo/vector-icons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
 import ShowToast from '../../components/Toast';

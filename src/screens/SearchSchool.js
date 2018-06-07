@@ -1,6 +1,6 @@
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
-import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import {
   StyleSheet,

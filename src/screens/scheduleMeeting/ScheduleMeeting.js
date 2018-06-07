@@ -6,7 +6,7 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import { EvilIcons } from '@expo/vector-icons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import InvitedCounselorsData from '../../components/InvitedCounselorsData';
@@ -335,7 +335,7 @@ export default class ScheduleMeeting extends React.Component {
         enabled={false}
         text="Agendar Reunião"
         key="scheduleMeetingButton"
-        onPress={() => ({})}
+        onPress={() => {}}
         disabled
       />
     );
@@ -458,7 +458,7 @@ export default class ScheduleMeeting extends React.Component {
                 <TouchableOpacity
                   key="openMeetingMap"
                   style={styles.button}
-                  onPress={() => Actions.scheduleMeetingMap()}
+                  onPress={() => {}}
                 >
                   <Text style={styles.buttonText}>Escolher Localização</Text>
                 </TouchableOpacity>

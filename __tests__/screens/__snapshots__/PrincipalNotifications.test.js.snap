@@ -16,7 +16,7 @@ exports[`Testing PrincipalNotification rendering PrincipalNotification renders c
     subTitle=""
     title="Notificações"
   />
-  <View
+  <Component
     style={
       Object {
         "flex": 1,
@@ -44,7 +44,6 @@ exports[`Testing PrincipalNotification rendering PrincipalNotification renders c
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -76,7 +75,6 @@ exports[`Testing PrincipalNotification rendering PrincipalNotification renders c
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -88,6 +86,6 @@ exports[`Testing PrincipalNotification rendering PrincipalNotification renders c
         Convites de Reunião
       </Text>
     </TouchableOpacity>
-  </View>
+  </Component>
 </View>
 `;

@@ -15,7 +15,7 @@ exports[`Testing LawNumber12982Screen renders as expected 1`] = `
     subTitle="Lei Nº 12.982"
     title="Legislação"
   />
-  <View
+  <Component
     style={
       Object {
         "flexDirection": "row",
@@ -27,7 +27,6 @@ exports[`Testing LawNumber12982Screen renders as expected 1`] = `
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -41,11 +40,12 @@ exports[`Testing LawNumber12982Screen renders as expected 1`] = `
     </Text>
     <TouchableHighlight
       activeOpacity={0.85}
+      delayPressOut={100}
       key="Capitulo I"
       onPress={[Function]}
       underlayColor="black"
     >
-      <View
+      <Component
         style={
           Object {
             "backgroundColor": "#F5FCFF",
@@ -56,20 +56,18 @@ exports[`Testing LawNumber12982Screen renders as expected 1`] = `
         <Text
           accessible={true}
           allowFontScaling={true}
-          disabled={false}
           ellipsizeMode="tail"
           style={false}
         >
           Capitulo I
         </Text>
-      </View>
+      </Component>
     </TouchableHighlight>
-  </View>
-  <ScrollViewMock>
+  </Component>
+  <ScrollView>
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -126,6 +124,6 @@ D.O.U., 29/05/2014 - Seção 1
       touchableComponent={[Function]}
       underlayColor="black"
     />
-  </ScrollViewMock>
+  </ScrollView>
 </View>
 `;

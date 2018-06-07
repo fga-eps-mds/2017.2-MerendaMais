@@ -32,6 +32,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
         accessibilityTraits={undefined}
         accessible={true}
         collapsable={undefined}
+        hasTVPreferredFocus={undefined}
         hitSlop={undefined}
         isTVSelectable={true}
         nativeID={undefined}
@@ -52,10 +53,27 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
       >
         <Text
           accessible={true}
-          allowFontScaling={true}
-          disabled={false}
+          allowFontScaling={false}
           ellipsizeMode="tail"
-        />
+          style={
+            Array [
+              Object {
+                "color": "black",
+                "fontSize": 45,
+              },
+              Object {
+                "marginLeft": 20,
+              },
+              Object {
+                "fontFamily": "Ionicons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
+        </Text>
       </View>
     </View>
     <View
@@ -70,7 +88,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -86,7 +103,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -115,6 +131,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -144,7 +161,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -163,6 +179,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
             accessibilityTraits={undefined}
             accessible={true}
             collapsable={undefined}
+            hasTVPreferredFocus={undefined}
             hitSlop={undefined}
             isTVSelectable={true}
             nativeID={undefined}
@@ -183,10 +200,27 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           >
             <Text
               accessible={true}
-              allowFontScaling={true}
-              disabled={false}
+              allowFontScaling={false}
               ellipsizeMode="tail"
-            />
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 32,
+                  },
+                  Object {
+                    "marginHorizontal": 10,
+                  },
+                  Object {
+                    "fontFamily": "FontAwesome",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
+            </Text>
           </View>
         </View>
         <View
@@ -195,6 +229,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -224,7 +259,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -243,6 +277,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
             accessibilityTraits={undefined}
             accessible={true}
             collapsable={undefined}
+            hasTVPreferredFocus={undefined}
             hitSlop={undefined}
             isTVSelectable={true}
             nativeID={undefined}
@@ -263,10 +298,27 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           >
             <Text
               accessible={true}
-              allowFontScaling={true}
-              disabled={false}
+              allowFontScaling={false}
               ellipsizeMode="tail"
-            />
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 32,
+                  },
+                  Object {
+                    "marginHorizontal": 10,
+                  },
+                  Object {
+                    "fontFamily": "FontAwesome",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
+            </Text>
           </View>
         </View>
         <View
@@ -275,6 +327,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -304,7 +357,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -323,6 +375,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
             accessibilityTraits={undefined}
             accessible={true}
             collapsable={undefined}
+            hasTVPreferredFocus={undefined}
             hitSlop={undefined}
             isTVSelectable={true}
             nativeID={undefined}
@@ -343,10 +396,27 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           >
             <Text
               accessible={true}
-              allowFontScaling={true}
-              disabled={false}
+              allowFontScaling={false}
               ellipsizeMode="tail"
-            />
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 32,
+                  },
+                  Object {
+                    "marginHorizontal": 10,
+                  },
+                  Object {
+                    "fontFamily": "FontAwesome",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
+            </Text>
           </View>
         </View>
         <View
@@ -355,6 +425,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -384,7 +455,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -403,6 +473,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
             accessibilityTraits={undefined}
             accessible={true}
             collapsable={undefined}
+            hasTVPreferredFocus={undefined}
             hitSlop={undefined}
             isTVSelectable={true}
             nativeID={undefined}
@@ -423,10 +494,27 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           >
             <Text
               accessible={true}
-              allowFontScaling={true}
-              disabled={false}
+              allowFontScaling={false}
               ellipsizeMode="tail"
-            />
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 32,
+                  },
+                  Object {
+                    "marginHorizontal": 10,
+                  },
+                  Object {
+                    "fontFamily": "FontAwesome",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
+            </Text>
           </View>
         </View>
         <View
@@ -435,6 +523,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -464,7 +553,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {
@@ -484,6 +572,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -513,7 +602,6 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={
               Object {

@@ -22,8 +22,8 @@ import FoodHandlerCheckoutContainer from './src/Containers/reports/FoodHandlerCh
 import WaterSewerSupplyCheckoutContainer from './src/Containers/reports/WaterSewerSupplyCheckoutContainer';
 import FoodPreparationCheckoutContainer from './src/Containers/reports/FoodPreparationCheckoutContainer';
 import PrincipalStartInspection from './src/screens/startInspection/PrincipalStartInspection';
-import ScheduleMeetingContainer from './src/Containers/scheduleMeeting/ScheduleMeetingContainer';
-import ScheduleMeetingMapContainer from './src/Containers/scheduleMeeting/ScheduleMeetingMapContainer';
+import ScheduleMeetingContainer from './src/Containers/scheduleMeeting/ScheduleMeetingContainer';;;
+// import ScheduleMeetingMapContainer from './src/Containers/scheduleMeeting/ScheduleMeetingMapContainer';
 import PrincipalManageRegister from './src/screens/manageCounselors/PrincipalManageRegister';
 import MainLegislationScreen from './src/screens/legislation/MainLegislationScreen';
 import Resolution26Screen from './src/screens/legislation/Resolution26Screen';
@@ -54,11 +54,11 @@ const Routes = () => ({
             <Scene key="PrincipalNotifications" component={PrincipalNotifications} hideNavBar />
             <Scene key="VisitInvites" component={VisitInvitesContainer} hideNavBar />
             <Scene key="MeetingInvites" component={MeetingInvitesContainer} hideNavBar />
-            <Scene
+            {/* <Scene
               key="scheduleMeetingMap"
               component={ScheduleMeetingMapContainer}
               hideNavBar
-            />
+            /> */}
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene
               key="scheduleMeeting"
@@ -86,11 +86,11 @@ const Routes = () => ({
               component={ReportObservationContainer}
               hideNavBar
             />
-            <Scene
+            {/* <Scene
               key="scheduleMeetingMap"
               component={ScheduleMeetingMapContainer}
               hideNavBar
-            />
+            /> */}
             <Scene key="schedulingVisit" component={SchedulingVisitContainer} hideNavBar />
             <Scene
               key="scheduleMeeting"

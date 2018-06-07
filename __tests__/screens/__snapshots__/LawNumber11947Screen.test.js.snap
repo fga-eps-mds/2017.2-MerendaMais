@@ -15,10 +15,10 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
     subTitle="Lei Nº 11.947"
     title="Legislação"
   />
-  <ScrollViewMock
+  <ScrollView
     horizontal={true}
   >
-    <View
+    <Component
       style={
         Object {
           "flexDirection": "row",
@@ -30,7 +30,6 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
       <Text
         accessible={true}
         allowFontScaling={true}
-        disabled={false}
         ellipsizeMode="tail"
         style={
           Object {
@@ -44,11 +43,12 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
       </Text>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo I"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -62,21 +62,21 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo I
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo II"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -90,21 +90,21 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo II
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
       <TouchableHighlight
         activeOpacity={0.85}
+        delayPressOut={100}
         key="Capitulo III"
         onPress={[Function]}
         underlayColor="black"
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#F5FCFF",
@@ -118,21 +118,19 @@ exports[`Testing LawNumber11947Screen renders as expected 1`] = `
           <Text
             accessible={true}
             allowFontScaling={true}
-            disabled={false}
             ellipsizeMode="tail"
             style={false}
           >
             Capitulo III
           </Text>
-        </View>
+        </Component>
       </TouchableHighlight>
-    </View>
-  </ScrollViewMock>
-  <ScrollViewMock>
+    </Component>
+  </ScrollView>
+  <ScrollView>
     <Text
       accessible={true}
       allowFontScaling={true}
-      disabled={false}
       ellipsizeMode="tail"
       style={
         Object {
@@ -448,6 +446,6 @@ Paulo Bernardo Silva
       touchableComponent={[Function]}
       underlayColor="black"
     />
-  </ScrollViewMock>
+  </ScrollView>
 </View>
 `;

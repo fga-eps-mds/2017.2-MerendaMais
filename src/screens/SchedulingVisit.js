@@ -1,3 +1,4 @@
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Dimensions, BackHandler, ActivityIndicator, Alert } from 'react-native';
@@ -5,7 +6,6 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
-import { EvilIcons } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import SchoolData from '../components/SchoolData';

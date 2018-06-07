@@ -1,3 +1,4 @@
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import {
   StyleSheet,
@@ -10,7 +11,6 @@ import {
   BackHandler,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { FontAwesome } from '@expo/vector-icons';
 import Header from '../../components/Header';
 import { backHandlerPopToMain } from '../../NavigationFunctions';
 

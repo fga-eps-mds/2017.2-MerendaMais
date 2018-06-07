@@ -1,7 +1,7 @@
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
 import styles from '../Styles/GeneralStyles';
 
 const EmailField = props => (
