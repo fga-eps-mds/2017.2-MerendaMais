@@ -116,15 +116,19 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
 
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `CompleteCounselors: ${JSON.stringify(completeCounselors)}`);
   for (let i = 0; i < completeCounselors.length; i += 1) {
-    if (completeCounselors[i].profile.cpf !== CPF) {
-      dispatch(setList(completeCounselors[i]));
-      logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Counselors sent to store ${JSON.stringify(completeCounselors[i])}`);
-      if (completeCounselors[i].profile.presidentChecked) {
-        dispatch(setlistOfCheckedCounselors(completeCounselors[i]));
-      } else {
-        dispatch(setlistOfNotCheckedCounselors(completeCounselors[i]));
-      }
-    }
+      await selectListOfCounselor(completeCounselors[i]);
   }
   dispatch(isNotLoading());
-};
+}
+
+export const selectListOfCounselor = counselor => async (dispatch) => {
+  if (counselor.profile.cpf !== CPF) {
+    dispatch(setList(counselor));
+    logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Counselors sent to store ${JSON.stringify(counselor)}`);
+    if (counselor.profile.presidentChecked) {
+      dispatch(setlistOfCheckedCounselors(counselor));
+    } else {
+      dispatch(setlistOfNotCheckedCounselors(counselor));
+    }
+  }
+}
