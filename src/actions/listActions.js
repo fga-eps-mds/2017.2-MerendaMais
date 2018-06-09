@@ -83,8 +83,32 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
 
   const codGroup = await getGroup(CAE);
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Received codGroup: ${codGroup}`);
-  // Returns an array of arrays. The 0 element of the array contains all counselor links,
-  // while the 1 containers all codMembro links.
+
+  // Return a array of arrays.
+  // For each element, position 0 is the counselor information, and position 1 is the nuvem code.
+  const counselorsInformationWithNuvemCode = await Promise.all(getCounselorLinks(codGroup));
+
+  const completeCounselors = await Promise.all(getCounselorData(counselorsInformationWithNuvemCode));
+
+  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `CompleteCounselors: ${JSON.stringify(completeCounselors)}`);
+  for (let i = 0; i < completeCounselors.length; i += 1) {
+      await selectListOfCounselor(completeCounselors[i]);
+  }
+  dispatch(isNotLoading());
+}
+
+export const getCounselorData = async counselorsInformationWithNuvemCode => {
+  const promisesCompleteCounselors = [];
+  for (let i = 0; i < counselorsInformationWithNuvemCode.length; i += 1) {
+    promisesCompleteCounselors.push(
+      getCounselorProfile(
+        counselorsInformationWithNuvemCode[i][0],
+        counselorsInformationWithNuvemCode[i][1]));
+  }
+  return promisesCompleteCounselors;
+}
+
+export const getCounselorLinks = async codGroup => {
   const listOfLinks = await getCounselorFromGroup(codGroup);
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `ListOfLinks: ${listOfLinks}`);
   const counselorLinks = listOfLinks[0];
@@ -92,33 +116,13 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
   const linksWithCodMembro = listOfLinks[1];
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `LinksWithCodMembro ${linksWithCodMembro}`);
 
-
   const promisesInformationWithNuvemCode = [];
 
   for (let i = 0; i < listOfLinks.length; i += 1) {
     promisesInformationWithNuvemCode.push(getCounselor(counselorLinks[i], linksWithCodMembro[i]));
   }
 
-  // Return a array of arrays.
-  // For each element, position 0 is the counselor information, and position 1 is the nuvem code.
-  const counselorsInformationWithNuvemCode = await Promise.all(promisesInformationWithNuvemCode);
-
-  const promisesCompleteCounselors = [];
-
-  for (let i = 0; i < counselorsInformationWithNuvemCode.length; i += 1) {
-    promisesCompleteCounselors.push(
-      getCounselorProfile(
-        counselorsInformationWithNuvemCode[i][0],
-        counselorsInformationWithNuvemCode[i][1]));
-  }
-
-  const completeCounselors = await Promise.all(promisesCompleteCounselors);
-
-  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `CompleteCounselors: ${JSON.stringify(completeCounselors)}`);
-  for (let i = 0; i < completeCounselors.length; i += 1) {
-      await selectListOfCounselor(completeCounselors[i]);
-  }
-  dispatch(isNotLoading());
+  return promisesInformationWithNuvemCode;
 }
 
 export const selectListOfCounselor = counselor => async (dispatch) => {
