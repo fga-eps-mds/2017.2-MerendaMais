@@ -1,17 +1,17 @@
-import initialState from "./initialState";
-import { 
-  RESET_CURRENT_REPORT_RESULT, 
-  SET_CURRENT_REPORT_RESULT_FOOD_STOCKS, 
-  SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS, 
-  SET_CURRENT_REPORT_RESULT_DOC, 
-  SET_CURRENT_REPORT_RESULT_FOOD_QUALITY, 
-  SET_CURRENT_REPORT_RESULT_FOOD_HANDLER, 
-  SET_CURRENT_REPORT_RESULT_REFECTORY, 
-  SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY, 
-  SET_CURRENT_REPORT_RESULT_KITCHEN, 
-  SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION, 
-  SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION 
-} from "../actions/types";
+import initialState from './initialState';
+import {
+  RESET_CURRENT_REPORT_RESULT,
+  SET_CURRENT_REPORT_RESULT_FOOD_STOCKS,
+  SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS,
+  SET_CURRENT_REPORT_RESULT_DOC,
+  SET_CURRENT_REPORT_RESULT_FOOD_QUALITY,
+  SET_CURRENT_REPORT_RESULT_FOOD_HANDLER,
+  SET_CURRENT_REPORT_RESULT_REFECTORY,
+  SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY,
+  SET_CURRENT_REPORT_RESULT_KITCHEN,
+  SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION,
+  SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION,
+} from '../actions/types';
 
 const reportResultReducer = (state = initialState.reportResult, action) => {
   if (action === undefined) {
@@ -19,119 +19,111 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
   }
 
   switch (action.type) {
-    case SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS: 
+    case SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS:
       return {
         ...state,
         schoolSurroundings: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_FOOD_STOCKS: 
+    case SET_CURRENT_REPORT_RESULT_FOOD_STOCKS:
       return {
         ...state,
         foodStock: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_DOC: 
+    case SET_CURRENT_REPORT_RESULT_DOC:
       return {
         ...state,
         doc: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_FOOD_QUALITY: 
+    case SET_CURRENT_REPORT_RESULT_FOOD_QUALITY:
       return {
         ...state,
         foodQuality: {
           questions: action.payload.questions,
           status: action.payload.status,
-          additionalData: action.payload.additionalData, 
+          additionalData: action.payload.additionalData,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_FOOD_HANDLER: 
+    case SET_CURRENT_REPORT_RESULT_FOOD_HANDLER:
       return {
         ...state,
         foodHandler: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_REFECTORY: 
+    case SET_CURRENT_REPORT_RESULT_REFECTORY:
       return {
         ...state,
         refectory: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY: 
+    case SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY:
       return {
         ...state,
         waterSewerSupply: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_KITCHEN: 
+    case SET_CURRENT_REPORT_RESULT_KITCHEN:
       return {
         ...state,
         kitchen: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    
-    case SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION: 
+    case SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION:
       return {
         ...state,
         foodPreparation: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    case SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION: 
+    case SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION:
       return {
         ...state,
         otherObservation: {
           questions: action.payload.questions,
           status: action.payload.status,
-          textObservation: action.payload.textObservation, 
+          textObservation: action.payload.textObservation,
           loading: false,
-        }
+        },
       };
-    case RESET_CURRENT_REPORT_RESULT: 
+    case RESET_CURRENT_REPORT_RESULT:
       return initialState.currentReportResult;
-    default: 
+    default:
       return state;
   }
-}
+};
 
 export default reportResultReducer;

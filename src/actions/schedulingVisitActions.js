@@ -6,16 +6,14 @@ import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
 import { isLoading, isNotLoading } from './applicationActions';
 import ShowToast from '../components/Toast';
-import { 
+import {
   SET_CURRENT_INSPECTION,
-  SET_CURRENT_REPORT_RESULT,
 } from './types';
 import {
   APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
   VISIT_POSTING_TYPE_CODE,
   INTERNAL_ERROR,
-  INSPECTION_POSTING_TYPE_CODE,
 } from '../constants/generalConstants';
 import {
   setPendingScheduleList,
@@ -387,7 +385,6 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
       `${POSTS_LINK_NUVEM_CIVICA}/${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
       putScheduleBody,
       putScheduleHeader);
-
     logInfo(FILE_NAME, 'asyncUpdateSchedule', response.data);
   } catch (error) {
     logWarn(FILE_NAME, 'asyncUpdateSchedule', error.stack);

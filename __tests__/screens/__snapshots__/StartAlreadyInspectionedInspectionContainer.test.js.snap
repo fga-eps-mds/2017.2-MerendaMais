@@ -2,7 +2,8 @@
 
 exports[`Testing StartPendingInspection Screen renders as expected 1`] = `
 <StartAlreadyInspectionedInspection
-  dispatch={[Function]}
+  asyncGetCurrentPost={[Function]}
   isLoading={false}
+  resetStore={[Function]}
 />
 `;

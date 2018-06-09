@@ -133,7 +133,7 @@ const initialState = {
       questions: [],
       status: false,
       additionalData: {
-        acceptedMenu: '', 
+        acceptedMenu: '',
         refusedMenu: '',
       },
       loading: true,

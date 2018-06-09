@@ -48,14 +48,15 @@ describe('Testing schedulingVisit updateSchedule', () => {
     };
   });
 
-  it('Test async updateSchedule succes', async () => {
+  it('Test async updateSchedule success', async () => {
     const mock = new MockAdapter(axios);
     const store = mockStore({});
     mockActions.authenticatingMasterCounselor = jest.fn(() => 1);
 
     mock.onPut(
-      `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
-      putScheduleBody).reply(200);
+      `${POSTS_LINK_NUVEM_CIVICA}/${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
+      putScheduleBody,
+      putScheduleHeader).reply(200);
 
     await store.dispatch(actions.asyncUpdateSchedule(postData));
 

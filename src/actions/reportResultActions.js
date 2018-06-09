@@ -1,7 +1,31 @@
 import axios from 'axios';
-import { Actions } from 'react-native-router-flux';
-import { POSTS_LINK_NUVEM_CIVICA, INSPECTION_POSTING_TYPE_CODE, APP_IDENTIFIER, COMMON_COUNSELOR, DOCUMENTATION, SCHOOL_SURROUNDINGS, FOOD_STOCK, FOOD_QUALITY, FOOD_HANDLER, REFECTORY, WATER_SEWER_SUPPLY, KITCHEN, FOOD_PREPARATION, OTHER_OBSERVATION } from '../constants/generalConstants';
-import { SET_CURRENT_REPORT_RESULT, SET_CURRENT_REPORT_RESULT_FOOD_STOCKS, SET_CURRENT_REPORT_RESULT_DOC, SET_CURRENT_REPORT_RESULT_FOOD_QUALITY, SET_CURRENT_REPORT_RESULT_FOOD_HANDLER, SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY, SET_CURRENT_REPORT_RESULT_KITCHEN, SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION, SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION, SET_CURRENT_REPORT_RESULT_REFECTORY, SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS } from './types';
+import {
+  POSTS_LINK_NUVEM_CIVICA,
+  INSPECTION_POSTING_TYPE_CODE,
+  APP_IDENTIFIER,
+  DOCUMENTATION,
+  SCHOOL_SURROUNDINGS,
+  FOOD_STOCK,
+  FOOD_QUALITY,
+  FOOD_HANDLER,
+  REFECTORY,
+  WATER_SEWER_SUPPLY,
+  KITCHEN,
+  FOOD_PREPARATION,
+  OTHER_OBSERVATION,
+} from '../constants/generalConstants';
+import {
+  SET_CURRENT_REPORT_RESULT_FOOD_STOCKS,
+  SET_CURRENT_REPORT_RESULT_DOC,
+  SET_CURRENT_REPORT_RESULT_FOOD_QUALITY,
+  SET_CURRENT_REPORT_RESULT_FOOD_HANDLER,
+  SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY,
+  SET_CURRENT_REPORT_RESULT_KITCHEN,
+  SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION,
+  SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION,
+  SET_CURRENT_REPORT_RESULT_REFECTORY,
+  SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS,
+} from './types';
 import { convertingContentStringToJSON } from './schedulingVisitActions';
 
 import foodStock from '../constants/reports/foodStock';
@@ -21,187 +45,52 @@ const FILE_NAME = 'reportResultActions.js';
 export const setCurrentReportResultRefectory = reportResult => ({
   type: SET_CURRENT_REPORT_RESULT_REFECTORY,
   payload: reportResult,
-});  
+});
 
 export const setCurrentReportResultSchoolSurroundings = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS,
-    payload: reportResult,
-});  
+  type: SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultFoodStocks = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_FOOD_STOCKS,
-    payload: reportResult,
-}); 
+  type: SET_CURRENT_REPORT_RESULT_FOOD_STOCKS,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultDoc = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_DOC,
-    payload: reportResult,
-}); 
+  type: SET_CURRENT_REPORT_RESULT_DOC,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultFoodQuality = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_FOOD_QUALITY,
-    payload: reportResult,
-}); 
+  type: SET_CURRENT_REPORT_RESULT_FOOD_QUALITY,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultFoodHandler = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_FOOD_HANDLER,
-    payload: reportResult,
-}); 
+  type: SET_CURRENT_REPORT_RESULT_FOOD_HANDLER,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultWaterSewerSupply = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY,
-    payload: reportResult,
-}); 
+  type: SET_CURRENT_REPORT_RESULT_WATER_SEWER_SUPPLY,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultKitchen = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_KITCHEN,
-    payload: reportResult,
-}); 
+  type: SET_CURRENT_REPORT_RESULT_KITCHEN,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultFoodPreparation = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION,
-    payload: reportResult,
-}); 
+  type: SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION,
+  payload: reportResult,
+});
 
 export const setCurrentReportResultOtherObservation = reportResult => ({
-    type: SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION,
-    payload: reportResult,
-}); 
-
-export const asyncGetCurrentPost = (getData) => async (dispatch) => {
-    const header = {
-      headers: {
-        appToken: getData.appToken
-      },
-      params: {
-        codPostagemRelacionada: getData.codPostagem,
-        codTiposPostagem: INSPECTION_POSTING_TYPE_CODE,
-        appIdentifier: APP_IDENTIFIER,
-      }
-    };
-    try{
-      const response = await axios.get(POSTS_LINK_NUVEM_CIVICA, header);
-        return Promise.all (
-          (response.data[0].conteudos.map((item) => {
-            return (getContentInPost(getData ,item, dispatch));
-          }))
-        );
-    } catch (error) {
-      logWarn(FILE_NAME, 'reportResult',
-      `Request result in an ${error}`);
-      treatingPostsError(error);
-    }
-  }
-  
-export const getContentInPost = async (getData, item, dispatch)  => {
-  const header = {
-    headers: {
-      appToken: getData.appToken
-    }
-  };
-  try{
-    const response = await axios.get(item.links[0].href, header);
-    return extractJson(convertingContentStringToJSON(response.data.JSON), dispatch);
-  } catch (error) {
-    logWarn(FILE_NAME, 'reportResult',
-      `Request result in an ${error}`);
-    treatingPostsError(error);
-  }
-}
-
-export const extractJson = async (json, dispatch) => {
-  switch(json.nameOfVerificationList) {
-    case REFECTORY: {
-      const reportResultRefectory = {
-        questions: getQuestions(json, refectory),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultRefectory(reportResultRefectory));
-      break;
-    }
-    case SCHOOL_SURROUNDINGS: {
-      const reportResultSchoolSurroundings = {
-        questions: getQuestions(json, schoolSurroundings),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultSchoolSurroundings(reportResultSchoolSurroundings));
-      break;
-    }
-    case WATER_SEWER_SUPPLY: {
-      const reportResultWaterSewerSupply = {
-        questions: getQuestions(json, waterSewerSupply),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultWaterSewerSupply(reportResultWaterSewerSupply));
-      break;
-    }
-    case FOOD_HANDLER: {
-      const reportResultFoodHandler = {
-        questions: getQuestions(json, foodHandler),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultFoodHandler(reportResultFoodHandler));
-      break;
-    }
-    case DOCUMENTATION: {
-      const reportResultDoc = {
-        questions: getQuestions(json, doc),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultDoc(reportResultDoc));
-      break;
-    }
-    case FOOD_PREPARATION: {
-      const reportResultFoodPreparation = {
-        questions: getQuestions(json, foodPreparation),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultFoodPreparation(reportResultFoodPreparation));
-      break;
-    }
-    case FOOD_STOCK: {
-      const reportResultFoodStock = {
-        questions: getQuestions(json, foodStock),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultFoodStocks(reportResultFoodStock));
-      break;
-    }
-    case KITCHEN: {
-      const reportResultKitchen = {
-        questions: getQuestions(json, kitchen),
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultKitchen(reportResultKitchen));
-      break;
-    }
-    case FOOD_QUALITY: {
-      const reportResultFoodQuality = {
-        questions: getQuestions(json, foodQuality),
-        status: json.wasConcluded,
-        additionalData: json.additionalData,
-      }
-      dispatch(setCurrentReportResultFoodQuality(reportResultFoodQuality));
-      break;
-    }
-    case OTHER_OBSERVATION: {
-      const reportResultObservation = {
-        status: json.wasConcluded,
-        textObservation: json.textObservation,
-      }
-      dispatch(setCurrentReportResultOtherObservation(reportResultObservation));
-      break;
-    }
-  }
-} 
+  type: SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION,
+  payload: reportResult,
+});
 
 export const getQuestions = (json, baseQuestions) => {
   const questions = baseQuestions.map((item) => {
@@ -211,7 +100,148 @@ export const getQuestions = (json, baseQuestions) => {
       label: item.label,
     };
     return question;
-  })
+  });
   return questions;
-}
+};
 
+export const extractJson = async (json, dispatch) => {
+  switch (json.nameOfVerificationList) {
+    case REFECTORY: {
+      const reportResultRefectory = {
+        questions: getQuestions(json, refectory),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultRefectory(reportResultRefectory));
+      break;
+    }
+    case SCHOOL_SURROUNDINGS: {
+      const reportResultSchoolSurroundings = {
+        questions: getQuestions(json, schoolSurroundings),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultSchoolSurroundings(reportResultSchoolSurroundings));
+      break;
+    }
+    case WATER_SEWER_SUPPLY: {
+      const reportResultWaterSewerSupply = {
+        questions: getQuestions(json, waterSewerSupply),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultWaterSewerSupply(reportResultWaterSewerSupply));
+      break;
+    }
+    case FOOD_HANDLER: {
+      const reportResultFoodHandler = {
+        questions: getQuestions(json, foodHandler),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultFoodHandler(reportResultFoodHandler));
+      break;
+    }
+    case DOCUMENTATION: {
+      const reportResultDoc = {
+        questions: getQuestions(json, doc),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultDoc(reportResultDoc));
+      break;
+    }
+    case FOOD_PREPARATION: {
+      const reportResultFoodPreparation = {
+        questions: getQuestions(json, foodPreparation),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultFoodPreparation(reportResultFoodPreparation));
+      break;
+    }
+    case FOOD_STOCK: {
+      const reportResultFoodStock = {
+        questions: getQuestions(json, foodStock),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultFoodStocks(reportResultFoodStock));
+      break;
+    }
+    case KITCHEN: {
+      const reportResultKitchen = {
+        questions: getQuestions(json, kitchen),
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultKitchen(reportResultKitchen));
+      break;
+    }
+    case FOOD_QUALITY: {
+      const reportResultFoodQuality = {
+        questions: getQuestions(json, foodQuality),
+        status: json.wasConcluded,
+        additionalData: json.additionalData,
+      };
+      dispatch(setCurrentReportResultFoodQuality(reportResultFoodQuality));
+      break;
+    }
+    case OTHER_OBSERVATION: {
+      const reportResultObservation = {
+        status: json.wasConcluded,
+        textObservation: json.textObservation,
+      };
+      dispatch(setCurrentReportResultOtherObservation(reportResultObservation));
+      break;
+    }
+    default: break;
+  }
+};
+
+export const getContentInPost = async (getData, item, dispatch) => {
+  const header = {
+    headers: {
+      appToken: getData.appToken,
+    },
+  };
+
+  let json = [];
+
+  try {
+    const response = await axios.get(item.links[0].href, header);
+    json = await extractJson(convertingContentStringToJSON(response.data.JSON), dispatch);
+  } catch (error) {
+    logWarn(FILE_NAME, 'reportResult',
+      `Request result in an ${error}`);
+    treatingPostsError(error);
+  }
+
+  return json;
+};
+
+export const asyncGetCurrentPost = getData => async (dispatch) => {
+  const header = {
+    headers: {
+      appToken: getData.appToken,
+    },
+    params: {
+      codPostagemRelacionada: getData.codPostagem,
+      codTiposPostagem: INSPECTION_POSTING_TYPE_CODE,
+      appIdentifier: APP_IDENTIFIER,
+    },
+  };
+  try {
+    const response = await axios.get(POSTS_LINK_NUVEM_CIVICA, header);
+    return Promise.all(response.data[0].conteudos.map(item =>
+      getContentInPost(getData, item, dispatch),
+    ),
+    );
+  } catch (error) {
+    logWarn(FILE_NAME, 'reportResult',
+      `Request result in an ${error}`);
+    treatingPostsError(error);
+  }
+
+  return null;
+};
