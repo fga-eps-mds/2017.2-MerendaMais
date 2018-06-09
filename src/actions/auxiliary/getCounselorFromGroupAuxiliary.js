@@ -56,6 +56,7 @@ export const getCounselorProfile = async (counselorInformations, nuvemCode) => {
     },
   };
   try {
+    console.log(nuvemCode);
     const response = await axios.get(`${DEFAULT_USER_LINK_NUVEM_CIVICA}${nuvemCode}/perfil`, getProfileHeader);
     const profile = convertingProfileStringToJSON(response.data.camposAdicionais);
     const completeCounselorInformations = counselorInformations;

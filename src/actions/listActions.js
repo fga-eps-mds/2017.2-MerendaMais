@@ -86,13 +86,13 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
 
   // Return a array of arrays.
   // For each element, position 0 is the counselor information, and position 1 is the nuvem code.
-  const counselorsInformationWithNuvemCode = await Promise.all(getCounselorLinks(codGroup));
+  const counselorsInformationWithNuvemCode = await getCounselorLinks(codGroup);
 
-  const completeCounselors = await Promise.all(getCounselorData(counselorsInformationWithNuvemCode));
+  const completeCounselors = await getCounselorData(counselorsInformationWithNuvemCode);
 
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `CompleteCounselors: ${JSON.stringify(completeCounselors)}`);
   for (let i = 0; i < completeCounselors.length; i += 1) {
-      await selectListOfCounselor(completeCounselors[i]);
+      await dispatch(selectListOfCounselor(completeCounselors[i], CPF));
   }
   dispatch(isNotLoading());
 }
@@ -101,7 +101,7 @@ export const getCounselorData = async counselorsInformationWithNuvemCode => {
   const promisesCompleteCounselors = [];
   for (let i = 0; i < counselorsInformationWithNuvemCode.length; i += 1) {
     promisesCompleteCounselors.push(
-      getCounselorProfile(
+      await getCounselorProfile(
         counselorsInformationWithNuvemCode[i][0],
         counselorsInformationWithNuvemCode[i][1]));
   }
@@ -119,13 +119,12 @@ export const getCounselorLinks = async codGroup => {
   const promisesInformationWithNuvemCode = [];
 
   for (let i = 0; i < listOfLinks.length; i += 1) {
-    promisesInformationWithNuvemCode.push(getCounselor(counselorLinks[i], linksWithCodMembro[i]));
+    promisesInformationWithNuvemCode.push(await getCounselor(counselorLinks[i], linksWithCodMembro[i]));
   }
-
   return promisesInformationWithNuvemCode;
 }
 
-export const selectListOfCounselor = counselor => async (dispatch) => {
+export const selectListOfCounselor = (counselor, CPF) => async (dispatch) => {
   if (counselor.profile.cpf !== CPF) {
     dispatch(setList(counselor));
     logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Counselors sent to store ${JSON.stringify(counselor)}`);
