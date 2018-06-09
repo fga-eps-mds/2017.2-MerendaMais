@@ -331,10 +331,6 @@ const schedulingVisit = (visitData, counselor) => {
       if (visitData.visit.invitedAgent) {
         sendEmailAlert(visitData, counselor);
       }
-      console.log("===============");
-      console.log(bodyToSchedulingVisit);
-      console.log("===============");
-
       Alert.alert(
         'Agendamento Realizado',
         'O agendamento foi realizado com sucesso! Caso tenha convidado um agente, seu aplicativo de email abrirá.',

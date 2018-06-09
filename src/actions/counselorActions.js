@@ -620,24 +620,28 @@ export const asyncLoginCounselor = userData => async (dispatch) => {
     const errorJson = JSON.parse(error.message);
     logWarn(FILE_NAME, 'asyncLoginCounselor', `${JSON.stringify(errorJson)}`);
 
-    switch (errorJson.name) {
-      case AUTH_LOGIN_ERROR:
-        logWarn(FILE_NAME, 'asyncLoginCounselor', 'AuthError');
-        treatingAuthenticatingCounselorInLoginError(errorJson.status);
-        break;
-      case PROFILE_LOGIN_ERROR:
-        logWarn(FILE_NAME, 'asyncLoginCounselor', 'ProfileError');
-        treatingGetUserProfileInLoginError(errorJson.status);
-        break;
-      case GROUP_LOGIN_ERROR:
-        logWarn(FILE_NAME, 'asyncLoginCounselor', 'GroupError');
-        break;
-      default:
-        break;
-    }
+    selectTypeOfAuthenticationFailure(errorJson)
 
     dispatch(isNotLoading());
   }
 };
+
+export const selectTypeOfAuthenticationFailure = errorMessage => {
+  switch (errorMessage.name) {
+    case AUTH_LOGIN_ERROR:
+      logWarn(FILE_NAME, 'asyncLoginCounselor', 'AuthError');
+      treatingAuthenticatingCounselorInLoginError(errorMessage.status);
+      break;
+    case PROFILE_LOGIN_ERROR:
+      logWarn(FILE_NAME, 'asyncLoginCounselor', 'ProfileError');
+      treatingGetUserProfileInLoginError(errorMessage.status);
+      break;
+    case GROUP_LOGIN_ERROR:
+      logWarn(FILE_NAME, 'asyncLoginCounselor', 'GroupError');
+      break;
+    default:
+      break;
+  }
+}
 
 export default asyncLoginCounselor;
