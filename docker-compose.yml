@@ -1,6 +1,7 @@
 merenda-merenda:
   build: .
   volumes:
+    - /node_modules/
     - .:/code
     - /dev/bus/usb:/dev/bus/usb
   privileged: true
@@ -12,7 +13,6 @@ merenda-merenda:
     - DISPLAY=$DISPLAY 
   command: |
     bash -c "
-    lsusb
     npm install --loglevel verbose
     adb reverse tcp:8081 tcp:8081
     echo 256 | tee -a /proc/sys/fs/inotify/max_user_instances
