@@ -440,6 +440,8 @@ export default class MainReportsScreen extends React.Component {
       codPostagem: this.props.scheduleVisit.currentVisit.codPostagem,
     };
 
+    console.log(getData);
+
     await this.props.asyncGetCurrentSchedule(getData);
 
     logInfo(FILE_NAME, 'updateCurrentVersionOfScheduleInspected',

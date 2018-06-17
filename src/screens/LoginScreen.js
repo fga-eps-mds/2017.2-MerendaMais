@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    margin: 5,
+    margin: 0,
   },
 
   Inputemail: {

@@ -17,7 +17,7 @@ const styles = StyleSheet.create(
     buttonWrapper: {
     },
     wrapper: {
-      height: 100,
+      height: 60,
       flexDirection: 'row',
       paddingTop: 10,
       paddingBottom: 10,

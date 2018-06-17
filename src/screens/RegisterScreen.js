@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    flex: 0.5,
+    flex: 0.08,
     borderTopColor: '#a9a9a9',
     borderTopWidth: 1,
     justifyContent: 'center',
@@ -254,8 +254,8 @@ export default class RegisterScreen extends React.Component {
     return (
       <View style={styles.principal}>
         <Header />
-        <KeyboardAvoidingView style={styles.content} behavior="padding">
-          <ScrollView>
+        <ScrollView style={styles.content}>
+        <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
             <View style={{ paddingHorizontal: 15 }}>
 
               <GenericField
@@ -453,8 +453,9 @@ export default class RegisterScreen extends React.Component {
               />
 
             </View>
-          </ScrollView>
         </KeyboardAvoidingView>
+        </ScrollView>
+
 
         <View style={styles.footer}>
           <TouchableOpacity

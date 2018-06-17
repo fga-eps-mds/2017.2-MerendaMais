@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Linking } from 'react-native';
 import PropTypes from 'prop-types';
 
 import {
@@ -70,12 +71,13 @@ export default class PDFReport extends Component {
           ${this.props.reportResult[key].additionalData.refusedMenu}</p>`;
         }
       }
-    }
-    if (this.props.reportResult[key].textObservation !== '' &&
-      this.props.reportResult[key].textObservation !== undefined) {
-      body += `<h2>${replaceDiacritics(SECTIONS[key])}</h2>`;
-      body += `<b>${this.props.reportResult[key].status ? 'Concluido' : 'Nao Concluido'}</b>`;
-      body += this.generateObservation(key);
+    } else {
+      if (this.props.reportResult[key].textObservation !== '' &&
+        this.props.reportResult[key].textObservation !== undefined) {
+        body += `<h2>${replaceDiacritics(SECTIONS[key])}</h2>`;
+        body += `<b>${this.props.reportResult[key].status ? 'Concluido' : 'Nao Concluido'}</b>`;
+        body += this.generateObservation(key);
+      }
     }
 
     body += '<br> <br>';
@@ -126,17 +128,34 @@ export default class PDFReport extends Component {
   }
 
   async createPDF() {
+    this.props.onPressPopUp();
     await this.getData();
     const doc = await this.createDocument();
 
+    const nameFile = this.props.visitSchedule.content.date +
+                     replaceDiacritics(this.props.visitSchedule.content.schoolName);
+
     const options = {
       html: doc,
-      fileName: 'test',
+      fileName: nameFile,
       directory: 'docs',
     };
 
-    const file = await RNHTMLtoPDF.convert(options);
-    console.log(file.filePath);
+    try {
+      const file = await RNHTMLtoPDF.convert(options);
+      const path = `file://` + file.filePath;
+
+      Linking.canOpenURL(path).then(supported => {
+        if (supported) {
+          console.log(supported);
+          Linking.openURL(path);
+        } else {
+          console.log("Don't know how to open URL: " + path);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
@@ -146,7 +165,7 @@ export default class PDFReport extends Component {
           style={buttonBoxStyle.design}
           onPress={() => this.createPDF()}
         >
-          <Text style={buttonBoxStyle.text}>Gerar PDF</Text>
+          <Text style={buttonBoxStyle.text}>RELATÓRIO</Text>
         </TouchableOpacity>
       </View>
     );
@@ -157,6 +176,7 @@ export default class PDFReport extends Component {
 PDFReport.propTypes = {
   reportResult: PropTypes.shape({}).isRequired,
   asyncGetCurrentPost: PropTypes.func.isRequired,
+  onPressPopUp: PropTypes.func.isRequired,
   visitSchedule: PropTypes.shape({
     codPostagem: PropTypes.number.isRequired,
     content: PropTypes.shape({

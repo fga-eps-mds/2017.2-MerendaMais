@@ -75,8 +75,9 @@ const styles = {
     margin: 8,
   },
   InputFieldStyle: {
-    padding: 8,
+    padding: 0,
     marginTop: 1,
+    paddingLeft: 6,
     backgroundColor: '#FAFAFA',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -94,7 +95,7 @@ const styles = {
     marginBottom: 10,
   },
   InputFieldIcon: {
-    margin: 6,
+    margin: 0,
   },
   InputStyle: {
     flex: 1,

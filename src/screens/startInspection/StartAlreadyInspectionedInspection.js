@@ -10,6 +10,10 @@ import {
 import PropTypes from 'prop-types';
 import stylesList from '../../Styles/ListStyles';
 import PDFReport from '../../components/PDFReport';
+import PopupDialog, {
+  DialogTitle,
+  DialogButton,
+} from 'react-native-popup-dialog';
 
 const styles = StyleSheet.create({
   principal: {
@@ -33,6 +37,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+
+  popUp: {
+    marginBottom: 120,
+  },
+
+  footerPopUp: {
+    backgroundColor: '#F9F9FB',
+    borderColor: '#DAD9DC',
+    borderTopWidth: 0.5,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   textBox: {
@@ -128,6 +147,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
               asyncGetCurrentPost={this.props.asyncGetCurrentPost}
               visitSchedule={visitSchedule}
               counselor={this.props.counselor}
+              onPressPopUp={() => this.popupDialog.show()}
             />
           </View>
         </View>
@@ -138,6 +158,35 @@ class StartAlreadyInspectionedInspection extends React.Component {
   render() {
     return (
       <View style={styles.principal}>
+        <PopupDialog
+          /* Popup para mostrar a lista de convidados */
+          ref={(popupDialog) => {
+            this.popupDialog = popupDialog;
+          }}
+          dialogTitle={<DialogTitle title="RELATÓRIO" />}
+          dialogStyle={styles.popUp}
+          overlayPointerEvents="none"
+          height="30%"
+          width="50%"
+          actions={[
+            <View style={styles.footerPopUp}>
+              <DialogButton
+                buttonStyle={styles.dialogButtonStyle}
+                text="-"
+                disabled
+              />
+            </View>,
+          ]}
+        >
+          <View style={styles.footerPopUp}>
+            <DialogButton
+              buttonStyle={styles.dialogButtonStyle}
+              text="OK"
+              onPress={() => this.popupDialog.dismiss()}
+              key="dialogButton1"
+            />
+          </View>
+        </PopupDialog>
         <ScrollView style={styles.content}>
           {this.arrayScheduleList()}
         </ScrollView>
