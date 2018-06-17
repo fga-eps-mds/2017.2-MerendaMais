@@ -1,11 +1,16 @@
 import { connect } from 'react-redux';
 import StartAlreadyInspectionedInspection from '../../screens/startInspection/StartAlreadyInspectionedInspection';
 import { resetStore } from '../../actions/applicationActions';
-import { asyncGetCurrentPost } from '../../actions/reportResultActions';
+import {
+  asyncGetCurrentPost,
+  isLoadingResult,
+  isNotLoadingResult } 
+from '../../actions/reportResultActions';
 
 const mapStateToProps = state => (
   {
     isLoading: state.application.isLoading,
+    getIsLoadingResult: state.reportResult.isLoadingResult,
     counselor: state.counselor,
     reportResult: state.reportResult,
     listOfAlreadyInpectionedSchedueInAGroup:
@@ -15,6 +20,8 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => ({
   asyncGetCurrentPost: getData => dispatch(asyncGetCurrentPost(getData)),
+  isLoadingResult: () => dispatch(isLoadingResult()),
+  isNotLoadingResult: () => dispatch(isNotLoadingResult()),
   resetStore: (...states) => dispatch(resetStore(...states)),
 });
 

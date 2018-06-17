@@ -12,6 +12,8 @@ import {
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import { CLOSE_TABLE, HEADER_DOC, HEADER_TABLE, CLOSE_BODY, OPEN_BODY, OPEN_TABLE, SECTIONS } from '../constants/reportPDF';
 import replaceDiacritics from '../services/replaceDiacritics';
+import { IS_LOADING_RESULT } from '../actions/types';
+import { LOADING_RESULT } from '../constants/generalConstants';
 
 
 const buttonBoxStyle = StyleSheet.create({
@@ -119,8 +121,9 @@ export default class PDFReport extends Component {
     doc += this.generateHeader();
 
     await Object.keys(this.props.reportResult).forEach((key) => {
-      console.log(key);
-      doc += this.generateSection(key);
+      if(key !== LOADING_RESULT){
+        doc += this.generateSection(key);
+      }
     });
 
     doc += CLOSE_BODY;
@@ -128,6 +131,7 @@ export default class PDFReport extends Component {
   }
 
   async createPDF() {
+    this.props.isLoadingResult();
     this.props.onPressPopUp();
     await this.getData();
     const doc = await this.createDocument();
@@ -156,6 +160,8 @@ export default class PDFReport extends Component {
     } catch (error) {
       console.log(error);
     }
+
+    this.props.isNotLoadingResult();
   }
 
   render() {
@@ -188,4 +194,6 @@ PDFReport.propTypes = {
     token: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  isLoadingResult:  PropTypes.func.isRequired,
+  isNotLoadingResult: PropTypes.func.isRequired,
 };

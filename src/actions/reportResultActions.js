@@ -25,6 +25,8 @@ import {
   SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION,
   SET_CURRENT_REPORT_RESULT_REFECTORY,
   SET_CURRENT_REPORT_RESULT_SCHOOL_SURROUNDINGS,
+  IS_LOADING_RESULT,
+  IS_NOT_LOADING_RESULT,
 } from './types';
 import { convertingContentStringToJSON } from './schedulingVisitActions';
 
@@ -90,6 +92,14 @@ export const setCurrentReportResultFoodPreparation = reportResult => ({
 export const setCurrentReportResultOtherObservation = reportResult => ({
   type: SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION,
   payload: reportResult,
+});
+
+export const isLoadingResult = () => ({
+  type: IS_LOADING_RESULT,
+});
+
+export const isNotLoadingResult = () => ({
+  type: IS_NOT_LOADING_RESULT,
 });
 
 export const getQuestions = (json, baseQuestions) => {

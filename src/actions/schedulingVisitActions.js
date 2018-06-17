@@ -407,8 +407,6 @@ export const asyncGetCurrentSchedule = getData => async (dispatch) => {
   const codPostagem = getData.codPostagem;
   const codConteudoPost = getData.codConteudoPost;
 
-  console.log(`${POSTS_LINK_NUVEM_CIVICA}${codPostagem}/conteudos/${codConteudoPost}`);
-
   try {
     const response = await axios.get(`${POSTS_LINK_NUVEM_CIVICA}/${codPostagem}/conteudos/${codConteudoPost}`, header);
 

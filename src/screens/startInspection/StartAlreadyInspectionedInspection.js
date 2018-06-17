@@ -14,6 +14,7 @@ import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
+import LoadingIndicator from '../../components/LoadingIndicator';
 
 const styles = StyleSheet.create({
   principal: {
@@ -147,6 +148,8 @@ class StartAlreadyInspectionedInspection extends React.Component {
               asyncGetCurrentPost={this.props.asyncGetCurrentPost}
               visitSchedule={visitSchedule}
               counselor={this.props.counselor}
+              isLoadingResult={this.props.isLoadingResult}
+              isNotLoadingResult={this.props.isNotLoadingResult}
               onPressPopUp={() => this.popupDialog.show()}
             />
           </View>
@@ -159,33 +162,29 @@ class StartAlreadyInspectionedInspection extends React.Component {
     return (
       <View style={styles.principal}>
         <PopupDialog
-          /* Popup para mostrar a lista de convidados */
           ref={(popupDialog) => {
             this.popupDialog = popupDialog;
           }}
           dialogTitle={<DialogTitle title="RELATÓRIO" />}
           dialogStyle={styles.popUp}
           overlayPointerEvents="none"
-          height="30%"
+          height="25%"
           width="50%"
           actions={[
-            <View style={styles.footerPopUp}>
-              <DialogButton
-                buttonStyle={styles.dialogButtonStyle}
-                text="-"
-                disabled
-              />
+            <View style={styles.popUp}>
+              {this.props.getIsLoadingResult === false ?
+                <DialogButton
+                  buttonStyle={styles.dialogButtonStyle}
+                  text="OK"
+                  onPress={() => this.popupDialog.dismiss()}
+                  key="dialogButton1"
+                />
+                :
+                LoadingIndicator
+              }
             </View>,
           ]}
         >
-          <View style={styles.footerPopUp}>
-            <DialogButton
-              buttonStyle={styles.dialogButtonStyle}
-              text="OK"
-              onPress={() => this.popupDialog.dismiss()}
-              key="dialogButton1"
-            />
-          </View>
         </PopupDialog>
         <ScrollView style={styles.content}>
           {this.arrayScheduleList()}
@@ -207,6 +206,9 @@ StartAlreadyInspectionedInspection.propTypes = {
   asyncGetCurrentPost: PropTypes.func.isRequired,
   reportResult: PropTypes.shape({
   }).isRequired,
+  isLoadingResult: PropTypes.func.isRequired,
+  isNotLoadingResult: PropTypes.func.isRequired,
+  getIsLoadingResult: PropTypes.bool.isRequired,
 };
 
 export default StartAlreadyInspectionedInspection;

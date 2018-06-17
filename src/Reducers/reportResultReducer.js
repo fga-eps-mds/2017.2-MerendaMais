@@ -11,6 +11,8 @@ import {
   SET_CURRENT_REPORT_RESULT_KITCHEN,
   SET_CURRENT_REPORT_RESULT_FOOD_PREPARATION,
   SET_CURRENT_REPORT_RESULT_OTHER_OBSERVATION,
+  IS_LOADING_RESULT,
+  IS_NOT_LOADING_RESULT,
 } from '../actions/types';
 
 const reportResultReducer = (state = initialState.reportResult, action) => {
@@ -118,6 +120,16 @@ const reportResultReducer = (state = initialState.reportResult, action) => {
           textObservation: action.payload.textObservation,
           loading: false,
         },
+      };
+    case IS_LOADING_RESULT:
+      return {
+        ...state,
+        isLoadingResult: true,
+      };
+    case IS_NOT_LOADING_RESULT:
+      return {
+        ...state,
+        isLoadingResult: false,
       };
     case RESET_CURRENT_REPORT_RESULT:
       return initialState.currentReportResult;
