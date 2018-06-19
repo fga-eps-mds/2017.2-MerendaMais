@@ -95,3 +95,4 @@ export const COUNSELOR_GROUP_DISABLED_FAILED = 'Não foi possível apagar consel
 
 export const UNABLE_TO_FIND_SCHOOL = 'Não foi possível encontrar os dados da escola.';
 export const NO_OTHER_COUNSELORS = 'Não existem outros conselheiros cadastrados neste CAE.';
+export const LOADING_RESULT = 'isLoadingResult';

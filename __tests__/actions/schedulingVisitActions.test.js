@@ -127,7 +127,7 @@ describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
     const store = mockStore({});
 
     mock
-      .onGet(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
+      .onGet(`${POSTS_LINK_NUVEM_CIVICA}/${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
       .reply(200, { ...response });
 
     await store.dispatch(actions.asyncGetCurrentSchedule(getData));
@@ -154,7 +154,7 @@ describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
     const store = mockStore({});
 
     mock
-      .onGet(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
+      .onGet(`${POSTS_LINK_NUVEM_CIVICA}/${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
       .reply(400, { ...response });
 
     try {

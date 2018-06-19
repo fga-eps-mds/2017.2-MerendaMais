@@ -15,10 +15,7 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
     subTitle=""
     title="Merenda +"
   />
-  <KeyboardAvoidingView
-    behavior="padding"
-    enabled={true}
-    keyboardVerticalOffset={0}
+  <ScrollView
     style={
       Object {
         "flex": 6,
@@ -26,7 +23,16 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
       }
     }
   >
-    <ScrollView>
+    <KeyboardAvoidingView
+      behavior="padding"
+      enabled={true}
+      keyboardVerticalOffset={0}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
       <Component
         style={
           Object {
@@ -478,15 +484,15 @@ exports[`Testing RegisterScreen renders as expected 1`] = `
           onPress={[Function]}
         />
       </Component>
-    </ScrollView>
-  </KeyboardAvoidingView>
+    </KeyboardAvoidingView>
+  </ScrollView>
   <Component
     style={
       Object {
         "alignItems": "center",
         "borderTopColor": "#a9a9a9",
         "borderTopWidth": 1,
-        "flex": 0.5,
+        "flex": 0.08,
         "justifyContent": "center",
       }
     }

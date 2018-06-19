@@ -17,7 +17,7 @@ exports[`Testing MainLegislationScreen Render renders as expected 1`] = `
         "borderBottomColor": "black",
         "borderBottomWidth": 1,
         "flexDirection": "row",
-        "height": 100,
+        "height": 60,
         "paddingBottom": 10,
         "paddingTop": 10,
       }

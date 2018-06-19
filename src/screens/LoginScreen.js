@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    margin: 5,
+    margin: 0,
   },
 
   Inputemail: {
@@ -127,7 +127,6 @@ export default class LoginScreen extends React.Component {
             onPress={() => {
               Keyboard.dismiss();
               this.props.asyncLoginCounselor(this.state);
-              console.log(this.state);
             }}
             isLoading={this.props.isLoading}
             buttonKey="LoginCounselor"
