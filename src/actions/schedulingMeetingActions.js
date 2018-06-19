@@ -9,56 +9,24 @@ import { APP_IDENTIFIER,
   MEETING_POSTING_TYPE_CODE } from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 import { resetList, setScheduleMeetingList } from './listActions';
+import { convertingContentStringToJSON } from './schedulingVisitActions';
 import { GetMeetingPostListError, GetMeetingContentError } from '../Exceptions';
+import { dateNotExpired } from './auxiliary/schedulingMeeting/schedulingMeetingAuxiliary';
 import { treatingPostsError,
   treatingGetMeetingScheduleContentError,
   treatingGetMeetingSchedulePostListError } from './auxiliary/schedulingMeeting/schedulingMeetingErrors';
 
-const FILE_NAME = 'schedulingMeetingActions.js';
-
-const convertingContentStringToJSON = (profileStringSingleQuote) => {
-  // Changing ' to " in string received from Nuvem Civica.
-  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
-
-  // Converting profile string to profile JSON.
-  const profileJSON = JSON.parse(profileStringDoubleQuote);
-
-  return profileJSON;
-};
-
-const verifyDate = (meetingSchedule) => {
-  const date = new Date();
-  const systemDay = date.getDate();
-  const systemMonth = date.getMonth() + 1;
-  const systemYear = date.getFullYear();
-
-  const daySchedule = meetingSchedule.content.date.substr(0, 2);
-  const monthSchedule = meetingSchedule.content.date.substr(3, 2);
-  const yearSchedule = meetingSchedule.content.date.substr(6);
-
-  if (yearSchedule < systemYear) {
-    return true;
-  } else if (yearSchedule > systemYear) {
-    return false;
-  }
-  if (monthSchedule < systemMonth) {
-    return true;
-  } else if (monthSchedule > systemMonth) {
-    return false;
-  }
-  if (daySchedule < systemDay) {
-    return true;
-  }
-  return false;
-};
-
+export const FILE_NAME = 'schedulingMeetingActions.js';
 
 const defineMeetingStatus = (meetingSchedule, counselor, dispatch) => {
   logInfo(FILE_NAME, 'defineMeetingStatus', `${JSON.stringify(meetingSchedule)}`);
-  if (meetingSchedule.content.meetingListOfInvitees[counselor.nuvemCode] !== undefined) {
-    if (!verifyDate(meetingSchedule)) {
-      dispatch(setScheduleMeetingList(meetingSchedule));
-    }
+
+  const counselorInvited =
+    meetingSchedule.content.meetingListOfInvitees[counselor.nuvemCode] !== undefined;
+  const validMeeting = !dateNotExpired(meetingSchedule);
+
+  if (counselorInvited && validMeeting) {
+    dispatch(setScheduleMeetingList(meetingSchedule));
   }
 };
 

@@ -1,8 +1,7 @@
 import { logWarn } from '../../../../logConfig/loggers';
 import { INTERNAL_ERROR } from '../../../constants/generalConstants';
 import ShowToast from '../../../components/Toast';
-
-const FILE_NAME = 'schedulingMeetingActions.js';
+import { FILE_NAME } from '../../schedulingMeetingActions';
 
 /* This function logs posting Meeting errors based
   on the response code from Nuvem Cívica */
