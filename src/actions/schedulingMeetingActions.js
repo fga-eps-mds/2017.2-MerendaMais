@@ -4,17 +4,15 @@ import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
 import { isLoading, isNotLoading } from './applicationActions';
-import ShowToast from '../components/Toast';
-import {
-  APP_IDENTIFIER,
+import { APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
-  MEETING_POSTING_TYPE_CODE,
-  INTERNAL_ERROR } from '../constants/generalConstants';
+  MEETING_POSTING_TYPE_CODE } from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 import { resetList, setScheduleMeetingList } from './listActions';
-import {
-  GetMeetingPostListError,
-  GetMeetingContentError } from '../Exceptions';
+import { GetMeetingPostListError, GetMeetingContentError } from '../Exceptions';
+import { treatingPostsError,
+  treatingGetMeetingScheduleContentError,
+  treatingGetMeetingSchedulePostListError } from './auxiliary/schedulingMeeting/schedulingMeetingErrors';
 
 const FILE_NAME = 'schedulingMeetingActions.js';
 
@@ -26,44 +24,6 @@ const convertingContentStringToJSON = (profileStringSingleQuote) => {
   const profileJSON = JSON.parse(profileStringDoubleQuote);
 
   return profileJSON;
-};
-
-// Treating request errors
-const treatingGetMeetingSchedulePostListError = (error) => {
-  if (error.response.status === 500) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
-  }
-};
-
-// Treating request errors
-const treatingGetMeetingScheduleContentError = (error) => {
-  if (error.response.status === 500) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 404) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Post or Content not found with this params - Error code received in request - ${error.response.status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
-  }
 };
 
 const verifyDate = (meetingSchedule) => {
@@ -99,23 +59,6 @@ const defineMeetingStatus = (meetingSchedule, counselor, dispatch) => {
     if (!verifyDate(meetingSchedule)) {
       dispatch(setScheduleMeetingList(meetingSchedule));
     }
-  }
-};
-
-// Treating request errors
-export const treatingPostsError = (error) => {
-  if (error.response.status === 401) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 403) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 404) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Not Found according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
   }
 };
 
