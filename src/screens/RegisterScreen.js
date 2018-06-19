@@ -255,7 +255,7 @@ export default class RegisterScreen extends React.Component {
       <View style={styles.principal}>
         <Header />
         <ScrollView style={styles.content}>
-        <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
+          <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
             <View style={{ paddingHorizontal: 15 }}>
 
               <GenericField
@@ -453,7 +453,7 @@ export default class RegisterScreen extends React.Component {
               />
 
             </View>
-        </KeyboardAvoidingView>
+          </KeyboardAvoidingView>
         </ScrollView>
 
 

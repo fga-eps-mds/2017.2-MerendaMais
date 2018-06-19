@@ -7,13 +7,13 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import PropTypes from 'prop-types';
-import stylesList from '../../Styles/ListStyles';
-import PDFReport from '../../components/PDFReport';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
 } from 'react-native-popup-dialog';
+import PropTypes from 'prop-types';
+import stylesList from '../../Styles/ListStyles';
+import PDFReport from '../../components/PDFReport';
 import LoadingIndicator from '../../components/LoadingIndicator';
 
 const styles = StyleSheet.create({
@@ -165,7 +165,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
           ref={(popupDialog) => {
             this.popupDialog = popupDialog;
           }}
-          dialogTitle={<DialogTitle title="RELATÓRIO" />}
+          dialogTitle={<DialogTitle title="Carregando" />}
           dialogStyle={styles.popUp}
           overlayPointerEvents="none"
           height="25%"
@@ -175,7 +175,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
               {this.props.getIsLoadingResult === false ?
                 <DialogButton
                   buttonStyle={styles.dialogButtonStyle}
-                  text="OK"
+                  text="SAIR"
                   onPress={() => this.popupDialog.dismiss()}
                   key="dialogButton1"
                 />
@@ -184,8 +184,7 @@ class StartAlreadyInspectionedInspection extends React.Component {
               }
             </View>,
           ]}
-        >
-        </PopupDialog>
+        />
         <ScrollView style={styles.content}>
           {this.arrayScheduleList()}
         </ScrollView>

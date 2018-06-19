@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Linking } from 'react-native';
 import PropTypes from 'prop-types';
 
 import {
@@ -7,12 +6,20 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
+  Linking,
 } from 'react-native';
 
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
-import { CLOSE_TABLE, HEADER_DOC, HEADER_TABLE, CLOSE_BODY, OPEN_BODY, OPEN_TABLE, SECTIONS } from '../constants/reportPDF';
+import {
+  CLOSE_TABLE,
+  HEADER_DOC,
+  HEADER_TABLE,
+  CLOSE_BODY,
+  OPEN_BODY,
+  OPEN_TABLE,
+  SECTIONS,
+} from '../constants/reportPDF';
 import replaceDiacritics from '../services/replaceDiacritics';
-import { IS_LOADING_RESULT } from '../actions/types';
 import { LOADING_RESULT } from '../constants/generalConstants';
 
 
@@ -74,12 +81,9 @@ export default class PDFReport extends Component {
         }
       }
     } else {
-      if (this.props.reportResult[key].textObservation !== '' &&
-        this.props.reportResult[key].textObservation !== undefined) {
-        body += `<h2>${replaceDiacritics(SECTIONS[key])}</h2>`;
-        body += `<b>${this.props.reportResult[key].status ? 'Concluido' : 'Nao Concluido'}</b>`;
-        body += this.generateObservation(key);
-      }
+      body += `<h2>${replaceDiacritics(SECTIONS[key])}</h2>`;
+      body += `<b>${this.props.reportResult[key].status ? 'Concluido' : 'Nao Concluido'}</b>`;
+      body += this.generateObservation(key);
     }
 
     body += '<br> <br>';
@@ -121,7 +125,7 @@ export default class PDFReport extends Component {
     doc += this.generateHeader();
 
     await Object.keys(this.props.reportResult).forEach((key) => {
-      if(key !== LOADING_RESULT){
+      if (key !== LOADING_RESULT) {
         doc += this.generateSection(key);
       }
     });
@@ -137,7 +141,7 @@ export default class PDFReport extends Component {
     const doc = await this.createDocument();
 
     const nameFile = this.props.visitSchedule.content.date +
-                     replaceDiacritics(this.props.visitSchedule.content.schoolName);
+      replaceDiacritics(this.props.visitSchedule.content.schoolName);
 
     const options = {
       html: doc,
@@ -147,14 +151,14 @@ export default class PDFReport extends Component {
 
     try {
       const file = await RNHTMLtoPDF.convert(options);
-      const path = `file://` + file.filePath;
+      const path = `file:// + ${file.filePath}`;
 
-      Linking.canOpenURL(path).then(supported => {
+      Linking.canOpenURL(path).then((supported) => {
         if (supported) {
           console.log(supported);
           Linking.openURL(path);
         } else {
-          console.log("Don't know how to open URL: " + path);
+          console.log('Dont know how to open URL');
         }
       });
     } catch (error) {
@@ -194,6 +198,6 @@ PDFReport.propTypes = {
     token: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
-  isLoadingResult:  PropTypes.func.isRequired,
+  isLoadingResult: PropTypes.func.isRequired,
   isNotLoadingResult: PropTypes.func.isRequired,
 };

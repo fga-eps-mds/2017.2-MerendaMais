@@ -22,6 +22,10 @@ const initialState = {
       time: '',
     },
   },
+
+  reportResult: {
+    isLoadingResult: false,
+  },
 };
 
 const store = mockStore(initialState);

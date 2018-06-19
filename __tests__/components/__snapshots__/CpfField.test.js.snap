@@ -13,7 +13,8 @@ exports[`Testing CpfField component Test if CpfField renders correctly 1`] = `
       "justifyContent": "flex-start",
       "marginBottom": 10,
       "marginTop": 1,
-      "padding": 8,
+      "padding": 0,
+      "paddingLeft": 6,
     }
   }
 >

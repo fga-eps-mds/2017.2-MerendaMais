@@ -4,8 +4,8 @@ import { resetStore } from '../../actions/applicationActions';
 import {
   asyncGetCurrentPost,
   isLoadingResult,
-  isNotLoadingResult } 
-from '../../actions/reportResultActions';
+  isNotLoadingResult,
+} from '../../actions/reportResultActions';
 
 const mapStateToProps = state => (
   {
