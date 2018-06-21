@@ -1,9 +1,4 @@
 export const dateNotExpired = (scheduleData) => {
-  const date = new Date();
-  const systemDay = date.getDate();
-  const systemMonth = date.getMonth() + 1;
-  const systemYear = date.getFullYear();
-
   // Day is in range [0]-[2] from the string, two digits long
   const daySchedule = scheduleData.content.date.substr(0, 2);
 
@@ -13,12 +8,13 @@ export const dateNotExpired = (scheduleData) => {
   // The year is listed at string's index 6 - Remaining string after [6]
   const yearSchedule = scheduleData.content.date.substr(6);
 
-  const validDate =
-    yearSchedule < systemYear &&
-    monthSchedule < systemMonth &&
-    daySchedule < systemDay;
+  const meetingDate = new Date(yearSchedule, monthSchedule, daySchedule);
+  const actualDate = new Date();
 
-  return validDate;
+  // Erases the actual date hours/minutes/seconds/milliseconds
+  actualDate.setHours(0, 0, 0, 0);
+
+  return meetingDate <= actualDate;
 };
 
 export default dateNotExpired;
