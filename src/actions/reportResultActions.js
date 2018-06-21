@@ -28,7 +28,6 @@ import {
   IS_LOADING_RESULT,
   IS_NOT_LOADING_RESULT,
 } from './types';
-import { convertingContentStringToJSON } from './schedulingVisitActions';
 
 import foodStock from '../constants/reports/foodStock';
 import refectory from '../constants/reports/refectory';
@@ -41,6 +40,7 @@ import doc from '../constants/reports/doc';
 import schoolSurroundings from '../constants/reports/schoolSurroundings';
 import { logWarn } from '../../logConfig/loggers';
 import { treatingPostsError } from './schedulingMeetingActions';
+import { convertingContentStringToJSON } from './applicationActions';
 
 const FILE_NAME = 'reportResultActions.js';
 

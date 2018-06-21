@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
-import Communications from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import { convertingJSONToString } from './counselorActions';
-import { isLoading, isNotLoading } from './applicationActions';
-import ShowToast from '../components/Toast';
+import {
+  isLoading,
+  isNotLoading,
+  convertingContentStringToJSON,
+} from './applicationActions';
 import {
   SET_CURRENT_INSPECTION,
 } from './types';
@@ -13,7 +15,6 @@ import {
   APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
   VISIT_POSTING_TYPE_CODE,
-  INTERNAL_ERROR,
 } from '../constants/generalConstants';
 import {
   setPendingScheduleList,
@@ -28,8 +29,13 @@ import {
   GET_CURRENT_SCHEDULE_ERROR,
   UPDATE_CURRENT_SCHEDULE_ERROR,
 } from '../constants/errorConstants';
-import * as constant from '../constants/sendAgentEmail';
 import { authenticatingMasterCounselor } from './ManagerRegisterActions';
+import sendEmailAlert from './sendEmailActions';
+import {
+  treatingGetVisitSchedulePostListError,
+  treatingGetVisitScheduleContentError,
+  treatingPostsError,
+} from './errorActions';
 
 const FILE_NAME = 'schedulingVisitActions.js';
 
@@ -41,55 +47,6 @@ export const setCurrentInspection = visitSchedule => ({
   payload: visitSchedule,
 });
 
-
-// Trating request errors
-const treatingGetVisitSchedulePostListError = (status) => {
-  if (status === 500) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
-  } else if (status === 400) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetVisitSchedulePostListError',
-      `Unknown error - Error code received in request - ${status}`);
-  }
-};
-
-// Trating request errors
-const treatingGetVisitScheduleContentError = (status) => {
-  if (status === 500) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${status}`);
-  } else if (status === 400) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${status}`);
-  } else if (status === 404) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Post or Content not found with this params - Error code received in request - ${status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetVisitScheduleContentError',
-      `Unknown error - Error code received in request - ${status}`);
-  }
-};
-
-// Used in Async Action to Get All Post Visit Schedules
-export const convertingContentStringToJSON = (contentStringSingleQuote) => {
-  // Changing ' to " in string received from Nuvem Civica.
-  const contentStringDoubleQuote = contentStringSingleQuote.replace(/'/g, '"');
-
-  // Converting content string to content JSON.
-  const contentJSON = JSON.parse(contentStringDoubleQuote);
-
-  return contentJSON;
-};
 
 // Verify the date of the visit schedule to set expired or not.
 const verifyDate = (visitSchedule) => {
@@ -118,6 +75,7 @@ const verifyDate = (visitSchedule) => {
   return false;
 };
 
+
 // Put each visit schedule in its respective list (pending, expired or inspected).
 const defineScheduleStatus = (visitSchedule, counselor, dispatch) => {
   if (visitSchedule.content.visitListOfInvitees[counselor.nuvemCode] !== undefined) {
@@ -137,6 +95,7 @@ const defineScheduleStatus = (visitSchedule, counselor, dispatch) => {
     }
   }
 };
+
 
 // Used in Async Action to Get All Post Visit Schedules
 export const getVisitScheduleContent = async (contentLink, counselor, dispatch) => {
@@ -170,6 +129,7 @@ export const getVisitScheduleContent = async (contentLink, counselor, dispatch) 
   }
 };
 
+
 // Used in Async Action to Get All Post Visit Schedules
 export const getVisitSchedulePostList = async (getScheduleParamsAndHeader) => {
   try {
@@ -187,10 +147,12 @@ export const getVisitSchedulePostList = async (getScheduleParamsAndHeader) => {
   }
 };
 
+
 export const visitScheduleActionsAuxiliary = {
   getVisitSchedulePostList,
   getVisitScheduleContent,
 };
+
 
 // Assync action to get all post visit schedules
 export const asyncGetSchedule = counselor => async (dispatch) => {
@@ -248,43 +210,6 @@ export const asyncGetSchedule = counselor => async (dispatch) => {
   dispatch(isNotLoading());
   Actions.refresh();
 };
-
-// Treating request errors
-const treatingPostsError = (error) => {
-  if (error.response.status === 401) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 403) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 404) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Not Found according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
-  }
-};
-
-const sendEmailAlert = (visitData, counselor) => {
-  const agentEmail = (visitData.visit.agentEmail);
-  const CAEUf = counselor.profile.CAE_UF.substr(0, 2);
-  const emailBody = `Prezado (a) Senhor(a),\n
-Trata-se da solicitação de um Auditor da Vigilância Sanitária, a fim de acompanhar os Conselheiros do Conselho de Alimentação Escolar pertencente ao(à) ${counselor.profile.CAE}, em visita técnica a realizar-se em ${visitData.visit.date}, na instituição escolar ${visitData.visit.schoolName}, em cumprimento à Lei nº 11.947, de 16 de junho de 2009 - que dispõe sobre o atendimento da alimentação escolar.\n
-Atenciosamente,
-${counselor.name}
-Representando ${counselor.profile.segment} do CAE – ${counselor.profile.CAE}\n
-Conselho de Alimentação Escolar do Estado – CAE/${CAEUf}`;
-
-  Communications.email(
-    // To, cc, bcc, subject, email text
-    [agentEmail],
-    null,
-    null,
-    constant.EMAIL_SUBJECT,
-    emailBody);
-};
-
 
 const schedulingVisit = (visitData, counselor) => {
   const headerToSchedulingVisit = {

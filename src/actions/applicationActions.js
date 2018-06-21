@@ -18,3 +18,14 @@ export const resetStore = (...states) => (dispatch) => {
     dispatch(resetSpecificState(`reset_${states[i]}`.toUpperCase()));
   }
 };
+
+
+export const convertingContentStringToJSON = (contentStringSingleQuote) => {
+  // Changing ' to " in string received from Nuvem Civica.
+  const contentStringDoubleQuote = contentStringSingleQuote.replace(/'/g, '"');
+
+  // Converting content string to content JSON.
+  const contentJSON = JSON.parse(contentStringDoubleQuote);
+
+  return contentJSON;
+};
