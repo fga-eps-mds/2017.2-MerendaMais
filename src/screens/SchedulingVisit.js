@@ -1,4 +1,3 @@
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity, ScrollView, BackHandler, ActivityIndicator, Alert } from 'react-native';
@@ -18,6 +17,7 @@ import Header from '../components/Header';
 import ShowToast from '../components/Toast';
 import { NO_OTHER_COUNSELORS } from '../constants/generalConstants';
 import styles from '../Styles/SchedulingVisitStyles'
+import InviteAgent from '../services/InviteAgent'
 
 export default class SchedulingVisit extends React.Component {
   constructor(props) {
@@ -38,6 +38,7 @@ export default class SchedulingVisit extends React.Component {
       verification: true,
       enabled: true,
     };
+    this.InviteAgentObject = new InviteAgent(props);
   }
 
   componentWillMount() {
@@ -50,180 +51,6 @@ export default class SchedulingVisit extends React.Component {
     BackHandler.removeEventListener('hardwareBackPress', backHandlerPopToMain);
   }
 
-  invitingAgent() {
-    const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    if (!emailRegex.test(this.state.visit.agentEmail)) {
-      Alert.alert(
-        'Email Incorreto!',
-        'O email digitado é inválido! ',
-        [
-          { text: 'Ok', onPress: () => { }, style: 'cancel' },
-        ],
-        { cancelable: false });
-    } else {
-      this.setState({ visit: { ...this.state.visit, invitedAgent: true } });
-      this.popupDialogAgent.dismiss();
-    }
-  }
-
-  notInvitingAgent() {
-    this.setState({ visit: { ...this.state.visit, invitedAgent: false } });
-    this.setState({ visit: { ...this.state.visit, agentEmail: '' } });
-    this.popupDialogAgent.dismiss();
-  }
-
-  showAgentEmail() {
-    if (this.state.visit.agentEmail !== '') {
-      return (
-        <View>
-          <Text style={styles.TopListText}>Agente Convidado</Text>
-          <View style={styles.InputFieldStyle}>
-            <Text>{this.state.visit.agentEmail}</Text>
-          </View>
-        </View>
-      );
-    }
-    return (
-      <View>
-        <Text style={styles.TopListText}>Agente Convidado</Text>
-        <View style={styles.InputFieldStyle}>
-          <Text style={ styles.NoInvitedAgent }>Nenhum agente convidado</Text>
-        </View>
-      </View>
-    );
-  }
-
-  manageInvitedListState(counselor) {
-    const visitNewLists = {
-      visitNewListWithInformations: this.props.visitListOfInviteesWithCounselorInformations,
-      visitNewList: this.state.visit.visitListOfInvitees,
-    };
-
-    // If the counselor is not at the list (undefined),
-    // we will add him to the list, where its key is the counselor's nuvemCode
-    if (visitNewLists.visitNewListWithInformations[counselor.nuvemCode] === undefined) {
-      visitNewLists.visitNewListWithInformations[counselor.nuvemCode] = counselor;
-
-      visitNewLists.visitNewList[counselor.nuvemCode] = {
-        nuvemCode: counselor.nuvemCode,
-        confirmed: false,
-        realizedVisit: false,
-      };
-      this.props.setVisitNewLists(visitNewLists);
-    } else {
-      delete visitNewLists.visitNewListWithInformations[counselor.nuvemCode];
-      delete visitNewLists.visitNewList[counselor.nuvemCode];
-
-      this.props.setVisitNewLists(visitNewLists);
-    }
-
-    this.forceUpdate();
-  }
-
-  changeStyleAccordingToInput(counselor) {
-    if
-    (this.props.visitListOfInviteesWithCounselorInformations[counselor.nuvemCode] !== undefined) {
-      return [styles.listRegisters, { borderColor: '#FF9500' }];
-    }
-    return styles.listRegisters;
-  }
-
-  cancelInviteList() {
-    const visitNewLists = {
-      visitNewListWithInformations: {},
-      visitNewList: {},
-    };
-
-    this.props.setVisitNewLists(visitNewLists);
-
-    this.popupDialogCounselor.dismiss();
-  }
-
-  deleteSpecificCounselor(counselorNuvemCode) {
-    const visitNewLists = {
-      visitNewListWithInformations: this.props.visitListOfInviteesWithCounselorInformations,
-      visitNewList: this.state.visit.visitListOfInvitees,
-    };
-
-    delete visitNewLists.visitNewListWithInformations[counselorNuvemCode];
-    delete visitNewLists.visitNewList[counselorNuvemCode];
-
-    this.props.setVisitNewLists(visitNewLists);
-
-    this.forceUpdate();
-  }
-
-  showInvitedList() {
-    // Check if the Object is empty
-    if (Object.keys(this.props.visitListOfInviteesWithCounselorInformations)
-      .length !== 0) {
-      return (
-        <View>
-          <Text style={styles.TopListText}>Lista de conselheiros convidados</Text>
-          <View style={styles.invitedList}>
-            <ScrollView
-              /* This make the nested ScrollView works. */
-              onTouchStart={() => this.setState({ enabled: false })}
-              onTouchEnd={() => this.setState({ enabled: true })}
-              onScrollBeginDrag={() => this.setState({ enabled: false })}
-              onScrollEndDrag={() => this.setState({ enabled: true })}
-            >
-              {
-                Object.entries(this.props.visitListOfInviteesWithCounselorInformations)
-                  .map(counselor => (
-                    <View style={styles.invitedListStyle} key={counselor[0]}>
-                      <InvitedCounselorsData
-                        key={counselor[0]}
-                        {...counselor[1]}
-                      />
-                      <TouchableOpacity
-                        onPress={() => this.deleteSpecificCounselor(counselor[0])}
-                      >
-                        <EvilIcons name="close" style={styles.icon} size={26} color="red" />
-                      </TouchableOpacity>
-                    </View>
-                  ))
-              }
-            </ScrollView>
-          </View>
-        </View>
-      );
-    }
-    return null;
-  }
-
-  renderCounselorList() {
-    if (this.props.application === true) {
-      return (
-        <ActivityIndicator style={ styles.ConsuelorList } size="large" color="#FF9500" />
-      );
-    }
-    return (
-      this.props.listOfCounselorsInAGroup.map(counselor => (
-        <View style={this.changeStyleAccordingToInput(counselor)} key={counselor.nuvemCode}>
-          <TouchableOpacity
-            onPress={() => this.manageInvitedListState(counselor)}
-          >
-            <View style={styles.textBox}>
-              <Text style={styles.text}>
-                <Text style={ styles.ConsuelorInformation }>Nome: </Text>
-                {counselor.name}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={ styles.ConsuelorInformation }>CPF: </Text>
-                {counselor.profile.cpf}
-              </Text>
-              <Text style={styles.text}>
-                <Text style={ styles.ConsuelorInformation }>Telefone: </Text>
-                {counselor.profile.phone}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      ))
-    );
-  }
   render() {
     return (
       <View style={styles.principal}>
@@ -245,7 +72,7 @@ export default class SchedulingVisit extends React.Component {
                 enabled
                 key="invitingButton"
                 text="Convidar"
-                onPress={() => { this.invitingAgent(); }}
+                onPress={() => { this.InviteAgentObject.invitingAgent(this.popupDialogAgent); }}
               />
 
               <DialogButton
@@ -253,7 +80,7 @@ export default class SchedulingVisit extends React.Component {
                 enabled
                 key="notInvitingButton"
                 text="Cancelar"
-                onPress={() => { this.notInvitingAgent(); }}
+                onPress={() => { this.InviteAgentObject.notInvitingAgent(this.popupDialogAgent); }}
               />
             </View>,
           ]}
@@ -291,7 +118,7 @@ export default class SchedulingVisit extends React.Component {
               <DialogButton
                 buttonStyle={styles.dialogButtonStyle}
                 text="CANCELAR"
-                onPress={() => this.cancelInviteList()}
+                onPress={() => this.InviteAgentObject.cancelInviteList(this.popupDialogCounselor)}
                 key="dialogButton2"
               />
             </View>,
@@ -299,7 +126,7 @@ export default class SchedulingVisit extends React.Component {
         >
 
           <ScrollView key="showInviteCounselorList">
-            {this.renderCounselorList()}
+            {this.InviteAgentObject.renderCounselorList()}
           </ScrollView>
         </PopupDialog>
 
@@ -374,7 +201,7 @@ export default class SchedulingVisit extends React.Component {
               </TouchableOpacity>
             </View>
 
-            {this.showInvitedList()}
+            {this.InviteAgentObject.showInvitedList()}
 
             <View style={styles.Container}>
               <TouchableOpacity
@@ -386,7 +213,7 @@ export default class SchedulingVisit extends React.Component {
               </TouchableOpacity>
             </View>
 
-            {this.showAgentEmail()}
+            {this.InviteAgentObject.showAgentEmail()}
 
             <View>
               {this.props.school.schoolSelected &&
