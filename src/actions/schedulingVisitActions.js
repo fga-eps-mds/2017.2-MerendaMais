@@ -2,11 +2,11 @@ import axios from 'axios';
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { convertingJSONToString } from './counselorActions';
 import {
   isLoading,
   isNotLoading,
   convertingContentStringToJSON,
+  convertingJSONToString,
 } from './applicationActions';
 import {
   SET_CURRENT_INSPECTION,

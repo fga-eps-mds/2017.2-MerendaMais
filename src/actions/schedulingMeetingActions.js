@@ -2,8 +2,7 @@ import axios from 'axios';
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { convertingJSONToString } from './counselorActions';
-import { isLoading, isNotLoading } from './applicationActions';
+import { isLoading, isNotLoading, convertingJSONToString } from './applicationActions';
 import ShowToast from '../components/Toast';
 import {
   APP_IDENTIFIER,

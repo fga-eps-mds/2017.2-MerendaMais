@@ -1,20 +1,17 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import {
-  convertingJSONToString,
-} from '../../../src/actions/counselorActions';
-import {
   DEFAULT_USER_LINK_NUVEM_CIVICA,
 } from '../../../src/constants/generalConstants';
 import {
   EDIT_ACCOUNT_ERROR,
   EDIT_PROFILE_ERROR,
 } from '../../../src/constants/errorConstants';
-import { convertingContentStringToJSON } from '../../../src/actions/schedulingVisitActions';
 import {
   editAccountData,
   editCounselorProfile,
 } from '../../../src/actions/auxiliary/editCounselorAuxiliary';
+import { convertingJSONToString, convertingContentStringToJSON } from '../../../src/actions/applicationActions';
 
 
 describe('Testing editCounselorAuxiliary functions', () => {

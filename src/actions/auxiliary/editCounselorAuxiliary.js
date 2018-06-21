@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { convertingJSONToString } from '../ManagerRegisterActions';
+import { convertingJSONToString } from '../applicationActions';
 // Functions focused in Edit Couselor Data
 import { DEFAULT_USER_LINK_NUVEM_CIVICA } from '../../constants/generalConstants';
 import { logInfo, logWarn } from '../../../logConfig/loggers';
