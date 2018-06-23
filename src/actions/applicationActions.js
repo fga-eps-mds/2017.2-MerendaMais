@@ -18,3 +18,25 @@ export const resetStore = (...states) => (dispatch) => {
     dispatch(resetSpecificState(`reset_${states[i]}`.toUpperCase()));
   }
 };
+
+
+export const convertingContentStringToJSON = (contentStringSingleQuote) => {
+  // Changing ' to " in string received from Nuvem Civica.
+  const contentStringDoubleQuote = contentStringSingleQuote.replace(/'/g, '"');
+
+  // Converting content string to content JSON.
+  const contentJSON = JSON.parse(contentStringDoubleQuote);
+
+  return contentJSON;
+};
+
+// Used in Async Action to Register Counselor
+export const convertingJSONToString = (profileJSON) => {
+  // Converting profile JSON to profile string received from Nuvem Civica.
+  const profileStringDoubleQuote = JSON.stringify(profileJSON);
+
+  // Changing " to '.
+  const profileStringSingleQuote = profileStringDoubleQuote.replace(/"/g, "'");
+
+  return profileStringSingleQuote;
+};

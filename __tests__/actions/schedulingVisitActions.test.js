@@ -5,12 +5,12 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../src/actions/schedulingVisitActions';
 import * as types from '../../src/actions/types';
 import { POSTS_LINK_NUVEM_CIVICA } from '../../src/constants/generalConstants';
-import { convertingJSONToString } from '../../src/actions/counselorActions';
 import * as mockActions from '../../src/actions/ManagerRegisterActions';
 import {
   GET_CURRENT_SCHEDULE_ERROR,
   UPDATE_CURRENT_SCHEDULE_ERROR,
 } from '../../src/constants/errorConstants';
+import { convertingJSONToString } from '../../src/actions/applicationActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

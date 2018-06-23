@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { REACT_NATIVE_EMAIL, REACT_NATIVE_PASS } from 'react-native-dotenv';
 import { Alert } from 'react-native';
 import { RESET_LIST } from './types';
-import { logInfo, logWarn } from '../../logConfig/loggers';
+import { logInfo } from '../../logConfig/loggers';
 import {
   APP_IDENTIFIER,
   AUTHENTICATE_LINK_NUVEM_CIVICA,
@@ -15,6 +15,8 @@ import {
   COUNSELOR_GROUP_DISABLED_SUCCESS,
   COUNSELOR_GROUP_DISABLED_FAILED,
 } from '../constants/generalConstants';
+import { convertingJSONToString } from './applicationActions';
+import treatingError from './errorUtils';
 
 const FILE_NAME = 'ManageRegistersActions.js';
 
@@ -38,18 +40,9 @@ export const authenticatingMasterCounselor = async () => {
 
     return response.headers.apptoken;
   } catch (error) {
+    treatingError(error);
     throw new Error('Não foi possível adquirir token para desassociação.');
   }
-};
-
-export const convertingJSONToString = (profileJSON) => {
-  // Converting profile JSON to profile string received from Nuvem Civica.
-  const profileStringDoubleQuote = JSON.stringify(profileJSON);
-
-  // Changing " to '.
-  const profileStringSingleQuote = profileStringDoubleQuote.replace(/"/g, "'");
-
-  return profileStringSingleQuote;
 };
 
 const acceptCounselor = async (counselorData) => {
@@ -82,8 +75,7 @@ const acceptCounselor = async (counselorData) => {
       Actions.refresh();
     })
     .catch((error) => {
-      logWarn(FILE_NAME, 'acceptCounselor',
-        `Request result in an ${error}`);
+      treatingError(error);
     });
 };
 
@@ -110,12 +102,7 @@ export const disableCounselorFromApp = async (counselor, MASTER_TOKEN) => {
         resolve(COUNSELOR_DISABLED_SUCCESS);
       })
       .catch((error) => {
-        logWarn(FILE_NAME, '',
-          `Request result in an ${error}`);
-        logWarn(FILE_NAME, '',
-          `Request URL: ${DEFAULT_USER_LINK_NUVEM_CIVICA}${counselor.nuvemCode}/perfil`);
-        logWarn(FILE_NAME, '',
-          `Header: ${JSON.stringify(disableAppHeader)}`);
+        treatingError(error);
         reject(COUNSELOR_DISABLED_FAILED);
       });
   });
@@ -138,8 +125,7 @@ export const disableCounselorFromGroup = (counselor, codGroup, MASTER_TOKEN) => 
         resolve(COUNSELOR_GROUP_DISABLED_SUCCESS);
       })
       .catch((error) => {
-        logWarn(FILE_NAME, '',
-          `Request result in an ${error}`);
+        treatingError(error);
         reject(COUNSELOR_GROUP_DISABLED_FAILED);
       });
   });
@@ -157,6 +143,7 @@ export const disableCounselor = (counselor, codGroup) => async (dispatch) => {
     })
     .catch((errorMessage) => {
       Alert.alert(errorMessage);
+      treatingError(errorMessage);
     });
   dispatch(resetList());
   Actions.refresh();

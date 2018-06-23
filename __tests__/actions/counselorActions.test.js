@@ -8,7 +8,6 @@ import {
   setCounselorEdited,
   authenticatingCounselorInLogin,
   getUserProfileInLogin,
-  convertingJSONToString,
   asyncLoginCounselor,
   asyncEditCounselor,
 } from '../../src/actions/counselorActions';
@@ -36,14 +35,6 @@ import { errorGenerator } from '../../src/actions/schedulingVisitActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-
-
-describe('Testing file auxiliary functions', () => {
-  it('Test convertingJSONToString', () => {
-    const functionReturn = convertingJSONToString({ chave: "valor" });
-    expect(functionReturn).toEqual("{'chave':'valor'}");
-  });
-});
 
 describe('Testing counselorActions', () => {
   it('Testing set Counselor', () => {

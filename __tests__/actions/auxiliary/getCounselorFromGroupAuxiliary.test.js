@@ -17,7 +17,7 @@ import {
   GET_COUNSELORS_FROM_CAE_PROFILE_ERROR,
   GET_GROUP_ERROR,
 } from '../../../src/constants/errorConstants';
-import { convertingContentStringToJSON } from '../../../src/actions/schedulingVisitActions';
+import { convertingContentStringToJSON } from '../../../src/actions/applicationActions';
 
 describe('Testing getCounselorFromGroupAuxiliary functions', () => {
   let mock = null;
