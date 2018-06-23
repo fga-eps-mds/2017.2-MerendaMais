@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { logInfo, logWarn } from '../../logConfig/loggers';
+import { logInfo } from '../../logConfig/loggers';
 import {
   isLoading,
   isNotLoading,
@@ -26,16 +26,10 @@ import {
 import {
   GET_VISIT_SCHEDULE_CONTENT_ERROR,
   GET_VISIT_SCHEDULE_POST_LIST_ERROR,
-  GET_CURRENT_SCHEDULE_ERROR,
-  UPDATE_CURRENT_SCHEDULE_ERROR,
 } from '../constants/errorConstants';
 import { authenticatingMasterCounselor } from './ManagerRegisterActions';
 import sendEmailAlert from './sendEmailActions';
-import {
-  treatingGetVisitSchedulePostListError,
-  treatingGetVisitScheduleContentError,
-  treatingPostsError,
-} from './errorActions';
+import treatingError from './errorUtils';
 
 const FILE_NAME = 'schedulingVisitActions.js';
 
@@ -122,9 +116,7 @@ export const getVisitScheduleContent = async (contentLink, counselor, dispatch) 
 
     return visitSchedule;
   } catch (error) {
-    logWarn(FILE_NAME, 'getVisitScheduleContent',
-      `Request result in an ${error}`);
-
+    treatingError(error);
     throw errorGenerator(GET_VISIT_SCHEDULE_CONTENT_ERROR, error.response.status);
   }
 };
@@ -140,10 +132,8 @@ export const getVisitSchedulePostList = async (getScheduleParamsAndHeader) => {
 
     return response;
   } catch (error) {
-    logWarn(FILE_NAME, 'getVisitSchedulePostList',
-      `Request result in an ${error}`);
-
-    throw errorGenerator(GET_VISIT_SCHEDULE_POST_LIST_ERROR, error.response.status);
+    treatingError(error);
+    throw errorGenerator(GET_VISIT_SCHEDULE_CONTENT_ERROR, error.response.status);
   }
 };
 
@@ -196,10 +186,10 @@ export const asyncGetSchedule = counselor => async (dispatch) => {
     const errorJson = JSON.parse(error.message);
     switch (errorJson.name) {
       case GET_VISIT_SCHEDULE_CONTENT_ERROR:
-        treatingGetVisitScheduleContentError(error);
+        treatingError(error);
         break;
       case GET_VISIT_SCHEDULE_POST_LIST_ERROR:
-        treatingGetVisitSchedulePostListError(error);
+        treatingError(error);
         break;
       default:
         dispatch(isNotLoading());
@@ -263,10 +253,7 @@ const schedulingVisit = (visitData, counselor) => {
         { cancelable: false });
     })
     .catch((error) => {
-      logWarn(FILE_NAME, 'schedulingVisit',
-        `Request result in an ${error}`);
-
-      treatingPostsError(error);
+      treatingError(error);
     });
 };
 
@@ -312,8 +299,7 @@ export const asyncUpdateSchedule = postData => async (dispatch) => {
       putScheduleHeader);
     logInfo(FILE_NAME, 'asyncUpdateSchedule', response.data);
   } catch (error) {
-    logWarn(FILE_NAME, 'asyncUpdateSchedule', error.stack);
-    throw errorGenerator(UPDATE_CURRENT_SCHEDULE_ERROR, error.response.status);
+    treatingError(error);
   }
 
   dispatch(isNotLoading());
@@ -347,8 +333,7 @@ export const asyncGetCurrentSchedule = getData => async (dispatch) => {
 
     dispatch(setCurrentInspection(currentInspection));
   } catch (error) {
-    logWarn(FILE_NAME, 'GetCurrentSchedule', JSON.stringify(error.response));
-    throw errorGenerator(GET_CURRENT_SCHEDULE_ERROR, error.response.status);
+    treatingError(error);
   }
 };
 
