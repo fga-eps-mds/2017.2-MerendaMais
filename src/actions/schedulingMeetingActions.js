@@ -2,26 +2,26 @@ import axios from 'axios';
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-<<<<<<< HEAD
-import { convertingJSONToString } from './counselorActions';
-import { isLoading, isNotLoading } from './applicationActions';
-import { APP_IDENTIFIER,
-=======
-import { isLoading, isNotLoading, convertingJSONToString } from './applicationActions';
-import ShowToast from '../components/Toast';
+import {
+  isLoading,
+  isNotLoading,
+  convertingJSONToString,
+  convertingContentStringToJSON,
+} from './applicationActions';
 import {
   APP_IDENTIFIER,
->>>>>>> devel
   POSTS_LINK_NUVEM_CIVICA,
-  MEETING_POSTING_TYPE_CODE } from '../constants/generalConstants';
+  MEETING_POSTING_TYPE_CODE,
+} from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 import { resetList, setScheduleMeetingList } from './listActions';
-import { convertingContentStringToJSON } from './schedulingVisitActions';
 import { GetMeetingPostListError, GetMeetingContentError } from '../Exceptions';
 import { dateNotExpired } from './auxiliary/schedulingMeeting/schedulingMeetingAuxiliary';
-import { treatingPostsError,
+import {
+  treatingPostsError,
   treatingGetMeetingScheduleContentError,
-  treatingGetMeetingSchedulePostListError } from './auxiliary/schedulingMeeting/schedulingMeetingErrors';
+  treatingGetMeetingSchedulePostListError,
+} from './auxiliary/schedulingMeeting/schedulingMeetingErrors';
 
 export const FILE_NAME = 'schedulingMeetingActions.js';
 

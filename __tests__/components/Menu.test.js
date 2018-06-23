@@ -3,6 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import Adapter from 'enzyme-adapter-react-16';
 import Menu from '../../src/components/Menu';
+import MENU_ITENS from '../../src/constants/menuItens';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -11,7 +12,7 @@ const mockStore = configureStore();
 const initialState = {
   counselor: {
     profile: {
-      isPresident: false,
+      isPresident: true,
     },
   },
 };

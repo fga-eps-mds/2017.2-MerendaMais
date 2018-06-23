@@ -19,58 +19,60 @@ const styles = StyleSheet.create({
 });
 
 class Menu extends React.PureComponent {
-  render() {    
+  render() {
     return (
       <View style={styles.menu}>
         <ScrollView>
           {
             MENU_ITENS.map(item => (
-              <MenuButton
-                key={item.key}
-                text={item.text}
-                iconName={item.iconName}
-                onPress={() => {
-                  switch (item.key) {
-                    case "searchSchool":
-                      Actions.searchSchool()
-                      break;
-                    case "profileInfoScreen":
-                      Actions.profileInfoScreen()
-                      break;
-                    case "schedulingVisit":
-                      Actions.schedulingVisit()
-                      break;
-                    case "scheduleMeeting":
-                      Actions.scheduleMeeting()
-                      break;
-                    case "notifications":
-                      Actions.PrincipalNotifications()
-                      break;
-                    case "manageRegisters":
-                      Actions.manageRegisters()
-                      break;
-                    case "seeLegislation":
-                      Actions.lesgislationScreen()
-                      break;
-                    case "doComplaint":
-                      Actions.complaintScreen()
-                      break;
-                    case "logout":
-                      Alert.alert(
-                        'Sair',
-                        'Realmente deseja sair da sua conta?',
-                        [
-                          { text: 'Não', onPress: () => Actions.drawerOpen(), style: 'cancel' },
-                          { text: 'Sim', onPress: () => Actions.initialScreen() },
-                        ],
-                        { cancelable: false },
-                      )
-                      break;
-                    default:
-                    //Do Nothing
-                  }
-                }}
-              />
+              item.key !== 'manageRegisters' ||
+              (this.props.counselor.profile.isPresident &&
+              item.key === 'manageRegisters') ?
+                <MenuButton
+                  key={item.key}
+                  text={item.text}
+                  iconName={item.iconName}
+                  onPress={() => {
+                    switch (item.key) {
+                      case 'searchSchool':
+                        Actions.searchSchool();
+                        break;
+                      case 'profileInfoScreen':
+                        Actions.profileInfoScreen();
+                        break;
+                      case 'schedulingVisit':
+                        Actions.schedulingVisit();
+                        break;
+                      case 'scheduleMeeting':
+                        Actions.scheduleMeeting();
+                        break;
+                      case 'notifications':
+                        Actions.PrincipalNotifications();
+                        break;
+                      case 'manageRegisters':
+                        Actions.manageRegisters();
+                        break;
+                      case 'seeLegislation':
+                        Actions.lesgislationScreen();
+                        break;
+                      case 'doComplaint':
+                        Actions.complaintScreen();
+                        break;
+                      case 'logout':
+                        Alert.alert(
+                          'Sair',
+                          'Realmente deseja sair da sua conta?',
+                          [
+                            { text: 'Não', onPress: () => Actions.drawerOpen(), style: 'cancel' },
+                            { text: 'Sim', onPress: () => Actions.initialScreen() },
+                          ],
+                          { cancelable: false },
+                        );
+                        break;
+                      default: break;
+                    }
+                  }}
+                /> : undefined
             ),
             )
           }
@@ -90,10 +92,9 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   counselor: PropTypes.shape({
-    prifle: {
+    profile: {
       isPresident: false,
     },
   }),
 };
-
 export default Menu;

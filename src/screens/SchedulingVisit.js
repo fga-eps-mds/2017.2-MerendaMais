@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, TouchableOpacity, ScrollView, BackHandler, ActivityIndicator, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, BackHandler } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -9,15 +9,14 @@ import { Actions } from 'react-native-router-flux';
 import DatePicker from 'react-native-datepicker';
 import SchoolData from '../components/SchoolData';
 import EmailField from '../components/EmailField';
-import InvitedCounselorsData from '../components/InvitedCounselorsData';
 import Button from '../components/Button';
 import * as constant from '../constants/sendAgentEmail';
 import { backHandlerPopToMain } from '../NavigationFunctions';
 import Header from '../components/Header';
 import ShowToast from '../components/Toast';
 import { NO_OTHER_COUNSELORS } from '../constants/generalConstants';
-import styles from '../Styles/SchedulingVisitStyles'
-import InviteAgent from '../services/InviteAgent'
+import styles from '../Styles/SchedulingVisitStyles';
+import InviteAgent from '../components/InviteAgent';
 
 export default class SchedulingVisit extends React.Component {
   constructor(props) {

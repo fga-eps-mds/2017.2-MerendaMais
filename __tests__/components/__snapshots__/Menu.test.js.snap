@@ -50,6 +50,13 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
       text="Notificações"
     />
     <MenuButton
+      iconName="group-work"
+      isLogout={false}
+      key="manageRegisters"
+      onPress={[Function]}
+      text="Gerenciar Conselheiros"
+    />
+    <MenuButton
       iconName="gavel"
       isLogout={false}
       key="seeLegislation"
@@ -65,7 +72,7 @@ exports[`Testing Menu Side Bar Test Menu Rendering 1`] = `
     />
     <MenuButton
       iconName="logout"
-      isLogout={true}
+      isLogout={false}
       key="logout"
       onPress={[Function]}
       text="Sair"
