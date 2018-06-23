@@ -28,7 +28,6 @@ import {
   IS_LOADING_RESULT,
   IS_NOT_LOADING_RESULT,
 } from './types';
-import { convertingContentStringToJSON } from './schedulingVisitActions';
 
 import foodStock from '../constants/reports/foodStock';
 import refectory from '../constants/reports/refectory';
@@ -40,7 +39,8 @@ import foodPreparation from '../constants/reports/foodPreparation';
 import doc from '../constants/reports/doc';
 import schoolSurroundings from '../constants/reports/schoolSurroundings';
 import { logWarn } from '../../logConfig/loggers';
-import { treatingPostsError } from './schedulingMeetingActions';
+import { convertingContentStringToJSON } from './applicationActions';
+import treatingError from './errorUtils';
 
 const FILE_NAME = 'reportResultActions.js';
 
@@ -224,7 +224,7 @@ export const getContentInPost = async (getData, item, dispatch) => {
   } catch (error) {
     logWarn(FILE_NAME, 'reportResult',
       `Request result in an ${error}`);
-    treatingPostsError(error);
+    treatingError(error);
   }
 
   return json;
@@ -250,7 +250,7 @@ export const asyncGetCurrentPost = getData => async (dispatch) => {
   } catch (error) {
     logWarn(FILE_NAME, 'reportResult',
       `Request result in an ${error}`);
-    treatingPostsError(error);
+    treatingError(error);
   }
 
   return null;

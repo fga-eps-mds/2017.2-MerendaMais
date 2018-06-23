@@ -2,9 +2,16 @@ import axios from 'axios';
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
+<<<<<<< HEAD
 import { convertingJSONToString } from './counselorActions';
 import { isLoading, isNotLoading } from './applicationActions';
 import { APP_IDENTIFIER,
+=======
+import { isLoading, isNotLoading, convertingJSONToString } from './applicationActions';
+import ShowToast from '../components/Toast';
+import {
+  APP_IDENTIFIER,
+>>>>>>> devel
   POSTS_LINK_NUVEM_CIVICA,
   MEETING_POSTING_TYPE_CODE } from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
