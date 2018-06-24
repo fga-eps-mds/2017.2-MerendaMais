@@ -33,7 +33,6 @@ import CpfField from '../components/CpfField';
 import NameField from '../components/NameField';
 import EmailField from '../components/EmailField';
 import PasswordField from '../components/PasswordField';
-import GenericField from '../components/GenericField';
 import PhoneField from '../components/PhoneField';
 import DropdownComponent from '../components/DropdownComponent';
 import MunicipalDistrict from '../components/MunicipalDistrict';
@@ -248,25 +247,12 @@ export default class RegisterScreen extends React.Component {
     logInfo(FILE_NAME, 'render()',
       `State of register page: ${JSON.stringify(this.state, null, 2)}`);
 
-    // Testing regex list
-    const sixMoreWordCharRegex = /\w{6,}/;
-
     return (
       <View style={styles.principal}>
         <Header />
         <ScrollView style={styles.content}>
           <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
             <View style={{ paddingHorizontal: 15 }}>
-
-              <GenericField
-                header="Genérico"
-                placeholderMessage="Componente de Input"
-                icon="chevrons-up"
-                setStateValue={newValue => this.setState({ teste: newValue })}
-                onChange={console.warn('OnChange', this.state.teste)}
-                regexInput={sixMoreWordCharRegex}
-                errorMessage="Está errado!"
-              />
 
               <Text>CPF</Text>
               <CpfField
