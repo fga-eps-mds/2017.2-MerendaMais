@@ -97,8 +97,8 @@ android {
         applicationId "com.merendamais.merendamais"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 23
-        versionName "1.5"
+        versionCode 34
+        versionName "1.6"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
