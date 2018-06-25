@@ -17,3 +17,4 @@ exclude_paths:
 - "src/screens/startInspection/StartAlreadyInspectionedInspection.js"
 - "src/components/InvitedCounselorsData.js"
 - "src/screens/scheduleMeeting/ScheduleMeeting.js"
+- "src/actions/counselorActions.js"
