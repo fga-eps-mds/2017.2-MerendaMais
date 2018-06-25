@@ -7,7 +7,7 @@ import {
   SET_TOKEN,
   SET_COUNSELOR_EDITED,
 } from './types';
-import { isLoading, isNotLoading } from './applicationActions';
+import { isLoading, isNotLoading, convertingJSONToString } from './applicationActions';
 import { logInfo, logWarn } from '../../logConfig/loggers';
 import {
   USER_JUST_ALREADY_REGISTER_IN_NUVEM,
@@ -162,17 +162,6 @@ const treatingAuthenticatingCounselorInLoginError = (status) => {
 };
 
 // Functions focused in Counselor Register
-
-// Used in Async Action to Register Counselor
-export const convertingJSONToString = (profileJSON) => {
-  // Converting profile JSON to profile string received from Nuvem Civica.
-  const profileStringDoubleQuote = JSON.stringify(profileJSON);
-
-  // Changing " to '.
-  const profileStringSingleQuote = profileStringDoubleQuote.replace(/"/g, "'");
-
-  return profileStringSingleQuote;
-};
 
 const addCounselorToGroup = (counselor, appToken, nuvemCode, codGroup, dispatch) => {
   const headerAddGroup = {
@@ -582,6 +571,24 @@ export const counselorActionsAuxiliary = {
   getCodGroup,
 };
 
+export const selectTypeOfAuthenticationFailure = (errorMessage) => {
+  switch (errorMessage.name) {
+    case AUTH_LOGIN_ERROR:
+      logWarn(FILE_NAME, 'asyncLoginCounselor', 'AuthError');
+      treatingAuthenticatingCounselorInLoginError(errorMessage.status);
+      break;
+    case PROFILE_LOGIN_ERROR:
+      logWarn(FILE_NAME, 'asyncLoginCounselor', 'ProfileError');
+      treatingGetUserProfileInLoginError(errorMessage.status);
+      break;
+    case GROUP_LOGIN_ERROR:
+      logWarn(FILE_NAME, 'asyncLoginCounselor', 'GroupError');
+      break;
+    default:
+      break;
+  }
+};
+
 // Async Action to Login
 export const asyncLoginCounselor = userData => async (dispatch) => {
   logInfo(FILE_NAME, 'asyncLoginCounselor',
@@ -620,21 +627,7 @@ export const asyncLoginCounselor = userData => async (dispatch) => {
     const errorJson = JSON.parse(error.message);
     logWarn(FILE_NAME, 'asyncLoginCounselor', `${JSON.stringify(errorJson)}`);
 
-    switch (errorJson.name) {
-      case AUTH_LOGIN_ERROR:
-        logWarn(FILE_NAME, 'asyncLoginCounselor', 'AuthError');
-        treatingAuthenticatingCounselorInLoginError(errorJson.status);
-        break;
-      case PROFILE_LOGIN_ERROR:
-        logWarn(FILE_NAME, 'asyncLoginCounselor', 'ProfileError');
-        treatingGetUserProfileInLoginError(errorJson.status);
-        break;
-      case GROUP_LOGIN_ERROR:
-        logWarn(FILE_NAME, 'asyncLoginCounselor', 'GroupError');
-        break;
-      default:
-        break;
-    }
+    selectTypeOfAuthenticationFailure(errorJson);
 
     dispatch(isNotLoading());
   }

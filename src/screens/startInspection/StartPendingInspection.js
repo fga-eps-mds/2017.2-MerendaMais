@@ -291,6 +291,7 @@ class StartPendingInspection extends React.Component {
   }
 
   renderPaticipantsButton(visitSchedule, numberOfParticipants) {
+    console.log(visitSchedule);
     let participantsButton;
     if (numberOfParticipants > 1 ||
       !visitSchedule.content.visitListOfInvitees[this.props.counselor.nuvemCode] !== undefined) {

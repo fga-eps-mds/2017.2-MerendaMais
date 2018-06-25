@@ -20,7 +20,7 @@ export const AUTHENTICATE_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:8
 export const DEFAULT_USER_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/';
 
 // Link to access posts at Nuvem Cívica.
-export const POSTS_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/postagens/';
+export const POSTS_LINK_NUVEM_CIVICA = 'http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/postagens';
 
 // Link to get schools at Nuvem Cívica.
 export const SCHOOL_ENDPOINT = 'http://mobile-aceite.tcu.gov.br:80/nossaEscolaRS/rest/escolas';
@@ -95,3 +95,4 @@ export const COUNSELOR_GROUP_DISABLED_FAILED = 'Não foi possível apagar consel
 
 export const UNABLE_TO_FIND_SCHOOL = 'Não foi possível encontrar os dados da escola.';
 export const NO_OTHER_COUNSELORS = 'Não existem outros conselheiros cadastrados neste CAE.';
+export const LOADING_RESULT = 'isLoadingResult';

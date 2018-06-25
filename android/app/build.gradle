@@ -133,6 +133,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-html-to-pdf')
     compile project(':react-native-vector-icons')
     compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])

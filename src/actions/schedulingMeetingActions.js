@@ -2,120 +2,38 @@ import axios from 'axios';
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { logInfo, logWarn } from '../../logConfig/loggers';
-import { convertingJSONToString } from './counselorActions';
-import { isLoading, isNotLoading } from './applicationActions';
-import ShowToast from '../components/Toast';
+import {
+  isLoading,
+  isNotLoading,
+  convertingJSONToString,
+  convertingContentStringToJSON,
+} from './applicationActions';
 import {
   APP_IDENTIFIER,
   POSTS_LINK_NUVEM_CIVICA,
   MEETING_POSTING_TYPE_CODE,
-  INTERNAL_ERROR } from '../constants/generalConstants';
+} from '../constants/generalConstants';
 import { SET_MEETING_LOCATION_LONGITUDE, SET_MEETING_LOCATION_LATITUDE } from './types';
 import { resetList, setScheduleMeetingList } from './listActions';
+import { GetMeetingPostListError, GetMeetingContentError } from '../Exceptions';
+import { dateNotExpired } from './auxiliary/schedulingMeeting/schedulingMeetingAuxiliary';
 import {
-  GetMeetingPostListError,
-  GetMeetingContentError } from '../Exceptions';
+  treatingPostsError,
+  treatingGetMeetingScheduleContentError,
+  treatingGetMeetingSchedulePostListError,
+} from './auxiliary/schedulingMeeting/schedulingMeetingErrors';
 
-const FILE_NAME = 'schedulingMeetingActions.js';
-
-const convertingContentStringToJSON = (profileStringSingleQuote) => {
-  // Changing ' to " in string received from Nuvem Civica.
-  const profileStringDoubleQuote = profileStringSingleQuote.replace(/'/g, '"');
-
-  // Converting profile string to profile JSON.
-  const profileJSON = JSON.parse(profileStringDoubleQuote);
-
-  return profileJSON;
-};
-
-// Treating request errors
-const treatingGetMeetingSchedulePostListError = (error) => {
-  if (error.response.status === 500) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingSchedulePostListError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
-  }
-};
-
-// Treating request errors
-const treatingGetMeetingScheduleContentError = (error) => {
-  if (error.response.status === 500) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Nuvem Cívica Internal Server Error - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 400) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Bad Request, some attribute was wrongly passed - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 404) {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Post or Content not found with this params - Error code received in request - ${error.response.status}`);
-  } else {
-    ShowToast.Toast(INTERNAL_ERROR);
-    logWarn(FILE_NAME, 'treatingGetMeetingScheduleContentError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
-  }
-};
-
-const verifyDate = (meetingSchedule) => {
-  const date = new Date();
-  const systemDay = date.getDate();
-  const systemMonth = date.getMonth() + 1;
-  const systemYear = date.getFullYear();
-
-  const daySchedule = meetingSchedule.content.date.substr(0, 2);
-  const monthSchedule = meetingSchedule.content.date.substr(3, 2);
-  const yearSchedule = meetingSchedule.content.date.substr(6);
-
-  if (yearSchedule < systemYear) {
-    return true;
-  } else if (yearSchedule > systemYear) {
-    return false;
-  }
-  if (monthSchedule < systemMonth) {
-    return true;
-  } else if (monthSchedule > systemMonth) {
-    return false;
-  }
-  if (daySchedule < systemDay) {
-    return true;
-  }
-  return false;
-};
-
+export const FILE_NAME = 'schedulingMeetingActions.js';
 
 const defineMeetingStatus = (meetingSchedule, counselor, dispatch) => {
   logInfo(FILE_NAME, 'defineMeetingStatus', `${JSON.stringify(meetingSchedule)}`);
-  if (meetingSchedule.content.meetingListOfInvitees[counselor.nuvemCode] !== undefined) {
-    if (!verifyDate(meetingSchedule)) {
-      dispatch(setScheduleMeetingList(meetingSchedule));
-    }
-  }
-};
 
-// Treating request errors
-const treatingPostsError = (error) => {
-  if (error.response.status === 401) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Unauthorized according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 403) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Forbidden according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else if (error.response.status === 404) {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Not Found according to the Nuvem - Error code received in request - ${error.response.status}`);
-  } else {
-    logWarn(FILE_NAME, 'treatingPostsError',
-      `Unknown error - Error code received in request - ${error.response.status}`);
+  const counselorInvited =
+    meetingSchedule.content.meetingListOfInvitees[counselor.nuvemCode] !== undefined;
+  const validMeeting = !dateNotExpired(meetingSchedule);
+
+  if (counselorInvited && validMeeting) {
+    dispatch(setScheduleMeetingList(meetingSchedule));
   }
 };
 
@@ -254,7 +172,7 @@ export const schedulingMeeting = (meetingData, dispatch) => {
     },
   };
 
-  axios.post(`${POSTS_LINK_NUVEM_CIVICA}conteudos`, bodyToSchedulingMeeting, headerToSchedulingMeeting)
+  axios.post(`${POSTS_LINK_NUVEM_CIVICA}/conteudos`, bodyToSchedulingMeeting, headerToSchedulingMeeting)
     .then((response) => {
       logInfo(FILE_NAME, 'schedulingMeeting',
         `Scheduling made in Nuvem cívica: ${JSON.stringify(response.data, null, 2)}`);

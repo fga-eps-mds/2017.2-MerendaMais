@@ -5,12 +5,12 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../src/actions/schedulingVisitActions';
 import * as types from '../../src/actions/types';
 import { POSTS_LINK_NUVEM_CIVICA } from '../../src/constants/generalConstants';
-import { convertingJSONToString } from '../../src/actions/counselorActions';
 import * as mockActions from '../../src/actions/ManagerRegisterActions';
 import {
   GET_CURRENT_SCHEDULE_ERROR,
   UPDATE_CURRENT_SCHEDULE_ERROR,
 } from '../../src/constants/errorConstants';
+import { convertingJSONToString } from '../../src/actions/applicationActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -48,14 +48,15 @@ describe('Testing schedulingVisit updateSchedule', () => {
     };
   });
 
-  it('Test async updateSchedule succes', async () => {
+  it('Test async updateSchedule success', async () => {
     const mock = new MockAdapter(axios);
     const store = mockStore({});
     mockActions.authenticatingMasterCounselor = jest.fn(() => 1);
 
     mock.onPut(
-      `${POSTS_LINK_NUVEM_CIVICA}${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
-      putScheduleBody).reply(200);
+      `${POSTS_LINK_NUVEM_CIVICA}/${postData.codPostagem}/conteudos/${postData.codConteudoPost}`,
+      putScheduleBody,
+      putScheduleHeader).reply(200);
 
     await store.dispatch(actions.asyncUpdateSchedule(postData));
 
@@ -126,7 +127,7 @@ describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
     const store = mockStore({});
 
     mock
-      .onGet(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
+      .onGet(`${POSTS_LINK_NUVEM_CIVICA}/${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
       .reply(200, { ...response });
 
     await store.dispatch(actions.asyncGetCurrentSchedule(getData));
@@ -153,7 +154,7 @@ describe('Testing scheduleVisit asyncGetCurrentSchedule', () => {
     const store = mockStore({});
 
     mock
-      .onGet(`${POSTS_LINK_NUVEM_CIVICA}${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
+      .onGet(`${POSTS_LINK_NUVEM_CIVICA}/${getData.codPostagem}/conteudos/${getData.codConteudoPost}`, header)
       .reply(400, { ...response });
 
     try {

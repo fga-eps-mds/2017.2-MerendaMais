@@ -74,3 +74,22 @@ RUN $ANDROID_HOME/tools/bin/avdmanager create avd\
  -k "system-images;android-25;google_apis;x86"\
  --device "Nexus 5"\
  --sdcard 700M
+
+RUN mkdir /code
+
+COPY package.json /code/
+
+WORKDIR /code/
+
+RUN npm install --loglevel verbose
+
+COPY . /code/
+
+WORKDIR /code/android/
+
+RUN ./gradlew assembleDebug
+
+WORKDIR /code/
+
+
+

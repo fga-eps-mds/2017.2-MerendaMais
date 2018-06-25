@@ -6,7 +6,6 @@ import { StyleSheet,
   ImageBackground,
   TouchableOpacity } from 'react-native';
 
-
 const initialBackgroundImage = require('../images/initial_background.jpg');
 
 const styles = StyleSheet.create({
@@ -62,7 +61,6 @@ const InitialScreen = () => ({
           <View style={{ flex: 1, alignItems: 'center' }}>
             <Text style={styles.titleText}>MERENDA +</Text>
           </View>
-
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity
               style={styles.loginButton}

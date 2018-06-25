@@ -77,14 +77,18 @@ export const setlistOfNotCheckedCounselors = notCheckedCounselor => ({
   payload: notCheckedCounselor,
 });
 
-export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
-  dispatch(isLoading());
-  dispatch(resetList());
+export const getCounselorData = async (counselorsInformationWithNuvemCode) => {
+  const promisesCompleteCounselors = [];
+  for (let i = 0; i < counselorsInformationWithNuvemCode.length; i += 1) {
+    promisesCompleteCounselors.push(
+      getCounselorProfile(
+        counselorsInformationWithNuvemCode[i][0],
+        counselorsInformationWithNuvemCode[i][1]));
+  }
+  return Promise.all(promisesCompleteCounselors);
+};
 
-  const codGroup = await getGroup(CAE);
-  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Received codGroup: ${codGroup}`);
-  // Returns an array of arrays. The 0 element of the array contains all counselor links,
-  // while the 1 containers all codMembro links.
+export const getCounselorLinks = async (codGroup) => {
   const listOfLinks = await getCounselorFromGroup(codGroup);
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `ListOfLinks: ${listOfLinks}`);
   const counselorLinks = listOfLinks[0];
@@ -92,39 +96,43 @@ export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
   const linksWithCodMembro = listOfLinks[1];
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `LinksWithCodMembro ${linksWithCodMembro}`);
 
-
   const promisesInformationWithNuvemCode = [];
 
   for (let i = 0; i < listOfLinks.length; i += 1) {
-    promisesInformationWithNuvemCode.push(getCounselor(counselorLinks[i], linksWithCodMembro[i]));
+    promisesInformationWithNuvemCode.push(getCounselor(counselorLinks[i],
+      linksWithCodMembro[i]));
   }
+  return Promise.all(promisesInformationWithNuvemCode);
+};
+
+export const selectListOfCounselor = (counselor, CPF) => async (dispatch) => {
+  if (counselor.profile.cpf !== CPF) {
+    dispatch(setList(counselor));
+    logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Counselors sent to store ${JSON.stringify(counselor)}`);
+    if (counselor.profile.presidentChecked) {
+      dispatch(setlistOfCheckedCounselors(counselor));
+    } else {
+      dispatch(setlistOfNotCheckedCounselors(counselor));
+    }
+  }
+};
+
+export const asyncGetCounselorFromGroup = (CAE, CPF) => async (dispatch) => {
+  dispatch(isLoading());
+  dispatch(resetList());
+
+  const codGroup = await getGroup(CAE);
+  logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Received codGroup: ${codGroup}`);
 
   // Return a array of arrays.
   // For each element, position 0 is the counselor information, and position 1 is the nuvem code.
-  const counselorsInformationWithNuvemCode = await Promise.all(promisesInformationWithNuvemCode);
+  const counselorsInformationWithNuvemCode = await getCounselorLinks(codGroup);
 
-  const promisesCompleteCounselors = [];
-
-  for (let i = 0; i < counselorsInformationWithNuvemCode.length; i += 1) {
-    promisesCompleteCounselors.push(
-      getCounselorProfile(
-        counselorsInformationWithNuvemCode[i][0],
-        counselorsInformationWithNuvemCode[i][1]));
-  }
-
-  const completeCounselors = await Promise.all(promisesCompleteCounselors);
+  const completeCounselors = await getCounselorData(counselorsInformationWithNuvemCode);
 
   logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `CompleteCounselors: ${JSON.stringify(completeCounselors)}`);
   for (let i = 0; i < completeCounselors.length; i += 1) {
-    if (completeCounselors[i].profile.cpf !== CPF) {
-      dispatch(setList(completeCounselors[i]));
-      logInfo(FILE_NAME, 'asyncGetCounselorFromGroup', `Counselors sent to store ${JSON.stringify(completeCounselors[i])}`);
-      if (completeCounselors[i].profile.presidentChecked) {
-        dispatch(setlistOfCheckedCounselors(completeCounselors[i]));
-      } else {
-        dispatch(setlistOfNotCheckedCounselors(completeCounselors[i]));
-      }
-    }
+    dispatch(selectListOfCounselor(completeCounselors[i], CPF));
   }
   dispatch(isNotLoading());
 };

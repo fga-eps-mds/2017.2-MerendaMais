@@ -110,6 +110,71 @@ const initialState = {
   scheduleVisit: {
     currentVisit: {},
   },
+  reportResult: {
+    schoolSurroundings: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    foodStock: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    doc: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    foodQuality: {
+      questions: [],
+      status: false,
+      additionalData: {
+        acceptedMenu: '',
+        refusedMenu: '',
+      },
+      loading: true,
+    },
+    foodHandler: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    refectory: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    waterSewerSupply: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    kitchen: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    foodPreparation: {
+      questions: [],
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    otherObservation: {
+      status: false,
+      textObservation: '',
+      loading: true,
+    },
+    isLoadingResult: false,
+  },
 };
 
 
